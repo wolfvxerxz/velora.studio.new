@@ -22,12 +22,14 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-wrap gap-3 mb-8">
-            <Link
-              href="#contact"
+            <button
+              data-cal-link="vuk-m/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"month_view"}'
               className="px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black text-base hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
             >
               Book a Intro
-            </Link>
+            </button>
             <Link
               href="#work"
               className="px-4 py-2 rounded-full bg-gray-200 dark:bg-zinc-800 text-black dark:text-white text-base hover:bg-gray-300 dark:hover:bg-zinc-700 transition-colors"

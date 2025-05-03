@@ -25,12 +25,14 @@ export function SiteHeader() {
             >
               View Work
             </Link>
-            <Link
-              href="#contact"
+            <button
+              data-cal-link="vuk-m/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"month_view"}'
               className="px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
             >
               Book a Intro
-            </Link>
+            </button>
           </div>
         </div>
       </div>

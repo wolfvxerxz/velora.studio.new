@@ -15,56 +15,54 @@ export function ProcessSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Step 1 */}
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-6 h-6 rounded-full bg-zinc-800 flex items-center justify-center text-xs">
-                    <span className="text-white">1</span>
+                  <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-zinc-800 flex items-center justify-center text-xs transition-colors duration-300">
+                    <span className="text-gray-900 dark:text-white transition-colors duration-300">1</span>
                   </div>
-                  <h3 className="font-medium text-sm text-white">Have a meeting</h3>
+                  <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Have a meeting</h3>
                 </div>
-                <p className="text-gray-400 text-xs">
+                <p className="text-gray-600 dark:text-gray-400 text-xs transition-colors duration-300">
                   We'll have a quick meeting where we'll discuss your ideas and how we can help you achieve them.
                 </p>
               </div>
 
               {/* Step 2 */}
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-6 h-6 rounded-full bg-zinc-800 flex items-center justify-center text-xs">
-                    <span className="text-white">2</span>
+                  <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-zinc-800 flex items-center justify-center text-xs transition-colors duration-300">
+                    <span className="text-gray-900 dark:text-white transition-colors duration-300">2</span>
                   </div>
-                  <h3 className="font-medium text-sm text-white">Research and Preparation</h3>
+                  <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Design & Develop</h3>
                 </div>
-                <p className="text-gray-400 text-xs">
-                  We'll conduct research and present you our recommendation on how we should approach solving your
-                  problem.
+                <p className="text-gray-600 dark:text-gray-400 text-xs transition-colors duration-300">
+                  We'll create a custom design that matches your brand and implement it with clean, efficient code.
                 </p>
               </div>
 
               {/* Step 3 */}
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-6 h-6 rounded-full bg-zinc-800 flex items-center justify-center text-xs">
-                    <span className="text-white">3</span>
+                  <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-zinc-800 flex items-center justify-center text-xs transition-colors duration-300">
+                    <span className="text-gray-900 dark:text-white transition-colors duration-300">3</span>
                   </div>
-                  <h3 className="font-medium text-sm text-white">Get to work</h3>
+                  <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Review & Refine</h3>
                 </div>
-                <p className="text-gray-400 text-xs">
-                  We design the solution based on the agreed direction until you're satisfied, ensuring blazing-fast
-                  updates.
+                <p className="text-gray-600 dark:text-gray-400 text-xs transition-colors duration-300">
+                  We'll review the implementation together and make any necessary refinements to ensure perfection.
                 </p>
               </div>
 
               {/* Step 4 */}
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-6 h-6 rounded-full bg-zinc-800 flex items-center justify-center text-xs">
-                    <span className="text-white">4</span>
+                  <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-zinc-800 flex items-center justify-center text-xs transition-colors duration-300">
+                    <span className="text-gray-900 dark:text-white transition-colors duration-300">4</span>
                   </div>
-                  <h3 className="font-medium text-sm text-white">Delivery</h3>
+                  <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Launch & Support</h3>
                 </div>
-                <p className="text-gray-400 text-xs">
-                  Once you're happy with the results we'll proceed to our carefully-designed handoff procedure.
+                <p className="text-gray-600 dark:text-gray-400 text-xs transition-colors duration-300">
+                  We'll launch your project and provide ongoing support to ensure everything runs smoothly.
                 </p>
               </div>
             </div>

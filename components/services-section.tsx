@@ -21,46 +21,46 @@ export function ServicesSection() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black hover:bg-zinc-900 transition-colors">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
                 <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Palette className="h-5 w-5 text-white" />
+                  <Palette className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-base font-medium text-white mb-2">Brand Identity Design</h3>
+                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Brand Identity Design</h3>
               </div>
 
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black hover:bg-zinc-900 transition-colors">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
                 <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Layers className="h-5 w-5 text-white" />
+                  <Layers className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-base font-medium text-white mb-2">Product Design</h3>
+                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Product Design</h3>
               </div>
 
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black hover:bg-zinc-900 transition-colors">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
                 <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Monitor className="h-5 w-5 text-white" />
+                  <Monitor className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-base font-medium text-white mb-2">Website Design</h3>
+                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Website Design</h3>
               </div>
 
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black hover:bg-zinc-900 transition-colors">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
                 <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Code className="h-5 w-5 text-white" />
+                  <Code className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-base font-medium text-white mb-2">Framer Development</h3>
+                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Framer Development</h3>
               </div>
 
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black hover:bg-zinc-900 transition-colors">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
                 <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <BarChart3 className="h-5 w-5 text-white" />
+                  <BarChart3 className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-base font-medium text-white mb-2">Graphic & 3D Design</h3>
+                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Graphic & 3D Design</h3>
               </div>
 
-              <div className="border border-zinc-800 rounded-lg p-6 bg-black hover:bg-zinc-900 transition-colors">
+              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
                 <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <FileCode className="h-5 w-5 text-white" />
+                  <FileCode className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-base font-medium text-white mb-2">Pitch Deck Design</h3>
+                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Pitch Deck Design</h3>
               </div>
             </div>
           </div>
