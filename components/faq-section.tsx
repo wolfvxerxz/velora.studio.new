@@ -13,7 +13,7 @@ export function FaqSection() {
       className="py-16 border-t border-gray-200 dark:border-zinc-900 bg-white dark:bg-black transition-colors duration-300"
     >
       <div className="w-full flex justify-center px-4">
-        <div className="w-full" style={{ maxWidth: "768px" }}>
+        <div className="w-full" style={{ maxWidth: "640px" }}>
           <AnimatedSection animation="fadeUp">
             <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
               Frequently Asked Questions

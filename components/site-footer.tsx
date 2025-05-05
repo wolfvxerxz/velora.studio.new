@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { XLogo } from "./icons/x-logo"
 
 export function SiteFooter() {
   return (
@@ -33,8 +34,14 @@ export function SiteFooter() {
 
           <div className="flex justify-between items-center animate-fadeInUp delay-400">
             <p className="text-base text-gray-500">© velora.studio 2025</p>
-            <a href="#" className="text-gray-500 hover:text-black transition-colors hover:scale-[1.02] active:scale-[0.98] inline-block" aria-label="X (Twitter)">
-              X (Twitter)
+            <a 
+              href="https://x.com/velora_studio" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-500 hover:text-black transition-colors hover:scale-[1.02] active:scale-[0.98] inline-flex items-center" 
+              aria-label="Follow us on X"
+            >
+              <XLogo className="w-5 h-5" />
             </a>
           </div>
         </div>
