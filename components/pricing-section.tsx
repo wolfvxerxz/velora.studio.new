@@ -1,127 +1,145 @@
-import { Check } from "lucide-react"
+import { Heart, Sparkles, Framer, Palette, Check, Zap } from "lucide-react"
+import { AnimatedSection } from "./ui/animated-section"
 
 export function PricingSection() {
   return (
-    <section
-      id="pricing"
-      className="py-16 border-t border-gray-200 dark:border-zinc-900 bg-white dark:bg-black transition-colors duration-300"
-    >
-      <div className="w-full flex justify-center px-4">
-        <div className="w-full" style={{ maxWidth: "640px" }}>
-          <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
-            Pricing
-          </h2>
+    <section className="py-16 bg-white">
+      <div className="max-w-3xl mx-auto px-4">
+        <AnimatedSection animation="fadeUp">
+          <h2 className="text-xl font-normal text-black mb-3">Pricing</h2>
+        </AnimatedSection>
+        
+        <AnimatedSection animation="fadeUp" delay={100}>
+          <p className="text-gray-600 text-sm mb-6">
+            Our diverse plans offer a wide range of benefits to meet your specific needs — whether you prefer
+            a flat-price website, a subscription-based product design, or a combination of both.
+          </p>
+        </AnimatedSection>
 
-          <div>
-            <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
-              Our diverse plans offer a wide range of benefits to meet your specific needs — whether you prefer one-off
-              projects, a subscription-based product design, or a combination of both.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Custom Quote */}
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-black shadow-sm transition-colors duration-300">
-                <div className="p-6">
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="text-black dark:text-white transition-colors duration-300">0 → 1 Design</span>
-                    </div>
-                    <h3 className="text-lg font-medium text-black dark:text-white transition-colors duration-300">Custom Quote</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-xs mt-1 transition-colors duration-300">
-                      Your go-to solution for whatever you may need — we design everything!
-                    </p>
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* 0→1 Design */}
+          <AnimatedSection animation="fadeUp" delay={200}>
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-black animate-pulse" />
+                    <span className="text-black text-sm">0 → 1 Design</span>
                   </div>
+                  <span className="text-xs bg-gray-100 text-black px-2 py-0.5 rounded-md">Custom Quote</span>
+                </div>
 
-                  <div className="space-y-3 mb-6">
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Brand Identity Design</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Product and Website Design</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Framer Development</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Graphic and 3D Design</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Unlimited revisions</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Frequent updates</p>
-                    </div>
-                  </div>
+                <h3 className="text-xl font-normal text-black mb-2">Custom Quote</h3>
+                <p className="text-gray-600 text-sm mb-8">
+                  Your go-to solution for whatever you may need — we design everything!
+                </p>
 
-                  <button
-                    data-cal-link="vuk-m/30min"
-                    data-cal-namespace="30min"
-                    data-cal-config='{"layout":"month_view"}'
-                    className="block w-full py-2 bg-gray-100 dark:bg-zinc-800 text-black dark:text-white text-center rounded-md text-xs hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors"
-                  >
-                    Book a Intro
-                  </button>
+                <div className="space-y-4">
+                  <AnimatedSection animation="fadeUp" delay={300}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Heart className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Brand Identity Design</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={400}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Sparkles className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Product and Website Design</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={500}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Framer className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Framer Development</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={600}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Palette className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Graphic and 3D Design</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={700}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Check className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Unlimited revisions</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={800}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Check className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Frequent updates</span>
+                    </div>
+                  </AnimatedSection>
                 </div>
               </div>
 
-              {/* Subscription */}
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-black shadow-sm transition-colors duration-300">
-                <div className="p-6">
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="text-black dark:text-white transition-colors duration-300">Unlimited Design</span>
-                      <span className="bg-gray-100 dark:bg-zinc-800 text-black dark:text-white text-xs px-2 py-0.5 rounded transition-colors duration-300">Subscription</span>
-                    </div>
-                    <div className="flex items-baseline">
-                      <span className="text-2xl font-bold text-black dark:text-white transition-colors duration-300">$4,500</span>
-                      <span className="text-gray-600 dark:text-gray-400 text-xs ml-2 transition-colors duration-300">/m</span>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-400 text-xs mt-1 transition-colors duration-300">
-                      The ideal solution for those in need of designs across any type of task.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Trial week — no strings attached</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">World-class design via Figma</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Unlimited requests and revisions</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Frequent updates</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <Check className="flex-shrink-0 text-black dark:text-white h-4 w-4 transition-colors duration-300" />
-                      <p className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">Pause or cancel anytime</p>
-                    </div>
-                  </div>
-
-                  <button
-                    data-cal-link="vuk-m/30min"
-                    data-cal-namespace="30min"
-                    data-cal-config='{"layout":"month_view"}'
-                    className="block w-full py-2 bg-black dark:bg-white text-white dark:text-black text-center rounded-md text-xs hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors"
-                  >
-                    Book a Intro
-                  </button>
-                </div>
+              <div className="mt-auto pt-8">
+                <button className="w-full py-3 bg-gray-200 text-black text-sm font-normal rounded-xl hover:bg-gray-300 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
+                  Share Your Vision
+                </button>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
+
+          {/* Unlimited Design */}
+          <AnimatedSection animation="fadeUp" delay={200}>
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-black animate-pulse" />
+                    <span className="text-black text-sm">Unlimited Design</span>
+                  </div>
+                  <span className="text-xs bg-gray-100 text-black px-2 py-0.5 rounded-md">Subscription</span>
+                </div>
+
+                <h3 className="text-xl font-normal text-black mb-2">$4,500<span className="text-gray-600 text-sm">/m</span></h3>
+                <p className="text-gray-600 text-sm mb-8">
+                  The ideal solution for those in need of design services of any type and scale.
+                </p>
+
+                <div className="space-y-4">
+                  <AnimatedSection animation="fadeUp" delay={300}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Check className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Trial week — no strings attached</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={400}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Sparkles className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Best-in-class design via Figma</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={500}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Check className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Unlimited requests and revisions</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={600}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Check className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Frequent updates</span>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection animation="fadeUp" delay={700}>
+                    <div className="flex items-center gap-3 hover:translate-x-1 transition-transform">
+                      <Check className="flex-shrink-0 text-black h-4 w-4" />
+                      <span className="text-gray-600 text-sm">Pause or cancel anytime</span>
+                    </div>
+                  </AnimatedSection>
+                </div>
+              </div>
+
+              <div className="mt-auto pt-8">
+                <button className="w-full py-3 bg-black text-white text-sm font-normal rounded-xl hover:bg-gray-900 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
+                  Let's Work Together
+                </button>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

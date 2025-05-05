@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { AnimatedSection } from "./ui/animated-section"
 
 export function FaqSection() {
   return (
@@ -13,79 +14,66 @@ export function FaqSection() {
     >
       <div className="w-full flex justify-center px-4">
         <div className="w-full" style={{ maxWidth: "768px" }}>
-          <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
-            Frequently Asked Questions
-          </h2>
+          <AnimatedSection animation="fadeUp">
+            <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
+              Frequently Asked Questions
+            </h2>
+          </AnimatedSection>
 
-          <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
-            Find answers to common questions about our design services, process, and collaboration methods.
-          </p>
+          <AnimatedSection animation="fadeUp" delay={100}>
+            <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
+              Find answers to common questions about our design services, process, and collaboration methods.
+            </p>
+          </AnimatedSection>
 
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            <AccordionItem value="item-1" className="border-zinc-800">
-              <AccordionTrigger className="text-black dark:text-white hover:no-underline">
-                What is included in the unlimited design subscription?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700 dark:text-gray-400">
-                Our unlimited design subscription includes UI/UX design, website design, brand identity, graphic design, and Framer development. 
-                You can request as many designs as you need, and we'll work on them one at a time with unlimited revisions until you're completely satisfied.
-              </AccordionContent>
-            </AccordionItem>
+          <AnimatedSection animation="fadeUp" delay={200}>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>What is your design process like?</AccordionTrigger>
+                <AccordionContent>
+                  Our design process is collaborative and iterative. We start with a discovery phase to understand your
+                  needs, create initial concepts, refine based on feedback, and deliver the final designs. We keep you
+                  involved throughout the process to ensure the end result matches your vision.
+                </AccordionContent>
+              </AccordionItem>
 
-            <AccordionItem value="item-2" className="border-zinc-800">
-              <AccordionTrigger className="text-black dark:text-white hover:no-underline">
-                How fast will I receive my designs?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700 dark:text-gray-400">
-                We typically deliver the first design concept within 24-48 hours of receiving your request. 
-                Revisions are usually completed within 24 hours. Complex projects may take longer, but we'll always 
-                keep you updated on the progress.
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>How long does a typical project take?</AccordionTrigger>
+                <AccordionContent>
+                  Project timelines vary depending on scope and complexity. A typical website design project takes 2-4
+                  weeks, while more complex projects may take 6-8 weeks. We'll provide a detailed timeline during our
+                  initial consultation.
+                </AccordionContent>
+              </AccordionItem>
 
-            <AccordionItem value="item-3" className="border-zinc-800">
-              <AccordionTrigger className="text-black dark:text-white hover:no-underline">
-                Can I pause or cancel my subscription?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700 dark:text-gray-400">
-                Yes, you can pause or cancel your subscription at any time. There are no long-term contracts or 
-                commitments. Just let us know before your next billing cycle, and we'll take care of it.
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>Do you offer ongoing support after launch?</AccordionTrigger>
+                <AccordionContent>
+                  Yes, we provide ongoing support and maintenance services. We can help with updates, optimizations, and
+                  any technical issues that arise after launch. We also offer training to help your team manage the
+                  website effectively.
+                </AccordionContent>
+              </AccordionItem>
 
-            <AccordionItem value="item-4" className="border-zinc-800">
-              <AccordionTrigger className="text-black dark:text-white hover:no-underline">
-                How do we collaborate on projects?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700 dark:text-gray-400">
-                We use Figma for design collaboration and communication. You'll have access to your project files 
-                and can leave comments directly on the designs. We also use email for regular updates and can 
-                schedule video calls when needed.
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger>What makes your design approach different?</AccordionTrigger>
+                <AccordionContent>
+                  We focus on creating designs that not only look beautiful but also drive results. Our approach combines
+                  aesthetic appeal with user experience best practices and conversion optimization strategies. We also
+                  emphasize clear communication and collaboration throughout the process.
+                </AccordionContent>
+              </AccordionItem>
 
-            <AccordionItem value="item-5" className="border-zinc-800">
-              <AccordionTrigger className="text-black dark:text-white hover:no-underline">
-                What if I need a custom project?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700 dark:text-gray-400">
-                For custom projects or specific requirements, we offer our "0 → 1 Design" service with custom quotes. 
-                This is perfect for comprehensive brand identities, complex web applications, or any specialized design needs. 
-                Contact us to discuss your project and get a custom quote.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-6" className="border-zinc-800">
-              <AccordionTrigger className="text-black dark:text-white hover:no-underline">
-                Do you offer a trial period?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700 dark:text-gray-400">
-                Yes, we offer a trial week with our subscription plan. This allows you to experience our design process 
-                and quality firsthand with no strings attached. If you're not satisfied, you can cancel before the full 
-                subscription begins.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              <AccordionItem value="item-5">
+                <AccordionTrigger>How do you handle revisions and feedback?</AccordionTrigger>
+                <AccordionContent>
+                  We have a structured feedback process that includes multiple revision rounds. We use collaborative tools
+                  to gather and implement your feedback efficiently. Our goal is to ensure you're completely satisfied
+                  with the final result.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </AnimatedSection>
         </div>
       </div>
     </section>

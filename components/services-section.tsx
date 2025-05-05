@@ -1,67 +1,86 @@
 import { Palette, Layers, Monitor, Code, BarChart3, FileCode } from "lucide-react"
+import { AnimatedSection } from "./ui/animated-section"
 
 export function ServicesSection() {
   return (
     <section className="py-16 border-t border-gray-200 dark:border-zinc-900 bg-white dark:bg-black transition-colors duration-300">
       <div className="w-full flex justify-center px-4">
         <div className="w-full" style={{ maxWidth: "640px" }}>
-          <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
-            Our Services
-          </h2>
+          <AnimatedSection animation="fadeUp">
+            <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
+              Our Services
+            </h2>
+          </AnimatedSection>
 
           <div>
-            <p className="text-gray-700 dark:text-gray-400 mb-8 text-sm transition-colors duration-300">
-              Sometimes, you come across a design that feels right — you can't quite explain why, but you know it when
-              you see it!
-            </p>
+            <AnimatedSection animation="fadeUp" delay={100}>
+              <p className="text-gray-700 dark:text-gray-400 mb-8 text-sm transition-colors duration-300">
+                Sometimes, you come across a design that feels right — you can't quite explain why, but you know it when
+                you see it!
+              </p>
+            </AnimatedSection>
 
-            <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
-              We're dedicated to crafting solutions that evoke this feeling while offering everything design- related,
-              from A to Z.
-            </p>
+            <AnimatedSection animation="fadeUp" delay={200}>
+              <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
+                We're dedicated to crafting solutions that evoke this feeling while offering everything design- related,
+                from A to Z.
+              </p>
+            </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
-                <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Palette className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+              <AnimatedSection animation="fadeUp" delay={300}>
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center mb-4">
+                    <Palette className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Brand Identity Design</h3>
                 </div>
-                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Brand Identity Design</h3>
-              </div>
+              </AnimatedSection>
 
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
-                <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Layers className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+              <AnimatedSection animation="fadeUp" delay={400}>
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center mb-4">
+                    <Layers className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Product Design</h3>
                 </div>
-                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Product Design</h3>
-              </div>
+              </AnimatedSection>
 
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
-                <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Monitor className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+              <AnimatedSection animation="fadeUp" delay={500}>
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center mb-4">
+                    <Monitor className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Website Design</h3>
                 </div>
-                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Website Design</h3>
-              </div>
+              </AnimatedSection>
 
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
-                <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <Code className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+              <AnimatedSection animation="fadeUp" delay={600}>
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center mb-4">
+                    <Code className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Framer Development</h3>
                 </div>
-                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Framer Development</h3>
-              </div>
+              </AnimatedSection>
 
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
-                <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <BarChart3 className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+              <AnimatedSection animation="fadeUp" delay={700}>
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center mb-4">
+                    <BarChart3 className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Graphic & 3D Design</h3>
                 </div>
-                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Graphic & 3D Design</h3>
-              </div>
+              </AnimatedSection>
 
-              <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
-                <div className="w-10 h-10 flex items-center justify-center mb-4">
-                  <FileCode className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+              <AnimatedSection animation="fadeUp" delay={800}>
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg p-6 bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center mb-4">
+                    <FileCode className="h-5 w-5 text-black dark:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Pitch Deck Design</h3>
                 </div>
-                <h3 className="text-base font-medium text-black dark:text-white transition-colors duration-300 mb-2">Pitch Deck Design</h3>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </div>

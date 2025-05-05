@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Inter } from "next/font/google"
 import { instagramSans, instagramSansCondensed, instagramSansScript, instagramSansHeadline } from './fonts'
 import { ScrollProgress } from "@/components/scroll-progress"
@@ -14,13 +13,83 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Velora Studio",
-  description: "A modern web studio",
+  metadataBase: new URL('https://velora.studio'),
+  title: {
+    default: "Velora Studio | Custom Design & Development",
+    template: "%s | Velora Studio"
+  },
+  description: "We design & build websites people actually want to use. Expert web design and development services for startups and established businesses. Get real results within 90 days.",
+  keywords: [
+    "web design",
+    "web development",
+    "website design",
+    "UI/UX design",
+    "digital agency",
+    "web agency",
+    "custom website",
+    "responsive design",
+    "business website",
+    "web design agency",
+    "professional web design",
+    "modern web design",
+    "website development",
+    "website optimization"
+  ],
+  authors: [{ name: "Velora Studio", url: "https://velora.studio" }],
+  creator: "Velora Studio",
+  publisher: "Velora Studio",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'add-your-google-site-verification-here',
+  },
+  alternates: {
+    canonical: 'https://velora.studio',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://velora.studio',
+    title: 'Velora Studio | Custom Design & Development',
+    description: 'We design & build websites people actually want to use. Expert web design and development services for startups and established businesses.',
+    siteName: 'Velora Studio',
+    images: [
+      {
+        url: 'https://velora.studio/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Velora Studio - Modern Web Design & Development',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Velora Studio | Custom Design & Development',
+    description: 'We design & build websites people actually want to use. Expert web design and development services for startups and established businesses.',
+    creator: '@velorastudio',
+    images: ['https://velora.studio/twitter-image.jpg'],
+  },
   viewport: {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 1,
+    maximumScale: 5,
+    userScalable: true,
   },
+  category: 'technology',
 }
 
 export default function RootLayout({
@@ -63,14 +132,52 @@ export default function RootLayout({
             Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
           `}
         </Script>
+        {/* Structured Data for Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Velora Studio",
+              "url": "https://velora.studio",
+              "logo": "https://velora.studio/logo.png",
+              "description": "We design & build websites people actually want to use. Expert web design and development services for startups and established businesses.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "US"
+              },
+              "sameAs": [
+                "https://twitter.com/velorastudio",
+                "https://www.linkedin.com/company/velora-studio",
+                "https://www.instagram.com/velorastudio"
+              ]
+            })
+          }}
+        />
+        {/* Structured Data for WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Velora Studio",
+              "url": "https://velora.studio",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://velora.studio/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </head>
-      <body className={`min-h-screen bg-background font-sans antialiased ${inter.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <ScrollProgress />
-          <div className="relative flex min-h-screen flex-col">
-            {children}
-          </div>
-        </ThemeProvider>
+      <body className={`min-h-screen bg-white font-sans antialiased ${inter.variable}`}>
+        <ScrollProgress />
+        <div className="relative flex min-h-screen flex-col">
+          {children}
+        </div>
       </body>
     </html>
   )
