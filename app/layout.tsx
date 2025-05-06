@@ -18,6 +18,15 @@ export const metadata: Metadata = {
     default: "Velora Studio | Custom Design & Development",
     template: "%s | Velora Studio"
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/favicon.ico',
+    },
+  },
   description: "We design & build websites people actually want to use. Expert web design and development services for startups and established businesses. Get real results within 90 days.",
   keywords: [
     "web design",
