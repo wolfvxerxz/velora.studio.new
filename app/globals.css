@@ -170,3 +170,10 @@ button,
 }
 
 /* Remove the problematic utility classes that were causing circular dependencies */
+
+html,
+body,
+:root {
+  height: 100%;
+  overflow-x: hidden;
+}
