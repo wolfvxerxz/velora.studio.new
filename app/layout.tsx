@@ -5,6 +5,7 @@ import { Inter } from "next/font/google"
 import { instagramSans, instagramSansCondensed, instagramSansScript, instagramSansHeadline } from './fonts'
 import { ScrollProgress } from "@/components/scroll-progress"
 import Script from "next/script"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -107,7 +108,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${instagramSans.variable} ${instagramSansCondensed.variable} ${instagramSansScript.variable} ${instagramSansHeadline.variable} min-h-screen font-sans antialiased ${inter.variable} scroll-smooth`}>
+    <html lang="en" suppressHydrationWarning className={`${instagramSans.variable} ${instagramSansCondensed.variable} ${instagramSansScript.variable} ${instagramSansHeadline.variable} min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}>
       <head>
         <Script id="cal-script" strategy="lazyOnload">
           {`
@@ -182,11 +183,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`min-h-screen bg-white font-sans antialiased ${inter.variable}`}>
-        <ScrollProgress />
-        <div className="relative flex min-h-screen flex-col">
-          {children}
-        </div>
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+        <ThemeProvider>
+          <ScrollProgress />
+          <div className="relative flex min-h-screen flex-col">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

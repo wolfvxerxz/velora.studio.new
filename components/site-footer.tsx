@@ -1,50 +1,82 @@
 import Link from "next/link"
-import { XLogo } from "./icons/x-logo"
+import { VeloraLogo } from "./velora-logo"
 
 export function SiteFooter() {
   return (
-    <footer className="py-8 sm:py-10 md:py-12 bg-white border-t border-gray-200">
-      <div className="w-full flex justify-center px-4">
-        <div className="w-full max-w-[640px] animate-fadeIn">
-          <h3 className="text-xl sm:text-2xl font-normal mb-4 sm:mb-6 text-black animate-fadeInUp delay-100">
-            Elevate your idea from 0 → 1 with velora.studio.
-          </h3>
-
-          <div className="flex gap-2 sm:gap-4 mb-4 sm:mb-6 animate-fadeInUp delay-200">
-            <button
-              data-cal-link="vuk-m/30min"
-              data-cal-namespace="30min"
-              data-cal-config='{"layout":"month_view"}'
-              className="px-4 sm:px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm sm:text-base font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-[0_3px_15px_rgba(249,115,22,0.25)] hover:shadow-[0_5px_25px_rgba(249,115,22,0.35)] hover:scale-[1.02] active:scale-[0.98]"
-            >
-              Book a Intro
-            </button>
-            <Link
-              href="#work"
-              className="px-4 sm:px-6 py-2 rounded-full bg-gray-100 text-black text-sm sm:text-base hover:bg-gray-200 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              View Work
+    <footer className="border-t border-gray-200 dark:border-zinc-800 bg-white dark:bg-black transition-colors duration-300">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="col-span-1 md:col-span-2">
+            <Link href="/" className="flex items-center space-x-2 mb-4">
+              <VeloraLogo className="h-8 w-8 text-black dark:text-white transition-colors duration-300" />
+              <span className="font-medium text-black dark:text-white transition-colors duration-300">velora.studio</span>
             </Link>
+            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md">
+              We design and develop high-converting websites that help businesses grow. Our focus is on creating experiences that drive results.
+            </p>
           </div>
-
-          <p className="text-gray-600 text-sm sm:text-base mb-8 sm:mb-12 animate-fadeInUp delay-300">
-            Or drop us an email →{" "}
-            <a href="mailto:contact@velora.studio" className="text-black hover:underline hover:text-orange-500 transition-colors">
-              contact@velora.studio
-            </a>
-          </p>
-
-          <div className="flex justify-between items-center animate-fadeInUp delay-400">
-            <p className="text-sm sm:text-base text-gray-500">© velora.studio 2025</p>
-            <a 
-              href="https://x.com/velora_studio" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-gray-500 hover:text-black transition-colors hover:scale-[1.02] active:scale-[0.98] inline-flex items-center" 
-              aria-label="Follow us on X"
-            >
-              <XLogo className="w-4 h-4 sm:w-5 sm:h-5" />
-            </a>
+          
+          <div>
+            <h3 className="font-medium text-black dark:text-white mb-4 transition-colors duration-300">Navigation</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/work" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                  Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-medium text-black dark:text-white mb-4 transition-colors duration-300">Connect</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="https://twitter.com/velorastudio" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/velorastudio" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/company/velorastudio" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-zinc-800">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              © {new Date().getFullYear()} Velora Studio. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <Link href="/privacy" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>

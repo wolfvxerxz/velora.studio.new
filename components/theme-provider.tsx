@@ -1,11 +1,48 @@
 "use client"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import type { ThemeProviderProps } from "next-themes"
+import { createContext, useContext, useEffect, useState } from 'react'
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+type Theme = 'light' | 'dark'
+
+type ThemeContextType = {
+  theme: Theme
+  setTheme: (theme: Theme) => void
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>('dark')
+
+  useEffect(() => {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') as Theme
+    if (savedTheme) {
+      setTheme(savedTheme)
+    } else {
+      // Default to dark mode
+      setTheme('dark')
+      localStorage.setItem('theme', 'dark')
+    }
+  }, [])
+
+  useEffect(() => {
+    const root = window.document.documentElement
+    root.classList.remove('light', 'dark')
+    root.classList.add(theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
   return (
-    <NextThemesProvider {...props} enableSystem={true} attribute="class">
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
-    </NextThemesProvider>
+    </ThemeContext.Provider>
   )
+}
+
+export function useTheme() {
+  const context = useContext(ThemeContext)
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemeProvider')
+  }
+  return context
 }

@@ -12,7 +12,6 @@ import { PricingSection } from "@/components/pricing-section"
 import { ProcessSection } from "@/components/process-section"
 import { FaqSection } from "@/components/faq-section"
 import { SiteFooter } from "@/components/site-footer"
-import { Header } from "@/components/header"
 
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -22,8 +21,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className={`flex min-h-screen flex-col bg-white text-black transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-      <Header />
+    <div className={`flex min-h-screen flex-col bg-black text-white transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <SiteHeader />
 
       <main className="flex-1">
