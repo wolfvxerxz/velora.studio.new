@@ -1,7 +1,9 @@
 "use client"
 
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import { AnimatedSection } from "./ui/animated-section"
+import { GradientBlurFooter } from "./ui/gradient-blur-footer"
 
 export function HeroSection() {
   return (
