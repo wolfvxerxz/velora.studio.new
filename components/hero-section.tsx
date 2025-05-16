@@ -7,69 +7,69 @@ import { GradientBlurFooter } from "./ui/gradient-blur-footer"
 
 export function HeroSection() {
   return (
-    <section className="pt-24 sm:pt-28 md:pt-32 pb-6 bg-[#000000] relative overflow-hidden">
+    <section className="pt-24 sm:pt-28 md:pt-32 pb-16 bg-[#0f0f0f] relative overflow-hidden">
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/20 to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/20 to-[#0f0f0f]"></div>
       
       {/* Pixelated background effect */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[url('/grid.svg')]"></div>
+      <div className="absolute inset-0 opacity-[0.03] bg-[url('/grid.svg')] bg-repeat"></div>
       
-      <div className="mx-auto px-4 flex justify-center relative">
-        <div className="w-full max-w-[800px]">
-          <AnimatedSection animation="fadeUp">
-            <div className="flex flex-col items-center gap-6 mb-8 text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#1a1a1a] backdrop-blur-sm rounded-full border border-[#333333] shadow-sm">
-                <div className="w-1.5 h-1.5 bg-[#3b82f6] rounded-full animate-gentle-pulse" />
-                <span className="text-[#e5e5e5] text-xs font-medium tracking-wide">2 spots available</span>
-              </div>
-              
-              <p className="text-[#666666] text-sm">Designed for businesses who demand results</p>
-              <h1 className="text-4xl sm:text-5xl md:text-[54px] font-medium text-white leading-tight text-center">
-                Websites That Convert<br />
-                In Record Time
-              </h1>
+      <GradientBlurFooter height={96} />
+      <div className="mx-auto px-4 flex flex-col items-center relative">
+        <div className="w-full max-w-[800px] flex flex-col items-center">
+          
+          {/* Testimonial avatars */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-full px-5 py-2 flex items-center gap-2 mb-6 border border-white/10 shadow-lg">
+            <div className="flex -space-x-2 mr-2">
+              <img 
+                src="/images/1.jpg" 
+                alt="Client" 
+                className="w-8 h-8 rounded-full border-2 border-[#0f0f0f] object-cover"
+              />
+              <img 
+                src="/images/2.jpeg" 
+                alt="Client" 
+                className="w-8 h-8 rounded-full border-2 border-[#0f0f0f] object-cover"
+              />
+              <img 
+                src="/images/3.jpg" 
+                alt="Client" 
+                className="w-8 h-8 rounded-full border-2 border-[#0f0f0f] object-cover"
+              />
             </div>
-          </AnimatedSection>
-
-          <AnimatedSection animation="fadeUp">
-            <p className="text-sm sm:text-base text-[#999999] mb-8 leading-relaxed text-center">
-              <span className="font-medium text-white">
-                14 days from concept to launch.
-              </span>{" "}
-              Get a high-converting website that pays for itself, or we'll fix it for free.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection animation="fadeUp" delay={300}>
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              <button
-                data-cal-link="vuk-m/30min"
-                data-cal-namespace="30min"
-                data-cal-config='{"layout":"month_view"}'
-                className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white text-black text-sm sm:text-base font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                Book Your Free Strategy Call →
-              </button>
-              <Link
-                href="#work"
-                className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-[#1a1a1a] text-white text-sm sm:text-base hover:bg-[#252525] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] border border-[#333333]"
-              >
-                See Our Work
-              </Link>
+            <span className="text-gray-300 text-sm">38+ startups & founders chose velora.studio</span>
+          </div>
+          
+         
+          {/* Main heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-center mb-6 gradient-text">
+            Let's Make Your Website<br />
+            Your Best Salesperson
+          </h1>
+          
+          {/* Subheading */}
+          <p className="text-gray-400 text-xl max-w-[600px] text-center mb-12">
+            Tired of a website that looks pretty but doesn't convert? We help SaaS & startups get more leads and sales with websites that actually work.
+          </p>
+          
+          {/* CTA Button */}
+          <div className="flex flex-col items-center">
+            <button
+              data-cal-link="vuk-m/30min"
+              data-cal-namespace="30min"
+              data-cal-config='{"layout":"month_view"}'
+              className="group px-8 py-4 rounded-full bg-white text-black text-lg font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] mb-4 flex items-center gap-2"
+            >
+              Get Your Free Strategy Call
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            
+            {/* Spots available */}
+            <div className="flex items-center gap-2 text-gray-400">
+              <div className="w-2 h-2 bg-[#3b82f6] rounded-full"></div>
+              <span>Only 2 spots left this month</span>
             </div>
-          </AnimatedSection>
-
-          <AnimatedSection animation="fadeUp" delay={400}>
-            <div className="text-[#666666] text-xs sm:text-sm md:text-base text-center">
-              <span className="text-[#999999] font-medium">⚡ Limited Time:</span> Only 2 consultation spots remaining this month →{" "}
-              <a
-                href="mailto:contact@velora.studio"
-                className="text-white hover:text-[#3b82f6] transition-colors font-medium"
-              >
-                contact@velora.studio
-              </a>
-            </div>
-          </AnimatedSection>
+          </div>
         </div>
       </div>
     </section>

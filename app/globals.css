@@ -260,3 +260,11 @@ body,
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #444444;
 }
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(to bottom, #ffffff, #666666);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
