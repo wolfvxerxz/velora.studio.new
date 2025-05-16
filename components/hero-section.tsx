@@ -43,13 +43,13 @@ export function HeroSection() {
          
           {/* Main heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-center mb-6 gradient-text">
-            Let's Make Your Website<br />
-            Your Best Salesperson
+            Websites That Drive<br />
+            Real Business Growth
           </h1>
           
           {/* Subheading */}
           <p className="text-gray-400 text-xl max-w-[600px] text-center mb-12">
-            Tired of a website that looks pretty but doesn't convert? We help SaaS & startups get more leads and sales with websites that actually work.
+            Custom websites that help businesses connect with customers and achieve their digital goals.
           </p>
           
           {/* CTA Button */}

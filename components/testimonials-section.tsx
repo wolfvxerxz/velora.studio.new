@@ -4,7 +4,7 @@ import { AnimatedSection } from "./ui/animated-section"
 
 export function TestimonialsSection() {
   return (
-    <section className="py-16 border-t border-gray-200 dark:border-zinc-900 bg-white dark:bg-black transition-colors duration-300">
+    <section className="py-16 border-t border-gray-200 dark:border-zinc-900 bg-white dark:bg-[#0f0f0f] transition-colors duration-300">
       <div className="w-full flex justify-center px-4">
         <div className="w-full" style={{ maxWidth: "640px" }}>
           <AnimatedSection animation="fadeUp">
@@ -24,7 +24,7 @@ export function TestimonialsSection() {
             <div className="space-y-12">
               {/* Testimonial 1 - Victor Uhl */}
               <AnimatedSection animation="fadeUp" delay={200}>
-                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-black relative transition-colors duration-300">
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] relative transition-colors duration-300">
                   {/* Highlight effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-yellow-500/5 dark:from-yellow-500/10 dark:via-transparent dark:to-yellow-500/10 transition-colors duration-300"></div>
                   <div className="absolute -inset-[1px] border border-yellow-500/10 dark:border-yellow-500/20 rounded-lg transition-colors duration-300"></div>
@@ -71,12 +71,12 @@ export function TestimonialsSection() {
 
               {/* Testimonial 2 */}
               <AnimatedSection animation="fadeUp" delay={300}>
-                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-black transition-colors duration-300">
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300">
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-6">
                       <div>
-                        <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Rosa</h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">Co-Founder & CEO at Steel</p>
+                        <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Everett Lynn</h3>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">Founder & CEO at Amenify</p>
                         <div className="flex gap-0.5 mt-2">
                           {[...Array(5)].map((_, i) => (
                             <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
@@ -85,8 +85,8 @@ export function TestimonialsSection() {
                       </div>
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 transition-colors duration-300">
                         <Image
-                          src="/confident-professional.png"
-                          alt="Rosa"
+                          src="/images/2.jpeg"
+                          alt="Everett Lynn"
                           width={48}
                           height={48}
                           className="w-full h-full object-cover"
@@ -95,13 +95,12 @@ export function TestimonialsSection() {
                     </div>
 
                     <div className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">
-                      <p className="mb-4">velora.studio was a breath of fresh air.</p>
+                      <p className="mb-4">velora.studio delivered exceptional results for Amenify.</p>
                       <p>
-                        After a disappointing experience with a larger, more established agency, velora.studio was a
-                        breath of fresh air. They understood our vision from the start, constantly sought feedback, and
-                        executed quickly. The final product has received a ton of brand awareness I know we wouldn't have
-                        otherwise and has been a strategic success for us. Working with them has been one of the best
-                        decisions we made early on, and look forward to continuing to collaborate with them.
+                        We needed a website that could represent our property technology platform professionally while being intuitive for users. 
+                        velora.studio understood our vision immediately, worked efficiently, and constantly sought our feedback throughout the process. 
+                        The final product has significantly improved our brand presence and has been instrumental in helping us communicate our value proposition 
+                        to property managers and residents alike. Working with them has been one of our best decisions.
                       </p>
                     </div>
                   </div>
@@ -110,12 +109,12 @@ export function TestimonialsSection() {
 
               {/* Testimonial 3 */}
               <AnimatedSection animation="fadeUp" delay={400}>
-                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-black transition-colors duration-300">
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300">
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-6">
                       <div>
-                        <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Kalidora Kramer-Len</h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">Co-Founder at Datum Labs</p>
+                        <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Beryl Stafford</h3>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">Founder and President Bobo's Oat Bars</p>
                         <div className="flex gap-0.5 mt-2">
                           {[...Array(5)].map((_, i) => (
                             <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
@@ -124,8 +123,8 @@ export function TestimonialsSection() {
                       </div>
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 transition-colors duration-300">
                         <Image
-                          src="/confident-professional-two.png"
-                          alt="Kalidora Kramer-Len"
+                          src="/images/1.jpg"
+                          alt="Beryl Stafford"
                           width={48}
                           height={48}
                           className="w-full h-full object-cover"
@@ -134,13 +133,12 @@ export function TestimonialsSection() {
                     </div>
 
                     <div className="text-gray-600 dark:text-gray-300 text-xs transition-colors duration-300">
-                      <p className="mb-4">velora.studio turned our ideas into a product.</p>
+                      <p className="mb-4">velora.studio transformed our digital presence.</p>
                       <p>
-                        After working for more than 8 weeks with both our team I can safely say that it was one of the
-                        best decisions made in the early stages of our project. Patience, quality, accessibility and
-                        commitment are 4 qualities that are highly valued in the initial stages of a company and they are
-                        able to provide them with an incredible competence making the project design no longer a problem
-                        for you.
+                        As we scaled Bobo's Oat Bars, we needed a website that could reflect our homemade quality while appealing to a national audience. 
+                        velora.studio delivered exactly what we needed - a warm, inviting digital storefront that captures our brand essence perfectly. 
+                        The team showed remarkable patience, quality workmanship, and commitment throughout the project. Their expertise in food product 
+                        presentation online has been invaluable to our growth, making our digital presence as wholesome as our products.
                       </p>
                     </div>
                   </div>

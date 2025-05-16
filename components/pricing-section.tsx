@@ -1,9 +1,9 @@
-import { Heart, Sparkles, Framer, Palette, Check, Zap } from "lucide-react"
+import { Heart, Sparkles, Framer, Palette, Check, Zap, ArrowRight } from "lucide-react"
 import { AnimatedSection } from "./ui/animated-section"
 
 export function PricingSection() {
   return (
-    <section className="py-10 sm:py-12 md:py-16 bg-white dark:bg-black transition-colors duration-300">
+    <section className="py-10 sm:py-12 md:py-16 bg-white dark:bg-[#0f0f0f] transition-colors duration-300">
       <div className="max-w-[640px] mx-auto px-4">
         <AnimatedSection animation="fadeUp">
           <h2 className="text-lg sm:text-xl font-normal text-black dark:text-white mb-2 sm:mb-3 transition-colors duration-300">Pricing</h2>
@@ -19,7 +19,7 @@ export function PricingSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {/* 0→1 Design */}
           <AnimatedSection animation="fadeUp" delay={200}>
-            <div className="bg-white dark:bg-black rounded-xl sm:rounded-2xl border border-gray-200 dark:border-zinc-800 p-4 sm:p-6 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+            <div className="bg-white dark:bg-[#0f0f0f] rounded-xl sm:rounded-2xl border border-gray-200 dark:border-zinc-800 p-4 sm:p-6 flex flex-col h-full hover:shadow-lg transition-all duration-300">
               <div>
                 <div className="flex items-center justify-between mb-4 sm:mb-6">
                   <div className="flex items-center gap-2">
@@ -75,8 +75,14 @@ export function PricingSection() {
               </div>
 
               <div className="mt-auto pt-4 sm:pt-8">
-                <button className="btn-primary w-full">
+                <button
+                  data-cal-link="vuk-m/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"month_view"}'
+                  className="btn-primary w-full flex items-center justify-center gap-2 group"
+                >
                   Share Your Vision
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -84,7 +90,7 @@ export function PricingSection() {
 
           {/* Unlimited Design */}
           <AnimatedSection animation="fadeUp" delay={200}>
-            <div className="bg-white dark:bg-black rounded-xl sm:rounded-2xl border border-gray-200 dark:border-zinc-800 p-4 sm:p-6 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+            <div className="bg-white dark:bg-[#0f0f0f] rounded-xl sm:rounded-2xl border border-gray-200 dark:border-zinc-800 p-4 sm:p-6 flex flex-col h-full hover:shadow-lg transition-all duration-300">
               <div>
                 <div className="flex items-center justify-between mb-4 sm:mb-6">
                   <div className="flex items-center gap-2">
@@ -134,8 +140,14 @@ export function PricingSection() {
               </div>
 
               <div className="mt-auto pt-4 sm:pt-8">
-                <button className="btn-secondary w-full">
+                <button
+                  data-cal-link="vuk-m/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"month_view"}'
+                  className="btn-secondary w-full flex items-center justify-center gap-2 group"
+                >
                   Let's Work Together
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
