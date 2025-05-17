@@ -52,21 +52,30 @@ export function HeroSection() {
             Custom websites that help businesses connect with customers and achieve their digital goals.
           </p>
           
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <div className="flex flex-col items-center">
-            <button
-              data-cal-link="vuk-m/30min"
-              data-cal-namespace="30min"
-              data-cal-config='{"layout":"month_view"}'
-              className="group px-8 py-4 rounded-full bg-white text-black text-lg font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] mb-4 flex items-center gap-2"
-            >
-              Get Your Free Strategy Call
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
+              <button
+                data-cal-link="vuk-m/30min"
+                data-cal-namespace="30min"
+                data-cal-config='{"layout":"month_view"}'
+                className="group px-8 py-4 rounded-full bg-white text-black text-lg font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2"
+              >
+                Get Your Free Strategy Call
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              
+              <Link
+                href="#work"
+                className="px-8 py-4 text-lg rounded-full bg-zinc-900 text-gray-400 hover:text-white border border-zinc-800 hover:bg-zinc-800 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center"
+              >
+                View Work
+              </Link>
+            </div>
             
             {/* Spots available */}
             <div className="flex items-center gap-2 text-gray-400">
-              <div className="w-2 h-2 bg-[#3b82f6] rounded-full"></div>
+              <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
               <span>Only 2 spots left this month</span>
             </div>
           </div>

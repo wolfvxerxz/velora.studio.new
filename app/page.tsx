@@ -21,7 +21,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className={`flex min-h-screen flex-col bg-black text-white transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`flex min-h-screen flex-col bg-[#0f0f0f] text-white transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <SiteHeader />
 
       <main className="flex-1">
