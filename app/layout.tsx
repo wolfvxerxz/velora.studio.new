@@ -158,9 +158,8 @@ export default function RootLayout({
                 "addressCountry": "US"
               },
               "sameAs": [
-                "https://twitter.com/velorastudio",
-                "https://www.linkedin.com/company/velora-studio",
-                "https://www.instagram.com/velorastudio"
+                "https://twitter.com/velora_studio",
+           
               ]
             })
           }}

@@ -1,80 +1,75 @@
+"use client"
+
+import { AnimatedSection } from "./ui/animated-section"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { AnimatedSection } from "./ui/animated-section"
+
+const faqs = [
+  {
+    question: "How quickly can you build my website?",
+    answer: "We work fast and smart. Your website will be ready in 14 days or less, including all designs, development, and revisions. Our streamlined process and dedicated team make this possible without cutting corners."
+  },
+  {
+    question: "What happens if the website doesn't perform?",
+    answer: "Simple. If your new website isn't converting better than your old one in 90 days, we'll keep working on it for free until it does. Your success is our success."
+  },
+  {
+    question: "Do you use website templates?",
+    answer: "Never. Every website is built from scratch based on your specific goals and target audience. While we follow proven conversion strategies, your design will be 100% unique to your brand."
+  },
+  {
+    question: "What does the price include?",
+    answer: "Everything you need, with no hidden costs. You get a complete, custom website optimized for conversions, including mobile design, SEO setup, and analytics. Plus unlimited revisions until you love it."
+  },
+  {
+    question: "How will you make my website convert?",
+    answer: "We blend proven conversion tactics with real-world data. Every button, headline, and section is strategically designed to turn visitors into customers. Plus, we keep optimizing based on actual user behavior."
+  },
+  {
+    question: "How do we get started?",
+    answer: "Just book a free strategy call. We'll chat about your goals and challenges, then create a custom plan to make your website your best sales tool."
+  }
+]
 
 export function FaqSection() {
   return (
-    <section
-      id="faq"
-      className="py-16 border-t border-gray-200 dark:border-zinc-900 bg-white dark:bg-black transition-colors duration-300"
-    >
-      <div className="w-full flex justify-center px-4">
-        <div className="w-full" style={{ maxWidth: "640px" }}>
-          <AnimatedSection animation="fadeUp">
-            <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
-              Frequently Asked Questions
+    <section className="py-24 bg-[#0f0f0f]">
+      <div className="mx-auto px-4 max-w-[800px]">
+        <AnimatedSection animation="fadeUp">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+              Got Questions?
             </h2>
-          </AnimatedSection>
-
-          <AnimatedSection animation="fadeUp" delay={100}>
-            <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
-              Find answers to common questions about our design services, process, and collaboration methods.
+            <p className="text-zinc-400 text-lg">
+              Here's what our clients usually ask us
             </p>
-          </AnimatedSection>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection animation="fadeUp" delay={200}>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>What is your design process like?</AccordionTrigger>
-                <AccordionContent>
-                  Our design process is collaborative and iterative. We start with a discovery phase to understand your
-                  needs, create initial concepts, refine based on feedback, and deliver the final designs. We keep you
-                  involved throughout the process to ensure the end result matches your vision.
+        <AnimatedSection animation="fadeUp" delay={200}>
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border border-zinc-800 rounded-lg px-6 py-2"
+              >
+                <AccordionTrigger className="text-white hover:text-white/90 text-left">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-zinc-400">
+                  {faq.answer}
                 </AccordionContent>
               </AccordionItem>
+            ))}
+          </Accordion>
+        </AnimatedSection>
 
-              <AccordionItem value="item-2">
-                <AccordionTrigger>How long does a typical project take?</AccordionTrigger>
-                <AccordionContent>
-                  Project timelines vary depending on scope and complexity. A typical website design project takes 2-4
-                  weeks, while more complex projects may take 6-8 weeks. We'll provide a detailed timeline during our
-                  initial consultation.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3">
-                <AccordionTrigger>Do you offer ongoing support after launch?</AccordionTrigger>
-                <AccordionContent>
-                  Yes, we provide ongoing support and maintenance services. We can help with updates, optimizations, and
-                  any technical issues that arise after launch. We also offer training to help your team manage the
-                  website effectively.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4">
-                <AccordionTrigger>What makes your design approach different?</AccordionTrigger>
-                <AccordionContent>
-                  We focus on creating designs that not only look beautiful but also drive results. Our approach combines
-                  aesthetic appeal with user experience best practices and conversion optimization strategies. We also
-                  emphasize clear communication and collaboration throughout the process.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-5">
-                <AccordionTrigger>How do you handle revisions and feedback?</AccordionTrigger>
-                <AccordionContent>
-                  We have a structured feedback process that includes multiple revision rounds. We use collaborative tools
-                  to gather and implement your feedback efficiently. Our goal is to ensure you're completely satisfied
-                  with the final result.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </AnimatedSection>
-        </div>
+     
       </div>
     </section>
   )

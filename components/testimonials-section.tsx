@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { Star, Crown } from "lucide-react"
+import Link from "next/link"
+import { Star, Crown, TrendingUp, ExternalLink } from "lucide-react"
 import { AnimatedSection } from "./ui/animated-section"
 
 export function TestimonialsSection() {
@@ -24,29 +25,42 @@ export function TestimonialsSection() {
             <div className="space-y-12">
               {/* Testimonial 1 - Victor Uhl */}
               <AnimatedSection animation="fadeUp" delay={200}>
-                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] relative transition-colors duration-300">
-                  {/* Highlight effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-yellow-500/5 dark:from-yellow-500/10 dark:via-transparent dark:to-yellow-500/10 transition-colors duration-300"></div>
-                  <div className="absolute -inset-[1px] border border-yellow-500/10 dark:border-yellow-500/20 rounded-lg transition-colors duration-300"></div>
-                  
-                  <div className="p-6 relative">
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300">
+                  <div className="p-6">
                     <div className="flex justify-between items-start mb-6">
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Victor Uhl</h3>
-                          <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-600/80 to-yellow-500/80 rounded-full px-2 py-0.5">
-                            <Crown className="w-3 h-3 text-white" />
-                            <span className="text-[10px] font-medium text-white">Featured Client</span>
+                          <div className="flex items-center gap-1.5 bg-gradient-to-r from-orange-600 to-orange-500 rounded-full px-3 py-0.5 shadow-sm border border-orange-400/30">
+                            <Crown className="w-3 h-3 text-white drop-shadow-sm" />
+                            <span className="text-[10px] font-medium text-white tracking-wide">Featured Client</span>
                           </div>
                         </div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">Founder of Ecom Wizards</p>
-                        <div className="flex gap-0.5 mt-2">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-                          ))}
+                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                          Founder of{" "}
+                          <Link 
+                            href="https://ecomwizards.agency/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-400 transition-colors inline-flex items-center gap-1"
+                          >
+                            Ecom Wizards
+                            <ExternalLink className="w-3 h-3" />
+                          </Link>
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <div className="flex gap-0.5">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-orange-500 text-orange-500" />
+                            ))}
+                          </div>
+                          <div className="flex items-center gap-1 text-xs font-medium text-green-500">
+                            <TrendingUp className="w-3 h-3" />
+                            <span>6x Conversion Increase</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 transition-colors duration-300">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
                         <Image
                           src="/victor-uhl.jpg"
                           alt="Victor Uhl"
@@ -76,14 +90,31 @@ export function TestimonialsSection() {
                     <div className="flex justify-between items-start mb-6">
                       <div>
                         <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Everett Lynn</h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">Founder & CEO at Amenify</p>
-                        <div className="flex gap-0.5 mt-2">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-                          ))}
+                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                          Founder & CEO at{" "}
+                          <Link 
+                            href="https://www.amenify.com/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-400 transition-colors inline-flex items-center gap-1"
+                          >
+                            Amenify
+                            <ExternalLink className="w-3 h-3" />
+                          </Link>
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <div className="flex gap-0.5">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-orange-500 text-orange-500" />
+                            ))}
+                          </div>
+                          <div className="flex items-center gap-1 text-xs font-medium text-green-500">
+                            <TrendingUp className="w-3 h-3" />
+                            <span>+85% User Satisfaction</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 transition-colors duration-300">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
                         <Image
                           src="/images/2.jpeg"
                           alt="Everett Lynn"
@@ -114,14 +145,31 @@ export function TestimonialsSection() {
                     <div className="flex justify-between items-start mb-6">
                       <div>
                         <h3 className="font-medium text-sm text-gray-900 dark:text-white transition-colors duration-300">Beryl Stafford</h3>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">Founder and President Bobo's Oat Bars</p>
-                        <div className="flex gap-0.5 mt-2">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-                          ))}
+                        <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                          Founder and President at{" "}
+                          <Link 
+                            href="https://eatbobos.com/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-400 transition-colors inline-flex items-center gap-1"
+                          >
+                            Bobo's Oat Bars
+                            <ExternalLink className="w-3 h-3" />
+                          </Link>
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <div className="flex gap-0.5">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-orange-500 text-orange-500" />
+                            ))}
+                          </div>
+                          <div className="flex items-center gap-1 text-xs font-medium text-green-500">
+                            <TrendingUp className="w-3 h-3" />
+                            <span>+35% Conversion Increase</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 transition-colors duration-300">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
                         <Image
                           src="/images/1.jpg"
                           alt="Beryl Stafford"

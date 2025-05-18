@@ -86,7 +86,7 @@ export function WorkSection() {
   const displayProjects = [...projects, ...projects]
 
   return (
-    <section id="work" className="py-8 sm:py-12 md:py-16 w-full bg-white dark:bg-black transition-colors duration-300">
+    <section id="work" className="py-8 sm:py-12 md:py-16 w-full bg-white dark:bg-[#0f0f0f] transition-colors duration-300">
       <div className="w-full flex justify-center px-4">
         <div className="w-full max-w-[640px]">
           <AnimatedSection animation="fadeUp">
@@ -102,7 +102,7 @@ export function WorkSection() {
           {/* Scroll buttons */}
           <button
             onClick={scrollLeft}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-black/50 p-1 sm:p-2 rounded-full shadow-md dark:shadow-none hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-[#0f0f0f]/50 p-1 sm:p-2 rounded-full shadow-md dark:shadow-none hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             aria-label="Scroll left"
           >
             <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6 text-black dark:text-white" />
@@ -110,7 +110,7 @@ export function WorkSection() {
 
           <button
             onClick={scrollRight}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-black/50 p-1 sm:p-2 rounded-full shadow-md dark:shadow-none hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-[#0f0f0f]/50 p-1 sm:p-2 rounded-full shadow-md dark:shadow-none hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6 text-black dark:text-white" />
@@ -125,7 +125,7 @@ export function WorkSection() {
             {displayProjects.map((project, index) => (
               <div
                 key={`${project.name}-${index}`}
-                className="flex-shrink-0 w-[250px] sm:w-[300px] md:w-[350px] rounded-lg overflow-hidden bg-white dark:bg-black border border-gray-100 dark:border-zinc-800 hover:shadow-lg transition-all duration-300"
+                className="flex-shrink-0 w-[250px] sm:w-[300px] md:w-[350px] rounded-lg overflow-hidden bg-white dark:bg-[#0f0f0f] border border-gray-100 dark:border-zinc-800 hover:shadow-lg transition-all duration-300"
               >
                 <div className="relative aspect-[4/3] w-full">
                   <Image src={project.image || "/placeholder.svg"} alt={project.name} fill className="object-cover" />

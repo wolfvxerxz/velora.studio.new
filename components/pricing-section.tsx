@@ -23,7 +23,7 @@ export function PricingSection() {
               <div>
                 <div className="flex items-center justify-between mb-4 sm:mb-6">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white animate-pulse transition-colors duration-300" />
+                    <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white animate-pulse transition-colors duration-1000" />
                     <span className="text-black dark:text-white text-xs sm:text-sm transition-colors duration-300">0 → 1 Design</span>
                   </div>
                   <span className="text-[10px] sm:text-xs bg-gray-100 dark:bg-zinc-800 text-black dark:text-white px-1.5 sm:px-2 py-0.5 rounded-md transition-colors duration-300">Custom Quote</span>
@@ -94,7 +94,7 @@ export function PricingSection() {
               <div>
                 <div className="flex items-center justify-between mb-4 sm:mb-6">
                   <div className="flex items-center gap-2">
-                    <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white animate-pulse transition-colors duration-300" />
+                    <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white animate-pulse transition-colors duration-1000" />
                     <span className="text-black dark:text-white text-xs sm:text-sm transition-colors duration-300">Unlimited Design</span>
                   </div>
                   <span className="text-[10px] sm:text-xs bg-gray-100 dark:bg-zinc-800 text-black dark:text-white px-1.5 sm:px-2 py-0.5 rounded-md transition-colors duration-300">Subscription</span>

@@ -75,7 +75,7 @@ export function HeroSection() {
             
             {/* Spots available */}
             <div className="flex items-center gap-2 text-gray-400">
-              <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span>Only 2 spots left this month</span>
             </div>
           </div>

@@ -1,21 +1,12 @@
 "use client"
 
-export function GradientBlurFooter({
-  className = "",
-  height = 96,
-}: {
-  className?: string
-  height?: number
-}) {
+export function GradientBlurFooter({ height = 96 }: { height?: number }) {
   return (
-    <div 
-      className={`pointer-events-none fixed bottom-0 left-0 w-full z-50 ${className}`}
-      style={{ 
-        height,
-        maskImage: 'linear-gradient(to bottom, transparent, black)',
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black)',
-        backdropFilter: 'blur(64px)',
-        WebkitBackdropFilter: 'blur(64px)'
+    <div
+      className="absolute bottom-0 left-0 right-0 pointer-events-none"
+      style={{
+        height: `${height}px`,
+        background: 'linear-gradient(to top, #0f0f0f 20%, transparent 100%)',
       }}
     />
   )
