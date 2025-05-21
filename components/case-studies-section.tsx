@@ -47,7 +47,7 @@ const caseStudies: CaseStudyProps[] = [
 
 export function CaseStudiesSection() {
   return (
-    <EnhancedStarryBackground id="portfolio" className="w-full py-12 md:py-16 lg:py-24" density={1.2}>
+    <EnhancedStarryBackground className="w-full py-12 md:py-16 lg:py-24" density={1.2}>
       <div className="container px-4 md:px-6">
         <AnimatedSection animation="fadeInUp" className="text-center mb-8 md:mb-12">
           <p className="text-zinc-400 mb-2 md:mb-3">Case Study</p>

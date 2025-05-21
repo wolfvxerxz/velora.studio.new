@@ -18,7 +18,6 @@ export function ProgressiveBlur({
 }: ProgressiveBlurProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, {
-    threshold,
     once: false,
   })
 

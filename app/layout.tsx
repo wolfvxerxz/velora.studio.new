@@ -93,13 +93,15 @@ export const metadata: Metadata = {
     creator: '@velorastudio',
     images: ['https://velora.studio/twitter-image.jpg'],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
   category: 'technology',
+}
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
 }
 
 export default function RootLayout({
@@ -140,6 +142,19 @@ export default function RootLayout({
             })(window, "https://app.cal.com/embed/embed.js", "init");
             Cal("init", "30min", {origin:"https://cal.com"});
             Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+          `}
+        </Script>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HTR4C6B21F"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HTR4C6B21F');
           `}
         </Script>
         {/* Structured Data for Organization */}

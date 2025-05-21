@@ -12,6 +12,7 @@ interface AnimatedButtonProps {
   asChild?: boolean
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
   size?: "default" | "sm" | "lg" | "icon"
+  style?: React.CSSProperties
 }
 
 export function AnimatedButton({
@@ -22,6 +23,7 @@ export function AnimatedButton({
   asChild = false,
   variant = "default",
   size = "default",
+  style,
 }: AnimatedButtonProps) {
   const animationClasses = {
     pulse: "animate-pulse",
@@ -36,6 +38,7 @@ export function AnimatedButton({
       asChild={asChild}
       variant={variant}
       size={size}
+      style={style}
     >
       {children}
     </Button>

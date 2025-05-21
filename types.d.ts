@@ -1,0 +1,5 @@
+declare module 'next/font/google';
+declare module 'next/script';
+declare module 'next/link';
+declare module 'next/image';
+declare module 'lucide-react'; 

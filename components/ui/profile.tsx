@@ -14,13 +14,15 @@ const sizeMap = {
 export function Profile({ className = '', size = 'md' }: ProfileProps) {
   return (
     <div className={`relative aspect-square overflow-hidden rounded-full bg-background ${sizeMap[size]} ${className}`}>
-      <Image
-        src="/images/vuk.png"
-        alt="Vuk"
-        fill
-        className="object-cover transition-transform hover:scale-105"
-        priority
-      />
+      <picture className="w-12 h-12 rounded-full overflow-hidden">
+        <source srcSet="/images/vuk.webp" type="image/webp" />
+        <source srcSet="/images/vuk.avif" type="image/avif" />
+        <img
+          src="/images/vuk.png"
+          alt="Vuk"
+          className="w-full h-full object-cover"
+        />
+      </picture>
     </div>
   )
 } 

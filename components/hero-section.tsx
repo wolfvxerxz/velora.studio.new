@@ -19,8 +19,8 @@ export function HeroSection() {
         <div className="w-full max-w-[800px] flex flex-col items-center">
           
           {/* Testimonial avatars */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-full px-5 py-2 flex items-center gap-2 mb-6 border border-white/10 shadow-lg">
-            <div className="flex -space-x-2 mr-2">
+          <div className="bg-white/5 backdrop-blur-sm rounded-full px-5 py-2 flex flex-col sm:flex-row items-center gap-2 mb-6 border border-white/10 shadow-lg max-w-full">
+            <div className="flex -space-x-2 mr-2 flex-shrink-0">
               <img 
                 src="/images/1.jpg" 
                 alt="Client" 
@@ -37,19 +37,21 @@ export function HeroSection() {
                 className="w-8 h-8 rounded-full border-2 border-[#0f0f0f] object-cover"
               />
             </div>
-            <span className="text-gray-300 text-sm">38+ startups & founders chose velora.studio</span>
+            <span className="text-gray-300 text-sm min-w-0 break-words whitespace-normal text-center sm:text-left">
+              38+ startups & founders chose velora.studio
+            </span>
           </div>
           
          
           {/* Main heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-center mb-6 gradient-text">
-            Websites That Drive<br />
-            Real Business Growth
+          <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-center mb-6 gradient-text">
+            High-Converting Websites<br />
+             for Startups & SaaS
           </h1>
           
           {/* Subheading */}
-          <p className="text-gray-400 text-xl max-w-[600px] text-center mb-12">
-            Custom websites that help businesses connect with customers and achieve their digital goals.
+          <p className="text-gray-400 text-base sm:text-xl max-w-[600px] text-center mb-12">
+            We craft high-converting websites that help startups, founders, and SaaS companies attract and convert their ideal customers.
           </p>
           
           {/* CTA Buttons */}

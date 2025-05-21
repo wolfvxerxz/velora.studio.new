@@ -61,13 +61,15 @@ export function TestimonialsSection() {
                         </div>
                       </div>
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
-                        <Image
-                          src="/victor-uhl.jpg"
-                          alt="Victor Uhl"
-                          width={48}
-                          height={48}
-                          className="w-full h-full object-cover"
-                        />
+                        <picture className="w-12 h-12 rounded-full overflow-hidden">
+                          <source srcSet="/victor-uhl.webp" type="image/webp" />
+                          <source srcSet="/victor-uhl.avif" type="image/avif" />
+                          <img
+                            src="/victor-uhl.jpg"
+                            alt="Victor Uhl"
+                            className="w-full h-full object-cover"
+                          />
+                        </picture>
                       </div>
                     </div>
 
@@ -115,13 +117,15 @@ export function TestimonialsSection() {
                         </div>
                       </div>
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
-                        <Image
-                          src="/images/2.jpeg"
-                          alt="Everett Lynn"
-                          width={48}
-                          height={48}
-                          className="w-full h-full object-cover"
-                        />
+                        <picture className="w-12 h-12 rounded-full overflow-hidden">
+                          <source srcSet="/images/2.webp" type="image/webp" />
+                          <source srcSet="/images/2.avif" type="image/avif" />
+                          <img
+                            src="/images/2.jpeg"
+                            alt="Everett Lynn"
+                            className="w-full h-full object-cover"
+                          />
+                        </picture>
                       </div>
                     </div>
 
@@ -170,13 +174,15 @@ export function TestimonialsSection() {
                         </div>
                       </div>
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
-                        <Image
-                          src="/images/1.jpg"
-                          alt="Beryl Stafford"
-                          width={48}
-                          height={48}
-                          className="w-full h-full object-cover"
-                        />
+                        <picture className="w-12 h-12 rounded-full overflow-hidden">
+                          <source srcSet="/images/1.webp" type="image/webp" />
+                          <source srcSet="/images/1.avif" type="image/avif" />
+                          <img
+                            src="/images/1.jpg"
+                            alt="Beryl Stafford"
+                            className="w-full h-full object-cover"
+                          />
+                        </picture>
                       </div>
                     </div>
 

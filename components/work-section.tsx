@@ -83,6 +83,7 @@ export function WorkSection() {
   const handleMouseLeave = () => setIsAutoScrolling(true)
 
   // Double the projects for seamless looping
+  // This ensures the slider appears infinite
   const displayProjects = [...projects, ...projects]
 
   return (
