@@ -22,7 +22,7 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2 px-5 py-2 bg-white text-black font-medium rounded-full hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               <img
-                src="/images/vuk.png"
+                src="/images/vuk.avif"
                 alt="Vuk's Profile"
                 className="w-5 h-5 rounded-full object-cover"
               />

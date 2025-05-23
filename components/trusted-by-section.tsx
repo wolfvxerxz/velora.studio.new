@@ -19,11 +19,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={100}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto">
-                      <source srcSet="/images/brands/279640_logo.webp" type="image/webp" />
                       <source srcSet="/images/brands/279640_logo.avif" type="image/avif" />
+                      <source srcSet="/images/brands/279640_logo.webp" type="image/webp" />
                       <img
-                        src="/images/brands/279640_logo.png"
+                        src="/images/brands/279640_logo.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -33,11 +35,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={150}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto">
-                      <source srcSet="/images/brands/509420_logo.webp" type="image/webp" />
                       <source srcSet="/images/brands/509420_logo.avif" type="image/avif" />
+                      <source srcSet="/images/brands/509420_logo.webp" type="image/webp" />
                       <img
-                        src="/images/brands/509420_logo.png"
+                        src="/images/brands/509420_logo.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -47,11 +51,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={200}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto">
-                      <source srcSet="/images/brands/513650_logo.webp" type="image/webp" />
                       <source srcSet="/images/brands/513650_logo.avif" type="image/avif" />
+                      <source srcSet="/images/brands/513650_logo.webp" type="image/webp" />
                       <img
-                        src="/images/brands/513650_logo.png"
+                        src="/images/brands/513650_logo.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -61,11 +67,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={250}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto">
-                      <source srcSet="/images/brands/253710_logo.webp" type="image/webp" />
                       <source srcSet="/images/brands/253710_logo.avif" type="image/avif" />
+                      <source srcSet="/images/brands/253710_logo.webp" type="image/webp" />
                       <img
-                        src="/images/brands/253710_logo.png"
+                        src="/images/brands/253710_logo.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -75,11 +83,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={300}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto">
-                      <source srcSet="/images/brands/Owlet_Logomark_white.webp" type="image/webp" />
                       <source srcSet="/images/brands/Owlet_Logomark_white.avif" type="image/avif" />
+                      <source srcSet="/images/brands/Owlet_Logomark_white.webp" type="image/webp" />
                       <img
-                        src="/images/brands/Owlet_Logomark_white.png"
+                        src="/images/brands/Owlet_Logomark_white.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -89,11 +99,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={350}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto invert">
-                      <source srcSet="/images/brands/logo1.webp" type="image/webp" />
                       <source srcSet="/images/brands/logo1.avif" type="image/avif" />
+                      <source srcSet="/images/brands/logo1.webp" type="image/webp" />
                       <img
-                        src="/images/brands/logo1.png"
+                        src="/images/brands/logo1.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -103,11 +115,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={400}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto invert">
-                      <source srcSet="/images/brands/logo2.webp" type="image/webp" />
                       <source srcSet="/images/brands/logo2.avif" type="image/avif" />
+                      <source srcSet="/images/brands/logo2.webp" type="image/webp" />
                       <img
-                        src="/images/brands/logo2.png"
+                        src="/images/brands/logo2.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -117,11 +131,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={450}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto">
-                      <source srcSet="/images/brands/amenify.webp" type="image/webp" />
                       <source srcSet="/images/brands/amenify.avif" type="image/avif" />
+                      <source srcSet="/images/brands/amenify.webp" type="image/webp" />
                       <img
-                        src="/images/brands/amenify.png"
+                        src="/images/brands/amenify.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -131,11 +147,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={500}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto invert">
-                      <source srcSet="/images/brands/logo sub.webp" type="image/webp" />
                       <source srcSet="/images/brands/logo sub.avif" type="image/avif" />
+                      <source srcSet="/images/brands/logo sub.webp" type="image/webp" />
                       <img
-                        src="/images/brands/logo sub.png"
+                        src="/images/brands/logo sub.avif"
                         alt="Brand Logo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />
@@ -145,11 +163,13 @@ export function TrustedBySection() {
                 <AnimatedSection animation="fadeUp" delay={550}>
                   <div className="grayscale opacity-70 hover:opacity-100 transition-opacity">
                     <picture className="block mx-auto my-auto invert">
-                      <source srcSet="/images/brands/bobo logos.webp" type="image/webp" />
                       <source srcSet="/images/brands/bobo logos.avif" type="image/avif" />
+                      <source srcSet="/images/brands/bobo logos.webp" type="image/webp" />
                       <img
-                        src="/images/brands/bobo logos.png"
+                        src="/images/brands/bobo logos.avif"
                         alt="Bobo"
+                        width={100}
+                        height={22}
                         className="max-w-[100px] max-h-[22px] mx-auto my-auto"
                         style={{ width: 'auto', height: 'auto' }}
                       />

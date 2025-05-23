@@ -7,30 +7,50 @@ import { AnimatedSection } from "./ui/animated-section"
 
 const projects = [
   {
-    image: "/scribe-website.png",
-    name: "Scribe",
-    category: "Email",
+    image: "/landing pages/extsy.webp",
+    name: "Extsy Crypto",
+    category: "Crypto",
   },
   {
-    image: "/designify-website.png",
-    name: "Designify",
-    category: "Web3",
+    image: "/landing pages/relo.webp",
+    name: "Relo",
+    category: "Productivity",
   },
   {
-    image: "/social-seller-website.png",
-    name: "Social Seller",
-    category: "SaaS",
+    image: "/landing pages/copilot.webp",
+    name: "Copilot Sync",
+    category: "Developer Tools",
   },
   {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Golden%20Rectangle-7BTo6AfXAbBCVat8tmEHljeii0vl9z.png",
-    name: "Captivio",
-    category: "Finance",
+    image: "/landing pages/topit.webp",
+    name: "Topit",
+    category: "Creative Agency",
   },
   {
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3%20%281%29-KVMC2mHTCoPlu0DSHMss8rqjVNIIEE.png",
-    name: "Ecom Wizards",
-    category: "E-commerce",
+    image: "/landing pages/quantvpn.webp",
+    name: "QuantVPN",
+    category: "VPN / Security",
+    fit: "contain",
+  },
+  {
+    image: "/landing pages/flowsync.webp",
+    name: "FlowSync",
+    category: "Workflow / SaaS",
+  },
+  {
+    image: "/landing pages/wolfmail.webp",
+    name: "WolfMail",
+    category: "Email Marketing",
+  },
+  {
+    image: "/landing pages/webserv.webp",
+    name: "Webserv",
+    category: "Healthcare Marketing",
+  },
+  {
+    image: "/landing pages/suprema.webp",
+    name: "Suprema",
+    category: "Project Management",
   },
 ]
 
@@ -129,7 +149,7 @@ export function WorkSection() {
                 className="flex-shrink-0 w-[250px] sm:w-[300px] md:w-[350px] rounded-lg overflow-hidden bg-white dark:bg-[#0f0f0f] border border-gray-100 dark:border-zinc-800 hover:shadow-lg transition-all duration-300"
               >
                 <div className="relative aspect-[4/3] w-full">
-                  <Image src={project.image || "/placeholder.svg"} alt={project.name} fill className="object-cover" />
+                  <Image src={project.image || "/placeholder.svg"} alt={project.name} fill className={`object-cover${project.name === "QuantVPN" ? " object-contain p-8 bg-white" : ""}`} />
                 </div>
                 <div className="p-2 sm:p-3">
                   <div className="flex justify-between text-[10px] sm:text-xs text-gray-700 dark:text-gray-400">

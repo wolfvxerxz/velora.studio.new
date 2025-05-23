@@ -166,7 +166,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "Velora Studio",
               "url": "https://velora.studio",
-              "logo": "https://velora.studio/logo.png",
+              "logo": "https://velora.studio/logo.avif",
               "description": "We design & build websites people actually want to use. Expert web design and development services for startups and established businesses.",
               "address": {
                 "@type": "PostalAddress",

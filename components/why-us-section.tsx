@@ -77,7 +77,7 @@ export function WhyUsSection() {
               <div className="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-zinc-800">
                   <img
-                    src="/images/vuk.png"
+                    src="images/vuk.avif"
                     alt="velora.studio"
                     className="w-full h-full object-cover"
                   />

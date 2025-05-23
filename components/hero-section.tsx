@@ -22,17 +22,17 @@ export function HeroSection() {
           <div className="bg-white/5 backdrop-blur-sm rounded-full px-5 py-2 flex flex-col sm:flex-row items-center gap-2 mb-6 border border-white/10 shadow-lg max-w-full">
             <div className="flex -space-x-2 mr-2 flex-shrink-0">
               <img 
-                src="/images/1.jpg" 
+                src="/images/1.avif" 
                 alt="Client" 
                 className="w-8 h-8 rounded-full border-2 border-[#0f0f0f] object-cover"
               />
               <img 
-                src="/images/2.jpeg" 
+                src="/images/2.avif" 
                 alt="Client" 
                 className="w-8 h-8 rounded-full border-2 border-[#0f0f0f] object-cover"
               />
               <img 
-                src="/images/3.jpg" 
+                src="/images/3.avif" 
                 alt="Client" 
                 className="w-8 h-8 rounded-full border-2 border-[#0f0f0f] object-cover"
               />

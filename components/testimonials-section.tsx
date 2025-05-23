@@ -118,11 +118,13 @@ export function TestimonialsSection() {
                       </div>
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
                         <picture className="w-12 h-12 rounded-full overflow-hidden">
-                          <source srcSet="/images/2.webp" type="image/webp" />
                           <source srcSet="/images/2.avif" type="image/avif" />
+                          <source srcSet="/images/2.webp" type="image/webp" />
                           <img
-                            src="/images/2.jpeg"
+                            src="/images/2.avif"
                             alt="Everett Lynn"
+                            width={48}
+                            height={48}
                             className="w-full h-full object-cover"
                           />
                         </picture>
@@ -175,11 +177,13 @@ export function TestimonialsSection() {
                       </div>
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-sm transition-colors duration-300">
                         <picture className="w-12 h-12 rounded-full overflow-hidden">
-                          <source srcSet="/images/1.webp" type="image/webp" />
                           <source srcSet="/images/1.avif" type="image/avif" />
+                          <source srcSet="/images/1.webp" type="image/webp" />
                           <img
-                            src="/images/1.jpg"
+                            src="/images/1.avif"
                             alt="Beryl Stafford"
+                            width={48}
+                            height={48}
                             className="w-full h-full object-cover"
                           />
                         </picture>

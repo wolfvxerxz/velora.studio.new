@@ -34,11 +34,13 @@ export function SiteHeader() {
             className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] h-[40px]"
           >
             <picture className="w-6 h-6 rounded-full overflow-hidden">
-              <source srcSet="/images/vuk.webp" type="image/webp" />
               <source srcSet="/images/vuk.avif" type="image/avif" />
+              <source srcSet="/images/vuk.webp" type="image/webp" />
               <img
-                src="/images/vuk.png"
+                src="/images/vuk.avif"
                 alt="Vuk"
+                width={32}
+                height={32}
                 className="w-full h-full object-cover"
               />
             </picture>
@@ -62,11 +64,13 @@ export function SiteHeader() {
             className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
             <picture className="w-8 h-8 rounded-full overflow-hidden">
-              <source srcSet="/images/vuk.webp" type="image/webp" />
               <source srcSet="/images/vuk.avif" type="image/avif" />
+              <source srcSet="/images/vuk.webp" type="image/webp" />
               <img
-                src="/images/vuk.png"
+                src="/images/vuk.avif"
                 alt="Vuk"
+                width={32}
+                height={32}
                 className="w-full h-full object-cover"
               />
             </picture>
