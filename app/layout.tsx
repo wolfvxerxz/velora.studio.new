@@ -110,38 +110,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${instagramSans.variable} ${instagramSansCondensed.variable} ${instagramSansScript.variable} ${instagramSansHeadline.variable} min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}>
+    <html 
+      lang="en" 
+      suppressHydrationWarning 
+      className={`${instagramSans.variable} ${instagramSansCondensed.variable} ${instagramSansScript.variable} ${instagramSansHeadline.variable} min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}
+    >
       <head>
         <Script id="cal-script" strategy="lazyOnload">
           {`
-            (function (C, A, L) { 
-              let p = function (a, ar) { a.q.push(ar); }; 
-              let d = C.document; 
-              C.Cal = C.Cal || function () { 
-                let cal = C.Cal; 
-                let ar = arguments; 
-                if (!cal.loaded) { 
-                  cal.ns = {}; 
-                  cal.q = cal.q || []; 
-                  d.head.appendChild(d.createElement("script")).src = A; 
-                  cal.loaded = true; 
-                } 
-                if (ar[0] === L) { 
-                  const api = function () { p(api, arguments); }; 
-                  const namespace = ar[1]; 
-                  api.q = api.q || []; 
-                  if(typeof namespace === "string"){
-                    cal.ns[namespace] = cal.ns[namespace] || api;
-                    p(cal.ns[namespace], ar);
-                    p(cal, ["initNamespace", namespace]);
-                  } else p(cal, ar); 
-                  return;
-                } 
-                p(cal, ar); 
-              }; 
-            })(window, "https://app.cal.com/embed/embed.js", "init");
-            Cal("init", "30min", {origin:"https://cal.com"});
-            Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+            (function(c,a,l,h,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=h.createElement(r);t.async=1;t.src="https://cdn.cal.com/embed.js";
+              y=h.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window,"Cal","init",document,"script");
           `}
         </Script>
         {/* Google Analytics */}
@@ -196,8 +177,10 @@ export default function RootLayout({
             })
           }}
         />
+        <Script id="ahrefs-analytics" src="https://analytics.ahrefs.com/analytics.js" data-key="NI3XpWk2opCemHvSfF6Oag" async strategy="afterInteractive" />
+        <meta name="twitter:image" content="https://velora.studio/twitter-image.jpg" />
       </head>
-      <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+      <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">
