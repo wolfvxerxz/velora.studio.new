@@ -6,7 +6,7 @@ export interface BlogPost {
   content: string
   date: string
   readTime: string
-  category: 'Case Study' | 'Product Design' | 'Web Performance' | 'SaaS Growth' | 'Design Tools'
+  category: 'Case Study' | 'Product Design' | 'Web Performance' | 'SaaS Growth' | 'Design Tools' | 'Copywriting' | 'Business'
   author: string
   image?: string
   toc?: { title: string; id: string }[]
@@ -232,5 +232,194 @@ export const blogPosts: BlogPost[] = [
     relatedPosts: ['boost-saas-signups-ux-optimization', 'saas-landing-page-mistakes'],
     metaDescription: 'Learn how to design high-converting pricing pages for SaaS products, with real examples and actionable tips from our experience working with successful startups.',
     keywords: ['SaaS', 'Pricing', 'Conversion Rate', 'UX Design', 'B2B', 'Digital Marketing']
+  },
+  {
+    id: '4',
+    title: '6 Copywriting Tips That Convert Visitors Into Buyers',
+    slug: 'copywriting-tips-convert-visitors',
+    excerpt: 'Learn the 6 essential copywriting principles that transform website visitors into paying customers, backed by real-world examples and proven strategies.',
+    content: `
+      <p>Your website copy isn't just words—it's your silent salesperson. Here are 6 hard-earned copywriting truths every brand should follow:</p>
+
+      <h2>1. Your headline makes the first impression—make it count</h2>
+      <p>This is your hook. Clarity > cleverness. Make it clear what you do and why it matters in seconds.</p>
+
+      <h2>2. People don't want tasks—they want outcomes</h2>
+      <p>Shift your CTA from "Start a free trial" to "Start growing your business." Sell the result, not the process.</p>
+
+      <h2>3. Pain > agitation > solution</h2>
+      <p>Highlight a real pain point. Agitate the emotion. Then show how you fix it. It's how human attention works.</p>
+
+      <h2>4. Features tell. Benefits sell</h2>
+      <p>Turn your technical features into real-life outcomes. Don't just say what it does—say why it matters.</p>
+
+      <h2>5. People trust people</h2>
+      <p>Use testimonials, logos, and case studies. Real customers = real trust.</p>
+
+      <h2>6. Words matter, but visuals tell the story</h2>
+      <p>Pair bold copy with intentional design. Don't rely on one or the other. Great websites speak both languages.</p>
+
+      <p>Ready to transform your website copy? <a href="/contact">Let's work together</a>.</p>
+    `,
+    date: '2024-03-20',
+    readTime: '5 min read',
+    category: 'Copywriting',
+    author: 'Velora Studio Team',
+    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop',
+    toc: [
+      { title: 'Headlines Matter', id: 'headlines' },
+      { title: 'Focus on Outcomes', id: 'outcomes' },
+      { title: 'Pain Points First', id: 'pain-points' },
+      { title: 'Benefits Over Features', id: 'benefits' },
+      { title: 'Build Trust', id: 'trust' },
+      { title: 'Visual Storytelling', id: 'visuals' }
+    ],
+    relatedPosts: ['pricing-page-conversion', 'saas-landing-page-mistakes'],
+    metaDescription: 'Discover 6 essential copywriting principles that transform website visitors into paying customers, with real-world examples and proven strategies.',
+    keywords: ['Copywriting', 'Conversion Rate', 'UX Writing', 'Content Strategy', 'Digital Marketing', 'SaaS']
+  },
+  {
+    id: '5',
+    title: 'Ignore the Noise — Do the Work',
+    slug: 'ignore-noise-do-work',
+    excerpt: 'A candid reflection on building Velora Studio against conventional wisdom, proving that focus, consistency, and results speak louder than naysayers.',
+    content: `
+      <p>When I started Velora Studio, everyone had something to say:</p>
+
+      <ul>
+        <li>"You need a co-founder."</li>
+        <li>"Design studios don't scale."</li>
+        <li>"Keep your day job."</li>
+        <li>"You can't rely on X or referrals forever."</li>
+        <li>"Big players already dominate this space."</li>
+      </ul>
+
+      <p>One year later? Fully booked. Scaling steadily. Fully bootstrapped.</p>
+
+      <p>No co-founder. No rich backers. Just clear focus, consistent delivery, and trust earned through results.</p>
+
+      <p>The loudest voices are often the ones that never built anything themselves.</p>
+
+      <p>So if you're building something of your own? Ignore the noise. Trust your gut. Do the work.</p>
+
+      <p>Ready to build something great? <a href="/contact">Let's talk</a>.</p>
+    `,
+    date: '2024-03-18',
+    readTime: '3 min read',
+    category: 'Business',
+    author: 'Velora Studio Team',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
+    toc: [
+      { title: 'The Noise', id: 'noise' },
+      { title: 'The Reality', id: 'reality' },
+      { title: 'The Lesson', id: 'lesson' }
+    ],
+    relatedPosts: ['copywriting-tips-convert-visitors', 'pricing-page-conversion'],
+    metaDescription: 'A candid reflection on building Velora Studio against conventional wisdom, proving that focus, consistency, and results speak louder than naysayers.',
+    keywords: ['Entrepreneurship', 'Business Growth', 'Startup', 'Design Studio', 'Bootstrapping']
+  },
+  {
+    id: '6',
+    title: 'From €5M Seed to a Website That Converts — A 2-Minute Case Study',
+    slug: 'ai-saas-website-case-study',
+    excerpt: 'How we helped an AI SaaS startup increase conversions and prepare for Series A funding through strategic website redesign and UX optimization.',
+    content: `
+      <h2>Client: AI SaaS Startup prepping for Series A</h2>
+      <p>Problem: Old site wasn't converting. Confused messaging. Weak trust. Bad UX.</p>
+
+      <p>Here's how we rebuilt it for growth:</p>
+
+      <h2>1. Clearer Messaging & Positioning</h2>
+      <p>Old: "AI-Powered Protection for Enterprises" (too vague)</p>
+      <p>New: "Next-Gen Brand Protection with Agentic AI"</p>
+      <p>We added clarity, pain points, and value — fast.</p>
+
+      <h2>2. Streamlined CTAs</h2>
+      <p>Old: "Login," "Request Demo," "Contact," "Book a Demo"</p>
+      <p>New: Primary CTA: "Request a Demo." Secondary: "Talk to Sales."</p>
+
+      <h2>3. Visual Redesign</h2>
+      <p>Modern dark theme. Real-time animations. Cleaner layout. Intentional visuals, not noise.</p>
+
+      <h2>4. Real Trust Signals</h2>
+      <p>Client logos, testimonials, and clear case studies. Social proof is a shortcut to belief.</p>
+
+      <h2>5. Audience-Specific Paths</h2>
+      <p>Creators → Their journey. Enterprises → Their journey. Tailored messaging for each.</p>
+
+      <p>The result? More demos, more conversations, more conversions.</p>
+
+      <p>Want the same? <a href="/contact">Book a free 15-min call</a></p>
+    `,
+    date: '2024-03-15',
+    readTime: '4 min read',
+    category: 'Case Study',
+    author: 'Velora Studio Team',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+    toc: [
+      { title: 'The Challenge', id: 'challenge' },
+      { title: 'Messaging & Positioning', id: 'messaging' },
+      { title: 'Streamlined CTAs', id: 'ctas' },
+      { title: 'Visual Redesign', id: 'design' },
+      { title: 'Trust Signals', id: 'trust' },
+      { title: 'Audience Paths', id: 'paths' }
+    ],
+    relatedPosts: ['copywriting-tips-convert-visitors', 'saas-landing-page-mistakes'],
+    metaDescription: 'How we helped an AI SaaS startup increase conversions and prepare for Series A funding through strategic website redesign and UX optimization.',
+    keywords: ['Case Study', 'SaaS', 'UX Design', 'Conversion Rate', 'AI', 'Startup']
+  },
+  {
+    id: '7',
+    title: 'Your Beautiful $50K Website Is Killing Your Business',
+    slug: 'beautiful-website-killing-business',
+    excerpt: 'Why award-winning websites often fail to convert, and how to fix your site to focus on conversions rather than just aesthetics.',
+    content: `
+      <p>We've audited 100s of award-winning sites that don't generate leads. Why?</p>
+
+      <p>They're built to impress designers—not convert users.</p>
+
+      <h2>Here's what most designers won't tell you:</h2>
+
+      <p>Design trends ≠ conversions.</p>
+
+      <p>Cluttered nav, poetic hero text, weak CTAs? That's a dead zone.</p>
+
+      <p>Users want clarity, proof, and direction.</p>
+
+      <h2>Your homepage has 5 seconds to answer these:</h2>
+      <ul>
+        <li>What do you do?</li>
+        <li>Who is it for?</li>
+        <li>Why does it help?</li>
+        <li>Can I trust you?</li>
+        <li>What should I do next?</li>
+      </ul>
+
+      <p>If not, they bounce.</p>
+
+      <h2>Fix it by:</h2>
+      <ul>
+        <li>Leading with value, not features</li>
+        <li>Clarifying your CTA (not 4 of them)</li>
+        <li>Showing results: logos, numbers, case studies</li>
+      </ul>
+
+      <p>Pretty doesn't mean persuasive. Conversion-focused design is about clarity, hierarchy, and intent.</p>
+
+      <p>Want a site that actually converts? <a href="/contact">Book a free 15-min call</a></p>
+    `,
+    date: '2024-03-12',
+    readTime: '6 min read',
+    category: 'Web Performance',
+    author: 'Velora Studio Team',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+    toc: [
+      { title: 'The Problem', id: 'problem' },
+      { title: 'Key Questions', id: 'questions' },
+      { title: 'The Solution', id: 'solution' }
+    ],
+    relatedPosts: ['copywriting-tips-convert-visitors', 'ai-saas-website-case-study'],
+    metaDescription: 'Why award-winning websites often fail to convert, and how to fix your site to focus on conversions rather than just aesthetics.',
+    keywords: ['Web Design', 'Conversion Rate', 'UX Design', 'Digital Marketing', 'Business Growth']
   }
 ] 
