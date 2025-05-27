@@ -1,22 +1,17 @@
 import { MetadataRoute } from 'next'
+import { blogPosts } from '@/data/blog-posts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://velora.studio'
   
-  // Blog posts data - this should match your actual blog posts
-  const blogPosts = [
-    'future-of-web-design-2024',
-    'why-business-needs-custom-website',
-    'ai-impact-web-development',
-  ]
-  
-  const blogUrls = blogPosts.map(slug => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
+  // Get all blog post URLs
+  const blogUrls = blogPosts.map(post => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: 0.8,
   }))
-  
+
   return [
     {
       url: baseUrl,
