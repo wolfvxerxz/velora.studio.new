@@ -1,6 +1,24 @@
+# Allow all crawlers
 User-agent: *
 Allow: /
 
+# Allow Twitterbot
 User-agent: Twitterbot
 Allow: /
-Allow: /twitter-image.jpg 
+Allow: /twitter-image.jpg
+
+# Allow Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Allow Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://velora.studio/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/ 

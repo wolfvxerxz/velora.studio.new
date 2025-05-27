@@ -16,8 +16,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://velora.studio'),
   title: {
-    default: "Velora Studio | Custom Design & Development",
-    template: "%s | Velora Studio"
+    default: 'Velora Studio | Custom Design & Development',
+    template: '%s | Velora Studio'
   },
   icons: {
     icon: '/favicon.ico',
@@ -28,26 +28,11 @@ export const metadata: Metadata = {
       url: '/favicon.ico',
     },
   },
-  description: "We design & build websites people actually want to use. Expert web design and development services for startups and established businesses. Get real results within 90 days.",
-  keywords: [
-    "web design",
-    "web development",
-    "website design",
-    "UI/UX design",
-    "digital agency",
-    "web agency",
-    "custom website",
-    "responsive design",
-    "business website",
-    "web design agency",
-    "professional web design",
-    "modern web design",
-    "website development",
-    "website optimization"
-  ],
-  authors: [{ name: "Velora Studio", url: "https://velora.studio" }],
-  creator: "Velora Studio",
-  publisher: "Velora Studio",
+  description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
+  keywords: ['web design', 'web development', 'custom websites', 'startup websites', 'business websites', 'UI/UX design', 'responsive design'],
+  authors: [{ name: 'Velora Studio' }],
+  creator: 'Velora Studio',
+  publisher: 'Velora Studio',
   formatDetection: {
     email: false,
     address: false,
@@ -65,7 +50,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'add-your-google-site-verification-here',
+    google: 'your-google-site-verification',
   },
   alternates: {
     canonical: 'https://velora.studio',
@@ -75,21 +60,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://velora.studio',
     title: 'Velora Studio | Custom Design & Development',
-    description: 'We design & build websites people actually want to use. Expert web design and development services for startups and established businesses.',
+    description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
     siteName: 'Velora Studio',
     images: [
       {
         url: 'https://velora.studio/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Velora Studio - Modern Web Design & Development',
-      }
+        alt: 'Velora Studio - Custom Design & Development',
+      },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Velora Studio | Custom Design & Development',
-    description: 'We design & build websites people actually want to use. Expert web design and development services for startups and established businesses.',
+    description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
     creator: '@velorastudio',
     images: ['https://velora.studio/twitter-image.jpg'],
   },

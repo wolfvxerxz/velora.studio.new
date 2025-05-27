@@ -28,9 +28,6 @@ export function SiteFooter() {
               />
               Book a Call With Vuk
             </button>
-            <Link href="/work" className="inline-flex items-center justify-center px-5 py-2 bg-zinc-800 text-white font-medium rounded-full hover:bg-zinc-700 transition-colors">
-              View Work
-            </Link>
           </div>
           
           <p className="text-gray-400 text-sm mb-6">
@@ -38,18 +35,26 @@ export function SiteFooter() {
           </p>
         </div>
         
-        <div className="border-t border-zinc-800 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center">
-          <p className="text-xs text-gray-400">
-            © {new Date().getFullYear()} Velora Studio
-          </p>
-          <a 
-            href="https://twitter.com/velora_studio" 
-            className="mt-4 md:mt-0 p-2 text-gray-400 hover:text-white"
-            aria-label="X (Twitter)"
-            target="_blank"
-          >
-            <X className="h-4 w-4" />
-          </a>
+        <div className="border-t border-zinc-800 pt-6">
+          <div className="flex flex-wrap gap-6 mb-6">
+            <Link href="/blog" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Blog
+            </Link>
+          </div>
+          
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <p className="text-xs text-gray-400">
+              © {new Date().getFullYear()} Velora Studio
+            </p>
+            <a 
+              href="https://twitter.com/velora_studio" 
+              className="mt-4 md:mt-0 p-2 text-gray-400 hover:text-white"
+              aria-label="X (Twitter)"
+              target="_blank"
+            >
+              <X className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

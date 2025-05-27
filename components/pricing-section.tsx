@@ -100,7 +100,7 @@ export function PricingSection() {
                   <span className="text-[10px] sm:text-xs bg-gray-100 dark:bg-zinc-800 text-black dark:text-white px-1.5 sm:px-2 py-0.5 rounded-md transition-colors duration-300">Subscription</span>
                 </div>
 
-                <h3 className="text-base sm:text-xl font-normal text-black dark:text-white mb-1 sm:mb-2 transition-colors duration-300">$4,500<span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm transition-colors duration-300">/m</span></h3>
+                <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-2 transition-colors duration-300">$2,999<span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm transition-colors duration-300">/m</span></h3>
                 <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-8 transition-colors duration-300">
                   The ideal solution for those in need of design services of any type and scale.
                 </p>
