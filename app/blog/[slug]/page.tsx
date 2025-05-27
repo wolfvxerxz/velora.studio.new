@@ -60,6 +60,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     )
   }
 
+  // Find related posts
+  const relatedPosts = post.relatedPosts
+    ? blogPosts.filter(p => post.relatedPosts?.includes(p.slug))
+    : []
+
   return (
     <>
       <SiteNav />
@@ -115,6 +120,27 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 })}
               </time>
             </div>
+
+            {/* Table of Contents */}
+            {post.toc && post.toc.length > 0 && (
+              <div className="mb-10 p-6 bg-gray-50 dark:bg-zinc-800 rounded-xl">
+                <h2 className="text-lg font-semibold text-black dark:text-white mb-4">Table of Contents</h2>
+                <nav>
+                  <ul className="space-y-2">
+                    {post.toc.map((item) => (
+                      <li key={item.id}>
+                        <a
+                          href={`#${item.id}`}
+                          className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
+                        >
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            )}
             
             <article 
               className="prose dark:prose-invert max-w-none prose-lg
@@ -135,6 +161,34 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 [&>*]:mb-6 [&>*:last-child]:mb-0"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+
+            {/* Related Posts */}
+            {relatedPosts.length > 0 && (
+              <div className="mt-16 pt-8 border-t border-gray-200 dark:border-zinc-800">
+                <h2 className="text-xl font-semibold text-black dark:text-white mb-6">Related Articles</h2>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  {relatedPosts.map((relatedPost) => (
+                    <Link
+                      key={relatedPost.id}
+                      href={`/blog/${relatedPost.slug}`}
+                      className="group block"
+                    >
+                      <div className="p-6 bg-gray-50 dark:bg-zinc-800 rounded-xl transition-colors duration-300">
+                        <span className="text-[10px] sm:text-xs bg-gray-100 dark:bg-zinc-700 text-black dark:text-white px-1.5 sm:px-2 py-0.5 rounded-md transition-colors duration-300">
+                          {relatedPost.category}
+                        </span>
+                        <h3 className="mt-3 text-lg font-semibold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                          {relatedPost.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                          {relatedPost.excerpt}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-zinc-800">
               <Link
@@ -169,8 +223,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     url: 'https://velora.studio/logo.avif',
                   },
                 },
-                description: post.excerpt,
+                description: post.metaDescription,
                 image: post.image,
+                keywords: post.keywords.join(', '),
                 mainEntityOfPage: {
                   '@type': 'WebPage',
                   '@id': `https://velora.studio/blog/${params.slug}`,
