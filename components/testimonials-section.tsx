@@ -9,9 +9,14 @@ export function TestimonialsSection() {
       <div className="w-full flex justify-center px-4">
         <div className="w-full" style={{ maxWidth: "640px" }}>
           <AnimatedSection animation="fadeUp">
-            <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
-              Happy Clients
-            </h2>
+            <div className="text-left mb-16">
+              <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+                Happy Clients
+              </h2>
+              <p className="text-zinc-400 text-lg">
+                Our individual backgrounds encompass years of industry expertise. We've partnered with clients across different sectors, and here are their thoughts on our services.
+              </p>
+            </div>
           </AnimatedSection>
 
           <div>

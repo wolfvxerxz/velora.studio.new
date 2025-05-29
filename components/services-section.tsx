@@ -7,16 +7,21 @@ export function ServicesSection() {
       <div className="w-full flex justify-center px-4">
         <div className="w-full max-w-[640px]">
           <AnimatedSection animation="fadeUp">
-            <h2 className="text-lg sm:text-xl font-normal mb-3 sm:mb-6 text-black dark:text-white transition-colors duration-300">
-              Our Services
-            </h2>
+            <div className="text-left mb-16">
+              <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+                Our Services
+              </h2>
+              <p className="text-zinc-400 text-lg">
+                Sometimes, you come across a design that feels right — you can't quite explain why, but you know it when you see it!
+              </p>
+            </div>
           </AnimatedSection>
 
           <div>
             <AnimatedSection animation="fadeUp" delay={100}>
               <p className="text-gray-700 dark:text-gray-400 mb-4 sm:mb-8 text-xs sm:text-sm transition-colors duration-300">
-                Sometimes, you come across a design that feels right — you can't quite explain why, but you know it when
-                you see it!
+                We're dedicated to crafting solutions that evoke this feeling while offering everything design- related,
+                from A to Z.
               </p>
             </AnimatedSection>
 

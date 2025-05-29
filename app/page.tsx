@@ -11,6 +11,7 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { PricingSection } from "@/components/pricing-section"
 import { ProcessSection } from "@/components/process-section"
 import { FaqSection } from "@/components/faq-section"
+import { BlogPromoSection } from "@/components/blog-promo-section"
 import { SiteFooter } from "@/components/site-footer"
 
 export default function HomePage() {
@@ -34,6 +35,7 @@ export default function HomePage() {
         <PricingSection />
         <ProcessSection />
         <FaqSection />
+        <BlogPromoSection />
       </main>
 
       <SiteFooter />

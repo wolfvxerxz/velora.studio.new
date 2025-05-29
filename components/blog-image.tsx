@@ -2,16 +2,22 @@
 
 import Image from 'next/image'
 
-export function BlogImage({ src, alt }: { src: string; alt: string }) {
+interface BlogImageProps {
+  src: string
+  alt: string
+  className?: string
+}
+
+export function BlogImage({ src, alt, className = '' }: BlogImageProps) {
   return (
-    <div className="relative w-full h-64 mb-8 rounded-xl overflow-hidden bg-gray-100 dark:bg-zinc-800">
+    <div className={`relative w-full aspect-[16/9] mb-8 ${className}`}>
       <Image
         src={src}
         alt={alt}
         fill
         className="object-cover"
         priority
-        onError={(e) => {
+        onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
           const target = e.target as HTMLImageElement;
           target.src = '/images/placeholder.jpg';
         }}

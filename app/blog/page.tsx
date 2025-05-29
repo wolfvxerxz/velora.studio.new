@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { AnimatedSection } from '@/components/ui/animated-section'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
+import { BackNav } from '@/components/back-nav'
 import { blogPosts } from '@/data/blog-posts'
 import Link from 'next/link'
 
@@ -23,6 +24,7 @@ export default function BlogPage() {
     <>
       <SiteNav />
       <main className="min-h-screen bg-white dark:bg-[#0f0f0f] transition-colors duration-300 pt-16">
+        <BackNav />
         <div className="max-w-[720px] mx-auto px-4 py-10 sm:py-12 md:py-16">
           <AnimatedSection animation="fadeUp">
             <h1 className="text-3xl sm:text-4xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">

@@ -38,38 +38,38 @@ const faqs = [
 export function FaqSection() {
   return (
     <section className="py-24 bg-[#0f0f0f]">
-      <div className="mx-auto px-4 max-w-[800px]">
-        <AnimatedSection animation="fadeUp">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
-              Got Questions?
-            </h2>
-            <p className="text-zinc-400 text-lg">
-              Here's what our clients usually ask us
-            </p>
-          </div>
-        </AnimatedSection>
+      <div className="container px-4 md:px-6">
+        <div className="max-w-[640px] mx-auto">
+          <AnimatedSection animation="fadeUp">
+            <div className="text-left mb-16">
+              <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+                Got Questions?
+              </h2>
+              <p className="text-zinc-400 text-lg">
+                Here's what our clients usually ask us
+              </p>
+            </div>
+          </AnimatedSection>
 
-        <AnimatedSection animation="fadeUp" delay={200}>
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="border border-zinc-800 rounded-lg px-6 py-2"
-              >
-                <AccordionTrigger className="text-white hover:text-white/90 text-left">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-zinc-400">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </AnimatedSection>
-
-     
+          <AnimatedSection animation="fadeUp" delay={200}>
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`item-${i}`}
+                  className="border border-zinc-800 rounded-lg px-6 py-2"
+                >
+                  <AccordionTrigger className="text-white hover:text-white/90 text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-zinc-400">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </AnimatedSection>
+        </div>
       </div>
     </section>
   )

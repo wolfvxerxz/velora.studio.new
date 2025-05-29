@@ -8,15 +8,14 @@ export function ProcessSection() {
       <div className="w-full flex justify-center px-4">
         <div className="w-full" style={{ maxWidth: "640px" }}>
           <AnimatedSection animation="fadeUp">
-            <h2 className="text-xl font-normal mb-6 text-black dark:text-white transition-colors duration-300">
-              Here's How We Work
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection animation="fadeUp" delay={100}>
-            <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
-              We keep things simple and straightforward. Here's exactly what happens when you work with us.
-            </p>
+            <div className="text-left mb-16">
+              <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+                Here's How We Work
+              </h2>
+              <p className="text-zinc-400 text-lg">
+                We keep things simple and straightforward. Here's exactly what happens when you work with us.
+              </p>
+            </div>
           </AnimatedSection>
 
           <div className="space-y-4">

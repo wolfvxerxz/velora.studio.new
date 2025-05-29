@@ -6,16 +6,16 @@ export function PricingSection() {
     <section className="py-10 sm:py-12 md:py-16 bg-white dark:bg-[#0f0f0f] transition-colors duration-300">
       <div className="max-w-[640px] mx-auto px-4">
         <AnimatedSection animation="fadeUp">
-          <h2 className="text-lg sm:text-xl font-normal text-black dark:text-white mb-2 sm:mb-3 transition-colors duration-300">Pricing</h2>
+          <div className="text-left mb-16">
+            <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+              Pricing
+            </h2>
+            <p className="text-zinc-400 text-lg">
+              Our diverse plans offer a wide range of benefits to meet your specific needs — whether you prefer a flat-price website, a subscription-based product design, or a combination of both.
+            </p>
+          </div>
         </AnimatedSection>
         
-        <AnimatedSection animation="fadeUp" delay={100}>
-          <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 transition-colors duration-300">
-            Our diverse plans offer a wide range of benefits to meet your specific needs — whether you prefer
-            a flat-price website, a subscription-based product design, or a combination of both.
-          </p>
-        </AnimatedSection>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {/* 0→1 Design */}
           <AnimatedSection animation="fadeUp" delay={200}>

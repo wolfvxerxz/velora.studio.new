@@ -111,9 +111,14 @@ export function WorkSection() {
       <div className="w-full flex justify-center px-4">
         <div className="w-full max-w-[640px]">
           <AnimatedSection animation="fadeUp">
-            <h2 className="text-lg sm:text-xl font-normal mb-4 sm:mb-8 text-black dark:text-white transition-colors duration-300">
-              Our Work
-            </h2>
+            <div className="text-left mb-16">
+              <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+                Our Work
+              </h2>
+              <p className="text-zinc-400 text-lg">
+                Take a look at some of our recent projects. Each one is crafted with care to deliver exceptional results.
+              </p>
+            </div>
           </AnimatedSection>
         </div>
       </div>

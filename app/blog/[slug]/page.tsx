@@ -10,7 +10,7 @@ import { BlogImage } from '@/components/blog-image'
 // Add generateStaticParams for static site generation
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
-    slug: post.slug,
+    slug: post.slug
   }))
 }
 
