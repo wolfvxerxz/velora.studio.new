@@ -57,15 +57,13 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col items-center">
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
-              <button
-                data-cal-link="vuk-m/30min"
-                data-cal-namespace="30min"
-                data-cal-config='{"layout":"month_view"}'
+              <Link
+                href="/15-min"
                 className="group px-8 py-4 rounded-full bg-white text-black text-lg font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2"
               >
                 Get Your Free Strategy Call
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
               
               <Link
                 href="#work"
@@ -85,4 +83,4 @@ export function HeroSection() {
       </div>
     </section>
   )
-}
+} 

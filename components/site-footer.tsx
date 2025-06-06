@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { VeloraLogo } from "./velora-logo"
 import { X } from "lucide-react"
 
@@ -15,19 +14,18 @@ export function SiteFooter() {
           <h2 className="text-white text-xl font-medium mb-6">Take your idea from zero → hero with Velora Studio.</h2>
           
           <div className="flex flex-wrap gap-4 mb-6">
-            <button
-              data-cal-link="vuk-m/30min"
-              data-cal-namespace="30min"
-              data-cal-config='{"layout":"month_view"}'
-              className="inline-flex items-center gap-2 px-5 py-2 bg-white text-black font-medium rounded-full hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <img
-                src="/images/vuk.avif"
-                alt="Vuk's Profile"
-                className="w-5 h-5 rounded-full object-cover"
-              />
-              Book a Call With Vuk
-            </button>
+            <Link href="/15-min">
+              <button
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <img
+                  src="/images/vuk.avif"
+                  alt="Vuk"
+                  className="w-6 h-6 rounded-full"
+                />
+                Book a Call With Vuk
+              </button>
+            </Link>
           </div>
           
           <p className="text-gray-400 text-sm mb-6">

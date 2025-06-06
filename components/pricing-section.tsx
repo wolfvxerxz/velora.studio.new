@@ -1,5 +1,6 @@
 import { Heart, Sparkles, Framer, Palette, Check, Zap, ArrowRight } from "lucide-react"
 import { AnimatedSection } from "./ui/animated-section"
+import Link from "next/link"
 
 export function PricingSection() {
   return (
@@ -75,15 +76,14 @@ export function PricingSection() {
               </div>
 
               <div className="mt-auto pt-4 sm:pt-8">
-                <button
-                  data-cal-link="vuk-m/30min"
-                  data-cal-namespace="30min"
-                  data-cal-config='{"layout":"month_view"}'
-                  className="btn-primary w-full flex items-center justify-center gap-2 group"
-                >
-                  Share Your Vision
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                <Link href="/15-min">
+                  <button
+                    className="btn-primary w-full flex items-center justify-center gap-2 group"
+                  >
+                    Share Your Vision
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
               </div>
             </div>
           </AnimatedSection>
@@ -140,15 +140,14 @@ export function PricingSection() {
               </div>
 
               <div className="mt-auto pt-4 sm:pt-8">
-                <button
-                  data-cal-link="vuk-m/30min"
-                  data-cal-namespace="30min"
-                  data-cal-config='{"layout":"month_view"}'
-                  className="btn-secondary w-full flex items-center justify-center gap-2 group"
-                >
-                  Let's Work Together
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                <Link href="/15-min">
+                  <button
+                    className="btn-secondary w-full flex items-center justify-center gap-2 group"
+                  >
+                    Let's Work Together
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
               </div>
             </div>
           </AnimatedSection>

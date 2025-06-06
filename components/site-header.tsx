@@ -27,26 +27,18 @@ export function SiteHeader() {
           >
             View Work
           </Link>
-          <button
-            data-cal-link="vuk-m/30min"
-            data-cal-namespace="30min"
-            data-cal-config='{"layout":"month_view"}'
-            className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] h-[40px]"
-          >
-            <picture className="w-6 h-6 rounded-full overflow-hidden">
-              <source srcSet="/images/vuk.avif" type="image/avif" />
-              <source srcSet="/images/vuk.webp" type="image/webp" />
+          <Link href="/15-min">
+            <button
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            >
               <img
                 src="/images/vuk.avif"
                 alt="Vuk"
-                width={32}
-                height={32}
-                className="w-full h-full object-cover"
+                className="w-6 h-6 rounded-full"
               />
-            </picture>
-            <span className="hidden md:inline">Book a Call With Vuk</span>
-            <span className="md:hidden">Book a Call</span>
-          </button>
+              Book a Call With Vuk
+            </button>
+          </Link>
         </div>
         
         {/* Mobile Menu */}
@@ -58,22 +50,8 @@ export function SiteHeader() {
             Work
           </Link>
           <button
-            data-cal-link="vuk-m/30min"
-            data-cal-namespace="30min"
-            data-cal-config='{"layout":"month_view"}'
-            className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            className="px-4 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-100 transition-all duration-200"
           >
-            <picture className="w-8 h-8 rounded-full overflow-hidden">
-              <source srcSet="/images/vuk.avif" type="image/avif" />
-              <source srcSet="/images/vuk.webp" type="image/webp" />
-              <img
-                src="/images/vuk.avif"
-                alt="Vuk"
-                width={32}
-                height={32}
-                className="w-full h-full object-cover"
-              />
-            </picture>
             <span>Call</span>
           </button>
         </div>

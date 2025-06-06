@@ -18,12 +18,6 @@ export function ServicesSection() {
           </AnimatedSection>
 
           <div>
-            <AnimatedSection animation="fadeUp" delay={100}>
-              <p className="text-gray-700 dark:text-gray-400 mb-4 sm:mb-8 text-xs sm:text-sm transition-colors duration-300">
-                We're dedicated to crafting solutions that evoke this feeling while offering everything design- related,
-                from A to Z.
-              </p>
-            </AnimatedSection>
 
             <AnimatedSection animation="fadeUp" delay={200}>
               <p className="text-gray-700 dark:text-gray-400 mb-6 sm:mb-12 text-xs sm:text-sm transition-colors duration-300">

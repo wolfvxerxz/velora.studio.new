@@ -20,12 +20,7 @@ export function TestimonialsSection() {
           </AnimatedSection>
 
           <div>
-            <AnimatedSection animation="fadeUp" delay={100}>
-              <p className="text-gray-700 dark:text-gray-400 mb-12 text-sm transition-colors duration-300">
-                Our individual backgrounds encompass years of industry expertise. We've partnered with clients across
-                different sectors, and here are their thoughts on our services.
-              </p>
-            </AnimatedSection>
+           
 
             <div className="space-y-12">
               {/* Testimonial 1 - Victor Uhl */}

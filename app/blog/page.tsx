@@ -5,27 +5,63 @@ import { SiteFooter } from '@/components/site-footer'
 import { BackNav } from '@/components/back-nav'
 import { blogPosts } from '@/data/blog-posts'
 import Link from 'next/link'
+import { generateMetadata } from '@/lib/metadata'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
+import Script from 'next/script'
 
-export const metadata: Metadata = {
-  title: 'Blog | Velora Studio',
-  description: 'Expert insights on SaaS design, UX optimization, and digital product development. Learn from our case studies and best practices.',
-  openGraph: {
-    title: 'Blog | Velora Studio',
-    description: 'Expert insights on SaaS design, UX optimization, and digital product development. Learn from our case studies and best practices.',
-    type: 'website',
-  },
-}
+export const metadata = generateMetadata({
+  title: 'Blog | Web Design & Development Insights',
+  description: 'Explore our latest insights on web design, development, and digital strategy. Expert tips, trends, and best practices for creating successful digital experiences.',
+  path: '/blog',
+  image: '/images/blog-og.jpg',
+})
 
 // Get unique categories
 const categories = Array.from(new Set(blogPosts.map(post => post.category)))
 
 export default function BlogPage() {
+  // Blog schema structured data
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Velora Studio Blog',
+    description: 'Web design and development insights, tips, and best practices',
+    url: 'https://velora.studio/blog',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Velora Studio',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://velora.studio/logo.avif',
+      },
+    },
+    blogPost: blogPosts.map(post => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.date,
+      dateModified: post.date,
+      author: {
+        '@type': 'Organization',
+        name: 'Velora Studio',
+      },
+      url: `https://velora.studio/blog/${post.slug}`,
+      image: post.image ? `https://velora.studio${post.image}` : undefined,
+    })),
+  }
+
   return (
     <>
+      <Script
+        id="blog-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <SiteNav />
       <main className="min-h-screen bg-white dark:bg-[#0f0f0f] transition-colors duration-300 pt-16">
         <BackNav />
         <div className="max-w-[720px] mx-auto px-4 py-10 sm:py-12 md:py-16">
+          <Breadcrumbs />
           <AnimatedSection animation="fadeUp">
             <h1 className="text-3xl sm:text-4xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">
               Blog
@@ -50,51 +86,30 @@ export default function BlogPage() {
             {/* Blog Posts Grid */}
             <div className="grid gap-8 sm:grid-cols-2">
               {blogPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/blog/${post.slug}`}
-                  className="group block"
-                >
-                  <div className="bg-gray-50 dark:bg-zinc-800 rounded-xl overflow-hidden transition-colors duration-300">
-                    {post.image && (
-                      <div className="aspect-[16/9] overflow-hidden">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    )}
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className="text-[10px] sm:text-xs bg-gray-100 dark:bg-zinc-700 text-black dark:text-white px-1.5 sm:px-2 py-0.5 rounded-md transition-colors duration-300">
-                          {post.category}
-                        </span>
-                        <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm transition-colors duration-300">
-                          {post.readTime}
-                        </span>
-                      </div>
-                      <h2 className="text-xl font-semibold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 mb-3">
+                <article key={post.slug} className="bg-white dark:bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+                  {post.image && (
+                    <div className="relative h-48">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h2 className="text-xl font-semibold mb-2">
+                      <a href={`/blog/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
                         {post.title}
-                      </h2>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base line-clamp-2 transition-colors duration-300">
-                        {post.excerpt}
-                      </p>
-                      <div className="mt-4 flex items-center gap-4">
-                        <span className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300">
-                          {post.author}
-                        </span>
-                        <time className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300">
-                          {new Date(post.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })}
-                        </time>
-                      </div>
+                      </a>
+                    </h2>
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                      <time dateTime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
                     </div>
                   </div>
-                </Link>
+                </article>
               ))}
             </div>
           </AnimatedSection>

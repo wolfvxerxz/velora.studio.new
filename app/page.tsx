@@ -13,6 +13,11 @@ import { ProcessSection } from "@/components/process-section"
 import { FaqSection } from "@/components/faq-section"
 import { BlogPromoSection } from "@/components/blog-promo-section"
 import { SiteFooter } from "@/components/site-footer"
+import { Button } from "@/components/ui/button"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { motion } from "framer-motion"
 
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false)

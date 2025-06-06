@@ -6,6 +6,9 @@ import { SiteFooter } from '@/components/site-footer'
 import { blogPosts } from '@/data/blog-posts'
 import Link from 'next/link'
 import { BlogImage } from '@/components/blog-image'
+import { generateMetadata as generateBaseMetadata } from '@/lib/metadata'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
+import { notFound } from 'next/navigation'
 
 // Add generateStaticParams for static site generation
 export async function generateStaticParams() {
@@ -18,46 +21,32 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = blogPosts.find(post => post.slug === params.slug)
   
   if (!post) {
-    return {
-      title: 'Blog Post Not Found',
+    return generateBaseMetadata({
+      title: 'Post Not Found',
       description: 'The requested blog post could not be found.',
-    }
+      path: `/blog/${params.slug}`,
+    })
   }
 
-  return {
-    title: `${post.title} | Velora Studio Blog`,
+  return generateBaseMetadata({
+    title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-      images: post.image ? [post.image] : undefined,
-    },
+    path: `/blog/${post.slug}`,
+    image: post.image,
+  })
+}
+
+interface BlogPostPageProps {
+  params: {
+    slug: string
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = blogPosts.find(post => post.slug === params.slug)
-
+  
   if (!post) {
-    return (
-      <>
-        <SiteNav />
-        <main className="min-h-screen bg-white dark:bg-[#0f0f0f] transition-colors duration-300 pt-16">
-          <div className="max-w-[640px] mx-auto px-4 py-10 sm:py-12 md:py-16">
-            <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 transition-colors duration-300">
-              Post Not Found
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base transition-colors duration-300">
-              The requested blog post could not be found.
-            </p>
-          </div>
-        </main>
-        <SiteFooter />
-      </>
-    )
+    notFound()
   }
 
   // Find related posts
@@ -65,11 +54,40 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     ? blogPosts.filter(p => post.relatedPosts?.includes(p.slug))
     : []
 
+  // Blog post schema structured data
+  const blogPostSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image ? `https://velora.studio${post.image}` : undefined,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Organization',
+      name: 'Velora Studio',
+      url: 'https://velora.studio',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Velora Studio',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://velora.studio/logo.avif',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://velora.studio/blog/${post.slug}`,
+    },
+  }
+
   return (
     <>
       <SiteNav />
       <main className="min-h-screen bg-white dark:bg-[#0f0f0f] transition-colors duration-300 pt-16">
         <div className="max-w-[720px] mx-auto px-4 py-10 sm:py-12 md:py-16">
+          <Breadcrumbs />
           <AnimatedSection animation="fadeUp">
             <div className="mb-8">
               <Link
@@ -199,43 +217,14 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               </Link>
             </div>
           </AnimatedSection>
-
-          {/* Structured Data for Blog Post */}
-          <Script
-            id="blog-post-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'BlogPosting',
-                headline: post.title,
-                datePublished: post.date,
-                dateModified: post.date,
-                author: {
-                  '@type': 'Organization',
-                  name: post.author,
-                },
-                publisher: {
-                  '@type': 'Organization',
-                  name: 'Velora Studio',
-                  logo: {
-                    '@type': 'ImageObject',
-                    url: 'https://velora.studio/logo.avif',
-                  },
-                },
-                description: post.metaDescription,
-                image: post.image,
-                keywords: post.keywords.join(', '),
-                mainEntityOfPage: {
-                  '@type': 'WebPage',
-                  '@id': `https://velora.studio/blog/${params.slug}`,
-                },
-              }),
-            }}
-          />
         </div>
       </main>
       <SiteFooter />
+      <Script
+        id="blog-post-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
     </>
   )
 } 
