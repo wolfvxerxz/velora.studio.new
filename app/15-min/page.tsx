@@ -41,7 +41,10 @@ export default function Page(): React.ReactElement {
             Book a 15-Minute Meeting
           </h1>
           <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-4">
-            Please select the time that fits you or just text me in Telegram / WhatsApp
+            Please select the time that fits you or just text me in{" "}
+            <a href="https://wa.me/message/CRWTXVTJ2LCJO1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">WhatsApp</a>{" "}
+            /{" "}
+            <a href="https://t.me/vukkm" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">Telegram</a>
           </p>
           <div className="flex items-center justify-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
