@@ -65,4 +65,21 @@ export const instagramSansHeadline = localFont({
   src: '../public/fonts/InstagramSansHeadline-Regular.woff2',
   variable: '--font-instagram-sans-headline',
   display: 'swap',
+})
+
+export const instrumentSerif = localFont({
+  src: [
+    {
+      path: '../public/fonts/InstrumentSerif-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/InstrumentSerif-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-instrument-serif',
+  display: 'swap',
 }) 

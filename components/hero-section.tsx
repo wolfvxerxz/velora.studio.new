@@ -66,8 +66,10 @@ export function HeroSection() {
               </Link>
               
               <Link
-                href="#work"
+                href="https://www.figma.com/proto/QbXz89f7qHCP2kfFqM6eEV/Our-Work---velora.studio?node-id=9-2&p=f&t=SrwUknsZjSSmcgwX-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
                 className="px-8 py-4 text-lg rounded-full bg-zinc-900 text-gray-400 hover:text-white border border-zinc-800 hover:bg-zinc-800 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 View Work
               </Link>
