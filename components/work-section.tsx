@@ -7,48 +7,48 @@ import { AnimatedSection } from "./ui/animated-section"
 
 const projects = [
   {
-    image: "/landing pages/extsy.webp",
+    image: "/landingpages/extsy.webp",
     name: "Extsy Crypto",
     category: "Crypto",
   },
   {
-    image: "/landing pages/relo.webp",
+    image: "/landingpages/relo.webp",
     name: "Relo",
     category: "Productivity",
   },
   {
-    image: "/landing pages/copilot.webp",
+    image: "/landingpages/copilot.webp",
     name: "Copilot Sync",
     category: "Developer Tools",
   },
   {
-    image: "/landing pages/topit.webp",
+    image: "/landingpages/topit.webp",
     name: "Topit",
     category: "Creative Agency",
   },
   {
-    image: "/landing pages/quantvpn.webp",
+    image: "/landingpages/quantvpn.webp",
     name: "QuantVPN",
     category: "VPN / Security",
     fit: "contain",
   },
   {
-    image: "/landing pages/flowsync.webp",
+    image: "/landingpages/flowsync.webp",
     name: "FlowSync",
     category: "Workflow / SaaS",
   },
   {
-    image: "/landing pages/wolfmail.webp",
+    image: "/landingpages/wolfmail.webp",
     name: "WolfMail",
     category: "Email Marketing",
   },
   {
-    image: "/landing pages/webserv.webp",
+    image: "/landingpages/webserv.webp",
     name: "Webserv",
     category: "Healthcare Marketing",
   },
   {
-    image: "/landing pages/suprema.webp",
+    image: "/landingpages/suprema.webp",
     name: "Suprema",
     category: "Project Management",
   },

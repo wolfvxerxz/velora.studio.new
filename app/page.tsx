@@ -5,20 +5,21 @@ import Link from "next/link"
 import { TrustedBySection } from "@/components/trusted-by-section"
 import { useEffect, useRef } from "react"
 import { instagramSans, instagramSansHeadline, instrumentSerif } from "./fonts"
+import { ScrollUnblurImage } from "@/components/scroll-unblur-image";
 
 const landingImages = [
-  { src: "/landing pages/final.webp", alt: "Final" },
-  { src: "/landing pages/panelly.webp", alt: "Panelly" },
-  { src: "/landing pages/copilot.webp", alt: "Copilot" },
-  { src: "/landing pages/extsy.webp", alt: "Extsy" },
-  { src: "/landing pages/flowsync.webp", alt: "Flowsync" },
-  { src: "/landing pages/QuantVPN.webp", alt: "QuantVPN" },
-  { src: "/landing pages/relo.webp", alt: "Relo" },
-  { src: "/landing pages/suprema.webp", alt: "Suprema" },
-  { src: "/landing pages/topit.webp", alt: "Topit" },
-  { src: "/landing pages/v-fit.webp", alt: "V-Fit" },
-  { src: "/landing pages/webserv.webp", alt: "Webserv" },
-  { src: "/landing pages/wolfmail.webp", alt: "Wolfmail" },
+  { src: "/landingpages/final.webp", alt: "Final" },
+  { src: "/landingpages/panelly.webp", alt: "Panelly" },
+  { src: "/landingpages/copilot.webp", alt: "Copilot" },
+  { src: "/landingpages/extsy.webp", alt: "Extsy" },
+  { src: "/landingpages/flowsync.webp", alt: "Flowsync" },
+  { src: "/landingpages/QuantVPN.webp", alt: "QuantVPN" },
+  { src: "/landingpages/relo.webp", alt: "Relo" },
+  { src: "/landingpages/suprema.webp", alt: "Suprema" },
+  { src: "/landingpages/topit.webp", alt: "Topit" },
+  { src: "/landingpages/v-fit.webp", alt: "V-Fit" },
+  { src: "/landingpages/webserv.webp", alt: "Webserv" },
+  { src: "/landingpages/wolfmail.webp", alt: "Wolfmail" },
 ]
 
 const brandLogos = [
@@ -41,32 +42,59 @@ const brandLogos2 = [
 function MiniLogoSlider() {
   // Duplicate logos once for seamless infinite scroll
   const logos = [...brandLogos, ...brandLogos];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const speed = 1.5; // px per frame, increased for faster animation
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    let pos = 0;
+    let frameId: number;
+    const totalWidth = container!.scrollWidth / 2; // width of one set of logos
+
+    function animate() {
+      pos -= speed;
+      if (Math.abs(pos) >= totalWidth) {
+        pos = 0;
+      }
+      if (container) {
+        container.style.transform = `translateX(${pos}px)`;
+      }
+      frameId = requestAnimationFrame(animate);
+    }
+    frameId = requestAnimationFrame(animate);
+    animationRef.current = frameId;
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, []);
+
   return (
-    <div className="w-full flex flex-col justify-center bg-[#141414] py-4">
+    <div className="w-full flex flex-col justify-center bg-[#0f0f0f] py-4">
       <div className="relative max-w-[600px] w-full overflow-hidden">
+        {/* Left fade */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10" style={{background: 'linear-gradient(to right, #0f0f0f 70%, transparent)'}} />
+        {/* Right fade */}
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10" style={{background: 'linear-gradient(to left, #0f0f0f 70%, transparent)'}} />
         <div
+          ref={containerRef}
           className="flex whitespace-nowrap"
-          style={{
-            animation: 'scroll 12s linear infinite',
-          }}
+          style={{ willChange: "transform" }}
         >
           {logos.map((logo, i) => (
-            <div key={i} className="px-8 flex items-center justify-center min-w-[120px] h-[40px]">
-              <Image src={logo.src} alt={logo.alt} width={100} height={40} className="object-contain grayscale opacity-80" />
+            <div key={i} className="px-2 flex items-center justify-center min-w-[90px] h-[35px]">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={100}
+                height={35}
+                className={`object-contain grayscale opacity-80 h-[30px] w-auto${logo.src.includes('ecom') ? ' invert' : ''}`}
+              />
             </div>
           ))}
         </div>
       </div>
-      <style jsx global>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </div>
   );
 }
@@ -87,39 +115,70 @@ export default function HomePage() {
 
 function HeroSection() {
   return (
-    <section className="w-full md:w-[500px] flex-shrink-0 flex flex-col justify-center items-center text-left md:sticky md:top-0 h-screen bg-[#141414] text-white px-8 py-12 m-0 border-r border-white/56">
+    <section className="w-full md:w-[600px] flex-shrink-0 flex flex-col justify-center items-center text-left md:sticky md:top-0 h-screen bg-[#0f0f0f] text-white px-8 py-12 m-0 border-r border-white/56">
       {/* Logo */}
       <div className="flex justify-start items-center gap-3 mb-8 w-full">
         <Image src="/logo-v.svg" alt="Velora Logo" width={32} height={32} />
         <span className={`text-white font-medium ${instagramSans.className}`}>Velora Studio</span>
       </div>
       
+      {/* Trusted By Section */}
+      <div className="w-full mb-6">
+        <div className="bg-white/5 backdrop-blur-sm rounded-full px-4 py-1.5 flex flex-col sm:flex-row items-center gap-2 border border-white/10 shadow-lg w-fit">
+          <div className="flex -space-x-1.5 mr-2 flex-shrink-0">
+            <Image 
+              src="/images/1.avif" 
+              alt="Client" 
+              width={24}
+              height={24}
+              className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
+            />
+            <Image 
+              src="/images/2.avif" 
+              alt="Client" 
+              width={24}
+              height={24}
+              className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
+            />
+            <Image 
+              src="/images/3.avif" 
+              alt="Client" 
+              width={24}
+              height={24}
+              className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
+            />
+          </div>
+          <span className="text-gray-300 text-xs min-w-0 break-words whitespace-normal text-center sm:text-left font-sans">
+            38+ startups & founders chose velora.studio
+          </span>
+        </div>
+      </div>
+      
       {/* Main Text */}
-      <div className={`max-w-xl flex flex-col gap-2 mb-8 ${instagramSans.className}`}>
-        <h2 className="text-2xl font-bold text-white mb-2">
-          High-Converting Websites<br />
-          for Startups & SaaS
+      <div className="max-w-xl flex flex-col gap-4 mb-8">
+        <h2 className="text-white font-geist-medium font-medium mb-2 tracking-tight leading-tight text-base">
+          High-Converting Websites for Startups & SaaS
         </h2>
-        <p className="text-sm sm:text-base text-gray-300">
+        <p className="framer-style-text">
           We craft high-converting websites that help startups, founders, and SaaS companies attract and convert their ideal customers.
         </p>
-        <p className="text-sm sm:text-base text-gray-300">
-          <span className="font-semibold text-white">O→1 Design</span> — Launch from scratch with impact. One clear scope. One set price.
+        <p className="framer-style-text">
+          <span className="font-medium text-white font-geist-medium">O→1 Design</span> — Launch from zero with purpose. Clear scope. Fixed price.
         </p>
-        <p className="text-sm sm:text-base text-gray-300">
-          <span className="font-semibold text-white">Unlimited Design</span> — €3,000/mo for as much design as you need.
+        <p className="framer-style-text">
+          <span className="font-medium text-white font-geist-medium">Unlimited Design</span> — €3,000/mo for as much design as you need.
         </p>
       </div>
       
       {/* Buttons */}
-      <div className={`flex flex-col sm:flex-row gap-3 justify-center w-full md:w-auto mb-8 ${instagramSans.className}`}>
-        <Link href="/15-min" className="inline-block bg-white text-black px-6 py-2 rounded-full text-base font-medium shadow">Schedule Call</Link>
-        <Link href="https://www.figma.com/proto/QbXz89f7qHCP2kfFqM6eEV/Our-Work---velora.studio?node-id=9-2&p=f&t=SrwUknsZjSSmcgwX-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" className="inline-block bg-[#222] text-white px-6 py-2 rounded-full text-base font-medium border border-white/10">View Work</Link>
+      <div className="flex flex-col sm:flex-row gap-3 justify-center w-full md:w-auto mb-8">
+        <Link href="/15-min" className="inline-block bg-white text-black px-6 py-3 rounded-full text-base font-medium shadow font-geist-medium hover:bg-gray-100 transition-colors duration-200">Book a Call With Vuk</Link>
+        <Link href="https://www.figma.com/proto/QbXz89f7qHCP2kfFqM6eEV/Our-Work---velora.studio?node-id=9-2&p=f&t=SrwUknsZjSSmcgwX-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" className="inline-block bg-[#222] text-white px-6 py-3 rounded-full text-base font-medium border border-white/10 font-geist-medium hover:bg-[#333] transition-colors duration-200">View Work</Link>
       </div>
       
       {/* Email */}
-      <div className={`text-sm text-gray-400 mb-8 ${instagramSans.className}`}>
-        Or drop us an email → <a href="mailto:vuk@velora.studio" className="text-white underline">vuk@velora.studio</a>
+      <div className="framer-style-text mb-8">
+        Or drop us an email → <a href="mailto:vuk@velora.studio" className="text-white underline hover:text-gray-300 transition-colors duration-200">vuk@velora.studio</a>
       </div>
       
       {/* Mini Brand Logos */}
@@ -133,7 +192,15 @@ function ImageSection() {
     <section className="flex-1 flex flex-col items-center md:justify-center w-full gap-12 md:items-center md:gap-8 my-12 bg-[#0F0F0F]">
       {landingImages.map((img, i) => (
         <div key={i} className="border border-white/56 p-1 rounded-lg">
-          <Image src={img.src} alt={img.alt} width={900} height={500} className="rounded-lg w-full md:w-[700px] mx-auto object-cover shadow-lg" />
+          <ScrollUnblurImage
+            src={img.src}
+            alt={img.alt}
+            width={900}
+            height={500}
+            className="rounded-lg w-full md:w-[700px] mx-auto object-cover shadow-lg"
+            blurAmount={20}
+            priority
+          />
         </div>
       ))}
     </section>

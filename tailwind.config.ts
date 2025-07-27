@@ -18,7 +18,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "sans-serif"],
+        "sans-medium": ["var(--font-geist-sans)", "sans-serif"],
         serif: ["var(--font-playfair)", "serif"],
       },
       colors: {
@@ -105,6 +106,12 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         'fade-in-up': 'fade-in-up 0.5s ease-out'
+      },
+      textColor: {
+        'framer-gray': '#a3a3a3',
+      },
+      fontSize: {
+        'framer-base': ['16px', '24px'],
       },
     },
   },

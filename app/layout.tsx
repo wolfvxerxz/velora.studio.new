@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { Inter } from "next/font/google"
-import { instagramSans, instagramSansCondensed, instagramSansScript, instagramSansHeadline } from './fonts'
+import { geistSans, instagramSans, instagramSansCondensed, instagramSansScript, instagramSansHeadline } from './fonts'
 import { ScrollProgress } from "@/components/scroll-progress"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -98,7 +98,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`${instagramSans.variable} ${instagramSansCondensed.variable} ${instagramSansScript.variable} ${instagramSansHeadline.variable} min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}
+      className={`${geistSans.variable} ${instagramSans.variable} ${instagramSansCondensed.variable} ${instagramSansScript.variable} ${instagramSansHeadline.variable} min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}
     >
       <head>
         {/* Google Analytics */}
