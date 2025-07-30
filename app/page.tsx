@@ -11,6 +11,7 @@ const landingImages = [
   { src: "/landingpages/final.webp", alt: "Final" },
   { src: "/landingpages/panelly.webp", alt: "Panelly" },
   { src: "/landingpages/copilot.webp", alt: "Copilot" },
+  { src: "/landingpages/starlabs.webp", alt: "Starlabs" },
   { src: "/landingpages/extsy.webp", alt: "Extsy" },
   { src: "/landingpages/flowsync.webp", alt: "Flowsync" },
   { src: "/landingpages/QuantVPN.webp", alt: "QuantVPN" },
@@ -23,21 +24,15 @@ const landingImages = [
 ]
 
 const brandLogos = [
-  { src: "/images/brands/253710_logo.webp", alt: "Ostium" },
-  { src: "/images/brands/279640_logo.webp", alt: "Whop" },
-  { src: "/images/brands/509420_logo.webp", alt: "Chaos Labs" },
-  { src: "/images/brands/513650_logo.webp", alt: "Ninety Eight" },
-  { src: "/images/brands/amenify.webp", alt: "Amenify" },
-  { src: "/images/brands/ecom.png", alt: "Ecom" },
+  { src: "/images/brands/webserv.webp", alt: "Ostium" },
+  { src: "/images/brands/extsy.webp", alt: "Whop" },
+  { src: "/images/brands/adalo.webp", alt: "Chaos Labs" },
+  { src: "/images/brands/nordeus.webp", alt: "Ninety Eight" },
+  { src: "/images/brands/zula.webp", alt: "Amenify" },
+  { src: "/images/brands/ecom.webp", alt: "Ecom" },
+  { src: "/images/brands/abide.webp", alt: "abide" },
 ];
 
-const brandLogos2 = [
-  { src: "/images/brands/logo.avif", alt: "Brand 1" },
-  { src: "/images/brands/logo1.avif", alt: "Brand 2" },
-  { src: "/images/brands/logo2.avif", alt: "Brand 3" },
-  { src: "/images/brands/logo sub.avif", alt: "Brand 4" },
-  { src: "/images/brands/Owlet_Logomark_white.avif", alt: "Owlet" },
-]
 
 function MiniLogoSlider() {
   // Duplicate logos once for seamless infinite scroll
@@ -89,7 +84,7 @@ function MiniLogoSlider() {
                 alt={logo.alt}
                 width={100}
                 height={35}
-                className={`object-contain grayscale opacity-80 h-[30px] w-auto${logo.src.includes('ecom') ? ' invert' : ''}`}
+                className={`object-contain opacity-80  h-[40px] w-auto${logo.src.includes('ecom') ? ' invert' : ''}`}
               />
             </div>
           ))}
