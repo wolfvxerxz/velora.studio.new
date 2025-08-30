@@ -204,7 +204,7 @@ export default function RootLayout({
         </Script>
         <meta name="google-site-verification" content="rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="min-h-screen bg-background font-geist-sans antialiased" style={{ backgroundImage: "url(/images/bg.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">

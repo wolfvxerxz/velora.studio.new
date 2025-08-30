@@ -1,19 +1,21 @@
-"use client";
-
-import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
+import { CalWrapper } from "./cal-wrapper";
 
 export default function Page(): React.ReactElement {
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({ namespace: "15min" });
-      cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
-    })();
-  }, []);
-
   return (
     <main className="min-h-screen bg-[#0f0f0f] py-8 sm:py-16">
       <div className="w-full px-0 sm:px-4 flex flex-col items-center">
+        {/* Back Navigation */}
+        <div className="w-full max-w-[500px] mb-6">
+          <a 
+            href="/" 
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Home
+          </a>
+        </div>
         <div className="bg-white/5 backdrop-blur-sm rounded-full px-5 py-2 flex flex-col sm:flex-row items-center gap-2 mb-8 border border-white/10 shadow-lg max-w-[500px] justify-center">
           <div className="flex -space-x-2 mr-2 flex-shrink-0">
             <img 
@@ -52,12 +54,7 @@ export default function Page(): React.ReactElement {
           </div>
         </div>
         <div className="bg-[#0f0f0f] rounded-2xl shadow-xl p-0 sm:p-10 w-full">
-          <Cal
-            namespace="15min"
-            calLink="vuk-m/15min"
-            style={{ width: "100%", minWidth: 0, minHeight: 350, overflow: "scroll", display: "block" }}
-            config={{ layout: "month_view" }}
-          />
+          <CalWrapper />
         </div>
       </div>
     </main>

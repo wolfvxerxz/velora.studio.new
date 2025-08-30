@@ -59,6 +59,34 @@ export function WorkSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const autoScrollRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Pause auto-scroll when user is scrolling the page
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout
+    let isScrolling = false
+
+    const handlePageScroll = () => {
+      if (!isScrolling) {
+        setIsAutoScrolling(false)
+        isScrolling = true
+      }
+      
+      // Resume auto-scroll after user stops scrolling
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        setIsAutoScrolling(true)
+        isScrolling = false
+      }, 1500) // Increased to 1.5 seconds for better user experience
+    }
+
+    // Use passive listener for better performance
+    window.addEventListener('scroll', handlePageScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener('scroll', handlePageScroll)
+      clearTimeout(scrollTimeout)
+    }
+  }, [])
+
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" })
@@ -83,13 +111,13 @@ export function WorkSection() {
       if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 300) {
         container.scrollLeft = 0
       } else {
-        // Otherwise, scroll smoothly
-        container.scrollBy({ left: 1, behavior: "auto" })
+        // Otherwise, scroll smoothly but more slowly
+        container.scrollBy({ left: 0.5, behavior: "auto" })
       }
     }
 
-    // Set up interval for smooth scrolling
-    autoScrollRef.current = setInterval(checkScroll, 20)
+    // Set up interval for smooth scrolling - reduced frequency to prevent interference
+    autoScrollRef.current = setInterval(checkScroll, 100) // Changed from 20ms to 100ms
 
     return () => {
       if (autoScrollRef.current) {

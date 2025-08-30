@@ -107,6 +107,15 @@
   }
 }
 
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes bounce {
   0%,
   100% {
@@ -163,6 +172,10 @@
 
 .animate-rotate {
   animation: rotate 10s linear infinite;
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
 }
 
 .animate-bounce {
