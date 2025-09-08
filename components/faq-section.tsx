@@ -42,10 +42,10 @@ export function FaqSection() {
         <div className="max-w-[640px] mx-auto">
           <AnimatedSection animation="fadeUp">
             <div className="text-left mb-16">
-              <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl font-velora-studio text-white mb-4">
                 Got Questions?
               </h2>
-              <p className="text-zinc-400 text-lg">
+              <p className="text-zinc-400 text-lg font-velora-studio">
                 Here's what our clients usually ask us
               </p>
             </div>

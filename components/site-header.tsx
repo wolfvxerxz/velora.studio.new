@@ -27,14 +27,14 @@ export function SiteHeader() {
           </Link>
           <Link href="/15-min">
             <button
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-velora-studio hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               <img
                 src="/images/vuk.avif"
                 alt="Vuk"
                 className="w-6 h-6 rounded-full"
               />
-              Book a Call With Vuk
+              Schedule a Call
             </button>
           </Link>
         </div>
@@ -50,7 +50,7 @@ export function SiteHeader() {
             Work
           </Link>
           <button
-            className="px-4 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-100 transition-all duration-200"
+            className="px-4 py-2 rounded-full bg-white text-black text-sm font-velora-studio hover:bg-gray-100 transition-all duration-200"
           >
             <span>Call</span>
           </button>

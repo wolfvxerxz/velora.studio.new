@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { Inter } from "next/font/google"
-import { geistSans, instagramSans, instagramSansCondensed, instagramSansScript, instagramSansHeadline } from './fonts'
 import { ScrollProgress } from "@/components/scroll-progress"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -98,7 +97,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`${geistSans.variable} ${instagramSans.variable} ${instagramSansCondensed.variable} ${instagramSansScript.variable} ${instagramSansHeadline.variable} min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}
+      className={`min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}
     >
       <head>
         {/* Google Analytics */}
@@ -204,7 +203,7 @@ export default function RootLayout({
         </Script>
         <meta name="google-site-verification" content="rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I" />
       </head>
-      <body className="min-h-screen bg-background font-geist-sans antialiased" style={{ backgroundImage: "url(/images/bg.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
+      <body className="min-h-screen bg-background font-sans antialiased" style={{ backgroundImage: "url(/images/bg.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">

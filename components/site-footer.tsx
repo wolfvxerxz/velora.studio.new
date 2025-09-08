@@ -11,19 +11,19 @@ export function SiteFooter() {
             <VeloraLogo className="h-6 w-auto text-white" />
           </Link>
           
-          <h2 className="text-white text-xl font-medium mb-6">Take your idea from zero → hero with Velora Studio.</h2>
+          <h2 className="text-white text-xl font-velora-studio mb-6">Take your idea from zero → hero with Velora Studio.</h2>
           
           <div className="flex flex-wrap gap-4 mb-6">
             <Link href="/15-min">
               <button
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-velora-studio hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <img
                   src="/images/vuk.avif"
                   alt="Vuk"
                   className="w-6 h-6 rounded-full"
                 />
-                Book a Call With Vuk
+                Schedule a Call
               </button>
             </Link>
           </div>

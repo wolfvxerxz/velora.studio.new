@@ -64,7 +64,7 @@ export default function ServicesPage() {
       />
       <main className="container mx-auto px-4 py-8">
         <Breadcrumbs />
-        <h1 className="text-4xl font-bold mb-8">Our Services</h1>
+        <h1 className="text-4xl font-velora-studio mb-8">Our Services</h1>
         {/* Add your services content here */}
       </main>
     </>

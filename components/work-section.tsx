@@ -20,7 +20,7 @@ const projects = [
     image: "/landingpages/copilot.webp",
     name: "Copilot Sync",
     category: "Developer Tools",
-  },
+  }, 
   {
     image: "/landingpages/topit.webp",
     name: "Topit",
@@ -140,10 +140,10 @@ export function WorkSection() {
         <div className="w-full max-w-[640px]">
           <AnimatedSection animation="fadeUp">
             <div className="text-left mb-16">
-              <h2 className="text-3xl sm:text-4xl font-medium text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl font-velora-studio text-white mb-4">
                 Our Work
               </h2>
-              <p className="text-zinc-400 text-lg">
+              <p className="text-zinc-400 text-lg font-velora-studio">
                 Take a look at some of our recent projects. Each one is crafted with care to deliver exceptional results.
               </p>
             </div>

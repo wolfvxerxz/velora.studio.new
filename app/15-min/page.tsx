@@ -2,7 +2,7 @@ import { CalWrapper } from "./cal-wrapper";
 
 export default function Page(): React.ReactElement {
   return (
-    <main className="min-h-screen bg-[#0f0f0f] py-8 sm:py-16">
+    <main className="min-h-screen py-8 sm:py-16" style={{ backgroundImage: "url(/images/bg.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
       <div className="w-full px-0 sm:px-4 flex flex-col items-center">
         {/* Back Navigation */}
         <div className="w-full max-w-[500px] mb-6">
@@ -39,10 +39,10 @@ export default function Page(): React.ReactElement {
           </span>
         </div>
         <div className="text-center mb-10">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-4 text-white gradient-text">
+          <h1 className="text-5xl sm:text-6xl font-velora-studio mb-4 text-white gradient-text">
             Book a 15-Minute Meeting
           </h1>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-4">
+          <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-4 font-velora-studio">
             Please select the time that fits you or just text me in{" "}
             <a href="https://wa.me/message/CRWTXVTJ2LCJO1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">WhatsApp</a>{" "}
             /{" "}
@@ -50,10 +50,10 @@ export default function Page(): React.ReactElement {
           </p>
           <div className="flex items-center justify-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-white text-sm font-medium">Only 2 spots left this month</span>
+            <span className="text-white text-sm font-velora-studio">Only 2 spots left this month</span>
           </div>
         </div>
-        <div className="bg-[#0f0f0f] rounded-2xl shadow-xl p-0 sm:p-10 w-full">
+        <div className="bg-black/40 backdrop-blur-sm rounded-2xl shadow-xl p-0 sm:p-10 w-full border border-white/10">
           <CalWrapper />
         </div>
       </div>

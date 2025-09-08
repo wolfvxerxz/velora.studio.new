@@ -14,7 +14,7 @@ Working on velora.studio website improvements and updates.
   - Fixed 404 errors and improved loading performance
 
 ### 2. Button Text Update
-- **Change**: Updated "Schedule Call" button text to "Book a Call With Vuk"
+- **Change**: Updated "Schedule Call" button text to "Schedule a Call"
 - **Location**: `app/page.tsx` line 141
 
 ### 3. Social Proof Section

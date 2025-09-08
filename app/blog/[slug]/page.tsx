@@ -122,7 +122,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl font-bold text-black dark:text-white mb-6 transition-colors duration-300 leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-velora-studio text-black dark:text-white mb-6 transition-colors duration-300 leading-tight">
               {post.title}
             </h1>
             
@@ -142,7 +142,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Table of Contents */}
             {post.toc && post.toc.length > 0 && (
               <div className="mb-10 p-6 bg-gray-50 dark:bg-zinc-800 rounded-xl">
-                <h2 className="text-lg font-semibold text-black dark:text-white mb-4">Table of Contents</h2>
+                <h2 className="text-lg font-velora-studio text-black dark:text-white mb-4">Table of Contents</h2>
                 <nav>
                   <ul className="space-y-2">
                     {post.toc.map((item) => (
@@ -183,7 +183,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Related Posts */}
             {relatedPosts.length > 0 && (
               <div className="mt-16 pt-8 border-t border-gray-200 dark:border-zinc-800">
-                <h2 className="text-xl font-semibold text-black dark:text-white mb-6">Related Articles</h2>
+                <h2 className="text-xl font-velora-studio text-black dark:text-white mb-6">Related Articles</h2>
                 <div className="grid gap-6 sm:grid-cols-2">
                   {relatedPosts.map((relatedPost) => (
                     <Link
@@ -195,7 +195,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                         <span className="text-[10px] sm:text-xs bg-gray-100 dark:bg-zinc-700 text-black dark:text-white px-1.5 sm:px-2 py-0.5 rounded-md transition-colors duration-300">
                           {relatedPost.category}
                         </span>
-                        <h3 className="mt-3 text-lg font-semibold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <h3 className="mt-3 text-lg font-velora-studio text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                           {relatedPost.title}
                         </h3>
                         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">

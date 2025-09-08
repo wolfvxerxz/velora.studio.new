@@ -18,7 +18,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
+        sans: ["GeistMedium", "sans-serif"],
+        "velora-studio": ["GeistMedium", "sans-serif"],
         "sans-medium": ["var(--font-geist-sans)", "sans-serif"],
         serif: ["var(--font-playfair)", "serif"],
       },
