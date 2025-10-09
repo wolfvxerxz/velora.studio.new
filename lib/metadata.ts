@@ -9,7 +9,7 @@ export const defaultMetadata: Metadata = {
     template: '%s | Velora Studio'
   },
   description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
-  keywords: ['web design', 'web development', 'custom websites', 'startup websites', 'business websites', 'UI/UX design', 'responsive design'],
+  keywords: ['web design agency', 'web development', 'custom website design', 'startup web design', 'SaaS website design', 'UI/UX design services', 'landing page design', 'high-converting websites', 'design subscription', 'unlimited design', 'velora studio'],
   authors: [{ name: 'Velora Studio' }],
   creator: 'Velora Studio',
   publisher: 'Velora Studio',
@@ -45,7 +45,7 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@velorastudio',
+    creator: '@velora_studio',
     images: [`${baseUrl}/twitter-image.jpg`],
   },
 }

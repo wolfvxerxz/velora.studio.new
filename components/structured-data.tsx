@@ -11,8 +11,11 @@ export function StructuredData() {
     "url": "https://velora.studio",
     "logo": "https://velora.studio/logo-v.svg",
     "sameAs": [
-      "https://twitter.com/velorastudio",
-      // Add other social media URLs when available
+      "https://twitter.com/velora_studio",
+      "https://www.linkedin.com/company/velorastudio/",
+      "https://www.instagram.com/studio.velora/",
+      "https://t.me/vukkm",
+      "https://wa.me/message/CRWTXVTJ2LCJO1"
     ],
     "address": {
       "@type": "PostalAddress",

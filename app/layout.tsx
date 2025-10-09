@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { Inter } from "next/font/google"
+import { Inter, Onest } from "next/font/google"
 import { ScrollProgress } from "@/components/scroll-progress"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -9,6 +9,12 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+})
+
+const onest = Onest({
+  subsets: ["latin"],
+  variable: "--font-onest",
   display: "swap",
 })
 
@@ -28,7 +34,7 @@ export const metadata: Metadata = {
     },
   },
   description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
-  keywords: ['web design', 'web development', 'custom websites', 'startup websites', 'business websites', 'UI/UX design', 'responsive design'],
+  keywords: ['web design agency', 'web development', 'custom website design', 'startup web design', 'SaaS website design', 'UI/UX design services', 'landing page design', 'high-converting websites', 'design subscription', 'unlimited design', 'velora studio'],
   authors: [{ name: 'Velora Studio' }],
   creator: 'Velora Studio',
   publisher: 'Velora Studio',
@@ -49,7 +55,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-site-verification',
+    google: 'rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I',
   },
   alternates: {
     canonical: '/',
@@ -74,7 +80,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Velora Studio | Custom Design & Development',
     description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
-    creator: '@velorastudio',
+    creator: '@velora_studio',
     images: ['https://velora.studio/twitter-image.jpg'],
   },
   category: 'technology',
@@ -97,7 +103,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`min-h-screen font-sans antialiased ${inter.variable} scroll-smooth dark`}
+      className={`min-h-screen font-sans antialiased ${inter.variable} ${onest.variable} scroll-smooth dark`}
     >
       <head>
         {/* Google Analytics */}
@@ -130,6 +136,10 @@ export default function RootLayout({
               },
               "sameAs": [
                 "https://twitter.com/velora_studio",
+                "https://www.linkedin.com/company/velorastudio/",
+                "https://www.instagram.com/studio.velora/",
+                "https://t.me/vukkm",
+                "https://wa.me/message/CRWTXVTJ2LCJO1"
               ]
             })
           }}
@@ -203,7 +213,7 @@ export default function RootLayout({
         </Script>
         <meta name="google-site-verification" content="rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased" style={{ backgroundImage: "url(/images/bg.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
+      <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">
