@@ -33,7 +33,7 @@ export function ProcessSection() {
             onMouseLeave={() => setHoveredStep(null)}
           >
             <div className="mb-6 relative">
-              <div className="w-full h-64 rounded-2xl border border-white/10 p-6 flex items-center justify-center transition-all duration-300" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)'}}>
+              <div className="w-full h-64 rounded-2xl border border-white/10 p-6 flex items-center justify-center transition-all duration-300" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)', boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                 <div className="relative">
                   {/* Animated Video Call Interface */}
                   <div className="relative">
@@ -46,6 +46,8 @@ export function ProcessSection() {
                           alt="Girl in video call"
                           width={160}
                           height={128}
+                          loading="lazy"
+                          quality={75}
                           className="w-full h-full object-cover rounded-md"
                         />
                         {/* Cal.com badge above girl's head */}
@@ -61,6 +63,8 @@ export function ProcessSection() {
                           alt="Boy in video call"
                           width={160}
                           height={128}
+                          loading="lazy"
+                          quality={75}
                           className="w-full h-full object-cover rounded-md"
                         />
                       </div>
@@ -73,6 +77,8 @@ export function ProcessSection() {
                         alt="Zoom control bar"
                         width={200}
                         height={40}
+                        loading="lazy"
+                        quality={75}
                         className="w-auto h-6 object-contain"
                       />
                     </div>
@@ -96,7 +102,7 @@ export function ProcessSection() {
             onMouseLeave={() => setHoveredStep(null)}
           >
             <div className="mb-6 relative">
-              <div className="w-full h-64 rounded-2xl border border-white/10 p-4 flex items-center justify-center transition-all duration-300 overflow-hidden" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)'}}>
+              <div className="w-full h-64 rounded-2xl border border-white/10 p-4 flex items-center justify-center transition-all duration-300 overflow-hidden" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)', boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                 <div className="relative w-full max-w-xl h-full flex items-center justify-center">
                   {/* Task Assignment Flow */}
                   <div className="space-y-2 w-full">
@@ -147,6 +153,8 @@ export function ProcessSection() {
                               alt="Vuk - Product Designer"
                               width={48}
                               height={48}
+                              loading="lazy"
+                              quality={75}
                               className="w-12 h-12 rounded-full border-2 border-white/20"
                             />
                             {step2Animation >= 2 && (
@@ -195,7 +203,7 @@ export function ProcessSection() {
             onMouseLeave={() => setHoveredStep(null)}
           >
             <div className="mb-6 relative">
-              <div className="w-full h-64 rounded-2xl border border-white/10 p-6 flex items-center justify-center transition-all duration-300 overflow-hidden" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)'}}>
+              <div className="w-full h-64 rounded-2xl border border-white/10 p-6 flex items-center justify-center transition-all duration-300 overflow-hidden" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)', boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                 <div className="relative w-full h-full flex items-start justify-center gap-12 pt-8">
                   {/* Before Image */}
                   <div className={`relative transition-all duration-700 flex flex-col items-center ${
@@ -210,6 +218,8 @@ export function ProcessSection() {
                         alt="Before Design"
                         width={320}
                         height={500}
+                        loading="lazy"
+                        quality={75}
                         className="w-80 h-auto object-cover object-top"
                       />
                     </div>
@@ -228,6 +238,8 @@ export function ProcessSection() {
                         alt="After Design"
                         width={320}
                         height={500}
+                        loading="lazy"
+                        quality={75}
                         className="w-80 h-auto object-cover object-top"
                       />
                     </div>

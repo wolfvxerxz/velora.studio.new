@@ -10,12 +10,16 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 })
 
 const onest = Onest({
   subsets: ["latin"],
   variable: "--font-onest",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 })
 
 export const metadata: Metadata = {
@@ -106,6 +110,12 @@ export default function RootLayout({
       className={`min-h-screen font-sans antialiased ${inter.variable} ${onest.variable} scroll-smooth dark`}
     >
       <head>
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://analytics.ahrefs.com" />
+        <link rel="preconnect" href="https://app.cal.com" />
+        <link rel="dns-prefetch" href="https://static.ads-twitter.com" />
+        
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HTR4C6B21F"

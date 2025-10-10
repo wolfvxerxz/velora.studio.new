@@ -19,7 +19,7 @@ export function HeroSection() {
         <div className="w-full max-w-[800px] flex flex-col items-center">
           
           {/* Testimonial avatars */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-full px-5 py-2 flex flex-col sm:flex-row items-center gap-2 mb-6 border border-white/10 shadow-lg max-w-full">
+          <div className="bg-white/5 backdrop-blur-sm rounded-full px-5 py-2 flex flex-col sm:flex-row items-center gap-2 mb-6 border border-white/10 shadow-lg max-w-full" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
             <div className="flex -space-x-2 mr-2 flex-shrink-0">
               <img 
                 src="/images/1.avif" 

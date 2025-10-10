@@ -2,12 +2,21 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import dynamic from "next/dynamic"
 
 import { useEffect, useRef, useState } from "react"
 import { SimpleFooter } from "@/components/simple-footer"
-import { ProcessSection } from "@/components/process-section"
-import { ServicesSection } from "@/components/services-section"
-import { TeamSection } from "@/components/team-section"
+
+// Lazy load components that are below the fold
+const ProcessSection = dynamic(() => import("@/components/process-section").then(mod => ({ default: mod.ProcessSection })), {
+  loading: () => <div className="h-96 animate-pulse bg-white/5" />
+})
+const ServicesSection = dynamic(() => import("@/components/services-section").then(mod => ({ default: mod.ServicesSection })), {
+  loading: () => <div className="h-96 animate-pulse bg-white/5" />
+})
+const TeamSection = dynamic(() => import("@/components/team-section").then(mod => ({ default: mod.TeamSection })), {
+  loading: () => <div className="h-96 animate-pulse bg-white/5" />
+})
 import { 
   FaBolt, 
   FaBook, 
@@ -28,7 +37,8 @@ const landingImages = [
     description: "We designed the full application for Extsy, creating a seamless product experience that empowered the team to sustain momentum and scale effectively.",
     metric: "$18.5M",
     metricLabel: "Fees Annualized",
-    graphColor: "#8b5cf6" // purple
+    graphColor: "#8b5cf6", // purple
+    logo: "/images/brands/extsy.svg"
   },
   { 
     src: "/landingpages/webserv.webp", 
@@ -37,7 +47,8 @@ const landingImages = [
     description: "We designed a performance-driven marketing platform for Webserv, helping treatment centers achieve measurable growth and patient acquisition.",
     metric: "200+",
     metricLabel: "Treatment Centers",
-    graphColor: "#ef4444" // red
+    graphColor: "#ef4444", // red
+    logo: "/images/brands/webserv.svg"
   },
   { 
     src: "/landingpages/nordeus.webp", 
@@ -46,7 +57,8 @@ const landingImages = [
     description: "We designed mobile gaming experiences for Nordeus, powering top sports games enjoyed by millions of champions around the world.",
     metric: "100M+",
     metricLabel: "Players Worldwide",
-    graphColor: "#ffffff" // white
+    graphColor: "#ffffff", // white
+    logo: "/images/brands/nordeus.svg"
   },
 ]
 
@@ -140,20 +152,22 @@ function MiniLogoSlider() {
         >
           {logos.map((logo, i) => (
             <div key={i} className="px-6 flex items-center justify-center min-w-[160px]">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={0}
-                height={140}
-                className={`object-contain opacity-80 w-auto ${
-                  logo.alt === "Ninety Eight" ? "h-[100px]" : "h-[140px]"
-                }`}
-                style={{ 
-                  width: 'auto',
-                  filter: logo.alt === "amenify" ? "grayscale(100%) brightness(500%) invert(1)" : 
-                          logo.alt === "Adalo" ? "grayscale(100%) brightness(300%)" : undefined
-                }}
-              />
+        <Image
+          src={logo.src}
+          alt={logo.alt}
+          width={0}
+          height={140}
+          loading="lazy"
+          quality={60}
+          className={`object-contain opacity-80 w-auto ${
+            logo.alt === "Ninety Eight" ? "h-[100px]" : "h-[140px]"
+          }`}
+          style={{
+            width: 'auto',
+            filter: logo.alt === "amenify" ? "grayscale(100%) brightness(500%) invert(1)" :
+                    logo.alt === "Adalo" ? "grayscale(100%) brightness(300%)" : undefined
+          }}
+        />
             </div>
           ))}
         </div>
@@ -376,9 +390,6 @@ export default function HomePage() {
         
         {/* Process Section */}
         <ProcessSection />
-        
-        {/* Industries & Services Section */}
-        <IndustriesSection />
 
         {/* Pricing Section */}
         <PricingSection />
@@ -867,20 +878,40 @@ function UseCasesSection() {
 }
 
 function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const closeMenu = () => setMobileMenuOpen(false);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   return (
-    <nav className="w-full border-b border-l border-r border-white/10 bg-[#080808]/95 backdrop-blur-sm py-4">
-      <div className="w-full px-6">
+    <nav className="w-full border-b border-l border-r border-white/10 bg-[#080808]/95 backdrop-blur-sm py-4 sticky top-0 z-50">
+      <div className="w-full px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <Image src="/logo-v.svg" alt="Velora Logo" width={32} height={32} />
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity z-50">
+            <Image src="/logo-v.svg" alt="Velora Logo" width={32} height={32} loading="eager" priority />
             <span className="text-white font-velora-studio text-lg">velora studio</span>
           </Link>
           
-          {/* Navigation Links */}
+          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
             <Link href="#work" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
-              Case Studies
+              Work
+            </Link>
+            <Link href="#services" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
+              Services
             </Link>
             <Link href="#testimonials" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
               Testimonials
@@ -888,18 +919,79 @@ function Navbar() {
             <Link href="#pricing" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
               Pricing
             </Link>
-            <Link href="/services" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
-              Services
+            <Link href="#team" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
+              Team
             </Link>
           </div>
           
-          {/* CTA Button */}
+          {/* Desktop CTA Button */}
           <Link 
             href="/15-min" 
-            className="bg-white text-black px-6 py-2 rounded-full text-sm font-velora-studio button-shadows hover:bg-white/90 transition-all duration-200"
+            className="hidden md:inline-block bg-white text-black px-6 py-2 rounded-full text-sm font-velora-studio button-shadows hover:bg-white/90 transition-all duration-200"
           >
             Free Redesign
           </Link>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+            aria-label="Toggle menu"
+          >
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden fixed inset-0 bg-[#080808] transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
+            <Link 
+              href="#work" 
+              onClick={closeMenu}
+              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
+            >
+              Work
+            </Link>
+            <Link 
+              href="#services" 
+              onClick={closeMenu}
+              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
+            >
+              Services
+            </Link>
+            <Link 
+              href="#testimonials" 
+              onClick={closeMenu}
+              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
+            >
+              Testimonials
+            </Link>
+            <Link 
+              href="#pricing" 
+              onClick={closeMenu}
+              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
+            >
+              Pricing
+            </Link>
+            <Link 
+              href="#team" 
+              onClick={closeMenu}
+              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
+            >
+              Team
+            </Link>
+            
+            {/* Mobile CTA Button */}
+            <Link 
+              href="/15-min" 
+              onClick={closeMenu}
+              className="bg-white text-black px-8 py-3 rounded-full text-lg font-velora-studio button-shadows hover:bg-white/90 transition-all duration-200 mt-4"
+            >
+              Free Redesign
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
@@ -919,27 +1011,33 @@ function HeroSection() {
               <div className="w-full mb-6 flex justify-center relative z-10">
                 <div className="bg-white/5 backdrop-blur-sm rounded-full px-4 py-1.5 flex flex-col sm:flex-row items-center gap-2 border border-white/10 shadow-lg w-fit">
                   <div className="flex -space-x-1.5 mr-2 flex-shrink-0">
-                    <Image 
-                      src="/images/1.avif" 
-                      alt="Client" 
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
-                    />
-                    <Image 
-                      src="/images/2.avif" 
-                      alt="Client" 
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
-                    />
-                    <Image 
-                      src="/images/3.avif" 
-                      alt="Client" 
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
-                    />
+                  <Image 
+                    src="/images/1.avif" 
+                    alt="Client" 
+                    width={24}
+                    height={24}
+                    loading="eager"
+                    priority
+                    className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
+                  />
+                  <Image 
+                    src="/images/2.avif" 
+                    alt="Client" 
+                    width={24}
+                    height={24}
+                    loading="eager"
+                    priority
+                    className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
+                  />
+                  <Image 
+                    src="/images/3.avif" 
+                    alt="Client" 
+                    width={24}
+                    height={24}
+                    loading="eager"
+                    priority
+                    className="w-6 h-6 rounded-full border-2 border-[#141414] object-cover"
+                  />
                   </div>
                   <span className="text-gray-300 text-xs min-w-0 break-words whitespace-normal text-center sm:text-left font-velora-studio">
                     38+ startups & founders chose velora.studio
@@ -950,13 +1048,13 @@ function HeroSection() {
             
             {/* Main Content */}
             <BounceInFromBottom delay={300} duration={500} earlyTrigger={true}>
-              <div className="space-y-5 mb-8 relative z-10">
-                  <div className="space-y-6">
-                    <p className="text-white text-[20px] md:text-[20px] leading-relaxed font-velora-studio">
+              <div className="space-y-4 md:space-y-5 mb-6 md:mb-8 relative z-10 px-2 md:px-0">
+                  <div className="space-y-4 md:space-y-6">
+                    <p className="text-white text-base sm:text-lg md:text-[20px] leading-relaxed font-velora-studio">
                       We collaborate with founders to design products that attract investors, go from 0→1, and get to market with speed.
                     </p>
                     <div className="space-y-3">
-                      <p className="text-white text-[20px] md:text-[18px] leading-relaxed font-velora-studio">
+                      <p className="text-white text-base sm:text-lg md:text-[18px] leading-relaxed font-velora-studio">
                         €2,815/mo for as much design as you need.
                       </p>
                     </div>
@@ -965,18 +1063,18 @@ function HeroSection() {
             </BounceInFromBottom>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8 relative z-10 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8 relative z-10 justify-center px-4 sm:px-0">
               <BounceInFromBottom delay={400} duration={500} earlyTrigger={true}>
-                <Link href="/15-min" className="group inline-flex items-center justify-center bg-white text-black px-8 py-3 rounded-full text-base font-velora-studio border border-black/10 button-shadows hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40">
+                <Link href="/15-min" className="group inline-flex items-center justify-center w-full sm:w-auto bg-white text-black px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-black/10 button-shadows hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40">
                   <span>Schedule Call</span>
-                  <div className="ml-2 flex items-center gap-1">
+                  <div className="ml-2 hidden sm:flex items-center gap-1">
                     <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">⌘</div>
                     <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">K</div>
                   </div>
                 </Link>
               </BounceInFromBottom>
               <BounceInFromBottom delay={500} duration={500} earlyTrigger={true}>
-                <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center bg-white/10 text-white px-8 py-3 rounded-full text-base font-velora-studio border border-white/20 hover:bg-white/20 transition-all duration-200">
+                <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center w-full sm:w-auto bg-white/10 text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-white/20 hover:bg-white/20 transition-all duration-200">
                   <span>See pricing</span>
                 </button>
               </BounceInFromBottom>
@@ -1015,21 +1113,32 @@ function WorkSection() {
         <div className="flex flex-col gap-16 mb-12">
           {landingImages.slice(0, 3).map((project, i) => (
             <BounceInFromBottom key={i} delay={i * 100} duration={500} earlyTrigger={true}>
-              <div className="space-y-6">
+              <>
+                <div className="space-y-4 md:space-y-6">
                 {/* Header with title, description, metric and graph */}
-                <div className="grid md:grid-cols-2 gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start p-4 md:p-0" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                   <div className="flex flex-col justify-between h-full">
                     <div>
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{project.title}</h3>
-                      <p className="text-white/70 text-sm md:text-base">{project.description}</p>
+                      <div className="mb-3">
+                        <Image
+                          src={project.logo}
+                          alt=""
+                          width={project.title === "Nordeus" ? 60 : project.title === "Webserv" ? 140 : 100}
+                          height={project.title === "Nordeus" ? 22 : project.title === "Webserv" ? 45 : 35}
+                          loading={i === 0 ? "eager" : "lazy"}
+                          quality={75}
+                          className="object-contain"
+                        />
+                      </div>
+                      <p className="text-white/70 text-sm md:text-base leading-relaxed">{project.description}</p>
                     </div>
                   </div>
 
                   <div className="flex flex-col justify-between h-full">
                     {/* Metric above graph */}
-                    <div className="mb-4 text-right">
-                      <span className="text-base md:text-lg font-bold text-white">{project.metric}</span>
-                      <span className="text-white/60 text-xs ml-1.5">{project.metricLabel}</span>
+                    <div className="mb-4 text-left md:text-right">
+                      <span className="text-lg md:text-xl font-bold text-white">{project.metric}</span>
+                      <span className="text-white/60 text-xs md:text-sm ml-1.5">{project.metricLabel}</span>
                     </div>
 
                     {/* Graph visualization */}
@@ -1084,34 +1193,38 @@ function WorkSection() {
                 </div>
 
                 {/* Image */}
-                <div className="group border border-white/20 p-1 rounded-xl hover:border-white/40 transition-all duration-300">
+                <div className="group border border-white/20 p-1 rounded-xl hover:border-white/40 transition-all duration-300 overflow-hidden">
                   <Image
                     src={project.src}
                     alt={project.alt}
                     width={900}
                     height={600}
                     className="rounded-lg w-full h-auto object-cover shadow-lg group-hover:shadow-2xl transition-all duration-300"
-                    priority={i < 2}
+                    priority={i === 0}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    quality={i === 0 ? 90 : 75}
+                    sizes="(max-width: 768px) 100vw, 900px"
                   />
                 </div>
-              </div>
+                </div>
+              </>
             </BounceInFromBottom>
           ))}
         </div>
         
         {/* Buttons below work section */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center w-full mt-8">
-          <BounceInFromBottom delay={200} duration={500} earlyTrigger={true}>
-            <Link href="/15-min" className="group inline-flex items-center justify-center w-full sm:w-auto bg-white text-black px-8 py-3 rounded-full text-base font-velora-studio font-velora-studio border border-black/10 shadow-[0_6px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center w-full mt-8 px-4 sm:px-0">
+          <BounceInFromBottom delay={400} duration={500} earlyTrigger={true}>
+            <Link href="/15-min" className="group inline-flex items-center justify-center w-full sm:w-auto bg-white text-black px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-black/10 hover:bg-white/90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
               <span>Schedule Call</span>
-              <div className="ml-2 flex items-center gap-1">
+              <div className="ml-2 hidden sm:flex items-center gap-1">
                 <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">⌘</div>
                 <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">K</div>
               </div>
             </Link>
           </BounceInFromBottom>
-          <BounceInFromBottom delay={300} duration={500} earlyTrigger={true}>
-            <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center bg-[#222] text-white px-8 py-3 rounded-full text-base font-velora-studio border border-white/10 hover:bg-[#333] transition-colors duration-200">See pricing</button>
+          <BounceInFromBottom delay={500} duration={500} earlyTrigger={true}>
+            <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center w-full sm:w-auto bg-[#222] text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-white/10 hover:bg-[#333] transition-colors duration-200" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>See pricing</button>
           </BounceInFromBottom>
         </div>
       </div>

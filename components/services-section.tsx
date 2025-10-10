@@ -67,7 +67,7 @@ export function ServicesSection() {
   ]
 
   return (
-    <section className="py-20 border border-dashed border-white/10">
+    <section id="services" className="py-20 border border-dashed border-white/10">
       <div className="w-full max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column - Header and CTA (Smaller width) */}
@@ -105,7 +105,7 @@ export function ServicesSection() {
               const IconComponent = service.icon
               return (
                 <div key={index}>
-                  <div className="border border-white/10 h-full card-shadows" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)'}}>
+                  <div className="border border-white/10 h-full card-shadows" style={{background: 'linear-gradient(to bottom, #0F0F0F, #090909)', boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                     {/* Visual - Image First */}
                     <div className={`relative overflow-hidden ${service.title === "Product design" || service.title === "Pitch Decks & Collateral" ? 'bg-black' : 'bg-white/5'}`}>
                       {service.isVideo ? (
@@ -115,6 +115,7 @@ export function ServicesSection() {
                           loop
                           muted
                           playsInline
+                          loading="lazy"
                           className="w-full h-48 object-cover"
                         />
                       ) : (
@@ -123,6 +124,8 @@ export function ServicesSection() {
                           alt={service.title}
                           width={400}
                           height={250}
+                          loading="lazy"
+                          quality={75}
                           className={`w-full h-48 ${service.title === "Motion Design" || service.title === "Product design" || service.title === "Pitch Decks & Collateral" ? 'object-contain' : service.title === "Website Design" ? 'object-cover object-top' : 'object-cover'}`}
                         />
                       )}

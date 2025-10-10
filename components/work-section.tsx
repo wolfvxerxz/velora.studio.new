@@ -180,6 +180,7 @@ export function WorkSection() {
               <div
                 key={`${project.name}-${index}`}
                 className="flex-shrink-0 w-[250px] sm:w-[300px] md:w-[350px] rounded-lg overflow-hidden bg-white dark:bg-[#0f0f0f] border border-gray-100 dark:border-zinc-800 hover:shadow-lg transition-all duration-300"
+                style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}
               >
                 <div className="relative aspect-[4/3] w-full">
                   <Image src={project.image || "/placeholder.svg"} alt={project.name} fill className={`object-cover${project.name === "QuantVPN" ? " object-contain p-8 bg-white" : ""}`} />

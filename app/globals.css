@@ -17,6 +17,20 @@
     scroll-behavior: smooth;
   }
   
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Hardware acceleration for animations */
+  .animate-pulse,
+  .hover\\:shadow-lg,
+  .transition-all,
+  .transition-transform,
+  .transition-colors {
+    will-change: auto;
+  }
+  
   :root {
     --background: 3 3% 3%;
     --foreground: 0 0% 0%;

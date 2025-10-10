@@ -22,7 +22,7 @@ export function TeamSection() {
   ]
 
   return (
-    <section className="py-16 border border-dashed border-white/10">
+    <section id="team" className="py-16 border border-dashed border-white/10">
       <div className="w-full max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8">
@@ -37,12 +37,14 @@ export function TeamSection() {
           <div className="flex justify-center gap-4">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-left w-44">
-                <div className="mb-2 overflow-hidden rounded-lg">
+                <div className="mb-2 overflow-hidden rounded-lg" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                   <Image
                     src={member.image}
                     alt={member.name}
                     width={180}
                     height={180}
+                    loading="lazy"
+                    quality={80}
                     className="w-full h-44 object-cover"
                   />
                 </div>
@@ -63,6 +65,7 @@ export function TeamSection() {
                   alt="Velora Studio Logo"
                   width={24}
                   height={24}
+                  loading="lazy"
                   className="w-6 h-6"
                 />
                 <span className="text-white text-lg font-bold font-velora-studio">

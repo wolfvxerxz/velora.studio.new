@@ -25,7 +25,7 @@ export function TestimonialsSection() {
             <div className="space-y-12">
               {/* Testimonial 1 - Victor Uhl */}
               <AnimatedSection animation="fadeUp" delay={200}>
-                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300">
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-6">
                       <div>
@@ -87,7 +87,7 @@ export function TestimonialsSection() {
 
               {/* Testimonial 2 */}
               <AnimatedSection animation="fadeUp" delay={300}>
-                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300">
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-6">
                       <div>
@@ -146,7 +146,7 @@ export function TestimonialsSection() {
 
               {/* Testimonial 3 */}
               <AnimatedSection animation="fadeUp" delay={400}>
-                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300">
+                <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-gray-50 dark:bg-[#0f0f0f] transition-colors duration-300" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-6">
                       <div>
