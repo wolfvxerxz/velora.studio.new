@@ -8,9 +8,6 @@ import { useEffect, useRef, useState } from "react"
 import { SimpleFooter } from "@/components/simple-footer"
 
 // Lazy load components that are below the fold
-const ProcessSection = dynamic(() => import("@/components/process-section").then(mod => ({ default: mod.ProcessSection })), {
-  loading: () => <div className="h-96 animate-pulse bg-white/5" />
-})
 const ServicesSection = dynamic(() => import("@/components/services-section").then(mod => ({ default: mod.ServicesSection })), {
   loading: () => <div className="h-96 animate-pulse bg-white/5" />
 })
@@ -25,8 +22,12 @@ import {
   FaStar, 
   FaChartBar, 
   FaMobile, 
-  FaGlobe 
+  FaGlobe,
+  FaCalendarAlt,
+  FaUsers,
+  FaClipboardCheck
 } from "react-icons/fa"
+import { FaTelegram } from "react-icons/fa6"
 import { SiFramer } from "react-icons/si"
 
 const landingImages = [
@@ -142,16 +143,16 @@ function MiniLogoSlider() {
     <div className="w-full flex flex-col justify-center py-2">
       <div className="relative max-w-[700px] w-full overflow-hidden">
         {/* Left fade */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10" style={{background: 'linear-gradient(to right, #080808 0%, transparent 100%)'}} />
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-8 sm:w-12 md:w-16 z-10" style={{background: 'linear-gradient(to right, #080808 0%, transparent 100%)'}} />
         {/* Right fade */}
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10" style={{background: 'linear-gradient(to left, #080808 0%, transparent 100%)'}} />
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-8 sm:w-12 md:w-16 z-10" style={{background: 'linear-gradient(to left, #080808 0%, transparent 100%)'}} />
         <div
           ref={containerRef}
           className="flex whitespace-nowrap"
           style={{ willChange: "transform" }}
         >
           {logos.map((logo, i) => (
-            <div key={i} className="px-6 flex items-center justify-center min-w-[160px]">
+            <div key={i} className="px-4 sm:px-5 md:px-6 flex items-center justify-center min-w-[120px] sm:min-w-[140px] md:min-w-[160px]">
         <Image
           src={logo.src}
           alt={logo.alt}
@@ -159,8 +160,9 @@ function MiniLogoSlider() {
           height={140}
           loading="lazy"
           quality={60}
+          sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 140px"
           className={`object-contain opacity-80 w-auto ${
-            logo.alt === "Ninety Eight" ? "h-[100px]" : "h-[140px]"
+            logo.alt === "Ninety Eight" ? "h-[70px] sm:h-[80px] md:h-[100px]" : "h-[100px] sm:h-[120px] md:h-[140px]"
           }`}
           style={{
             width: 'auto',
@@ -369,7 +371,7 @@ export default function HomePage() {
         </div>
       </div>
       
-      <div className="w-full max-w-6xl mx-auto px-4 pb-8">
+      <div className="w-full max-w-6xl mx-auto px-3 sm:px-4 pb-6 sm:pb-8">
         {/* Hero Section */}
         <HeroSection />
         
@@ -385,11 +387,11 @@ export default function HomePage() {
         {/* Services Section */}
         <ServicesSection />
         
-        {/* Testimonials Section */}
-        <TestimonialsSection />
-        
         {/* Process Section */}
         <ProcessSection />
+        
+        {/* Testimonials Section */}
+        <TestimonialsSection />
 
         {/* Pricing Section */}
         <PricingSection />
@@ -397,11 +399,14 @@ export default function HomePage() {
         {/* Team Section */}
         <TeamSection />
 
+        {/* Landing Pages Section */}
+        <LandingPagesSection />
+
         {/* CTA Section */}
-        <section className="pt-16 pb-0 mb-0 border border-dashed border-white/10">
-          <div className="w-full max-w-6xl mx-auto px-4 pb-16">
+        <section className="pt-12 md:pt-16 pb-0 mb-0 border border-dashed border-white/10">
+          <div className="w-full max-w-6xl mx-auto px-4 pb-12 md:pb-16">
             <div className="max-w-[800px] mx-auto">
-              <div className="relative border border-white/10 rounded-3xl p-12 md:p-16 text-center overflow-hidden bg-black/40">
+              <div className="relative border border-white/10 rounded-2xl md:rounded-3xl p-8 sm:p-10 md:p-12 lg:p-16 text-center overflow-hidden bg-black/40">
                 {/* Animated Grid Pattern */}
                 <div 
                   className="absolute inset-0 opacity-20 pointer-events-none"
@@ -434,21 +439,20 @@ export default function HomePage() {
                 
                 {/* Content */}
                 <div className="relative z-10">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-velora-studio">
-                    Ready to <span className="text-white">generate</span> more{" "}
-                    <span className="text-white">users</span>,{" "}
-                    <span className="text-white">revenue</span> & <span className="text-white">attention</span>?
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 font-velora-studio px-2">
+                    Let's turn your product into a{" "}
+                    <span className="text-white">revenue-generating</span> machine
                   </h2>
-                  <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-8 font-velora-studio">
-                    Stop guessing what's wrong with your site. We'll give you a free audit that shows you the exact areas to improve for higher conversions.
+                  <p className="text-white/60 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 font-velora-studio px-4">
+                    Book a free 15-minute call and we'll show you exactly how to improve your design, boost conversions, and attract more customers.
                   </p>
                   <Link 
                     href="/15-min"
-                    className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full text-lg font-velora-studio border border-black/10 button-shadows hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40"
+                    className="inline-flex items-center justify-center bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-velora-studio border border-black/10 button-shadows hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40 w-full sm:w-auto max-w-xs sm:max-w-none"
                   >
-                    Yes, I'm Ready To Scale
-                    <span className="ml-2 w-6 h-6 bg-black rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    Book Your Free Call
+                    <span className="ml-2 w-5 h-5 sm:w-6 sm:h-6 bg-black rounded-full flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </span>
@@ -509,6 +513,127 @@ export default function HomePage() {
   )
 }
 
+function ProcessSection() {
+  const steps = [
+    {
+      step: "Step 1",
+      icon: FaCalendarAlt,
+      title: "You schedule a free intro call",
+      description: "We understand your business and create design solutions tailored to your goals and budget.",
+      color: "#f97316" // orange
+    },
+    {
+      step: "Step 2", 
+      icon: FaUsers,
+      title: "We assign a world-class design team",
+      description: "Dedicated to your product managing every detail so you can stay focused on growing your business.",
+      color: "#3b82f6" // blue
+    },
+    {
+      step: "Step 3",
+      icon: FaClipboardCheck,
+      title: "We deliver results every day",
+      description: "Expect daily progress updates as we move through your backlog working side-by-side with you at every stage.",
+      color: "#10b981" // green
+    }
+  ]
+
+  return (
+    <section className="w-full py-16 px-4 border border-dashed border-white/10">
+      <div className="max-w-6xl mx-auto">
+        <BounceInFromBottom delay={0} duration={500} earlyTrigger={true}>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 font-velora-studio">
+              Our Process
+            </h2>
+          </div>
+        </BounceInFromBottom>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {steps.map((step, index) => {
+            const IconComponent = step.icon;
+            return (
+              <BounceInFromBottom key={index} delay={index * 200} duration={500} earlyTrigger={true}>
+                <div className="relative">
+                  {/* Step Label */}
+                  <div className="mb-4">
+                    <span className="inline-block bg-[#1a1a1a] text-white text-sm font-velora-studio px-3 py-1 rounded-lg border border-white/10">
+                      {step.step}
+                    </span>
+                  </div>
+                  
+                  {/* Card */}
+                  <div className="bg-[#0f0f0f] border border-white/10 rounded-xl px-6 py-6 relative overflow-hidden h-48 flex flex-col">
+                    {/* Window Controls */}
+                    <div className="absolute top-3 left-3 flex gap-1.5">
+                      <div className="w-2.5 h-2.5 bg-red-500 rounded-full"></div>
+                      <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full"></div>
+                      <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 flex flex-col justify-center gap-3">
+                      <div className="flex items-center gap-3 flex-nowrap">
+                        <IconComponent className="text-xl flex-shrink-0" style={{ color: step.color }} />
+                        <h3 className="text-base font-bold font-velora-studio whitespace-nowrap" style={{ color: step.color }}>
+                          {step.title}
+                        </h3>
+                      </div>
+                      <p className="text-white/70 text-sm leading-relaxed font-velora-studio">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </BounceInFromBottom>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LandingPagesSection() {
+  const landingPages = [
+    { src: "/landingpages/bento.png", alt: "Bento Landing Page", title: "Bento" },
+    { src: "/landingpages/crypto.png", alt: "Crypto Landing Page", title: "Crypto" },
+    { src: "/landingpages/copilot.webp", alt: "Copilot Landing Page", title: "Copilot" },
+    { src: "/landingpages/echoai.png", alt: "EchoAI Landing Page", title: "EchoAI" },
+    { src: "/landingpages/final.webp", alt: "Final Landing Page", title: "Final" },
+    { src: "/landingpages/flowsync.webp", alt: "Flowsync Landing Page", title: "Flowsync" },
+    { src: "/landingpages/lumina-app.webp", alt: "Lumina App Landing Page", title: "Lumina App" },
+    { src: "/landingpages/oasis.png", alt: "Oasis Landing Page", title: "Oasis" },
+    { src: "/landingpages/otakon.png", alt: "Otakon Landing Page", title: "Otakon" },
+    { src: "/landingpages/relo.webp", alt: "Relo Landing Page", title: "Relo" },
+    { src: "/landingpages/wolfmail.webp", alt: "Wolfmail Landing Page", title: "Wolfmail" }
+  ]
+
+  return (
+    <section className="w-full py-16 px-4 border border-dashed border-white/10">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 gap-6">
+          {landingPages.map((page, index) => (
+            <BounceInFromBottom key={index} delay={index * 100} duration={500} earlyTrigger={true}>
+              <div className="border border-white/20 rounded-xl overflow-hidden mx-auto" style={{maxWidth: '800px'}}>
+                <Image
+                  src={page.src}
+                  alt={page.alt}
+                  width={600}
+                  height={450}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                  quality={75}
+                />
+              </div>
+            </BounceInFromBottom>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function AnimatedCounter({ end, prefix = "", suffix = "" }: { end: number; prefix?: string; suffix?: string }) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -555,53 +680,20 @@ function AnimatedCounter({ end, prefix = "", suffix = "" }: { end: number; prefi
 }
 
 function PricingSection() {
-  const [isAnnual, setIsAnnual] = useState(false);
-  
-  // Calculate prices
-  const basicMonthly = 2815;
-  const proMonthly = 4515;
-  const basicAnnual = Math.round(basicMonthly * 12 * 0.8); // 20% discount
-  const proAnnual = Math.round(proMonthly * 12 * 0.8); // 20% discount
-
-  const basicPrice = isAnnual ? basicAnnual : basicMonthly;
-  const proPrice = isAnnual ? proAnnual : proMonthly;
-  const billingPeriod = isAnnual ? "/ Per Year" : "/ Per Month";
+  // Monthly prices only
+  const basicPrice = 2815;
+  const proPrice = 4515;
+  const billingPeriod = "/ Per Month";
   
   return (
     <section id="pricing" className="w-full py-12 px-4 border border-dashed border-white/10">
       <div className="max-w-[800px] mx-auto">
         <BounceInFromBottom delay={0} duration={500} earlyTrigger={true}>
           <div className="text-center mb-8">
-            <p className="text-white/60 text-xs uppercase tracking-wider mb-2 font-velora-studio">PRICING</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 font-velora-studio">Our Pricing</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 font-velora-studio">Simple, transparent pricing</h2>
             <p className="text-[#A3A3A3] text-base leading-relaxed font-velora-studio mb-6">
-              For info, limits and rates, explore a <Link href="#faq" className="underline hover:text-white transition-colors">detailed pricing breakdown ↗</Link>.
+              Choose the plan that works best for you. No hidden fees, cancel anytime.
             </p>
-          </div>
-        </BounceInFromBottom>
-        
-        {/* Billing Toggle */}
-        <BounceInFromBottom delay={100} duration={500} earlyTrigger={true}>
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <span className={`text-base font-velora-studio transition-colors duration-200 ${!isAnnual ? 'text-white' : 'text-white/50'}`}>
-              Monthly
-            </span>
-            
-            <button
-              onClick={() => setIsAnnual(!isAnnual)}
-              className="relative inline-flex h-8 w-16 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white/40"
-              style={{ backgroundColor: isAnnual ? '#ffffff' : '#4a4a4a' }}
-            >
-              <span
-                className={`inline-block h-6 w-6 transform rounded-full bg-black transition-transform duration-300 ${
-                  isAnnual ? 'translate-x-9' : 'translate-x-1'
-                }`}
-              />
-            </button>
-            
-            <span className={`text-base font-velora-studio transition-colors duration-200 ${isAnnual ? 'text-white' : 'text-white/50'}`}>
-              Annually <span className="text-green-400">(Save 20%)</span>
-            </span>
           </div>
         </BounceInFromBottom>
         
@@ -635,14 +727,6 @@ function PricingSection() {
                     </svg>
                   </div>
                   2 updates per week
-                </li>
-                <li className="flex items-center text-white text-sm font-velora-studio">
-                  <div className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  Senior Designer (Previously at Meta, Netflix, Hubspot, Expa & Founding designer at 25+ startups)
                 </li>
                 <li className="flex items-center text-white text-sm font-velora-studio">
                   <div className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center mr-3 flex-shrink-0">
@@ -730,14 +814,6 @@ function PricingSection() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  Senior Designer (Previously at Meta, Netflix, Hubspot, Expa & Founding designer at 25+ startups)
-                </li>
-                <li className="flex items-center text-white text-sm font-velora-studio">
-                  <div className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
                   Private Slack Channel
                 </li>
                 <li className="flex items-center text-white text-sm font-velora-studio">
@@ -797,31 +873,31 @@ function PricingSection() {
 
 function StatsSection() {
   return (
-    <section className="w-full py-16 px-4 border border-white/10">
+    <section className="w-full py-12 sm:py-14 md:py-16 px-3 sm:px-4 border border-white/10">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
           <BounceInFromBottom delay={0} duration={500} earlyTrigger={true}>
-            <div className="py-8 md:py-0">
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
+            <div className="py-6 sm:py-8 md:py-0">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
                 <AnimatedCounter end={38} suffix="+" />
               </h3>
-              <p className="text-white/60 text-sm">startups & founders</p>
+              <p className="text-white/60 text-xs sm:text-sm">startups & founders</p>
             </div>
           </BounceInFromBottom>
           <BounceInFromBottom delay={100} duration={500} earlyTrigger={true}>
-            <div className="py-8 md:py-0">
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
+            <div className="py-6 sm:py-8 md:py-0">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
                 <AnimatedCounter end={15} prefix="$" suffix="M+" />
               </h3>
-              <p className="text-white/60 text-sm">in funding raised by clients</p>
+              <p className="text-white/60 text-xs sm:text-sm">in funding raised by clients</p>
             </div>
           </BounceInFromBottom>
           <BounceInFromBottom delay={200} duration={500} earlyTrigger={true}>
-            <div className="py-8 md:py-0">
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
+            <div className="py-6 sm:py-8 md:py-0">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
                 <AnimatedCounter end={120} suffix="+" />
               </h3>
-              <p className="text-white/60 text-sm">products launched</p>
+              <p className="text-white/60 text-xs sm:text-sm">products launched</p>
             </div>
           </BounceInFromBottom>
         </div>
@@ -843,28 +919,28 @@ function UseCasesSection() {
   ]
 
   return (
-    <section className="w-full py-20 px-4 border border-white/10">
+    <section className="w-full py-12 sm:py-16 md:py-20 px-3 sm:px-4 border border-white/10">
       <div className="max-w-6xl mx-auto">
         <BounceInFromBottom delay={0} duration={500} earlyTrigger={true}>
-          <div className="text-center mb-4">
-            <p className="text-white/60 text-sm mb-4">Use Cases</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="text-center mb-3 sm:mb-4 px-2">
+            <p className="text-white/60 text-xs sm:text-sm mb-3 sm:mb-4">Use Cases</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
               What Founders Achieve with Velora Studio
             </h2>
-            <p className="text-white/60 text-base max-w-3xl mx-auto">
+            <p className="text-white/60 text-sm sm:text-base max-w-3xl mx-auto">
               From raising capital to scaling revenue, Velora designs create outcomes that move businesses forward.
             </p>
           </div>
         </BounceInFromBottom>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-10 md:mt-12">
           {outcomes.map((outcome, index) => {
             const IconComponent = outcome.icon;
             return (
               <BounceInFromBottom key={index} delay={index * 50} duration={500} earlyTrigger={true}>
-                <div className="rounded-lg p-6 border border-white/10 flex items-center gap-3 h-24">
-                  <IconComponent className="text-3xl flex-shrink-0" style={{ color: outcome.color }} />
-                  <h3 className="text-white font-normal text-base" style={{ color: outcome.color }}>
+                <div className="rounded-lg p-4 sm:p-5 md:p-6 border border-white/10 flex flex-col sm:flex-row items-center sm:gap-3 gap-2 h-auto sm:h-24">
+                  <IconComponent className="text-2xl sm:text-3xl flex-shrink-0" style={{ color: outcome.color }} />
+                  <h3 className="text-white font-normal text-sm sm:text-base text-center sm:text-left" style={{ color: outcome.color }}>
                     {outcome.title}
                   </h3>
                 </div>
@@ -878,120 +954,27 @@ function UseCasesSection() {
 }
 
 function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const closeMenu = () => setMobileMenuOpen(false);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [mobileMenuOpen]);
-
   return (
-    <nav className="w-full border-b border-l border-r border-white/10 bg-[#080808]/95 backdrop-blur-sm py-4 sticky top-0 z-50">
-      <div className="w-full px-4 md:px-6">
+    <nav className="w-full border-b border-l border-r border-white/10 bg-[#080808]/95 backdrop-blur-sm py-3 sm:py-4">
+      <div className="w-full px-3 sm:px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity z-50">
-            <Image src="/logo-v.svg" alt="Velora Logo" width={32} height={32} loading="eager" priority />
-            <span className="text-white font-velora-studio text-lg">velora studio</span>
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <Image src="/logo-v.svg" alt="Velora Studio" width={40} height={40} className="sm:w-12 sm:h-12" loading="eager" priority />
+            <span className="ml-3 text-white font-velora-studio text-sm sm:text-base font-bold">Velora Studio</span>
           </Link>
           
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="#work" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
-              Work
-            </Link>
-            <Link href="#services" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
-              Services
-            </Link>
-            <Link href="#testimonials" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
-              Testimonials
-            </Link>
-            <Link href="#pricing" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
-              Pricing
-            </Link>
-            <Link href="#team" className="text-white/70 hover:text-white text-sm font-velora-studio transition-colors">
-              Team
-            </Link>
-          </div>
-          
-          {/* Desktop CTA Button */}
+          {/* CTA Button */}
           <Link 
             href="/15-min" 
-            className="hidden md:inline-block bg-white text-black px-6 py-2 rounded-full text-sm font-velora-studio button-shadows hover:bg-white/90 transition-all duration-200"
+            className="inline-flex items-center justify-center bg-white text-black px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-velora-studio border border-black/10 button-shadows hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40"
           >
-            Free Redesign
+            <span>Schedule Call</span>
+            <div className="ml-2 hidden sm:flex items-center gap-1">
+              <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">⌘</div>
+              <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">K</div>
+            </div>
           </Link>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-1.5"
-            aria-label="Toggle menu"
-          >
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className={`md:hidden fixed inset-0 bg-[#080808] transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-          <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
-            <Link 
-              href="#work" 
-              onClick={closeMenu}
-              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
-            >
-              Work
-            </Link>
-            <Link 
-              href="#services" 
-              onClick={closeMenu}
-              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
-            >
-              Services
-            </Link>
-            <Link 
-              href="#testimonials" 
-              onClick={closeMenu}
-              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
-            >
-              Testimonials
-            </Link>
-            <Link 
-              href="#pricing" 
-              onClick={closeMenu}
-              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
-            >
-              Pricing
-            </Link>
-            <Link 
-              href="#team" 
-              onClick={closeMenu}
-              className="text-white text-2xl font-velora-studio hover:opacity-70 transition-opacity"
-            >
-              Team
-            </Link>
-            
-            {/* Mobile CTA Button */}
-            <Link 
-              href="/15-min" 
-              onClick={closeMenu}
-              className="bg-white text-black px-8 py-3 rounded-full text-lg font-velora-studio button-shadows hover:bg-white/90 transition-all duration-200 mt-4"
-            >
-              Free Redesign
-            </Link>
-          </div>
         </div>
       </div>
     </nav>
@@ -1000,11 +983,11 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section className="w-full flex flex-col items-center border-l border-r border-dashed py-8 border-white/10">
+    <section className="w-full flex flex-col items-center border-l border-r border-dashed py-6 sm:py-8 border-white/10">
       {/* Main Hero Card */}
-      <div className="w-full max-w-2xl mx-auto">
+      <div className="w-full max-w-2xl mx-auto px-2 sm:px-0">
         <BounceInFromBottom delay={0} duration={500} earlyTrigger={true}>
-          <div className="bg-[#080808] rounded-2xl p-8 md:p-10 relative text-center">
+          <div className="bg-[#080808] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 relative text-center">
             
             {/* Trusted By Section */}
             <BounceInFromBottom delay={200} duration={500} earlyTrigger={true}>
@@ -1074,9 +1057,10 @@ function HeroSection() {
                 </Link>
               </BounceInFromBottom>
               <BounceInFromBottom delay={500} duration={500} earlyTrigger={true}>
-                <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center w-full sm:w-auto bg-white/10 text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-white/20 hover:bg-white/20 transition-all duration-200">
-                  <span>See pricing</span>
-                </button>
+                <a href="https://t.me/uxvuk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full sm:w-auto bg-white/10 text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-white/20 hover:bg-white/20 transition-all duration-200">
+                  <FaTelegram className="w-4 h-4 mr-2 text-[#0088cc]" />
+                  <span>Chat</span>
+                </a>
               </BounceInFromBottom>
             </div>
             
@@ -1108,18 +1092,27 @@ function HeroSection() {
 
 function WorkSection() {
   return (
-    <section id="work" className="w-full py-20 px-4 border border-dashed border-white/10">
+    <section id="work" className="w-full py-12 md:py-16 lg:py-20 px-4 border border-dashed border-white/10">
       <div className="max-w-[900px] mx-auto">
-        <div className="flex flex-col gap-16 mb-12">
+        {/* Header */}
+        <BounceInFromBottom delay={0} duration={500} earlyTrigger={true}>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 font-velora-studio">
+              Our Work
+            </h2>
+          </div>
+        </BounceInFromBottom>
+
+        <div className="flex flex-col gap-8 md:gap-12 lg:gap-16 mb-8 md:mb-12">
           {landingImages.slice(0, 3).map((project, i) => (
             <BounceInFromBottom key={i} delay={i * 100} duration={500} earlyTrigger={true}>
               <>
-                <div className="space-y-4 md:space-y-6">
+                <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 {/* Header with title, description, metric and graph */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start p-4 md:p-0" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-start p-3 sm:p-4 md:p-0" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
                   <div className="flex flex-col justify-between h-full">
                     <div>
-                      <div className="mb-3">
+                      <div className="mb-2 sm:mb-3">
                         <Image
                           src={project.logo}
                           alt=""
@@ -1127,18 +1120,19 @@ function WorkSection() {
                           height={project.title === "Nordeus" ? 22 : project.title === "Webserv" ? 45 : 35}
                           loading={i === 0 ? "eager" : "lazy"}
                           quality={75}
-                          className="object-contain"
+                          sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 140px"
+                          className="object-contain h-auto max-h-8 sm:max-h-10 md:max-h-12"
                         />
                       </div>
-                      <p className="text-white/70 text-sm md:text-base leading-relaxed">{project.description}</p>
+                      <p className="text-white/70 text-xs sm:text-sm md:text-base leading-relaxed">{project.description}</p>
                     </div>
                   </div>
 
                   <div className="flex flex-col justify-between h-full">
                     {/* Metric above graph */}
-                    <div className="mb-4 text-left md:text-right">
-                      <span className="text-lg md:text-xl font-bold text-white">{project.metric}</span>
-                      <span className="text-white/60 text-xs md:text-sm ml-1.5">{project.metricLabel}</span>
+                    <div className="mb-3 sm:mb-4 text-left md:text-right">
+                      <span className="text-base sm:text-lg md:text-xl font-bold text-white">{project.metric}</span>
+                      <span className="text-white/60 text-xs sm:text-sm ml-1 sm:ml-1.5">{project.metricLabel}</span>
                     </div>
 
                     {/* Graph visualization */}
@@ -1224,7 +1218,10 @@ function WorkSection() {
             </Link>
           </BounceInFromBottom>
           <BounceInFromBottom delay={500} duration={500} earlyTrigger={true}>
-            <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center w-full sm:w-auto bg-[#222] text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-white/10 hover:bg-[#333] transition-colors duration-200" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>See pricing</button>
+            <a href="https://t.me/uxvuk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full sm:w-auto bg-[#222] text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-white/10 hover:bg-[#333] transition-colors duration-200" style={{boxShadow: '0px 4px 5px -3px rgba(0, 0, 0, 1), 0px 8px 10px -6px rgba(0, 0, 0, 1), 0px 1px 0px 1px rgba(0, 0, 0, 1)'}}>
+              <FaTelegram className="w-4 h-4 mr-2 text-[#0088cc]" />
+              <span>Chat</span>
+            </a>
           </BounceInFromBottom>
         </div>
       </div>
@@ -1266,9 +1263,8 @@ function TestimonialsSection() {
       <div className="max-w-6xl mx-auto">
         <BounceInFromBottom delay={0} duration={500} earlyTrigger={true}>
           <div className="text-center mb-12">
-            <p className="text-white/60 text-xs uppercase tracking-wider mb-2 font-velora-studio">TESTIMONIALS</p>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 font-velora-studio">
-              WHAT OUR CLIENTS THINK
+              What our clients think
             </h2>
           </div>
         </BounceInFromBottom>
@@ -1303,19 +1299,22 @@ function TestimonialsSection() {
         </div>
         
         {/* CTA Section */}
-        <div className="flex flex-col items-center gap-4 mt-12">
-          <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col items-center gap-4 mt-12 w-full">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4 sm:px-0 w-full max-w-2xl">
             <BounceInFromBottom delay={200} duration={400} earlyTrigger={true}>
-              <Link href="/15-min" className="group inline-flex items-center justify-center w-full sm:w-auto bg-white text-black px-8 py-3 rounded-full text-base font-velora-studio font-velora-studio border border-black/10 shadow-[0_6px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40">
+              <Link href="/15-min" className="group inline-flex items-center justify-center w-full sm:w-auto bg-white text-black px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-black/10 button-shadows hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/40">
                 <span>Schedule Call</span>
-                <div className="ml-2 flex items-center gap-1">
+                <div className="ml-2 hidden sm:flex items-center gap-1">
                   <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">⌘</div>
                   <div className="w-4 h-4 bg-black/10 rounded text-xs flex items-center justify-center font-mono">K</div>
                 </div>
               </Link>
             </BounceInFromBottom>
             <BounceInFromBottom delay={300} duration={400} earlyTrigger={true}>
-              <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center justify-center bg-[#222] text-white px-8 py-3 rounded-full text-base font-velora-studio border border-white/10 hover:bg-[#333] transition-colors duration-200">See pricing</button>
+              <a href="https://t.me/uxvuk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full sm:w-auto bg-white/10 text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base font-velora-studio border border-white/20 hover:bg-white/20 transition-all duration-200">
+                <FaTelegram className="w-4 h-4 mr-2 text-[#0088cc]" />
+                <span>Chat</span>
+              </a>
             </BounceInFromBottom>
           </div>
           
