@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-export function useScrollReveal() {
+export function useScrollReveal<T extends HTMLElement = HTMLElement>() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<T | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,9 +34,9 @@ export function useScrollReveal() {
   return [ref, isVisible] as const
 }
 
-export function useWordReveal() {
+export function useWordReveal<T extends HTMLElement = HTMLElement>() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<T | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(

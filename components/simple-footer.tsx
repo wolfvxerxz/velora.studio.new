@@ -20,6 +20,7 @@ export function SimpleFooter() {
     const itemWidth = scrollContainer.scrollWidth / 2
 
     function animate() {
+      if (!scrollContainer) return
       position -= speed
       
       // Use modulo to create seamless loop without visible reset

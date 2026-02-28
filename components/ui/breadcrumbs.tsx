@@ -39,7 +39,7 @@ export function Breadcrumbs() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <nav className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 mb-8">
+      <nav className="flex items-center space-x-1 text-[14px] text-gray-500 dark:text-gray-400 mb-8">
         <Link
           href="/"
           className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors"

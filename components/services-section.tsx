@@ -115,7 +115,6 @@ export function ServicesSection() {
                           loop
                           muted
                           playsInline
-                          loading="lazy"
                           className="w-full h-48 object-cover"
                         />
                       ) : (

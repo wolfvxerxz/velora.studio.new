@@ -11,12 +11,12 @@ export function SiteFooter() {
             <VeloraLogo className="h-6 w-auto text-white" />
           </Link>
           
-          <h2 className="text-white text-xl font-velora-studio mb-6">Take your idea from zero → hero with Velora Studio.</h2>
+          <h2 className="text-white text-[22px] font-velora-studio mb-6">Take your idea from zero → hero with Velora Studio.</h2>
           
           <div className="flex flex-wrap gap-4 mb-6">
             <Link href="/15-min">
               <button
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-velora-studio hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-[14px] font-velora-studio hover:bg-gray-100 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <img
                   src="/images/vuk.avif"
@@ -28,20 +28,20 @@ export function SiteFooter() {
             </Link>
           </div>
           
-          <p className="text-gray-400 text-sm mb-6">
+          <p className="text-gray-400 text-[14px] mb-6">
             Or drop us an email → <a href="mailto:contact@velora.studio" className="text-white hover:underline">contact@velora.studio</a>
           </p>
         </div>
         
         <div className="border-t border-zinc-800 pt-6">
           <div className="flex flex-wrap gap-6 mb-6">
-            <Link href="/blog" className="text-gray-400 hover:text-white text-sm transition-colors">
+            <Link href="/blog" className="text-gray-400 hover:text-white text-[14px] transition-colors">
               Blog
             </Link>
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-[14px] text-gray-400">
               © {new Date().getFullYear()} Velora Studio
             </p>
             <div className="flex gap-3 mt-4 md:mt-0">

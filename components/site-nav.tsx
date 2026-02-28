@@ -13,7 +13,7 @@ export function SiteNav() {
           <div className="flex items-center">
             <Link 
               href="/blog" 
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              className="text-[14px] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
             >
               Blog
             </Link>

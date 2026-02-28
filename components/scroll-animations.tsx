@@ -11,7 +11,7 @@ interface FadeInUpProps {
 }
 
 export function FadeInUp({ children, className = '', delay = 0, duration = 1000 }: FadeInUpProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -41,7 +41,7 @@ interface BounceInLeftProps {
 }
 
 export function BounceInLeft({ children, className = '', delay = 0, duration = 1000 }: BounceInLeftProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -71,7 +71,7 @@ interface BounceInRightProps {
 }
 
 export function BounceInRight({ children, className = '', delay = 0, duration = 1000 }: BounceInRightProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -101,7 +101,7 @@ interface BounceInBottomLeftProps {
 }
 
 export function BounceInBottomLeft({ children, className = '', delay = 0, duration = 1000 }: BounceInBottomLeftProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -131,7 +131,7 @@ interface BounceInBottomRightProps {
 }
 
 export function BounceInBottomRight({ children, className = '', delay = 0, duration = 1000 }: BounceInBottomRightProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -161,7 +161,7 @@ interface FadeInLeftProps {
 }
 
 export function FadeInLeft({ children, className = '', delay = 0, duration = 1000 }: FadeInLeftProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -191,7 +191,7 @@ interface FadeInRightProps {
 }
 
 export function FadeInRight({ children, className = '', delay = 0, duration = 1000 }: FadeInRightProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -221,7 +221,7 @@ interface ScaleInProps {
 }
 
 export function ScaleIn({ children, className = '', delay = 0, duration = 1000 }: ScaleInProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -251,7 +251,7 @@ interface SlideInUpProps {
 }
 
 export function SlideInUp({ children, className = '', delay = 0, duration = 1000 }: SlideInUpProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div
@@ -281,7 +281,7 @@ interface RotateInProps {
 }
 
 export function RotateIn({ children, className = '', delay = 0, duration = 1000 }: RotateInProps) {
-  const [ref, isVisible] = useScrollReveal()
+  const [ref, isVisible] = useScrollReveal<HTMLDivElement>()
 
   return (
     <div

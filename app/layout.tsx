@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["400"],
   display: "swap",
   preload: true,
   adjustFontFallback: true,
@@ -107,7 +108,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`min-h-screen font-sans antialiased ${inter.variable} ${onest.variable} scroll-smooth dark`}
+      className={`min-h-screen font-sans antialiased ${inter.variable} ${onest.variable} scroll-smooth light`}
     >
       <head>
         {/* Preconnect to external domains */}
@@ -223,7 +224,7 @@ export default function RootLayout({
         </Script>
         <meta name="google-site-verification" content="rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="min-h-screen bg-background font-sans font-normal antialiased">
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">

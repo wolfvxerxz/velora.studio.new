@@ -8,7 +8,7 @@ export default function Page(): React.ReactElement {
         <div className="w-full max-w-[500px] mb-6">
           <a 
             href="/" 
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-[14px]"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -39,10 +39,10 @@ export default function Page(): React.ReactElement {
           </span>
         </div>
         <div className="text-center mb-10">
-          <h1 className="text-5xl sm:text-6xl font-velora-studio mb-4 text-white gradient-text">
+          <h1 className="text-[22px] font-velora-studio mb-4 text-white gradient-text">
             Book a 15-Minute Meeting
           </h1>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-4 font-velora-studio">
+          <p className="text-zinc-400 text-[14px] max-w-xl mx-auto mb-4 font-velora-studio">
             Please select the time that fits you or just text me in{" "}
             <a href="https://wa.me/message/CRWTXVTJ2LCJO1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">WhatsApp</a>{" "}
             /{" "}
@@ -50,7 +50,7 @@ export default function Page(): React.ReactElement {
           </p>
           <div className="flex items-center justify-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-white text-sm font-velora-studio">Only 2 spots left this month</span>
+            <span className="text-white text-[14px] font-velora-studio">Only 2 spots left this month</span>
           </div>
         </div>
         <div className="bg-black/40 backdrop-blur-sm rounded-2xl shadow-xl p-0 sm:p-10 w-full border border-white/10">

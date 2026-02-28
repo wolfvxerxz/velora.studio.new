@@ -15,8 +15,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 14px;
   }
-  
+
+  h1, .text-header {
+    font-size: 22px;
+  }
+
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -32,7 +37,7 @@
   }
   
   :root {
-    --background: 3 3% 3%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
@@ -104,11 +109,11 @@
   }
 
   body {
-    background-color: #080808 !important;
-    color: white;
-    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -232,7 +237,7 @@ body,
 }
 
 html {
-  background-color: #080808 !important;
+  background-color: #ffffff;
 }
 
 /* Custom grid background pattern */
@@ -329,10 +334,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Force GeistMedium font on body */
-body {
-  font-family: "GeistMedium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-}
 
 /* Card and Button Shadow Effects */
 .card-shadows {

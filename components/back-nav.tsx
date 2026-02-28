@@ -7,7 +7,7 @@ export function BackNav() {
       <div className="max-w-[720px] mx-auto px-4 py-4">
         <Link 
           href="/"
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm"
+          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-[14px]"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Home

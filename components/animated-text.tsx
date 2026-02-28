@@ -10,7 +10,7 @@ interface AnimatedTextProps {
 }
 
 export function AnimatedText({ children, className = '', delay = 0 }: AnimatedTextProps) {
-  const [ref, isVisible] = useWordReveal()
+  const [ref, isVisible] = useWordReveal<HTMLSpanElement>()
 
   if (typeof children !== 'string') {
     return <span className={className}>{children}</span>
@@ -47,7 +47,7 @@ interface AnimatedHeadingProps {
 }
 
 export function AnimatedHeading({ children, className = '', delay = 0 }: AnimatedHeadingProps) {
-  const [ref, isVisible] = useWordReveal()
+  const [ref, isVisible] = useWordReveal<HTMLHeadingElement>()
 
   if (typeof children !== 'string') {
     return <h1 className={className}>{children}</h1>
@@ -84,7 +84,7 @@ interface AnimatedParagraphProps {
 }
 
 export function AnimatedParagraph({ children, className = '', delay = 0 }: AnimatedParagraphProps) {
-  const [ref, isVisible] = useWordReveal()
+  const [ref, isVisible] = useWordReveal<HTMLParagraphElement>()
 
   if (typeof children !== 'string') {
     return <p className={className}>{children}</p>

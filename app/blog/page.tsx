@@ -63,10 +63,10 @@ export default function BlogPage() {
         <div className="max-w-[720px] mx-auto px-4 py-10 sm:py-12 md:py-16">
           <Breadcrumbs />
           <AnimatedSection animation="fadeUp">
-            <h1 className="text-3xl sm:text-4xl font-velora-studio text-black dark:text-white mb-6 transition-colors duration-300">
+            <h1 className="text-[22px] font-velora-studio text-black dark:text-white mb-6 transition-colors duration-300">
               Blog
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 text-lg mb-12 transition-colors duration-300 font-velora-studio">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-12 transition-colors duration-300 font-velora-studio">
               Expert insights on SaaS design, UX optimization, and digital product development.
             </p>
 
@@ -97,12 +97,12 @@ export default function BlogPage() {
                     </div>
                   )}
                   <div className="p-6">
-                    <h2 className="text-xl font-velora-studio mb-2">
+                    <h2 className="text-sm font-velora-studio mb-2">
                       <a href={`/blog/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
                         {post.title}
                       </a>
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 font-velora-studio">
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 font-velora-studio">
                       {post.excerpt}
                     </p>
                     <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
