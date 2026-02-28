@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Velora Studio | Custom Design & Development',
     description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
-    creator: '@velora_studio',
+    creator: '@veloraxstudio',
     images: ['https://velora.studio/twitter-image.jpg'],
   },
   category: 'technology',
@@ -146,7 +146,7 @@ export default function RootLayout({
                 "addressCountry": "US"
               },
               "sameAs": [
-                "https://twitter.com/velora_studio",
+                "https://x.com/veloraxstudio",
                 "https://www.linkedin.com/company/velorastudio/",
                 "https://www.instagram.com/studio.velora/",
                 "https://t.me/vukkm",

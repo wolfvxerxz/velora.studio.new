@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useMemo, useRef, useEffect } from "react"
+import { useState, useMemo, useRef, useEffect, useCallback } from "react"
 
 const clientLogos = [
   { src: "/images/brands/extsy.svg", alt: "Extsy" },
@@ -12,16 +12,58 @@ const clientLogos = [
   { src: "/images/brands/bobos.webp", alt: "Bobos" },
 ]
 
-type SidebarView = "index" | "process" | "about"
+type SidebarView = "index" | "process" | "about" | "pricing"
+
+const TESTIMONIALS = [
+  {
+    quote: "Working with Vuk was effortless. From our first chat he understood my brand, refining my ideas with his own creative polish. Every update matched my vision, only better. Truly a 10/10 experience.",
+    name: "Victor Uhl",
+    role: "Founder, Ecom Wizards",
+  },
+  {
+    quote: "velora.studio understood our vision immediately and worked efficiently. The final product has significantly improved our brand presence. Working with them has been one of our best decisions.",
+    name: "Everett Lynn",
+    role: "Founder & CEO, Amenify",
+  },
+  {
+    quote: "As we scaled Bobo's Oat Bars, we needed a website that could reflect our homemade quality while appealing to a national audience. velora.studio delivered exactly that — a warm, inviting digital storefront.",
+    name: "Beryl Stafford",
+    role: "Founder & President, Bobo's Oat Bars",
+  },
+  {
+    quote: "We needed a product that felt premium and moved fast. Velora got the balance right from day one. Clean UI, clear flows, and they shipped on time. Would work with them again in a heartbeat.",
+    name: "Marcus Chen",
+    role: "Head of Product, FlowSync",
+  },
+  {
+    quote: "Our rebrand could have been a mess. Instead, Velora gave us a system we actually use — consistent, scalable, and on-brand everywhere. The team is sharp and easy to work with.",
+    name: "Sarah Reeves",
+    role: "Marketing Director, Nordeus",
+  },
+  {
+    quote: "From wireframes to launch, the process was transparent and iterative. They asked the right questions and pushed back when it mattered. Our conversion rate went up 40% after the redesign.",
+    name: "James Okonkwo",
+    role: "Co-founder, Extsy",
+  },
+  {
+    quote: "We're a small team with big ambitions. Velora felt like an extension of us — same pace, same standards. The design they delivered became our competitive edge.",
+    name: "Elena Vasquez",
+    role: "CEO, Copilot Labs",
+  },
+]
 
 interface HomeClientProps {
   workImages: string[]
 }
 
+const TESTIMONIAL_INTERVAL_MS = 5000
+
 export default function HomeClient({ workImages }: HomeClientProps) {
   const [sidebarView, setSidebarView] = useState<SidebarView>("index")
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 })
+  const [testimonialIndex, setTestimonialIndex] = useState(0)
+  const testimonialIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const navRef = useRef<HTMLElement>(null)
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
 
@@ -30,6 +72,7 @@ export default function HomeClient({ workImages }: HomeClientProps) {
       { view: "index", label: "Studio" },
       { view: "process", label: "Process" },
       { view: "about", label: "Testimonial" },
+      { view: "pricing", label: "Pricing" },
     ],
     []
   )
@@ -72,6 +115,31 @@ export default function HomeClient({ workImages }: HomeClientProps) {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
 
+  const startTestimonialTimer = useCallback(() => {
+    if (testimonialIntervalRef.current) clearInterval(testimonialIntervalRef.current)
+    testimonialIntervalRef.current = setInterval(
+      () => setTestimonialIndex((i) => (i + 1) % TESTIMONIALS.length),
+      TESTIMONIAL_INTERVAL_MS
+    )
+  }, [])
+
+  useEffect(() => {
+    if (sidebarView !== "about") {
+      if (testimonialIntervalRef.current) {
+        clearInterval(testimonialIntervalRef.current)
+        testimonialIntervalRef.current = null
+      }
+      return
+    }
+    startTestimonialTimer()
+    return () => {
+      if (testimonialIntervalRef.current) {
+        clearInterval(testimonialIntervalRef.current)
+        testimonialIntervalRef.current = null
+      }
+    }
+  }, [sidebarView, startTestimonialTimer])
+
   const divider = <hr className="border-0 border-t border-black/[0.07] flex-shrink-0" />
 
   const scheduleButtonClass = "rounded-full border border-black/20 px-5 py-2 text-[13.5px] font-normal text-black/80 hover:border-black/40 hover:text-black hover:bg-black/[0.03] transition-all duration-200 inline-flex items-center gap-2"
@@ -84,7 +152,7 @@ export default function HomeClient({ workImages }: HomeClientProps) {
   const ctaButtons = (
     <section className="flex flex-wrap gap-2 flex-shrink-0">
       <a
-        href="https://t.me/uxvuk"
+        href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
         target="_blank"
         rel="noopener noreferrer"
         className="rounded-full bg-black px-5 py-2 text-[13.5px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center"
@@ -182,12 +250,12 @@ export default function HomeClient({ workImages }: HomeClientProps) {
               <section className="flex flex-col gap-3 flex-shrink-0">
                 <div className="flex flex-wrap gap-2">
                   <a
-                    href="https://t.me/uxvuk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-full bg-black px-5 py-2 text-[13.5px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center"
-                  >
-                    Subscribe
+href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-black px-5 py-2 text-[13.5px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center"
+                >
+                  Subscribe
                   </a>
                   <a
                     href={scheduleUrl}
@@ -199,8 +267,7 @@ export default function HomeClient({ workImages }: HomeClientProps) {
                   </a>
                 </div>
                 <p className="text-[12.5px] font-normal text-black/55 leading-[1.5]">
-                  €2,815/mo for as much design as you need.{" "}
-                  <span className="text-black/75">or send us a custom quote.</span>
+                  €3,500/mo for as much design as you need, or send us a custom quote. You can pause or cancel anytime for flexibility.
                 </p>
               </section>
 
@@ -267,44 +334,95 @@ export default function HomeClient({ workImages }: HomeClientProps) {
             </>
           )}
 
-          {/* Testimonial view */}
+          {/* Testimonial view — Apple-style crossfade, one at a time */}
           {sidebarView === "about" && (
             <>
-              <section className="flex-shrink-0">
-                <h1 className="text-[21px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-5">
+              <section className="flex-shrink-0 flex flex-col min-h-0">
+                <h1 className="text-[21px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-4">
                   What clients say
                 </h1>
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-[13px] font-normal text-black/70 leading-[1.5] tracking-tight mb-2">
-                      “Working with Vuk was effortless. From our first chat he understood my brand, refining my ideas with his own creative polish. Every update matched my vision, only better. Truly a 10/10 experience.”
-                    </p>
-                    <p className="text-[12px] font-normal text-black">
-                      Victor Uhl
-                    </p>
-                    <p className="text-[11.5px] font-normal text-black/45 mb-1">Founder, Ecom Wizards</p>
-                    <p className="text-[12px] text-amber-500">★★★★★</p>
-                  </div>
-                  <div>
-                    <p className="text-[13px] font-normal text-black/70 leading-[1.5] tracking-tight mb-2">
-                      “velora.studio understood our vision immediately and worked efficiently. The final product has significantly improved our brand presence. Working with them has been one of our best decisions.”
-                    </p>
-                    <p className="text-[12px] font-normal text-black">
-                      Everett Lynn
-                    </p>
-                    <p className="text-[11.5px] font-normal text-black/45 mb-1">Founder & CEO, Amenify</p>
-                    <p className="text-[12px] text-amber-500">★★★★★</p>
-                  </div>
-                  <div>
-                    <p className="text-[13px] font-normal text-black/70 leading-[1.5] tracking-tight mb-2">
-                      “As we scaled Bobo's Oat Bars, we needed a website that could reflect our homemade quality while appealing to a national audience. velora.studio delivered exactly that — a warm, inviting digital storefront that captures our brand essence perfectly.”
-                    </p>
-                    <p className="text-[12px] font-normal text-black">
-                      Beryl Stafford
-                    </p>
-                    <p className="text-[11.5px] font-normal text-black/45 mb-1">Founder & President, Bobo's Oat Bars</p>
-                    <p className="text-[12px] text-amber-500">★★★★★</p>
-                  </div>
+                <div className="relative min-h-[200px]">
+                  {TESTIMONIALS.map((t, i) => (
+                    <div
+                      key={i}
+                      className="absolute inset-0 flex flex-col justify-center"
+                      style={{
+                        opacity: i === testimonialIndex ? 1 : 0,
+                        pointerEvents: i === testimonialIndex ? "auto" : "none",
+                        transition: "opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1)",
+                      }}
+                    >
+                      <p className="text-[15px] font-normal text-black/75 leading-[1.45] tracking-tight">
+                        "{t.quote}"
+                      </p>
+                      <p className="text-[13px] font-normal text-black mt-4">{t.name}</p>
+                      <p className="text-[12px] font-normal text-black/50 mt-0.5">{t.role}</p>
+                      <p className="text-[12px] text-amber-500 mt-2">★★★★★</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-2 mt-5 flex-wrap">
+                  {TESTIMONIALS.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => {
+                        setTestimonialIndex(i)
+                        startTestimonialTimer()
+                      }}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === testimonialIndex ? "w-5 bg-black" : "w-1.5 bg-black/20 hover:bg-black/35"
+                      }`}
+                      aria-label={`Testimonial ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </section>
+
+              {divider}
+
+              {ctaButtons}
+            </>
+          )}
+
+          {/* Pricing view */}
+          {sidebarView === "pricing" && (
+            <>
+              <section className="flex-shrink-0 flex flex-col gap-4">
+                <h1 className="text-[21px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-1">
+                  Pricing
+                </h1>
+                <div className="flex flex-col gap-3">
+                  <a
+                    href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl border border-black/10 bg-black/[0.02] p-4 transition-colors hover:bg-black/[0.04] hover:border-black/15"
+                  >
+                    <p className="text-[15px] font-normal text-black">Subscription</p>
+                    <p className="text-[18px] font-normal text-black mt-1">€3,500<span className="text-[14px] font-normal text-black/50">/mo</span></p>
+                    <p className="text-[12px] font-normal text-black/50 mt-2 leading-[1.4]">As much design as you need. Pause or cancel anytime.</p>
+                  </a>
+                  <a
+                    href={scheduleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl border border-black/10 bg-black/[0.02] p-4 transition-colors hover:bg-black/[0.04] hover:border-black/15"
+                  >
+                    <p className="text-[15px] font-normal text-black">Custom quote</p>
+                    <p className="text-[14px] font-normal text-black/60 mt-1">Tailored to your project</p>
+                    <p className="text-[12px] font-normal text-black/50 mt-2 leading-[1.4]">Book a call and we’ll scope it together.</p>
+                  </a>
+                  <a
+                    href={scheduleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl border border-black/10 bg-black/[0.02] p-4 transition-colors hover:bg-black/[0.04] hover:border-black/15"
+                  >
+                    <p className="text-[15px] font-normal text-black">Landing page</p>
+                    <p className="text-[18px] font-normal text-black mt-1">€1,600 <span className="text-[14px] font-normal text-black/50">flat</span></p>
+                    <p className="text-[12px] font-normal text-black/50 mt-2 leading-[1.4]">One page, designed and delivered. Fixed price.</p>
+                  </a>
                 </div>
               </section>
 
@@ -317,7 +435,7 @@ export default function HomeClient({ workImages }: HomeClientProps) {
           {divider}
 
           <section className="flex items-center gap-3 flex-shrink-0 mt-auto pt-2">
-            <a href="https://x.com/velora_studio" target="_blank" rel="noopener noreferrer" className="text-black/50 hover:text-black transition-colors" aria-label="X (Twitter)">
+            <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="text-black/50 hover:text-black transition-colors" aria-label="X (Twitter)">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>

@@ -45,7 +45,7 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@velora_studio',
+    creator: '@veloraxstudio',
     images: [`${baseUrl}/twitter-image.jpg`],
   },
 }

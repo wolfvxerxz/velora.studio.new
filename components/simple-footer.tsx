@@ -83,7 +83,7 @@ export function SimpleFooter() {
           <div className="flex flex-col items-start md:items-end">
             <h3 className="text-white text-xl font-velora-studio font-bold mb-4">Social Media</h3>
             <div className="flex items-center gap-4">
-              <a href="https://twitter.com/velora_studio" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors" aria-label="X (Twitter)">
+              <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors" aria-label="X (Twitter)">
                 <FaXTwitter className="w-6 h-6" />
               </a>
               <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors" aria-label="LinkedIn">

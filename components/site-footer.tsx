@@ -46,7 +46,7 @@ export function SiteFooter() {
             </p>
             <div className="flex gap-3 mt-4 md:mt-0">
               <a 
-                href="https://twitter.com/velora_studio" 
+                href="https://x.com/veloraxstudio" 
                 className="p-2 text-gray-400 hover:text-white"
                 aria-label="X (Twitter)"
                 target="_blank"

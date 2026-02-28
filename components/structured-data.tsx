@@ -11,7 +11,7 @@ export function StructuredData() {
     "url": "https://velora.studio",
     "logo": "https://velora.studio/logo-v.svg",
     "sameAs": [
-      "https://twitter.com/velora_studio",
+      "https://x.com/veloraxstudio",
       "https://www.linkedin.com/company/velorastudio/",
       "https://www.instagram.com/studio.velora/",
       "https://t.me/vukkm",
