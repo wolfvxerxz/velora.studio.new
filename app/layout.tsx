@@ -9,7 +9,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["400"],
   display: "swap",
   preload: true,
   adjustFontFallback: true,
@@ -85,7 +84,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Velora Studio | Custom Design & Development',
     description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
-    creator: '@veloraxstudio',
+    creator: '@velora_studio',
     images: ['https://velora.studio/twitter-image.jpg'],
   },
   category: 'technology',
@@ -108,7 +107,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`min-h-screen font-sans antialiased ${inter.variable} ${onest.variable} scroll-smooth light`}
+      className={`min-h-screen font-sans antialiased ${inter.variable} ${onest.variable} scroll-smooth dark`}
     >
       <head>
         {/* Preconnect to external domains */}
@@ -146,7 +145,7 @@ export default function RootLayout({
                 "addressCountry": "US"
               },
               "sameAs": [
-                "https://x.com/veloraxstudio",
+                "https://twitter.com/velora_studio",
                 "https://www.linkedin.com/company/velorastudio/",
                 "https://www.instagram.com/studio.velora/",
                 "https://t.me/vukkm",
@@ -224,7 +223,7 @@ export default function RootLayout({
         </Script>
         <meta name="google-site-verification" content="rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I" />
       </head>
-      <body className="min-h-screen bg-background font-sans font-normal antialiased">
+      <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">

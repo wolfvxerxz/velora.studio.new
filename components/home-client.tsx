@@ -2,13 +2,24 @@
 
 import Image from "next/image"
 import { useState, useMemo, useRef, useEffect, useCallback } from "react"
+import { HugeiconsIcon } from "@hugeicons/react"
+import {
+  MagicWand01Icon,
+  Layout01Icon,
+  Layers01Icon,
+  Megaphone01Icon,
+  Mouse01Icon,
+  Audit01Icon,
+  GlobeIcon,
+  Briefcase01Icon,
+} from "@hugeicons/core-free-icons"
 
 const clientLogos = [
-  { src: "/images/brands/extsy.svg", alt: "Extsy" },
-  { src: "/images/brands/webserv.svg", alt: "Webserv" },
-  { src: "/images/brands/nordeus.svg", alt: "Nordeus" },
+  { src: "/images/brands/extsy.webp", alt: "Extsy" },
+  { src: "/images/brands/webserv.webp", alt: "Webserv" },
+  { src: "/images/brands/ecom.webp", alt: "Ecom Wizards" },
+  { src: "/images/brands/nordeus.webp", alt: "Nordeus" },
   { src: "/images/brands/amenify.webp", alt: "Amenify" },
-  { src: "/images/brands/ecom.svg", alt: "Ecom Wizards" },
   { src: "/images/brands/bobos.webp", alt: "Bobos" },
 ]
 
@@ -52,13 +63,18 @@ const TESTIMONIALS = [
   },
 ]
 
+interface WorkItem {
+  src: string
+  type: "image" | "video"
+}
+
 interface HomeClientProps {
-  workImages: string[]
+  workItems: WorkItem[]
 }
 
 const TESTIMONIAL_INTERVAL_MS = 5000
 
-export default function HomeClient({ workImages }: HomeClientProps) {
+export default function HomeClient({ workItems }: HomeClientProps) {
   const [sidebarView, setSidebarView] = useState<SidebarView>("index")
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 })
@@ -218,7 +234,7 @@ export default function HomeClient({ workImages }: HomeClientProps) {
             <>
               <section className="flex-shrink-0">
                 <h1 className="text-[19px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-2">
-                  Design partner for founders building in AI, web3, and the next wave of ambitious startups.
+                  Design partner for founders building in AI, web3, and startups that move fast.
                 </h1>
                 <p className="text-[14px] font-normal text-black/70 leading-[1.45] tracking-tight">
                   We help you go from 0→1 fast — products that attract investors, convert users, and ship on time.
@@ -235,9 +251,9 @@ export default function HomeClient({ workImages }: HomeClientProps) {
                       <Image
                         src={logo.src}
                         alt={logo.alt}
-                        width={80}
+                        width={logo.alt === "Ecom Wizards" ? 110 : 80}
                         height={26}
-                        className="object-contain object-left max-h-7 w-auto brightness-0 opacity-75"
+                        className="object-contain object-left max-h-7 w-auto"
                       />
                     </div>
                   ))}
@@ -274,17 +290,25 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
               {divider}
 
               <section className="flex-shrink-0">
-                <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[13px] font-normal text-black/60 tracking-tight">
-                  <span>Brand sprints</span>
-                  <span>Wireframing</span>
-                  <span>User journeys</span>
-                  <span>Social assets</span>
-                  <span>Product design</span>
-                  <span>UX auditing</span>
-                  <span>Web design</span>
-                  <span>Consulting</span>
+                <div className="grid grid-cols-2 gap-x-3 gap-y-2">
+                  {[
+                    { icon: MagicWand01Icon, label: "Brand sprints",  iconClass: "icon-wand"   },
+                    { icon: Layout01Icon,    label: "Wireframing",    iconClass: "icon-layout" },
+                    { icon: Layers01Icon,    label: "User journeys",  iconClass: "icon-layers" },
+                    { icon: Megaphone01Icon, label: "Social assets",  iconClass: "icon-mega"   },
+                    { icon: Mouse01Icon,     label: "Product design", iconClass: "icon-mouse"  },
+                    { icon: Audit01Icon,     label: "UX auditing",    iconClass: "icon-audit"  },
+                    { icon: GlobeIcon,       label: "Web design",     iconClass: "icon-globe"  },
+                    { icon: Briefcase01Icon, label: "Consulting",     iconClass: "icon-brief"  },
+                  ].map(({ icon, label, iconClass }) => (
+                    <div key={label} className="service-item flex items-center gap-2 cursor-default">
+                      <HugeiconsIcon icon={icon} size={14} color="currentColor" strokeWidth={1.5} className={`${iconClass} text-black/40 flex-shrink-0`} />
+                      <span className="text-[13px] font-normal text-black/60 tracking-tight">{label}</span>
+                    </div>
+                  ))}
                 </div>
               </section>
+
             </>
           )}
 
@@ -392,46 +416,60 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
           {/* Pricing view */}
           {sidebarView === "pricing" && (
             <>
-              <section className="flex-shrink-0 flex flex-col gap-4">
+              <section className="flex-shrink-0 flex flex-col gap-3">
                 <div>
                   <h1 className="text-[19px] font-normal text-black leading-[1.3] tracking-[-0.01em]">Pricing</h1>
-                  <p className="text-[13px] font-normal text-black/40 mt-0.5">Simple and transparent — no surprises.</p>
+                  <p className="text-[12px] font-normal text-black/40 mt-0.5">Simple and transparent — no surprises.</p>
                 </div>
 
-                <div className="flex flex-col gap-2.5">
-                  {/* Subscription — featured card */}
+                <div className="flex flex-col gap-2">
+                  {/* Subscription — featured */}
                   <a
                     href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block rounded-2xl bg-black p-5 transition-all duration-200 hover:bg-black/80"
+                    className="group block rounded-2xl bg-black p-4 transition-all duration-200 hover:bg-black/80"
                   >
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[11px] font-normal text-white/40 tracking-widest uppercase">Subscription</span>
-                      <span className="text-[10px] font-normal text-black bg-white/90 rounded-full px-2.5 py-0.5 leading-none">Popular</span>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-normal text-white/60 tracking-widest uppercase">Subscription</span>
+                      <span className="text-[10px] font-normal text-black bg-white/90 rounded-full px-2.5 py-0.5 leading-none">Most popular</span>
                     </div>
-                    <p className="text-[26px] font-normal text-white tracking-[-0.03em] leading-none">
-                      €3,500<span className="text-[14px] font-normal text-white/40">/mo</span>
+                    <p className="text-[24px] font-normal text-white tracking-[-0.03em] leading-none">
+                      €3,500<span className="text-[13px] font-normal text-white/60">/mo</span>
                     </p>
-                    <p className="text-[12px] font-normal text-white/40 mt-2 leading-[1.4]">Unlimited design. Pause or cancel anytime.</p>
-                    <div className="flex items-center justify-between mt-4 pt-3.5 border-t border-white/10">
-                      <span className="text-[12px] font-normal text-white/60">Get started today</span>
-                      <span className="text-white/40 group-hover:text-white/80 group-hover:translate-x-0.5 transition-all duration-200">→</span>
+                    <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3 pt-3 border-t border-white/10">
+                      {[
+                        "Unlimited requests",
+                        "2–3 updates/week",
+                        "Slack or Telegram",
+                        "Framer or Webflow",
+                        "Product & web design",
+                        "Pause or cancel anytime",
+                      ].map((f) => (
+                        <div key={f} className="flex items-center gap-1.5">
+                          <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6.5" fill="white" fillOpacity="0.12"/><path d="M4 6.5l1.8 1.8L9 4.5" stroke="white" strokeOpacity="0.7" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                          <span className="text-[11px] font-normal text-white/80">{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                      <span className="text-[12px] font-normal text-white/80">Get started today</span>
+                      <span className="text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-200">→</span>
                     </div>
                   </a>
 
                   {/* Custom + Landing side by side */}
-                  <div className="grid grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-2 gap-2">
                     <a
                       href={scheduleUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col rounded-2xl border border-black/[0.08] bg-black/[0.02] p-4 transition-all duration-200 hover:bg-black/[0.05] hover:border-black/15 min-h-[120px]"
+                      className="group flex flex-col rounded-2xl border border-black/[0.08] bg-black/[0.02] p-3.5 transition-all duration-200 hover:bg-black/[0.05] hover:border-black/15"
                     >
-                      <span className="text-[10px] font-normal text-black/30 tracking-widest uppercase mb-2">Custom</span>
-                      <p className="text-[13px] font-normal text-black leading-snug flex-1">Tell us what you need</p>
-                      <div className="flex items-center justify-between mt-3 pt-3 border-t border-black/[0.06]">
-                        <span className="text-[11px] font-normal text-black/35">Book a call</span>
+                      <span className="text-[10px] font-normal text-black/30 tracking-widest uppercase mb-1.5">Custom</span>
+                      <p className="text-[12px] font-normal text-black/70 leading-[1.35] flex-1">Scoped to your project and budget</p>
+                      <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-black/[0.06]">
+                        <span className="text-[11px] font-normal text-black/40">Book a call</span>
                         <span className="text-black/25 group-hover:text-black/60 group-hover:translate-x-0.5 transition-all duration-200 text-[12px]">→</span>
                       </div>
                     </a>
@@ -439,13 +477,13 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
                       href={scheduleUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col rounded-2xl border border-black/[0.08] bg-black/[0.02] p-4 transition-all duration-200 hover:bg-black/[0.05] hover:border-black/15 min-h-[120px]"
+                      className="group flex flex-col rounded-2xl border border-black/[0.08] bg-black/[0.02] p-3.5 transition-all duration-200 hover:bg-black/[0.05] hover:border-black/15"
                     >
-                      <span className="text-[10px] font-normal text-black/30 tracking-widest uppercase mb-2">Landing</span>
-                      <p className="text-[22px] font-normal text-black tracking-[-0.03em] leading-none flex-1">€1,600</p>
-                      <p className="text-[10px] font-normal text-black/30 mt-1">flat rate</p>
-                      <div className="flex items-center justify-between mt-3 pt-3 border-t border-black/[0.06]">
-                        <span className="text-[11px] font-normal text-black/35">One page</span>
+                      <span className="text-[10px] font-normal text-black/30 tracking-widest uppercase mb-1.5">Landing</span>
+                      <p className="text-[20px] font-normal text-black tracking-[-0.02em] leading-none">€1,600</p>
+                      <p className="text-[10px] font-normal text-black/30 mt-0.5 flex-1">flat rate</p>
+                      <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-black/[0.06]">
+                        <span className="text-[11px] font-normal text-black/40">One page</span>
                         <span className="text-black/25 group-hover:text-black/60 group-hover:translate-x-0.5 transition-all duration-200 text-[12px]">→</span>
                       </div>
                     </a>
@@ -487,20 +525,31 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
         </div>
       </aside>
 
-      {/* Right: work section — images fed dynamically from server */}
+      {/* Right: work section — images/videos fed dynamically from server */}
       <div className="flex-1 overflow-y-auto p-6 md:p-10 bg-white">
         <div className="flex flex-col gap-3 max-w-full w-full items-stretch">
-          {workImages.map((src, i) => (
+          {workItems.map(({ src, type }, i) => (
             <div key={src} className="w-full rounded-[8px] p-3" style={{ backgroundColor: "#F7F8F9" }}>
               <div className="relative w-full aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-[4px]">
-                <Image
-                  src={src}
-                  alt={`Work sample ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 100vw"
-                  priority={i === 0}
-                />
+                {type === "video" ? (
+                  <video
+                    src={src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <Image
+                    src={src}
+                    alt={`Work sample ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 100vw"
+                    priority={i === 0}
+                  />
+                )}
               </div>
             </div>
           ))}

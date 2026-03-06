@@ -309,6 +309,65 @@ html {
   animation: blink 1s step-end infinite;
 }
 
+/* Service icon animations — triggered on parent hover */
+@keyframes icon-wand {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(18deg) scale(1.1); }
+  60%  { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes icon-slide-up {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(-4px); }
+  70%  { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+@keyframes icon-stack {
+  0%   { transform: scaleY(1); }
+  30%  { transform: scaleY(0.8) translateY(2px); }
+  65%  { transform: scaleY(1.1); }
+  100% { transform: scaleY(1); }
+}
+@keyframes icon-blast {
+  0%   { transform: rotate(0deg) scale(1); }
+  20%  { transform: rotate(-12deg) scale(1.15); }
+  50%  { transform: rotate(8deg) scale(1.1); }
+  80%  { transform: rotate(-4deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+@keyframes icon-click {
+  0%   { transform: translateY(0) scale(1); }
+  35%  { transform: translateY(3px) scale(0.9); }
+  65%  { transform: translateY(-1px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes icon-spin-once {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes icon-tilt {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-15deg); }
+  75%  { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes icon-bounce {
+  0%   { transform: translateY(0) scale(1); }
+  30%  { transform: translateY(-5px) scale(1.05); }
+  60%  { transform: translateY(-2px) scale(1.02); }
+  80%  { transform: translateY(-4px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.service-item:hover .icon-wand    { animation: icon-wand      0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.service-item:hover .icon-layout  { animation: icon-slide-up  0.35s ease-out forwards; }
+.service-item:hover .icon-layers  { animation: icon-stack     0.4s ease-in-out forwards; }
+.service-item:hover .icon-mega    { animation: icon-blast     0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.service-item:hover .icon-mouse   { animation: icon-click     0.35s ease-in-out forwards; }
+.service-item:hover .icon-audit   { animation: icon-spin-once 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.service-item:hover .icon-globe   { animation: icon-tilt      0.45s ease-in-out forwards; }
+.service-item:hover .icon-brief   { animation: icon-bounce    0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
 /* Custom Geist Medium font class */
 .font-geist-medium {
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
