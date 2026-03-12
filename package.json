@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:export": "EXPORT=true next build"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
