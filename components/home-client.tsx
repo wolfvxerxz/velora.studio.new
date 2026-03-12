@@ -431,13 +431,13 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
                     className="group block rounded-2xl bg-black p-4 transition-all duration-200 hover:bg-black/80"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-normal text-black/60 tracking-widest uppercase">Subscription</span>
-                      <span className="text-[10px] font-normal text-black bg-white/90 rounded-full px-2.5 py-0.5 leading-none">Most popular</span>
+                      <span className="text-[10px] font-normal text-white/60 tracking-widest uppercase">Subscription</span>
+                      <span className="text-[10px] font-normal text-black bg-white rounded-full px-2.5 py-0.5 leading-none">Most popular</span>
                     </div>
-                    <p className="text-[24px] font-normal text-black tracking-[-0.03em] leading-none">
+                    <p className="text-[24px] font-normal text-white tracking-[-0.03em] leading-none">
                       €3,500<span className="text-[13px] font-normal text-black/60">/mo</span>
                     </p>
-                    <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3 pt-3 border-t border-black/10">
+                    <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3 pt-3 border-t border-white/10">
                       {[
                         "Unlimited requests",
                         "2–3 updates/week",
