@@ -190,7 +190,7 @@ export default function HomeClient({ workItems }: HomeClientProps) {
     <main className="min-h-screen flex font-sans bg-white">
       {/* Left sidebar */}
       <aside
-        className="sticky top-0 h-screen w-full flex-shrink-0 overflow-y-auto overflow-x-hidden flex flex-col border-r border-black/[0.07]"
+        className="sticky top-0 h-screen w-full flex-shrink-0 overflow-y-auto overflow-x-hidden flex flex-col "
         style={{ maxWidth: "420px", backgroundColor: "#ffffff" }}
       >
         <div className="flex flex-col flex-1 px-6 py-5 gap-4">
@@ -320,7 +320,7 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
                   From start to finish — how we work
                 </h1>
                 <p className="text-[14px] font-normal text-black/70 leading-[1.45] tracking-tight">
-                  When you join us, we open a shared Slack or Telegram chat the same day. We send updates 2–3 times a week — what we did, what we need, and what you can check.
+                  When you join us, we open a shared Slack or WhatsApp/Telegram chat the same day. We send updates 2–3 times a week — what we did, what we need, and what you can check.
                 </p>
               </section>
 
@@ -526,31 +526,30 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
       </aside>
 
       {/* Right: work section — images/videos fed dynamically from server */}
-      <div className="flex-1 overflow-y-auto p-6 md:p-10 bg-white">
-        <div className="flex flex-col gap-3 max-w-full w-full items-stretch">
+      <div className="flex-1 overflow-y-auto p-1 bg-white">
+        <div className="flex flex-col gap-1 max-w-full w-full items-stretch">
           {workItems.map(({ src, type }, i) => (
-            <div key={src} className="w-full rounded-[8px] p-3" style={{ backgroundColor: "#F7F8F9" }}>
-              <div className="relative w-full aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-[4px]">
-                {type === "video" ? (
-                  <video
-                    src={src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ) : (
-                  <Image
-                    src={src}
-                    alt={`Work sample ${i + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 100vw"
-                    priority={i === 0}
-                  />
-                )}
-              </div>
+            <div key={src} className="w-full overflow-hidden rounded-[8px]">
+              {type === "video" ? (
+                <video
+                  src={src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto block"
+                />
+              ) : (
+                <Image
+                  src={src}
+                  alt={`Work sample ${i + 1}`}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-full h-auto block"
+                  priority={i === 0}
+                />
+              )}
             </div>
           ))}
         </div>

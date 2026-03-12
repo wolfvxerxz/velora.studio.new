@@ -1,25 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { Inter, Onest } from "next/font/google"
+import { Space_Mono } from "next/font/google"
 import { ScrollProgress } from "@/components/scroll-progress"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
   display: "swap",
   preload: true,
-  adjustFontFallback: true,
-})
-
-const onest = Onest({
-  subsets: ["latin"],
-  variable: "--font-onest",
-  display: "swap",
-  preload: true,
-  adjustFontFallback: true,
 })
 
 export const metadata: Metadata = {
@@ -84,7 +76,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Velora Studio | Custom Design & Development',
     description: 'Expert web design and development services for startups and established businesses. We create custom websites that people actually want to use.',
-    creator: '@velora_studio',
+    creator: '@veloraxstudio',
     images: ['https://velora.studio/twitter-image.jpg'],
   },
   category: 'technology',
@@ -107,7 +99,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`min-h-screen font-sans antialiased ${inter.variable} ${onest.variable} scroll-smooth dark`}
+      className={`min-h-screen font-mono antialiased ${spaceMono.variable} scroll-smooth dark`}
     >
       <head>
         {/* Preconnect to external domains */}
@@ -145,7 +137,7 @@ export default function RootLayout({
                 "addressCountry": "US"
               },
               "sameAs": [
-                "https://twitter.com/velora_studio",
+                "https://twitter.com/veloraxstudio",
                 "https://www.linkedin.com/company/velorastudio/",
                 "https://www.instagram.com/studio.velora/",
                 "https://t.me/vukkm",
@@ -223,7 +215,7 @@ export default function RootLayout({
         </Script>
         <meta name="google-site-verification" content="rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="min-h-screen bg-[#080808] font-mono antialiased">
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">
