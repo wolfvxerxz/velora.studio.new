@@ -2,8 +2,6 @@ import { readdir } from "fs/promises"
 import { join } from "path"
 import HomeClient from "@/components/home-client"
 
-export const dynamic = "force-dynamic"
-
 const IMAGE_EXTENSIONS = /\.(webp|png|jpg|jpeg|avif)$/i
 const VIDEO_EXTENSIONS = /\.(webm|mp4)$/i
 
