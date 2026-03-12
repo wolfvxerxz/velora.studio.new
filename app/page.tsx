@@ -16,7 +16,7 @@ export default async function HomePage() {
     .sort()
     .map((f) => ({
       src: `/work/${f}`,
-      type: VIDEO_EXTENSIONS.test(f) ? "video" : "image",
+      type: (VIDEO_EXTENSIONS.test(f) ? "video" : "image") as "video" | "image",
     }))
 
   return <HomeClient workItems={workItems} />
