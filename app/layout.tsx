@@ -1,15 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { Space_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
 import { ScrollProgress } from "@/components/scroll-progress"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const spaceMono = Space_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
+  variable: "--font-inter",
   display: "swap",
   preload: true,
 })
@@ -99,7 +98,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`min-h-screen font-mono antialiased ${spaceMono.variable} scroll-smooth dark`}
+      className={`min-h-screen font-mono antialiased ${inter.variable} scroll-smooth dark`}
     >
       <head>
         {/* Preconnect to external domains */}
@@ -215,7 +214,7 @@ export default function RootLayout({
         </Script>
         <meta name="google-site-verification" content="rBFO4BnsZWwJLW1BLBRn6wuhlOt2OzXkm1Yu6BDIM6I" />
       </head>
-      <body className="min-h-screen bg-[#080808] font-mono antialiased">
+      <body className="min-h-screen bg-[#080808] font-sans antialiased">
         <ThemeProvider>
           <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">
