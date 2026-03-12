@@ -1,33 +1,30 @@
 "use client"
 
-import { motion, useScroll } from "framer-motion"
 import { useEffect, useState } from "react"
 
 export function ScrollProgress() {
-  const { scrollYProgress } = useScroll()
-  const [isVisible, setIsVisible] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Show progress bar only after scrolling down a bit
-      setIsVisible(window.scrollY > 100)
+    const onScroll = () => {
+      const el = document.documentElement
+      const scrolled = el.scrollTop
+      const total = el.scrollHeight - el.clientHeight
+      setProgress(total > 0 ? scrolled / total : 0)
+      setVisible(scrolled > 100)
     }
-
-    window.addEventListener("scroll", handleScroll)
-    handleScroll() // Check initial position
-
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   return (
-    <motion.div
-      className={`fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-50 transition-opacity duration-300 ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
+    <div
+      className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-50 transition-opacity duration-300"
       style={{
-        scaleX: scrollYProgress,
-        transition: "transform 0.1s linear"
+        transform: `scaleX(${progress})`,
+        opacity: visible ? 1 : 0,
       }}
     />
   )
-} 
+}
