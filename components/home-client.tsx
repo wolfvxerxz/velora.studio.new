@@ -190,8 +190,8 @@ export default function HomeClient({ workItems }: HomeClientProps) {
     <main className="min-h-screen flex flex-col md:flex-row font-sans bg-white">
       {/* Left sidebar */}
       <aside
-        className="w-full md:sticky md:top-0 md:h-screen md:flex-shrink-0 md:overflow-y-auto overflow-x-hidden flex flex-col"
-        style={{ maxWidth: "100%", backgroundColor: "#ffffff" }}
+        className="w-full md:w-[420px] md:sticky md:top-0 md:h-screen md:flex-shrink-0 md:overflow-y-auto overflow-x-hidden flex flex-col"
+        style={{ backgroundColor: "#ffffff" }}
       >
         <div className="flex flex-col flex-1 px-5 py-5 gap-4 md:max-w-[420px] md:w-[420px]">
 
@@ -526,7 +526,7 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
       </aside>
 
       {/* Right: work section — images/videos fed dynamically from server */}
-      <div className="flex-1 md:overflow-y-auto p-1 bg-white">
+      <div className="flex-1 md:h-screen md:overflow-y-auto p-1 bg-white">
         <div className="flex flex-col gap-1 max-w-full w-full items-stretch">
           {workItems.map(({ src, type }, i) => (
             <div key={src} className="w-full overflow-hidden rounded-[8px]">
