@@ -11,7 +11,11 @@ export default async function HomePage() {
 
   const workItems = files
     .filter((f) => IMAGE_EXTENSIONS.test(f) || VIDEO_EXTENSIONS.test(f))
-    .sort()
+    .sort((a, b) => {
+      const numA = parseInt(a.match(/\d+/)?.[0] ?? "0", 10)
+      const numB = parseInt(b.match(/\d+/)?.[0] ?? "0", 10)
+      return numA - numB
+    })
     .map((f) => ({
       src: `/work/${f}`,
       type: (VIDEO_EXTENSIONS.test(f) ? "video" : "image") as "video" | "image",
