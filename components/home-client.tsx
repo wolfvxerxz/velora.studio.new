@@ -245,15 +245,15 @@ export default function HomeClient({ workItems }: HomeClientProps) {
 
               <section className="flex-shrink-0">
                 <p className="text-[13px] font-normal text-black/45 mb-2 tracking-tight">Past clients include</p>
-                <div className="grid grid-cols-3 gap-x-3 gap-y-2.5">
+                <div className="grid grid-cols-3 gap-2">
                   {clientLogos.map((logo) => (
-                    <div key={logo.alt} className="h-7 flex items-center">
+                    <div key={logo.alt} className="flex items-center justify-center rounded-[10px] border border-black/[0.08] bg-black/[0.02] px-3 py-2.5 h-[44px]">
                       <Image
                         src={logo.src}
                         alt={logo.alt}
-                        width={logo.alt === "Ecom Wizards" ? 110 : 80}
-                        height={26}
-                        className="object-contain object-left max-h-7 w-auto"
+                        width={logo.alt === "Ecom Wizards" ? 90 : 70}
+                        height={22}
+                        className={`object-contain max-h-[22px] w-auto ${logo.alt === "Webserv" ? "opacity-50" : "brightness-0 opacity-50"}`}
                       />
                     </div>
                   ))}
