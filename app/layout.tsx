@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { GeistSans } from "geist/font/sans"
 import Script from "next/script"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://velora.studio'),
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen bg-white font-sans antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   )
