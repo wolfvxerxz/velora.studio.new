@@ -27,6 +27,10 @@ const clientLogos = [
   { src: "/images/brands/nordeus.webp", alt: "Nordeus" },
   { src: "/images/brands/amenify.webp", alt: "Amenify" },
   { src: "/images/brands/bobos.webp", alt: "Bobos" },
+  { src: "/case/SubPay/logo.svg", alt: "SubPay" },
+  { src: "/case/Armature/armature-logo.svg", alt: "Armature" },
+  { src: "/case/Cactus/cactus-logo.png", alt: "Cactus" },
+  { src: "/case/InsForge/insforge-logo.svg", alt: "InsForge" },
 ]
 
 type SidebarView = "index" | "process" | "about" | "pricing"
@@ -159,7 +163,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
   const divider = <hr className="border-0 border-t border-black/[0.07] flex-shrink-0" />
 
-  const scheduleButtonClass = "rounded-full border border-black/20 px-5 py-2 text-[13px] font-normal text-black/70 hover:border-black/40 hover:text-black hover:bg-black/[0.03] transition-all duration-200 inline-flex items-center gap-2"
+  const scheduleButtonClass = "rounded-full border border-black/20 px-5 py-2 text-[14px] leading-[22px] font-normal text-black/70 hover:border-black/40 hover:text-black hover:bg-black/[0.03] transition-all duration-200 inline-flex items-center gap-2"
   const scheduleBadge = (
     <kbd className="inline-flex items-center gap-0.5 rounded border border-white/30 bg-white/10 px-1.5 py-0.5 font-sans text-[10px] font-medium text-white">
       <span className="text-[11px] text-white">⌘</span>K
@@ -190,7 +194,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         href={scheduleUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full bg-black px-5 py-2 text-[13px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
+        className="rounded-full bg-black px-5 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
       >
         Schedule Now {scheduleBadge}
       </a>
@@ -234,7 +238,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                     onClick={() => setSidebarView(view)}
                     onMouseEnter={() => setHoveredIndex(i)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    className={`relative z-10 px-3 py-1 rounded-full text-[13px] font-normal transition-colors duration-200 ${
+                    className={`relative z-10 px-3 py-1 rounded-full text-[14px] leading-[22px] font-normal transition-colors duration-200 ${
                       isActive ? "text-black" : "text-black/45 hover:text-black/75"
                     }`}
                   >
@@ -251,10 +255,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           {sidebarView === "index" && (
             <>
               <section className="flex-shrink-0">
-                <h1 className="text-[19px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-2">
+                <h1 className="text-[20px] font-normal text-black leading-[28px] tracking-[-0.01em] mb-2">
                   Design Studio for founders building in AI. Backed by YC and a16z
                 </h1>
-                <p className="text-[14px] font-normal text-black/70 leading-[1.45] tracking-tight">
+                <p className="text-[16px] font-normal text-black/70 leading-[26px] tracking-tight">
                   We help you go from 0→1 fast — products that attract investors, convert users, and ship on time.
                 </p>
               </section>
@@ -262,10 +266,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               {divider}
 
               <section className="flex-shrink-0">
-                <p className="text-[13px] font-normal text-black/45 mb-2 tracking-tight">Past clients include</p>
+                <p className="text-[14px] leading-[22px] font-normal text-black/45 mb-2 tracking-tight">Past clients include</p>
                 <div className="grid grid-cols-3 gap-2">
                   {clientLogos.map((logo) => (
-                    <div key={logo.alt} className="flex items-center justify-center rounded-[10px] border border-black/[0.08] bg-black/[0.02] px-3 py-2.5 h-[44px]">
+                    <div key={logo.alt} className="flex items-center justify-center gap-1.5 rounded-[10px] border-[1.5px] border-white bg-white shadow-[0_1px_6px_-2px_rgba(0,0,0,0.07)] px-3 py-2.5 h-[44px]">
                       <Image
                         src={logo.src}
                         alt={logo.alt}
@@ -273,10 +277,13 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                         height={22}
                         className="object-contain max-h-[22px] w-auto opacity-85"
                       />
+                      {logo.alt === "Cactus" && (
+                        <span className="text-[13px] font-semibold text-black leading-none" style={{ fontFamily: "var(--font-geist-sans)" }}>Cactus</span>
+                      )}
                     </div>
                   ))}
                 </div>
-                <p className="text-[13px] font-normal text-black/40 mt-1.5">and 40+ more</p>
+                <p className="text-[14px] leading-[22px] font-normal text-black/40 mt-1.5">and 40+ more</p>
               </section>
 
               {divider}
@@ -287,7 +294,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                     href={scheduleUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full bg-black px-5 py-2 text-[13px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
+                    className="rounded-full bg-black px-5 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
                   >
                     Schedule Now {scheduleBadge}
                   </a>
@@ -299,8 +306,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                     View pricing
                   </button>
                 </div>
-                <p className="text-[13px] font-normal text-black/55 leading-[1.45]">
-                  €3,500/mo for as much design as you need, or send us a custom quote. You can pause or cancel anytime for flexibility.
+                <p className="text-[14px] leading-[22px] font-normal text-black/55">
+                  €5,000/mo for as much design as you need, or send us a custom quote. You can pause or cancel anytime for flexibility.
                 </p>
               </section>
 
@@ -311,10 +318,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           {sidebarView === "process" && (
             <>
               <section className="flex-shrink-0">
-                <h1 className="text-[19px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-2">
+                <h1 className="text-[20px] font-normal text-black leading-[28px] tracking-[-0.01em] mb-2">
                   From start to finish — how we work
                 </h1>
-                <p className="text-[14px] font-normal text-black/70 leading-[1.45] tracking-tight">
+                <p className="text-[16px] font-normal text-black/70 leading-[26px] tracking-tight">
                   When you join us, we open a shared Slack or WhatsApp/Telegram chat the same day. We send updates 2–3 times a week — what we did, what we need, and what you can check.
                 </p>
               </section>
@@ -345,8 +352,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                   },
                 ].map(({ label, text }) => (
                   <div key={label} className="flex-shrink-0">
-                    <p className="text-[13px] font-normal text-black mb-1 tracking-tight">{label}</p>
-                    <p className="text-[14px] font-normal text-black/75 leading-[1.45] tracking-tight">{text}</p>
+                    <p className="text-[12px] leading-[20px] font-normal text-black mb-1 tracking-tight">{label}</p>
+                    <p className="text-[14px] font-normal text-black/75 leading-[22px] tracking-tight">{text}</p>
                   </div>
                 ))}
               </section>
@@ -361,7 +368,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           {sidebarView === "about" && (
             <>
               <section className="flex-shrink-0 flex flex-col min-h-0">
-                <h1 className="text-[19px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-3">
+                <h1 className="text-[20px] font-normal text-black leading-[28px] tracking-[-0.01em] mb-3">
                   What clients say
                 </h1>
                 <div className="relative min-h-[180px]">
@@ -375,12 +382,12 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                         transition: "opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1)",
                       }}
                     >
-                      <p className="text-[14px] font-normal text-black/75 leading-[1.45] tracking-tight line-clamp-4">
+                      <p className="text-[16px] font-normal text-black/75 leading-[26px] tracking-tight line-clamp-4">
                         "{t.quote}"
                       </p>
-                      <p className="text-[13px] font-normal text-black mt-3">{t.name}</p>
-                      <p className="text-[12px] font-normal text-black/50 mt-0.5">{t.role}</p>
-                      <p className="text-[12px] text-amber-500 mt-1.5">★★★★★</p>
+                      <p className="text-[14px] leading-[22px] font-normal text-black mt-3">{t.name}</p>
+                      <p className="text-[14px] leading-[22px] font-normal text-black/50 mt-0.5">{t.role}</p>
+                      <p className="text-[14px] leading-[22px] text-amber-500 mt-1.5">★★★★★</p>
                     </div>
                   ))}
                 </div>
@@ -412,18 +419,18 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           {sidebarView === "pricing" && (
             <>
               <section className="flex-shrink-0 flex flex-col gap-3">
-                <p className="text-[13px] font-normal text-black/65 leading-[1.5] tracking-tight">
+                <p className="text-[14px] leading-[22px] font-normal text-black/65 tracking-tight">
                   Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
                 </p>
 
                 <div className="grid grid-cols-2 gap-2">
                   {/* Custom quote */}
-                  <div className="flex flex-col rounded-2xl border border-black/[0.08] bg-neutral-50/80 p-3">
+                  <div className="flex flex-col rounded-2xl border-[1.5px] border-white bg-white shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] p-3">
                     <div className="mb-2 flex items-center gap-1.5 text-[10px] font-normal text-black/45">
                       <HugeiconsIcon icon={FlashIcon} size={12} color="currentColor" strokeWidth={1.5} className={pricingFeatureIconClass} />
                       0→1 Design
                     </div>
-                    <h2 className="text-[15px] font-normal text-black leading-tight tracking-[-0.02em]">
+                    <h2 className="text-[16px] font-normal text-black leading-[26px] tracking-[-0.02em]">
                       Custom Quote
                     </h2>
                     <p className="mt-1.5 text-[10px] font-normal text-black/50 leading-snug">
@@ -448,13 +455,13 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                   </div>
 
                   {/* Subscription */}
-                  <div className="flex flex-col rounded-2xl border border-black/[0.08] bg-white p-3 shadow-[0_2px_16px_-6px_rgba(0,0,0,0.08)]">
+                  <div className="flex flex-col rounded-2xl border-[1.5px] border-white bg-white shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] p-3">
                     <div className="mb-2 flex items-center gap-1.5 text-[10px] font-normal text-black/45">
                       <HugeiconsIcon icon={SparklesIcon} size={12} color="currentColor" strokeWidth={1.5} className={pricingFeatureIconClass} />
                       Product Design
                     </div>
-                    <p className="text-[17px] font-normal text-black leading-none tracking-[-0.03em] tabular-nums">
-                      €3,500<span className="text-[11px] font-normal text-black/40">/mo</span>
+                    <p className="text-[20px] font-normal text-black leading-[28px] tracking-[-0.03em] tabular-nums">
+                      €5,000<span className="text-[14px] font-normal text-black/40">/mo</span>
                     </p>
                     <p className="mt-1.5 text-[10px] font-normal text-black/50 leading-snug">
                       Unlimited design for teams that ship every week.
@@ -485,35 +492,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </>
           )}
 
-          {divider}
-
-          <section className="flex items-center gap-3 flex-shrink-0 mt-auto pt-2">
-            <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="text-black/50 hover:text-black transition-colors" aria-label="X (Twitter)">
-              <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="text-black/50 hover:text-black transition-colors" aria-label="LinkedIn">
-              <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-            <a href="https://wa.me/message/CRWTXVTJ2LCJO1" target="_blank" rel="noopener noreferrer" className="text-black/50 hover:text-black transition-colors" aria-label="WhatsApp">
-              <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-            </a>
-            <a href="https://t.me/vukkm" target="_blank" rel="noopener noreferrer" className="text-black/50 hover:text-black transition-colors" aria-label="Telegram">
-              <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-              </svg>
-            </a>
-          </section>
-
         </div>
       </aside>
 
-      <WorkGrid caseStudies={caseStudies} />
+      <WorkGrid caseStudies={caseStudies.filter(s => s.cover.startsWith("/case/"))} />
     </main>
   )
 }
