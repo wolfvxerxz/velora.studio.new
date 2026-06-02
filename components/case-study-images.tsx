@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import type { CaseStudyWorkItem } from "@/lib/case-studies"
 
 interface Props {
@@ -8,7 +8,98 @@ interface Props {
   title: string
 }
 
-function AnimatedItem({ item, index, title }: { item: CaseStudyWorkItem; index: number; title: string }) {
+function Lightbox({ src, alt, onClose, onPrev, onNext, hasPrev, hasNext }: {
+  src: string
+  alt: string
+  onClose: () => void
+  onPrev: () => void
+  onNext: () => void
+  hasPrev: boolean
+  hasNext: boolean
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
+      if (e.key === "ArrowLeft" && hasPrev) onPrev()
+      if (e.key === "ArrowRight" && hasNext) onNext()
+    }
+    window.addEventListener("keydown", onKey)
+    document.body.style.overflow = "hidden"
+    return () => {
+      window.removeEventListener("keydown", onKey)
+      document.body.style.overflow = ""
+    }
+  }, [onClose, onPrev, onNext, hasPrev, hasNext])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ backgroundColor: "rgba(0,0,0,0.85)", backdropFilter: "blur(8px)" }}
+      onClick={onClose}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute top-4 right-4 flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        aria-label="Close"
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1L13 13M13 1L1 13" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+      </button>
+
+      {/* Prev */}
+      {hasPrev && (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); onPrev() }}
+          className="absolute left-4 flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Previous"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 2L4 7L9 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
+
+      {/* Next */}
+      {hasNext && (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); onNext() }}
+          className="absolute right-4 flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Next"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 2L10 7L5 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
+
+      {/* Image */}
+      <div
+        className="max-w-[90vw] max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt}
+          className="block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
+          style={{ transition: "opacity 200ms ease" }}
+        />
+      </div>
+    </div>
+  )
+}
+
+function AnimatedItem({ item, index, title, onClick }: {
+  item: CaseStudyWorkItem
+  index: number
+  title: string
+  onClick: () => void
+}) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -36,25 +127,58 @@ function AnimatedItem({ item, index, title }: { item: CaseStudyWorkItem; index: 
       {item.type === "video" ? (
         <video src={item.src} autoPlay loop muted playsInline className="w-full h-auto block" />
       ) : (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={item.src}
-          alt={item.alt ?? `${title} ${index + 1}`}
-          className="w-full h-auto block"
-          loading={index === 0 ? "eager" : "lazy"}
-          decoding="async"
-        />
+        <button type="button" onClick={onClick} className="block w-full cursor-zoom-in">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={item.src}
+            alt={item.alt ?? `${title} ${index + 1}`}
+            className="w-full h-auto block"
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+          />
+        </button>
       )}
     </div>
   )
 }
 
 export function CaseStudyImages({ items, title }: Props) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  const imageItems = items.filter(i => i.type === "image")
+  const getImageIndex = useCallback((itemIndex: number) => {
+    return items.slice(0, itemIndex).filter(i => i.type === "image").length
+  }, [items])
+
+  const close = useCallback(() => setLightboxIndex(null), [])
+  const prev = useCallback(() => setLightboxIndex(i => i !== null ? Math.max(0, i - 1) : null), [])
+  const next = useCallback(() => setLightboxIndex(i => i !== null ? Math.min(imageItems.length - 1, i + 1) : null), [imageItems.length])
+
   return (
-    <div className="flex flex-col gap-3">
-      {items.map((item, i) => (
-        <AnimatedItem key={item.src} item={item} index={i} title={title} />
-      ))}
-    </div>
+    <>
+      <div className="flex flex-col gap-3">
+        {items.map((item, i) => (
+          <AnimatedItem
+            key={item.src}
+            item={item}
+            index={i}
+            title={title}
+            onClick={() => item.type === "image" && setLightboxIndex(getImageIndex(i))}
+          />
+        ))}
+      </div>
+
+      {lightboxIndex !== null && imageItems[lightboxIndex] && (
+        <Lightbox
+          src={imageItems[lightboxIndex].src}
+          alt={imageItems[lightboxIndex].alt ?? `${title} ${lightboxIndex + 1}`}
+          onClose={close}
+          onPrev={prev}
+          onNext={next}
+          hasPrev={lightboxIndex > 0}
+          hasNext={lightboxIndex < imageItems.length - 1}
+        />
+      )}
+    </>
   )
 }
