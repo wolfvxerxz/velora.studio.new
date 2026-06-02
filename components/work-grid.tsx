@@ -39,19 +39,21 @@ export function WorkGrid({ caseStudies }: WorkGridProps) {
                     transition: "transform 500ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 500ms cubic-bezier(0.23, 1, 0.32, 1)",
                   }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={study.cover}
-                    alt={study.title}
-                    className="aspect-[16/11] w-full object-cover"
-                    style={{
-                      objectPosition: study.coverPosition ?? "center",
-                      transform: isHovered ? "scale(1.03)" : "scale(1)",
-                      transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
-                    }}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <div className="aspect-[16/11] relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={study.cover}
+                      alt={study.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{
+                        objectPosition: study.coverPosition ?? "center",
+                        transform: isHovered ? "scale(1.03)" : "scale(1)",
+                        transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
+                      }}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
                 <div className="mt-2.5 flex items-baseline justify-between gap-2 px-0.5">
                   <span

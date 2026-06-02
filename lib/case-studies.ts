@@ -87,6 +87,21 @@ export const caseStudies: CaseStudy[] = [
     work: [img("-1.webp"), img("-3.webp"), img("-4.webp"), img("1 2.webp")],
   },
   {
+    slug: "aether",
+    title: "Aether",
+    date: "2025",
+    cover: "/case/Aether/hero.png",
+    logo: "/case/Aether/logo.svg",
+    description:
+      "Brand and product design for Aether — a refined, ambient visual identity built to communicate clarity and depth across every touchpoint.",
+    work: [
+      caseImg("Aether", "1.png"),
+      caseImg("Aether", "2.png"),
+      caseImg("Aether", "3.png"),
+      caseImg("Aether", "4.png"),
+    ],
+  },
+  {
     slug: "bentolabs",
     title: "BentoLabs",
     date: "2025",

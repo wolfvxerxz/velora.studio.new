@@ -28,6 +28,7 @@ const clientLogos = [
   { src: "/images/brands/nordeus.webp", alt: "Nordeus" },
   { src: "/images/brands/amenify.webp", alt: "Amenify" },
   { src: "/images/brands/bobos.webp", alt: "Bobos" },
+  { src: "/case/Aether/logo.svg", alt: "Aether" },
   { src: "/case/BentoLabs/Logo.svg", alt: "BentoLabs" },
   { src: "/case/SubPay/logo.svg", alt: "SubPay" },
   { src: "/case/Armature/armature-logo.svg", alt: "Armature" },
