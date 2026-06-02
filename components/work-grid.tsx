@@ -44,8 +44,8 @@ export function WorkGrid({ caseStudies }: WorkGridProps) {
                     src={study.cover}
                     alt={study.title}
                     className="aspect-[16/11] w-full object-cover"
-                    style={{ objectPosition: study.coverPosition ?? "center" }}
                     style={{
+                      objectPosition: study.coverPosition ?? "center",
                       transform: isHovered ? "scale(1.03)" : "scale(1)",
                       transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
                     }}
