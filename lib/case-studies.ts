@@ -12,6 +12,7 @@ export interface CaseStudy {
   logo: string
   description: string
   work: CaseStudyWorkItem[]
+  coverPosition?: string
 }
 
 const img = (file: string): CaseStudyWorkItem => ({
@@ -109,6 +110,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Armature",
     date: "2025 – 2026",
     cover: "/case/Armature/hero.png",
+    coverPosition: "left",
     logo: "/case/Armature/armature-logo.svg",
     description:
       "Full brand and product design for Armature — a sharp visual identity paired with a polished digital presence built to reflect the quality of their work.",

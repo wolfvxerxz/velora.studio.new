@@ -16,6 +16,7 @@ import {
   Infinity01Icon,
   Message01Icon,
   PauseCircleIcon,
+  BinaryCodeIcon,
 } from "@hugeicons/core-free-icons"
 import type { CaseStudy } from "@/lib/case-studies"
 import { WorkGrid } from "@/components/work-grid"
@@ -163,29 +164,34 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
   const divider = <hr className="border-0 border-t border-black/[0.07] flex-shrink-0" />
 
-  const scheduleButtonClass = "rounded-full border border-black/20 px-5 py-2 text-[14px] leading-[22px] font-normal text-black/70 hover:border-black/40 hover:text-black hover:bg-black/[0.03] transition-all duration-200 inline-flex items-center gap-2"
-  const scheduleBadge = (
-    <kbd className="inline-flex items-center gap-0.5 rounded border border-white/30 bg-white/10 px-1.5 py-0.5 font-sans text-[10px] font-medium text-white">
-      <span className="text-[11px] text-white">⌘</span>K
-    </kbd>
-  )
+  const scheduleButtonClass = "rounded-full bg-white px-4 py-0 h-9 text-[14px] leading-[22px] font-normal text-black hover:bg-neutral-50 transition-all duration-200 inline-flex items-center" + " " + "border-[0.5px] border-[#F0F0F0]"
 
   const pricingFeatureIconClass = "text-black/45 flex-shrink-0"
 
+  const featureIcon = (label: string): string => {
+    const l = label.toLowerCase()
+    if (l.includes("figma")) return "/icons/figma.svg"
+    if (l.includes("week")) return "/icons/trial-week.svg"
+    if (l.includes("framer") || l.includes("webflow")) return "/icons/framer.svg"
+    return "/icons/checked.svg"
+  }
+
   const customQuoteFeatures = [
-    { icon: HeartCheckIcon, label: "Brand identity design" },
-    { icon: Layout01Icon, label: "Product & website design" },
-    { icon: FramerIcon, label: "Framer or Webflow" },
-    { icon: CheckmarkCircle01Icon, label: "Unlimited revisions" },
-    { icon: Refresh01Icon, label: "Frequent updates" },
+    "Brand identity design",
+    "Product & website design",
+    "Framer or Webflow",
+    "Next.js development",
+    "Unlimited revisions",
+    "Frequent updates",
   ]
 
   const subscriptionFeatures = [
-    { icon: Calendar01Icon, label: "2–3 updates / week" },
-    { icon: FigmaIcon, label: "Best-in-class Figma work" },
-    { icon: Infinity01Icon, label: "Unlimited requests" },
-    { icon: Message01Icon, label: "Slack or WhatsApp" },
-    { icon: PauseCircleIcon, label: "Pause or cancel anytime" },
+    "2–3 updates / week",
+    "Best-in-class Figma work",
+    "Next.js development",
+    "Unlimited requests",
+    "Slack or WhatsApp",
+    "Pause or cancel anytime",
   ]
 
   const ctaButtons = (
@@ -194,9 +200,9 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         href={scheduleUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full bg-black px-5 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
+        className="rounded-full bg-black px-4 py-0 h-9 text-[14px] leading-[22px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center"
       >
-        Schedule Now {scheduleBadge}
+        Schedule Now
       </a>
       <button
         type="button"
@@ -282,8 +288,15 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                       )}
                     </div>
                   ))}
+                  {clientLogos.length % 3 !== 0 && (
+                    <div className="flex items-center px-1 h-[44px]">
+                      <span className="text-[14px] leading-[22px] font-normal text-black/40">and 40+ more</span>
+                    </div>
+                  )}
                 </div>
-                <p className="text-[14px] leading-[22px] font-normal text-black/40 mt-1.5">and 40+ more</p>
+                {clientLogos.length % 3 === 0 && (
+                  <p className="text-[14px] leading-[22px] font-normal text-black/40 mt-1.5">and 40+ more</p>
+                )}
               </section>
 
               {divider}
@@ -294,9 +307,9 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                     href={scheduleUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full bg-black px-5 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
+                    className="rounded-full bg-black px-4 py-0 h-9 text-[14px] leading-[22px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center"
                   >
-                    Schedule Now {scheduleBadge}
+                    Schedule Now
                   </a>
                   <button
                     type="button"
@@ -437,12 +450,31 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                       Your go-to for whatever you need — brand, product, web, and build.
                     </p>
                     <ul className="mt-3 flex flex-1 flex-col gap-2">
-                      {customQuoteFeatures.map(({ icon, label }) => (
-                        <li key={label} className="flex items-start gap-1.5 text-[10px] font-normal leading-snug text-black/70">
-                          <HugeiconsIcon icon={icon} size={12} color="currentColor" strokeWidth={1.5} className={`mt-px ${pricingFeatureIconClass}`} />
-                          {label}
-                        </li>
-                      ))}
+                      {customQuoteFeatures.map((label) => {
+                        const isFramerWebflow = label.toLowerCase().includes("framer") || label.toLowerCase().includes("webflow")
+                        return (
+                          <li key={label} className="flex items-center gap-1.5 text-[10px] font-normal leading-snug text-black/70">
+                            {isFramerWebflow ? (
+                              <>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src="/icons/framer.svg" alt="" width={12} height={12} className="opacity-50 flex-shrink-0" />
+                                <span className="flex items-center gap-1">
+                                  Framer or
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img src="/icons/webflow.svg" alt="" width={12} height={12} className="opacity-50 flex-shrink-0" />
+                                  Webflow
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src={featureIcon(label)} alt="" width={12} height={12} className="opacity-50 flex-shrink-0" />
+                                {label}
+                              </>
+                            )}
+                          </li>
+                        )
+                      })}
                     </ul>
                     <a
                       href={scheduleUrl}
@@ -458,7 +490,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                   <div className="flex flex-col rounded-2xl border-[1.5px] border-white bg-white shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] p-3">
                     <div className="mb-2 flex items-center gap-1.5 text-[10px] font-normal text-black/45">
                       <HugeiconsIcon icon={SparklesIcon} size={12} color="currentColor" strokeWidth={1.5} className={pricingFeatureIconClass} />
-                      Product Design
+                      Design Partner
                     </div>
                     <p className="text-[20px] font-normal text-black leading-[28px] tracking-[-0.03em] tabular-nums">
                       €5,000<span className="text-[14px] font-normal text-black/40">/mo</span>
@@ -467,9 +499,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                       Unlimited design for teams that ship every week.
                     </p>
                     <ul className="mt-3 flex flex-1 flex-col gap-2">
-                      {subscriptionFeatures.map(({ icon, label }) => (
-                        <li key={label} className="flex items-start gap-1.5 text-[10px] font-normal leading-snug text-black/70">
-                          <HugeiconsIcon icon={icon} size={12} color="currentColor" strokeWidth={1.5} className={`mt-px ${pricingFeatureIconClass}`} />
+                      {subscriptionFeatures.map((label) => (
+                        <li key={label} className="flex items-center gap-1.5 text-[10px] font-normal leading-snug text-black/70">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={featureIcon(label)} alt="" width={12} height={12} className="opacity-50 flex-shrink-0" />
                           {label}
                         </li>
                       ))}
