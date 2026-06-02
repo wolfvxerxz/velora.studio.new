@@ -18,10 +18,14 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        "velora-studio": ["var(--font-inter)", "sans-serif"],
-        "sans-medium": ["var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "sans-serif"],
+        "velora-studio": ["var(--font-geist-sans)", "sans-serif"],
+        "sans-medium": ["var(--font-geist-sans)", "sans-serif"],
         serif: ["var(--font-playfair)", "serif"],
+      },
+      fontWeight: {
+        normal: "500",
+        medium: "500",
       },
       colors: {
         border: "hsl(var(--border))",

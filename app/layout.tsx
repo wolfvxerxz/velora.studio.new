@@ -1,15 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { Inter } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
 import Script from "next/script"
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://velora.studio'),
@@ -71,9 +64,8 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable}`}>
+    <html lang="en" className={GeistSans.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"

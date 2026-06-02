@@ -4,15 +4,21 @@ import Image from "next/image"
 import { useState, useMemo, useRef, useEffect, useCallback } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  MagicWand01Icon,
+  FlashIcon,
+  SparklesIcon,
+  HeartCheckIcon,
   Layout01Icon,
-  Layers01Icon,
-  Megaphone01Icon,
-  Mouse01Icon,
-  Audit01Icon,
-  GlobeIcon,
-  Briefcase01Icon,
+  FramerIcon,
+  CheckmarkCircle01Icon,
+  Refresh01Icon,
+  Calendar01Icon,
+  FigmaIcon,
+  Infinity01Icon,
+  Message01Icon,
+  PauseCircleIcon,
 } from "@hugeicons/core-free-icons"
+import type { CaseStudy } from "@/lib/case-studies"
+import { WorkGrid } from "@/components/work-grid"
 
 const clientLogos = [
   { src: "/images/brands/extsy.webp", alt: "Extsy" },
@@ -63,18 +69,13 @@ const TESTIMONIALS = [
   },
 ]
 
-interface WorkItem {
-  src: string
-  type: "image" | "video"
-}
-
 interface HomeClientProps {
-  workItems: WorkItem[]
+  caseStudies: CaseStudy[]
 }
 
 const TESTIMONIAL_INTERVAL_MS = 5000
 
-export default function HomeClient({ workItems }: HomeClientProps) {
+export default function HomeClient({ caseStudies }: HomeClientProps) {
   const [sidebarView, setSidebarView] = useState<SidebarView>("index")
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 })
@@ -160,29 +161,46 @@ export default function HomeClient({ workItems }: HomeClientProps) {
 
   const scheduleButtonClass = "rounded-full border border-black/20 px-5 py-2 text-[13px] font-normal text-black/70 hover:border-black/40 hover:text-black hover:bg-black/[0.03] transition-all duration-200 inline-flex items-center gap-2"
   const scheduleBadge = (
-    <kbd className="inline-flex items-center gap-0.5 rounded border border-black/20 bg-black/[0.04] px-1.5 py-0.5 font-sans text-[10px] font-medium text-black/50">
-      <span className="text-[11px]">⌘</span>K
+    <kbd className="inline-flex items-center gap-0.5 rounded border border-white/30 bg-white/10 px-1.5 py-0.5 font-sans text-[10px] font-medium text-white">
+      <span className="text-[11px] text-white">⌘</span>K
     </kbd>
   )
+
+  const pricingFeatureIconClass = "text-black/45 flex-shrink-0"
+
+  const customQuoteFeatures = [
+    { icon: HeartCheckIcon, label: "Brand identity design" },
+    { icon: Layout01Icon, label: "Product & website design" },
+    { icon: FramerIcon, label: "Framer or Webflow" },
+    { icon: CheckmarkCircle01Icon, label: "Unlimited revisions" },
+    { icon: Refresh01Icon, label: "Frequent updates" },
+  ]
+
+  const subscriptionFeatures = [
+    { icon: Calendar01Icon, label: "2–3 updates / week" },
+    { icon: FigmaIcon, label: "Best-in-class Figma work" },
+    { icon: Infinity01Icon, label: "Unlimited requests" },
+    { icon: Message01Icon, label: "Slack or WhatsApp" },
+    { icon: PauseCircleIcon, label: "Pause or cancel anytime" },
+  ]
 
   const ctaButtons = (
     <section className="flex flex-wrap gap-2 flex-shrink-0">
       <a
-        href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="rounded-full bg-black px-5 py-2 text-[13px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center"
-      >
-        Subscribe
-      </a>
-      <a
         href={scheduleUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={scheduleButtonClass}
+        className="rounded-full bg-black px-5 py-2 text-[13px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
       >
         Schedule Now {scheduleBadge}
       </a>
+      <button
+        type="button"
+        onClick={() => setSidebarView("pricing")}
+        className={scheduleButtonClass}
+      >
+        View pricing
+      </button>
     </section>
   )
 
@@ -191,7 +209,7 @@ export default function HomeClient({ workItems }: HomeClientProps) {
       {/* Left sidebar */}
       <aside
         className="w-full md:w-[420px] md:sticky md:top-0 md:h-screen md:flex-shrink-0 md:overflow-y-auto overflow-x-hidden flex flex-col"
-        style={{ backgroundColor: "#ffffff" }}
+        style={{ backgroundColor: "#fafafa" }}
       >
         <div className="flex flex-col flex-1 px-5 py-5 gap-4 md:max-w-[420px] md:w-[420px]">
 
@@ -234,7 +252,7 @@ export default function HomeClient({ workItems }: HomeClientProps) {
             <>
               <section className="flex-shrink-0">
                 <h1 className="text-[19px] font-normal text-black leading-[1.3] tracking-[-0.01em] mb-2">
-                  Design partner for founders building in AI, web3, and startups that move fast.
+                  Design Studio for founders building in AI. Backed by YC and a16z
                 </h1>
                 <p className="text-[14px] font-normal text-black/70 leading-[1.45] tracking-tight">
                   We help you go from 0→1 fast — products that attract investors, convert users, and ship on time.
@@ -253,7 +271,7 @@ export default function HomeClient({ workItems }: HomeClientProps) {
                         alt={logo.alt}
                         width={logo.alt === "Ecom Wizards" ? 90 : 70}
                         height={22}
-                        className={`object-contain max-h-[22px] w-auto ${logo.alt === "Webserv" ? "opacity-50" : "brightness-0 opacity-50"}`}
+                        className="object-contain max-h-[22px] w-auto opacity-85"
                       />
                     </div>
                   ))}
@@ -266,47 +284,24 @@ export default function HomeClient({ workItems }: HomeClientProps) {
               <section className="flex flex-col gap-2 flex-shrink-0">
                 <div className="flex flex-wrap gap-2">
                   <a
-href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-black px-5 py-2 text-[13px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center"
-                >
-                  Subscribe
-                  </a>
-                  <a
                     href={scheduleUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={scheduleButtonClass}
+                    className="rounded-full bg-black px-5 py-2 text-[13px] font-normal text-white hover:bg-black/80 transition-all duration-200 inline-flex items-center gap-2"
                   >
                     Schedule Now {scheduleBadge}
                   </a>
+                  <button
+                    type="button"
+                    onClick={() => setSidebarView("pricing")}
+                    className={scheduleButtonClass}
+                  >
+                    View pricing
+                  </button>
                 </div>
                 <p className="text-[13px] font-normal text-black/55 leading-[1.45]">
                   €3,500/mo for as much design as you need, or send us a custom quote. You can pause or cancel anytime for flexibility.
                 </p>
-              </section>
-
-              {divider}
-
-              <section className="flex-shrink-0">
-                <div className="grid grid-cols-2 gap-x-3 gap-y-2">
-                  {[
-                    { icon: MagicWand01Icon, label: "Brand sprints",  iconClass: "icon-wand"   },
-                    { icon: Layout01Icon,    label: "Wireframing",    iconClass: "icon-layout" },
-                    { icon: Layers01Icon,    label: "User journeys",  iconClass: "icon-layers" },
-                    { icon: Megaphone01Icon, label: "Social assets",  iconClass: "icon-mega"   },
-                    { icon: Mouse01Icon,     label: "Product design", iconClass: "icon-mouse"  },
-                    { icon: Audit01Icon,     label: "UX auditing",    iconClass: "icon-audit"  },
-                    { icon: GlobeIcon,       label: "Web design",     iconClass: "icon-globe"  },
-                    { icon: Briefcase01Icon, label: "Consulting",     iconClass: "icon-brief"  },
-                  ].map(({ icon, label, iconClass }) => (
-                    <div key={label} className="service-item flex items-center gap-2 cursor-default">
-                      <HugeiconsIcon icon={icon} size={14} color="currentColor" strokeWidth={1.5} className={`${iconClass} text-black/40 flex-shrink-0`} />
-                      <span className="text-[13px] font-normal text-black/60 tracking-tight">{label}</span>
-                    </div>
-                  ))}
-                </div>
               </section>
 
             </>
@@ -417,75 +412,68 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
           {sidebarView === "pricing" && (
             <>
               <section className="flex-shrink-0 flex flex-col gap-3">
-                <div>
-                  <h1 className="text-[19px] font-normal text-black leading-[1.3] tracking-[-0.01em]">Pricing</h1>
-                  <p className="text-[12px] font-normal text-black/40 mt-0.5">Simple and transparent — no surprises.</p>
-                </div>
+                <p className="text-[13px] font-normal text-black/65 leading-[1.5] tracking-tight">
+                  Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
+                </p>
 
-                <div className="flex flex-col gap-2">
-                  {/* Subscription — featured */}
-                  <a
-                    href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block rounded-2xl bg-black p-4 transition-all duration-200 hover:bg-black/80"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-normal text-white/60 tracking-widest uppercase">Subscription</span>
-                      <span className="text-[10px] font-normal text-black bg-white rounded-full px-2.5 py-0.5 leading-none">Most popular</span>
+                <div className="grid grid-cols-2 gap-2">
+                  {/* Custom quote */}
+                  <div className="flex flex-col rounded-2xl border border-black/[0.08] bg-neutral-50/80 p-3">
+                    <div className="mb-2 flex items-center gap-1.5 text-[10px] font-normal text-black/45">
+                      <HugeiconsIcon icon={FlashIcon} size={12} color="currentColor" strokeWidth={1.5} className={pricingFeatureIconClass} />
+                      0→1 Design
                     </div>
-                    <p className="text-[24px] font-normal text-white tracking-[-0.03em] leading-none">
-                      €3,500<span className="text-[13px] font-normal text-white/40">/mo</span>
+                    <h2 className="text-[15px] font-normal text-black leading-tight tracking-[-0.02em]">
+                      Custom Quote
+                    </h2>
+                    <p className="mt-1.5 text-[10px] font-normal text-black/50 leading-snug">
+                      Your go-to for whatever you need — brand, product, web, and build.
                     </p>
-                    <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3 pt-3 border-t border-white/10">
-                      {[
-                        "Unlimited requests",
-                        "2–3 updates/week",
-                        "Slack or Telegram",
-                        "Framer or Webflow",
-                        "Product & web design",
-                        "Pause or cancel anytime",
-                      ].map((f) => (
-                        <div key={f} className="flex items-center gap-1.5">
-                          <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6.5" fill="white" fillOpacity="0.12"/><path d="M4 6.5l1.8 1.8L9 4.5" stroke="white" strokeOpacity="0.7" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                          <span className="text-[11px] font-normal text-white/80">{f}</span>
-                        </div>
+                    <ul className="mt-3 flex flex-1 flex-col gap-2">
+                      {customQuoteFeatures.map(({ icon, label }) => (
+                        <li key={label} className="flex items-start gap-1.5 text-[10px] font-normal leading-snug text-black/70">
+                          <HugeiconsIcon icon={icon} size={12} color="currentColor" strokeWidth={1.5} className={`mt-px ${pricingFeatureIconClass}`} />
+                          {label}
+                        </li>
                       ))}
-                    </div>
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-black/10">
-                      <span className="text-[12px] font-normal text-white/80">Get started today</span>
-                      <span className="text-black/60 group-hover:text-black group-hover:translate-x-0.5 transition-all duration-200">→</span>
-                    </div>
-                  </a>
-
-                  {/* Custom + Landing side by side */}
-                  <div className="grid grid-cols-2 gap-2">
+                    </ul>
                     <a
                       href={scheduleUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col rounded-2xl border border-black/[0.08] bg-black/[0.02] p-3.5 transition-all duration-200 hover:bg-black/[0.05] hover:border-black/15"
+                      className="mt-3 flex w-full items-center justify-center rounded-full border border-black/20 py-2 text-[11px] font-normal text-black/70 transition-all duration-200 hover:border-black/40 hover:bg-black/[0.03] hover:text-black"
                     >
-                      <span className="text-[10px] font-normal text-black/30 tracking-widest uppercase mb-1.5">Custom</span>
-                      <p className="text-[12px] font-normal text-black/70 leading-[1.35] flex-1">Scoped to your project and budget</p>
-                      <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-black/[0.06]">
-                        <span className="text-[11px] font-normal text-black/40">Book a call</span>
-                        <span className="text-black/25 group-hover:text-black/60 group-hover:translate-x-0.5 transition-all duration-200 text-[12px]">→</span>
-                      </div>
+                      Share your vision
                     </a>
+                  </div>
+
+                  {/* Subscription */}
+                  <div className="flex flex-col rounded-2xl border border-black/[0.08] bg-white p-3 shadow-[0_2px_16px_-6px_rgba(0,0,0,0.08)]">
+                    <div className="mb-2 flex items-center gap-1.5 text-[10px] font-normal text-black/45">
+                      <HugeiconsIcon icon={SparklesIcon} size={12} color="currentColor" strokeWidth={1.5} className={pricingFeatureIconClass} />
+                      Product Design
+                    </div>
+                    <p className="text-[17px] font-normal text-black leading-none tracking-[-0.03em] tabular-nums">
+                      €3,500<span className="text-[11px] font-normal text-black/40">/mo</span>
+                    </p>
+                    <p className="mt-1.5 text-[10px] font-normal text-black/50 leading-snug">
+                      Unlimited design for teams that ship every week.
+                    </p>
+                    <ul className="mt-3 flex flex-1 flex-col gap-2">
+                      {subscriptionFeatures.map(({ icon, label }) => (
+                        <li key={label} className="flex items-start gap-1.5 text-[10px] font-normal leading-snug text-black/70">
+                          <HugeiconsIcon icon={icon} size={12} color="currentColor" strokeWidth={1.5} className={`mt-px ${pricingFeatureIconClass}`} />
+                          {label}
+                        </li>
+                      ))}
+                    </ul>
                     <a
-                      href={scheduleUrl}
+                      href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col rounded-2xl border border-black/[0.08] bg-black/[0.02] p-3.5 transition-all duration-200 hover:bg-black/[0.05] hover:border-black/15"
+                      className="mt-3 flex w-full items-center justify-center rounded-full bg-black py-2 text-[11px] font-normal text-white transition-all duration-200 hover:bg-black/80"
                     >
-                      <span className="text-[10px] font-normal text-black/30 tracking-widest uppercase mb-1.5">Landing</span>
-                      <p className="text-[20px] font-normal text-black tracking-[-0.02em] leading-none">€1,600</p>
-                      <p className="text-[10px] font-normal text-black/30 mt-0.5 flex-1">flat rate</p>
-                      <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-black/[0.06]">
-                        <span className="text-[11px] font-normal text-black/40">One page</span>
-                        <span className="text-black/25 group-hover:text-black/60 group-hover:translate-x-0.5 transition-all duration-200 text-[12px]">→</span>
-                      </div>
+                      Let&apos;s work together
                     </a>
                   </div>
                 </div>
@@ -525,35 +513,7 @@ href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671
         </div>
       </aside>
 
-      {/* Right: work section — images/videos fed dynamically from server */}
-      <div className="flex-1 md:h-screen md:overflow-y-auto p-1 bg-white">
-        <div className="flex flex-col gap-1 max-w-full w-full items-stretch">
-          {workItems.map(({ src, type }, i) => (
-            <div key={src} className="w-full overflow-hidden rounded-[8px]">
-              {type === "video" ? (
-                <video
-                  src={src}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto block"
-                />
-              ) : (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={src}
-                  alt={`Work sample ${i + 1}`}
-                  className="w-full h-auto block"
-                  loading={i === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="h-10" />
-      </div>
+      <WorkGrid caseStudies={caseStudies} />
     </main>
   )
 }
