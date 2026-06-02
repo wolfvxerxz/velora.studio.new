@@ -87,6 +87,22 @@ export const caseStudies: CaseStudy[] = [
     work: [img("-1.webp"), img("-3.webp"), img("-4.webp"), img("1 2.webp")],
   },
   {
+    slug: "bentolabs",
+    title: "BentoLabs",
+    date: "2025",
+    cover: "/case/BentoLabs/Hero.png",
+    logo: "/case/BentoLabs/Logo.svg",
+    description:
+      "Brand and product design for BentoLabs — a modular, component-driven visual system built for teams that ship fast without sacrificing quality.",
+    work: [
+      caseImg("BentoLabs", "1.png"),
+      caseImg("BentoLabs", "2.png"),
+      caseImg("BentoLabs", "3.png"),
+      caseImg("BentoLabs", "4.png"),
+      caseImg("BentoLabs", "5.png"),
+    ],
+  },
+  {
     slug: "subpay",
     title: "SubPay",
     date: "2025",

@@ -28,6 +28,7 @@ const clientLogos = [
   { src: "/images/brands/nordeus.webp", alt: "Nordeus" },
   { src: "/images/brands/amenify.webp", alt: "Amenify" },
   { src: "/images/brands/bobos.webp", alt: "Bobos" },
+  { src: "/case/BentoLabs/Logo.svg", alt: "BentoLabs" },
   { src: "/case/SubPay/logo.svg", alt: "SubPay" },
   { src: "/case/Armature/armature-logo.svg", alt: "Armature" },
   { src: "/case/Cactus/cactus-logo.png", alt: "Cactus" },
@@ -162,7 +163,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     }
   }, [sidebarView, startTestimonialTimer])
 
-  const divider = <hr className="border-0 border-t border-black/[0.07] flex-shrink-0" />
+  const divider = null
 
   const scheduleButtonClass = "rounded-full bg-white px-4 py-0 h-9 text-[14px] leading-[22px] font-normal text-black hover:bg-neutral-50 transition-all duration-200 inline-flex items-center" + " " + "border-[0.5px] border-[#F0F0F0]"
 
