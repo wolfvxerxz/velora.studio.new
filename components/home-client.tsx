@@ -404,21 +404,38 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                     </div>
                   ))}
                 </div>
-                <div className="flex gap-2 mt-3 flex-wrap">
-                  {TESTIMONIALS.map((_, i) => (
+                <div className="flex items-center justify-between mt-3">
+                  <div className="flex gap-2">
+                    {TESTIMONIALS.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => { setTestimonialIndex(i); startTestimonialTimer() }}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === testimonialIndex ? "w-5 bg-black" : "w-1.5 bg-black/20 hover:bg-black/35"
+                        }`}
+                        aria-label={`Testimonial ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-1">
                     <button
-                      key={i}
                       type="button"
-                      onClick={() => {
-                        setTestimonialIndex(i)
-                        startTestimonialTimer()
-                      }}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        i === testimonialIndex ? "w-5 bg-black" : "w-1.5 bg-black/20 hover:bg-black/35"
-                      }`}
-                      aria-label={`Testimonial ${i + 1}`}
-                    />
-                  ))}
+                      onClick={() => { setTestimonialIndex((testimonialIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length); startTestimonialTimer() }}
+                      className="flex items-center justify-center w-7 h-7 rounded-full border-[0.5px] border-[#F0F0F0] bg-white hover:bg-neutral-50 transition-all duration-200"
+                      aria-label="Previous"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M7.5 9L4.5 6L7.5 3" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setTestimonialIndex((testimonialIndex + 1) % TESTIMONIALS.length); startTestimonialTimer() }}
+                      className="flex items-center justify-center w-7 h-7 rounded-full border-[0.5px] border-[#F0F0F0] bg-white hover:bg-neutral-50 transition-all duration-200"
+                      aria-label="Next"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.5 3L7.5 6L4.5 9" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </button>
+                  </div>
                 </div>
               </section>
 
