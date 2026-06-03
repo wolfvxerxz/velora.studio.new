@@ -466,7 +466,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                       Custom Quote
                     </h2>
                     <p className="mt-1.5 text-[10px] font-normal text-black/50 leading-snug">
-                      Your go-to for whatever you need — brand, product, web, and build.
+                      Your go-to for whatever you need: brand, product, web, and build.
                     </p>
                     <ul className="mt-3 flex flex-1 flex-col gap-2">
                       {customQuoteFeatures.map((label) => {
