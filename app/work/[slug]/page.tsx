@@ -58,19 +58,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
           {study.description}
         </p>
 
-        <div className="mt-8 overflow-hidden rounded-2xl border-[4px] border-white bg-white shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={study.cover}
-            alt={`${study.title} preview`}
-            className="w-full h-auto block"
-            loading="eager"
-            decoding="async"
+        <section className="mt-8">
+          <CaseStudyImages
+            items={[{ src: study.cover, type: "image", alt: `${study.title} preview` }, ...study.work]}
+            title={study.title}
           />
-        </div>
-
-        <section className="mt-10">
-          <CaseStudyImages items={study.work} title={study.title} />
         </section>
 
         <div className="mt-10 flex flex-wrap gap-2 border-t border-black/[0.07] pt-8">

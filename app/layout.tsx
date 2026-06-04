@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/next"
 export const metadata: Metadata = {
   metadataBase: new URL('https://velora.studio'),
   title: {
-    default: 'velora.studio ⏤ design and development studio',
+    default: 'velora.studio — design and development studio',
     template: '%s | velora.studio'
   },
   icons: {
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://velora.studio',
-    title: 'velora.studio ⏤ design and development studio',
+    title: 'velora.studio — design and development studio',
     description: 'Velora Studio partners with AI founders to design investor-ready products that users actually want to use.',
     siteName: 'velora.studio',
     images: [{ url: 'https://velora.studio/og-image.jpg', width: 1200, height: 630, alt: 'Velora Studio' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'velora.studio ⏤ design and development studio',
+    title: 'velora.studio — design and development studio',
     description: 'Velora Studio partners with AI founders to design investor-ready products that users actually want to use.',
     creator: '@veloraxstudio',
     images: ['https://velora.studio/twitter-image.jpg'],
