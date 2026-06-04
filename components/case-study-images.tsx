@@ -102,6 +102,7 @@ function AnimatedItem({ item, index, title, onClick }: {
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [hovered, setHovered] = useState(false)
 
   useEffect(() => {
     const el = ref.current
@@ -127,12 +128,22 @@ function AnimatedItem({ item, index, title, onClick }: {
       {item.type === "video" ? (
         <video src={item.src} autoPlay loop muted playsInline className="w-full h-auto block" />
       ) : (
-        <button type="button" onClick={onClick} className="block w-full cursor-zoom-in">
+        <button
+          type="button"
+          onClick={onClick}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className="block w-full cursor-zoom-in overflow-hidden"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={item.src}
             alt={item.alt ?? `${title} ${index + 1}`}
             className="w-full h-auto block"
+            style={{
+              transform: hovered ? "scale(1.03)" : "scale(1)",
+              transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
+            }}
             loading={index === 0 ? "eager" : "lazy"}
             decoding="async"
           />
