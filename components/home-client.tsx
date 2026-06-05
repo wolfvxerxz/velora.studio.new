@@ -277,7 +277,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                 <p className="text-[14px] leading-[22px] font-normal text-black/45 mb-2 tracking-tight">Past clients include</p>
                 <div className="grid grid-cols-3 gap-2">
                   {clientLogos.map((logo) => (
-                    <div key={logo.alt} className="relative flex items-center justify-center gap-1.5 rounded-[10px] border-[1.5px] border-white bg-white shadow-[0_1px_6px_-2px_rgba(0,0,0,0.07)] px-3 py-2.5 h-[44px]">
+                    <div
+                      key={logo.alt}
+                      className="group/logo relative flex items-center justify-center gap-1.5 overflow-hidden rounded-[10px] border-[1.5px] border-white bg-white shadow-[0_1px_6px_-2px_rgba(0,0,0,0.07)] px-3 py-2.5 h-[44px]"
+                    >
                       <Image
                         src={logo.src}
                         alt={logo.alt}
@@ -289,13 +292,13 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                         <span className="text-[13px] font-semibold text-black leading-none" style={{ fontFamily: "var(--font-geist-sans)" }}>Cactus</span>
                       )}
                       {logo.yc && (
-                        <span
-                          className="absolute -top-1.5 -right-1.5 flex h-[15px] w-[15px] items-center justify-center rounded-[3px] text-[10px] font-bold leading-none text-white shadow-[0_1px_3px_-1px_rgba(0,0,0,0.25)]"
-                          style={{ backgroundColor: "#FB651E", fontFamily: "var(--font-geist-sans)" }}
-                          title="Y Combinator backed"
+                        <div
+                          className="pointer-events-none absolute inset-0 flex items-center justify-center gap-1.5 opacity-0 transition-opacity duration-300 group-hover/logo:opacity-100"
+                          style={{ backgroundColor: "rgba(255,255,255,0.55)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }}
                         >
-                          Y
-                        </span>
+                          <span className="flex h-[14px] w-[14px] items-center justify-center rounded-[3px] text-[9px] font-bold leading-none text-white" style={{ backgroundColor: "#FB651E", fontFamily: "var(--font-geist-sans)" }}>Y</span>
+                          <span className="text-[12px] font-semibold leading-none text-black" style={{ fontFamily: "var(--font-geist-sans)" }}>Backed by YC</span>
+                        </div>
                       )}
                     </div>
                   ))}
