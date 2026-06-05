@@ -21,7 +21,7 @@ import {
 import type { CaseStudy } from "@/lib/case-studies"
 import { WorkGrid } from "@/components/work-grid"
 
-const clientLogos = [
+const clientLogos: { src: string; alt: string; yc?: boolean }[] = [
   { src: "/images/brands/extsy.webp", alt: "Extsy" },
   { src: "/images/brands/webserv.webp", alt: "Webserv" },
   { src: "/images/brands/ecom.webp", alt: "Ecom Wizards" },
@@ -29,11 +29,11 @@ const clientLogos = [
   { src: "/images/brands/amenify.webp", alt: "Amenify" },
   { src: "/images/brands/bobos.webp", alt: "Bobos" },
   { src: "/case/Aether/logo.svg", alt: "Aether" },
-  { src: "/case/BentoLabs/Logo.svg", alt: "BentoLabs" },
+  { src: "/case/BentoLabs/Logo.svg", alt: "BentoLabs", yc: true },
   { src: "/case/SubPay/logo.svg", alt: "SubPay" },
-  { src: "/case/Armature/armature-logo.svg", alt: "Armature" },
-  { src: "/case/Cactus/cactus-logo.png", alt: "Cactus" },
-  { src: "/case/InsForge/insforge-logo.svg", alt: "InsForge" },
+  { src: "/case/Armature/armature-logo.svg", alt: "Armature", yc: true },
+  { src: "/case/Cactus/cactus-logo.png", alt: "Cactus", yc: true },
+  { src: "/case/InsForge/insforge-logo.svg", alt: "InsForge", yc: true },
 ]
 
 type SidebarView = "index" | "process" | "about" | "pricing"
@@ -277,7 +277,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                 <p className="text-[14px] leading-[22px] font-normal text-black/45 mb-2 tracking-tight">Past clients include</p>
                 <div className="grid grid-cols-3 gap-2">
                   {clientLogos.map((logo) => (
-                    <div key={logo.alt} className="flex items-center justify-center gap-1.5 rounded-[10px] border-[1.5px] border-white bg-white shadow-[0_1px_6px_-2px_rgba(0,0,0,0.07)] px-3 py-2.5 h-[44px]">
+                    <div key={logo.alt} className="relative flex items-center justify-center gap-1.5 rounded-[10px] border-[1.5px] border-white bg-white shadow-[0_1px_6px_-2px_rgba(0,0,0,0.07)] px-3 py-2.5 h-[44px]">
                       <Image
                         src={logo.src}
                         alt={logo.alt}
@@ -287,6 +287,15 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                       />
                       {logo.alt === "Cactus" && (
                         <span className="text-[13px] font-semibold text-black leading-none" style={{ fontFamily: "var(--font-geist-sans)" }}>Cactus</span>
+                      )}
+                      {logo.yc && (
+                        <span
+                          className="absolute -top-1.5 -right-1.5 flex h-[15px] w-[15px] items-center justify-center rounded-[3px] text-[10px] font-bold leading-none text-white shadow-[0_1px_3px_-1px_rgba(0,0,0,0.25)]"
+                          style={{ backgroundColor: "#FB651E", fontFamily: "var(--font-geist-sans)" }}
+                          title="Y Combinator backed"
+                        >
+                          Y
+                        </span>
                       )}
                     </div>
                   ))}
