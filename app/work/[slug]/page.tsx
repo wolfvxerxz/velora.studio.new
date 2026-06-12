@@ -29,32 +29,32 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound()
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#fafafa" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "#0F0F0F" }}>
       <div className="mx-auto max-w-3xl px-5 py-8 md:py-12">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[22px] font-normal text-black/45 transition-colors hover:text-black"
+          className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[22px] font-normal text-[#A2A2A2] transition-colors hover:text-white"
         >
           ← Back to work
         </Link>
 
         <div className="mb-6 flex items-center gap-3">
-          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90" />
-          <span className="text-black/25 text-sm">×</span>
+          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0 invert" />
+          <span className="text-white/25 text-sm">×</span>
           <Image
             src={study.logo}
             alt={study.title}
             width={study.title === "Ecom Wizards" ? 100 : 80}
             height={24}
-            className="h-5 w-auto max-w-[100px] object-contain opacity-80"
+            className="h-5 w-auto max-w-[100px] object-contain opacity-90 brightness-0 invert"
           />
         </div>
 
-        <h1 className="text-[20px] font-normal text-black leading-[28px] tracking-[-0.02em]">
+        <h1 className="text-[20px] font-normal text-white leading-[28px] tracking-[-0.02em]">
           {study.title} — Design &amp; build
         </h1>
 
-        <p className="mt-4 text-[16px] font-normal text-black/65 leading-[26px] tracking-tight">
+        <p className="mt-4 text-[16px] font-normal text-[#A2A2A2] leading-[26px] tracking-tight">
           {study.description}
         </p>
 
@@ -65,18 +65,20 @@ export default async function CaseStudyPage({ params }: PageProps) {
           />
         </section>
 
-        <div className="mt-10 flex flex-wrap gap-2 border-t border-black/[0.07] pt-8">
+        <div className="mt-10 flex flex-wrap gap-2 border-t border-[#1F1F1F] pt-8">
           <a
             href="https://cal.com/vuk-m/15min"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-black px-5 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-black/80 transition-all duration-200"
+            className="rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0F0F0F] hover:bg-white/90 transition-all duration-200 inline-flex items-center gap-2"
           >
             Schedule Now
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/pfp.jpg" alt="Vuk" width={24} height={24} className="h-6 w-6 rounded-[6px] object-cover" />
           </a>
           <Link
             href="/"
-            className="rounded-full border border-black/20 px-5 py-2 text-[14px] leading-[22px] font-normal text-black/70 hover:border-black/40 hover:text-black hover:bg-black/[0.03] transition-all duration-200"
+            className="rounded-full bg-[#282828] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#333333] transition-all duration-200"
           >
             View all work
           </Link>

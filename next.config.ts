@@ -4,6 +4,8 @@ const isExport = process.env.EXPORT === 'true'
 
 const nextConfig: NextConfig = {
   ...(isExport ? { output: 'export' } : {}),
+  // Keep WebLLM out of the server bundle — it's browser-only
+  serverExternalPackages: ["@mlc-ai/web-llm"],
   eslint: {
     ignoreDuringBuilds: true,
   },
