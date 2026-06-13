@@ -21,16 +21,16 @@ import {
 import type { CaseStudy } from "@/lib/case-studies"
 import { WorkGrid } from "@/components/work-grid"
 
-const clientLogos: { src: string; alt: string; yc?: boolean }[] = [
+const clientLogos: { src: string; alt: string; yc?: boolean; noInvert?: boolean }[] = [
   { src: "/images/brands/extsy.webp", alt: "Extsy" },
-  { src: "/images/brands/webserv.webp", alt: "Webserv" },
+  { src: "/images/brands/webserv.webp", alt: "Webserv", noInvert: true },
   { src: "/images/brands/ecom.webp", alt: "Ecom Wizards" },
   { src: "/images/brands/nordeus.webp", alt: "Nordeus" },
   { src: "/images/brands/amenify.webp", alt: "Amenify" },
   { src: "/images/brands/bobos.webp", alt: "Bobos" },
   { src: "/case/Aether/logo.svg", alt: "Aether" },
   { src: "/case/BentoLabs/Logo.svg", alt: "BentoLabs", yc: true },
-  { src: "/case/SubPay/logo.svg", alt: "SubPay" },
+  { src: "/case/SubPay/logo.svg", alt: "SubPay", noInvert: true },
   { src: "/case/Armature/armature-logo.svg", alt: "Armature", yc: true },
   { src: "/case/Cactus/cactus-logo.webp", alt: "Cactus", yc: true },
   { src: "/case/InsForge/insforge-logo.svg", alt: "InsForge", yc: true },
@@ -295,7 +295,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                           alt={logo.alt}
                           width={logo.alt === "Ecom Wizards" ? 90 : 70}
                           height={22}
-                          className="object-contain max-h-[22px] w-auto opacity-90 brightness-0 invert"
+                          className={`object-contain max-h-[22px] w-auto opacity-90 ${logo.noInvert ? "" : "brightness-0 invert"}`}
                         />
                         {logo.alt === "Cactus" && (
                           <span className="text-[13px] font-semibold text-white leading-none" style={{ fontFamily: "var(--font-geist-sans)" }}>Cactus</span>
