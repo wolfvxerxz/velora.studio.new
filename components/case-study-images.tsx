@@ -170,7 +170,7 @@ export function CaseStudyImages({ items, title }: Props) {
       <div className="flex flex-col gap-3">
         {items.map((item, i) => (
           <AnimatedItem
-            key={item.src}
+            key={`${item.src}-${i}`}
             item={item}
             index={i}
             title={title}

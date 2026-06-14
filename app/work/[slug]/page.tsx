@@ -60,7 +60,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
         <section className="mt-8">
           <CaseStudyImages
-            items={[{ src: study.cover, type: "image", alt: `${study.title} preview` }, ...study.work]}
+            items={
+              study.work[0]?.src === study.cover
+                ? study.work
+                : [{ src: study.cover, type: "image", alt: `${study.title} preview` }, ...study.work]
+            }
             title={study.title}
           />
         </section>

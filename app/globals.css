@@ -223,12 +223,12 @@ button,
 html,
 body,
 :root {
-  height: 100%;
+  min-height: 100%;
   overflow-x: hidden;
 }
 
 html {
-  background-color: #ffffff;
+  background-color: #0F0F0F;
 }
 
 /* Custom grid background pattern */
