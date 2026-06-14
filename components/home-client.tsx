@@ -170,6 +170,19 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     new Set(otherWorks.flatMap((c) => [c.cover, ...c.work.filter((w) => w.type === "image").map((w) => w.src)]))
   )
 
+  const heroCtaRef = useRef<HTMLDivElement>(null)
+  const [navVisible, setNavVisible] = useState(false)
+  useEffect(() => {
+    const el = heroCtaRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setNavVisible(!entry.isIntersecting),
+      { threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   const processSteps = [
     { title: "Align", text: "We dig into your goals, users, and constraints — moodboards, user flows, and wireframes so everyone's on the same page." },
     { title: "Direct", text: "We design the key screens and establish a clear visual direction. You sign off before we build out the rest." },
@@ -207,7 +220,17 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
   return (
     <main className="min-h-screen font-sans" style={{ backgroundColor: "#0F0F0F" }}>
       {/* Navbar */}
-      <header className="sticky top-0 z-50" style={{ backgroundColor: "rgba(15,15,15,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}>
+      <header
+        className="sticky top-0 z-50 transition-all duration-300"
+        style={{
+          backgroundColor: "rgba(15,15,15,0.8)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          opacity: navVisible ? 1 : 0,
+          transform: navVisible ? "translateY(0)" : "translateY(-100%)",
+          pointerEvents: navVisible ? "auto" : "none",
+        }}
+      >
         <div className="w-full max-w-[680px] mx-auto px-5 h-[64px] flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo/logo-v.svg" alt="Velora" width={32} height={32} className="opacity-90 brightness-0 invert" priority />
@@ -235,7 +258,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mt-4">
             We help you go from 0→1 fast — products that attract investors, convert users, and ship on time. Backed by YC and a16z, we craft intuitive interfaces that tackle complex challenges in AI, SaaS, and Web3.
           </p>
-          <div className="flex flex-wrap items-center gap-2 mt-5">
+          <div ref={heroCtaRef} className="flex flex-wrap items-center gap-2 mt-5">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
               Schedule Call
               {/* eslint-disable-next-line @next/next/no-img-element */}

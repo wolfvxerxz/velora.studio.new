@@ -46,7 +46,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             alt={study.title}
             width={study.title === "Ecom Wizards" ? 100 : 80}
             height={24}
-            className="h-5 w-auto max-w-[100px] object-contain opacity-90 brightness-0 invert"
+            className={`h-5 w-auto max-w-[100px] object-contain opacity-90 ${study.logoNoInvert ? "" : "brightness-0 invert"}`}
           />
         </div>
 

@@ -13,6 +13,7 @@ export interface CaseStudy {
   description: string
   work: CaseStudyWorkItem[]
   coverPosition?: string
+  logoNoInvert?: boolean
 }
 
 const img = (file: string): CaseStudyWorkItem => ({
@@ -123,6 +124,7 @@ export const caseStudies: CaseStudy[] = [
     date: "2025",
     cover: "/case/SubPay/Hero.webp",
     logo: "/case/SubPay/logo.svg",
+    logoNoInvert: true,
     description:
       "Product design for SubPay — a clean, conversion-focused subscription payments experience built for clarity at every step of the billing flow.",
     work: [
