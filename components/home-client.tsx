@@ -227,16 +227,16 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         </div>
       </header>
 
-      <div className="flex flex-col items-center gap-16 pb-20 pt-16">
+      <div className="flex flex-col items-center gap-10 pb-20 pt-12">
         {/* Hero */}
         <section className={section}>
           <h1 className="text-[24px] leading-[32px] font-normal text-white">
             Your vision deserves world-class execution.
           </h1>
-          <h2 className="text-[24px] leading-[32px] font-normal text-[#A2A2A2] mt-0.5">
+          <h2 className="text-[24px] leading-[32px] !font-[400] text-[#A2A2A2] mt-0.5">
             velora.studio is your go-to design partner for founders building in AI.
           </h2>
-          <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mt-4">
+          <p className="text-[14px] leading-[20px] !font-[400] text-[#A2A2A2] mt-4">
             We help you go from 0→1 fast — products that attract investors, convert users, and ship on time. Backed by YC and a16z, we craft intuitive interfaces that tackle complex challenges in AI, SaaS, and Web3.
           </p>
           <div className="flex flex-wrap items-center gap-2 mt-5">
