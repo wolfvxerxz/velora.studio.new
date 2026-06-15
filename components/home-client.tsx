@@ -214,7 +214,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         <div className="w-full max-w-[680px] mx-auto px-5 h-[64px] flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo/logo-v.svg" alt="Velora" width={32} height={32} className="opacity-90 brightness-0 invert" priority />
-            <span className="text-[15px] font-medium text-white tracking-[-0.01em]">velora.studio</span>
+            <span className="hidden sm:inline-block text-[15px] font-medium text-white tracking-[-0.01em]">velora.studio</span>
           </Link>
           <nav className="flex items-center gap-2">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
