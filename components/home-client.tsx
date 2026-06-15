@@ -303,9 +303,9 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2]">
             Discover how our bullet-proof collaborative process takes your project from 0 to 1, ensuring your satisfaction every step of the way.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+          <div className="grid grid-cols-1 gap-4 mt-5">
             {processSteps.map((step, i) => (
-              <div key={step.title} className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-5">
+              <div key={step.title} className="flex flex-col rounded-2xl bg-[#141414] p-5">
                 <div className="flex items-center gap-3">
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-[#1F1F1F] bg-[#1A1A1A] text-[13px] font-normal text-[#A2A2A2] tabular-nums">
                     {i + 1}
@@ -359,10 +359,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Custom Quote */}
             <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
-              <div className="mb-2 flex items-center gap-1.5 text-[13px] font-normal text-[#A2A2A2]">
-                <HugeiconsIcon icon={FlashIcon} size={14} color="#A2A2A2" strokeWidth={1.5} />
-                0→1 Design
-              </div>
               <h3 className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.02em]">Custom Quote</h3>
               <p className="mt-1.5 text-[13px] leading-[18px] font-normal text-[#A2A2A2]">
                 Your go-to for whatever you need: brand, product, web, and build.
@@ -401,10 +397,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
             {/* Design Partner */}
             <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
-              <div className="mb-2 flex items-center gap-1.5 text-[13px] font-normal text-[#A2A2A2]">
-                <HugeiconsIcon icon={SparklesIcon} size={14} color="#A2A2A2" strokeWidth={1.5} />
-                Design Partner
-              </div>
               <p className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.03em] tabular-nums">
                 €5,000<span className="text-[14px] font-normal text-[#A2A2A2]">/mo</span>
               </p>
