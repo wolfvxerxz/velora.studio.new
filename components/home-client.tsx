@@ -219,8 +219,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <nav className="flex items-center gap-2">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
               Schedule Call
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/pfp.jpg" alt="Vuk" width={24} height={24} className="h-6 w-6 rounded-[6px] object-cover" />
             </a>
             <a href="#work" className={secondaryBtn}>View Work</a>
           </nav>
@@ -242,8 +240,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <div className="flex flex-wrap items-center gap-2 mt-5">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
               Schedule Call
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/pfp.jpg" alt="Vuk" width={24} height={24} className="h-6 w-6 rounded-[6px] object-cover" />
             </a>
             <a href="#pricing" className={secondaryBtn}>View Pricing</a>
           </div>
