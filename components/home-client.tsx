@@ -12,6 +12,7 @@ import {
   RainbowIcon,
 } from "@hugeicons/core-free-icons"
 import type { CaseStudy } from "@/lib/case-studies"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const clientLogos: { src: string; alt: string; yc?: boolean; noInvert?: boolean }[] = [
   { src: "/images/brands/extsy.webp", alt: "Extsy" },
@@ -85,8 +86,8 @@ interface HomeClientProps {
 const scheduleUrl = "https://cal.com/vuk-m/15min"
 const subscribeUrl = "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
 
-const primaryBtn = "rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0F0F0F] hover:bg-white/90 transition-all duration-200 inline-flex items-center gap-2"
-const secondaryBtn = "rounded-full bg-[#282828] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#333333] transition-all duration-200 inline-flex items-center"
+const primaryBtn = "rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0F0F0F] hover:bg-white/90 transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:shadow-white/20 hover:scale-105"
+const secondaryBtn = "rounded-full bg-[#282828] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#333333] transition-all duration-300 inline-flex items-center hover:shadow-lg hover:shadow-white/10 hover:scale-105"
 
 function DottedDivider() {
   return <div className="mx-4 border-t border-dotted border-[#333333]" />
@@ -132,9 +133,9 @@ function WorkCard({ study }: { study: CaseStudy }) {
       <div
         className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#141414] p-2"
         style={{
-          boxShadow: hovered ? "0 12px 32px -8px rgba(0,0,0,0.5)" : "0 2px 12px -4px rgba(0,0,0,0.3)",
-          transform: hovered ? "translateY(-3px)" : "translateY(0px)",
-          transition: "transform 500ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 500ms cubic-bezier(0.23, 1, 0.32, 1)",
+          boxShadow: hovered ? "0 20px 40px -12px rgba(255,255,255,0.1)" : "0 2px 12px -4px rgba(0,0,0,0.3)",
+          transform: hovered ? "translateY(-6px) scale(1.02)" : "translateY(0px) scale(1)",
+          transition: "all 500ms cubic-bezier(0.23, 1, 0.32, 1)",
         }}
       >
         <div className="aspect-[16/11] relative overflow-hidden rounded-xl">
@@ -301,7 +302,15 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </p>
           <div className="grid grid-cols-1 gap-4 mt-5">
             {processSteps.map((step, i) => (
-              <div key={step.title} className="flex flex-col rounded-2xl bg-[#141414] p-5">
+              <div
+                key={step.title}
+                className="flex flex-col rounded-2xl bg-[#141414] p-5 transition-all duration-500 hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5"
+                style={{
+                  transform: "translateY(0)",
+                  opacity: 1,
+                  transitionDelay: `${i * 100}ms`,
+                }}
+              >
                 <div className="flex items-center gap-3">
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-[#1F1F1F] bg-[#1A1A1A] text-[13px] font-normal text-[#A2A2A2] tabular-nums">
                     {i + 1}
@@ -327,7 +336,13 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               const body = dot > -1 ? t.quote.slice(dot + 2) : ""
               const initials = t.name.split(" ").map((w) => w[0]).slice(0, 2).join("")
               return (
-                <div key={t.name} className="rounded-2xl border border-[#1F1F1F] bg-[#141414] overflow-hidden">
+                <div
+                  key={t.name}
+                  className="rounded-2xl border border-[#1F1F1F] bg-[#141414] overflow-hidden transition-all duration-300 hover:border-[#333333] hover:shadow-lg hover:shadow-white/5 hover:bg-[#1A1A1A]"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                >
                   <div className="flex items-center gap-3 p-4">
                     <div className="flex flex-col flex-1 min-w-0">
                       <p className="text-[14px] leading-[20px] font-normal text-white truncate">{t.name}</p>
@@ -354,7 +369,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Custom Quote */}
-            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
+            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4 transition-all duration-300 hover:border-[#333333] hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5">
               <h3 className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.02em]">Custom Quote</h3>
               <p className="mt-1.5 text-[13px] leading-[18px] font-normal text-[#A2A2A2]">
                 Your go-to for whatever you need: brand, product, web, and build.
@@ -392,7 +407,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </div>
 
             {/* Design Partner */}
-            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
+            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4 transition-all duration-300 hover:border-[#333333] hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5">
               <p className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.03em] tabular-nums">
                 €5,000<span className="text-[14px] font-normal text-[#A2A2A2]">/mo</span>
               </p>
@@ -415,7 +430,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </div>
 
           {/* Custom flat row */}
-          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4 transition-all duration-300 hover:border-[#333333] hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5">
             <div className="flex-1">
               <div className="mb-1 flex items-center gap-1.5 text-[13px] font-normal text-[#A2A2A2]">
                 <HugeiconsIcon icon={RainbowIcon} size={14} color="#A2A2A2" strokeWidth={1.5} />
