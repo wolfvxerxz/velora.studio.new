@@ -300,13 +300,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               const body = dot > -1 ? t.quote.slice(dot + 2) : ""
               const initials = t.name.split(" ").map((w) => w[0]).slice(0, 2).join("")
               return (
-                <div
-                  key={t.name}
-                  className="rounded-2xl border border-[#1F1F1F] bg-[#141414] overflow-hidden transition-all duration-300 hover:border-[#333333] hover:shadow-lg hover:shadow-white/5 hover:bg-[#1A1A1A]"
-                  style={{
-                    cursor: "pointer",
-                  }}
-                >
+                <div key={t.name} className="rounded-2xl border border-[#1F1F1F] bg-[#141414] overflow-hidden">
                   <div className="flex items-center gap-3 p-4">
                     <div className="flex flex-col flex-1 min-w-0">
                       <p className="text-[14px] leading-[20px] font-normal text-white truncate">{t.name}</p>
@@ -333,7 +327,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Custom Quote */}
-            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4 transition-all duration-300 hover:border-[#333333] hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5">
+            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
               <h3 className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.02em]">Custom Quote</h3>
               <p className="mt-1.5 text-[13px] leading-[18px] font-normal text-[#A2A2A2]">
                 Your go-to for whatever you need: brand, product, web, and build.
@@ -371,7 +365,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </div>
 
             {/* Design Partner */}
-            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4 transition-all duration-300 hover:border-[#333333] hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5">
+            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
               <p className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.03em] tabular-nums">
                 €5,000<span className="text-[14px] font-normal text-[#A2A2A2]">/mo</span>
               </p>
@@ -394,7 +388,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </div>
 
           {/* Custom flat row */}
-          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4 transition-all duration-300 hover:border-[#333333] hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5">
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
             <div className="flex-1">
               <div className="mb-1 flex items-center gap-1.5 text-[13px] font-normal text-[#A2A2A2]">
                 <HugeiconsIcon icon={RainbowIcon} size={14} color="#A2A2A2" strokeWidth={1.5} />
