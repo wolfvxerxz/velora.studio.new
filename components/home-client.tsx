@@ -279,7 +279,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
         {/* Our Work — case studies grid */}
         <section id="work" className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-4">Our Work</h2>
+          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-4 underline-static">Our Work</h2>
           <div className="grid grid-cols-2 gap-4">
             {caseStudyWorks.map((study) => (
               <WorkCard key={study.slug} study={study} />
@@ -289,7 +289,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
         {/* Happy Clients */}
         <section className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1">Happy Clients</h2>
+          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1 underline-static">Happy Clients</h2>
           <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mb-5">
             We&apos;ve partnered with founders across sectors. Here&apos;s what they say about working with us.
           </p>
@@ -321,7 +321,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
         {/* Pricing */}
         <section id="pricing" className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1">Pricing</h2>
+          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1 underline-static">Pricing</h2>
           <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mb-5">
             Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
           </p>
@@ -407,7 +407,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         {/* More work — single images, stacked */}
         {moreWorkImages.length > 0 && (
           <section className={section}>
-            <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1">More Work</h2>
+            <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1 underline-static">More Work</h2>
             <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mb-4">
               A selection of past projects across brand, product, and web.
             </p>

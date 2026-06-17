@@ -302,3 +302,31 @@
 .animate-slideInDown {
   animation: slideInDown 0.6s ease-out forwards;
 }
+
+@keyframes underlineReveal {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+.underline-animated {
+  position: relative;
+  background: linear-gradient(to right, #A2A2A2 0%, #A2A2A2 100%) no-repeat;
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+  padding-bottom: 2px;
+  transition: background-size 0.6s ease-out;
+}
+
+.underline-animated:hover {
+  background-size: 100% 1px;
+}
+
+.underline-static {
+  position: relative;
+  border-bottom: 1px solid #A2A2A2;
+  display: inline-block;
+}
