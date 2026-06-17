@@ -171,13 +171,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     new Set(otherWorks.flatMap((c) => [c.cover, ...c.work.filter((w) => w.type === "image").map((w) => w.src)]))
   )
 
-  const processSteps = [
-    { title: "Align", text: "We dig into your goals, users, and constraints — moodboards, user flows, and wireframes so everyone's on the same page." },
-    { title: "Direct", text: "We design the key screens and establish a clear visual direction. You sign off before we build out the rest." },
-    { title: "Build", text: "We design every screen, state, and edge case. Internal reviews keep everything consistent and ship-ready." },
-    { title: "Ship", text: "We develop with Framer, Webflow, or Next.js, then test, optimize, and push it live — ready for the world." },
-  ]
-
   const customQuoteFeatures = [
     "Brand identity design",
     "Product & website design",
@@ -290,35 +283,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <div className="grid grid-cols-2 gap-4">
             {caseStudyWorks.map((study) => (
               <WorkCard key={study.slug} study={study} />
-            ))}
-          </div>
-        </section>
-
-        {/* Our Process */}
-        <section className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-3">Our Process</h2>
-          <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2]">
-            Discover how our bullet-proof collaborative process takes your project from 0 to 1, ensuring your satisfaction every step of the way.
-          </p>
-          <div className="grid grid-cols-1 gap-4 mt-5">
-            {processSteps.map((step, i) => (
-              <div
-                key={step.title}
-                className="flex flex-col rounded-2xl bg-[#141414] p-5 transition-all duration-500 hover:bg-[#1A1A1A] hover:shadow-lg hover:shadow-white/5"
-                style={{
-                  transform: "translateY(0)",
-                  opacity: 1,
-                  transitionDelay: `${i * 100}ms`,
-                }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-[#1F1F1F] bg-[#1A1A1A] text-[13px] font-normal text-[#A2A2A2] tabular-nums">
-                    {i + 1}
-                  </div>
-                  <h3 className="text-[16px] leading-[22px] font-normal text-white">{step.title}</h3>
-                </div>
-                <p className="mt-4 text-[14px] leading-[20px] font-normal text-[#A2A2A2]">{step.text}</p>
-              </div>
             ))}
           </div>
         </section>
