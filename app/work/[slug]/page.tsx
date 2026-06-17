@@ -59,6 +59,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
           {study.description}
         </p>
 
+        {study.testimonial && (
+          <section className="mt-8">
+            <CaseStudyTestimonialCard testimonial={study.testimonial} />
+          </section>
+        )}
+
         <section className="mt-8">
           <CaseStudyImages
             items={
@@ -69,12 +75,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
             title={study.title}
           />
         </section>
-
-        {study.testimonial && (
-          <section className="mt-10">
-            <CaseStudyTestimonialCard testimonial={study.testimonial} />
-          </section>
-        )}
 
         <div className="mt-10 flex flex-wrap gap-2 border-t border-[#1F1F1F] pt-8">
           <a
