@@ -4,6 +4,13 @@ export interface CaseStudyWorkItem {
   alt?: string
 }
 
+export interface CaseStudyTestimonial {
+  quote: string
+  name: string
+  role: string
+  avatar?: string
+}
+
 export interface CaseStudy {
   slug: string
   title: string
@@ -14,6 +21,7 @@ export interface CaseStudy {
   work: CaseStudyWorkItem[]
   coverPosition?: string
   logoNoInvert?: boolean
+  testimonial?: CaseStudyTestimonial
 }
 
 const img = (file: string): CaseStudyWorkItem => ({
@@ -36,6 +44,11 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Product design and web experience for a fast-moving startup — from wireframes to a polished, conversion-focused interface that helped lift conversion after launch.",
     work: [img("1.webp"), img("2.webp"), img("3.webp"), img("4.webp")],
+    testimonial: {
+      quote: "From wireframes to launch, the process was transparent and iterative. They asked the right questions and pushed back when it mattered. Our conversion rate went up 40% after the redesign.",
+      name: "Varun",
+      role: "Founder, Extsy",
+    },
   },
   {
     slug: "amenify",
@@ -46,6 +59,12 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Brand presence and digital product design for Amenify — a warm, trustworthy experience that scaled with the company as they grew nationally.",
     work: [img("5.webp"), img("6.webp"), img("7.webp"), img("8.webp")],
+    testimonial: {
+      quote: "velora.studio understood our vision immediately and worked efficiently. The final product has significantly improved our brand presence. Working with them has been one of our best decisions.",
+      name: "Everett Lynn",
+      role: "Founder & CEO, Amenify",
+      avatar: "/images/clients/everett.jpeg",
+    },
   },
   {
     slug: "bobos",
@@ -56,6 +75,12 @@ export const caseStudies: CaseStudy[] = [
     description:
       "A digital storefront that reflects homemade quality while appealing to a national audience — design that feels warm, inviting, and unmistakably Bobo's.",
     work: [img("11.webp"), img("22.webp"), img("24.webp"), img("25.webp")],
+    testimonial: {
+      quote: "As we scaled Bobo's Oat Bars, we needed a website that could reflect our homemade quality while appealing to a national audience. velora.studio delivered exactly that — a warm, inviting digital storefront.",
+      name: "Beryl Stafford",
+      role: "Founder & President, Bobo's Oat Bars",
+      avatar: "/images/clients/beryl.jpeg",
+    },
   },
   {
     slug: "nordeus",
@@ -66,6 +91,12 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Design system and web work for Nordeus — consistent, scalable, and on-brand across every touchpoint the team ships.",
     work: [img("27.webp"), img("29.webp"), img("32.webp"), img("42.webp")],
+    testimonial: {
+      quote: "Our rebrand could have been a mess. Instead, Velora gave us a system we actually use — consistent, scalable, and on-brand everywhere. The team is sharp and easy to work with.",
+      name: "Branko",
+      role: "Founder, Nordeus",
+      avatar: "/images/clients/branko.jpeg",
+    },
   },
   {
     slug: "ecom-wizards",
@@ -76,6 +107,12 @@ export const caseStudies: CaseStudy[] = [
     description:
       "End-to-end design for Ecom Wizards — from first sketches to a polished product that matched the founder's vision, only sharper.",
     work: [img("222.webp"), img("333.webp"), img("444.webp"), img("555.webp")],
+    testimonial: {
+      quote: "Working with Vuk was effortless. From our first chat he understood my brand, refining my ideas with his own creative polish. Every update matched my vision, only better. Truly a 10/10 experience.",
+      name: "Victor Uhl",
+      role: "Founder, Ecom Wizards",
+      avatar: "/images/clients/victor.jpeg",
+    },
   },
   {
     slug: "webserv",
@@ -117,6 +154,12 @@ export const caseStudies: CaseStudy[] = [
       caseImg("BentoLabs", "4.webp"),
       caseImg("BentoLabs", "5.webp"),
     ],
+    testimonial: {
+      quote: "Velora nailed our brand from the first pass. The system they built is modular, fast to work with, and made our product feel premium overnight. Couldn't recommend them more.",
+      name: "Abhinav",
+      role: "Founder, BentoLabs",
+      avatar: "/images/clients/abhinav.jpg",
+    },
   },
   {
     slug: "subpay",
@@ -154,6 +197,12 @@ export const caseStudies: CaseStudy[] = [
       caseImg("Armature", "4.webp"),
       caseImg("Armature", "5.webp"),
     ],
+    testimonial: {
+      quote: "Velora delivered a polished identity and product experience that reflects the quality of our work. Sharp execution, smooth communication, and they shipped right on time.",
+      name: "Theodore",
+      role: "Co-founder, Armature",
+      avatar: "/images/clients/theodore.jpg",
+    },
   },
   {
     slug: "cactus",
@@ -169,6 +218,12 @@ export const caseStudies: CaseStudy[] = [
       caseImg("Cactus", "3.webp"),
       caseImg("Cactus", "4.webp"),
     ],
+    testimonial: {
+      quote: "Distinctive, sharp, and exactly on-brand. Velora gave Cactus a visual identity that stands out and scales without losing its edge. A genuinely great partner to build with.",
+      name: "Roman",
+      role: "Founder, Cactus",
+      avatar: "/images/clients/roman.jpg",
+    },
   },
   {
     slug: "insforge",

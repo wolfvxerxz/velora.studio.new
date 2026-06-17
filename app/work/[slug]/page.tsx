@@ -4,6 +4,7 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { caseStudies, getCaseStudy, getCaseStudySlugs } from "@/lib/case-studies"
 import { CaseStudyImages } from "@/components/case-study-images"
+import { CaseStudyTestimonialCard } from "@/components/case-study-testimonial"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -68,6 +69,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
             title={study.title}
           />
         </section>
+
+        {study.testimonial && (
+          <section className="mt-10">
+            <CaseStudyTestimonialCard testimonial={study.testimonial} />
+          </section>
+        )}
 
         <div className="mt-10 flex flex-wrap gap-2 border-t border-[#1F1F1F] pt-8">
           <a

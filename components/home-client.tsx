@@ -2,17 +2,10 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
-import {
-  SparklesIcon,
-  CheckmarkCircle01Icon,
-  Refresh01Icon,
-  FlashIcon,
-  RainbowIcon,
-} from "@hugeicons/core-free-icons"
+import { RainbowIcon } from "@hugeicons/core-free-icons"
 import type { CaseStudy } from "@/lib/case-studies"
-import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const clientLogos: { src: string; alt: string; yc?: boolean; noInvert?: boolean }[] = [
   { src: "/images/brands/extsy.webp", alt: "Extsy" },
@@ -29,56 +22,6 @@ const clientLogos: { src: string; alt: string; yc?: boolean; noInvert?: boolean 
   { src: "/case/InsForge/insforge-logo.svg", alt: "InsForge", yc: true },
 ]
 
-const TESTIMONIALS = [
-  {
-    quote: "Working with Vuk was effortless. From our first chat he understood my brand, refining my ideas with his own creative polish. Every update matched my vision, only better. Truly a 10/10 experience.",
-    name: "Victor Uhl",
-    role: "Founder, Ecom Wizards",
-    avatar: "/images/clients/victor.jpeg",
-  },
-  {
-    quote: "velora.studio understood our vision immediately and worked efficiently. The final product has significantly improved our brand presence. Working with them has been one of our best decisions.",
-    name: "Everett Lynn",
-    role: "Founder & CEO, Amenify",
-    avatar: "/images/clients/everett.jpeg",
-  },
-  {
-    quote: "As we scaled Bobo's Oat Bars, we needed a website that could reflect our homemade quality while appealing to a national audience. velora.studio delivered exactly that — a warm, inviting digital storefront.",
-    name: "Beryl Stafford",
-    role: "Founder & President, Bobo's Oat Bars",
-    avatar: "/images/clients/beryl.jpeg",
-  },
-  {
-    quote: "Our rebrand could have been a mess. Instead, Velora gave us a system we actually use — consistent, scalable, and on-brand everywhere. The team is sharp and easy to work with.",
-    name: "Branko",
-    role: "Founder, Nordeus",
-    avatar: "/images/clients/branko.jpeg",
-  },
-  {
-    quote: "From wireframes to launch, the process was transparent and iterative. They asked the right questions and pushed back when it mattered. Our conversion rate went up 40% after the redesign.",
-    name: "Varun",
-    role: "Founder, Extsy",
-  },
-  {
-    quote: "Velora nailed our brand from the first pass. The system they built is modular, fast to work with, and made our product feel premium overnight. Couldn't recommend them more.",
-    name: "Abhinav",
-    role: "Founder, BentoLabs",
-    avatar: "/images/clients/abhinav.jpg",
-  },
-  {
-    quote: "Distinctive, sharp, and exactly on-brand. Velora gave Cactus a visual identity that stands out and scales without losing its edge. A genuinely great partner to build with.",
-    name: "Roman",
-    role: "Founder, Cactus",
-    avatar: "/images/clients/roman.jpg",
-  },
-  {
-    quote: "Velora delivered a polished identity and product experience that reflects the quality of our work. Sharp execution, smooth communication, and they shipped right on time.",
-    name: "Theodore",
-    role: "Co-founder, Armature",
-    avatar: "/images/clients/theodore.jpg",
-  },
-]
-
 interface HomeClientProps {
   caseStudies: CaseStudy[]
 }
@@ -88,38 +31,6 @@ const subscribeUrl = "https://www.paypal.com/webapps/billing/plans/subscribe?pla
 
 const primaryBtn = "rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0F0F0F] hover:bg-white/90 transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:shadow-white/20 hover:scale-105"
 const secondaryBtn = "rounded-full bg-[#282828] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#333333] transition-all duration-300 inline-flex items-center hover:shadow-lg hover:shadow-white/10 hover:scale-105"
-
-function DottedDivider() {
-  return <div className="mx-4 border-t border-dotted border-[#333333]" />
-}
-
-function Avatar({ src, initials }: { src?: string; initials: string }) {
-  const [failed, setFailed] = useState(false)
-  const ref = useRef<HTMLImageElement>(null)
-  useEffect(() => {
-    // catch errors that fired before hydration attached onError
-    if (ref.current && ref.current.complete && ref.current.naturalWidth === 0) setFailed(true)
-  }, [])
-  if (src && !failed) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        ref={ref}
-        src={src}
-        alt={initials}
-        width={42}
-        height={42}
-        onError={() => setFailed(true)}
-        className="h-[42px] w-[42px] flex-shrink-0 rounded-full border border-[#1F1F1F] object-cover"
-      />
-    )
-  }
-  return (
-    <div className="flex h-[42px] w-[42px] flex-shrink-0 items-center justify-center rounded-full border border-[#1F1F1F] bg-[#282828] text-[13px] font-medium text-[#A2A2A2]">
-      {initials}
-    </div>
-  )
-}
 
 function WorkCard({ study }: { study: CaseStudy }) {
   const [hovered, setHovered] = useState(false)
@@ -155,10 +66,10 @@ function WorkCard({ study }: { study: CaseStudy }) {
         </div>
       </div>
       <div className="mt-2.5 flex items-baseline justify-between gap-2 px-0.5">
-        <span className="text-[14px] leading-[22px] font-medium tracking-[-0.01em] truncate transition-colors duration-300" style={{ color: hovered ? "#FFFFFF" : "#A2A2A2" }}>
+        <span className="text-[14px] leading-[22px] font-medium tracking-[-0.01em] truncate text-white">
           {study.title}
         </span>
-        <span className="shrink-0 text-[14px] leading-[22px] font-normal text-[#A2A2A2] tabular-nums">{study.date}</span>
+        <span className="shrink-0 text-[14px] leading-[22px] font-normal text-[#6E6E6E] tabular-nums">{study.date}</span>
       </div>
     </Link>
   )
@@ -284,38 +195,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             {caseStudyWorks.map((study) => (
               <WorkCard key={study.slug} study={study} />
             ))}
-          </div>
-        </section>
-
-        {/* Happy Clients */}
-        <section className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1 underline-static">Happy Clients</h2>
-          <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mb-5">
-            We&apos;ve partnered with founders across sectors. Here&apos;s what they say about working with us.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {TESTIMONIALS.map((t) => {
-              const dot = t.quote.indexOf(". ")
-              const headline = dot > -1 ? t.quote.slice(0, dot + 1) : t.quote
-              const body = dot > -1 ? t.quote.slice(dot + 2) : ""
-              const initials = t.name.split(" ").map((w) => w[0]).slice(0, 2).join("")
-              return (
-                <div key={t.name} className="rounded-2xl border border-[#1F1F1F] bg-[#141414] overflow-hidden">
-                  <div className="flex items-center gap-3 p-4">
-                    <div className="flex flex-col flex-1 min-w-0">
-                      <p className="text-[14px] leading-[20px] font-normal text-white truncate">{t.name}</p>
-                      <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] truncate">{t.role}</p>
-                    </div>
-                    <Avatar src={t.avatar} initials={initials} />
-                  </div>
-                  <DottedDivider />
-                  <div className="flex flex-col gap-2 p-4">
-                    <p className="text-[14px] leading-[20px] font-normal text-white">{headline}</p>
-                    {body && <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2]">{body}</p>}
-                  </div>
-                </div>
-              )
-            })}
           </div>
         </section>
 
