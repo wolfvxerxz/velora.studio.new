@@ -113,7 +113,7 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
 
         {/* Body: main content + optional properties panel */}
         <div className="flex min-h-0 flex-1">
-          <div className="flex-1 overflow-y-auto px-6 pb-8 pt-6 sm:px-10">
+          <div className="modal-scroll flex-1 overflow-y-auto px-6 pb-8 pt-6 sm:px-10">
             {/* Velora × client logo */}
             <div className="flex items-center gap-3">
               <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0 invert" />
@@ -143,7 +143,7 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
           </div>
 
           {showDetails && (
-            <aside className="flex w-[260px] shrink-0 flex-col overflow-y-auto border-l border-[#1F1F1F]">
+            <aside className="modal-scroll flex w-[260px] shrink-0 flex-col overflow-y-auto border-l border-[#1F1F1F]">
               <div className="flex items-center justify-between px-4 py-3">
                 <span className="text-[13px] leading-[18px] font-normal text-[#6E6E6E]">Properties</span>
                 <button
