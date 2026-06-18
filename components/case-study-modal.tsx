@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { DEFAULT_LOCATION, type CaseStudy } from "@/lib/case-studies"
@@ -46,24 +46,61 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
   const [showDetails, setShowDetails] = useState(false)
   const [sidePeek, setSidePeek] = useState(false)
 
+  // Keep latest onClose without making it an effect dependency
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+
+  const isOpen = !!study
+
   // Reset view state whenever a different study is opened
   useEffect(() => {
     setShowDetails(false)
     setSidePeek(false)
   }, [study])
 
+  // Lock page scroll while the modal is open (position:fixed = bulletproof,
+  // also works on iOS Safari and preserves scroll position on close)
   useEffect(() => {
-    if (!study) return
+    if (!isOpen) return
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
+      if (e.key === "Escape") onCloseRef.current()
     }
     document.addEventListener("keydown", onKey)
-    document.body.style.overflow = "hidden"
+
+    const scrollY = window.scrollY
+    const body = document.body
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+      overflow: document.documentElement.style.overflow,
+    }
+    body.style.position = "fixed"
+    body.style.top = `-${scrollY}px`
+    body.style.left = "0"
+    body.style.right = "0"
+    body.style.width = "100%"
+    document.documentElement.style.overflow = "hidden"
+
     return () => {
       document.removeEventListener("keydown", onKey)
-      document.body.style.overflow = ""
+      body.style.position = prev.position
+      body.style.top = prev.top
+      body.style.left = prev.left
+      body.style.right = prev.right
+      body.style.width = prev.width
+      document.documentElement.style.overflow = prev.overflow
+      // Restore scroll instantly (the site uses scroll-behavior: smooth globally)
+      const html = document.documentElement
+      const prevBehavior = html.style.scrollBehavior
+      html.style.scrollBehavior = "auto"
+      window.scrollTo(0, scrollY)
+      html.style.scrollBehavior = prevBehavior
     }
-  }, [study, onClose])
+  }, [isOpen])
 
   if (!study) return null
 
