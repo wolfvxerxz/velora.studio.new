@@ -23,6 +23,7 @@ export interface CaseStudy {
   logoNoInvert?: boolean
   testimonial?: CaseStudyTestimonial
   location?: string
+  services?: string[]
 }
 
 export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
@@ -129,6 +130,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "aether",
+    services: ["Brand", "Product Design"],
     title: "Aether",
     date: "2025",
     cover: "/case/Aether/hero.webp",
@@ -144,6 +146,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "bentolabs",
+    services: ["Brand", "Product Design"],
     title: "BentoLabs",
     date: "2025",
     cover: "/case/BentoLabs/Hero.webp",
@@ -166,6 +169,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "subpay",
+    services: ["Product Design"],
     title: "SubPay",
     date: "2025",
     cover: "/case/SubPay/Hero.webp",
@@ -186,6 +190,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "armature",
+    services: ["Brand", "Product Design", "Web"],
     title: "Armature",
     date: "2025 – 2026",
     cover: "/case/Armature/hero.webp",
@@ -209,6 +214,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "cactus",
+    services: ["Brand Identity", "Web"],
     title: "Cactus",
     date: "2025",
     cover: "/case/Cactus/hero.webp",
@@ -230,6 +236,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "insforge",
+    services: ["Product Design", "Brand"],
     title: "InsForge",
     date: "2024 – 2026",
     cover: "/case/InsForge/hero.webp",
