@@ -24,6 +24,7 @@ export interface CaseStudy {
   testimonial?: CaseStudyTestimonial
   location?: string
   services?: string[]
+  areas?: string[]
 }
 
 export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
@@ -131,6 +132,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "aether",
     services: ["Brand", "Product Design"],
+    areas: ["AI", "Developer Tools", "Productivity"],
     title: "Aether",
     date: "2025",
     cover: "/case/Aether/hero.webp",
@@ -147,6 +149,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "bentolabs",
     services: ["Brand", "Product Design"],
+    areas: ["AI", "Infrastructure", "Developer Tools"],
     title: "BentoLabs",
     date: "2025",
     cover: "/case/BentoLabs/Hero.webp",
@@ -170,6 +173,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "subpay",
     services: ["Product Design"],
+    areas: ["Fintech", "Payments", "B2B"],
     title: "SubPay",
     date: "2025",
     cover: "/case/SubPay/Hero.webp",
@@ -191,6 +195,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "armature",
     services: ["Brand", "Product Design", "Web"],
+    areas: ["AI", "Developer Tools", "DevOps"],
     title: "Armature",
     date: "2025 – 2026",
     cover: "/case/Armature/hero.webp",
@@ -215,6 +220,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "cactus",
     services: ["Brand Identity", "Web"],
+    areas: ["AI", "Mobile", "Consumer"],
     title: "Cactus",
     date: "2025",
     cover: "/case/Cactus/hero.webp",
@@ -237,6 +243,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "insforge",
     services: ["Product Design", "Brand"],
+    areas: ["AI", "Infrastructure", "Backend"],
     title: "InsForge",
     date: "2024 – 2026",
     cover: "/case/InsForge/hero.webp",

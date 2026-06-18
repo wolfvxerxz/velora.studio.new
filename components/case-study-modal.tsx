@@ -181,6 +181,21 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
                     </div>
                   </div>
                 )}
+                {study.areas && study.areas.length > 0 && (
+                  <div>
+                    <p className="text-[13px] leading-[18px] font-normal text-[#6E6E6E]">Areas</p>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {study.areas.map((a) => (
+                        <span
+                          key={a}
+                          className="rounded-md bg-[#262626] px-2 py-1 text-[13px] leading-[16px] font-normal text-white"
+                        >
+                          {a}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </aside>
           )}
