@@ -3,8 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { caseStudies, getCaseStudy, getCaseStudySlugs } from "@/lib/case-studies"
-import { CaseStudyImages } from "@/components/case-study-images"
-import { CaseStudyTestimonialCard } from "@/components/case-study-testimonial"
+import { CaseStudyBody } from "@/components/case-study-body"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -55,26 +54,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           {study.title} — Design &amp; build
         </h1>
 
-        <p className="mt-4 text-[16px] font-normal text-[#A2A2A2] leading-[26px] tracking-tight">
-          {study.description}
-        </p>
-
-        {study.testimonial && (
-          <section className="mt-8">
-            <CaseStudyTestimonialCard testimonial={study.testimonial} />
-          </section>
-        )}
-
-        <section className="mt-8">
-          <CaseStudyImages
-            items={
-              study.work[0]?.src === study.cover
-                ? study.work
-                : [{ src: study.cover, type: "image", alt: `${study.title} preview` }, ...study.work]
-            }
-            title={study.title}
-          />
-        </section>
+        <CaseStudyBody study={study} />
 
         <div className="mt-10 flex flex-wrap gap-2 border-t border-[#1F1F1F] pt-8">
           <a

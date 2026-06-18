@@ -6,6 +6,7 @@ import { useState } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { RainbowIcon } from "@hugeicons/core-free-icons"
 import type { CaseStudy } from "@/lib/case-studies"
+import { CaseStudyModal } from "@/components/case-study-modal"
 
 const clientLogos: { src: string; alt: string; yc?: boolean; noInvert?: boolean }[] = [
   { src: "/images/brands/extsy.webp", alt: "Extsy" },
@@ -32,7 +33,7 @@ const subscribeUrl = "https://www.paypal.com/webapps/billing/plans/subscribe?pla
 const primaryBtn = "rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0F0F0F] hover:bg-white/90 transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:shadow-white/20 hover:scale-105"
 const secondaryBtn = "rounded-full bg-[#282828] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#333333] transition-all duration-300 inline-flex items-center hover:shadow-lg hover:shadow-white/10 hover:scale-105"
 
-function WorkCard({ study }: { study: CaseStudy }) {
+function WorkCard({ study, onOpen }: { study: CaseStudy; onOpen: (study: CaseStudy) => void }) {
   const [hovered, setHovered] = useState(false)
   return (
     <Link
@@ -40,6 +41,12 @@ function WorkCard({ study }: { study: CaseStudy }) {
       className="group block"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={(e: React.MouseEvent) => {
+        // Let modifier/middle clicks open the full page; intercept plain clicks for the modal
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+        e.preventDefault()
+        onOpen(study)
+      }}
     >
       <div
         className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#141414] p-2"
@@ -76,6 +83,7 @@ function WorkCard({ study }: { study: CaseStudy }) {
 }
 
 export default function HomeClient({ caseStudies }: HomeClientProps) {
+  const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null)
   const caseStudyWorks = caseStudies.filter((c) => c.cover.startsWith("/case/"))
   const otherWorks = caseStudies.filter((c) => !c.cover.startsWith("/case/"))
   const moreWorkImages = Array.from(
@@ -193,7 +201,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <h2 className="text-[24px] leading-[32px] font-normal text-white mb-4 underline-static">Our Work</h2>
           <div className="grid grid-cols-2 gap-4">
             {caseStudyWorks.map((study) => (
-              <WorkCard key={study.slug} study={study} />
+              <WorkCard key={study.slug} study={study} onOpen={setSelectedStudy} />
             ))}
           </div>
         </section>
@@ -318,6 +326,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </div>
         </footer>
       </div>
+
+      <CaseStudyModal study={selectedStudy} onClose={() => setSelectedStudy(null)} />
     </main>
   )
 }

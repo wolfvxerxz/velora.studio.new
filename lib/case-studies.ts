@@ -22,7 +22,10 @@ export interface CaseStudy {
   coverPosition?: string
   logoNoInvert?: boolean
   testimonial?: CaseStudyTestimonial
+  location?: string
 }
+
+export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
 
 const img = (file: string): CaseStudyWorkItem => ({
   src: `/work/${file}`,
