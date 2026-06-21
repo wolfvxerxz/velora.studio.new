@@ -57,16 +57,16 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     return "/icons/checked.svg"
   }
 
-  const section = "w-full max-w-[680px] mx-auto px-5"
+  const section = "w-full max-w-[830px] mx-auto px-5"
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#111111" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "#000000" }}>
       {/* Navbar */}
       <header
         className="sticky top-0 z-50"
-        style={{ backgroundColor: "rgba(17,17,17,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+        style={{ backgroundColor: "rgba(0,0,0,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
       >
-        <div className="w-full max-w-[680px] mx-auto px-5 h-[64px] flex items-center justify-between">
+        <div className="w-full max-w-[830px] mx-auto px-5 h-[64px] flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo/logo-v.svg" alt="Velora" width={32} height={32} className="opacity-90 brightness-0 invert" priority />
             <span className="hidden sm:inline-block text-[15px] font-medium text-white tracking-[-0.01em]">velora.studio</span>
@@ -83,14 +83,14 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
       <div className="flex flex-col items-center gap-10 pb-20 pt-12">
         {/* Hero */}
         <section className={section}>
-          <h1 className="text-[32px] leading-[40px] font-normal text-white">
+          <h1 className="text-[24px] leading-[32px] font-normal text-white">
             Your vision deserves world-class execution.
           </h1>
-          <h2 className="text-[32px] leading-[40px] !font-[400] text-[#A2A2A2] mt-0.5">
-            velora.studio is your go-to design partner for founders building in AI.
+          <h2 className="text-[24px] leading-[32px] !font-[400] text-[#A2A2A2] mt-0.5">
+            velora.studio is your go-to design partner<br />for founders building in AI.
           </h2>
-          <p className="text-[16px] leading-[24px] !font-[400] text-[#A2A2A2] mt-4">
-            We help you go from 0→1 fast — products that attract investors, convert users, and ship on time. Backed by YC and a16z, we craft intuitive interfaces that tackle complex challenges in AI, SaaS, and Web3.
+          <p className="text-[14px] leading-[20px] !font-[400] text-[#A2A2A2] mt-4">
+            We help you go from 0→1 fast — products that attract investors, convert users, and ship on time.<br />Backed by YC and a16z, we craft intuitive interfaces that tackle complex challenges in AI, SaaS, and Web3.
           </p>
           <div className="flex flex-wrap items-center gap-2 mt-5">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
@@ -114,7 +114,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Custom Quote */}
-            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#262626] p-4">
+            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#111111] p-4">
               <h3 className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.02em]">Custom Quote</h3>
               <p className="mt-1.5 text-[13px] leading-[18px] font-normal text-[#A2A2A2]">
                 Your go-to for whatever you need: brand, product, web, and build.
@@ -152,7 +152,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </div>
 
             {/* Design Partner */}
-            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#262626] p-4">
+            <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#111111] p-4">
               <p className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.03em] tabular-nums">
                 €5,000<span className="text-[14px] font-normal text-[#A2A2A2]">/mo</span>
               </p>
@@ -175,7 +175,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </div>
 
           {/* Custom flat row */}
-          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[#1F1F1F] bg-[#262626] p-4">
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[#1F1F1F] bg-[#111111] p-4">
             <div className="flex-1">
               <div className="mb-1 flex items-center gap-1.5 text-[13px] font-normal text-[#A2A2A2]">
                 <HugeiconsIcon icon={RainbowIcon} size={14} color="#A2A2A2" strokeWidth={1.5} />
@@ -203,7 +203,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </p>
             <div className="flex flex-col gap-4">
               {moreWorkImages.map((src) => (
-                <div key={src} className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#262626] p-2">
+                <div key={src} className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#111111] p-2">
                   <div className="overflow-hidden rounded-xl">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
