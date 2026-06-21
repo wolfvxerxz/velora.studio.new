@@ -25,6 +25,9 @@ export interface CaseStudy {
   location?: string
   services?: string[]
   areas?: string[]
+  /** Optional month-precise span for the Timeline view, format "YYYY-MM". */
+  start?: string
+  end?: string
 }
 
 export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
@@ -135,6 +138,8 @@ export const caseStudies: CaseStudy[] = [
     areas: ["AI", "Developer Tools", "Productivity"],
     title: "Aether",
     date: "2025",
+    start: "2025-02",
+    end: "2025-06",
     cover: "/case/Aether/hero.webp",
     logo: "/case/Aether/logo.svg",
     description:
@@ -152,6 +157,8 @@ export const caseStudies: CaseStudy[] = [
     areas: ["AI", "Infrastructure", "Developer Tools"],
     title: "BentoLabs",
     date: "2025",
+    start: "2025-05",
+    end: "2025-10",
     cover: "/case/BentoLabs/Hero.webp",
     logo: "/case/BentoLabs/Logo.svg",
     description:
@@ -176,9 +183,10 @@ export const caseStudies: CaseStudy[] = [
     areas: ["Fintech", "Payments", "B2B"],
     title: "SubPay",
     date: "2025",
+    start: "2025-03",
+    end: "2025-08",
     cover: "/case/SubPay/Hero.webp",
     logo: "/case/SubPay/logo.svg",
-    logoNoInvert: true,
     description:
       "Product design for SubPay — a clean, conversion-focused subscription payments experience built for clarity at every step of the billing flow.",
     work: [
@@ -198,6 +206,8 @@ export const caseStudies: CaseStudy[] = [
     areas: ["AI", "Developer Tools", "DevOps"],
     title: "Armature",
     date: "2025 – 2026",
+    start: "2025-09",
+    end: "2026-03",
     cover: "/case/Armature/hero.webp",
     coverPosition: "left",
     logo: "/case/Armature/armature-logo.svg",
@@ -223,6 +233,8 @@ export const caseStudies: CaseStudy[] = [
     areas: ["AI", "Mobile", "Consumer"],
     title: "Cactus",
     date: "2025",
+    start: "2025-07",
+    end: "2025-11",
     cover: "/case/Cactus/hero.webp",
     logo: "/case/Cactus/cactus-logo.webp",
     description:
@@ -246,6 +258,8 @@ export const caseStudies: CaseStudy[] = [
     areas: ["AI", "Infrastructure", "Backend"],
     title: "InsForge",
     date: "2024 – 2026",
+    start: "2024-08",
+    end: "2026-01",
     cover: "/case/InsForge/hero.webp",
     logo: "/case/InsForge/insforge-logo.svg",
     description:
@@ -258,6 +272,43 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 ]
+
+/**
+ * Parse a human date string like "2025" or "2024 – 2026" into a start/end year
+ * span. Falls back to the current year if no 4-digit year is found.
+ */
+export function parseYearSpan(date: string): { start: number; end: number } {
+  const years = (date.match(/\d{4}/g) ?? []).map(Number)
+  if (years.length === 0) {
+    const now = new Date().getFullYear()
+    return { start: now, end: now }
+  }
+  return { start: years[0], end: years[years.length - 1] }
+}
+
+/**
+ * Resolve a month-precise span (0-based month index) for the Timeline view.
+ * Uses explicit start/end ("YYYY-MM") when present, otherwise falls back to the
+ * year span (January of the first year → December of the last).
+ */
+export function parseMonthSpan(study: CaseStudy): {
+  startY: number
+  startM: number
+  endY: number
+  endM: number
+} {
+  const ym = (s: string) => {
+    const [y, m] = s.split("-").map(Number)
+    return { y, m: (m ?? 1) - 1 }
+  }
+  if (study.start && study.end) {
+    const a = ym(study.start)
+    const b = ym(study.end)
+    return { startY: a.y, startM: a.m, endY: b.y, endM: b.m }
+  }
+  const span = parseYearSpan(study.date)
+  return { startY: span.start, startM: 0, endY: span.end, endM: 11 }
+}
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies.find((c) => c.slug === slug)

@@ -17,6 +17,11 @@ function Lightbox({ src, alt, onClose, onPrev, onNext, hasPrev, hasNext }: {
   hasPrev: boolean
   hasNext: boolean
 }) {
+  const [drag, setDrag] = useState(0)
+  const [dragging, setDragging] = useState(false)
+  const startX = useRef(0)
+  const moved = useRef(false)
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
@@ -30,6 +35,34 @@ function Lightbox({ src, alt, onClose, onPrev, onNext, hasPrev, hasNext }: {
       document.body.style.overflow = ""
     }
   }, [onClose, onPrev, onNext, hasPrev, hasNext])
+
+  const SWIPE_THRESHOLD = 70
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    startX.current = e.clientX
+    moved.current = false
+    setDragging(true)
+    try {
+      ;(e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId)
+    } catch {
+      /* ignore — pointer capture is a progressive enhancement */
+    }
+  }
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging) return
+    let dx = e.clientX - startX.current
+    if (Math.abs(dx) > 4) moved.current = true
+    // Add resistance when there's no neighbour to swipe to
+    if ((dx > 0 && !hasPrev) || (dx < 0 && !hasNext)) dx *= 0.25
+    setDrag(dx)
+  }
+  const endDrag = () => {
+    if (!dragging) return
+    setDragging(false)
+    if (drag > SWIPE_THRESHOLD && hasPrev) onPrev()
+    else if (drag < -SWIPE_THRESHOLD && hasNext) onNext()
+    setDrag(0)
+  }
 
   return (
     <div
@@ -79,14 +112,29 @@ function Lightbox({ src, alt, onClose, onPrev, onNext, hasPrev, hasNext }: {
 
       {/* Image */}
       <div
-        className="max-w-[90vw] max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
+        className="max-w-[90vw] max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl select-none"
+        onClick={(e) => {
+          e.stopPropagation()
+          // Swallow the click that ends a drag so it doesn't register as a tap
+          if (moved.current) { moved.current = false }
+        }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        style={{
+          transform: `translateX(${drag}px)`,
+          transition: dragging ? "none" : "transform 260ms cubic-bezier(0.23, 1, 0.32, 1)",
+          cursor: dragging ? "grabbing" : "grab",
+          touchAction: "pan-y",
+        }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
           alt={alt}
-          className="block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
+          draggable={false}
+          className="block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain pointer-events-none"
           style={{ transition: "opacity 200ms ease" }}
         />
       </div>

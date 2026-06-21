@@ -7,21 +7,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { RainbowIcon } from "@hugeicons/core-free-icons"
 import type { CaseStudy } from "@/lib/case-studies"
 import { CaseStudyModal } from "@/components/case-study-modal"
-
-const clientLogos: { src: string; alt: string; yc?: boolean; noInvert?: boolean }[] = [
-  { src: "/images/brands/extsy.webp", alt: "Extsy" },
-  { src: "/images/brands/webserv.webp", alt: "Webserv", noInvert: true },
-  { src: "/images/brands/ecom.webp", alt: "Ecom Wizards" },
-  { src: "/images/brands/nordeus.webp", alt: "Nordeus" },
-  { src: "/images/brands/amenify.webp", alt: "Amenify" },
-  { src: "/images/brands/bobos.webp", alt: "Bobos" },
-  { src: "/case/Aether/logo.svg", alt: "Aether" },
-  { src: "/case/BentoLabs/Logo.svg", alt: "BentoLabs", yc: true },
-  { src: "/case/SubPay/logo.svg", alt: "SubPay", noInvert: true },
-  { src: "/case/Armature/armature-logo.svg", alt: "Armature", yc: true },
-  { src: "/case/Cactus/cactus-logo.webp", alt: "Cactus", yc: true },
-  { src: "/case/InsForge/insforge-logo.svg", alt: "InsForge", yc: true },
-]
+import { WorkViews, type ViewMode } from "@/components/work-views"
 
 interface HomeClientProps {
   caseStudies: CaseStudy[]
@@ -33,57 +19,13 @@ const subscribeUrl = "https://www.paypal.com/webapps/billing/plans/subscribe?pla
 const primaryBtn = "rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0F0F0F] hover:bg-white/90 transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:shadow-white/20 hover:scale-105"
 const secondaryBtn = "rounded-full bg-[#282828] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#333333] transition-all duration-300 inline-flex items-center hover:shadow-lg hover:shadow-white/10 hover:scale-105"
 
-function WorkCard({ study, onOpen }: { study: CaseStudy; onOpen: (study: CaseStudy) => void }) {
-  const [hovered, setHovered] = useState(false)
-  return (
-    <Link
-      href={`/work/${study.slug}`}
-      className="group block"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={(e: React.MouseEvent) => {
-        // Let modifier/middle clicks open the full page; intercept plain clicks for the modal
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
-        e.preventDefault()
-        onOpen(study)
-      }}
-    >
-      <div
-        className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#141414] p-2"
-        style={{
-          boxShadow: hovered ? "0 20px 40px -12px rgba(255,255,255,0.1)" : "0 2px 12px -4px rgba(0,0,0,0.3)",
-          transform: hovered ? "translateY(-6px) scale(1.02)" : "translateY(0px) scale(1)",
-          transition: "all 500ms cubic-bezier(0.23, 1, 0.32, 1)",
-        }}
-      >
-        <div className="aspect-[16/11] relative overflow-hidden rounded-xl">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={study.cover}
-            alt={study.title}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectPosition: study.coverPosition ?? "center",
-              transform: hovered ? "scale(1.03)" : "scale(1)",
-              transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
-            }}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-      <div className="mt-2.5 flex items-baseline justify-between gap-2 px-0.5">
-        <span className="text-[14px] leading-[22px] font-medium tracking-[-0.01em] truncate text-white">
-          {study.title}
-        </span>
-        <span className="shrink-0 text-[14px] leading-[22px] font-normal text-[#6E6E6E] tabular-nums">{study.date}</span>
-      </div>
-    </Link>
-  )
-}
-
 export default function HomeClient({ caseStudies }: HomeClientProps) {
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null)
+  const [workView, setWorkView] = useState<ViewMode>("work")
+  const goToPricing = () => {
+    setWorkView("pricing")
+    requestAnimationFrame(() => document.getElementById("work")?.scrollIntoView())
+  }
   const caseStudyWorks = caseStudies.filter((c) => c.cover.startsWith("/case/"))
   const otherWorks = caseStudies.filter((c) => !c.cover.startsWith("/case/"))
   const moreWorkImages = Array.from(
@@ -141,78 +83,36 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
       <div className="flex flex-col items-center gap-10 pb-20 pt-12">
         {/* Hero */}
         <section className={section}>
-          <h1 className="text-[24px] leading-[32px] font-normal text-white">
+          <h1 className="text-[32px] leading-[40px] font-normal text-white">
             Your vision deserves world-class execution.
           </h1>
-          <h2 className="text-[24px] leading-[32px] !font-[400] text-[#A2A2A2] mt-0.5">
+          <h2 className="text-[32px] leading-[40px] !font-[400] text-[#A2A2A2] mt-0.5">
             velora.studio is your go-to design partner for founders building in AI.
           </h2>
-          <p className="text-[14px] leading-[20px] !font-[400] text-[#A2A2A2] mt-4">
+          <p className="text-[16px] leading-[24px] !font-[400] text-[#A2A2A2] mt-4">
             We help you go from 0→1 fast — products that attract investors, convert users, and ship on time. Backed by YC and a16z, we craft intuitive interfaces that tackle complex challenges in AI, SaaS, and Web3.
           </p>
           <div className="flex flex-wrap items-center gap-2 mt-5">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
               Schedule Call
             </a>
-            <a href="#pricing" className={secondaryBtn}>View Pricing</a>
+            <button type="button" onClick={goToPricing} className={secondaryBtn}>View Pricing</button>
           </div>
         </section>
 
-        {/* Trusted by — logo marquee */}
-        <section className={section}>
-          <p className="text-[14px] leading-[22px] font-normal text-[#A2A2A2] mb-3">Trusted by founders at</p>
-          <div
-            className="relative overflow-hidden"
-            style={{
-              maskImage: "linear-gradient(to right, transparent, #000 10%, #000 90%, transparent)",
-              WebkitMaskImage: "linear-gradient(to right, transparent, #000 10%, #000 90%, transparent)",
-            }}
-          >
-            <div className="flex w-max gap-2 animate-marquee">
-              {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <div key={i} className="group/logo relative flex flex-shrink-0 items-center justify-center gap-2 px-7 h-[52px]">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={120}
-                    height={26}
-                    className={`h-[26px] w-auto object-contain opacity-90 ${logo.noInvert ? "" : "brightness-0 invert"}`}
-                  />
-                  {logo.alt === "Cactus" && (
-                    <span className="text-[15px] font-semibold text-white leading-none" style={{ fontFamily: "var(--font-geist-sans)" }}>Cactus</span>
-                  )}
-                  {logo.yc && (
-                    <div
-                      className="pointer-events-none absolute inset-0 flex items-center justify-center gap-1.5 opacity-0 transition-opacity duration-300 group-hover/logo:opacity-100"
-                      style={{ backgroundColor: "rgba(15,15,15,0.55)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }}
-                    >
-                      <span className="flex h-[14px] w-[14px] items-center justify-center rounded-[3px] text-[9px] font-bold leading-none text-white" style={{ backgroundColor: "#FB651E", fontFamily: "var(--font-geist-sans)" }}>Y</span>
-                      <span className="text-[12px] font-semibold leading-none text-white" style={{ fontFamily: "var(--font-geist-sans)" }}>Backed by YC</span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Our Work — case studies grid */}
+        {/* Our Work + Pricing — Notion-style tabbed views */}
         <section id="work" className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-4 underline-static">Our Work</h2>
-          <div className="grid grid-cols-2 gap-4">
-            {caseStudyWorks.map((study) => (
-              <WorkCard key={study.slug} study={study} onOpen={setSelectedStudy} />
-            ))}
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section id="pricing" className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-white mb-1 underline-static">Pricing</h2>
-          <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mb-5">
-            Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <WorkViews
+            caseStudies={caseStudyWorks}
+            onOpen={setSelectedStudy}
+            view={workView}
+            onViewChange={setWorkView}
+            pricing={
+              <div>
+                <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] mb-5">
+                  Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Custom Quote */}
             <div className="flex flex-col rounded-2xl border border-[#1F1F1F] bg-[#141414] p-4">
               <h3 className="text-[20px] leading-[28px] font-normal text-white tracking-[-0.02em]">Custom Quote</h3>
@@ -288,7 +188,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full bg-[#282828] px-4 py-2 text-[13px] font-normal text-white transition-all duration-200 hover:bg-[#333333] flex-shrink-0">
               Let&apos;s Talk
             </a>
-          </div>
+                </div>
+              </div>
+            }
+          />
         </section>
 
         {/* More work — single images, stacked */}
