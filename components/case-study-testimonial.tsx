@@ -38,7 +38,7 @@ export function CaseStudyTestimonialCard({ testimonial }: { testimonial: CaseStu
   const initials = testimonial.name.split(" ").map((w) => w[0]).slice(0, 2).join("")
 
   return (
-    <div className="rounded-2xl border border-[#1F1F1F] bg-[#141414] overflow-hidden">
+    <div className="rounded-2xl border border-[#1F1F1F] bg-[#262626] overflow-hidden">
       <div className="flex items-center gap-3 p-4">
         <div className="flex flex-col flex-1 min-w-0">
           <p className="text-[14px] leading-[20px] font-normal text-white truncate">{testimonial.name}</p>

@@ -29,7 +29,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound()
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#0F0F0F" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "#191919" }}>
       <div className="mx-auto max-w-3xl px-5 py-8 md:py-12">
         <Link
           href="/"

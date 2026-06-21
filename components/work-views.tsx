@@ -141,7 +141,7 @@ function GridView({ caseStudies, onOpen }: ViewProps) {
             onClick={openHandler(study, onOpen)}
           >
             <div
-              className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#141414]"
+              className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#262626]"
               style={{
                 boxShadow: hovered ? "0 20px 40px -12px rgba(255,255,255,0.1)" : "0 2px 12px -4px rgba(0,0,0,0.3)",
                 transform: hovered ? "translateY(-6px) scale(1.02)" : "translateY(0px) scale(1)",
@@ -160,7 +160,7 @@ function GridView({ caseStudies, onOpen }: ViewProps) {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={study.logo} alt={study.title} className="h-11 w-auto object-contain brightness-0" loading="lazy" decoding="async" />
-                    <span className="text-[32px] font-semibold leading-none text-[#141414]" style={{ fontFamily: "var(--font-geist-sans)" }}>
+                    <span className="text-[32px] font-semibold leading-none text-black" style={{ fontFamily: "var(--font-geist-sans)" }}>
                       Cactus
                     </span>
                   </div>
@@ -181,11 +181,14 @@ function GridView({ caseStudies, onOpen }: ViewProps) {
                   </>
                 )}
               </div>
+              {/* Footer bar — the #262626 box exterior */}
+              <div className="flex items-center gap-2 px-3 py-2.5">
+                <StudyLogo study={study} />
+                <span className="truncate text-[14px] leading-[22px] font-medium tracking-[-0.01em] text-white">
+                  {study.title}
+                </span>
+              </div>
             </div>
-            {/* Company name, outside the card */}
-            <p className="mt-2.5 truncate px-0.5 text-[14px] leading-[22px] font-medium tracking-[-0.01em] text-white">
-              {study.title}
-            </p>
           </Link>
         )
       })}
@@ -225,7 +228,7 @@ function TimelineView({ caseStudies, onOpen }: ViewProps) {
   }, [caseStudies])
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-[#1F1F1F] bg-[#141414]">
+    <div className="overflow-x-auto rounded-2xl border border-[#1F1F1F] bg-[#262626]">
       <div style={{ minWidth: NAME_COL + total * MONTH_COL }}>
         {/* Header: year row */}
         <div className="flex border-b border-[#1F1F1F]">
@@ -309,7 +312,7 @@ function TimelineView({ caseStudies, onOpen }: ViewProps) {
 
 function TableView({ caseStudies, onOpen }: ViewProps) {
   return (
-    <div className="overflow-x-auto rounded-2xl border border-[#1F1F1F] bg-[#141414]">
+    <div className="overflow-x-auto rounded-2xl border border-[#1F1F1F] bg-[#262626]">
       <table className="w-full border-collapse text-left">
         <thead>
           <tr className="border-b border-[#1F1F1F]">
