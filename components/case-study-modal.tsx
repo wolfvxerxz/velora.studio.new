@@ -42,6 +42,14 @@ function CollapseIcon() {
   )
 }
 
+function CloseIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; onClose: () => void }) {
   const [showDetails, setShowDetails] = useState(false)
   const [sidePeek, setSidePeek] = useState(false)
@@ -137,15 +145,26 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
               <PeekIcon />
             </button>
           </div>
-          <button
-            type="button"
-            onClick={() => setShowDetails((v) => !v)}
-            className={`${iconBtn} ${showDetails ? "bg-white/10 text-white" : ""}`}
-            title="View details"
-            aria-label="View details"
-          >
-            <SidebarIcon />
-          </button>
+          <div className="flex items-center gap-0.5">
+            <button
+              type="button"
+              onClick={() => setShowDetails((v) => !v)}
+              className={`${iconBtn} ${showDetails ? "bg-white/10 text-white" : ""}`}
+              title="View details"
+              aria-label="View details"
+            >
+              <SidebarIcon />
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className={iconBtn}
+              title="Close"
+              aria-label="Close"
+            >
+              <CloseIcon />
+            </button>
+          </div>
         </div>
 
         {/* Body: main content + optional properties panel */}
