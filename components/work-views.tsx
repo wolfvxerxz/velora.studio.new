@@ -148,38 +148,21 @@ function GridView({ caseStudies, onOpen }: ViewProps) {
                 transition: "all 500ms cubic-bezier(0.23, 1, 0.32, 1)",
               }}
             >
-              {/* Logo thumbnail on a light panel */}
-              <div className="flex aspect-[16/10] items-center justify-center px-6" style={{ backgroundColor: "#EEEBE6" }}>
-                {study.slug === "cactus" ? (
-                  <div
-                    className="flex items-center gap-2.5"
-                    style={{
-                      transform: hovered ? "scale(1.04)" : "scale(1)",
-                      transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
-                    }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={study.logo} alt={study.title} className="h-11 w-auto object-contain brightness-0" loading="lazy" decoding="async" />
-                    <span className="text-[32px] font-semibold leading-none text-black" style={{ fontFamily: "var(--font-geist-sans)" }}>
-                      Cactus
-                    </span>
-                  </div>
-                ) : (
-                  <>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={study.logo}
-                      alt={study.title}
-                      className={`w-auto object-contain ${study.slug === "subpay" ? "max-h-[84px] max-w-[82%]" : "max-h-14 max-w-[64%]"} ${study.logoNoInvert ? "" : "brightness-0"}`}
-                      style={{
-                        transform: hovered ? "scale(1.04)" : "scale(1)",
-                        transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
-                      }}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </>
-                )}
+              {/* Hero thumbnail */}
+              <div className="relative aspect-[16/10] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={study.cover}
+                  alt={study.title}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{
+                    objectPosition: study.coverPosition ?? "center",
+                    transform: hovered ? "scale(1.03)" : "scale(1)",
+                    transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
+                  }}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               {/* Footer bar — the box exterior */}
               <div className="flex items-center gap-2 px-3 py-2.5">
