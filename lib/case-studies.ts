@@ -201,6 +201,33 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "armature",
+    services: ["Brand", "Product Design", "Web"],
+    areas: ["AI", "Developer Tools", "DevOps"],
+    title: "Armature",
+    date: "2025 – 2026",
+    start: "2025-09",
+    end: "2026-03",
+    cover: "/case/Armature/hero.webp",
+    coverPosition: "left",
+    logo: "/case/Armature/armature-logo.svg",
+    description:
+      "Full brand and product design for Armature — a sharp visual identity paired with a polished digital presence built to reflect the quality of their work.",
+    work: [
+      caseImg("Armature", "1.webp"),
+      caseImg("Armature", "2.webp"),
+      caseImg("Armature", "3.webp"),
+      caseImg("Armature", "4.webp"),
+      caseImg("Armature", "5.webp"),
+    ],
+    testimonial: {
+      quote: "Velora delivered a polished identity and product experience that reflects the quality of our work. Sharp execution, smooth communication, and they shipped right on time.",
+      name: "Theodore",
+      role: "Co-founder, Armature",
+      avatar: "/images/clients/theodore.jpg",
+    },
+  },
+  {
     slug: "cactus",
     services: ["Brand Identity", "Web"],
     areas: ["AI", "Mobile", "Consumer"],
