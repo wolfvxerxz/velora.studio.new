@@ -44,6 +44,26 @@ const caseImg = (client: string, file: string): CaseStudyWorkItem => ({
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "wayfind",
+    services: ["Brand", "Product Design", "Web"],
+    areas: ["AI", "Maps", "Consumer"],
+    title: "Wayfind",
+    date: "2025",
+    start: "2025-06",
+    end: "2025-11",
+    cover: "/case/Wayfind/1.webp",
+    logo: "/case/Wayfind/logo.svg",
+    description:
+      "Brand and product design for Wayfind — an AI guide that turns a plain-language request into ranked, real-world place recommendations, wrapped in a clean, map-first experience.",
+    work: [
+      caseImg("Wayfind", "1.webp"),
+      caseImg("Wayfind", "2.webp"),
+      caseImg("Wayfind", "3.webp"),
+      caseImg("Wayfind", "4.webp"),
+      caseImg("Wayfind", "5.webp"),
+    ],
+  },
+  {
     slug: "extsy",
     title: "Extsy",
     date: "2025",
