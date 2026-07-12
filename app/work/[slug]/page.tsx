@@ -41,11 +41,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <div className="mb-6 flex items-center gap-3">
           <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0 invert" />
           <span className="text-white/25 text-sm">×</span>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={study.logo}
             alt={study.title}
-            width={study.title === "Ecom Wizards" ? 100 : 80}
-            height={24}
             className={`h-5 w-auto max-w-[100px] object-contain opacity-90 ${study.logoNoInvert ? "" : "brightness-0 invert"}`}
           />
         </div>
