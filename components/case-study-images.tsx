@@ -166,7 +166,7 @@ function AnimatedItem({ item, index, title, onClick }: {
   return (
     <div
       ref={ref}
-      className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#111111] p-2 [&_img]:rounded-xl [&_video]:rounded-xl"
+      className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)] p-2 [&_img]:rounded-xl [&_video]:rounded-xl"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0px)" : "translateY(28px)",

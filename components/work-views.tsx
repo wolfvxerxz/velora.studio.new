@@ -21,7 +21,7 @@ interface WorkViewsProps extends ViewProps {
 /* ----------------------------- shared helpers ----------------------------- */
 
 const tagClass =
-  "rounded-md bg-[#262626] px-2 py-0.5 text-[12px] leading-[18px] font-normal text-white whitespace-nowrap"
+  "rounded-md bg-[#F0F1F3] px-2 py-0.5 text-[12px] leading-[18px] font-normal text-[#0A0A0A] whitespace-nowrap"
 
 function openHandler(study: CaseStudy, onOpen: (s: CaseStudy) => void) {
   return (e: React.MouseEvent) => {
@@ -39,7 +39,7 @@ function StudyLogo({ study, size = 18 }: { study: CaseStudy; size?: number }) {
       alt={study.title}
       width={size}
       height={size}
-      className={`h-[18px] w-[18px] shrink-0 rounded-[4px] object-contain ${study.logoNoInvert ? "" : "brightness-0 invert"}`}
+      className={`h-[18px] w-[18px] shrink-0 rounded-[4px] object-contain brightness-0`}
     />
   )
 }
@@ -111,7 +111,7 @@ function ViewTabs({
             type="button"
             onClick={() => setView(id)}
             className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-[13px] leading-[18px] font-normal transition-colors ${
-              active ? "bg-[#202020] text-white" : "text-[#A2A2A2] hover:text-white hover:bg-white/5"
+              active ? "bg-[#0A0A0A] text-white" : "text-[#666666] hover:text-[#0A0A0A] hover:bg-black/[0.04]"
             }`}
           >
             <Icon />
@@ -141,9 +141,9 @@ function GridView({ caseStudies, onOpen }: ViewProps) {
             onClick={openHandler(study, onOpen)}
           >
             <div
-              className="overflow-hidden rounded-2xl border border-[#1F1F1F] bg-[#111111]"
+              className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]"
               style={{
-                boxShadow: hovered ? "0 20px 40px -12px rgba(255,255,255,0.1)" : "0 2px 12px -4px rgba(0,0,0,0.3)",
+                boxShadow: hovered ? "0 18px 40px -12px rgba(30,45,82,0.18)" : "0 1px 3px rgba(30,45,82,0.06)",
                 transform: hovered ? "translateY(-6px) scale(1.02)" : "translateY(0px) scale(1)",
                 transition: "all 500ms cubic-bezier(0.23, 1, 0.32, 1)",
               }}
@@ -167,7 +167,7 @@ function GridView({ caseStudies, onOpen }: ViewProps) {
               {/* Footer bar — the box exterior */}
               <div className="flex items-center gap-2 px-3 py-2.5">
                 <StudyLogo study={study} />
-                <span className="truncate text-[14px] leading-[22px] font-medium tracking-[-0.01em] text-white">
+                <span className="truncate text-[14px] leading-[22px] font-medium tracking-[-0.01em] text-[#0A0A0A]">
                   {study.title}
                 </span>
               </div>
@@ -211,17 +211,17 @@ function TimelineView({ caseStudies, onOpen }: ViewProps) {
   }, [caseStudies])
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-[#1F1F1F] bg-[#111111]">
+    <div className="overflow-x-auto rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]">
       <div style={{ minWidth: NAME_COL + total * MONTH_COL }}>
         {/* Header: year row */}
-        <div className="flex border-b border-[#1F1F1F]">
-          <div className="shrink-0 border-r border-[#1F1F1F]" style={{ width: NAME_COL }} />
+        <div className="flex border-b border-black/[0.08]">
+          <div className="shrink-0 border-r border-black/[0.08]" style={{ width: NAME_COL }} />
           <div className="flex flex-1">
             {yearGroups.map((g, i) => (
               <div
                 key={g.y}
-                className={`px-3 py-1.5 text-[12px] leading-[16px] font-medium text-[#A2A2A2] tabular-nums ${
-                  i === 0 ? "" : "border-l border-[#1F1F1F]"
+                className={`px-3 py-1.5 text-[12px] leading-[16px] font-medium text-[#666666] tabular-nums ${
+                  i === 0 ? "" : "border-l border-black/[0.08]"
                 }`}
                 style={{ flex: g.count }}
               >
@@ -232,14 +232,14 @@ function TimelineView({ caseStudies, onOpen }: ViewProps) {
         </div>
 
         {/* Header: month row */}
-        <div className="flex border-b border-[#1F1F1F]">
-          <div className="shrink-0 border-r border-[#1F1F1F]" style={{ width: NAME_COL }} />
+        <div className="flex border-b border-black/[0.08]">
+          <div className="shrink-0 border-r border-black/[0.08]" style={{ width: NAME_COL }} />
           <div className="flex flex-1">
             {months.map((mo, i) => (
               <div
                 key={mo.abs}
-                className={`flex-1 py-1.5 text-center text-[11px] leading-[14px] font-normal text-[#6E6E6E] ${
-                  mo.m === 0 && i > 0 ? "border-l border-[#1F1F1F]" : ""
+                className={`flex-1 py-1.5 text-center text-[11px] leading-[14px] font-normal text-[#999999] ${
+                  mo.m === 0 && i > 0 ? "border-l border-black/[0.08]" : ""
                 }`}
               >
                 {MONTH_NAMES[mo.m]}
@@ -253,19 +253,19 @@ function TimelineView({ caseStudies, onOpen }: ViewProps) {
           const left = ((startAbs - minAbs) / total) * 100
           const width = ((endAbs - startAbs + 1) / total) * 100
           return (
-            <div key={study.slug} className="flex border-b border-[#1F1F1F] last:border-b-0">
+            <div key={study.slug} className="flex border-b border-black/[0.08] last:border-b-0">
               <div
-                className="flex shrink-0 items-center gap-2 border-r border-[#1F1F1F] px-3 py-2.5"
+                className="flex shrink-0 items-center gap-2 border-r border-black/[0.08] px-3 py-2.5"
                 style={{ width: NAME_COL }}
               >
                 <StudyLogo study={study} />
-                <span className="truncate text-[13px] leading-[18px] font-medium text-white">{study.title}</span>
+                <span className="truncate text-[13px] leading-[18px] font-medium text-[#0A0A0A]">{study.title}</span>
               </div>
               <div className="relative flex-1 py-2.5">
                 {/* faint year guides */}
                 <div className="pointer-events-none absolute inset-0 flex">
                   {months.map((mo, i) => (
-                    <div key={mo.abs} className={`flex-1 ${mo.m === 0 && i > 0 ? "border-l border-[#1F1F1F]" : ""}`} />
+                    <div key={mo.abs} className={`flex-1 ${mo.m === 0 && i > 0 ? "border-l border-black/[0.08]" : ""}`} />
                   ))}
                 </div>
                 {/* bar */}
@@ -273,11 +273,11 @@ function TimelineView({ caseStudies, onOpen }: ViewProps) {
                   <Link
                     href={`/work/${study.slug}`}
                     onClick={openHandler(study, onOpen)}
-                    className="group absolute inset-y-0 left-1.5 right-1.5 flex items-center overflow-hidden rounded-lg border border-[#2A2A2A] bg-[#1E1E1E] px-2.5 transition-colors hover:border-[#3A3A3A] hover:bg-[#262626]"
+                    className="group absolute inset-y-0 left-1.5 right-1.5 flex items-center overflow-hidden rounded-lg border border-black/[0.08] bg-[#F7F8FA] px-2.5 transition-colors hover:border-black/[0.14] hover:bg-[#EEF0F3]"
                     title={`${study.title} · ${study.date}`}
                   >
                     <StudyLogo study={study} size={16} />
-                    <span className="ml-2 truncate text-[12px] leading-[16px] font-normal text-[#D6D6D6] group-hover:text-white">
+                    <span className="ml-2 truncate text-[12px] leading-[16px] font-normal text-[#666666] group-hover:text-[#0A0A0A]">
                       {study.title}
                     </span>
                   </Link>
@@ -295,14 +295,14 @@ function TimelineView({ caseStudies, onOpen }: ViewProps) {
 
 function TableView({ caseStudies, onOpen }: ViewProps) {
   return (
-    <div className="overflow-x-auto rounded-2xl border border-[#1F1F1F] bg-[#111111]">
+    <div className="overflow-x-auto rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]">
       <table className="w-full border-collapse text-left">
         <thead>
-          <tr className="border-b border-[#1F1F1F]">
+          <tr className="border-b border-black/[0.08]">
             {["Name", "Services", "Areas", "Location", "Date"].map((h) => (
               <th
                 key={h}
-                className="whitespace-nowrap px-4 py-2.5 text-[12px] leading-[16px] font-normal text-[#6E6E6E]"
+                className="whitespace-nowrap px-4 py-2.5 text-[12px] leading-[16px] font-normal text-[#999999]"
               >
                 {h}
               </th>
@@ -313,7 +313,7 @@ function TableView({ caseStudies, onOpen }: ViewProps) {
           {caseStudies.map((study) => (
             <tr
               key={study.slug}
-              className="group border-b border-[#1F1F1F] last:border-b-0 transition-colors hover:bg-white/[0.02]"
+              className="group border-b border-black/[0.08] last:border-b-0 transition-colors hover:bg-black/[0.02]"
             >
               <td className="px-4 py-3 align-middle">
                 <Link
@@ -322,7 +322,7 @@ function TableView({ caseStudies, onOpen }: ViewProps) {
                   className="flex items-center gap-2.5"
                 >
                   <StudyLogo study={study} />
-                  <span className="whitespace-nowrap text-[13px] leading-[18px] font-medium text-white underline-offset-2 group-hover:underline">
+                  <span className="whitespace-nowrap text-[13px] leading-[18px] font-medium text-[#0A0A0A] underline-offset-2 group-hover:underline">
                     {study.title}
                   </span>
                 </Link>
@@ -345,10 +345,10 @@ function TableView({ caseStudies, onOpen }: ViewProps) {
                   ))}
                 </div>
               </td>
-              <td className="whitespace-nowrap px-4 py-3 align-middle text-[13px] leading-[18px] font-normal text-[#A2A2A2]">
+              <td className="whitespace-nowrap px-4 py-3 align-middle text-[13px] leading-[18px] font-normal text-[#666666]">
                 {study.location ?? DEFAULT_LOCATION}
               </td>
-              <td className="whitespace-nowrap px-4 py-3 align-middle text-[13px] leading-[18px] font-normal text-[#A2A2A2] tabular-nums">
+              <td className="whitespace-nowrap px-4 py-3 align-middle text-[13px] leading-[18px] font-normal text-[#666666] tabular-nums">
                 {study.date}
               </td>
             </tr>

@@ -15,18 +15,18 @@ export function CaseStudyBody({ study }: { study: CaseStudy }) {
     <>
       <div className="mt-6 grid grid-cols-2 gap-4">
         <div>
-          <p className="text-[13px] leading-[18px] font-normal text-[#6E6E6E]">Location</p>
-          <p className="mt-1 text-[14px] leading-[20px] font-normal text-white">{location}</p>
+          <p className="text-[13px] leading-[18px] font-normal text-[#999999]">Location</p>
+          <p className="mt-1 text-[14px] leading-[20px] font-normal text-[#0A0A0A]">{location}</p>
         </div>
         <div>
-          <p className="text-[13px] leading-[18px] font-normal text-[#6E6E6E]">Date</p>
-          <p className="mt-1 text-[14px] leading-[20px] font-normal text-white tabular-nums">{study.date}</p>
+          <p className="text-[13px] leading-[18px] font-normal text-[#999999]">Date</p>
+          <p className="mt-1 text-[14px] leading-[20px] font-normal text-[#0A0A0A] tabular-nums">{study.date}</p>
         </div>
       </div>
 
-      <div className="mt-6 border-t border-[#1F1F1F]" />
+      <div className="mt-6 border-t border-black/[0.08]" />
 
-      <p className="mt-6 text-[16px] font-normal text-[#A2A2A2] leading-[26px] tracking-tight">
+      <p className="mt-6 text-[16px] font-normal text-[#666666] leading-[26px] tracking-tight">
         {study.description}
       </p>
 

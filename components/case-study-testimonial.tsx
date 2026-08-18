@@ -20,12 +20,12 @@ function Avatar({ src, initials }: { src?: string; initials: string }) {
         width={42}
         height={42}
         onError={() => setFailed(true)}
-        className="h-[42px] w-[42px] flex-shrink-0 rounded-full border border-[#1F1F1F] object-cover"
+        className="h-[42px] w-[42px] flex-shrink-0 rounded-full border border-black/[0.08] object-cover"
       />
     )
   }
   return (
-    <div className="flex h-[42px] w-[42px] flex-shrink-0 items-center justify-center rounded-full border border-[#1F1F1F] bg-[#282828] text-[13px] font-medium text-[#A2A2A2]">
+    <div className="flex h-[42px] w-[42px] flex-shrink-0 items-center justify-center rounded-full border border-black/[0.08] bg-[#F0F1F3] text-[13px] font-medium text-[#666666]">
       {initials}
     </div>
   )
@@ -38,18 +38,18 @@ export function CaseStudyTestimonialCard({ testimonial }: { testimonial: CaseStu
   const initials = testimonial.name.split(" ").map((w) => w[0]).slice(0, 2).join("")
 
   return (
-    <div className="rounded-2xl border border-[#1F1F1F] bg-[#111111] overflow-hidden">
+    <div className="rounded-2xl overflow-hidden border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]">
       <div className="flex items-center gap-3 p-4">
         <div className="flex flex-col flex-1 min-w-0">
-          <p className="text-[14px] leading-[20px] font-normal text-white truncate">{testimonial.name}</p>
-          <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2] truncate">{testimonial.role}</p>
+          <p className="text-[14px] leading-[20px] font-normal text-[#0A0A0A] truncate">{testimonial.name}</p>
+          <p className="text-[14px] leading-[20px] font-normal text-[#666666] truncate">{testimonial.role}</p>
         </div>
         <Avatar src={testimonial.avatar} initials={initials} />
       </div>
-      <div className="mx-4 border-t border-dotted border-[#333333]" />
+      <div className="mx-4 border-t border-dotted border-black/[0.14]" />
       <div className="flex flex-col gap-2 p-4">
-        <p className="text-[14px] leading-[20px] font-normal text-white">{headline}</p>
-        {body && <p className="text-[14px] leading-[20px] font-normal text-[#A2A2A2]">{body}</p>}
+        <p className="text-[14px] leading-[20px] font-normal text-[#0A0A0A]">{headline}</p>
+        {body && <p className="text-[14px] leading-[20px] font-normal text-[#666666]">{body}</p>}
       </div>
     </div>
   )
