@@ -34,7 +34,7 @@ function StudyLogo({ study }: { study: CaseStudy }) {
 export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null)
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+    <div className="grid grid-cols-2 gap-5">
       {caseStudies.map((study) => {
         const hovered = hoveredSlug === study.slug
         return (
@@ -46,16 +46,16 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
             onMouseLeave={() => setHoveredSlug(null)}
             onClick={openHandler(study, onOpen)}
           >
+            {/* Framed thumbnail */}
             <div
-              className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]"
+              className="rounded-2xl border border-black/[0.08] bg-white p-2"
               style={{
                 boxShadow: hovered ? "0 18px 40px -12px rgba(30,45,82,0.18)" : "0 1px 3px rgba(30,45,82,0.06)",
-                transform: hovered ? "translateY(-6px) scale(1.02)" : "translateY(0px) scale(1)",
+                transform: hovered ? "translateY(-4px)" : "translateY(0px)",
                 transition: "all 500ms cubic-bezier(0.23, 1, 0.32, 1)",
               }}
             >
-              {/* Hero thumbnail */}
-              <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="relative aspect-[16/11] overflow-hidden rounded-xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={study.cover}
@@ -70,13 +70,13 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
                   decoding="async"
                 />
               </div>
-              {/* Footer bar — the box exterior */}
-              <div className="flex items-center gap-2 px-3 py-2.5">
-                <StudyLogo study={study} />
-                <span className="truncate text-[14px] leading-[22px] font-medium tracking-[-0.01em] text-[#0A0A0A]">
-                  {study.title}
-                </span>
-              </div>
+            </div>
+            {/* Name + logo below the card */}
+            <div className="mt-3 flex items-center gap-2 px-0.5">
+              <StudyLogo study={study} />
+              <span className="truncate text-[18px] leading-[24px] font-medium tracking-[-0.01em] text-[#0A0A0A]">
+                {study.title}
+              </span>
             </div>
           </Link>
         )
