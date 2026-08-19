@@ -54,7 +54,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     return "/icons/checked.svg"
   }
 
-  const section = "w-full max-w-[830px] mx-auto px-5"
+  const section = "w-full max-w-[632px] mx-auto px-5"
 
   return (
     <main className="min-h-screen font-sans" style={{ backgroundColor: "#F5F6F8" }}>
@@ -63,7 +63,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         className="sticky top-0 z-50"
         style={{ backgroundColor: "rgba(245,246,248,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
       >
-        <div className="w-full max-w-[830px] mx-auto px-5 h-[64px] flex items-center justify-between">
+        <div className="w-full max-w-[632px] mx-auto px-5 h-[64px] flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo/logo-v.svg" alt="Velora" width={32} height={32} className="opacity-90 brightness-0" priority />
             <span className="hidden sm:inline-block text-[15px] !font-[400] text-[#0A0A0A] tracking-[-0.01em]">Velora Studio</span>
