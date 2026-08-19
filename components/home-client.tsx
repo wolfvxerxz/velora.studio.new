@@ -3,8 +3,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { RainbowIcon } from "@hugeicons/core-free-icons"
 import type { CaseStudy } from "@/lib/case-studies"
 import { CaseStudyModal } from "@/components/case-study-modal"
 import { WorkGrid } from "@/components/work-views"
@@ -166,22 +164,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                 Let&apos;s work together
               </a>
             </div>
-          </div>
-
-          {/* Custom flat row */}
-          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)] p-4">
-            <div className="flex-1">
-              <div className="mb-1 flex items-center gap-1.5 text-[13px] font-normal text-[#666666]">
-                <HugeiconsIcon icon={RainbowIcon} size={14} color="#666666" strokeWidth={1.5} />
-                Custom
-              </div>
-              <p className="text-[13px] leading-[18px] font-normal text-[#666666]">
-                Tailored for those who require specific flat pricing for projects of any type and size.
-              </p>
-            </div>
-            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full bg-[#F0F1F3] px-4 py-2 text-[13px] font-normal text-[#0A0A0A] border border-black/[0.08] transition-all duration-200 hover:bg-[#E6E8EB] flex-shrink-0">
-              Let&apos;s Talk
-            </a>
           </div>
         </section>
 
