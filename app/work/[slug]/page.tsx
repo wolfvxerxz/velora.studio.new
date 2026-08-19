@@ -49,7 +49,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           />
         </div>
 
-        <h1 className="text-[20px] font-normal text-[#0A0A0A] leading-[28px] tracking-[-0.02em]">
+        <h1 className="text-[24px] font-medium text-[#0A0A0A] leading-[32px] tracking-[-0.02em]">
           {study.title}
         </h1>
 

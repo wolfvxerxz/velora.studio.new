@@ -183,17 +183,9 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
               />
             </div>
 
-            <h2 className="mt-5 text-[22px] leading-[30px] font-normal tracking-[-0.02em] text-[#0A0A0A]">
+            <h2 className="mt-5 text-[24px] leading-[32px] font-medium tracking-[-0.02em] text-[#0A0A0A]">
               {study.title}
             </h2>
-
-            <button
-              type="button"
-              onClick={() => setShowDetails((v) => !v)}
-              className="mt-1 inline-block text-[14px] leading-[22px] font-normal text-[#999999] transition-colors hover:text-[#0A0A0A]"
-            >
-              {showDetails ? "Hide details" : "View details"}
-            </button>
 
             <CaseStudyBody study={study} />
           </div>
