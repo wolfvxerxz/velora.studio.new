@@ -177,9 +177,9 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
               <Image
                 src={study.logo}
                 alt={study.title}
-                width={study.title === "Ecom Wizards" ? 100 : 80}
-                height={24}
-                className={`h-5 w-auto max-w-[100px] object-contain opacity-90`}
+                width={study.title === "Ecom Wizards" ? 120 : 100}
+                height={28}
+                className={`h-7 w-auto max-w-[120px] object-contain opacity-90`}
               />
             </div>
 
