@@ -62,9 +62,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         style={{ backgroundColor: "rgba(245,246,248,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
       >
         <div className="w-full max-w-[632px] mx-auto px-5 h-[64px] flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center">
             <Image src="/logo/logo-v.svg" alt="Velora" width={32} height={32} className="opacity-90 brightness-0" priority />
-            <span className="hidden sm:inline-block text-[15px] !font-[400] text-[#0A0A0A] tracking-[-0.01em]">Velora Studio</span>
           </Link>
           <nav className="flex items-center gap-2">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
