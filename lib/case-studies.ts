@@ -61,6 +61,11 @@ export const caseStudies: CaseStudy[] = [
       caseImg("Wayfind", "4.webp"),
       caseImg("Wayfind", "5.webp"),
     ],
+    testimonial: {
+      quote: "Hey Vuk, working with you was such a smooth ride. You took a rough idea for Wayfind and turned it into something people actually get the second they land on it — fast, sharp, and always a step ahead.",
+      name: "Marco",
+      role: "Founder, Wayfind",
+    },
   },
   {
     slug: "extsy",
@@ -150,6 +155,11 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Web design and product UI for Webserv — clean flows, sharp visual direction, and ship-ready screens across the full product.",
     work: [img("-1.webp"), img("-3.webp"), img("-4.webp"), img("1 2.webp")],
+    testimonial: {
+      quote: "Vuk, honestly one of the best calls we made. You gave Webserv a clean, confident look and the flows finally make sense — communication was effortless the whole way through.",
+      name: "Daniel",
+      role: "Founder, Webserv",
+    },
   },
   {
     slug: "aether",
@@ -169,6 +179,11 @@ export const caseStudies: CaseStudy[] = [
       caseImg("Aether", "3.webp"),
       caseImg("Aether", "4.webp"),
     ],
+    testimonial: {
+      quote: "Working with velora.studio felt like having a co-founder on design. You understood Aether's vibe instantly and every screen came back sharper than I pictured it — genuinely a pleasure.",
+      name: "Sofia",
+      role: "Founder, Aether",
+    },
   },
   {
     slug: "bentolabs",
@@ -218,6 +233,11 @@ export const caseStudies: CaseStudy[] = [
       caseImg("SubPay", "Dashboard3.webp"),
       caseImg("SubPay", "Dashboard4.webp"),
     ],
+    testimonial: {
+      quote: "Vuk made the whole SubPay redesign painless. Our complex billing flows suddenly felt simple, and you shipped exactly on time — couldn't recommend you more.",
+      name: "Leon",
+      role: "Founder, SubPay",
+    },
   },
   {
     slug: "armature",
@@ -289,6 +309,11 @@ export const caseStudies: CaseStudy[] = [
       caseImg("InsForge", "3.webp"),
       caseImg("InsForge", "4.webp"),
     ],
+    testimonial: {
+      quote: "Hey Vuk, you nailed InsForge from the very first pass. Clean, confident, and built to scale — you just get product. Already looking forward to the next one.",
+      name: "Nikhil",
+      role: "Founder, InsForge",
+    },
   },
 ]
 
