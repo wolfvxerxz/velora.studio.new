@@ -81,10 +81,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         {/* Hero */}
         <section className={section}>
           <h1 className="text-[20px] leading-[28px] !font-[500] text-black">
-            velora.studio partners with Web3, AI, and early-stage founders to turn ideas into standout websites, products, and brands.
+            velora.studio partners with Web3, AI, and<br />early-stage founders to turn ideas into standout<br />websites, products, and brands.
           </h1>
           <p className="text-[16px] leading-[26px] !font-[500] text-[#666666] mt-4">
-            We help you go from 0→1 fast — products that attract investors, convert users, and ship on time.<br />Backed by YC and a16z, we craft intuitive interfaces that tackle complex challenges in AI, SaaS, and Web3.
+            Looking to transform your idea into a real-world product?<br />We specialize in creating intuitive, attractive interfaces that solve complex challenges across SaaS, Web3, and AI.
           </p>
           <div className="flex flex-wrap items-center gap-2 mt-5">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
