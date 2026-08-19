@@ -6,6 +6,7 @@ import { useState } from "react"
 import type { CaseStudy } from "@/lib/case-studies"
 import { CaseStudyModal } from "@/components/case-study-modal"
 import { WorkGrid } from "@/components/work-views"
+import { FloatingTestimonials } from "@/components/floating-testimonials"
 
 interface HomeClientProps {
   caseStudies: CaseStudy[]
@@ -55,7 +56,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
   const section = "w-full max-w-[632px] mx-auto px-5"
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#FAFAFA" }}>
+    <main className="relative min-h-screen font-sans" style={{ backgroundColor: "#FAFAFA" }}>
+      <FloatingTestimonials />
       {/* Navbar */}
       <header
         className="sticky top-0 z-50"
@@ -74,7 +76,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         </div>
       </header>
 
-      <div className="flex flex-col items-center gap-10 pb-20 pt-12">
+      <div className="relative z-10 flex flex-col items-center gap-10 pb-20 pt-12">
         {/* Hero */}
         <section className={section}>
           <h1 className="text-[20px] leading-[28px] !font-[500] text-black">
