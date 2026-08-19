@@ -20,7 +20,6 @@ export interface CaseStudy {
   description: string
   work: CaseStudyWorkItem[]
   coverPosition?: string
-  logoNoInvert?: boolean
   testimonial?: CaseStudyTestimonial
   location?: string
   services?: string[]
@@ -161,7 +160,7 @@ export const caseStudies: CaseStudy[] = [
     start: "2025-02",
     end: "2025-06",
     cover: "/case/Aether/hero.webp",
-    logo: "/case/Aether/logo.svg",
+    logo: "/icons/client-logos/AETHER.svg",
     description:
       "Brand and product design for Aether — a refined, ambient visual identity built to communicate clarity and depth across every touchpoint.",
     work: [
@@ -180,7 +179,7 @@ export const caseStudies: CaseStudy[] = [
     start: "2025-05",
     end: "2025-10",
     cover: "/case/BentoLabs/Hero.webp",
-    logo: "/case/BentoLabs/Logo.svg",
+    logo: "/icons/client-logos/BentoLabs.svg",
     description:
       "Brand and product design for BentoLabs — a modular, component-driven visual system built for teams that ship fast without sacrificing quality.",
     work: [
@@ -206,7 +205,7 @@ export const caseStudies: CaseStudy[] = [
     start: "2025-03",
     end: "2025-08",
     cover: "/case/SubPay/Hero.webp",
-    logo: "/case/SubPay/logo.svg",
+    logo: "/icons/client-logos/SubPay.svg",
     description:
       "Product design for SubPay — a clean, conversion-focused subscription payments experience built for clarity at every step of the billing flow.",
     work: [
@@ -230,7 +229,7 @@ export const caseStudies: CaseStudy[] = [
     end: "2026-03",
     cover: "/case/Armature/hero.webp",
     coverPosition: "left",
-    logo: "/case/Armature/armature-logo.svg",
+    logo: "/icons/client-logos/Armature.svg",
     description:
       "Full brand and product design for Armature — a sharp visual identity paired with a polished digital presence built to reflect the quality of their work.",
     work: [
@@ -256,7 +255,7 @@ export const caseStudies: CaseStudy[] = [
     start: "2025-07",
     end: "2025-11",
     cover: "/case/Cactus/hero.webp",
-    logo: "/case/Cactus/cactus-logo.webp",
+    logo: "/icons/client-logos/CACTUS.svg",
     description:
       "Brand identity and web design for Cactus — a distinctive, resilient visual system that stands out and scales without losing its edge.",
     work: [
@@ -281,7 +280,7 @@ export const caseStudies: CaseStudy[] = [
     start: "2024-08",
     end: "2026-01",
     cover: "/case/InsForge/hero.webp",
-    logo: "/case/InsForge/insforge-logo.svg",
+    logo: "/icons/client-logos/InsForge.svg",
     description:
       "Product design and brand direction for InsForge — clarity and confidence built into every screen, from onboarding to core workflow.",
     work: [

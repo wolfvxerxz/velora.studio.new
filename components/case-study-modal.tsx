@@ -179,12 +179,12 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
                 alt={study.title}
                 width={study.title === "Ecom Wizards" ? 100 : 80}
                 height={24}
-                className={`h-5 w-auto max-w-[100px] object-contain opacity-90 brightness-0`}
+                className={`h-5 w-auto max-w-[100px] object-contain opacity-90`}
               />
             </div>
 
             <h2 className="mt-5 text-[22px] leading-[30px] font-normal tracking-[-0.02em] text-[#0A0A0A]">
-              {study.title} — Design &amp; build
+              {study.title}
             </h2>
 
             <button

@@ -7,7 +7,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { RainbowIcon } from "@hugeicons/core-free-icons"
 import type { CaseStudy } from "@/lib/case-studies"
 import { CaseStudyModal } from "@/components/case-study-modal"
-import { WorkViews, type ViewMode } from "@/components/work-views"
+import { WorkGrid } from "@/components/work-views"
 
 interface HomeClientProps {
   caseStudies: CaseStudy[]
@@ -22,11 +22,7 @@ const secondaryBtn = "rounded-full bg-white px-4 py-2 text-[14px] leading-[22px]
 
 export default function HomeClient({ caseStudies }: HomeClientProps) {
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null)
-  const [workView, setWorkView] = useState<ViewMode>("work")
-  const goToPricing = () => {
-    setWorkView("pricing")
-    requestAnimationFrame(() => document.getElementById("work")?.scrollIntoView())
-  }
+  const goToPricing = () => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
   const caseStudyWorks = caseStudies.filter((c) => c.cover.startsWith("/case/"))
   const otherWorks = caseStudies.filter((c) => !c.cover.startsWith("/case/"))
   const moreWorkImages = Array.from(
@@ -84,13 +80,10 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
       <div className="flex flex-col items-center gap-10 pb-20 pt-12">
         {/* Hero */}
         <section className={section}>
-          <h1 className="text-[24px] leading-[32px] font-normal text-[#0A0A0A]">
-            Your vision deserves world-class execution.
+          <h1 className="text-[20px] leading-[28px] !font-[500] text-black">
+            velora.studio partners with Web3, AI, and early-stage founders to turn ideas into standout websites, products, and brands.
           </h1>
-          <h2 className="text-[24px] leading-[32px] !font-[400] text-[#666666] mt-0.5">
-            velora.studio is your go-to design partner<br />for founders building in AI.
-          </h2>
-          <p className="text-[14px] leading-[20px] !font-[400] text-[#666666] mt-4">
+          <p className="text-[16px] leading-[26px] !font-[500] text-[#666666] mt-4">
             We help you go from 0→1 fast — products that attract investors, convert users, and ship on time.<br />Backed by YC and a16z, we craft intuitive interfaces that tackle complex challenges in AI, SaaS, and Web3.
           </p>
           <div className="flex flex-wrap items-center gap-2 mt-5">
@@ -101,19 +94,19 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </div>
         </section>
 
-        {/* Our Work + Pricing — Notion-style tabbed views */}
+        {/* Our Work */}
         <section id="work" className={section}>
-          <WorkViews
-            caseStudies={caseStudyWorks}
-            onOpen={setSelectedStudy}
-            view={workView}
-            onViewChange={setWorkView}
-            pricing={
-              <div>
-                <p className="text-[14px] leading-[20px] font-normal text-[#666666] mb-5">
-                  Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <h2 className="text-[24px] leading-[32px] font-normal text-[#0A0A0A] mb-4">Selected work</h2>
+          <WorkGrid caseStudies={caseStudyWorks} onOpen={setSelectedStudy} />
+        </section>
+
+        {/* Pricing */}
+        <section id="pricing" className={section}>
+          <h2 className="text-[24px] leading-[32px] font-normal text-[#0A0A0A] mb-1">Pricing</h2>
+          <p className="text-[14px] leading-[20px] font-normal text-[#666666] mb-5">
+            Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Custom Quote */}
             <div className={`flex flex-col rounded-2xl p-4 ${cardBox}`}>
               <h3 className="text-[20px] leading-[28px] font-normal text-[#0A0A0A] tracking-[-0.02em]">Custom Quote</h3>
@@ -189,10 +182,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full bg-[#F0F1F3] px-4 py-2 text-[13px] font-normal text-[#0A0A0A] border border-black/[0.08] transition-all duration-200 hover:bg-[#E6E8EB] flex-shrink-0">
               Let&apos;s Talk
             </a>
-                </div>
-              </div>
-            }
-          />
+          </div>
         </section>
 
         {/* More work — single images, stacked */}

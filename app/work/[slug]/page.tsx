@@ -45,12 +45,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <img
             src={study.logo}
             alt={study.title}
-            className={`h-5 w-auto max-w-[100px] object-contain opacity-90 brightness-0`}
+            className={`h-5 w-auto max-w-[100px] object-contain opacity-90`}
           />
         </div>
 
         <h1 className="text-[20px] font-normal text-[#0A0A0A] leading-[28px] tracking-[-0.02em]">
-          {study.title} — Design &amp; build
+          {study.title}
         </h1>
 
         <CaseStudyBody study={study} />
