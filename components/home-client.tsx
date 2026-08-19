@@ -55,11 +55,11 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
   const section = "w-full max-w-[632px] mx-auto px-5"
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#F5F6F8" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "#FAFAFA" }}>
       {/* Navbar */}
       <header
         className="sticky top-0 z-50"
-        style={{ backgroundColor: "rgba(245,246,248,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+        style={{ backgroundColor: "rgba(250,250,250,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
       >
         <div className="w-full max-w-[632px] mx-auto px-5 h-[64px] flex items-center justify-between">
           <Link href="/" className="flex items-center">
