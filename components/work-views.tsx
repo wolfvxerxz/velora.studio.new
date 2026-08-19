@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { type CaseStudy } from "@/lib/case-studies"
@@ -19,18 +18,6 @@ function openHandler(study: CaseStudy, onOpen: (s: CaseStudy) => void) {
   }
 }
 
-function StudyLogo({ study }: { study: CaseStudy }) {
-  return (
-    <Image
-      src={study.logo}
-      alt={study.title}
-      width={18}
-      height={18}
-      className="h-[18px] w-[18px] shrink-0 rounded-[4px] object-contain"
-    />
-  )
-}
-
 export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null)
   return (
@@ -47,14 +34,7 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
             onClick={openHandler(study, onOpen)}
           >
             {/* Framed thumbnail */}
-            <div
-              className="rounded-2xl border border-black/[0.08] bg-white p-2"
-              style={{
-                boxShadow: hovered ? "0 18px 40px -12px rgba(30,45,82,0.18)" : "0 1px 3px rgba(30,45,82,0.06)",
-                transform: hovered ? "translateY(-4px)" : "translateY(0px)",
-                transition: "all 500ms cubic-bezier(0.23, 1, 0.32, 1)",
-              }}
-            >
+            <div className="rounded-2xl border border-black/[0.08] bg-white p-2 shadow-[0_1px_3px_rgba(30,45,82,0.06)]">
               <div className="relative aspect-[16/11] overflow-hidden rounded-xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -63,7 +43,7 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
                   className="absolute inset-0 h-full w-full object-cover"
                   style={{
                     objectPosition: study.coverPosition ?? "center",
-                    transform: hovered ? "scale(1.03)" : "scale(1)",
+                    transform: hovered ? "scale(1.1)" : "scale(1)",
                     transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
                   }}
                   loading="lazy"
@@ -71,9 +51,8 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
                 />
               </div>
             </div>
-            {/* Name + logo below the card */}
-            <div className="mt-3 flex items-center gap-2 px-0.5">
-              <StudyLogo study={study} />
+            {/* Name below the card */}
+            <div className="mt-3 px-0.5">
               <span className="truncate text-[18px] leading-[24px] font-medium tracking-[-0.01em] text-[#0A0A0A]">
                 {study.title}
               </span>

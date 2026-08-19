@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
+    "@dicebear/collection": "^9.4.2",
+    "@dicebear/core": "^9.4.3",
     "@hookform/resolvers": "^3.9.1",
     "@hugeicons/core-free-icons": "^3.3.0",
     "@hugeicons/react": "^1.1.5",
