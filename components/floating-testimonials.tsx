@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { caseStudies, type CaseStudyTestimonial } from "@/lib/case-studies"
 
 const testimonials = caseStudies
@@ -16,8 +16,13 @@ const times = [
   "Friday at 16:38 PM",
   "Wednesday at 08:52 AM",
   "Thursday at 13:10 PM",
+  "Monday at 10:31 AM",
+  "Yesterday at 15:52 PM",
+  "Tuesday at 19:08 PM",
+  "Friday at 12:20 PM",
+  "Thursday at 17:44 PM",
 ]
-const rotations = [-3.46, 2.8, -2.4, 3.2, -3, 2.4, -2.6, 3]
+const rotations = [-3.46, 2.8, -2.4, 3.2, -3, 2.4, -2.6, 3, -3.2, 2.6, -2.8, 3.4, -2.2]
 
 /** Trim a quote to its first sentence so the chip stays compact. */
 function firstSentence(quote: string): string {
@@ -66,14 +71,49 @@ function ChipAvatar({ src, name }: { src?: string; name: string }) {
   )
 }
 
-function Chip({ t, time, rot }: { t: CaseStudyTestimonial; time: string; rot: number }) {
+/** Fade + slide + settle-into-rotation reveal, triggered when scrolled into view. */
+function Reveal({ rot, children }: { rot: number; children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [shown, setShown] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.35, rootMargin: "0px 0px -8% 0px" }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown
+          ? `translateY(0) scale(1) rotate(${rot}deg)`
+          : `translateY(22px) scale(0.92) rotate(0deg)`,
+        transition:
+          "opacity 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 900ms cubic-bezier(0.16, 1, 0.3, 1)",
+        willChange: "transform, opacity",
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function Chip({ t, time }: { t: CaseStudyTestimonial; time: string }) {
   return (
     <div
       className="w-[290px] rounded-lg bg-white/80 py-2 pl-2 pr-3 backdrop-blur-md"
       style={{
-        transform: `rotate(${rot}deg)`,
-        boxShadow:
-          "0 8px 24px rgba(30,45,82,0.10), 0 0 0 1px rgba(30,45,82,0.05)",
+        boxShadow: "0 8px 24px rgba(30,45,82,0.10), 0 0 0 1px rgba(30,45,82,0.05)",
       }}
     >
       <div className="flex items-start gap-2">
@@ -94,38 +134,86 @@ function Chip({ t, time, rot }: { t: CaseStudyTestimonial; time: string; rot: nu
   )
 }
 
-function Gutter({ side, items }: { side: "left" | "right"; items: CaseStudyTestimonial[] }) {
+function Gutter({
+  side,
+  items,
+  indices,
+}: {
+  side: "left" | "right"
+  items: CaseStudyTestimonial[]
+  indices: number[]
+}) {
   const isLeft = side === "left"
   return (
     <div
       className={`absolute top-0 flex h-full flex-col ${isLeft ? "left-0" : "right-0"}`}
       style={{ width: "calc((100% - 632px) / 2)" }}
     >
-      {items.map((t, i) => (
-        <div
-          key={t.name + i}
-          className={`flex flex-1 ${isLeft ? "justify-end pr-6" : "justify-start pl-6"}`}
-        >
-          <div className="sticky top-24 self-start">
-            <Chip
-              t={t}
-              time={times[(isLeft ? i * 2 : i * 2 + 1) % times.length]}
-              rot={rotations[(isLeft ? i * 2 : i * 2 + 1) % rotations.length]}
-            />
+      {items.map((t, i) => {
+        const globalIdx = indices[i]
+        return (
+          <div
+            key={t.name + i}
+            className={`flex min-h-0 flex-1 items-center ${isLeft ? "justify-end pr-6" : "justify-start pl-6"}`}
+          >
+            <Reveal rot={rotations[globalIdx % rotations.length]}>
+              <Chip t={t} time={times[globalIdx % times.length]} />
+            </Reveal>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
 
 export function FloatingTestimonials() {
-  const left = testimonials.filter((_, i) => i % 2 === 0)
-  const right = testimonials.filter((_, i) => i % 2 === 1)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState<number | null>(null)
+
+  // Dynamically span the gutters from the top of the page down to the Pricing
+  // section, so every chip is distributed within that region.
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+    const measure = () => {
+      const pricing = document.getElementById("pricing")
+      if (!pricing) return
+      const h = pricing.getBoundingClientRect().top - root.getBoundingClientRect().top
+      if (h > 0) setHeight(h)
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(document.body)
+    window.addEventListener("resize", measure)
+    // Re-measure after fonts/images settle
+    const t1 = setTimeout(measure, 400)
+    const t2 = setTimeout(measure, 1200)
+    return () => {
+      ro.disconnect()
+      window.removeEventListener("resize", measure)
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
+  }, [])
+
+  const leftIdx = testimonials.map((_, i) => i).filter((i) => i % 2 === 0)
+  const rightIdx = testimonials.map((_, i) => i).filter((i) => i % 2 === 1)
+  const left = leftIdx.map((i) => testimonials[i])
+  const right = rightIdx.map((i) => testimonials[i])
+
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 hidden xl:block" aria-hidden>
-      <Gutter side="left" items={left} />
-      <Gutter side="right" items={right} />
+    <div
+      ref={rootRef}
+      className="pointer-events-none absolute inset-x-0 top-0 z-0 hidden xl:block"
+      style={{ height: height ?? undefined }}
+      aria-hidden
+    >
+      {height !== null && (
+        <>
+          <Gutter side="left" items={left} indices={leftIdx} />
+          <Gutter side="right" items={right} indices={rightIdx} />
+        </>
+      )}
     </div>
   )
 }
