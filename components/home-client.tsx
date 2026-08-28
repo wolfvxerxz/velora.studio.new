@@ -155,7 +155,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             {/* Design Partner */}
             <div className="flex flex-col rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)] p-4">
               <p className="text-[20px] leading-[28px] font-normal text-[#0A0A0A] tracking-[-0.03em] tabular-nums">
-                €4,000<span className="text-[14px] font-normal text-[#666666]">/mo</span>
+                €3,999<span className="text-[14px] font-normal text-[#666666]">/mo</span>
               </p>
               <p className="mt-1.5 text-[13px] leading-[18px] font-normal text-[#666666]">
                 Unlimited design for teams that ship every week.
