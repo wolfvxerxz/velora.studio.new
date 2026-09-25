@@ -28,7 +28,7 @@ function Subheading({ title, meta, sub }: { title: string; meta?: string; sub?: 
   return (
     <div className="mb-6">
       <div className="flex items-center gap-3">
-        <span className="h-[7px] w-3 bg-[var(--t-cap)] opacity-40" aria-hidden />
+        <span className="h-[7px] w-3 bg-[var(--t-mint)]" aria-hidden />
         <h2 className="mono !text-[16px] !leading-[20px] !tracking-[-0.02em] text-[var(--t-ink)]">{title}</h2>
         <span className="h-px flex-1 bg-[var(--t-line)]" aria-hidden />
         {meta && <span className="mono text-[14px] leading-5 text-[var(--t-faint)] tabular-nums">{meta}</span>}
