@@ -572,3 +572,56 @@ html { color-scheme: dark; }
 .tick-primary:hover { background: #FFFFFF; }
 .modal-scroll { scrollbar-color: #6B5A4F transparent; }
 .modal-scroll::-webkit-scrollbar-thumb { background-color: #6B5A4F; }
+
+/* ---------- Button refinement (Wayfare) ---------- */
+.tick {
+  height: 42px;
+  padding-inline: 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition: transform 520ms var(--spring-bouncy), box-shadow 300ms ease, background-color 200ms ease, border-color 200ms ease;
+}
+.tick::before { display: none; }
+.tick::after { content: none; }
+.tick-primary {
+  background: #F2EEE3;
+  color: #2B211C;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 1px 0 rgba(0, 0, 0, 0.25),
+    0 8px 18px -10px rgba(0, 0, 0, 0.6);
+}
+.tick-primary::after {
+  content: "→";
+  display: inline-block;
+  background: none;
+  position: static;
+  inset: auto;
+  font-family: var(--font-geist-sans), sans-serif;
+  transition: transform 420ms var(--spring-bouncy);
+}
+.tick-primary:hover {
+  background: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 1px 0 rgba(0, 0, 0, 0.25),
+    0 12px 24px -10px rgba(0, 0, 0, 0.65),
+    0 0 0 3px rgba(47, 143, 234, 0.35);
+}
+.tick-primary:hover::after { transform: translateX(3px); }
+.tick-secondary {
+  background: rgba(242, 238, 227, 0.06);
+  color: var(--t-ink);
+  border: 1px solid rgba(242, 238, 227, 0.18);
+  box-shadow: inset 0 1px 0 rgba(242, 238, 227, 0.06);
+}
+.tick-secondary:hover {
+  background: rgba(242, 238, 227, 0.11);
+  border-color: rgba(242, 238, 227, 0.3);
+  transform: translateY(-1px);
+}
+.tick:active { transform: scale(0.97); transition-duration: 120ms; }
+.tick:focus-visible { outline: 2px solid #2F8FEA; outline-offset: 2px; }
