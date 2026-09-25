@@ -2,6 +2,10 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import { Funnel_Display } from "next/font/google"
+
+const funnel = Funnel_Display({ subsets: ["latin"], weight: ["500"], variable: "--font-funnel", display: "swap" })
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 
@@ -65,7 +69,7 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${funnel.variable}`}>
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <script

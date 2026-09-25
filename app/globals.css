@@ -449,3 +449,73 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Terminal / technical style (light) ---------- */
+:root {
+  --t-ink: #0A0B0A;
+  --t-muted: #6E706F;
+  --t-faint: #9D9E9D;
+  --t-line: #E4E5E4;
+  --t-line-strong: #CFD1D0;
+  --t-cap: #ADB8B4;
+  --t-mint: #5DFFCA;
+  --t-mint-ink: #0B9E72;
+}
+.mono {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+.funnel { font-family: var(--font-funnel), var(--font-geist-sans), sans-serif; font-weight: 500; }
+
+/* Button with corner ticks */
+.tick {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 44px; padding-inline: 18px;
+  border-radius: 2px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 14px; font-weight: 500; letter-spacing: -0.02em; text-transform: uppercase;
+  transition: transform 520ms var(--spring-bouncy), box-shadow 300ms ease, background-color 200ms ease;
+}
+.tick::before, .tick::after {
+  content: ""; position: absolute; inset: -4px; pointer-events: none;
+  background:
+    linear-gradient(var(--tick-c), var(--tick-c)) top left / 8px 1px no-repeat,
+    linear-gradient(var(--tick-c), var(--tick-c)) top left / 1px 8px no-repeat,
+    linear-gradient(var(--tick-c), var(--tick-c)) top right / 8px 1px no-repeat,
+    linear-gradient(var(--tick-c), var(--tick-c)) top right / 1px 8px no-repeat;
+  transition: inset 420ms var(--spring-bouncy);
+}
+.tick::after {
+  background:
+    linear-gradient(var(--tick-c), var(--tick-c)) bottom left / 8px 1px no-repeat,
+    linear-gradient(var(--tick-c), var(--tick-c)) bottom left / 1px 8px no-repeat,
+    linear-gradient(var(--tick-c), var(--tick-c)) bottom right / 8px 1px no-repeat,
+    linear-gradient(var(--tick-c), var(--tick-c)) bottom right / 1px 8px no-repeat;
+}
+.tick:hover::before, .tick:hover::after { inset: -7px; }
+.tick:active { transform: scale(0.97); transition-duration: 120ms; }
+.tick-primary {
+  --tick-c: var(--t-ink);
+  background: #0A0B0A; color: #fff;
+  border: 1px solid rgba(93, 255, 202, 0.35);
+  box-shadow: inset 0 0 28px rgba(93, 255, 202, 0.22), inset 0 0 10px rgba(93, 255, 202, 0.18);
+}
+.tick-primary:hover { box-shadow: inset 0 0 36px rgba(93, 255, 202, 0.34), inset 0 0 14px rgba(93, 255, 202, 0.26); }
+.tick-secondary {
+  --tick-c: var(--t-line-strong);
+  background: #fff; color: var(--t-ink);
+  border: 1px solid var(--t-line-strong);
+  box-shadow: inset 0 0 20px rgba(10, 11, 10, 0.04);
+}
+.tick-secondary:hover { background: #F4F5F4; }
+
+/* Divider with square end caps */
+.cap-line { display: flex; align-items: center; gap: 2px; width: 100%; }
+.cap-line::before, .cap-line::after {
+  content: ""; width: 7px; height: 7px; flex-shrink: 0; background: var(--t-cap);
+}
+.cap-line > span { flex: 1; height: 1px; background: var(--t-line); }

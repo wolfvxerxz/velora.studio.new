@@ -16,29 +16,39 @@ interface HomeClientProps {
 const scheduleUrl = "https://cal.com/vuk-m/15min"
 const subscribeUrl = "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
 
-const card =
-  "rounded-[20px] border border-black/[0.06] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_32px_-16px_rgba(15,23,42,0.14)]"
-const primaryBtn =
-  "press inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#0A0A0A] px-5 text-[14px] font-medium tracking-[-0.01em] text-white hover:bg-[#1F1F1F] hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.35)]"
-const secondaryBtn =
-  "press inline-flex h-10 items-center justify-center rounded-full border border-black/[0.08] bg-white px-5 text-[14px] font-medium tracking-[-0.01em] text-[#0A0A0A] hover:bg-[#F4F4F5]"
-
-function SectionHeader({ title, sub }: { title: string; sub?: string }) {
+function CapLine() {
   return (
-    <div className="mb-6 flex flex-col gap-1">
-      <h2 className="!text-[20px] !leading-[28px] !font-[600] tracking-[-0.02em] text-[#0A0A0A]">{title}</h2>
-      {sub && <p className="!text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B] max-w-[52ch]">{sub}</p>}
+    <div className="cap-line" aria-hidden>
+      <span />
     </div>
   )
 }
 
-function Check() {
+function Subheading({ title, meta, sub }: { title: string; meta?: string; sub?: string }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="mt-[2px] flex-shrink-0">
-      <circle cx="8" cy="8" r="8" fill="#0A0A0A" fillOpacity="0.06" />
-      <path d="M5 8.2l2 2 4-4.4" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <div className="mb-6">
+      <div className="flex items-center gap-3">
+        <span className="h-[7px] w-3 bg-[var(--t-cap)] opacity-40" aria-hidden />
+        <h2 className="mono !text-[16px] !leading-[20px] !tracking-[-0.02em] text-[var(--t-ink)]">{title}</h2>
+        <span className="h-px flex-1 bg-[var(--t-line)]" aria-hidden />
+        {meta && <span className="mono text-[14px] leading-5 text-[var(--t-faint)] tabular-nums">{meta}</span>}
+      </div>
+      {sub && <p className="mt-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)] max-w-[52ch]">{sub}</p>}
+    </div>
   )
+}
+
+function Factoid({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="font-[family-name:var(--font-geist-mono)] text-[13px] font-semibold leading-5 tracking-[-0.02em] text-[var(--t-faint)]">{label}</span>
+      <span className="mono text-[14px] leading-5 text-[var(--t-ink)] tabular-nums">{value}</span>
+    </div>
+  )
+}
+
+function Bullet() {
+  return <span className="mt-[7px] h-[6px] w-[6px] flex-shrink-0 bg-[var(--t-mint-ink)]" aria-hidden />
 }
 
 export default function HomeClient({ caseStudies }: HomeClientProps) {
@@ -49,6 +59,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
   const moreWorkImages = Array.from(
     new Set(otherWorks.flatMap((c) => [c.cover, ...c.work.filter((w) => w.type === "image").map((w) => w.src)]))
   )
+  const testimonialCount = caseStudies.filter((c) => c.testimonial).length
+  const pad = (n: number) => String(n).padStart(2, "0")
 
   const customQuoteFeatures = [
     "Brand identity design",
@@ -67,111 +79,141 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     "Pause or cancel anytime",
   ]
 
-  const section = "w-full max-w-[632px] mx-auto px-5"
+  const block = "px-5 py-16 sm:px-6 sm:py-20"
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#FAFAFA" }}>
-      {/* Floating glass navbar */}
-      <header className="sticky top-3 z-50 px-3">
-        <div className="mx-auto flex h-14 w-full max-w-[632px] items-center justify-between rounded-full border border-black/[0.06] bg-white/70 pl-4 pr-2 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.18)] backdrop-blur-xl backdrop-saturate-150">
-          <Link href="/" className="press flex items-center" aria-label="velora.studio home">
-            <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0" priority />
-          </Link>
-          <nav className="flex items-center gap-1.5">
-            <a href="#work" className="press hidden h-10 items-center rounded-full px-4 text-[14px] font-medium text-[#3F3F46] hover:bg-black/[0.04] sm:inline-flex">
-              Work
-            </a>
-            <button type="button" onClick={goToPricing} className="press hidden h-10 items-center rounded-full px-4 text-[14px] font-medium text-[#3F3F46] hover:bg-black/[0.04] sm:inline-flex">
-              Pricing
-            </button>
-            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
-              Schedule Call
-            </a>
-          </nav>
-        </div>
-      </header>
+    <main
+      className="min-h-screen font-sans"
+      style={{
+        backgroundColor: "#FAFAFA",
+        backgroundImage: "radial-gradient(rgba(10,11,10,0.07) 1px, transparent 1px)",
+        backgroundSize: "14px 14px",
+      }}
+    >
+      <div className="mx-auto min-h-screen w-full max-w-[680px] border-x border-[var(--t-line)] bg-[#FAFAFA]">
+        {/* Topbar */}
+        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[#FAFAFA]/85 backdrop-blur-xl">
+          <div className="flex h-[68px] items-center justify-between px-5 sm:px-6">
+            <Link href="/" className="press flex items-center" aria-label="velora.studio home">
+              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0" priority />
+            </Link>
+            <nav className="flex items-center gap-5">
+              <a href="#work" className="mono hidden text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)] sm:inline">
+                Work
+              </a>
+              <button type="button" onClick={goToPricing} className="mono hidden text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)] sm:inline">
+                Pricing
+              </button>
+              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary !h-9 !px-4 !text-[13px]">
+                Schedule Call
+              </a>
+            </nav>
+          </div>
+        </header>
 
-      <div className="flex flex-col items-center gap-20 pb-16 pt-20 sm:gap-24 sm:pt-24">
         {/* Hero */}
-        <Reveal as="section" className={section}>
+        <Reveal as="section" className={block}>
+          <div className="mb-8 flex items-center gap-2">
+            <span className="h-2 w-2 bg-[var(--t-mint)] shadow-[0_0_0_3px_rgba(93,255,202,0.25)]" aria-hidden />
+            <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">Design &amp; development studio</span>
+          </div>
           <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-black">
             velora.studio partners with Web3, AI, and<br className="hidden sm:block" /> early-stage founders to turn ideas into standout<br className="hidden sm:block" /> websites, products, and brands.
           </h1>
           <p className="mt-4 !text-[16px] !leading-[26px] !font-[500] text-[#666666]">
             Looking to transform your idea into a real-world product?<br className="hidden sm:block" /> We specialize in creating intuitive, attractive interfaces that solve complex challenges across SaaS, Web3, and AI.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary">
               Schedule Call
             </a>
-            <button type="button" onClick={goToPricing} className={secondaryBtn}>
+            <button type="button" onClick={goToPricing} className="tick tick-secondary">
               View Pricing
             </button>
           </div>
+          <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
+            <Factoid label="Case studies" value={pad(caseStudyWorks.length)} />
+            <Factoid label="Client notes" value={pad(testimonialCount)} />
+            <Factoid label="Plans from" value="€3,999/mo" />
+          </div>
         </Reveal>
 
+        <CapLine />
+
         {/* Selected work */}
-        <Reveal as="section" id="work" className={`${section} scroll-mt-24`}>
-          <SectionHeader title="Selected work" sub="Brand, product and web for founders building in AI and Web3." />
+        <Reveal as="section" id="work" className={`${block} scroll-mt-16`}>
+          <Subheading
+            title="Selected work"
+            meta={pad(caseStudyWorks.length)}
+            sub="Brand, product and web for founders building in AI and Web3."
+          />
           <WorkGrid caseStudies={caseStudyWorks} onOpen={setSelectedStudy} />
         </Reveal>
 
+        <CapLine />
+
         {/* Wall of Love */}
-        <Reveal as="section" className={section}>
-          <SectionHeader title="Wall of Love" sub="What founders say about working with velora.studio." />
+        <Reveal as="section" className={block}>
+          <Subheading title="Wall of Love" meta={pad(testimonialCount)} sub="What founders say about working with velora.studio." />
           <WallOfLove />
         </Reveal>
 
+        <CapLine />
+
         {/* Pricing */}
-        <Reveal as="section" id="pricing" className={`${section} scroll-mt-24`}>
-          <SectionHeader
-            title="Pricing"
-            sub="A custom scope built around you, or a monthly design partner that ships every week."
-          />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Reveal as="section" id="pricing" className={`${block} scroll-mt-16`}>
+          <Subheading title="Pricing" sub="A custom scope built around you, or a monthly design partner that ships every week." />
+          <div className="grid grid-cols-1 border border-[var(--t-line)] bg-white sm:grid-cols-2">
             {/* Custom Quote */}
-            <div className={`press flex flex-col p-6 ${card}`}>
-              <p className="!text-[13px] !leading-[18px] !font-[500] text-[#6B6B6B]">Project</p>
-              <h3 className="mt-2 !text-[28px] !leading-[32px] !font-[600] tracking-[-0.03em] text-[#0A0A0A]">Custom Quote</h3>
-              <p className="mt-2 !text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B]">
+            <div className="flex flex-col border-b border-[var(--t-line)] p-6 sm:border-b-0 sm:border-r">
+              <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Project</span>
+              <h3 className="funnel mt-3 !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">Custom Quote</h3>
+              <p className="mt-2 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">
                 Your go-to for whatever you need: brand, product, web, and build.
               </p>
-              <div className="my-6 h-px bg-black/[0.06]" />
+              <div className="my-6"><CapLine /></div>
               <ul className="flex flex-1 flex-col gap-3">
                 {customQuoteFeatures.map((label) => (
-                  <li key={label} className="flex items-start gap-2.5 !text-[14px] !leading-[20px] !font-[400] text-[#3F3F46]">
-                    <Check />
+                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[#3A3C3B]">
+                    <Bullet />
                     {label}
                   </li>
                 ))}
               </ul>
-              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={`${secondaryBtn} mt-8 w-full`}>
+              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-secondary mt-8 w-full">
                 Share your vision
               </a>
             </div>
 
             {/* Design Partner */}
-            <div className={`press relative flex flex-col p-6 ${card} ring-1 ring-black/[0.04]`}>
-              <div className="flex items-center justify-between">
-                <p className="!text-[13px] !leading-[18px] !font-[500] text-[#6B6B6B]">Design Partner</p>
-                <span className="rounded-full bg-[#0A0A0A] px-2.5 py-1 text-[11px] font-medium leading-none text-white">Popular</span>
+            <div className="relative flex flex-col p-6">
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-24"
+                style={{ background: "linear-gradient(180deg, rgba(93,255,202,0.14) 0%, rgba(93,255,202,0) 100%)" }}
+                aria-hidden
+              />
+              <div className="relative flex items-center justify-between">
+                <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Design Partner</span>
+                <span className="mono border-l-2 border-[var(--t-mint-ink)] bg-[rgba(93,255,202,0.18)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-mint-ink)]">
+                  Popular
+                </span>
               </div>
-              <p className="mt-2 !text-[28px] !leading-[32px] !font-[600] tracking-[-0.03em] text-[#0A0A0A] tabular-nums">
-                €3,999<span className="!text-[14px] !font-[400] tracking-normal text-[#6B6B6B]"> /mo</span>
+              <p className="funnel relative mt-3 !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)] tabular-nums">
+                €3,999<span className="mono ml-1 !text-[14px] text-[var(--t-faint)]">/mo</span>
               </p>
-              <p className="mt-2 !text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B]">
+              <p className="relative mt-2 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">
                 Unlimited design for teams that ship every week.
               </p>
-              <div className="my-6 h-px bg-black/[0.06]" />
+              <div className="my-6"><CapLine /></div>
               <ul className="flex flex-1 flex-col gap-3">
                 {subscriptionFeatures.map((label) => (
-                  <li key={label} className="flex items-start gap-2.5 !text-[14px] !leading-[20px] !font-[400] text-[#3F3F46]">
-                    <Check />
+                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[#3A3C3B]">
+                    <Bullet />
                     {label}
                   </li>
                 ))}
               </ul>
-              <a href={subscribeUrl} target="_blank" rel="noopener noreferrer" className={`${primaryBtn} mt-8 w-full`}>
+              <a href={subscribeUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary mt-8 w-full">
                 Let&apos;s work together
               </a>
             </div>
@@ -180,45 +222,54 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
         {/* More work */}
         {moreWorkImages.length > 0 && (
-          <Reveal as="section" className={section}>
-            <SectionHeader title="More work" sub="A selection of past projects across brand, product, and web." />
-            <div className="flex flex-col gap-4">
-              {moreWorkImages.map((src) => (
-                <div key={src} className={`group overflow-hidden p-2 ${card}`}>
-                  <div className="overflow-hidden rounded-[14px]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={src}
-                      alt="Velora work"
-                      className="block h-auto w-full transition-transform duration-700 [transition-timing-function:var(--spring)] group-hover:scale-[1.04]"
-                      loading="lazy"
-                      decoding="async"
-                    />
+          <>
+            <CapLine />
+            <Reveal as="section" className={block}>
+              <Subheading title="More work" meta={pad(moreWorkImages.length)} sub="A selection of past projects across brand, product, and web." />
+              <div className="flex flex-col gap-4">
+                {moreWorkImages.map((src) => (
+                  <div key={src} className="group overflow-hidden rounded-[2px] border border-[var(--t-line)] bg-white p-2">
+                    <div className="overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt="Velora work"
+                        className="block h-auto w-full transition-transform duration-700 [transition-timing-function:var(--spring)] group-hover:scale-[1.04]"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+                ))}
+              </div>
+            </Reveal>
+          </>
         )}
 
+        <CapLine />
+
         {/* Closing CTA + footer */}
-        <Reveal as="footer" className={section}>
-          <div className={`flex flex-col items-start gap-5 p-8 ${card}`}>
-            <h2 className="!text-[20px] !leading-[28px] !font-[600] tracking-[-0.02em] text-[#0A0A0A]">
+        <Reveal as="footer" className={block}>
+          <div
+            className="flex flex-col items-start gap-5 border border-[var(--t-line)] bg-white p-8"
+            style={{ backgroundImage: "linear-gradient(180deg, rgba(93,255,202,0.10) 0%, rgba(93,255,202,0) 60%)" }}
+          >
+            <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Next step</span>
+            <h2 className="funnel !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">
               Have an idea worth building?
             </h2>
-            <p className="-mt-3 !text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B]">
+            <p className="-mt-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">
               A 15-minute call is enough to see if we&apos;re a fit.
             </p>
-            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
+            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary mt-1">
               Schedule Call
             </a>
           </div>
-          <div className="mt-10 flex items-center justify-between">
-            <p className="!text-[13px] !leading-[20px] !font-[400] text-[#8A8A8A]">© velora.studio 2026</p>
+          <div className="mt-12 flex items-center justify-between">
+            <p className="mono text-[13px] leading-5 text-[var(--t-faint)]">© velora.studio 2026</p>
             <div className="flex items-center gap-5">
-              <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#8A8A8A] transition-colors hover:text-[#0A0A0A]">X (Twitter)</a>
-              <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#8A8A8A] transition-colors hover:text-[#0A0A0A]">LinkedIn</a>
+              <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="mono text-[13px] text-[var(--t-faint)] transition-colors hover:text-[var(--t-ink)]">X (Twitter)</a>
+              <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="mono text-[13px] text-[var(--t-faint)] transition-colors hover:text-[var(--t-ink)]">LinkedIn</a>
             </div>
           </div>
         </Reveal>

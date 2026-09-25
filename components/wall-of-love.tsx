@@ -53,7 +53,7 @@ function Avatar({ src, name }: { src?: string; name: string }) {
       src={url}
       alt={name}
       onError={() => setFailed(true)}
-      className="h-9 w-9 flex-shrink-0 rounded-full bg-[#EDEFF2] object-cover"
+      className="h-9 w-9 flex-shrink-0 rounded-[2px] bg-[#EDEFF2] object-cover"
     />
   )
 }
@@ -80,7 +80,7 @@ function TestimonialCard({ t, time }: { t: CaseStudyTestimonial; time: string })
   return (
     <div
       ref={ref}
-      className="relative mb-4 break-inside-avoid rounded-[20px] border border-black/[0.06] bg-white p-4 shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]"
+      className="relative mb-4 break-inside-avoid rounded-[2px] border border-[var(--t-line)] bg-white p-4"
       style={{
         opacity: shown ? 1 : 0,
         transform: shown ? "translateY(0)" : "translateY(24px)",
@@ -103,8 +103,8 @@ function TestimonialCard({ t, time }: { t: CaseStudyTestimonial; time: string })
       <div className="flex items-center gap-2.5">
         <Avatar src={t.avatar} name={t.name} />
         <div className="flex min-w-0 flex-col">
-          <span className="text-[14px] font-bold leading-[18px] text-[#222222]">{t.name}</span>
-          <span className="text-[11px] leading-[14px] text-[#3F3F3F] opacity-50">{time}</span>
+          <span className="mono text-[13px] leading-[18px] text-[var(--t-ink)]">{t.name}</span>
+          <span className="font-[family-name:var(--font-geist-mono)] text-[11px] leading-[14px] text-[var(--t-faint)]">{time}</span>
         </div>
       </div>
       <p className="mt-3 text-[14px] leading-[21px] text-[#3F3F3F]">{renderMessage(t.quote)}</p>

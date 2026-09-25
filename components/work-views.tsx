@@ -34,8 +34,8 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
             onClick={openHandler(study, onOpen)}
           >
             {/* Framed thumbnail */}
-            <div className="rounded-[20px] border border-black/[0.06] bg-white p-2 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_32px_-16px_rgba(15,23,42,0.14)]">
-              <div className="relative aspect-[16/11] overflow-hidden rounded-xl">
+            <div className="rounded-[2px] border border-[var(--t-line)] bg-white p-2 transition-colors duration-300 group-hover:border-[var(--t-line-strong)]">
+              <div className="relative aspect-[16/11] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={study.cover}
@@ -53,7 +53,7 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
             </div>
             {/* Name below the card */}
             <div className="mt-3 px-0.5">
-              <span className="truncate text-[18px] leading-[24px] font-medium tracking-[-0.01em] text-[#0A0A0A]">
+              <span className="mono truncate text-[14px] leading-5 text-[var(--t-ink)]">
                 {study.title}
               </span>
             </div>
