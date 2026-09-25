@@ -80,12 +80,12 @@ function TestimonialCard({ t, time }: { t: CaseStudyTestimonial; time: string })
   return (
     <div
       ref={ref}
-      className="relative mb-4 break-inside-avoid rounded-xl border border-black/[0.08] bg-white p-4 shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]"
+      className="relative mb-4 break-inside-avoid rounded-[20px] border border-black/[0.06] bg-white p-4 shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]"
       style={{
         opacity: shown ? 1 : 0,
         transform: shown ? "translateY(0)" : "translateY(24px)",
         transition:
-          "opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1)",
+          "opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms var(--spring)",
         willChange: "transform, opacity",
       }}
     >

@@ -421,3 +421,31 @@ html {
     0 2px 0 0 rgba(0, 0, 0, 1),
     0 3px 0 0 rgba(0, 0, 0, 1);
 }
+
+/* ---------- Spring motion (Apple-style) ---------- */
+:root {
+  --spring: linear(0, 0.0165, 0.0654 2.9%, 0.2552 6.2%, 0.5245 10.3%, 0.7616 14.4%, 0.8567 16.6%, 0.9337 18.9%, 0.9922 21.4%, 1.0319 23.9%, 1.0561 26.7%, 1.0664 29.8%, 1.0626 33.4%, 1.0457 37.8%, 1.0162 45.2%, 0.9985 55.1%, 0.9972 62.1%, 1.0003 80.6%, 1);
+  --spring-bouncy: linear(0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --spring: ease; --spring-bouncy: ease; }
+}
+
+/* Bouncy press for buttons and cards */
+.press {
+  transition: transform 520ms var(--spring-bouncy), background-color 200ms ease, box-shadow 300ms ease, color 200ms ease;
+}
+.press:hover { transform: translateY(-1px); }
+.press:active { transform: scale(0.96); transition-duration: 120ms; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms var(--spring);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}

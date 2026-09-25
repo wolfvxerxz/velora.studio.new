@@ -7,6 +7,7 @@ import type { CaseStudy } from "@/lib/case-studies"
 import { CaseStudyModal } from "@/components/case-study-modal"
 import { WorkGrid } from "@/components/work-views"
 import { WallOfLove } from "@/components/wall-of-love"
+import { Reveal } from "@/components/reveal"
 
 interface HomeClientProps {
   caseStudies: CaseStudy[]
@@ -15,9 +16,30 @@ interface HomeClientProps {
 const scheduleUrl = "https://cal.com/vuk-m/15min"
 const subscribeUrl = "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
 
-const cardBox = "border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)]"
-const primaryBtn = "rounded-full bg-[#0A0A0A] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#1A1A1A] transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:shadow-black/10 hover:scale-105"
-const secondaryBtn = "rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0A0A0A] border border-black/[0.08] hover:bg-[#F0F1F3] transition-all duration-300 inline-flex items-center hover:shadow-sm hover:scale-105"
+const card =
+  "rounded-[20px] border border-black/[0.06] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_32px_-16px_rgba(15,23,42,0.14)]"
+const primaryBtn =
+  "press inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#0A0A0A] px-5 text-[14px] font-medium tracking-[-0.01em] text-white hover:bg-[#1F1F1F] hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.35)]"
+const secondaryBtn =
+  "press inline-flex h-10 items-center justify-center rounded-full border border-black/[0.08] bg-white px-5 text-[14px] font-medium tracking-[-0.01em] text-[#0A0A0A] hover:bg-[#F4F4F5]"
+
+function SectionHeader({ title, sub }: { title: string; sub?: string }) {
+  return (
+    <div className="mb-6 flex flex-col gap-1">
+      <h2 className="!text-[20px] !leading-[28px] !font-[600] tracking-[-0.02em] text-[#0A0A0A]">{title}</h2>
+      {sub && <p className="!text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B] max-w-[52ch]">{sub}</p>}
+    </div>
+  )
+}
+
+function Check() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="mt-[2px] flex-shrink-0">
+      <circle cx="8" cy="8" r="8" fill="#0A0A0A" fillOpacity="0.06" />
+      <path d="M5 8.2l2 2 4-4.4" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
 
 export default function HomeClient({ caseStudies }: HomeClientProps) {
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null)
@@ -45,153 +67,130 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     "Pause or cancel anytime",
   ]
 
-  const featureIcon = (label: string): string => {
-    const l = label.toLowerCase()
-    if (l.includes("figma")) return "/icons/figma.svg"
-    if (l.includes("week")) return "/icons/trial-week.svg"
-    if (l.includes("framer") || l.includes("webflow")) return "/icons/framer.svg"
-    return "/icons/checked.svg"
-  }
-
   const section = "w-full max-w-[632px] mx-auto px-5"
 
   return (
     <main className="min-h-screen font-sans" style={{ backgroundColor: "#FAFAFA" }}>
-      {/* Navbar */}
-      <header
-        className="sticky top-0 z-50"
-        style={{ backgroundColor: "rgba(250,250,250,0.8)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
-      >
-        <div className="w-full max-w-[632px] mx-auto px-5 h-[64px] flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <Image src="/logo/logo-v.svg" alt="Velora" width={32} height={32} className="opacity-90 brightness-0" priority />
+      {/* Floating glass navbar */}
+      <header className="sticky top-3 z-50 px-3">
+        <div className="mx-auto flex h-14 w-full max-w-[632px] items-center justify-between rounded-full border border-black/[0.06] bg-white/70 pl-4 pr-2 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.18)] backdrop-blur-xl backdrop-saturate-150">
+          <Link href="/" className="press flex items-center" aria-label="velora.studio home">
+            <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0" priority />
           </Link>
-          <nav className="flex items-center gap-2">
+          <nav className="flex items-center gap-1.5">
+            <a href="#work" className="press hidden h-10 items-center rounded-full px-4 text-[14px] font-medium text-[#3F3F46] hover:bg-black/[0.04] sm:inline-flex">
+              Work
+            </a>
+            <button type="button" onClick={goToPricing} className="press hidden h-10 items-center rounded-full px-4 text-[14px] font-medium text-[#3F3F46] hover:bg-black/[0.04] sm:inline-flex">
+              Pricing
+            </button>
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
               Schedule Call
             </a>
-            <a href="#work" className={secondaryBtn}>View Work</a>
           </nav>
         </div>
       </header>
 
-      <div className="flex flex-col items-center gap-10 pb-20 pt-12">
+      <div className="flex flex-col items-center gap-20 pb-16 pt-20 sm:gap-24 sm:pt-24">
         {/* Hero */}
-        <section className={section}>
-          <h1 className="text-[20px] leading-[28px] !font-[500] text-black">
-            velora.studio partners with Web3, AI, and<br />early-stage founders to turn ideas into standout<br />websites, products, and brands.
+        <Reveal as="section" className={section}>
+          <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-black">
+            velora.studio partners with Web3, AI, and<br className="hidden sm:block" /> early-stage founders to turn ideas into standout<br className="hidden sm:block" /> websites, products, and brands.
           </h1>
-          <p className="text-[16px] leading-[26px] !font-[500] text-[#666666] mt-4">
-            Looking to transform your idea into a real-world product?<br />We specialize in creating intuitive, attractive interfaces that solve complex challenges across SaaS, Web3, and AI.
+          <p className="mt-4 !text-[16px] !leading-[26px] !font-[500] text-[#666666]">
+            Looking to transform your idea into a real-world product?<br className="hidden sm:block" /> We specialize in creating intuitive, attractive interfaces that solve complex challenges across SaaS, Web3, and AI.
           </p>
-          <div className="flex flex-wrap items-center gap-2 mt-5">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
               Schedule Call
             </a>
-            <button type="button" onClick={goToPricing} className={secondaryBtn}>View Pricing</button>
+            <button type="button" onClick={goToPricing} className={secondaryBtn}>
+              View Pricing
+            </button>
           </div>
-        </section>
+        </Reveal>
 
-        {/* Our Work */}
-        <section id="work" className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-[#0A0A0A] mb-4">Selected work</h2>
+        {/* Selected work */}
+        <Reveal as="section" id="work" className={`${section} scroll-mt-24`}>
+          <SectionHeader title="Selected work" sub="Brand, product and web for founders building in AI and Web3." />
           <WorkGrid caseStudies={caseStudyWorks} onOpen={setSelectedStudy} />
-        </section>
+        </Reveal>
 
         {/* Wall of Love */}
-        <section className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-[#0A0A0A] mb-1">Wall of Love</h2>
-          <p className="text-[14px] leading-[20px] font-normal text-[#666666] mb-5">
-            What founders say about working with velora.studio.
-          </p>
+        <Reveal as="section" className={section}>
+          <SectionHeader title="Wall of Love" sub="What founders say about working with velora.studio." />
           <WallOfLove />
-        </section>
+        </Reveal>
 
         {/* Pricing */}
-        <section id="pricing" className={section}>
-          <h2 className="text-[24px] leading-[32px] font-normal text-[#0A0A0A] mb-1">Pricing</h2>
-          <p className="text-[14px] leading-[20px] font-normal text-[#666666] mb-5">
-            Our plans cover flat-price websites, subscription product design, or a custom scope built around you — pick what fits how you work.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Reveal as="section" id="pricing" className={`${section} scroll-mt-24`}>
+          <SectionHeader
+            title="Pricing"
+            sub="A custom scope built around you, or a monthly design partner that ships every week."
+          />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* Custom Quote */}
-            <div className={`flex flex-col rounded-2xl p-4 ${cardBox}`}>
-              <h3 className="text-[20px] leading-[28px] font-normal text-[#0A0A0A] tracking-[-0.02em]">Custom Quote</h3>
-              <p className="mt-1.5 text-[13px] leading-[18px] font-normal text-[#666666]">
+            <div className={`press flex flex-col p-6 ${card}`}>
+              <p className="!text-[13px] !leading-[18px] !font-[500] text-[#6B6B6B]">Project</p>
+              <h3 className="mt-2 !text-[28px] !leading-[32px] !font-[600] tracking-[-0.03em] text-[#0A0A0A]">Custom Quote</h3>
+              <p className="mt-2 !text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B]">
                 Your go-to for whatever you need: brand, product, web, and build.
               </p>
-              <ul className="mt-4 flex flex-1 flex-col gap-2.5">
-                {customQuoteFeatures.map((label) => {
-                  const isFw = label.toLowerCase().includes("framer") || label.toLowerCase().includes("webflow")
-                  return (
-                    <li key={label} className="flex items-center gap-2 text-[13px] leading-[18px] font-normal text-[#666666]">
-                      {isFw ? (
-                        <>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src="/icons/framer.svg" alt="" width={14} height={14} className="opacity-70 flex-shrink-0 brightness-0" />
-                          <span className="flex items-center gap-1">
-                            Framer or
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src="/icons/webflow.svg" alt="" width={14} height={14} className="opacity-70 flex-shrink-0 brightness-0" />
-                            Webflow
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={featureIcon(label)} alt="" width={14} height={14} className="opacity-70 flex-shrink-0 brightness-0" />
-                          {label}
-                        </>
-                      )}
-                    </li>
-                  )
-                })}
+              <div className="my-6 h-px bg-black/[0.06]" />
+              <ul className="flex flex-1 flex-col gap-3">
+                {customQuoteFeatures.map((label) => (
+                  <li key={label} className="flex items-start gap-2.5 !text-[14px] !leading-[20px] !font-[400] text-[#3F3F46]">
+                    <Check />
+                    {label}
+                  </li>
+                ))}
               </ul>
-              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="mt-4 flex w-full items-center justify-center rounded-full bg-[#F0F1F3] py-2 text-[13px] font-normal text-[#0A0A0A] border border-black/[0.08] transition-all duration-200 hover:bg-[#E6E8EB]">
+              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={`${secondaryBtn} mt-8 w-full`}>
                 Share your vision
               </a>
             </div>
 
             {/* Design Partner */}
-            <div className="flex flex-col rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)] p-4">
-              <p className="text-[20px] leading-[28px] font-normal text-[#0A0A0A] tracking-[-0.03em] tabular-nums">
-                €3,999<span className="text-[14px] font-normal text-[#666666]">/mo</span>
+            <div className={`press relative flex flex-col p-6 ${card} ring-1 ring-black/[0.04]`}>
+              <div className="flex items-center justify-between">
+                <p className="!text-[13px] !leading-[18px] !font-[500] text-[#6B6B6B]">Design Partner</p>
+                <span className="rounded-full bg-[#0A0A0A] px-2.5 py-1 text-[11px] font-medium leading-none text-white">Popular</span>
+              </div>
+              <p className="mt-2 !text-[28px] !leading-[32px] !font-[600] tracking-[-0.03em] text-[#0A0A0A] tabular-nums">
+                €3,999<span className="!text-[14px] !font-[400] tracking-normal text-[#6B6B6B]"> /mo</span>
               </p>
-              <p className="mt-1.5 text-[13px] leading-[18px] font-normal text-[#666666]">
+              <p className="mt-2 !text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B]">
                 Unlimited design for teams that ship every week.
               </p>
-              <ul className="mt-4 flex flex-1 flex-col gap-2.5">
+              <div className="my-6 h-px bg-black/[0.06]" />
+              <ul className="flex flex-1 flex-col gap-3">
                 {subscriptionFeatures.map((label) => (
-                  <li key={label} className="flex items-center gap-2 text-[13px] leading-[18px] font-normal text-[#666666]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={featureIcon(label)} alt="" width={14} height={14} className="opacity-70 flex-shrink-0 brightness-0" />
+                  <li key={label} className="flex items-start gap-2.5 !text-[14px] !leading-[20px] !font-[400] text-[#3F3F46]">
+                    <Check />
                     {label}
                   </li>
                 ))}
               </ul>
-              <a href={subscribeUrl} target="_blank" rel="noopener noreferrer" className="mt-4 flex w-full items-center justify-center rounded-full bg-[#0A0A0A] py-2 text-[13px] font-normal text-white transition-all duration-200 hover:bg-[#1A1A1A]">
+              <a href={subscribeUrl} target="_blank" rel="noopener noreferrer" className={`${primaryBtn} mt-8 w-full`}>
                 Let&apos;s work together
               </a>
             </div>
           </div>
-        </section>
+        </Reveal>
 
-        {/* More work — single images, stacked */}
+        {/* More work */}
         {moreWorkImages.length > 0 && (
-          <section className={section}>
-            <h2 className="text-[24px] leading-[32px] font-normal text-[#0A0A0A] mb-1 underline-static">More Work</h2>
-            <p className="text-[14px] leading-[20px] font-normal text-[#666666] mb-4">
-              A selection of past projects across brand, product, and web.
-            </p>
+          <Reveal as="section" className={section}>
+            <SectionHeader title="More work" sub="A selection of past projects across brand, product, and web." />
             <div className="flex flex-col gap-4">
               {moreWorkImages.map((src) => (
-                <div key={src} className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)] p-2">
-                  <div className="overflow-hidden rounded-xl">
+                <div key={src} className={`group overflow-hidden p-2 ${card}`}>
+                  <div className="overflow-hidden rounded-[14px]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={src}
                       alt="Velora work"
-                      className="w-full h-auto block"
+                      className="block h-auto w-full transition-transform duration-700 [transition-timing-function:var(--spring)] group-hover:scale-[1.04]"
                       loading="lazy"
                       decoding="async"
                     />
@@ -199,17 +198,30 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                 </div>
               ))}
             </div>
-          </section>
+          </Reveal>
         )}
 
-        {/* Footer */}
-        <footer className={`${section} flex items-center justify-between border-t border-black/[0.08] pt-6 mt-4`}>
-          <p className="text-[14px] leading-[20px] font-normal text-[#666666]">© velora.studio 2026</p>
-          <div className="flex items-center gap-4">
-            <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] font-normal text-[#666666] hover:text-[#0A0A0A] transition-colors">X (Twitter)</a>
-            <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] font-normal text-[#666666] hover:text-[#0A0A0A] transition-colors">LinkedIn</a>
+        {/* Closing CTA + footer */}
+        <Reveal as="footer" className={section}>
+          <div className={`flex flex-col items-start gap-5 p-8 ${card}`}>
+            <h2 className="!text-[20px] !leading-[28px] !font-[600] tracking-[-0.02em] text-[#0A0A0A]">
+              Have an idea worth building?
+            </h2>
+            <p className="-mt-3 !text-[14px] !leading-[20px] !font-[400] text-[#6B6B6B]">
+              A 15-minute call is enough to see if we&apos;re a fit.
+            </p>
+            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
+              Schedule Call
+            </a>
           </div>
-        </footer>
+          <div className="mt-10 flex items-center justify-between">
+            <p className="!text-[13px] !leading-[20px] !font-[400] text-[#8A8A8A]">© velora.studio 2026</p>
+            <div className="flex items-center gap-5">
+              <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#8A8A8A] transition-colors hover:text-[#0A0A0A]">X (Twitter)</a>
+              <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#8A8A8A] transition-colors hover:text-[#0A0A0A]">LinkedIn</a>
+            </div>
+          </div>
+        </Reveal>
       </div>
 
       <CaseStudyModal study={selectedStudy} onClose={() => setSelectedStudy(null)} />

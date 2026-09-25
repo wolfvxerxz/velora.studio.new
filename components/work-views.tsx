@@ -28,13 +28,13 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
           <Link
             key={study.slug}
             href={`/work/${study.slug}`}
-            className="group block"
+            className="press group block"
             onMouseEnter={() => setHoveredSlug(study.slug)}
             onMouseLeave={() => setHoveredSlug(null)}
             onClick={openHandler(study, onOpen)}
           >
             {/* Framed thumbnail */}
-            <div className="rounded-2xl border border-black/[0.08] bg-white p-2 shadow-[0_1px_3px_rgba(30,45,82,0.06)]">
+            <div className="rounded-[20px] border border-black/[0.06] bg-white p-2 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_32px_-16px_rgba(15,23,42,0.14)]">
               <div className="relative aspect-[16/11] overflow-hidden rounded-xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -44,7 +44,7 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
                   style={{
                     objectPosition: study.coverPosition ?? "center",
                     transform: hovered ? "scale(1.1)" : "scale(1)",
-                    transition: "transform 600ms cubic-bezier(0.23, 1, 0.32, 1)",
+                    transition: "transform 900ms var(--spring)",
                   }}
                   loading="lazy"
                   decoding="async"
