@@ -12,7 +12,7 @@ export function CaseStudyBody({ study }: { study: CaseStudy }) {
 
   return (
     <>
-      <p className="mt-4 text-[18px] font-normal text-[#666666] leading-[28px] tracking-[-0.01em]">
+      <p className="mt-4 text-[18px] font-normal text-[var(--t-muted)] leading-[28px] tracking-[-0.01em]">
         {study.description}
       </p>
 

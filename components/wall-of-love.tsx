@@ -30,13 +30,13 @@ function renderMessage(text: string) {
   return parts.map((part, i) => {
     if (/^velora\.studio$/i.test(part) || /^velora$/i.test(part))
       return (
-        <span key={i} className="rounded-[3px] bg-[#ECF5FA] px-1 text-[#2F6F8F]">
+        <span key={i} className="rounded-[3px] bg-[rgba(33,255,188,0.12)] px-1 text-[var(--t-mint)]">
           @Velora
         </span>
       )
     if (/^vuk$/i.test(part))
       return (
-        <span key={i} className="rounded-[3px] bg-[#ECF5FA] px-1 text-[#2F6F8F]">
+        <span key={i} className="rounded-[3px] bg-[rgba(33,255,188,0.12)] px-1 text-[var(--t-mint)]">
           @Vuk
         </span>
       )
@@ -53,7 +53,7 @@ function Avatar({ src, name }: { src?: string; name: string }) {
       src={url}
       alt={name}
       onError={() => setFailed(true)}
-      className="h-9 w-9 flex-shrink-0 rounded-[2px] bg-[#EDEFF2] object-cover"
+      className="h-9 w-9 flex-shrink-0 rounded-[2px] bg-[var(--t-cap)] object-cover"
     />
   )
 }
@@ -80,7 +80,7 @@ function TestimonialCard({ t, time }: { t: CaseStudyTestimonial; time: string })
   return (
     <div
       ref={ref}
-      className="relative mb-4 break-inside-avoid rounded-[2px] border border-[var(--t-line)] bg-white p-4"
+      className="relative mb-4 break-inside-avoid rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-4"
       style={{
         opacity: shown ? 1 : 0,
         transform: shown ? "translateY(0)" : "translateY(24px)",
@@ -91,7 +91,7 @@ function TestimonialCard({ t, time }: { t: CaseStudyTestimonial; time: string })
     >
       {/* Filled quote mark, top-right */}
       <svg
-        className="absolute right-4 top-4 text-black/[0.08]"
+        className="absolute right-4 top-4 text-[rgba(183,255,233,0.12)]"
         width="26"
         height="26"
         viewBox="0 0 24 24"
@@ -107,7 +107,7 @@ function TestimonialCard({ t, time }: { t: CaseStudyTestimonial; time: string })
           <span className="font-[family-name:var(--font-geist-mono)] text-[11px] leading-[14px] text-[var(--t-faint)]">{time}</span>
         </div>
       </div>
-      <p className="mt-3 text-[14px] leading-[21px] text-[#3F3F3F]">{renderMessage(t.quote)}</p>
+      <p className="mt-3 text-[14px] leading-[21px] text-[var(--t-muted)]">{renderMessage(t.quote)}</p>
     </div>
   )
 }

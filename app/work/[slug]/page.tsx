@@ -29,18 +29,18 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound()
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#FAFAFA" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "#031B1D" }}>
       <div className="mx-auto max-w-3xl px-5 py-8 md:py-12">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[22px] font-normal text-[#666666] transition-colors hover:text-[#0A0A0A]"
+          className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[22px] font-normal text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]"
         >
           ← Back to work
         </Link>
 
         <div className="mb-6 flex items-center gap-3">
-          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0" />
-          <span className="text-black/25 text-sm">×</span>
+          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0 invert" />
+          <span className="text-[var(--t-faint)] text-sm">×</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={study.logo}
@@ -49,18 +49,18 @@ export default async function CaseStudyPage({ params }: PageProps) {
           />
         </div>
 
-        <h1 className="text-[24px] font-medium text-[#0A0A0A] leading-[32px] tracking-[-0.02em]">
+        <h1 className="text-[24px] font-medium text-[var(--t-ink)] leading-[32px] tracking-[-0.02em]">
           {study.title}
         </h1>
 
         <CaseStudyBody study={study} />
 
-        <div className="mt-10 flex flex-wrap gap-2 border-t border-black/[0.08] pt-8">
+        <div className="mt-10 flex flex-wrap gap-2 border-t border-[var(--t-line)] pt-8">
           <a
             href="https://cal.com/vuk-m/15min"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[#0A0A0A] px-4 py-2 text-[14px] leading-[22px] font-normal text-white hover:bg-[#1A1A1A] transition-all duration-200 inline-flex items-center gap-2"
+            className="rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#031B1D] shadow-[0_0_0_4px_rgba(183,255,233,0.1)] hover:bg-[#F2FFFB] transition-all duration-200 inline-flex items-center gap-2"
           >
             Schedule Now
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -68,7 +68,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </a>
           <Link
             href="/"
-            className="rounded-full bg-white border border-black/[0.08] px-4 py-2 text-[14px] leading-[22px] font-normal text-[#0A0A0A] hover:bg-[#F0F1F3] transition-all duration-200"
+            className="rounded-full bg-transparent border border-[var(--t-line-strong)] px-4 py-2 text-[14px] leading-[22px] font-normal text-[var(--t-ink)] hover:bg-[var(--t-cap)] transition-all duration-200"
           >
             View all work
           </Link>

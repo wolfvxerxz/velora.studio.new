@@ -7,7 +7,7 @@ import { DEFAULT_LOCATION, type CaseStudy } from "@/lib/case-studies"
 import { CaseStudyBody } from "./case-study-body"
 
 const iconBtn =
-  "flex h-7 w-7 items-center justify-center rounded-md text-[#666666] transition-colors hover:bg-black/[0.05] hover:text-[#0A0A0A]"
+  "flex h-7 w-7 items-center justify-center rounded-md text-[var(--t-muted)] transition-colors hover:bg-[rgba(183,255,233,0.08)] hover:text-[var(--t-ink)]"
 
 function ExpandIcon() {
   return (
@@ -119,18 +119,18 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
     : "fixed inset-0 z-[100] flex items-start justify-center px-4 py-6 sm:py-10 animate-modal-backdrop"
 
   const panelClass = sidePeek
-    ? `relative flex h-full w-full flex-col border-l border-black/[0.08] bg-white shadow-2xl animate-modal-side ${showDetails ? "max-w-3xl" : "max-w-xl"}`
-    : `relative flex max-h-[88vh] w-full flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-2xl animate-modal-panel ${showDetails ? "max-w-5xl" : "max-w-3xl"}`
+    ? `relative flex h-full w-full flex-col border-l border-[var(--t-line)] bg-[var(--t-bg)] shadow-2xl animate-modal-side ${showDetails ? "max-w-3xl" : "max-w-xl"}`
+    : `relative flex max-h-[88vh] w-full flex-col overflow-hidden rounded-2xl border border-[var(--t-line)] bg-[var(--t-bg)] shadow-2xl animate-modal-panel ${showDetails ? "max-w-5xl" : "max-w-3xl"}`
 
   return (
     <div
       className={outerClass}
-      style={{ backgroundColor: "rgba(20,25,40,0.35)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
+      style={{ backgroundColor: "rgba(1,12,13,0.6)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
       onClick={onClose}
     >
       <div className={panelClass} onClick={(e) => e.stopPropagation()}>
         {/* Top bar */}
-        <div className="flex items-center justify-between border-b border-black/[0.08] px-3 py-2.5">
+        <div className="flex items-center justify-between border-b border-[var(--t-line)] px-3 py-2.5">
           <div className="flex items-center gap-0.5">
             <Link href={`/work/${study.slug}`} className={iconBtn} title="Open as full page" aria-label="Open as full page">
               <ExpandIcon />
@@ -149,7 +149,7 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
             <button
               type="button"
               onClick={() => setShowDetails((v) => !v)}
-              className={`${iconBtn} ${showDetails ? "bg-black/[0.06] text-[#0A0A0A]" : ""}`}
+              className={`${iconBtn} ${showDetails ? "bg-[rgba(183,255,233,0.08)] text-[var(--t-ink)]" : ""}`}
               title="View details"
               aria-label="View details"
             >
@@ -172,8 +172,8 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
           <div className="modal-scroll flex-1 overflow-y-auto px-6 pb-8 pt-6 sm:px-10">
             {/* Velora × client logo */}
             <div className="flex items-center gap-3">
-              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0" />
-              <span className="text-black/25 text-sm">×</span>
+              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0 invert" />
+              <span className="text-[var(--t-faint)] text-sm">×</span>
               <Image
                 src={study.logo}
                 alt={study.title}
@@ -183,7 +183,7 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
               />
             </div>
 
-            <h2 className="mt-5 text-[24px] leading-[32px] font-medium tracking-[-0.02em] text-[#0A0A0A]">
+            <h2 className="mt-5 text-[24px] leading-[32px] font-medium tracking-[-0.02em] text-[var(--t-ink)]">
               {study.title}
             </h2>
 
@@ -191,9 +191,9 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
           </div>
 
           {showDetails && (
-            <aside className="modal-scroll flex w-[260px] shrink-0 flex-col overflow-y-auto border-l border-black/[0.08]">
+            <aside className="modal-scroll flex w-[260px] shrink-0 flex-col overflow-y-auto border-l border-[var(--t-line)]">
               <div className="flex items-center justify-between px-4 py-3">
-                <span className="text-[13px] leading-[18px] font-normal text-[#999999]">Properties</span>
+                <span className="text-[13px] leading-[18px] font-normal text-[var(--t-faint)]">Properties</span>
                 <button
                   type="button"
                   onClick={() => setShowDetails(false)}
@@ -207,21 +207,21 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
 
               <div className="flex flex-col gap-5 px-4 pb-6">
                 <div>
-                  <p className="text-[13px] leading-[18px] font-normal text-[#999999]">Location</p>
-                  <p className="mt-1.5 text-[14px] leading-[20px] font-normal text-[#0A0A0A]">{location}</p>
+                  <p className="text-[13px] leading-[18px] font-normal text-[var(--t-faint)]">Location</p>
+                  <p className="mt-1.5 text-[14px] leading-[20px] font-normal text-[var(--t-ink)]">{location}</p>
                 </div>
                 <div>
-                  <p className="text-[13px] leading-[18px] font-normal text-[#999999]">Date</p>
-                  <p className="mt-1.5 text-[14px] leading-[20px] font-normal text-[#0A0A0A] tabular-nums">{study.date}</p>
+                  <p className="text-[13px] leading-[18px] font-normal text-[var(--t-faint)]">Date</p>
+                  <p className="mt-1.5 text-[14px] leading-[20px] font-normal text-[var(--t-ink)] tabular-nums">{study.date}</p>
                 </div>
                 {study.services && study.services.length > 0 && (
                   <div>
-                    <p className="text-[13px] leading-[18px] font-normal text-[#999999]">Services</p>
+                    <p className="text-[13px] leading-[18px] font-normal text-[var(--t-faint)]">Services</p>
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       {study.services.map((s) => (
                         <span
                           key={s}
-                          className="rounded-md bg-[#F0F1F3] px-2 py-1 text-[13px] leading-[16px] font-normal text-[#0A0A0A]"
+                          className="rounded-md bg-[var(--t-cap)] px-2 py-1 text-[13px] leading-[16px] font-normal text-[var(--t-ink)]"
                         >
                           {s}
                         </span>
@@ -231,12 +231,12 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
                 )}
                 {study.areas && study.areas.length > 0 && (
                   <div>
-                    <p className="text-[13px] leading-[18px] font-normal text-[#999999]">Areas</p>
+                    <p className="text-[13px] leading-[18px] font-normal text-[var(--t-faint)]">Areas</p>
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       {study.areas.map((a) => (
                         <span
                           key={a}
-                          className="rounded-md bg-[#F0F1F3] px-2 py-1 text-[13px] leading-[16px] font-normal text-[#0A0A0A]"
+                          className="rounded-md bg-[var(--t-cap)] px-2 py-1 text-[13px] leading-[16px] font-normal text-[var(--t-ink)]"
                         >
                           {a}
                         </span>

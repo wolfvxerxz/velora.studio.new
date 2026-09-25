@@ -519,3 +519,37 @@ html {
   content: ""; width: 7px; height: 7px; flex-shrink: 0; background: var(--t-cap);
 }
 .cap-line > span { flex: 1; height: 1px; background: var(--t-line); }
+
+/* ---------- HEX dark palette (overrides the light terminal tokens) ---------- */
+:root {
+  --t-bg: #031B1D;
+  --t-surface: #06282B;
+  --t-ink: #EBEBEB;
+  --t-muted: #A3B8B5;
+  --t-faint: #6F8C89;
+  --t-line: rgba(183, 255, 233, 0.1);
+  --t-line-strong: rgba(183, 255, 233, 0.2);
+  --t-cap: #0F4D51;
+  --t-mint: #21FFBC;
+  --t-mint-ink: #21FFBC;
+  --t-soft: #B7FFE9;
+}
+html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
+.tick-primary {
+  --tick-c: var(--t-soft);
+  background: #FFFFFF; color: #031B1D;
+  border: 0;
+  box-shadow: 0 0 0 4px rgba(183, 255, 233, 0.1);
+}
+.tick-primary:hover { box-shadow: 0 0 0 6px rgba(183, 255, 233, 0.16); background: #F2FFFB; }
+.tick-secondary {
+  --tick-c: var(--t-line-strong);
+  background: transparent; color: var(--t-ink);
+  border: 1px solid var(--t-line-strong);
+  box-shadow: none;
+}
+.tick-secondary:hover { background: rgba(183, 255, 233, 0.06); }
+.modal-scroll { scrollbar-color: #0F4D51 transparent; }
+.modal-scroll::-webkit-scrollbar-thumb { background-color: #0F4D51; }
+
+html { color-scheme: dark; }

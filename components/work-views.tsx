@@ -34,7 +34,7 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
             onClick={openHandler(study, onOpen)}
           >
             {/* Framed thumbnail */}
-            <div className="rounded-[2px] border border-[var(--t-line)] bg-white p-2 transition-colors duration-300 group-hover:border-[var(--t-line-strong)]">
+            <div className="rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2 transition-colors duration-300 group-hover:border-[var(--t-line-strong)]">
               <div className="relative aspect-[16/11] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

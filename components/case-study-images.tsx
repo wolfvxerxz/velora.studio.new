@@ -74,7 +74,7 @@ function Lightbox({ src, alt, onClose, onPrev, onNext, hasPrev, hasNext }: {
       <button
         type="button"
         onClick={onClose}
-        className="absolute top-4 right-4 flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        className="absolute top-4 right-4 flex items-center justify-center w-9 h-9 rounded-full bg-[var(--t-surface)]/10 hover:bg-[var(--t-surface)]/20 transition-colors"
         aria-label="Close"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -87,7 +87,7 @@ function Lightbox({ src, alt, onClose, onPrev, onNext, hasPrev, hasNext }: {
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onPrev() }}
-          className="absolute left-4 flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          className="absolute left-4 flex items-center justify-center w-9 h-9 rounded-full bg-[var(--t-surface)]/10 hover:bg-[var(--t-surface)]/20 transition-colors"
           aria-label="Previous"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -101,7 +101,7 @@ function Lightbox({ src, alt, onClose, onPrev, onNext, hasPrev, hasNext }: {
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onNext() }}
-          className="absolute right-4 flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          className="absolute right-4 flex items-center justify-center w-9 h-9 rounded-full bg-[var(--t-surface)]/10 hover:bg-[var(--t-surface)]/20 transition-colors"
           aria-label="Next"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -166,7 +166,7 @@ function AnimatedItem({ item, index, title, onClick }: {
   return (
     <div
       ref={ref}
-      className="overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(30,45,82,0.06),0_1px_3px_rgba(30,45,82,0.04)] p-2 [&_img]:rounded-xl [&_video]:rounded-xl"
+      className="overflow-hidden rounded-2xl border border-[var(--t-line)] bg-[var(--t-surface)]  p-2 [&_img]:rounded-xl [&_video]:rounded-xl"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0px)" : "translateY(28px)",

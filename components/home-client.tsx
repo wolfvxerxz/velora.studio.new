@@ -85,17 +85,17 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     <main
       className="min-h-screen font-sans"
       style={{
-        backgroundColor: "#FAFAFA",
-        backgroundImage: "radial-gradient(rgba(10,11,10,0.07) 1px, transparent 1px)",
+        backgroundColor: "#031B1D",
+        backgroundImage: "radial-gradient(rgba(183,255,233,0.07) 1px, transparent 1px)",
         backgroundSize: "14px 14px",
       }}
     >
-      <div className="mx-auto min-h-screen w-full max-w-[680px] border-x border-[var(--t-line)] bg-[#FAFAFA]">
+      <div className="mx-auto min-h-screen w-full max-w-[680px] border-x border-[var(--t-line)] bg-[var(--t-bg)]">
         {/* Topbar */}
-        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[#FAFAFA]/85 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[#031B1D]/80 backdrop-blur-xl">
           <div className="flex h-[68px] items-center justify-between px-5 sm:px-6">
             <Link href="/" className="press flex items-center" aria-label="velora.studio home">
-              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0" priority />
+              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0 invert" priority />
             </Link>
             <nav className="flex items-center gap-5">
               <a href="#work" className="mono hidden text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)] sm:inline">
@@ -114,13 +114,13 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         {/* Hero */}
         <Reveal as="section" className={block}>
           <div className="mb-8 flex items-center gap-2">
-            <span className="h-2 w-2 bg-[var(--t-mint)] shadow-[0_0_0_3px_rgba(93,255,202,0.25)]" aria-hidden />
+            <span className="h-2 w-2 bg-[var(--t-mint)] shadow-[0_0_0_3px_rgba(33,255,188,0.2)]" aria-hidden />
             <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">Design &amp; development studio</span>
           </div>
-          <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-black">
+          <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-mint)]">
             velora.studio partners with Web3, AI, and<br className="hidden sm:block" /> early-stage founders to turn ideas into standout<br className="hidden sm:block" /> websites, products, and brands.
           </h1>
-          <p className="mt-4 !text-[16px] !leading-[26px] !font-[500] text-[#666666]">
+          <p className="mt-4 !text-[16px] !leading-[26px] !font-[400] text-[var(--t-muted)]">
             Looking to transform your idea into a real-world product?<br className="hidden sm:block" /> We specialize in creating intuitive, attractive interfaces that solve complex challenges across SaaS, Web3, and AI.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -163,7 +163,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         {/* Pricing */}
         <Reveal as="section" id="pricing" className={`${block} scroll-mt-16`}>
           <Subheading title="Pricing" sub="A custom scope built around you, or a monthly design partner that ships every week." />
-          <div className="grid grid-cols-1 border border-[var(--t-line)] bg-white sm:grid-cols-2">
+          <div className="grid grid-cols-1 border border-[var(--t-line)] bg-[var(--t-surface)] sm:grid-cols-2">
             {/* Custom Quote */}
             <div className="flex flex-col border-b border-[var(--t-line)] p-6 sm:border-b-0 sm:border-r">
               <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Project</span>
@@ -174,7 +174,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               <div className="my-6"><CapLine /></div>
               <ul className="flex flex-1 flex-col gap-3">
                 {customQuoteFeatures.map((label) => (
-                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[#3A3C3B]">
+                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-ink)]">
                     <Bullet />
                     {label}
                   </li>
@@ -189,12 +189,12 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <div className="relative flex flex-col p-6">
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-24"
-                style={{ background: "linear-gradient(180deg, rgba(93,255,202,0.14) 0%, rgba(93,255,202,0) 100%)" }}
+                style={{ background: "linear-gradient(180deg, rgba(33,255,188,0.10) 0%, rgba(93,255,202,0) 100%)" }}
                 aria-hidden
               />
               <div className="relative flex items-center justify-between">
                 <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Design Partner</span>
-                <span className="mono border-l-2 border-[var(--t-mint-ink)] bg-[rgba(93,255,202,0.18)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-mint-ink)]">
+                <span className="mono border-l-2 border-[var(--t-mint-ink)] bg-[rgba(33,255,188,0.12)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-mint-ink)]">
                   Popular
                 </span>
               </div>
@@ -207,7 +207,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               <div className="my-6"><CapLine /></div>
               <ul className="flex flex-1 flex-col gap-3">
                 {subscriptionFeatures.map((label) => (
-                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[#3A3C3B]">
+                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-ink)]">
                     <Bullet />
                     {label}
                   </li>
@@ -228,7 +228,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               <Subheading title="More work" meta={pad(moreWorkImages.length)} sub="A selection of past projects across brand, product, and web." />
               <div className="flex flex-col gap-4">
                 {moreWorkImages.map((src) => (
-                  <div key={src} className="group overflow-hidden rounded-[2px] border border-[var(--t-line)] bg-white p-2">
+                  <div key={src} className="group overflow-hidden rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2">
                     <div className="overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
@@ -251,8 +251,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         {/* Closing CTA + footer */}
         <Reveal as="footer" className={block}>
           <div
-            className="flex flex-col items-start gap-5 border border-[var(--t-line)] bg-white p-8"
-            style={{ backgroundImage: "linear-gradient(180deg, rgba(93,255,202,0.10) 0%, rgba(93,255,202,0) 60%)" }}
+            className="flex flex-col items-start gap-5 border border-[var(--t-line)] bg-[var(--t-surface)] p-8"
+            style={{ backgroundImage: "linear-gradient(180deg, rgba(33,255,188,0.08) 0%, rgba(93,255,202,0) 60%)" }}
           >
             <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Next step</span>
             <h2 className="funnel !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">
