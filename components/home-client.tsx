@@ -85,17 +85,17 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     <main
       className="min-h-screen font-sans"
       style={{
-        backgroundColor: "#2A2A28",
-        backgroundImage: "radial-gradient(rgba(239,230,210,0.07) 1px, transparent 1px)",
+        backgroundColor: "#14CFBC",
+        backgroundImage: "radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px)",
         backgroundSize: "14px 14px",
       }}
     >
       <div className="mx-auto min-h-screen w-full max-w-[680px] border-x border-[var(--t-line)] bg-[var(--t-bg)]">
         {/* Topbar */}
-        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[#2A2A28]/80 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[var(--t-bg)]/85 backdrop-blur-xl">
           <div className="flex h-[68px] items-center justify-between px-5 sm:px-6">
             <Link href="/" className="press flex items-center" aria-label="velora.studio home">
-              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0 invert" priority />
+              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0" priority />
             </Link>
             <nav className="flex items-center gap-5">
               <a href="#work" className="mono hidden text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)] sm:inline">

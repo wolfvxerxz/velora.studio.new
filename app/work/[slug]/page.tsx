@@ -29,7 +29,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound()
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#2A2A28" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "#F1E8D4" }}>
       <div className="mx-auto max-w-3xl px-5 py-8 md:py-12">
         <Link
           href="/"
@@ -39,7 +39,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </Link>
 
         <div className="mb-6 flex items-center gap-3">
-          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0 invert" />
+          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0" />
           <span className="text-[var(--t-faint)] text-sm">×</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

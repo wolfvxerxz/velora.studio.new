@@ -656,3 +656,35 @@ html { color-scheme: dark; }
 .tick:focus-visible { outline-color: #14CFBC; }
 .modal-scroll { scrollbar-color: #4A4843 transparent; }
 .modal-scroll::-webkit-scrollbar-thumb { background-color: #4A4843; }
+
+/* ---------- Hermae light: teal page, parchment panel, orange buttons ---------- */
+:root {
+  --t-bg: #F1E8D4;
+  --t-surface: #FBF6EC;
+  --t-ink: #232321;
+  --t-muted: #5F594E;
+  --t-faint: #8C8474;
+  --t-line: rgba(35, 35, 33, 0.12);
+  --t-line-strong: rgba(35, 35, 33, 0.24);
+  --t-cap: #D9CDB4;
+  --t-mint: #0FA597;
+  --t-mint-ink: #0B8F83;
+  --t-soft: #232321;
+  --t-orange: #E8591A;
+}
+html { color-scheme: light; }
+.tick-primary {
+  background: #E8591A;
+  color: #FFF6EC;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(120, 40, 5, 0.35), 0 8px 18px -10px rgba(120, 40, 5, 0.6);
+}
+.tick-primary:hover {
+  background: #F2661F;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 1px 0 rgba(120, 40, 5, 0.35), 0 12px 24px -10px rgba(120, 40, 5, 0.6), 0 0 0 3px rgba(232, 89, 26, 0.25);
+}
+.tick-secondary { background: transparent; color: #232321; border-color: rgba(35, 35, 33, 0.28); box-shadow: none; }
+.tick-secondary:hover { background: rgba(35, 35, 33, 0.05); border-color: rgba(35, 35, 33, 0.45); }
+.tick:focus-visible { outline-color: #E8591A; }
+.modal-scroll { scrollbar-color: #D9CDB4 transparent; }
+.modal-scroll::-webkit-scrollbar-thumb { background-color: #D9CDB4; }
