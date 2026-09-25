@@ -186,7 +186,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </div>
 
             {/* Design Partner */}
-            <div className="relative flex flex-col p-6">
+            <div className="relative flex flex-col border-t-2 border-[#2F8FEA] p-6 sm:border-t-2">
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-24"
                 style={{ background: "linear-gradient(180deg, rgba(47,143,234,0.10) 0%, rgba(93,255,202,0) 100%)" }}
@@ -194,7 +194,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               />
               <div className="relative flex items-center justify-between">
                 <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Design Partner</span>
-                <span className="mono border-l-2 border-[var(--t-mint-ink)] bg-[rgba(47,143,234,0.12)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-mint-ink)]">
+                <span className="mono rounded-[3px] bg-[#2F8FEA] px-2 py-0.5 text-[12px] leading-4 text-white">
                   Popular
                 </span>
               </div>

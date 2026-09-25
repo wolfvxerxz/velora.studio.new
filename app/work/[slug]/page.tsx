@@ -60,7 +60,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             href="https://cal.com/vuk-m/15min"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-white px-4 py-2 text-[14px] leading-[22px] font-normal text-[#463830] shadow-[0_0_0_4px_rgba(242,238,227,0.1)] hover:bg-[#FFFFFF] transition-all duration-200 inline-flex items-center gap-2"
+            className="rounded-full bg-[#2F8FEA] px-4 py-2 text-[14px] leading-[22px] font-normal text-white shadow-[0_0_0_4px_rgba(47,143,234,0.18)] hover:bg-[#4A9FF0] transition-all duration-200 inline-flex items-center gap-2"
           >
             Schedule Now
             {/* eslint-disable-next-line @next/next/no-img-element */}
