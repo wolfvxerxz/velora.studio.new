@@ -30,13 +30,13 @@ function renderMessage(text: string) {
   return parts.map((part, i) => {
     if (/^velora\.studio$/i.test(part) || /^velora$/i.test(part))
       return (
-        <span key={i} className="rounded-[3px] bg-[rgba(47,143,234,0.12)] px-1 text-[var(--t-mint)]">
+        <span key={i} className="rounded-[3px] bg-[rgba(33,255,188,0.12)] px-1 text-[var(--t-mint)]">
           @Velora
         </span>
       )
     if (/^vuk$/i.test(part))
       return (
-        <span key={i} className="rounded-[3px] bg-[rgba(47,143,234,0.12)] px-1 text-[var(--t-mint)]">
+        <span key={i} className="rounded-[3px] bg-[rgba(33,255,188,0.12)] px-1 text-[var(--t-mint)]">
           @Vuk
         </span>
       )
@@ -91,7 +91,7 @@ function TestimonialCard({ t, time }: { t: CaseStudyTestimonial; time: string })
     >
       {/* Filled quote mark, top-right */}
       <svg
-        className="absolute right-4 top-4 text-[rgba(242,238,227,0.12)]"
+        className="absolute right-4 top-4 text-[rgba(183,255,233,0.12)]"
         width="26"
         height="26"
         viewBox="0 0 24 24"

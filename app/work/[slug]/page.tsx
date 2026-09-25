@@ -29,7 +29,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound()
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#463830" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "#031B1D" }}>
       <div className="mx-auto max-w-3xl px-5 py-8 md:py-12">
         <Link
           href="/"
@@ -60,7 +60,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             href="https://cal.com/vuk-m/15min"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[#2F8FEA] px-4 py-2 text-[14px] leading-[22px] font-normal text-white shadow-[0_0_0_4px_rgba(47,143,234,0.18)] hover:bg-[#4A9FF0] transition-all duration-200 inline-flex items-center gap-2"
+            className="rounded-full bg-[#21FFBC] px-4 py-2 text-[14px] leading-[22px] font-normal text-[#031B1D] shadow-[0_0_0_4px_rgba(33,255,188,0.18)] hover:bg-[#5DFFCF] transition-all duration-200 inline-flex items-center gap-2"
           >
             Schedule Now
             {/* eslint-disable-next-line @next/next/no-img-element */}

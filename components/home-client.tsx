@@ -85,14 +85,14 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
     <main
       className="min-h-screen font-sans"
       style={{
-        backgroundColor: "#463830",
-        backgroundImage: "radial-gradient(rgba(242,238,227,0.07) 1px, transparent 1px)",
+        backgroundColor: "#031B1D",
+        backgroundImage: "radial-gradient(rgba(183,255,233,0.07) 1px, transparent 1px)",
         backgroundSize: "14px 14px",
       }}
     >
       <div className="mx-auto min-h-screen w-full max-w-[680px] border-x border-[var(--t-line)] bg-[var(--t-bg)]">
         {/* Topbar */}
-        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[#463830]/80 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[#031B1D]/80 backdrop-blur-xl">
           <div className="flex h-[68px] items-center justify-between px-5 sm:px-6">
             <Link href="/" className="press flex items-center" aria-label="velora.studio home">
               <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="brightness-0 invert" priority />
@@ -114,7 +114,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         {/* Hero */}
         <Reveal as="section" className={block}>
           <div className="mb-8 flex items-center gap-2">
-            <span className="h-2 w-2 bg-[var(--t-mint)] shadow-[0_0_0_3px_rgba(47,143,234,0.2)]" aria-hidden />
+            <span className="h-2 w-2 bg-[var(--t-mint)] shadow-[0_0_0_3px_rgba(33,255,188,0.2)]" aria-hidden />
             <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">Design &amp; development studio</span>
           </div>
           <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">
@@ -186,15 +186,15 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </div>
 
             {/* Design Partner */}
-            <div className="relative flex flex-col border-t-2 border-[#2F8FEA] p-6 sm:border-t-2">
+            <div className="relative flex flex-col border-t-2 border-[#21FFBC] p-6 sm:border-t-2">
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-24"
-                style={{ background: "linear-gradient(180deg, rgba(47,143,234,0.10) 0%, rgba(93,255,202,0) 100%)" }}
+                style={{ background: "linear-gradient(180deg, rgba(33,255,188,0.10) 0%, rgba(93,255,202,0) 100%)" }}
                 aria-hidden
               />
               <div className="relative flex items-center justify-between">
                 <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Design Partner</span>
-                <span className="mono rounded-[3px] bg-[#2F8FEA] px-2 py-0.5 text-[12px] leading-4 text-white">
+                <span className="mono rounded-[3px] bg-[#21FFBC] px-2 py-0.5 text-[12px] leading-4 text-[#031B1D]">
                   Popular
                 </span>
               </div>
@@ -252,7 +252,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         <Reveal as="footer" className={block}>
           <div
             className="flex flex-col items-start gap-5 border border-[var(--t-line)] bg-[var(--t-surface)] p-8"
-            style={{ backgroundImage: "linear-gradient(180deg, rgba(47,143,234,0.08) 0%, rgba(93,255,202,0) 60%)" }}
+            style={{ backgroundImage: "linear-gradient(180deg, rgba(33,255,188,0.08) 0%, rgba(93,255,202,0) 60%)" }}
           >
             <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Next step</span>
             <h2 className="funnel !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">
