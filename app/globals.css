@@ -522,13 +522,13 @@ html {
 
 /* ---------- HEX dark palette (overrides the light terminal tokens) ---------- */
 :root {
-  --t-bg: #031B1D;
+  --t-bg: #463830;
   --t-surface: #06282B;
   --t-ink: #EBEBEB;
   --t-muted: #A3B8B5;
   --t-faint: #6F8C89;
-  --t-line: rgba(183, 255, 233, 0.1);
-  --t-line-strong: rgba(183, 255, 233, 0.2);
+  --t-line: rgba(242,238,227,0.1);
+  --t-line-strong: rgba(242,238,227,0.2);
   --t-cap: #0F4D51;
   --t-mint: #21FFBC;
   --t-mint-ink: #21FFBC;
@@ -537,19 +537,38 @@ html {
 html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
 .tick-primary {
   --tick-c: var(--t-soft);
-  background: #FFFFFF; color: #031B1D;
+  background: #FFFFFF; color: #463830;
   border: 0;
-  box-shadow: 0 0 0 4px rgba(183, 255, 233, 0.1);
+  box-shadow: 0 0 0 4px rgba(242,238,227,0.1);
 }
-.tick-primary:hover { box-shadow: 0 0 0 6px rgba(183, 255, 233, 0.16); background: #F2FFFB; }
+.tick-primary:hover { box-shadow: 0 0 0 6px rgba(242,238,227,0.16); background: #FFFFFF; }
 .tick-secondary {
   --tick-c: var(--t-line-strong);
   background: transparent; color: var(--t-ink);
   border: 1px solid var(--t-line-strong);
   box-shadow: none;
 }
-.tick-secondary:hover { background: rgba(183, 255, 233, 0.06); }
+.tick-secondary:hover { background: rgba(242,238,227,0.06); }
 .modal-scroll { scrollbar-color: #0F4D51 transparent; }
 .modal-scroll::-webkit-scrollbar-thumb { background-color: #0F4D51; }
 
 html { color-scheme: dark; }
+
+/* ---------- Wayfare brown palette ---------- */
+:root {
+  --t-bg: #463830;
+  --t-surface: #3A2E28;
+  --t-ink: #F2EEE3;
+  --t-muted: #C9BDAD;
+  --t-faint: #9C8D7F;
+  --t-line: rgba(242, 238, 227, 0.12);
+  --t-line-strong: rgba(242, 238, 227, 0.22);
+  --t-cap: #6B5A4F;
+  --t-mint: #2F8FEA;
+  --t-mint-ink: #2F8FEA;
+  --t-soft: #F2EEE3;
+}
+.tick-primary { background: #F2EEE3; color: #2B211C; }
+.tick-primary:hover { background: #FFFFFF; }
+.modal-scroll { scrollbar-color: #6B5A4F transparent; }
+.modal-scroll::-webkit-scrollbar-thumb { background-color: #6B5A4F; }

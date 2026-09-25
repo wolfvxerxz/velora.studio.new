@@ -7,7 +7,7 @@ import { DEFAULT_LOCATION, type CaseStudy } from "@/lib/case-studies"
 import { CaseStudyBody } from "./case-study-body"
 
 const iconBtn =
-  "flex h-7 w-7 items-center justify-center rounded-md text-[var(--t-muted)] transition-colors hover:bg-[rgba(183,255,233,0.08)] hover:text-[var(--t-ink)]"
+  "flex h-7 w-7 items-center justify-center rounded-md text-[var(--t-muted)] transition-colors hover:bg-[rgba(242,238,227,0.08)] hover:text-[var(--t-ink)]"
 
 function ExpandIcon() {
   return (
@@ -125,7 +125,7 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
   return (
     <div
       className={outerClass}
-      style={{ backgroundColor: "rgba(1,12,13,0.6)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
+      style={{ backgroundColor: "rgba(25,18,15,0.65)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
       onClick={onClose}
     >
       <div className={panelClass} onClick={(e) => e.stopPropagation()}>
@@ -149,7 +149,7 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
             <button
               type="button"
               onClick={() => setShowDetails((v) => !v)}
-              className={`${iconBtn} ${showDetails ? "bg-[rgba(183,255,233,0.08)] text-[var(--t-ink)]" : ""}`}
+              className={`${iconBtn} ${showDetails ? "bg-[rgba(242,238,227,0.08)] text-[var(--t-ink)]" : ""}`}
               title="View details"
               aria-label="View details"
             >
