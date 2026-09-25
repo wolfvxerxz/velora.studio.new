@@ -9,6 +9,7 @@ import { WorkGrid } from "@/components/work-views"
 import { WallOfLove } from "@/components/wall-of-love"
 import { Reveal } from "@/components/reveal"
 import { ThemeSwitcher } from "@/components/theme-switcher"
+import { MoreWorkSlider } from "@/components/more-work-slider"
 
 interface HomeClientProps {
   caseStudies: CaseStudy[]
@@ -227,22 +228,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <CapLine />
             <Reveal as="section" className={block}>
               <Subheading title="More work" meta={pad(moreWorkImages.length)} sub="A selection of past projects across brand, product, and web." />
-              <div className="flex flex-col gap-4">
-                {moreWorkImages.map((src) => (
-                  <div key={src} className="group overflow-hidden rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2">
-                    <div className="overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={src}
-                        alt="Velora work"
-                        className="block h-auto w-full transition-transform duration-700 [transition-timing-function:var(--spring)] group-hover:scale-[1.04]"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <MoreWorkSlider images={moreWorkImages} />
             </Reveal>
           </>
         )}
