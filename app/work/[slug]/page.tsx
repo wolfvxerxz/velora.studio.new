@@ -29,7 +29,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound()
 
   return (
-    <main className="min-h-screen font-sans" style={{ backgroundColor: "#031B1D" }}>
+    <main className="min-h-screen font-sans" style={{ backgroundColor: "var(--t-bg)" }}>
       <div className="mx-auto max-w-3xl px-5 py-8 md:py-12">
         <Link
           href="/"
@@ -39,7 +39,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </Link>
 
         <div className="mb-6 flex items-center gap-3">
-          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 brightness-0 invert" />
+          <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="opacity-90 theme-logo" />
           <span className="text-[var(--t-faint)] text-sm">×</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -60,7 +60,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             href="https://cal.com/vuk-m/15min"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[#21FFBC] px-4 py-2 text-[14px] leading-[22px] font-normal text-[#031B1D] shadow-[0_0_0_4px_rgba(33,255,188,0.18)] hover:bg-[#5DFFCF] transition-all duration-200 inline-flex items-center gap-2"
+            className="rounded-full bg-[var(--t-btn)] px-4 py-2 text-[14px] leading-[22px] font-normal text-[var(--t-btn-fg)] shadow-[0_0_0_4px_rgb(var(--t-accent-rgb)/0.18)] hover:bg-[var(--t-btn-hover)] transition-all duration-200 inline-flex items-center gap-2"
           >
             Schedule Now
             {/* eslint-disable-next-line @next/next/no-img-element */}

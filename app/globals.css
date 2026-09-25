@@ -673,3 +673,94 @@ html { color-scheme: dark; }
 .tick:focus-visible { outline-color: #21FFBC; }
 .modal-scroll { scrollbar-color: #0F4D51 transparent; }
 .modal-scroll::-webkit-scrollbar-thumb { background-color: #0F4D51; }
+
+/* =====================================================================
+   THEMES — switch with <html data-theme="green|brown|hermae|tempo">
+   ===================================================================== */
+:root,
+:root[data-theme="green"] {
+  color-scheme: dark;
+  --t-page: #031B1D;        --t-dot: rgba(183, 255, 233, 0.07);
+  --t-bg: #031B1D;          --t-surface: #06282B;   --t-header: rgba(3, 27, 29, 0.8);
+  --t-ink: #EBEBEB;         --t-muted: #A3B8B5;     --t-faint: #6F8C89;
+  --t-line-rgb: 183 255 233;
+  --t-cap: #0F4D51;
+  --t-accent-rgb: 33 255 188;  --t-mint: #21FFBC;   --t-mint-ink: #21FFBC;
+  --t-btn: #21FFBC;         --t-btn-fg: #031B1D;    --t-btn-hover: #5DFFCF;
+  --t-btn-glow: rgba(33, 255, 188, 0.45);
+  --t-logo-filter: brightness(0) invert(1);
+  --t-overlay: rgba(1, 12, 13, 0.6);
+}
+:root[data-theme="brown"] {
+  color-scheme: dark;
+  --t-page: #463830;        --t-dot: rgba(242, 238, 227, 0.07);
+  --t-bg: #463830;          --t-surface: #3A2E28;   --t-header: rgba(70, 56, 48, 0.82);
+  --t-ink: #F2EEE3;         --t-muted: #C9BDAD;     --t-faint: #9C8D7F;
+  --t-line-rgb: 242 238 227;
+  --t-cap: #6B5A4F;
+  --t-accent-rgb: 47 143 234;  --t-mint: #2F8FEA;   --t-mint-ink: #2F8FEA;
+  --t-btn: #2F8FEA;         --t-btn-fg: #FFFFFF;    --t-btn-hover: #4A9FF0;
+  --t-btn-glow: rgba(20, 70, 140, 0.7);
+  --t-logo-filter: brightness(0) invert(1);
+  --t-overlay: rgba(25, 18, 15, 0.65);
+}
+:root[data-theme="hermae"] {
+  color-scheme: light;
+  --t-page: #14CFBC;        --t-dot: rgba(255, 255, 255, 0.22);
+  --t-bg: #F1E8D4;          --t-surface: #FBF6EC;   --t-header: rgba(241, 232, 212, 0.86);
+  --t-ink: #232321;         --t-muted: #5F594E;     --t-faint: #8C8474;
+  --t-line-rgb: 35 35 33;
+  --t-cap: #D9CDB4;
+  --t-accent-rgb: 15 165 151;  --t-mint: #0FA597;   --t-mint-ink: #0B8F83;
+  --t-btn: #E8591A;         --t-btn-fg: #FFF6EC;    --t-btn-hover: #F2661F;
+  --t-btn-glow: rgba(120, 40, 5, 0.6);
+  --t-logo-filter: brightness(0);
+  --t-overlay: rgba(10, 60, 56, 0.45);
+}
+:root[data-theme="tempo"] {
+  color-scheme: light;
+  --t-page: #C5D65A;        --t-dot: rgba(255, 255, 255, 0.35);
+  --t-bg: #FBFAEC;          --t-surface: #FFFFF6;   --t-header: rgba(251, 250, 236, 0.86);
+  --t-ink: #1C2210;         --t-muted: #5A6046;     --t-faint: #8A8E72;
+  --t-line-rgb: 28 34 16;
+  --t-cap: #DCDDB6;
+  --t-accent-rgb: 88 106 10;   --t-mint: #586A0A;   --t-mint-ink: #4C5C08;
+  --t-btn: #17A6F0;         --t-btn-fg: #FFFFFF;    --t-btn-hover: #3BB6F4;
+  --t-btn-glow: rgba(10, 90, 150, 0.45);
+  --t-logo-filter: brightness(0);
+  --t-overlay: rgba(40, 50, 10, 0.45);
+}
+:root {
+  --t-line: rgb(var(--t-line-rgb) / 0.12);
+  --t-line-strong: rgb(var(--t-line-rgb) / 0.24);
+  --t-soft: var(--t-ink);
+}
+html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
+.theme-logo { filter: var(--t-logo-filter); }
+
+/* Buttons driven by theme tokens (final word on button colors) */
+.tick-primary {
+  background: var(--t-btn);
+  color: var(--t-btn-fg);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(0, 0, 0, 0.3), 0 10px 22px -10px var(--t-btn-glow);
+}
+.tick-primary:hover {
+  background: var(--t-btn-hover);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 1px 0 rgba(0, 0, 0, 0.3), 0 14px 28px -10px var(--t-btn-glow), 0 0 0 3px rgb(var(--t-accent-rgb) / 0.25);
+}
+.tick-secondary {
+  background: rgb(var(--t-line-rgb) / 0.05);
+  color: var(--t-ink);
+  border: 1px solid rgb(var(--t-line-rgb) / 0.22);
+  box-shadow: none;
+}
+.tick-secondary:hover { background: rgb(var(--t-line-rgb) / 0.1); border-color: rgb(var(--t-line-rgb) / 0.36); }
+.tick:focus-visible { outline: 2px solid var(--t-btn); outline-offset: 2px; }
+.modal-scroll { scrollbar-color: var(--t-cap) transparent; }
+.modal-scroll::-webkit-scrollbar-thumb { background-color: var(--t-cap); }
+
+/* Smooth cross-fade when switching themes */
+html.theme-switching, html.theme-switching * {
+  transition: background-color 450ms ease, color 450ms ease, border-color 450ms ease, fill 450ms ease !important;
+}
