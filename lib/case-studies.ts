@@ -18,6 +18,8 @@ export interface CaseStudy {
   cover: string
   logo: string
   description: string
+  /** One-line story shown under the card on the home grid. */
+  tagline?: string
   work: CaseStudyWorkItem[]
   coverPosition?: string
   testimonial?: CaseStudyTestimonial
@@ -47,6 +49,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand", "Product Design", "Web"],
     areas: ["AI", "Maps", "Consumer"],
     title: "Wayfind",
+    tagline: "Turning a plain-language ask into a map-first AI guide",
     date: "2025",
     start: "2025-06",
     end: "2025-11",
@@ -166,6 +169,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand", "Product Design"],
     areas: ["AI", "Developer Tools", "Productivity"],
     title: "Aether",
+    tagline: "A calm, ambient identity for an AI productivity tool",
     date: "2025",
     start: "2025-02",
     end: "2025-06",
@@ -190,6 +194,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand", "Product Design"],
     areas: ["AI", "Infrastructure", "Developer Tools"],
     title: "BentoLabs",
+    tagline: "A modular visual system for infra teams that ship fast",
     date: "2025",
     start: "2025-05",
     end: "2025-10",
@@ -216,6 +221,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Product Design"],
     areas: ["Fintech", "Payments", "B2B"],
     title: "SubPay",
+    tagline: "Subscription billing made clear at every step",
     date: "2025",
     start: "2025-03",
     end: "2025-08",
@@ -244,6 +250,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand", "Product Design", "Web"],
     areas: ["AI", "Developer Tools", "DevOps"],
     title: "Armature",
+    tagline: "Sharp brand and product for AI-native DevOps",
     date: "2025 – 2026",
     start: "2025-09",
     end: "2026-03",
@@ -271,6 +278,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand Identity", "Web"],
     areas: ["AI", "Mobile", "Consumer"],
     title: "Cactus",
+    tagline: "A resilient identity that keeps its edge as it scales",
     date: "2025",
     start: "2025-07",
     end: "2025-11",
@@ -296,6 +304,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Product Design", "Brand"],
     areas: ["AI", "Infrastructure", "Backend"],
     title: "InsForge",
+    tagline: "Making backend infrastructure feel effortless for AI builders",
     date: "2024 – 2026",
     start: "2024-08",
     end: "2026-01",

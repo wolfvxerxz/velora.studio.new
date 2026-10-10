@@ -18,9 +18,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
-        "velora-studio": ["var(--font-geist-sans)", "sans-serif"],
-        "sans-medium": ["var(--font-geist-sans)", "sans-serif"],
+        sans: ["var(--font-mori)", "var(--font-geist-sans)", "sans-serif"],
+        "velora-studio": ["var(--font-mori)", "var(--font-geist-sans)", "sans-serif"],
+        "sans-medium": ["var(--font-mori)", "var(--font-geist-sans)", "sans-serif"],
         serif: ["var(--font-playfair)", "serif"],
       },
       fontWeight: {

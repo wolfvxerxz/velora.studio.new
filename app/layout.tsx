@@ -4,7 +4,16 @@ import "./globals.css"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Funnel_Display } from "next/font/google"
+import localFont from "next/font/local"
 
+const mori = localFont({
+  src: [
+    { path: "./fonts/PPMori-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/PPMori-SemiBold.otf", weight: "600", style: "normal" },
+  ],
+  variable: "--font-mori",
+  display: "swap",
+})
 const funnel = Funnel_Display({ subsets: ["latin"], weight: ["500"], variable: "--font-funnel", display: "swap" })
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
@@ -69,13 +78,8 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="green" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable} ${funnel.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${funnel.variable} ${mori.variable}`}>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("velora-theme");if(t&&/^(green|brown|hermae|tempo)$/.test(t))document.documentElement.dataset.theme=t}catch(e){}`,
-          }}
-        />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"

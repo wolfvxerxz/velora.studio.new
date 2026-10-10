@@ -51,11 +51,15 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
                 />
               </div>
             </div>
-            {/* Name below the card */}
-            <div className="mt-3 px-0.5">
-              <span className="mono truncate text-[14px] leading-5 text-[var(--t-ink)]">
-                {study.title}
-              </span>
+            {/* Name, one-line story and services below the card */}
+            <div className="mt-3 flex flex-col gap-1 px-0.5">
+              <span className="truncate text-[15px] leading-5 text-[var(--t-ink)]">{study.title}</span>
+              {study.tagline && (
+                <span className="text-[13px] leading-[18px] text-[var(--t-muted)]">{study.tagline}</span>
+              )}
+              {study.services && (
+                <span className="mono mt-1 text-[12px] leading-4 text-[var(--t-faint)]">{study.services.join(" · ")}</span>
+              )}
             </div>
           </Link>
         )

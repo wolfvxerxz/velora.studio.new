@@ -8,7 +8,6 @@ import { CaseStudyModal } from "@/components/case-study-modal"
 import { WorkGrid } from "@/components/work-views"
 import { WallOfLove } from "@/components/wall-of-love"
 import { Reveal } from "@/components/reveal"
-import { ThemeSwitcher } from "@/components/theme-switcher"
 import { MoreWorkSlider } from "@/components/more-work-slider"
 
 interface HomeClientProps {
@@ -25,6 +24,14 @@ function CapLine() {
     </div>
   )
 }
+
+const PRINCIPLES = [
+  { title: "Senior hands only", body: "You work directly with the people designing and building. No account managers, no hand-offs." },
+  { title: "Purpose over decoration", body: "If a screen, section or animation doesn't move the product forward, it doesn't ship." },
+  { title: "Fast, not rushed", body: "Weekly drops you can react to. Speed comes from focus, not from cutting corners." },
+  { title: "Sweat the details", body: "Spacing, type and motion get the same care as the big ideas. That's where quality shows." },
+  { title: "Design that ships", body: "Everything is built to be developed, with real components and real content, not just pretty frames." },
+]
 
 function Subheading({ title, meta, sub }: { title: string; meta?: string; sub?: string }) {
   return (
@@ -116,7 +123,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         {/* Hero */}
         <Reveal as="section" className={block}>
           <div className="mb-8 flex items-center gap-2">
-            <span className="h-2 w-2 bg-[var(--t-mint)] shadow-[0_0_0_3px_rgb(var(--t-accent-rgb)/0.2)]" aria-hidden />
+            <span className="h-2 w-2 bg-[var(--t-mint)]" aria-hidden />
             <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">Design &amp; development studio</span>
           </div>
           <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">
@@ -138,6 +145,19 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <Factoid label="Client notes" value={pad(testimonialCount)} />
             <Factoid label="Plans from" value="€3,999/mo" />
           </div>
+          <div className="mt-12 border-t border-[var(--t-line)] pt-6">
+            <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Trusted by teams at</span>
+            <div className="mt-4 grid grid-cols-3 border-l border-t border-[var(--t-line)] sm:grid-cols-7">
+              {caseStudyWorks.map((c) => (
+                <span
+                  key={c.slug}
+                  className="flex h-12 items-center justify-center border-b border-r border-[var(--t-line)] px-2 text-[13px] leading-5 tracking-[-0.01em] text-[var(--t-faint)] transition-colors duration-300 hover:text-[var(--t-ink)]"
+                >
+                  {c.title}
+                </span>
+              ))}
+            </div>
+          </div>
         </Reveal>
 
         <CapLine />
@@ -158,6 +178,22 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         <Reveal as="section" className={block}>
           <Subheading title="Wall of Love" meta={pad(testimonialCount)} sub="What founders say about working with velora.studio." />
           <WallOfLove />
+        </Reveal>
+
+        <CapLine />
+
+        {/* How we work */}
+        <Reveal as="section" className={block}>
+          <Subheading title="How we work" meta={pad(PRINCIPLES.length)} sub="A few rules we hold ourselves to on every project." />
+          <ol className="border-t border-[var(--t-line)]">
+            {PRINCIPLES.map((p, i) => (
+              <li key={p.title} className="grid grid-cols-[40px_1fr] gap-x-4 border-b border-[var(--t-line)] py-4 sm:grid-cols-[48px_200px_1fr]">
+                <span className="mono text-[13px] leading-6 text-[var(--t-mint)] tabular-nums">{pad(i + 1)}</span>
+                <span className="text-[15px] leading-6 text-[var(--t-ink)]">{p.title}</span>
+                <span className="col-start-2 text-[14px] leading-[22px] text-[var(--t-muted)] sm:col-start-3">{p.body}</span>
+              </li>
+            ))}
+          </ol>
         </Reveal>
 
         <CapLine />
@@ -188,7 +224,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </div>
 
             {/* Design Partner */}
-            <div className="relative flex flex-col border-t-2 border-[var(--t-btn)] p-6 sm:border-t-2">
+            <div className="relative flex flex-col border-t-2 border-[var(--t-mint)] p-6 sm:border-t-2">
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-24"
                 style={{ background: "linear-gradient(180deg, rgb(var(--t-accent-rgb)/0.10) 0%, rgba(93,255,202,0) 100%)" }}
@@ -196,7 +232,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               />
               <div className="relative flex items-center justify-between">
                 <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Design Partner</span>
-                <span className="mono rounded-[3px] bg-[var(--t-btn)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-btn-fg)]">
+                <span className="mono rounded-[3px] bg-[image:var(--t-btn)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-btn-fg)]">
                   Popular
                 </span>
               </div>
@@ -252,10 +288,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               Schedule Call
             </a>
           </div>
-          <div className="mt-12 border-t border-[var(--t-line)] pt-6">
-            <ThemeSwitcher />
-          </div>
-          <div className="mt-6 flex items-center justify-between">
+          <div className="mt-12 flex border-t border-[var(--t-line)] pt-6 items-center justify-between">
             <p className="mono text-[13px] leading-5 text-[var(--t-faint)]">© velora.studio 2026</p>
             <div className="flex items-center gap-5">
               <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="mono text-[13px] text-[var(--t-faint)] transition-colors hover:text-[var(--t-ink)]">X (Twitter)</a>
