@@ -11,7 +11,7 @@ import { NumberTicker } from "@/components/ui/number-ticker"
 import { BorderBeam } from "@/components/ui/border-beam"
 import { WallOfLove } from "@/components/wall-of-love"
 import { Reveal } from "@/components/reveal"
-import { parseYearSpan } from "@/lib/case-studies"
+import { logoClass, parseYearSpan } from "@/lib/case-studies"
 
 interface HomeClientProps {
   caseStudies: CaseStudy[]
@@ -73,7 +73,8 @@ function Bullet() {
 export default function HomeClient({ caseStudies }: HomeClientProps) {
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null)
   const goToPricing = () => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
-  const caseStudyWorks = caseStudies.filter((c) => c.cover.startsWith("/case/"))
+  const hasCaseStudy = (c: CaseStudy) => c.cover.startsWith("/case/")
+  const caseStudyWorks = caseStudies.filter(hasCaseStudy)
   const shippedByYear = Object.entries(
     caseStudies.reduce<Record<string, typeof caseStudies>>((acc, c) => {
       const y = String(parseYearSpan(c.date).end)
@@ -163,15 +164,23 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </div>
           <div className="mt-12 border-t border-[var(--t-line)] pt-6">
             <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Trusted by teams at</span>
-            <div className="mt-4 grid grid-cols-3 border-l border-t border-[var(--t-line)] sm:grid-cols-7">
-              {caseStudyWorks.map((c) => (
-                <span
-                  key={c.slug}
-                  className="flex h-12 items-center justify-center border-b border-r border-[var(--t-line)] px-2 text-[13px] leading-5 tracking-[-0.01em] text-[var(--t-faint)] transition-colors duration-300 hover:text-[var(--t-ink)]"
-                >
-                  {c.title}
-                </span>
-              ))}
+            <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-5">
+              {caseStudies.map((c) => {
+                // Square badge icons get the name beside them; wordmarks stand alone
+                const badge = c.logo.includes("/client-logos/")
+                return (
+                  <span key={c.slug} className="flex items-center gap-2 opacity-70 transition-opacity duration-300 hover:opacity-100" title={c.title}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={c.logo}
+                      alt={c.title}
+                      className={`${badge ? "h-5 w-5 rounded-full" : "h-5 w-auto max-w-[96px]"} object-contain ${logoClass(c)}`}
+                      loading="lazy"
+                    />
+                    {badge && <span className="text-[14px] leading-5 text-[var(--t-ink)]">{c.title}</span>}
+                  </span>
+                )
+              })}
             </div>
           </div>
         </Reveal>
@@ -309,21 +318,28 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               <div key={year} className="grid grid-cols-[56px_1fr] border-t border-[var(--t-line)] py-3">
                 <span className="mono pt-[6px] text-[13px] leading-5 text-[var(--t-faint)] tabular-nums">{year}</span>
                 <ul>
-                  {list.map((c) => (
-                    <li key={c.slug}>
-                      <button
-                        type="button"
-                        onClick={() => setSelectedStudy(c)}
-                        className="group flex w-full items-baseline gap-3 py-[6px] text-left"
-                      >
-                        <span className="shrink-0 text-[14px] leading-5 text-[var(--t-ink)]">{c.title}</span>
-                        <span className="h-px flex-1 translate-y-[-4px] bg-[var(--t-line)] transition-colors group-hover:bg-[var(--t-line-strong)]" aria-hidden />
-                        <span className="truncate text-right text-[13px] leading-5 text-[var(--t-faint)] transition-colors group-hover:text-[var(--t-ink)]">
-                          {c.tagline ?? c.services?.join(", ")} ↗
-                        </span>
-                      </button>
-                    </li>
-                  ))}
+                  {list.map((c) =>
+                    hasCaseStudy(c) ? (
+                      <li key={c.slug}>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedStudy(c)}
+                          className="group flex w-full items-baseline gap-3 py-[6px] text-left"
+                        >
+                          <span className="shrink-0 text-[14px] leading-5 text-[var(--t-ink)]">{c.title}</span>
+                          <span className="h-px flex-1 translate-y-[-4px] bg-[var(--t-line)] transition-colors group-hover:bg-[var(--t-line-strong)]" aria-hidden />
+                          <span className="truncate text-right text-[13px] leading-5 text-[var(--t-faint)] transition-colors group-hover:text-[var(--t-ink)]">
+                            {c.tagline ?? c.services?.join(", ")} ↗
+                          </span>
+                        </button>
+                      </li>
+                    ) : (
+                      // No full case study yet: name only, not clickable
+                      <li key={c.slug} className="py-[6px] text-[14px] leading-5 text-[var(--t-muted)]">
+                        {c.title}
+                      </li>
+                    ),
+                  )}
                 </ul>
               </div>
             ))}

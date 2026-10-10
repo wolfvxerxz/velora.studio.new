@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { DEFAULT_LOCATION, type CaseStudy } from "@/lib/case-studies"
+import { DEFAULT_LOCATION, type CaseStudy, logoClass } from "@/lib/case-studies"
 import { CaseStudyBody } from "./case-study-body"
 
 const iconBtn =
@@ -179,7 +179,7 @@ export function CaseStudyModal({ study, onClose }: { study: CaseStudy | null; on
                 alt={study.title}
                 width={study.title === "Ecom Wizards" ? 120 : 100}
                 height={28}
-                className={`h-7 w-auto max-w-[120px] object-contain opacity-90`}
+                className={`h-7 w-auto max-w-[120px] object-contain opacity-90 ${logoClass(study)}`}
               />
             </div>
 

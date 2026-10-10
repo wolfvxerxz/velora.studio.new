@@ -17,6 +17,8 @@ export interface CaseStudy {
   date: string
   cover: string
   logo: string
+  /** Logo artwork is black/dark — render inverted to white on the dark site. */
+  logoDark?: boolean
   description: string
   /** One-line story shown under the card on the home grid. */
   tagline?: string
@@ -49,6 +51,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand", "Product Design", "Web"],
     areas: ["AI", "Maps", "Consumer"],
     title: "Wayfind",
+    logoDark: true,
     tagline: "Turning a plain-language ask into a map-first AI guide",
     date: "2025",
     start: "2025-06",
@@ -73,6 +76,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "extsy",
     title: "Extsy",
+    logoDark: true,
     tagline: "A conversion-focused product, from wireframes to launch",
     date: "2025",
     cover: "/work/1.webp",
@@ -89,6 +93,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "amenify",
     title: "Amenify",
+    logoDark: true,
     tagline: "A warm, trustworthy product that scaled nationally",
     date: "2024",
     cover: "/work/5.webp",
@@ -106,6 +111,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "bobos",
     title: "Bobos",
+    logoDark: true,
     tagline: "A homemade-feeling storefront for a national audience",
     date: "2024",
     cover: "/work/11.webp",
@@ -123,6 +129,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "nordeus",
     title: "Nordeus",
+    logoDark: true,
     tagline: "A design system that keeps every touchpoint on-brand",
     date: "2024",
     cover: "/work/27.webp",
@@ -140,6 +147,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "ecom-wizards",
     title: "Ecom Wizards",
+    logoDark: true,
     tagline: "From first sketch to a sharper version of the founder's vision",
     date: "2025",
     cover: "/work/222.webp",
@@ -375,4 +383,9 @@ export function getCaseStudy(slug: string): CaseStudy | undefined {
 
 export function getCaseStudySlugs(): string[] {
   return caseStudies.map((c) => c.slug)
+}
+
+/** Class that turns a dark logo white; empty for logos that are already light or colored. */
+export function logoClass(study: CaseStudy): string {
+  return study.logoDark ? "logo-invert" : ""
 }

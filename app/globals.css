@@ -636,3 +636,6 @@ html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
 @media (prefers-reduced-motion: reduce) {
   .border-beam { animation: none; display: none; }
 }
+
+/* Dark client logos rendered white on the dark site */
+.logo-invert { filter: brightness(0) invert(1); }

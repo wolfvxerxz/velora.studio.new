@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { caseStudies, getCaseStudy, getCaseStudySlugs } from "@/lib/case-studies"
+import { caseStudies, getCaseStudy, getCaseStudySlugs, logoClass } from "@/lib/case-studies"
 import { CaseStudyBody } from "@/components/case-study-body"
 
 interface PageProps {
@@ -45,7 +45,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <img
             src={study.logo}
             alt={study.title}
-            className={`h-7 w-auto max-w-[120px] object-contain opacity-90`}
+            className={`h-7 w-auto max-w-[120px] object-contain opacity-90 ${logoClass(study)}`}
           />
         </div>
 
