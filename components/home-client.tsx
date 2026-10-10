@@ -11,7 +11,7 @@ import { NumberTicker } from "@/components/ui/number-ticker"
 import { BorderBeam } from "@/components/ui/border-beam"
 import { WallOfLove } from "@/components/wall-of-love"
 import { Reveal } from "@/components/reveal"
-import { MoreWorkSlider } from "@/components/more-work-slider"
+import { parseYearSpan } from "@/lib/case-studies"
 
 interface HomeClientProps {
   caseStudies: CaseStudy[]
@@ -27,6 +27,13 @@ function CapLine() {
     </div>
   )
 }
+
+const WHY = [
+  { title: "An idea that needs a product.", body: "Wayfind had a plain-language AI guide in mind. We shaped it into a clean, map-first product people get at a glance.", client: "Wayfind", slug: "wayfind" },
+  { title: "A brand that has to look funded.", body: "Investors meet the brand before they meet you. Armature got a sharp identity and a digital presence to match.", client: "Armature", slug: "armature" },
+  { title: "A product people don't get.", body: "Good infrastructure, confusing screens. InsForge got clarity built into every step, from onboarding to the core workflow.", client: "InsForge", slug: "insforge" },
+  { title: "A flow that loses money.", body: "Billing is where trust breaks. SubPay's subscription flow was redesigned for clarity at every step.", client: "SubPay", slug: "subpay" },
+]
 
 const PRINCIPLES = [
   { title: "Senior hands only", body: "You work directly with the people designing and building. No account managers, no hand-offs." },
@@ -67,10 +74,13 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null)
   const goToPricing = () => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
   const caseStudyWorks = caseStudies.filter((c) => c.cover.startsWith("/case/"))
-  const otherWorks = caseStudies.filter((c) => !c.cover.startsWith("/case/"))
-  const moreWorkImages = Array.from(
-    new Set(otherWorks.flatMap((c) => [c.cover, ...c.work.filter((w) => w.type === "image").map((w) => w.src)]))
-  )
+  const shippedByYear = Object.entries(
+    caseStudies.reduce<Record<string, typeof caseStudies>>((acc, c) => {
+      const y = String(parseYearSpan(c.date).end)
+      ;(acc[y] ??= []).push(c)
+      return acc
+    }, {}),
+  ).sort(([a], [b]) => Number(b) - Number(a))
   const testimonialCount = caseStudies.filter((c) => c.testimonial).length
   const pad = (n: number) => String(n).padStart(2, "0")
 
@@ -139,9 +149,12 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary">
               Schedule Call
             </a>
-            <button type="button" onClick={goToPricing} className="tick tick-secondary">
-              View Pricing
-            </button>
+            <span className="text-[14px] leading-5 text-[var(--t-faint)]">
+              or{" "}
+              <button type="button" onClick={goToPricing} className="text-[var(--t-ink)] underline decoration-[var(--t-line-strong)] underline-offset-4 transition-colors hover:decoration-[var(--t-mint)]">
+                see pricing
+              </button>
+            </span>
           </div>
           <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
             <Factoid label="Case studies" value={<NumberTicker value={caseStudyWorks.length} pad={2} />} />
@@ -161,6 +174,30 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               ))}
             </div>
           </div>
+        </Reveal>
+
+        <CapLine />
+
+        {/* Why founders come to us */}
+        <Reveal as="section" className={block}>
+          <Subheading title="Why founders come to us" />
+          <ul className="flex flex-col gap-5">
+            {WHY.map((w) => (
+              <li key={w.title} className="text-[15px] leading-[24px] text-[var(--t-muted)]">
+                <span className="text-[var(--t-ink)]">{w.title}</span> {w.body}{" "}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const s = caseStudies.find((c) => c.slug === w.slug)
+                    if (s) setSelectedStudy(s)
+                  }}
+                  className="text-[var(--t-mint-ink)] underline decoration-transparent underline-offset-4 transition-colors hover:decoration-current"
+                >
+                  {w.client}
+                </button>
+              </li>
+            ))}
+          </ul>
         </Reveal>
 
         <CapLine />
@@ -262,16 +299,36 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           </div>
         </Reveal>
 
-        {/* More work */}
-        {moreWorkImages.length > 0 && (
-          <>
-            <CapLine />
-            <Reveal as="section" className={block}>
-              <Subheading title="More work" meta={pad(moreWorkImages.length)} sub="A selection of past projects across brand, product, and web." />
-              <MoreWorkSlider images={moreWorkImages} />
-            </Reveal>
-          </>
-        )}
+        <CapLine />
+
+        {/* Shipped with — full index by year */}
+        <Reveal as="section" className={block}>
+          <Subheading title="Shipped with" meta={pad(caseStudies.length)} sub="Every project, newest first." />
+          <div className="flex flex-col">
+            {shippedByYear.map(([year, list]) => (
+              <div key={year} className="grid grid-cols-[56px_1fr] border-t border-[var(--t-line)] py-3">
+                <span className="mono pt-[6px] text-[13px] leading-5 text-[var(--t-faint)] tabular-nums">{year}</span>
+                <ul>
+                  {list.map((c) => (
+                    <li key={c.slug}>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedStudy(c)}
+                        className="group flex w-full items-baseline gap-3 py-[6px] text-left"
+                      >
+                        <span className="shrink-0 text-[14px] leading-5 text-[var(--t-ink)]">{c.title}</span>
+                        <span className="h-px flex-1 translate-y-[-4px] bg-[var(--t-line)] transition-colors group-hover:bg-[var(--t-line-strong)]" aria-hidden />
+                        <span className="truncate text-right text-[13px] leading-5 text-[var(--t-faint)] transition-colors group-hover:text-[var(--t-ink)]">
+                          {c.tagline ?? c.services?.join(", ")} ↗
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Reveal>
 
         <CapLine />
 
@@ -281,24 +338,31 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             className="flex flex-col items-start gap-5 border border-[var(--t-line)] bg-[var(--t-surface)] p-8"
             style={{ backgroundImage: "linear-gradient(180deg, rgb(var(--t-accent-rgb)/0.08) 0%, rgba(93,255,202,0) 60%)" }}
           >
-            <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Next step</span>
-            <h2 className="funnel !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">
-              Have an idea worth building?
+                        <h2 className="funnel !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">
+              Got a launch, a raise or a new product coming up?
             </h2>
             <p className="-mt-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">
-              A 15-minute call is enough to see if we&apos;re a fit.
+              Tell us the date and we&apos;ll work back from it. We set the plan together on a short call.
             </p>
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary mt-1">
               Schedule Call
             </a>
           </div>
-          <div className="mt-12 flex border-t border-[var(--t-line)] pt-6 items-center justify-between">
-            <p className="mono text-[13px] leading-5 text-[var(--t-faint)]">© velora.studio 2026</p>
-            <div className="flex items-center gap-5">
-              <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="mono text-[13px] text-[var(--t-faint)] transition-colors hover:text-[var(--t-ink)]">X (Twitter)</a>
-              <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="mono text-[13px] text-[var(--t-faint)] transition-colors hover:text-[var(--t-ink)]">LinkedIn</a>
+          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-[var(--t-line)] pt-8 sm:grid-cols-3">
+            <div className="flex flex-col gap-2">
+              <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Studio</span>
+              <a href="#work" className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">Work</a>
+              <button type="button" onClick={goToPricing} className="text-left text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">Pricing</button>
+              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">Book a call</a>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Elsewhere</span>
+              <a href="https://x.com/veloraxstudio" target="_blank" rel="noopener noreferrer" className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">X</a>
+              <a href="https://www.linkedin.com/company/velorastudio/" target="_blank" rel="noopener noreferrer" className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">LinkedIn</a>
+              <a href="https://www.instagram.com/studio.velora/" target="_blank" rel="noopener noreferrer" className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">Instagram</a>
             </div>
           </div>
+          <p className="mono mt-10 text-[12px] leading-4 text-[var(--t-faint)]">velora.studio · Design &amp; development studio · © 2026</p>
         </Reveal>
       </div>
 

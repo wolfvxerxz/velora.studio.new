@@ -73,6 +73,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "extsy",
     title: "Extsy",
+    tagline: "A conversion-focused product, from wireframes to launch",
     date: "2025",
     cover: "/work/1.webp",
     logo: "/images/brands/extsy.webp",
@@ -88,6 +89,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "amenify",
     title: "Amenify",
+    tagline: "A warm, trustworthy product that scaled nationally",
     date: "2024",
     cover: "/work/5.webp",
     logo: "/images/brands/amenify.webp",
@@ -104,6 +106,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "bobos",
     title: "Bobos",
+    tagline: "A homemade-feeling storefront for a national audience",
     date: "2024",
     cover: "/work/11.webp",
     logo: "/images/brands/bobos.webp",
@@ -120,6 +123,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "nordeus",
     title: "Nordeus",
+    tagline: "A design system that keeps every touchpoint on-brand",
     date: "2024",
     cover: "/work/27.webp",
     logo: "/images/brands/nordeus.webp",
@@ -136,6 +140,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "ecom-wizards",
     title: "Ecom Wizards",
+    tagline: "From first sketch to a sharper version of the founder's vision",
     date: "2025",
     cover: "/work/222.webp",
     logo: "/images/brands/ecom.webp",
@@ -152,6 +157,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "webserv",
     title: "Webserv",
+    tagline: "Clean flows and ship-ready screens across the product",
     date: "2025",
     cover: "/work/-1.webp",
     logo: "/images/brands/webserv.webp",
