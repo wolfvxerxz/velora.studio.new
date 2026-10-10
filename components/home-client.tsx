@@ -6,6 +6,9 @@ import { useState } from "react"
 import type { CaseStudy } from "@/lib/case-studies"
 import { CaseStudyModal } from "@/components/case-study-modal"
 import { WorkGrid } from "@/components/work-views"
+import { BlurText } from "@/components/ui/blur-text"
+import { NumberTicker } from "@/components/ui/number-ticker"
+import { BorderBeam } from "@/components/ui/border-beam"
 import { WallOfLove } from "@/components/wall-of-love"
 import { Reveal } from "@/components/reveal"
 import { MoreWorkSlider } from "@/components/more-work-slider"
@@ -47,7 +50,7 @@ function Subheading({ title, meta, sub }: { title: string; meta?: string; sub?: 
   )
 }
 
-function Factoid({ label, value }: { label: string; value: string }) {
+function Factoid({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1">
       <span className="font-[family-name:var(--font-geist-mono)] text-[13px] font-semibold leading-5 tracking-[-0.02em] text-[var(--t-faint)]">{label}</span>
@@ -127,7 +130,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">Design &amp; development studio</span>
           </div>
           <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">
-            velora.studio partners with Web3, AI, and<br className="hidden sm:block" /> early-stage founders to turn ideas into standout<br className="hidden sm:block" /> websites, products, and brands.
+            <BlurText text="velora.studio partners with Web3, AI, and early-stage founders to turn ideas into standout websites, products, and brands." />
           </h1>
           <p className="mt-4 !text-[16px] !leading-[26px] !font-[400] text-[var(--t-muted)]">
             Looking to transform your idea into a real-world product?<br className="hidden sm:block" /> We specialize in creating intuitive, attractive interfaces that solve complex challenges across SaaS, Web3, and AI.
@@ -141,9 +144,9 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             </button>
           </div>
           <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
-            <Factoid label="Case studies" value={pad(caseStudyWorks.length)} />
-            <Factoid label="Client notes" value={pad(testimonialCount)} />
-            <Factoid label="Plans from" value="€3,999/mo" />
+            <Factoid label="Case studies" value={<NumberTicker value={caseStudyWorks.length} pad={2} />} />
+            <Factoid label="Client notes" value={<NumberTicker value={testimonialCount} pad={2} />} />
+            <Factoid label="Plans from" value={<NumberTicker value={3999} prefix="€" suffix="/mo" />} />
           </div>
           <div className="mt-12 border-t border-[var(--t-line)] pt-6">
             <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Trusted by teams at</span>
@@ -225,6 +228,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
             {/* Design Partner */}
             <div className="relative flex flex-col border-t-2 border-[var(--t-mint)] p-6 sm:border-t-2">
+              <BorderBeam size={140} duration={9} />
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-24"
                 style={{ background: "linear-gradient(180deg, rgb(var(--t-accent-rgb)/0.10) 0%, rgba(93,255,202,0) 100%)" }}

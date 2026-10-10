@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { type CaseStudy } from "@/lib/case-studies"
+import { SpotlightCard } from "@/components/ui/spotlight-card"
 
 interface WorkGridProps {
   caseStudies: CaseStudy[]
@@ -34,7 +35,7 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
             onClick={openHandler(study, onOpen)}
           >
             {/* Framed thumbnail */}
-            <div className="rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2 transition-colors duration-300 group-hover:border-[var(--t-line-strong)]">
+            <SpotlightCard className="rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2 transition-colors duration-300 group-hover:border-[var(--t-line-strong)]">
               <div className="relative aspect-[16/11] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -50,7 +51,7 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
                   decoding="async"
                 />
               </div>
-            </div>
+            </SpotlightCard>
             {/* Name, one-line story and services below the card */}
             <div className="mt-3 flex flex-col gap-1 px-0.5">
               <span className="truncate text-[15px] leading-5 text-[var(--t-ink)]">{study.title}</span>

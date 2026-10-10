@@ -620,3 +620,19 @@ html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
 /* Clean buttons: Mori, no glow, no lift */
 .tick { font-family: var(--font-mori), sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; }
 .tick-primary, .tick-primary:hover, .tick-secondary, .tick-secondary:hover { box-shadow: none; transform: none; }
+
+/* Magic UI border beam */
+@keyframes border-beam { to { offset-distance: 100%; } }
+.border-beam { animation: border-beam linear infinite; offset-distance: 0%; }
+
+/* React Bits spotlight card */
+.spotlight-card::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background: radial-gradient(260px circle at var(--sx, 50%) var(--sy, 50%), var(--spot), transparent 70%);
+  opacity: 0; transition: opacity 400ms ease;
+}
+.spotlight-card:hover::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .border-beam { animation: none; display: none; }
+}
