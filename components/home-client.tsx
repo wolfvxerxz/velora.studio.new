@@ -165,7 +165,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <div className="mt-12 border-t border-[var(--t-line)] pt-6">
             <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Trusted by teams at</span>
             <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-5">
-              {caseStudies.map((c) => {
+              {caseStudies.filter((c) => !c.concept).map((c) => {
                 // Square badge icons get the name beside them; wordmarks stand alone
                 const badge = c.logo.includes("/client-logos/")
                 return (

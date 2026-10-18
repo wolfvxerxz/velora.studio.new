@@ -31,6 +31,8 @@ export interface CaseStudy {
   /** Optional month-precise span for the Timeline view, format "YYYY-MM". */
   start?: string
   end?: string
+  /** Self-initiated concept, not client work: kept out of the "Trusted by" logo row. */
+  concept?: boolean
 }
 
 export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
@@ -45,7 +47,75 @@ const caseImg = (client: string, file: string): CaseStudyWorkItem => ({
   type: "image",
 })
 
+const caseVid = (client: string, file: string): CaseStudyWorkItem => ({
+  src: `/case/${client}/${file}`,
+  type: "video",
+})
+
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "junction",
+    services: ["Brand", "Product Design", "Web", "Motion"],
+    areas: ["Fintech", "Investing", "Consumer"],
+    title: "Junction",
+    concept: true,
+    tagline: "Investing as a metro map: pick a line, every stock is a stop",
+    date: "2026",
+    start: "2026-10",
+    end: "2026-10",
+    cover: "/case/Junction/hero.webp",
+    logo: "/icons/client-logos/Junction.svg",
+    description:
+      "Brand, iOS app and landing page for Junction, a playful investing app for first-time investors. Ready-made mixes are drawn as transit lines and every stock is a stop, so a whole portfolio reads like one map. Built light, bright and accessible, with motion that runs on the same rails.",
+    work: [
+      caseImg("Junction", "1.webp"),
+      caseImg("Junction", "2.webp"),
+      caseImg("Junction", "3.webp"),
+      caseImg("Junction", "4.webp"),
+      caseVid("Junction", "patterns.mp4"),
+      caseImg("Junction", "5.webp"),
+      caseImg("Junction", "6.webp"),
+      caseImg("Junction", "7.webp"),
+      caseVid("Junction", "onboarding.mp4"),
+      caseImg("Junction", "8.webp"),
+      caseImg("Junction", "9.webp"),
+    ],
+  },
+  {
+    slug: "atlas",
+    services: ["Brand", "Product Design", "Web", "Motion"],
+    areas: ["Fintech", "Trading", "Crypto"],
+    title: "Atlas",
+    tagline: "One terminal for crypto, stocks, gold and FX",
+    date: "2026",
+    start: "2026-09",
+    end: "2026-10",
+    cover: "/case/Atlas/hero.webp",
+    coverPosition: "left",
+    logo: "/icons/client-logos/Atlas.svg",
+    description:
+      "Brand, web terminal, iOS app and landing page for Atlas, a trading platform covering crypto, stocks, gold and FX. Four surfaces in one language: a solid A, a mostly dark palette climbing to one orange that only ever means act, and an order ticket you read in one glance.",
+    work: [
+      caseVid("Atlas", "hero.mp4"),
+      caseImg("Atlas", "1.webp"),
+      caseImg("Atlas", "2.webp"),
+      caseImg("Atlas", "3.webp"),
+      caseImg("Atlas", "4.webp"),
+      caseImg("Atlas", "5.webp"),
+      caseImg("Atlas", "6.webp"),
+      caseImg("Atlas", "7.webp"),
+      caseImg("Atlas", "8.webp"),
+      caseImg("Atlas", "9.webp"),
+      caseImg("Atlas", "10.webp"),
+      caseImg("Atlas", "11.webp"),
+      caseVid("Atlas", "funding.mp4"),
+      caseImg("Atlas", "12.webp"),
+      caseVid("Atlas", "landing-scroll.mp4"),
+      caseImg("Atlas", "13.webp"),
+      caseVid("Atlas", "cta.mp4"),
+      caseImg("Atlas", "14.webp"),
+    ],
+  },
   {
     slug: "wayfind",
     services: ["Brand", "Product Design", "Web"],
