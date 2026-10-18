@@ -31,8 +31,6 @@ export interface CaseStudy {
   /** Optional month-precise span for the Timeline view, format "YYYY-MM". */
   start?: string
   end?: string
-  /** Self-initiated concept, not client work: kept out of the "Trusted by" logo row. */
-  concept?: boolean
 }
 
 export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
@@ -58,7 +56,6 @@ export const caseStudies: CaseStudy[] = [
     services: ["Brand", "Product Design", "Web", "Motion"],
     areas: ["Fintech", "Investing", "Consumer"],
     title: "Junction",
-    concept: true,
     tagline: "Investing as a metro map: pick a line, every stock is a stop",
     date: "2026",
     start: "2026-10",
