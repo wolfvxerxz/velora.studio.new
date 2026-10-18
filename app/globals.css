@@ -618,7 +618,7 @@ html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
 .modal-scroll::-webkit-scrollbar-thumb { background-color: var(--t-cap); }
 
 /* Clean buttons: Mori, no glow, no lift */
-.tick { font-family: var(--font-mori), sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; }
+.tick { font-family: var(--font-mori), sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; }
 .tick-primary, .tick-primary:hover, .tick-secondary, .tick-secondary:hover { box-shadow: none; transform: none; }
 
 /* Magic UI border beam */
