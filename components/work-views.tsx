@@ -7,19 +7,9 @@ import { SpotlightCard } from "@/components/ui/spotlight-card"
 
 interface WorkGridProps {
   caseStudies: CaseStudy[]
-  onOpen: (study: CaseStudy) => void
 }
 
-function openHandler(study: CaseStudy, onOpen: (s: CaseStudy) => void) {
-  return (e: React.MouseEvent) => {
-    // Let modifier/middle clicks open the full page; intercept plain clicks for the modal
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
-    e.preventDefault()
-    onOpen(study)
-  }
-}
-
-export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
+export function WorkGrid({ caseStudies }: WorkGridProps) {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null)
   return (
     <div className="grid grid-cols-2 gap-5">
@@ -32,7 +22,6 @@ export function WorkGrid({ caseStudies, onOpen }: WorkGridProps) {
             className={`press group block ${i === 0 ? "col-span-2" : ""}`}
             onMouseEnter={() => setHoveredSlug(study.slug)}
             onMouseLeave={() => setHoveredSlug(null)}
-            onClick={openHandler(study, onOpen)}
           >
             {/* Framed thumbnail */}
             <SpotlightCard className="rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2 transition-colors duration-300 group-hover:border-[var(--t-line-strong)]">

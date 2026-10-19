@@ -639,3 +639,17 @@ html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
 
 /* Dark client logos rendered white on the dark site */
 .logo-invert { filter: brightness(0) invert(1); }
+
+
+/* Trusted-by logo carousel: a seamless loop of two identical sets, edges faded with a mask */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
+.marquee-track { display: flex; width: max-content; opacity: 0.75; animation: marquee 45s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-set { display: flex; align-items: center; gap: 40px; padding-right: 40px; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { animation: none; width: auto; }
+  .marquee-set { flex-wrap: wrap; row-gap: 20px; }
+  .marquee-set[aria-hidden] { display: none; }
+}

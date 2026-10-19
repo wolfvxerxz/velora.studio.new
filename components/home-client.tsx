@@ -2,10 +2,10 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useRouter } from "next/navigation"
 import type { CaseStudy } from "@/lib/case-studies"
-import { CaseStudyModal } from "@/components/case-study-modal"
 import { WorkGrid } from "@/components/work-views"
+import { LogoMarquee } from "@/components/logo-marquee"
 import { BlurText } from "@/components/ui/blur-text"
 import { NumberTicker } from "@/components/ui/number-ticker"
 import { BorderBeam } from "@/components/ui/border-beam"
@@ -71,7 +71,8 @@ function Bullet() {
 }
 
 export default function HomeClient({ caseStudies }: HomeClientProps) {
-  const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null)
+  const router = useRouter()
+  const openStudy = (c: CaseStudy) => router.push(`/work/${c.slug}`)
   const goToPricing = () => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
   const hasCaseStudy = (c: CaseStudy) => c.cover.startsWith("/case/")
   const caseStudyWorks = caseStudies.filter(hasCaseStudy)
@@ -135,7 +136,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         </header>
 
         {/* Hero */}
-        <Reveal as="section" className={block}>
+        <Reveal as="section" className={`${block} !pb-9 sm:!pb-9`}>
           <div className="mb-8 flex items-center gap-2">
             <span className="h-2 w-2 bg-[var(--t-mint)]" aria-hidden />
             <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">Design &amp; development studio</span>
@@ -162,26 +163,9 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             <Factoid label="Client notes" value={<NumberTicker value={testimonialCount} pad={2} />} />
             <Factoid label="Plans from" value={<NumberTicker value={3999} prefix="€" suffix="/mo" />} />
           </div>
-          <div className="mt-12 border-t border-[var(--t-line)] pt-6">
+          <div className="mt-12 border-t border-[var(--t-line)] pt-8">
             <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Trusted by teams at</span>
-            <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-5">
-              {caseStudies.map((c) => {
-                // Square badge icons get the name beside them; wordmarks stand alone
-                const badge = c.logo.includes("/client-logos/")
-                return (
-                  <span key={c.slug} className="flex items-center gap-2 opacity-70 transition-opacity duration-300 hover:opacity-100" title={c.title}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={c.logo}
-                      alt={c.title}
-                      className={`${badge ? "h-5 w-5 rounded-full" : "h-5 w-auto max-w-[96px]"} object-contain ${logoClass(c)}`}
-                      loading="lazy"
-                    />
-                    {badge && <span className="text-[14px] leading-5 text-[var(--t-ink)]">{c.title}</span>}
-                  </span>
-                )
-              })}
-            </div>
+            <LogoMarquee studies={caseStudies} />
           </div>
         </Reveal>
 
@@ -198,7 +182,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                   type="button"
                   onClick={() => {
                     const s = caseStudies.find((c) => c.slug === w.slug)
-                    if (s) setSelectedStudy(s)
+                    if (s) openStudy(s)
                   }}
                   className="text-[var(--t-mint-ink)] underline decoration-transparent underline-offset-4 transition-colors hover:decoration-current"
                 >
@@ -218,7 +202,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
             meta={pad(caseStudyWorks.length)}
             sub="Brand, product and web for founders building in AI and Web3."
           />
-          <WorkGrid caseStudies={caseStudyWorks} onOpen={setSelectedStudy} />
+          <WorkGrid caseStudies={caseStudyWorks} />
         </Reveal>
 
         <CapLine />
@@ -323,7 +307,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
                       <li key={c.slug}>
                         <button
                           type="button"
-                          onClick={() => setSelectedStudy(c)}
+                          onClick={() => openStudy(c)}
                           className="group flex w-full items-baseline gap-3 py-[6px] text-left"
                         >
                           <span className="shrink-0 text-[14px] leading-5 text-[var(--t-ink)]">{c.title}</span>
@@ -382,7 +366,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         </Reveal>
       </div>
 
-      <CaseStudyModal study={selectedStudy} onClose={() => setSelectedStudy(null)} />
     </main>
   )
 }
