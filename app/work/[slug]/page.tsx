@@ -71,6 +71,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const withPages = caseStudies.filter((c) => c.cover.startsWith("/case/"))
   const i = withPages.findIndex((c) => c.slug === study.slug)
   const next = withPages[(i + 1) % withPages.length]
+  const prev = withPages[(i - 1 + withPages.length) % withPages.length]
   const pad = (n: number) => String(n).padStart(2, "0")
 
   const facts = [
@@ -94,13 +95,51 @@ export default async function CaseStudyPage({ params }: PageProps) {
         backgroundSize: "14px 14px",
       }}
     >
+      {/* All cases, pinned beside the column on wide screens */}
+      <nav
+        className="fixed top-[116px] z-40 hidden w-[168px] min-[1120px]:block"
+        style={{ left: "calc(50% - 340px - 40px - 168px)" }}
+        aria-label="All case studies"
+      >
+        <p className="mono mb-3 text-[12px] leading-4 text-[var(--t-faint)]">Case studies</p>
+        <ul className="flex flex-col">
+          {withPages.map((c) => {
+            const here = c.slug === study.slug
+            return (
+              <li key={c.slug}>
+                <Link
+                  href={`/work/${c.slug}`}
+                  aria-current={here ? "page" : undefined}
+                  className={`flex items-center gap-2 py-[5px] text-[14px] leading-5 transition-colors ${here ? "text-[var(--t-ink)]" : "text-[var(--t-faint)] hover:text-[var(--t-ink)]"}`}
+                >
+                  <span className={`h-[7px] w-[7px] flex-none ${here ? "bg-[var(--t-mint)]" : "bg-transparent"}`} aria-hidden />
+                  {c.title}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+
       <div className="mx-auto min-h-screen w-full max-w-[680px] border-x border-[var(--t-line)] bg-[var(--t-bg)]">
         {/* Topbar, as on the home page */}
         <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[var(--t-header)] backdrop-blur-xl">
           <div className="flex h-[68px] items-center justify-between px-5 sm:px-6">
-            <Link href="/" className="press flex items-center" aria-label="velora.studio home">
-              <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="theme-logo" priority />
-            </Link>
+            <div className="flex items-center gap-5">
+              <Link href="/" className="press flex items-center" aria-label="velora.studio home">
+                <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="theme-logo" priority />
+              </Link>
+              {/* Case switcher: always on screen in the sticky header */}
+              <nav className="mono flex items-center text-[13px] leading-5 text-[var(--t-faint)] tabular-nums" aria-label="Case studies">
+                <Link href={`/work/${prev.slug}`} className="flex h-8 w-8 items-center justify-center rounded-[2px] text-[18px] transition-colors hover:bg-[var(--t-cap)] hover:text-[var(--t-ink)]" aria-label={`Previous case: ${prev.title}`} title={prev.title}>
+                  ‹
+                </Link>
+                <span className="px-1"><span className="text-[var(--t-ink)]">{pad(i + 1)}</span> / {pad(withPages.length)}</span>
+                <Link href={`/work/${next.slug}`} className="flex h-8 w-8 items-center justify-center rounded-[2px] text-[18px] transition-colors hover:bg-[var(--t-cap)] hover:text-[var(--t-ink)]" aria-label={`Next case: ${next.title}`} title={next.title}>
+                  ›
+                </Link>
+              </nav>
+            </div>
             <nav className="flex items-center gap-5">
               <Link href="/#work" className="mono hidden text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)] sm:inline">
                 Work
@@ -117,11 +156,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
         {/* Intro */}
         <Reveal as="section" className={block}>
-          <nav className="mono mb-8 flex items-center gap-2 text-[13px] leading-5 text-[var(--t-faint)]" aria-label="Breadcrumb">
-            <Link href="/#work" className="transition-colors hover:text-[var(--t-ink)]">Work</Link>
-            <span aria-hidden>/</span>
-            <span className="text-[var(--t-muted)]">{study.title}</span>
-          </nav>
+          <div className="mono mb-8 flex items-center gap-4 text-[13px] leading-5 text-[var(--t-faint)]">
+            <nav className="flex items-center gap-2" aria-label="Breadcrumb">
+              <Link href="/#work" className="transition-colors hover:text-[var(--t-ink)]">Work</Link>
+              <span aria-hidden>/</span>
+              <span className="text-[var(--t-muted)]" aria-current="page">{study.title}</span>
+            </nav>
+          </div>
           <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">{story.headline}</h1>
           <p className={`mt-4 ${body}`}>{study.description}</p>
 
@@ -240,6 +281,30 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </Link>
             </div>
           )}
+
+          <div className="mt-12">
+            <Subheading title="More work" meta={pad(withPages.length)} />
+            <ul className="border-t border-[var(--t-line)]">
+              {withPages.map((c) => {
+                const here = c.slug === study.slug
+                return (
+                  <li key={c.slug} className="border-b border-[var(--t-line)]">
+                    <Link
+                      href={`/work/${c.slug}`}
+                      aria-current={here ? "page" : undefined}
+                      className="group flex items-baseline gap-3 py-3"
+                    >
+                      <span className={`shrink-0 text-[14px] leading-5 ${here ? "text-[var(--t-mint-ink)]" : "text-[var(--t-ink)]"}`}>{c.title}</span>
+                      <span className="h-px flex-1 translate-y-[-4px] bg-[var(--t-line)] transition-colors group-hover:bg-[var(--t-line-strong)]" aria-hidden />
+                      <span className="truncate text-right text-[13px] leading-5 text-[var(--t-faint)] transition-colors group-hover:text-[var(--t-ink)]">
+                        {here ? "You're here" : `${c.tagline ?? c.services?.join(", ") ?? ""} ↗`}
+                      </span>
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
 
           <p className="mono mt-12 text-[12px] leading-4 text-[var(--t-faint)]">velora.studio · Design &amp; development studio · © 2026</p>
         </Reveal>
