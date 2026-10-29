@@ -23,8 +23,175 @@ const vid = (client: string, file: string): CaseStudyWorkItem => ({ src: `/case/
 
 const A = (f: string) => img("Atlas", f)
 const J = (f: string) => img("Junction", f)
+const N = (f: string) => img("Nightshift", f)
+const M = (f: string) => img("Moss", f)
+const Y = (f: string) => img("YouSpot", f)
 
 const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkItem }> = {
+  moss: {
+    headline: "A Postgres platform on an old blue screen, brand to dashboard",
+    intro: [
+      "Moss gives every pull request its own copy of production in under a second, rewinds any table to any second in the last thirty days, and puts idle branches to sleep so they cost nothing.",
+      "We designed the brand, the dashboard in light and dark, the landing page, pricing and changelog, and the motion that ties them together.",
+    ],
+    vision: "Seen up close, every screen is a grid. So is every table.",
+    hero: vid("Moss", "landing-scroll.mp4"),
+    chapters: [
+      {
+        label: "Brand",
+        title: "A pixel sprout",
+        body: [
+          "The mark is drawn on a thirteen by thirteen grid: main grows straight up and flowers, and a branch leaves the stem to flower on its own.",
+          "Screen blue, night and ice carry everything. Headlines are set in a pixel face read from across the room; everything up close is Geist.",
+        ],
+        rows: [[M("brand-mark.webp"), M("brand-grid.webp")], [M("brand-lockups.webp"), M("brand-colour.webp")]],
+      },
+      {
+        label: "Type and texture",
+        title: "The screen, up close",
+        body: ["A close-up LCD grid with red, green and blue subpixels sits under every blue surface. On phones it covers the whole page, so you scroll behind the glass."],
+        rows: [[M("brand-type.webp"), M("brand-headline.webp")], [M("brand-screen.webp"), M("brand-osd.webp")]],
+      },
+      {
+        label: "Website",
+        title: "Change the channel to come in",
+        body: [
+          "Every page opens like flipping a VCR to a new channel: blue, tape noise and an on-screen display, then the signal locks and the page comes into focus.",
+          "The hero is a live grid that bends toward your cursor; click anywhere and a branch is planted.",
+        ],
+        rows: [[M("1.webp")], [M("2.webp")], [M("3.webp")], [M("4.webp")]],
+      },
+      {
+        label: "Windows",
+        title: "Every showcase is a window",
+        body: ["Old window chrome, used sparingly: a title bar, three buttons and a sharp frame. Inside, the real dashboard runs on a curved, scan-lined screen."],
+        rows: [[M("brand-windows.webp"), M("brand-pattern.webp")], [M("5.webp")], [M("6.webp")]],
+      },
+      {
+        label: "Dashboard",
+        title: "Soft, grey and quick to read",
+        body: ["Branches, Rewind, Tables, Ask and Usage, in light and dark. Stats sit on soft cards, rows float on a tray, and the only colour left is the branch dot."],
+        rows: [[M("10.webp")], [M("11.webp")], [M("12.webp")], [M("brand-product-dark.webp"), M("brand-product-light.webp")]],
+      },
+      {
+        label: "Pages",
+        title: "Pricing and changelog",
+        body: ["The same windows carry the plans and every release, so the inner pages feel like more channels of the same set."],
+        rows: [[M("7.webp")], [M("8.webp")], [M("9.webp")]],
+      },
+    ],
+    result: "Real Postgres, safe to break.",
+  },
+  youspot: {
+    headline: "An assistant that knows who needs you today, brand to landing page",
+    intro: [
+      "YouSpot reads your mail, calendar and chats and tells you every morning who is waiting on you, with replies already drafted in your voice.",
+      "We designed the brand, the app and the landing page, plus a set of launch posts and films.",
+    ],
+    vision: "Know who needs you today.",
+    hero: vid("YouSpot", "landing-scroll.mp4"),
+    chapters: [
+      {
+        label: "Idea",
+        title: "One of them is the spot",
+        body: ["Your network is made of different people, so the mark is made of four different shapes. The orange spot is the one who needs you next."],
+        rows: [[Y("1.webp")], [Y("2.webp")]],
+      },
+      {
+        label: "Brand",
+        title: "Mostly calm, one loud spot",
+        body: ["Paper and white carry the page, ink carries the words, and orange only marks what needs someone."],
+        rows: [[Y("3.webp")], [Y("4.webp")], [Y("mark.webp"), Y("icons.webp")]],
+      },
+      {
+        label: "System",
+        title: "Everything built from the mark",
+        body: ["The four shapes become patterns, borders and big crops, textures, icons and every illustration in the product."],
+        rows: [[Y("5.webp")], [Y("6.webp")], [Y("7.webp")], [Y("network.webp"), Y("radar.webp")]],
+      },
+      {
+        label: "Detail",
+        title: "Type, shapes and icons",
+        body: ["One family, Inter, semibold for headlines and regular for everything else. Icons share a 24 grid and one orange spot."],
+        rows: [[Y("8.webp")], [Y("9.webp")], [Y("10.webp")], [Y("11.webp")]],
+      },
+      {
+        label: "Website",
+        title: "A landing page that feels like the morning brief",
+        body: ["Section by section: the day, how it works, the brief, the agents, a bento of what it keeps track of, and pricing."],
+        rows: [[Y("landing-hero.webp"), Y("landing-how.webp")], [Y("landing-brief.webp"), Y("landing-agents.webp")], [Y("landing-bento.webp"), Y("landing-pricing.webp")]],
+      },
+      {
+        label: "Social",
+        title: "Built for the feed",
+        body: ["Launch posts made from the same shapes as the product, so the feed and the app feel like one thing."],
+        rows: [[Y("post-a1-day.webp"), Y("post-b1-brain.webp")], [Y("post-a3-chat.webp"), Y("post-b2-agents.webp")], [vid("YouSpot", "network.mp4"), vid("YouSpot", "radar.mp4")]],
+      },
+    ],
+    result: "Three people need you today. Now you know which.",
+  },
+  nightshift: {
+    headline: "AI agents that work overnight, brand to web app",
+    intro: [
+      "Nightshift runs a team's AI agents while the team is offline. You hand off work at dusk, agents work the night, and a morning brief is waiting at dawn with anything risky held for a person.",
+      "We designed the brand, the web app and the landing page, plus a motion system built from the same imagery.",
+    ],
+    vision: "Your team sleeps. The work doesn't.",
+    hero: vid("Nightshift", "logo.mp4"),
+    chapters: [
+      {
+        label: "Idea",
+        title: "A warmer night for AI",
+        body: [
+          "The category is full of glowing brains, neon and terminal green. We went for soft-focus night photography instead: a garden after dark, warm light in the foreground, grain and blur doing the technical work quietly.",
+          "It should feel calm, capable and human. A light left on for you.",
+        ],
+        rows: [[N("1.webp")], [vid("Nightshift", "film.mp4")]],
+      },
+      {
+        label: "Brand",
+        title: "Built from circles",
+        body: ["The mark is five circles merged into one soft shape, with a hole cut for the moon. The wordmark is set lowercase, rounded and warm."],
+        rows: [[N("2.webp")], [N("3.webp")], [N("4.webp")]],
+      },
+      {
+        label: "Adaptive tokens",
+        title: "Tokens bloom as agents learn",
+        body: ["Every agent gets its own token. It starts as a single soft shape and gains a petal for every skill it learns, so how far along an agent is becomes something you can see."],
+        rows: [[vid("Nightshift", "agents.mp4")], [N("5.webp")], [N("6.webp")]],
+      },
+      {
+        label: "Typed tokens",
+        title: "Every agent, typed out",
+        body: ["For big moments an agent's token is drawn in characters: dense where the shape is solid, light at its soft edge, warming from dawn to ember. Relay grows petal by petal as it learns."],
+        rows: [[vid("Nightshift", "token.mp4")], [N("18.webp")]],
+      },
+      {
+        label: "System",
+        title: "Textures, colour and type",
+        body: ["Blurred photography painted in code, film grain, a square-dot screen, contour lines, binary, halftone edges and typed tokens. Inter Tight Light for display, one warm action colour."],
+        rows: [[N("19.webp")], [N("7.webp")], [N("8.webp")], [N("9.webp")], [N("10.webp")]],
+      },
+      {
+        label: "Web app",
+        title: "Hand off at dusk, decide at dawn",
+        body: ["The morning brief puts what needs you first, then what happened overnight. Every run keeps a written trace, and anything that moves money or goes public waits in Approvals."],
+        rows: [[N("11.webp")], [vid("Nightshift", "brief.mp4")], [N("12.webp")]],
+      },
+      {
+        label: "Website",
+        title: "One page, one night",
+        body: ["The landing page opens on the night garden and shows the product working, with proof, integrations and a short FAQ."],
+        rows: [[vid("Nightshift", "landing.mp4")], [N("13.webp")], [N("14.webp")]],
+      },
+      {
+        label: "Voice and applications",
+        title: "Plain, calm, on your side",
+        rows: [[N("15.webp")], [N("16.webp")], [N("17.webp")]],
+      },
+    ],
+    result: "A brand that makes overnight AI feel calm instead of cold.",
+  },
   atlas: {
     headline: "A trading platform for crypto, stocks, gold and FX, brand to app",
     intro: [
@@ -83,6 +250,7 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
     result: "Four surfaces, one language.",
   },
   junction: {
+    hero: J("hero.webp"),
     headline: "A playful investing app for first-time investors, brand to landing page",
     intro: [
       "Junction is an investing app for people buying their first stock. Ready-made mixes are drawn as transit lines and every stock is a stop, so a whole portfolio reads like one map.",

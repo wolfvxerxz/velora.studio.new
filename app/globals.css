@@ -653,3 +653,7 @@ html, body { background-color: var(--t-bg) !important; color: var(--t-ink); }
   .marquee-set { flex-wrap: wrap; row-gap: 20px; }
   .marquee-set[aria-hidden] { display: none; }
 }
+
+/* typography: no lone word on a last line */
+h1, h2, h3, h4, blockquote, figcaption { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
