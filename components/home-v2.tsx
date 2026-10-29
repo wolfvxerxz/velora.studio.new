@@ -28,6 +28,13 @@ const STEPS = [
   { n: "04", title: "Launch and tell people", body: "A case study and launch posts go out with it, so the work brings in the next round of attention." },
 ]
 
+const CAPS = [
+  { n: "01", t: "Brand", href: "/services/brand-identity", items: ["Logo and wordmark", "Colour, type and texture", "Brand book", "Launch visuals"] },
+  { n: "02", t: "Product", href: "/services/product-design", items: ["Core flows", "Dashboards", "iOS and web apps", "Design systems"] },
+  { n: "03", t: "Web", href: "/services/website-design", items: ["Landing pages", "Pricing and changelog", "SEO and AI search", "Next.js, Framer, Webflow"] },
+  { n: "04", t: "Motion", href: "/services/mvp-design", items: ["Logo animation", "Product films", "Loaders and transitions", "Launch posts"] },
+]
+
 const FOR = [
   ["AI and agents", "/industries/ai-startups", "Interfaces that show what the AI did and what still needs a person."],
   ["Fintech", "/industries/fintech", "Trading, investing and payments that feel simple and safe."],
@@ -75,53 +82,25 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
         </div>
       </header>
 
-      {/* Hero: the promise, with real deliverables on the desk around it */}
+      {/* Hero: who we are in one line, then the work itself, moving */}
       <section className="vh-hero">
-        <div className="vh-prop vh-prop-l" aria-hidden>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/case/Moss/brand-mark.webp" alt="" /></div>
-        <div className="vh-prop vh-prop-r" aria-hidden>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/case/YouSpot/mark.webp" alt="" /></div>
-        <div className="vh-prop vh-prop-r2" aria-hidden>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/case/Moss/brand-headline.webp" alt="" /></div>
         <div className="vh-in vh-hero-in">
-          <span className="vh-chip">Brand, product and launch studio</span>
-          <h1 className="vh-h1">Launch like you&apos;ve<br />already raised</h1>
-          <p className="vh-lead">Brand, app and landing page for funded AI and fintech startups, designed as one system and shipped before your raise or launch date.</p>
-          <div className="vh-cta">
-            <a href={book} target="_blank" rel="noopener noreferrer" className="vh-btn vh-btn-lg">Book a 15-minute call</a>
-            <a href="#work" className="vh-btn vh-btn-lg vh-btn-ghost">See the work</a>
-          </div>
-          <ul className="vh-checks">
-            <li><Tick />Audit €2,500</li><li><Tick />Launch in 4–6 weeks</li><li><Tick />Partner €5,900/mo</li>
-          </ul>
-        </div>
-
-        {/* The deliverable sheet, like a project invoice */}
-        <div className="vh-in vh-sheet-wrap">
-          <div className="vh-sheet vh-sheet-back" aria-hidden />
-          <div className="vh-sheet">
-            <div className="vh-sheet-top">
-              <div><span className="vh-k">Project</span><b>Moss · Launch</b></div>
-              <div><span className="vh-k">Timeline</span><b>5 weeks</b></div>
-              <div><span className="vh-k">Shipped</span><b>Oct 2026</b></div>
+          <span className="vh-avail"><i aria-hidden />Booking November · 2 launch spots</span>
+          <h1 className="vh-h1">An independent design studio for startups that want to look like the category leader.</h1>
+          <div className="vh-hero-row">
+            <p className="vh-lead">We design the brand, the product and the launch as one system, build it in Next.js, and plan it back from your raise or launch date. Atlas, Junction, Nightshift and Moss are a few of the things we made this year.</p>
+            <div className="vh-cta">
+              <a href={book} target="_blank" rel="noopener noreferrer" className="vh-btn vh-btn-lg">Book a 15-minute call</a>
+              <a href="#work" className="vh-link">See the work <span aria-hidden>↓</span></a>
             </div>
-            <div className="vh-sheet-parties">
-              <div><span className="vh-k">From</span><p><Image src="/logo/logo-v.svg" alt="" width={18} height={18} className="vh-logo-mark" /> Velora Studio</p></div>
-              <div><span className="vh-k">To</span><p>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/icons/client-logos/Moss.svg" alt="" width={18} height={18} /> Moss</p></div>
-            </div>
-            <table className="vh-sheet-t">
-              <thead><tr><th>Deliverable</th><th>Detail</th><th>Status</th></tr></thead>
-              <tbody>
-                {[["Brand identity", "Pixel sprout mark, colour, type, 16-board brand book"], ["Dashboard", "Branches, Rewind, Ask, Usage, light and dark"], ["Landing page", "Live product inside, channel-change loader"], ["Pricing and changelog", "Two more pages in the same system"], ["Case study and posts", "4-image X packs and a 33-second film"]].map(([a, b]) => (
-                  <tr key={a}><td>{a}</td><td>{b}</td><td><span className="vh-done">Shipped</span></td></tr>
-                ))}
-              </tbody>
-            </table>
-            <a href="/work/moss" className="vh-sheet-link">Open the full case <span aria-hidden>→</span></a>
           </div>
         </div>
+        <WorkWall />
       </section>
 
       {/* Proof */}
       <section className="vh-logos">
-        <p>Shipped with {withPages.length} startups across AI, fintech and developer tools</p>
+        <p>Selected clients</p>
         <div className="vh-logo-row">
           {byLogo.map((c) => (
             <Link key={c.slug} href={`/work/${c.slug}`} className="vh-logo-item">
@@ -140,74 +119,68 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
         </Reveal>
       )}
 
-      {/* Who it's for */}
+      {/* What we make */}
       <Reveal as="section" className="vh-in vh-sec">
-        <h2 className="vh-h2">Built for teams with a date<br />they can&apos;t move</h2>
-        <div className="vh-grid3">
-          {FOR.map(([t, href, b]) => (
-            <Link key={t} href={href} className="vh-card vh-card-link">
-              <b>{t}</b><span>{b}</span>
+        <div className="vh-sec-h"><h2 className="vh-h2">What we make</h2><Link href="/services" className="vh-link">All services <span aria-hidden>→</span></Link></div>
+        <div className="vh-caps">
+          {CAPS.map((c) => (
+            <Link key={c.t} href={c.href} className="vh-cap">
+              <span className="vh-n">{c.n}</span>
+              <b>{c.t}</b>
+              <ul>{c.items.map((x) => <li key={x}>{x}</li>)}</ul>
             </Link>
           ))}
         </div>
+        <p className="vh-for">For founders in {FOR.map(([t, href], i) => <span key={t}><Link href={href}>{t}</Link>{i < FOR.length - 2 ? ", " : i === FOR.length - 2 ? " and " : "."}</span>)}</p>
       </Reveal>
 
-      {/* The problem */}
-      <Reveal as="section" className="vh-in vh-sec">
-        <h2 className="vh-h2">Most startups launch looking<br />like three different companies</h2>
-        <div className="vh-grid3">
-          {PROBLEMS.map((p) => (
-            <div key={p.tag} className="vh-prob">
-              <span style={{ color: p.color }}>{p.tag}</span>
-              <b>{p.title}</b>
-              <p>{p.body}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* Work, Hex-style rows */}
+      {/* Work: big tiles, the way a studio shows it */}
       <section id="work" className="vh-in vh-sec">
-        <Reveal><h2 className="vh-h2">One system, from the mark<br />to the launch post</h2></Reveal>
-        <div className="vh-work">
-          {feat.map((c, i) => (
-            <Reveal key={c.slug} className={`vh-row ${i % 2 ? "flip" : ""}`}>
-              <div className="vh-row-t">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.logo} alt="" width={32} height={32} className="vh-row-logo" />
-                <h3>{c.title}</h3>
-                <p className="vh-row-tag">{c.tagline}</p>
-                <p className="vh-row-p">{c.description}</p>
-                <div className="vh-row-chips">{c.services?.map((s) => <span key={s}>{s}</span>)}</div>
-                <Link href={`/work/${c.slug}`} className="vh-btn vh-btn-ghost">Read the case</Link>
-              </div>
-              <Link href={`/work/${c.slug}`} className="vh-row-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.cover} alt={`${c.title} case study`} loading="lazy" />
+        <Reveal className="vh-sec-h"><h2 className="vh-h2">Selected work</h2><span className="vh-count">{pad(withPages.length)} projects</span></Reveal>
+        <div className="vh-tiles">
+          {[...feat, ...rest].map((c, i) => (
+            <Reveal key={c.slug} className={`vh-tile ${i < 2 ? "big" : ""}`}>
+              <Link href={`/work/${c.slug}`} className="vh-tile-a">
+                <div className="vh-tile-img">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c.cover} alt={`${c.title} case study`} loading="lazy" />
+                </div>
+                <div className="vh-tile-t">
+                  <b>{c.title}</b>
+                  <span>{c.tagline}</span>
+                  <em>{c.services?.join(" · ")}</em>
+                </div>
               </Link>
             </Reveal>
           ))}
         </div>
-        <Reveal className="vh-more">
-          {rest.map((c) => (
-            <Link key={c.slug} href={`/work/${c.slug}`} className="vh-more-item">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.cover} alt={`${c.title} case study`} loading="lazy" />
-              <b>{c.title}</b><span>{c.tagline}</span>
-            </Link>
-          ))}
-        </Reveal>
       </section>
 
-      {/* How it works */}
-      <Reveal as="section" className="vh-in vh-sec">
-        <h2 className="vh-h2">How a launch runs</h2>
-        <div className="vh-steps">
-          {STEPS.map((s) => (
-            <div key={s.n} className="vh-card"><span className="vh-n">{s.n}</span><b>{s.title}</b><span>{s.body}</span></div>
-          ))}
-        </div>
-      </Reveal>
+      {/* A launch, itemised */}
+      <section className="vh-in vh-sec vh-launch">
+        <Reveal className="vh-launch-t">
+          <h2 className="vh-h2">What a launch looks like</h2>
+          <p className="vh-sub">Moss went from a name to a brand, a dashboard, a landing page and a case study in five weeks. Every launch is planned the same way, back from your date.</p>
+          <ol className="vh-steps-l">{STEPS.map((s) => <li key={s.n}><span className="vh-n">{s.n}</span><b>{s.title}</b><span>{s.body}</span></li>)}</ol>
+        </Reveal>
+        <Reveal className="vh-sheet-wrap">
+          <div className="vh-sheet vh-sheet-back" aria-hidden />
+          <div className="vh-sheet">
+            <div className="vh-sheet-top">
+              <div><span className="vh-k">Project</span><b>Moss · Launch</b></div>
+              <div><span className="vh-k">Timeline</span><b>5 weeks</b></div>
+            </div>
+            <table className="vh-sheet-t">
+              <tbody>
+                {[["Brand identity", "Mark, colour, type, 16-board brand book"], ["Dashboard", "Branches, Rewind, Ask, Usage, light and dark"], ["Landing page", "Live product inside, channel-change loader"], ["Pricing and changelog", "Two more pages, same system"], ["Case study and posts", "X packs and a 33-second film"]].map(([a, b]) => (
+                  <tr key={a}><td>{a}<span>{b}</span></td><td><span className="vh-done">Shipped</span></td></tr>
+                ))}
+              </tbody>
+            </table>
+            <a href="/work/moss" className="vh-sheet-link">Open the Moss case <span aria-hidden>→</span></a>
+          </div>
+        </Reveal>
+      </section>
 
       {/* Pricing */}
       <section id="pricing" className="vh-in vh-sec">
@@ -273,6 +246,30 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
         </div>
         <p className="vh-in vh-copy">velora.studio · © 2026 · {pad(withPages.length)} case studies</p>
       </footer>
+    </div>
+  )
+}
+
+// A slow, endless wall of real work: films and posters straight from the case studies.
+const WALL: [string, "v" | "i", "w" | "t"][][] = [
+  [["/case/Moss/brand-cover.webp", "i", "t"], ["/case/Atlas/hero.mp4", "v", "w"], ["/case/YouSpot/network.mp4", "v", "t"], ["/case/Junction/2.webp", "i", "w"], ["/case/Moss/brand-osd.webp", "i", "t"], ["/case/Nightshift/token.mp4", "v", "w"], ["/case/YouSpot/mark.webp", "i", "t"], ["/case/Moss/3.webp", "i", "w"]],
+  [["/case/Junction/patterns.mp4", "v", "w"], ["/case/Moss/brand-mark.webp", "i", "t"], ["/case/Nightshift/2.webp", "i", "w"], ["/case/YouSpot/radar.mp4", "v", "t"], ["/case/Atlas/funding.mp4", "v", "w"], ["/case/Moss/brand-headline.webp", "i", "t"], ["/case/Atlas/5.webp", "i", "w"], ["/case/YouSpot/card.mp4", "v", "t"]],
+]
+function WorkWall() {
+  return (
+    <div className="vh-wall" aria-label="Recent work">
+      {WALL.map((row, r) => (
+        <div key={r} className={`vh-wall-row ${r ? "rev" : ""}`}>
+          {[...row, ...row].map(([src, kind, shape], i) => (
+            <div key={i} className={`vh-wall-tile ${shape}`} aria-hidden={i >= row.length}>
+              {kind === "v"
+                ? <video src={src} autoPlay loop muted playsInline preload="metadata" />
+                // eslint-disable-next-line @next/next/no-img-element
+                : <img src={src} alt="" loading={i < 3 ? "eager" : "lazy"} />}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   )
 }
