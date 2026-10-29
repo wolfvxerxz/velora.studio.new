@@ -24,10 +24,13 @@ export const STUDIO = {
   book: "https://cal.com/vuk-m/15min",
   email: "hello@velora.studio",
   oneLine: "Velora Studio is a design and development studio for AI, fintech, Web3 and developer-tool startups. We design brands, products and websites, and build them in Next.js.",
+  promise: "Brand, product and launch for funded AI and fintech startups, shipped as one system before your raise or launch date.",
   plans: [
-    { name: "Design Partner", price: "€3,999 per month", detail: "Unlimited design requests, 2–3 updates a week, Next.js development, Slack or WhatsApp, pause or cancel anytime." },
-    { name: "Custom Quote", price: "Scoped per project", detail: "Brand identity, product and website design, Framer, Webflow or Next.js builds, unlimited revisions." },
+    { name: "Audit", price: "€2,500, credited to your first month or project", detail: "One week. Your product, site and brand reviewed, a prioritised list of what to fix first, and a walkthrough call." },
+    { name: "Launch", price: "from €14,900, 4–6 weeks", detail: "Brand identity, the app's core flows (web or iOS), a landing page with the live product, a case study and launch posts. Two spots a month." },
+    { name: "Design Partner", price: "€5,900 per month", detail: "Unlimited design requests, 2–3 updates a week, Next.js development, Slack or WhatsApp, pause or cancel anytime." },
   ],
+  perks: "Referrals get 10% off a month for both sides. YC, Antler, a16z speedrun and similar accelerator companies get 10% off.",
 }
 
 const book = "Book a 15-minute call and we set the plan around your launch date."
@@ -112,17 +115,17 @@ export const SERVICES: SeoPage[] = [
     slug: "design-subscription",
     kind: "services",
     name: "Design subscription",
-    title: "Design Subscription for Startups — Unlimited Design, €3,999/mo",
+    title: "Design Subscription for Startups — Unlimited Design, €5,900/mo",
     h1: "A design partner that ships every week",
-    description: "Unlimited design requests for €3,999 a month: product, web and brand, 2–3 updates a week, Next.js development, pause or cancel anytime.",
-    answer: "Velora's Design Partner plan is a monthly design subscription at €3,999 per month with unlimited requests, 2–3 updates a week, Next.js development, and the option to pause or cancel anytime.",
+    description: "Unlimited design requests for €5,900 a month: product, web and brand, 2–3 updates a week, Next.js development, pause or cancel anytime.",
+    answer: "Velora's Design Partner plan is a monthly design subscription at €5,900 per month with unlimited requests, 2–3 updates a week, Next.js development, and the option to pause or cancel anytime.",
     sections: [
       { title: "What's included", list: ["Unlimited requests, one active at a time", "2–3 updates a week", "Product, website and brand design", "Next.js development", "A shared Slack or WhatsApp channel", "Pause or cancel anytime"] },
       { title: "Who it's for", body: ["Teams that ship every week and need senior design without hiring. If you have one big project with a fixed scope, a Custom Quote usually fits better."] },
     ],
     cases: ["nightshift", "atlas", "bentolabs", "insforge"],
     faq: [
-      ["How much does the design subscription cost?", "€3,999 per month, with unlimited requests and 2–3 updates a week. You can pause or cancel anytime."],
+      ["How much does the design subscription cost?", "€5,900 per month, with unlimited requests and 2–3 updates a week. You can pause or cancel anytime."],
       ["How fast are updates?", "Two to three updates a week on your active request, in a shared channel."],
       ["Is development included?", "Yes, Next.js development is part of the plan."],
     ],
@@ -268,7 +271,7 @@ export const COMPARE: SeoPage[] = [
     sections: [
       { title: "Choose a freelancer when", list: ["You need one deliverable, like a logo or a single landing page", "Budget is the main constraint", "You can manage the work and fill gaps yourself"] },
       { title: "Choose a studio when", list: ["Brand, product and site need to launch together", "You need design and development from one team", "A launch, raise or demo date can't move"] },
-      { title: "Cost", body: ["Freelancers commonly charge per project or hour. Velora's Design Partner plan is €3,999 a month for unlimited requests, which is usually less than a senior in-house designer and covers development too."] },
+      { title: "Cost", body: ["Freelancers commonly charge per project or hour. Velora's Design Partner plan is €5,900 a month for unlimited requests, which is usually less than a senior in-house designer and covers development too."] },
     ],
     cases: ["moss", "junction"],
     faq: [["Is a studio worth it for an early startup?", "When several things need to ship together, yes. For a single logo or page, a good freelancer is often enough."]],
@@ -298,7 +301,7 @@ export const COMPARE: SeoPage[] = [
     answer: "Pick a fixed project when the scope is clear and finishes on a date, like a brand or a launch site. Pick a subscription when requests keep coming every week and you want them shipped continuously.",
     sections: [
       { title: "Fixed project", list: ["Clear scope and end date", "Best for brand identities and launches", "One price agreed upfront"] },
-      { title: "Subscription", list: ["Ongoing requests, 2–3 updates a week", "Best for product teams shipping weekly", "€3,999 a month at Velora, pause or cancel anytime"] },
+      { title: "Subscription", list: ["Ongoing requests, 2–3 updates a week", "Best for product teams shipping weekly", "€5,900 a month at Velora, pause or cancel anytime"] },
     ],
     cases: ["moss", "insforge"],
     faq: [["Can I start with a project and move to a subscription?", "Yes, and many teams do after launch."]],

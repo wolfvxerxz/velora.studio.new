@@ -18,7 +18,8 @@ interface HomeClientProps {
 }
 
 const scheduleUrl = "https://cal.com/vuk-m/15min"
-const subscribeUrl = "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI"
+// The old €3,999 PayPal plan stays parked here until a €5,900 plan exists:
+// https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-46U604671L576204CNC5DRPI
 
 function CapLine() {
   return (
@@ -33,6 +34,12 @@ const WHY = [
   { title: "A brand that has to look funded.", body: "Investors meet the brand before they meet you. Armature got a sharp identity and a digital presence to match.", client: "Armature", slug: "armature" },
   { title: "A product people don't get.", body: "Good infrastructure, confusing screens. InsForge got clarity built into every step, from onboarding to the core workflow.", client: "InsForge", slug: "insforge" },
   { title: "A flow that loses money.", body: "Billing is where trust breaks. SubPay's subscription flow was redesigned for clarity at every step.", client: "SubPay", slug: "subpay" },
+]
+
+const PLANS = [
+  { name: "Audit", price: "€2,500", unit: " one-off", line: "A clear view of your product, site and brand, and what to fix first. Credited to your first month or project.", items: ["One week", "Product, site and brand reviewed", "Prioritised fix list", "Walkthrough call"], cta: "Book an audit", tag: "", hot: false },
+  { name: "Launch", price: "from €14,900", unit: "", line: "Brand, app and landing page shipped as one system, planned back from your date.", items: ["4–6 weeks", "Brand identity and brand book", "App core flows, web or iOS", "Landing page with the live product", "Case study and launch posts"], cta: "Book a launch call", tag: "2 spots in Nov", hot: true },
+  { name: "Design Partner", price: "€5,900", unit: "/mo", line: "Unlimited design for teams that ship every week.", items: ["2–3 updates a week", "Product, web and brand", "Next.js development", "Slack or WhatsApp", "Pause or cancel anytime"], cta: "Let's work together", tag: "", hot: false },
 ]
 
 const PRINCIPLES = [
@@ -86,22 +93,6 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
   const testimonialCount = caseStudies.filter((c) => c.testimonial).length
   const pad = (n: number) => String(n).padStart(2, "0")
 
-  const customQuoteFeatures = [
-    "Brand identity design",
-    "Product & website design",
-    "Framer or Webflow",
-    "Next.js development",
-    "Unlimited revisions",
-    "Frequent updates",
-  ]
-  const subscriptionFeatures = [
-    "2–3 updates / week",
-    "Best-in-class Figma work",
-    "Next.js development",
-    "Unlimited requests",
-    "Slack or WhatsApp",
-    "Pause or cancel anytime",
-  ]
 
   const block = "px-5 py-16 sm:px-6 sm:py-20"
 
@@ -139,13 +130,13 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
         <Reveal as="section" className={`${block} !pb-9 sm:!pb-9`}>
           <div className="mb-8 flex items-center gap-2">
             <span className="h-2 w-2 bg-[var(--t-mint)]" aria-hidden />
-            <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">Design &amp; development studio</span>
+            <span className="mono text-[13px] leading-5 text-[var(--t-muted)]">2 Launch spots open in November</span>
           </div>
           <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">
-            <BlurText text="velora.studio partners with Web3, AI, and early-stage founders to turn ideas into standout websites, products, and brands." />
+            <BlurText text="Brand, product and launch for funded AI and fintech startups, shipped as one system before your raise or launch date." />
           </h1>
           <p className="mt-4 !text-[16px] !leading-[26px] !font-[400] text-[var(--t-muted)]">
-            Looking to transform your idea into a real-world product?<br className="hidden sm:block" /> We specialize in creating intuitive, attractive interfaces that solve complex challenges across SaaS, Web3, and AI.
+            Most startups ship their brand, app and landing page with three different people, at three different times, and it shows.<br className="hidden sm:block" /> We design all three together, build them in Next.js, and plan back from your date.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary">
@@ -161,7 +152,8 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
           <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
             <Factoid label="Case studies" value={<NumberTicker value={caseStudyWorks.length} pad={2} />} />
             <Factoid label="Client notes" value={<NumberTicker value={testimonialCount} pad={2} />} />
-            <Factoid label="Plans from" value={<NumberTicker value={3999} prefix="€" suffix="/mo" />} />
+            <Factoid label="Weeks to launch" value={<NumberTicker value={6} pad={2} />} />
+            <Factoid label="Audit from" value={<NumberTicker value={2500} prefix="€" />} />
           </div>
           <div className="mt-12 border-t border-[var(--t-line)] pt-8">
             <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Trusted by teams at</span>
@@ -195,6 +187,23 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
         <CapLine />
 
+        {/* Who it's for */}
+        <Reveal as="section" className={block}>
+          <Subheading title="Who it's for" />
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <ul className="flex flex-col gap-3">
+              {["You've raised, or you're about to", "A launch, raise or demo day that can't move", "Brand, app and site that should look like one company", "AI, fintech, crypto or developer tools"].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-[14px] leading-5 text-[var(--t-ink)]"><Bullet />{t}</li>
+              ))}
+            </ul>
+            <ul className="flex flex-col gap-3">
+              {["You only need a logo", "No budget yet for senior work", "Design by committee", "No date to work back from"].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-[14px] leading-5 text-[var(--t-faint)]"><span className="mt-[7px] h-[6px] w-[6px] flex-none border border-[var(--t-line-strong)]" aria-hidden />{t}</li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+        <CapLine />
         {/* Selected work */}
         <Reveal as="section" id="work" className={`${block} scroll-mt-16`}>
           <Subheading
@@ -233,63 +242,34 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
 
         {/* Pricing */}
         <Reveal as="section" id="pricing" className={`${block} scroll-mt-16`}>
-          <Subheading title="Pricing" sub="A custom scope built around you, or a monthly design partner that ships every week." />
-          <div className="grid grid-cols-1 border border-[var(--t-line)] bg-[var(--t-surface)] sm:grid-cols-2">
-            {/* Custom Quote */}
-            <div className="flex flex-col border-b border-[var(--t-line)] p-6 sm:border-b-0 sm:border-r">
-              <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Project</span>
-              <h3 className="funnel mt-3 !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">Custom Quote</h3>
-              <p className="mt-2 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">
-                Your go-to for whatever you need: brand, product, web, and build.
-              </p>
-              <div className="my-6"><CapLine /></div>
-              <ul className="flex flex-1 flex-col gap-3">
-                {customQuoteFeatures.map((label) => (
-                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-ink)]">
-                    <Bullet />
-                    {label}
-                  </li>
-                ))}
-              </ul>
-              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-secondary mt-8 w-full">
-                Share your vision
-              </a>
-            </div>
-
-            {/* Design Partner */}
-            <div className="relative flex flex-col border-t-2 border-[var(--t-mint)] p-6 sm:border-t-2">
-              <BorderBeam size={140} duration={9} />
-              <div
-                className="pointer-events-none absolute inset-x-0 top-0 h-24"
-                style={{ background: "linear-gradient(180deg, rgb(var(--t-accent-rgb)/0.10) 0%, rgba(93,255,202,0) 100%)" }}
-                aria-hidden
-              />
-              <div className="relative flex items-center justify-between">
-                <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">Design Partner</span>
-                <span className="mono rounded-[3px] bg-[image:var(--t-btn)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-btn-fg)]">
-                  Popular
-                </span>
+          <Subheading title="Pricing" sub="Start small with an audit, ship everything at once with a Launch, or keep a senior team on hand every week." />
+          <div className="grid grid-cols-1 border border-[var(--t-line)] bg-[var(--t-surface)]">
+            {PLANS.map((p) => (
+              <div key={p.name} className={`relative flex flex-col p-6 ${p.hot ? "border-y-2 border-[var(--t-mint)]" : "border-b border-[var(--t-line)] last:border-b-0"}`}>
+                {p.hot && <BorderBeam size={140} duration={9} />}
+                <div className="relative flex items-center justify-between">
+                  <span className="mono text-[14px] leading-5 text-[var(--t-faint)]">{p.name}</span>
+                  {p.tag && <span className="mono rounded-[3px] bg-[image:var(--t-btn)] px-2 py-0.5 text-[12px] leading-4 text-[var(--t-btn-fg)]">{p.tag}</span>}
+                </div>
+                <p className="funnel relative mt-3 !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)] tabular-nums">
+                  {p.price}<span className="mono ml-1 !text-[14px] text-[var(--t-faint)]">{p.unit}</span>
+                </p>
+                <p className="relative mt-2 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">{p.line}</p>
+                <ul className="relative mt-5 flex flex-col gap-3">
+                  {p.items.map((label) => (
+                    <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-ink)]">
+                      <Bullet />
+                      {label}
+                    </li>
+                  ))}
+                </ul>
+                <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className={`tick ${p.hot ? "tick-primary" : "tick-secondary"} relative mt-6 w-full`}>
+                  {p.cta}
+                </a>
               </div>
-              <p className="funnel relative mt-3 !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)] tabular-nums">
-                €3,999<span className="mono ml-1 !text-[14px] text-[var(--t-faint)]">/mo</span>
-              </p>
-              <p className="relative mt-2 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">
-                Unlimited design for teams that ship every week.
-              </p>
-              <div className="my-6"><CapLine /></div>
-              <ul className="flex flex-1 flex-col gap-3">
-                {subscriptionFeatures.map((label) => (
-                  <li key={label} className="flex items-start gap-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-ink)]">
-                    <Bullet />
-                    {label}
-                  </li>
-                ))}
-              </ul>
-              <a href={subscribeUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary mt-8 w-full">
-                Let&apos;s work together
-              </a>
-            </div>
+            ))}
           </div>
+          <p className="mt-4 !text-[13px] !leading-[20px] text-[var(--t-faint)]">Referrals get 10% off a month for both sides. YC, Antler and a16z speedrun companies get 10% off. <a href="/pricing" className="underline underline-offset-4 hover:text-[var(--t-ink)]">Full pricing</a></p>
         </Reveal>
 
         <CapLine />

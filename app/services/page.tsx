@@ -5,7 +5,7 @@ import { Shell, Subheading, CapLine, RelatedWork, BookCta, JsonLd, block, body }
 
 export const metadata: Metadata = {
   title: "Services — Brand, Product Design, Websites and Next.js",
-  description: "Velora Studio designs brands, products and websites for AI, fintech, Web3 and developer-tool startups, and builds them in Next.js. Projects or a €3,999/mo design partner.",
+  description: "Velora Studio designs brands, products and websites for AI, fintech, Web3 and developer-tool startups, and builds them in Next.js. An audit, a 4–6 week launch, or a monthly design partner.",
   alternates: { canonical: `${STUDIO.url}/services` },
 }
 
@@ -31,7 +31,7 @@ export default function ServicesPage() {
       }} />
       <section className={block}>
         <h1 className="!text-[28px] !leading-[34px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">Brand, product and web for startups that ship</h1>
-        <p className={`mt-4 ${body}`}>{STUDIO.oneLine} Work as a fixed project, or as a design partner for {STUDIO.plans[0].price.replace(" per month", " a month")}.</p>
+        <p className={`mt-4 ${body}`}>{STUDIO.promise} Start with a one-week audit, a 4–6 week launch, or a monthly design partner.</p>
       </section>
       <CapLine />
       <section className={block}><Subheading title="Services" meta={String(SERVICES.length).padStart(2, "0")} /><List items={SERVICES} base="services" /></section>

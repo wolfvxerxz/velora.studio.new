@@ -21,7 +21,7 @@ import { Analytics } from "@vercel/analytics/next"
 export const metadata: Metadata = {
   metadataBase: new URL('https://velora.studio'),
   title: {
-    default: 'velora.studio — design and development studio',
+    default: 'Velora Studio — Brand, product and launch for funded AI and fintech startups',
     template: '%s | velora.studio'
   },
   icons: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
   },
-  description: 'Velora Studio partners with AI founders to design investor-ready products that users actually want to use.',
+  description: 'Brand, product and launch for funded AI and fintech startups. Velora designs the brand, app and landing page as one system and ships them in 4–6 weeks.',
   keywords: ['web design agency', 'web development', 'custom website design', 'startup web design', 'SaaS website design', 'UI/UX design services', 'landing page design', 'high-converting websites', 'design subscription', 'unlimited design', 'velora studio'],
   authors: [{ name: 'Velora Studio' }],
   creator: 'Velora Studio',
@@ -54,15 +54,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://velora.studio',
-    title: 'velora.studio — design and development studio',
-    description: 'Velora Studio partners with AI founders to design investor-ready products that users actually want to use.',
+    title: 'Velora Studio — Brand, product and launch for funded AI and fintech startups',
+    description: 'Brand, product and launch for funded AI and fintech startups. Velora designs the brand, app and landing page as one system and ships them in 4–6 weeks.',
     siteName: 'velora.studio',
     images: [{ url: 'https://velora.studio/og-image.jpg', width: 1200, height: 630, alt: 'Velora Studio' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'velora.studio — design and development studio',
-    description: 'Velora Studio partners with AI founders to design investor-ready products that users actually want to use.',
+    title: 'Velora Studio — Brand, product and launch for funded AI and fintech startups',
+    description: 'Brand, product and launch for funded AI and fintech startups. Velora designs the brand, app and landing page as one system and ships them in 4–6 weeks.',
     creator: '@veloraxstudio',
     images: ['https://velora.studio/twitter-image.jpg'],
   },
@@ -101,8 +101,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "priceRange": "€€€",
                   "knowsAbout": ["Brand identity", "Product design", "UI/UX design", "Landing page design", "Next.js development", "Design systems", "Fintech design", "AI product design", "Developer tool design", "Web3 design"],
                   "makesOffer": [
-                    { "@type": "Offer", "name": "Design Partner", "price": "3999", "priceCurrency": "EUR", "description": "Unlimited design requests, 2–3 updates a week, Next.js development, pause or cancel anytime.", "url": "https://velora.studio/pricing" },
-                    { "@type": "Offer", "name": "Custom project", "description": "Brand identity, product and website design and development, scoped per project.", "url": "https://velora.studio/pricing" }
+                    { "@type": "Offer", "name": "Audit", "price": "2500", "priceCurrency": "EUR", "description": "One-week review of product, site and brand with a prioritised fix list, credited to the first month or project.", "url": "https://velora.studio/pricing" },
+                    { "@type": "Offer", "name": "Launch", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "14900", "priceCurrency": "EUR" }, "description": "Brand, app, landing page, case study and launch posts in 4–6 weeks.", "url": "https://velora.studio/pricing" },
+                    { "@type": "Offer", "name": "Design Partner", "price": "5900", "priceCurrency": "EUR", "description": "Unlimited design requests, 2–3 updates a week, Next.js development, pause or cancel anytime.", "url": "https://velora.studio/pricing" }
                   ],
                   "potentialAction": { "@type": "ReserveAction", "target": "https://cal.com/vuk-m/15min", "name": "Book a 15-minute call" },
                   "sameAs": [
