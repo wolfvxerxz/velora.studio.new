@@ -5,6 +5,8 @@ import { notFound } from "next/navigation"
 import { caseStudies, getCaseStudy, getCaseStudySlugs, type CaseStudyWorkItem } from "@/lib/case-studies"
 import { getCaseStory } from "@/lib/case-stories"
 import { Reveal } from "@/components/reveal"
+import { SERVICES, INDUSTRIES } from "@/lib/seo"
+import { JsonLd, breadcrumbLd } from "@/components/seo-shell"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -22,9 +24,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const study = getCaseStudy(slug)
   if (!study) return { title: "Work" }
+  const title = `${study.title} — ${study.tagline ?? "Case Study"}`
+  const url = `https://velora.studio/work/${study.slug}`
+  const image = `https://velora.studio${study.cover}`
   return {
-    title: `${study.title} — Case Study`,
+    title,
     description: study.description,
+    alternates: { canonical: url },
+    openGraph: { title, description: study.description, url, type: "article", images: [{ url: image, width: 2000, height: 1125, alt: study.title }] },
+    twitter: { card: "summary_large_image", title, description: study.description, images: [image] },
   }
 }
 
@@ -53,7 +61,7 @@ function Shot({ item, alt }: { item: CaseStudyWorkItem; alt: string }) {
   return (
     <div className="rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2">
       {item.type === "video" ? (
-        <video src={item.src} autoPlay loop muted playsInline aria-label={alt} className="block h-auto w-full" />
+        <video src={item.src} autoPlay loop muted playsInline preload="metadata" aria-label={alt} className="block h-auto w-full" />
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={item.src} alt={item.alt ?? alt} loading="lazy" decoding="async" className="block h-auto w-full" />
@@ -95,6 +103,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
         backgroundSize: "14px 14px",
       }}
     >
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "CreativeWork", name: `${study.title} case study`, headline: story.headline, description: study.description,
+        url: `https://velora.studio/work/${study.slug}`, image: `https://velora.studio${study.cover}`, dateCreated: study.date, genre: study.services, keywords: study.areas?.join(", "),
+        creator: { "@type": "Organization", name: "Velora Studio", url: "https://velora.studio" },
+      }} />
+      <JsonLd data={breadcrumbLd([["Home", "/"], ["Work", "/#work"], [study.title, `/work/${study.slug}`]])} />
       {/* All cases, pinned beside the column on wide screens */}
       <nav
         className="fixed top-[116px] z-40 hidden w-[168px] min-[1120px]:block"
@@ -281,6 +295,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </Link>
             </div>
           )}
+
+          {(() => {
+            const rel = [...SERVICES, ...INDUSTRIES].filter((p) => p.cases.includes(study.slug)).slice(0, 6)
+            return rel.length > 0 && (
+              <div className="mt-12">
+                <Subheading title="Related services" />
+                <div className="flex flex-wrap gap-2">
+                  {rel.map((p) => (
+                    <Link key={p.kind + p.slug} href={`/${p.kind}/${p.slug}`} className="mono rounded-[2px] border border-[var(--t-line)] px-3 py-1.5 text-[13px] leading-5 text-[var(--t-muted)] transition-colors hover:border-[var(--t-line-strong)] hover:text-[var(--t-ink)]">
+                      {p.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )
+          })()}
 
           <div className="mt-12">
             <Subheading title="More work" meta={pad(withPages.length)} />

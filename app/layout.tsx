@@ -86,14 +86,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Velora Studio",
-              "url": "https://velora.studio",
-              "description": "We design & build websites people actually want to use.",
-              "sameAs": [
-                "https://twitter.com/veloraxstudio",
-                "https://www.linkedin.com/company/velorastudio/",
-                "https://www.instagram.com/studio.velora/",
+              "@graph": [
+                {
+                  "@type": ["Organization", "ProfessionalService"],
+                  "@id": "https://velora.studio/#org",
+                  "name": "Velora Studio",
+                  "alternateName": "velora.studio",
+                  "url": "https://velora.studio",
+                  "logo": "https://velora.studio/logo/logo-v.svg",
+                  "image": "https://velora.studio/og-image.jpg",
+                  "description": "Design and development studio for AI, fintech, Web3 and developer-tool startups: brand identity, product design, websites and Next.js development.",
+                  "slogan": "Websites, products and brands people actually want to use.",
+                  "areaServed": "Worldwide",
+                  "priceRange": "€€€",
+                  "knowsAbout": ["Brand identity", "Product design", "UI/UX design", "Landing page design", "Next.js development", "Design systems", "Fintech design", "AI product design", "Developer tool design", "Web3 design"],
+                  "makesOffer": [
+                    { "@type": "Offer", "name": "Design Partner", "price": "3999", "priceCurrency": "EUR", "description": "Unlimited design requests, 2–3 updates a week, Next.js development, pause or cancel anytime.", "url": "https://velora.studio/pricing" },
+                    { "@type": "Offer", "name": "Custom project", "description": "Brand identity, product and website design and development, scoped per project.", "url": "https://velora.studio/pricing" }
+                  ],
+                  "potentialAction": { "@type": "ReserveAction", "target": "https://cal.com/vuk-m/15min", "name": "Book a 15-minute call" },
+                  "sameAs": [
+                    "https://x.com/veloraxstudio",
+                    "https://twitter.com/veloraxstudio",
+                    "https://www.linkedin.com/company/velorastudio/",
+                    "https://www.instagram.com/studio.velora/"
+                  ]
+                },
+                { "@type": "WebSite", "@id": "https://velora.studio/#site", "url": "https://velora.studio", "name": "Velora Studio", "publisher": { "@id": "https://velora.studio/#org" } }
               ]
             })
           }}

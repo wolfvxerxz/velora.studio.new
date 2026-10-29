@@ -348,7 +348,19 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               Schedule Call
             </a>
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-[var(--t-line)] pt-8 sm:grid-cols-3">
+          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-[var(--t-line)] pt-8 sm:grid-cols-4">
+            <div className="flex flex-col gap-2">
+              <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Services</span>
+              {[["Brand identity", "/services/brand-identity"], ["Product design", "/services/product-design"], ["Websites", "/services/website-design"], ["Design partner", "/services/design-subscription"], ["All services", "/services"]].map(([t, h]) => (
+                <a key={h} href={h} className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">{t}</a>
+              ))}
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">For</span>
+              {[["AI startups", "/industries/ai-startups"], ["Fintech", "/industries/fintech"], ["Developer tools", "/industries/developer-tools"], ["Web3", "/industries/web3"], ["Glossary", "/glossary"]].map(([t, h]) => (
+                <a key={h} href={h} className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">{t}</a>
+              ))}
+            </div>
             <div className="flex flex-col gap-2">
               <span className="mono text-[12px] leading-4 text-[var(--t-faint)]">Studio</span>
               <a href="#work" className="text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)]">Work</a>
