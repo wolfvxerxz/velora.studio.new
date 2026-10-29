@@ -70,14 +70,14 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
       {
         label: "Dashboard",
         title: "Soft, grey and quick to read",
-        body: ["Branches, Rewind, Tables, Ask and Usage, in light and dark. Stats sit on soft cards, rows float on a tray, and the only colour left is the branch dot."],
-        rows: [[M("10.webp")], [M("11.webp")], [M("12.webp")], [M("brand-product-dark.webp"), M("brand-product-light.webp")]],
+        body: ["Branches, Rewind, Tables, Ask and Usage. Stats sit on soft cards, rows float on a tray, and the only colour left is the branch dot."],
+        rows: [[M("10.webp")], [M("12.webp")], [M("brand-product-light.webp")]],
       },
       {
         label: "Pages",
         title: "Pricing and changelog",
         body: ["The same windows carry the plans and every release, so the inner pages feel like more channels of the same set."],
-        rows: [[M("7.webp")], [M("8.webp")], [M("9.webp")]],
+        rows: [[M("8.webp")], [M("9.webp")]],
       },
     ],
     result: "Real Postgres, safe to break.",

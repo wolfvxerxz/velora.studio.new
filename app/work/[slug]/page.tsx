@@ -1,20 +1,17 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
 import { notFound } from "next/navigation"
 import { caseStudies, getCaseStudy, getCaseStudySlugs, type CaseStudyWorkItem } from "@/lib/case-studies"
 import { getCaseStory } from "@/lib/case-stories"
-import { Reveal } from "@/components/reveal"
 import { SERVICES, INDUSTRIES } from "@/lib/seo"
 import { JsonLd, breadcrumbLd } from "@/components/seo-shell"
+import { ApplePage } from "@/components/apple"
 
 interface PageProps {
   params: Promise<{ slug: string }>
 }
 
 const scheduleUrl = "https://cal.com/vuk-m/15min"
-const block = "px-5 py-16 sm:px-6 sm:py-20"
-const body = "!text-[16px] !leading-[26px] !font-[400] text-[var(--t-muted)]"
 
 export function generateStaticParams() {
   return getCaseStudySlugs().map((slug) => ({ slug }))
@@ -36,38 +33,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-function CapLine() {
-  return (
-    <div className="cap-line" aria-hidden>
-      <span />
-    </div>
-  )
-}
-
-// Same section heading as the home page: tick, mono title, rule
-function Subheading({ title, meta }: { title: string; meta?: string }) {
-  return (
-    <div className="mb-6 flex items-center gap-3">
-      <span className="h-[7px] w-3 bg-[var(--t-mint)]" aria-hidden />
-      <h2 className="mono !text-[16px] !leading-[20px] !tracking-[-0.02em] text-[var(--t-ink)]">{title}</h2>
-      <span className="h-px flex-1 bg-[var(--t-line)]" aria-hidden />
-      {meta && <span className="mono text-[14px] leading-5 text-[var(--t-faint)] tabular-nums">{meta}</span>}
-    </div>
-  )
-}
-
-// A shot in the same frame as the home work grid
+// A shot as Apple shows product: no frame, softly rounded
 function Shot({ item, alt }: { item: CaseStudyWorkItem; alt: string }) {
-  return (
-    <div className="rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2">
-      {item.type === "video" ? (
-        <video src={item.src} autoPlay loop muted playsInline preload="metadata" aria-label={alt} className="block h-auto w-full" />
-      ) : (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={item.src} alt={item.alt ?? alt} loading="lazy" decoding="async" className="block h-auto w-full" />
-      )}
-    </div>
-  )
+  return item.type === "video"
+    ? <video src={item.src} autoPlay loop muted playsInline preload="metadata" aria-label={alt} className="vw-shot" />
+    // eslint-disable-next-line @next/next/no-img-element
+    : <img src={item.src} alt={item.alt ?? alt} loading="lazy" decoding="async" className="vw-shot" />
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
@@ -80,265 +51,116 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const i = withPages.findIndex((c) => c.slug === study.slug)
   const next = withPages[(i + 1) % withPages.length]
   const prev = withPages[(i - 1 + withPages.length) % withPages.length]
-  const pad = (n: number) => String(n).padStart(2, "0")
+  const rel = [...SERVICES, ...INDUSTRIES].filter((p) => p.cases.includes(study.slug)).slice(0, 6)
 
   const facts = [
-    { k: "Project", v: study.areas?.join(", ") },
-    { k: "Year", v: study.date },
-    { k: "Deliverables", v: study.services?.join(", ") },
-  ].filter((f) => f.v)
-
-  // Lead the quote with its first sentence in full ink, the rest softer
-  const q = study.testimonial?.quote ?? ""
-  const cut = q.search(/[.!?] /)
-  const qHead = cut > -1 ? q.slice(0, cut + 1) : q
-  const qRest = cut > -1 ? q.slice(cut + 1) : ""
+    { k: "Project", v: study.areas ?? [] },
+    { k: "Year", v: study.date ? [study.date] : [] },
+    { k: "Deliverables", v: study.services ?? [] },
+  ].filter((f) => f.v.length)
 
   return (
-    <main
-      className="min-h-screen font-sans"
-      style={{
-        backgroundColor: "var(--t-page)",
-        backgroundImage: "radial-gradient(var(--t-dot) 1px, transparent 1px)",
-        backgroundSize: "14px 14px",
-      }}
-    >
+    <ApplePage className="vw">
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CreativeWork", name: `${study.title} case study`, headline: story.headline, description: study.description,
         url: `https://velora.studio/work/${study.slug}`, image: `https://velora.studio${study.cover}`, dateCreated: study.date, genre: study.services, keywords: study.areas?.join(", "),
         creator: { "@type": "Organization", name: "Velora Studio", url: "https://velora.studio" },
       }} />
       <JsonLd data={breadcrumbLd([["Home", "/"], ["Work", "/#work"], [study.title, `/work/${study.slug}`]])} />
-      {/* All cases, pinned beside the column on wide screens */}
-      <nav
-        className="fixed top-[116px] z-40 hidden w-[168px] min-[1120px]:block"
-        style={{ left: "calc(50% - 340px - 40px - 168px)" }}
-        aria-label="All case studies"
-      >
-        <p className="mono mb-3 text-[12px] leading-4 text-[var(--t-faint)]">Case studies</p>
-        <ul className="flex flex-col">
-          {withPages.map((c) => {
-            const here = c.slug === study.slug
-            return (
-              <li key={c.slug}>
-                <Link
-                  href={`/work/${c.slug}`}
-                  aria-current={here ? "page" : undefined}
-                  className={`flex items-center gap-2 py-[5px] text-[14px] leading-5 transition-colors ${here ? "text-[var(--t-ink)]" : "text-[var(--t-faint)] hover:text-[var(--t-ink)]"}`}
-                >
-                  <span className={`h-[7px] w-[7px] flex-none ${here ? "bg-[var(--t-mint)]" : "bg-transparent"}`} aria-hidden />
-                  {c.title}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
 
-      <div className="mx-auto min-h-screen w-full max-w-[680px] border-x border-[var(--t-line)] bg-[var(--t-bg)]">
-        {/* Topbar, as on the home page */}
-        <header className="sticky top-0 z-50 border-b border-[var(--t-line)] bg-[var(--t-header)] backdrop-blur-xl">
-          <div className="flex h-[68px] items-center justify-between px-5 sm:px-6">
-            <div className="flex items-center gap-5">
-              <Link href="/" className="press flex items-center" aria-label="velora.studio home">
-                <Image src="/logo/logo-v.svg" alt="Velora" width={28} height={28} className="theme-logo" priority />
-              </Link>
-              {/* Case switcher: always on screen in the sticky header */}
-              <nav className="mono flex items-center text-[13px] leading-5 text-[var(--t-faint)] tabular-nums" aria-label="Case studies">
-                <Link href={`/work/${prev.slug}`} className="flex h-8 w-8 items-center justify-center rounded-[2px] text-[18px] transition-colors hover:bg-[var(--t-cap)] hover:text-[var(--t-ink)]" aria-label={`Previous case: ${prev.title}`} title={prev.title}>
-                  ‹
-                </Link>
-                <span className="px-1"><span className="text-[var(--t-ink)]">{pad(i + 1)}</span> / {pad(withPages.length)}</span>
-                <Link href={`/work/${next.slug}`} className="flex h-8 w-8 items-center justify-center rounded-[2px] text-[18px] transition-colors hover:bg-[var(--t-cap)] hover:text-[var(--t-ink)]" aria-label={`Next case: ${next.title}`} title={next.title}>
-                  ›
-                </Link>
-              </nav>
-            </div>
-            <nav className="flex items-center gap-5">
-              <Link href="/#work" className="mono hidden text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)] sm:inline">
-                Work
-              </Link>
-              <Link href="/#pricing" className="mono hidden text-[14px] leading-5 text-[var(--t-muted)] transition-colors hover:text-[var(--t-ink)] sm:inline">
-                Pricing
-              </Link>
-              <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary !h-9 !px-4 !text-[13px]">
-                Schedule Call
-              </a>
-            </nav>
-          </div>
-        </header>
-
-        {/* Intro */}
-        <Reveal as="section" className={block}>
-          <div className="mono mb-8 flex items-center gap-4 text-[13px] leading-5 text-[var(--t-faint)]">
-            <nav className="flex items-center gap-2" aria-label="Breadcrumb">
-              <Link href="/#work" className="transition-colors hover:text-[var(--t-ink)]">Work</Link>
-              <span aria-hidden>/</span>
-              <span className="text-[var(--t-muted)]" aria-current="page">{study.title}</span>
-            </nav>
-          </div>
-          <h1 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">{story.headline}</h1>
-          <p className={`mt-4 ${body}`}>{study.description}</p>
-
-          <dl className="mt-10 grid grid-cols-2 gap-x-10 gap-y-6 sm:grid-cols-3">
-            {facts.map((f) => (
-              <div key={f.k} className="flex flex-col gap-1">
-                <dt className="font-[family-name:var(--font-geist-mono)] text-[13px] font-semibold leading-5 tracking-[-0.02em] text-[var(--t-faint)]">{f.k}</dt>
-                <dd className="text-[14px] leading-5 text-[var(--t-ink)]">{f.v}</dd>
-              </div>
-            ))}
-          </dl>
-
-          {study.testimonial && (
-            <figure className="mt-10 border-t border-[var(--t-line)] pt-8">
-              <blockquote className="text-[16px] leading-[26px] text-[var(--t-muted)]">
-                “<span className="text-[var(--t-ink)]">{qHead}</span>{qRest}”
-              </blockquote>
-              <figcaption className="mt-4 flex items-center gap-2 text-[14px] leading-5">
-                {study.testimonial.avatar && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={study.testimonial.avatar} alt="" width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
-                )}
-                <span className="text-[var(--t-ink)]">{study.testimonial.name}</span>
-                <span className="text-[var(--t-faint)]">{study.testimonial.role}</span>
-              </figcaption>
-            </figure>
-          )}
-
-          <div className="mt-10">
-            <Shot item={story.hero} alt={`${study.title} preview`} />
-          </div>
-        </Reveal>
-
-        <CapLine />
-
-        <Reveal as="section" className={block}>
-          <Subheading title="Introduction" />
-          <div className="flex flex-col gap-4">
-            {story.intro.map((p) => <p key={p} className={body}>{p}</p>)}
-          </div>
-          {story.vision && (
-            <p className="mt-8 border-l-2 border-[var(--t-mint)] pl-4 !text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">
-              {story.vision}
-            </p>
-          )}
-        </Reveal>
-
-        {story.chapters.map((c, n) => (
-          <div key={c.label}>
-            <CapLine />
-            <Reveal as="section" className={block}>
-              <Subheading title={c.label} meta={story.chapters.length > 1 ? pad(n + 1) : undefined} />
-              {c.title && <h3 className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">{c.title}</h3>}
-              {c.body && (
-                <div className={`flex flex-col gap-4 ${c.title ? "mt-3" : ""}`}>
-                  {c.body.map((p) => <p key={p} className={body}>{p}</p>)}
-                </div>
-              )}
-              {c.rows && c.rows.length > 0 && (
-                <div className={`flex flex-col gap-5 ${c.title || c.body ? "mt-10" : ""}`}>
-                  {c.rows.map((row, r) => (
-                    <div key={r} className={row.length > 1 ? "grid grid-cols-1 gap-5 sm:grid-cols-2" : ""}>
-                      {row.map((item) => <Shot key={item.src} item={item} alt={`${study.title}, ${c.label}`} />)}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </Reveal>
-          </div>
-        ))}
-
-        <CapLine />
-
-        {/* Result, closing CTA and next case */}
-        <Reveal as="footer" className={block}>
-          {story.result && (
-            <div className="mb-12">
-              <Subheading title="The result" />
-              <p className="!text-[20px] !leading-[28px] !font-[500] !tracking-[-0.01em] text-[var(--t-ink)]">{story.result}</p>
-            </div>
-          )}
-
-          <div
-            className="flex flex-col items-start gap-5 border border-[var(--t-line)] bg-[var(--t-surface)] p-8"
-            style={{ backgroundImage: "linear-gradient(180deg, rgb(var(--t-accent-rgb)/0.08) 0%, rgba(93,255,202,0) 60%)" }}
-          >
-            <h2 className="funnel !text-[28px] !leading-[36px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">Want work like this for your startup?</h2>
-            <p className="-mt-3 !text-[14px] !leading-[20px] !font-[400] text-[var(--t-muted)]">
-              Tell us what you&apos;re building and when it needs to ship. We set the plan together on a short call.
-            </p>
-            <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="tick tick-primary mt-1">
-              Schedule Call
-            </a>
-          </div>
-
-          {next && next.slug !== study.slug && (
-            <div className="mt-12">
-              <Subheading title="Next case" />
-              <Link href={`/work/${next.slug}`} className="press group block">
-                <div className="rounded-[2px] border border-[var(--t-line)] bg-[var(--t-surface)] p-2 transition-colors duration-300 group-hover:border-[var(--t-line-strong)]">
-                  <div className="relative aspect-[16/9] overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={next.cover}
-                      alt={next.title}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      style={{ objectPosition: next.coverPosition ?? "center" }}
-                    />
-                  </div>
-                </div>
-                <p className="mt-3 px-0.5 text-[13px] leading-[18px]">
-                  <span className="text-[var(--t-ink)]">{next.title}</span>
-                  {next.tagline && <span className="ml-2 text-[var(--t-faint)]">{next.tagline}</span>}
-                </p>
-              </Link>
-            </div>
-          )}
-
-          {(() => {
-            const rel = [...SERVICES, ...INDUSTRIES].filter((p) => p.cases.includes(study.slug)).slice(0, 6)
-            return rel.length > 0 && (
-              <div className="mt-12">
-                <Subheading title="Related services" />
-                <div className="flex flex-wrap gap-2">
-                  {rel.map((p) => (
-                    <Link key={p.kind + p.slug} href={`/${p.kind}/${p.slug}`} className="mono rounded-[2px] border border-[var(--t-line)] px-3 py-1.5 text-[13px] leading-5 text-[var(--t-muted)] transition-colors hover:border-[var(--t-line-strong)] hover:text-[var(--t-ink)]">
-                      {p.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )
-          })()}
-
-          <div className="mt-12">
-            <Subheading title="More work" meta={pad(withPages.length)} />
-            <ul className="border-t border-[var(--t-line)]">
-              {withPages.map((c) => {
-                const here = c.slug === study.slug
-                return (
-                  <li key={c.slug} className="border-b border-[var(--t-line)]">
-                    <Link
-                      href={`/work/${c.slug}`}
-                      aria-current={here ? "page" : undefined}
-                      className="group flex items-baseline gap-3 py-3"
-                    >
-                      <span className={`shrink-0 text-[14px] leading-5 ${here ? "text-[var(--t-mint-ink)]" : "text-[var(--t-ink)]"}`}>{c.title}</span>
-                      <span className="h-px flex-1 translate-y-[-4px] bg-[var(--t-line)] transition-colors group-hover:bg-[var(--t-line-strong)]" aria-hidden />
-                      <span className="truncate text-right text-[13px] leading-5 text-[var(--t-faint)] transition-colors group-hover:text-[var(--t-ink)]">
-                        {here ? "You're here" : `${c.tagline ?? c.services?.join(", ") ?? ""} ↗`}
-                      </span>
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-
-          <p className="mono mt-12 text-[12px] leading-4 text-[var(--t-faint)]">velora.studio · Design &amp; development studio · © 2026</p>
-        </Reveal>
+      {/* The product bar under the global nav, as on Apple's product pages */}
+      <div className="vw-bar">
+        <div className="vw-bar-in">
+          <b>{study.title}</b>
+          <nav aria-label="Case studies">
+            <Link href={`/work/${prev.slug}`} title={prev.title}>‹ {prev.title}</Link>
+            <Link href={`/work/${next.slug}`} title={next.title}>{next.title} ›</Link>
+          </nav>
+        </div>
       </div>
-    </main>
+
+      <section className="vw-hero">
+        <h1>{study.title}</h1>
+        <p className="vw-head">{story.headline}</p>
+        <p className="vw-desc">{study.description}</p>
+        <dl className="vw-facts">
+          {facts.map((f) => <div key={f.k}><dt>{f.k}</dt>{f.v.map((x) => <dd key={x}>{x}</dd>)}</div>)}
+        </dl>
+        <div className="vw-wide"><Shot item={story.hero} alt={`${study.title} preview`} /></div>
+      </section>
+
+      {study.testimonial && (
+        <figure className="vw-quote">
+          <blockquote>{study.testimonial.quote}</blockquote>
+          <figcaption>
+            {study.testimonial.avatar && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={study.testimonial.avatar} alt="" width={32} height={32} />
+            )}
+            <span><b>{study.testimonial.name}</b> {study.testimonial.role}</span>
+          </figcaption>
+        </figure>
+      )}
+
+      <section className="vw-text">
+        <h2>Introduction</h2>
+        {story.intro.map((p) => <p key={p}>{p}</p>)}
+        {story.vision && <p className="vw-big">{story.vision}</p>}
+      </section>
+
+      {story.chapters.map((c) => (
+        <section key={c.label} className="vw-chapter">
+          <div className="vw-text">
+            <h2>{c.title ?? c.label}</h2>
+            {c.body?.map((p) => <p key={p}>{p}</p>)}
+          </div>
+          {c.rows && c.rows.length > 0 && (
+            <div className="vw-wide vw-rows">
+              {c.rows.map((row, r) => (
+                <div key={r} className={row.length > 1 ? "vw-two" : ""}>
+                  {row.map((item) => <Shot key={item.src} item={item} alt={`${study.title}, ${c.label}`} />)}
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
+
+      {story.result && (
+        <section className="vw-text">
+          <h2>The result</h2>
+          <p className="vw-big">{story.result}</p>
+        </section>
+      )}
+
+      <section className="vp-block vp-wide">
+        <div className="vp-cta">
+          <h2>Want work like this?</h2>
+          <p>Tell us what you&apos;re building and when it needs to ship. We set the plan together on a short call.</p>
+          <a href={scheduleUrl} target="_blank" rel="noopener noreferrer" className="va-pill">Book a call</a>
+        </div>
+      </section>
+
+      {rel.length > 0 && (
+        <section className="vw-text vw-rel">
+          <h2>Related services</h2>
+          <p>{rel.map((p, n) => <span key={p.kind + p.slug}>{n > 0 && " · "}<Link href={`/${p.kind}/${p.slug}`}>{p.name}</Link></span>)}</p>
+        </section>
+      )}
+
+      <section className="vp-block vp-wide">
+        <h2 className="vp-h2">More work</h2>
+        <div className="vp-work">
+          {withPages.filter((c) => c.slug !== study.slug).map((c) => (
+            <Link key={c.slug} href={`/work/${c.slug}`} className="vp-work-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={c.cover} alt={`${c.title} case study`} loading="lazy" decoding="async" style={{ objectPosition: c.coverPosition ?? "top" }} />
+              <b>{c.title}</b>
+              {c.tagline && <span>{c.tagline}</span>}
+            </Link>
+          ))}
+        </div>
+      </section>
+    </ApplePage>
   )
 }

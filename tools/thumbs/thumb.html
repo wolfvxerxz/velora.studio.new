@@ -1,0 +1,192 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Geist:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Inter+Tight:wght@400;500;600&family=Sora:wght@600&family=Inter:wght@400;500&display=block">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=block">
+<style>html,body{margin:0;background:#000}svg{display:block}</style>
+</head><body>
+<svg id="s" width="1920" height="1200" viewBox="0 0 1920 1200" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+// One looping 6-second film per case study. Every frame is a pure function of t, so a renderer can step it.
+const W = 1920, H = 1200, CX = 960, CY = 600
+const CARD = { x: 640, y: 190, w: 640, h: 820 }
+const cl = (x) => Math.max(0, Math.min(1, x))
+const ease = (x) => 1 - Math.pow(1 - x, 3)
+const back = (x) => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2) }
+const win = (t, a, d) => ease(cl((t - a) / d))
+const OUT = (t) => win(t, 5.15, 0.7) // everything leaves before the loop restarts
+const vis = (t, a, d = 0.5) => win(t, a, d) * (1 - OUT(t))
+const r = (x, y, w, h, f, extra = "") => `<rect x="${x}" y="${y}" width="${Math.max(0, w)}" height="${Math.max(0, h)}" fill="${f}" ${extra}/>`
+const text = (t, a, x, y, s, { font, size, weight = 400, fill, ls = 0 }) => {
+  const v = vis(t, a, 0.6)
+  return `<text x="${x}" y="${y + (1 - v) * 24}" opacity="${v}" font-family="${font}" font-size="${size}" font-weight="${weight}" fill="${fill}" letter-spacing="${ls}">${s}</text>`
+}
+const grid = (stroke) => {
+  let g = ""
+  for (let i = 0; i <= 4; i++) g += `<line x1="${660 + i * 150}" y1="${CARD.y}" x2="${660 + i * 150}" y2="${CARD.y + CARD.h}" stroke="${stroke}" stroke-width="1"/>`
+  for (let j = 0; j <= 5; j++) g += `<line x1="${CARD.x}" y1="${225 + j * 150}" x2="${CARD.x + CARD.w}" y2="${225 + j * 150}" stroke="${stroke}" stroke-width="1"/>`
+  return g
+}
+const card = (fill, stroke, inner) => `<g>${r(CARD.x, CARD.y, CARD.w, CARD.h, fill)}${grid(stroke)}<clipPath id="cc"><rect x="${CARD.x}" y="${CARD.y}" width="${CARD.w}" height="${CARD.h}"/></clipPath><g clip-path="url(#cc)">${inner}</g></g>`
+// Grafana's move: stepped columns either side of the card, closest tallest, growing from the middle
+const steps = (t, color, thin, kinds = 4) => {
+  let g = ""
+  const HS = [700, 520, 340, 180]
+  for (let k = 0; k < kinds; k++) {
+    const v = vis(t, 0.1 + k * 0.12, 0.7), h = HS[k] * v
+    for (const side of [-1, 1]) {
+      const x = side < 0 ? CARD.x - 187 * (k + 1) : CARD.x + CARD.w + 187 * k
+      g += r(x, CY - h / 2, 187, h, color)
+      const bx = side < 0 ? x - 16 : x + 187
+      const bh = (HS[k] + 180) * v
+      g += r(bx, CY - bh / 2, 16, bh, thin)
+    }
+  }
+  return g
+}
+
+// a hidden path to measure along, for things that travel a route
+const probe = document.createElementNS("http://www.w3.org/2000/svg", "path")
+const along = (d, f) => { probe.setAttribute("d", d); const L = probe.getTotalLength(); return probe.getPointAtLength(L * f) }
+const lcd = `<pattern id="lcd" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="2" height="6" fill="#ff6b6b" opacity=".07"/><rect x="2" width="2" height="6" fill="#6bff9a" opacity=".07"/><rect x="4" width="2" height="6" fill="#6b9bff" opacity=".07"/><rect y="5" width="6" height="1" fill="#000" opacity=".14"/></pattern>`
+
+const SCENES = {
+  // Moss: a VCR broadcast. The sprout grows huge on the left while the line types out on the right.
+  moss(t) {
+    const PX = [[4,0,1],[5,0,1],[6,0,1],[3,1,1],[4,1,1],[5,1,1],[6,1,1],[7,1,1],[3,2,1],[4,2,1],[6,2,1],[7,2,1],[3,3,1],[4,3,1],[5,3,1],[6,3,1],[7,3,1],[4,4,1],[5,4,1],[6,4,1],[9,4,0],[10,4,0],[5,5,1],[8,5,0],[9,5,0],[10,5,0],[11,5,0],[1,6,1],[2,6,1],[5,6,1],[8,6,0],[10,6,0],[11,6,0],[0,7,1],[1,7,1],[2,7,1],[3,7,1],[5,7,1],[7,7,0],[9,7,0],[10,7,0],[0,8,1],[2,8,1],[3,8,1],[5,8,1],[6,8,1],[1,9,1],[2,9,1],[5,9,1],[5,10,1],[5,11,1],[4,12,1],[5,12,1],[6,12,1]]
+    const px = "'Jersey 10'"
+    let g = r(0, 0, W, H, "#1F3FF0") + lcd
+    const C = 58, ox = 170, oy = 230
+    for (const [x, y, main] of PX) {
+      const d = main ? 0.3 + (12 - y) * 0.09 : 1.4 + (x - 7) * 0.06 + (y - 4) * 0.04
+      if (vis(t, d, 0.05) > 0.5) g += r(ox + x * C, oy + y * C, C + 0.5, C + 0.5, main ? "#FFFFFF" : "#A9C0FF")
+    }
+    const lines = ["Postgres", "that branches", "like your code"], full = lines.join("\n")
+    const n = Math.floor(cl((t - 1.1) / 1.7) * full.length * (1 - OUT(t) > 0.5 ? 1 : 0))
+    let left = n, y = 470
+    lines.forEach((l) => {
+      const shown = l.slice(0, Math.max(0, left)); left -= l.length + 1
+      g += `<text x="1010" y="${y}" font-family="${px}" font-size="150" fill="#FFFFFF">${shown}</text>`
+      if (left < 0 && left > -l.length - 2 && Math.floor(t * 2.5) % 2 === 0) {
+        const w = shown.length * 51
+        g += r(1010 + w + 6, y - 112, 52, 120, "#FFFFFF")
+      }
+      y += 150
+    })
+    const osd = (x, y, s, a = "start") => `<text x="${x}" y="${y}" text-anchor="${a}" font-family="${px}" font-size="60" fill="#FFFFFF">${s}</text>`
+    g += osd(90, 120, "CH01") + osd(90, 178, "PLAY ▶ MAIN")
+    const sec = Math.floor(t) + 3
+    g += (Math.floor(t * 1.5) % 2 ? "" : `<circle cx="1640" cy="100" r="13" fill="#FF4D4D"/>`) + osd(1830, 120, "REC", "end") + osd(1830, 178, `0:00:0${sec}`, "end")
+    g += osd(90, 1120, "SP ▶ TRACKING") + osd(1830, 1120, "moss", "end")
+    return g + r(0, 0, W, H, "url(#lcd)")
+  },
+
+  // Atlas: a live screen. The price counts up in huge numerals while the chart draws edge to edge.
+  atlas(t) {
+    let g = r(0, 0, W, H, "#0B0402")
+    for (let y = 100; y < H; y += 100) g += `<line x1="0" x2="${W}" y1="${y}" y2="${y}" stroke="#1A110E" stroke-width="1"/>`
+    const pts = []
+    for (let i = 0; i <= 64; i++) { const x = (i / 64) * W, v = i / 64; pts.push([x, 1010 - v * 420 - Math.sin(i * 0.9) * 34 - Math.sin(i * 0.31) * 60 - Math.sin(i * 2.3) * 14]) }
+    const d = pts.map((p, i) => `${i ? "L" : "M"}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join("")
+    const lv = vis(t, 0.3, 2.6)
+    g += `<clipPath id="reveal"><rect x="0" y="0" width="${W * lv}" height="${H}"/></clipPath>`
+    g += `<path d="${d}L${W},${H}L0,${H}Z" fill="#FF5A19" opacity=".09" clip-path="url(#reveal)"/>`
+    g += `<path d="${d}" fill="none" stroke="#FF5A19" stroke-width="5" stroke-linejoin="round" clip-path="url(#reveal)"/>`
+    if (lv > 0.01 && lv < 0.999) { const p = along(d, lv); g += `<circle cx="${p.x}" cy="${p.y}" r="12" fill="#FF5A19"/><circle cx="${p.x}" cy="${p.y}" r="${12 + ((t * 2) % 1) * 30}" fill="none" stroke="#FF5A19" stroke-width="3" opacity="${1 - ((t * 2) % 1)}"/>` }
+    const price = 118402.1 + (121840.5 - 118402.1) * ease(cl((t - 0.3) / 2.6))
+    const pv = vis(t, 0.2, 0.5)
+    g += `<g opacity="${pv}"><text x="110" y="190" font-family="DM Sans" font-size="38" fill="#A8988F">BTC-PERP</text>`
+    g += `<text x="104" y="350" font-family="DM Sans" font-weight="600" font-size="180" letter-spacing="-6" fill="#F5EFE8">$${price.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</text>`
+    g += `<text x="112" y="420" font-family="DM Sans" font-weight="600" font-size="44" fill="#FF5A19">+${(2.91 * ease(cl((t - 0.3) / 2.6))).toFixed(2)}%</text></g>`
+    const av = back(cl((t - 2.3) / 0.6)) * (1 - OUT(t))
+    g += `<g transform="translate(1520 108) scale(${0.9 * Math.max(0, av)})"><path d="M8 94 23.5 20Q26 8 38 8H62Q74 8 76.5 20L92 94H64.4L50 40 35.6 94Z" fill="#FF5A19"/></g>`
+    g += text(t, 2.5, 1630, 182, "Atlas", { font: "DM Sans", size: 84, weight: 600, fill: "#F5EFE8", ls: -3 })
+    return g
+  },
+
+  // Junction: the whole frame is the map. Lines draw in from every side, stops pop up, a train runs the pink line.
+  junction(t) {
+    let g = r(0, 0, W, H, "#F4F1EA")
+    const L = [
+      ["#FF7A59", "M-40,300L520,300L720,500L1300,500L1500,300L1960,300"],
+      ["#FFB43A", "M300,-40L300,420L520,640L1100,640L1300,840L1300,1240"],
+      ["#CFF24B", "M-40,860L600,860L760,700L1500,700L1700,500L1960,500"],
+      ["#63D2F2", "M1620,-40L1620,180L1400,400L900,400L700,600L700,1240"],
+      ["#7B8CFF", "M-40,1040L900,1040L1100,840L1960,840"],
+    ]
+    L.forEach(([c, d], i) => {
+      const v = vis(t, 0.1 + i * 0.16, 1.3)
+      g += `<path d="${d}" fill="none" stroke="${c}" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${1 - v}"/>`
+    })
+    const STOPS = [[520, 300, "NVDA", 0.9], [1100, 640, "AAPL", 1.3], [760, 700, "TSLA", 1.5], [1300, 500, "Bitcoin", 1.2], [900, 1040, "Gold", 1.7], [700, 600, "S&amp;P 500", 1.6], [1500, 700, "ETH", 1.8]]
+    STOPS.forEach(([x, y, n, a]) => {
+      const v = back(cl((t - a) / 0.4)) * (1 - OUT(t))
+      g += `<circle cx="${x}" cy="${y}" r="${Math.max(0, 24 * v)}" fill="#F4F1EA" stroke="#0B0E22" stroke-width="9"/>`
+      g += `<text x="${x + 38}" y="${y - 30}" opacity="${cl(v)}" font-family="Satoshi" font-weight="700" font-size="34" fill="#0B0E22">${n}</text>`
+    })
+    const tv = cl((t - 2.0) / 3.0)
+    if (tv > 0 && tv < 1 && OUT(t) < 0.5) { const p = along(L[0][1], 0.08 + tv * 0.84); g += `<circle cx="${p.x}" cy="${p.y}" r="22" fill="#0B0E22"/><circle cx="${p.x}" cy="${p.y}" r="8" fill="#FF7A59"/>` }
+    g += text(t, 0.6, 110, 1120, "Junction", { font: "Satoshi", size: 72, weight: 700, fill: "#0B0E22", ls: -2 })
+    g += text(t, 0.8, 470, 1120, "Investing, mapped out.", { font: "Satoshi", size: 36, weight: 500, fill: "#6B7090" })
+    return g
+  },
+
+  // Nightshift: an overnight clock on the left, the work it finished stacking up on the right.
+  nightshift(t) {
+    let g = `<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E1440"/><stop offset=".6" stop-color="#1C2C78"/><stop offset="1" stop-color="#7A4AB0"/></linearGradient>${r(0, 0, W, H, "url(#sky)")}`
+    const p = ease(cl((t - 0.3) / 4.2)), mins = Math.round(p * 480), hh = (23 + Math.floor(mins / 60)) % 24, mm = mins % 60
+    const clock = `${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`
+    g += `<text x="140" y="560" font-family="Sora" font-weight="600" font-size="250" letter-spacing="-8" fill="#F3F0EA" opacity="${vis(t, 0.1, 0.5)}">${clock}</text>`
+    g += text(t, 0.5, 150, 680, "Your team sleeps.", { font: "Inter Tight", size: 56, weight: 500, fill: "#F3F0EA" })
+    g += text(t, 0.8, 150, 750, "The work doesn&apos;t.", { font: "Inter Tight", size: 56, weight: 500, fill: "#A9A49B" })
+    const N = [[11, 38], [15, 10], [33, 38], [37, 10]], s = 2.4
+    let mark = ""
+    for (let i = 0; i < 3; i++) mark += `<line x1="${N[i][0] * s}" y1="${N[i][1] * s}" x2="${N[i + 1][0] * s}" y2="${N[i + 1][1] * s}" stroke="#EDE8DF" stroke-width="${2.4 * s}" stroke-linecap="round"/>`
+    N.forEach(([x, y], i) => { mark += `<circle cx="${x * s}" cy="${y * s}" r="${(i === 3 ? 5 : 3.6) * s}" fill="${i === 3 ? "#FF7A3D" : "#EDE8DF"}"/>` })
+    g += `<g transform="translate(150 980)" opacity="${vis(t, 0.3, 0.5)}">${mark}<text x="140" y="80" font-family="Sora" font-weight="600" font-size="64" letter-spacing="-2" fill="#F3F0EA">nightshift</text></g>`
+    const TASKS = [["23:20", "Triaged 14 issues"], ["00:45", "Drafted the release notes"], ["02:10", "Answered 6 support tickets"], ["04:30", "Merged 3 small fixes"], ["06:50", "Morning brief is ready"]]
+    TASKS.forEach(([time, l], i) => {
+      const at = 0.3 + 4.2 * [0.04, 0.22, 0.4, 0.66, 0.97][i], v = vis(t, at, 0.4), y = 190 + i * 168, last = i === TASKS.length - 1
+      g += `<g opacity="${v}" transform="translate(${(1 - v) * 60} 0)">${r(1060, y, 720, 136, last ? "#FF7A3D" : "#12110F", 'rx="28"')}`
+      g += `<circle cx="1134" cy="${y + 68}" r="26" fill="${last ? "#12110F" : "#FFB054"}"/><path d="M1121 ${y + 68}l9 9 16-18" fill="none" stroke="${last ? "#FF7A3D" : "#12110F"}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`
+      g += `<text x="1188" y="${y + 60}" font-family="Inter Tight" font-weight="500" font-size="36" fill="${last ? "#12110F" : "#F3F0EA"}">${l}</text>`
+      g += `<text x="1188" y="${y + 102}" font-family="Inter Tight" font-size="26" fill="${last ? "#3A1C0E" : "#A9A49B"}">${time}</text></g>`
+    })
+    return g
+  },
+
+  // YouSpot: a phone receiving the people who need you today, rings travelling out behind it.
+  youspot(t) {
+    let g = r(0, 0, W, H, "#F4F2EF")
+    const PX = 1290, PY = 600
+    for (let k = 0; k < 5; k++) {
+      const rad = 300 + ((t * 125 + k * 150) % 750), fade = 1 - (rad - 300) / 750
+      g += `<circle cx="${PX}" cy="${PY}" r="${rad}" fill="none" stroke="#FFD6DE" stroke-width="22" opacity="${fade}"/>`
+    }
+    const pv = vis(t, 0.1, 0.6), py = 120 + (1 - pv) * 80
+    g += `<g opacity="${pv}">${r(PX - 230, py, 460, 960, "#1C1B1B", 'rx="72"')}${r(PX - 214, py + 16, 428, 928, "#FAFAF8", 'rx="58"')}${r(PX - 64, py + 34, 128, 34, "#1C1B1B", 'rx="17"')}`
+    g += `<text x="${PX - 180}" y="${py + 160}" font-family="Inter Tight" font-weight="600" font-size="52" letter-spacing="-1" fill="#1C1B1B">Today</text>`
+    g += `<text x="${PX - 180}" y="${py + 204}" font-family="Inter" font-size="24" fill="#6E6C68">3 people need you</text></g>`
+    const CARDS = [["M", "Maya", "Reply to her intro", "#FF4F6E"], ["L", "Leo", "His birthday is Friday", "#4DA3FF"], ["A", "Ana", "You promised the deck", "#F5B84B"], ["S", "Sam", "Two weeks, no call", "#3DD68C"]]
+    CARDS.forEach(([i0, n, l, c], i) => {
+      const v = vis(t, 0.8 + i * 0.45, 0.5), y = py + 250 + i * 170 + (1 - v) * -40
+      g += `<g opacity="${v}">${r(PX - 190, y, 380, 146, "#FFFFFF", 'rx="30"')}<circle cx="${PX - 128}" cy="${y + 73}" r="38" fill="${c}"/><text x="${PX - 128}" y="${y + 85}" text-anchor="middle" font-family="Inter" font-weight="500" font-size="32" fill="#FFFFFF">${i0}</text>`
+      g += `<text x="${PX - 72}" y="${y + 64}" font-family="Inter" font-weight="500" font-size="30" fill="#1C1B1B">${n}</text><text x="${PX - 72}" y="${y + 102}" font-family="Inter" font-size="23" fill="#6E6C68">${l}</text></g>`
+    })
+    const parts = [`<path d="M8 30A22 22 0 0 1 30 8V30Z" fill="#21201C"/>`, `<circle cx="45" cy="19" r="11" fill="#FF280F"/>`, `<rect x="8" y="34" width="22" height="22" rx="3" fill="#21201C"/>`, `<path d="M34 34H56A22 22 0 0 1 34 56Z" fill="#21201C"/>`]
+    const centers = [[22, 22], [45, 19], [19, 45], [42, 42]]
+    parts.forEach((p, i) => {
+      const v = back(cl((t - (0.2 + i * 0.12)) / 0.45)) * (1 - OUT(t)), [cx, cy] = centers[i]
+      g += `<g transform="translate(150 330) scale(3.2)"><g transform="translate(${cx} ${cy}) scale(${Math.max(0, v)}) translate(${-cx} ${-cy})">${p}</g></g>`
+    })
+    g += text(t, 0.7, 150, 680, "YouSpot", { font: "Inter Tight", size: 130, weight: 600, fill: "#1C1B1B", ls: -5 })
+    g += text(t, 0.9, 156, 760, "Know who needs you today.", { font: "Inter Tight", size: 44, fill: "#6E6C68" })
+    return g
+  },
+}
+
+const brand = new URLSearchParams(location.search).get("b") || "moss"
+window.seek = (t) => { document.getElementById("s").innerHTML = SCENES[brand](t) }
+window.ready = Promise.all(['150px "Jersey 10"', '28px Geist', '600 120px "DM Sans"', '30px "DM Sans"', '700 112px Satoshi', '500 30px Satoshi', '600 96px Sora', '27px "Inter Tight"', '600 110px "Inter Tight"', '27px Inter', '500 27px Inter'].map((f) => document.fonts.load(f))).then(() => document.fonts.ready)
+seek(3)
+</script>
+</body></html>

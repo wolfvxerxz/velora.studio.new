@@ -101,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   "priceRange": "€€€",
                   "knowsAbout": ["Brand identity", "Product design", "UI/UX design", "Landing page design", "Next.js development", "Design systems", "Fintech design", "AI product design", "Developer tool design", "Web3 design"],
                   "makesOffer": [
-                    { "@type": "Offer", "name": "Audit", "price": "2500", "priceCurrency": "EUR", "description": "One-week review of product, site and brand with a prioritised fix list, credited to the first month or project.", "url": "https://velora.studio/pricing" },
+                    { "@type": "Offer", "name": "Landing Page", "price": "1200", "priceCurrency": "EUR", "description": "One landing page designed and built in 1–2 weeks: copy, layout, motion, and a Next.js or Framer build.", "url": "https://velora.studio/pricing" },
                     { "@type": "Offer", "name": "Launch", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "14900", "priceCurrency": "EUR" }, "description": "Brand, app, landing page, case study and launch posts in 4–6 weeks.", "url": "https://velora.studio/pricing" },
                     { "@type": "Offer", "name": "Design Partner", "price": "5900", "priceCurrency": "EUR", "description": "Unlimited design requests, 2–3 updates a week, Next.js development, pause or cancel anytime.", "url": "https://velora.studio/pricing" }
                   ],

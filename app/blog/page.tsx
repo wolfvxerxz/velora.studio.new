@@ -1,8 +1,6 @@
 import { Metadata } from 'next'
 import { AnimatedSection } from '@/components/ui/animated-section'
-import { SiteNav } from '@/components/site-nav'
-import { SiteFooter } from '@/components/site-footer'
-import { BackNav } from '@/components/back-nav'
+import { AppleNav, AppleFoot } from '@/components/apple'
 import { blogPosts } from '@/data/blog-posts'
 import Link from 'next/link'
 import { generateMetadata } from '@/lib/metadata'
@@ -57,16 +55,17 @@ export default function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
       />
-      <SiteNav />
-      <main className="min-h-screen bg-white dark:bg-[#0f0f0f] transition-colors duration-300 pt-16">
-        <BackNav />
+      <div className="va vb">
+      <AppleNav />
+      <main className="min-h-screen ">
+        
         <div className="max-w-[720px] mx-auto px-4 py-10 sm:py-12 md:py-16">
           <Breadcrumbs />
           <AnimatedSection animation="fadeUp">
-            <h1 className="text-[22px] font-velora-studio text-black dark:text-white mb-6 transition-colors duration-300">
+            <h1 className="text-[22px] font-velora-studio text-black mb-6 transition-colors duration-300">
               Blog
             </h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-12 transition-colors duration-300 font-velora-studio">
+            <p className="text-sm text-gray-600 mb-12 transition-colors duration-300 font-velora-studio">
               Expert insights on SaaS design, UX optimization, and digital product development.
             </p>
 
@@ -76,7 +75,7 @@ export default function BlogPage() {
                 <Link
                   key={category}
                   href={`/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="text-sm bg-gray-100 dark:bg-zinc-800 text-black dark:text-white px-3 py-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors duration-300"
+                  className="text-sm bg-gray-100 text-black px-3 py-1.5 rounded-md hover:bg-gray-200 transition-colors duration-300"
                 >
                   {category}
                 </Link>
@@ -86,7 +85,7 @@ export default function BlogPage() {
             {/* Blog Posts Grid */}
             <div className="grid gap-8 sm:grid-cols-2">
               {blogPosts.map((post) => (
-                <article key={post.slug} className="bg-white dark:bg-zinc-900 rounded-lg overflow-hidden shadow-lg">
+                <article key={post.slug} className="bg-white rounded-lg overflow-hidden shadow-lg">
                   {post.image && (
                     <div className="relative h-48">
                       <img
@@ -98,14 +97,14 @@ export default function BlogPage() {
                   )}
                   <div className="p-6">
                     <h2 className="text-sm font-velora-studio mb-2">
-                      <a href={`/blog/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
+                      <a href={`/blog/${post.slug}`} className="hover:text-blue-600">
                         {post.title}
                       </a>
                     </h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 font-velora-studio">
+                    <p className="text-sm text-gray-600 mb-4 font-velora-studio">
                       {post.excerpt}
                     </p>
-                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center text-sm text-gray-500">
                       <time dateTime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
                     </div>
                   </div>
@@ -115,7 +114,8 @@ export default function BlogPage() {
           </AnimatedSection>
         </div>
       </main>
-      <SiteFooter />
+      <AppleFoot />
+      </div>
     </>
   )
 } 

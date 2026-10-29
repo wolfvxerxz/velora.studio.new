@@ -26,7 +26,7 @@ export const STUDIO = {
   oneLine: "Velora Studio is a design and development studio for AI, fintech, Web3 and developer-tool startups. We design brands, products and websites, and build them in Next.js.",
   promise: "Brand, product and launch for funded AI and fintech startups, shipped as one system before your raise or launch date.",
   plans: [
-    { name: "Audit", price: "€2,500, credited to your first month or project", detail: "One week. Your product, site and brand reviewed, a prioritised list of what to fix first, and a walkthrough call." },
+    { name: "Landing Page", price: "€1,200", detail: "One landing page in 1–2 weeks: copy, layout and motion, built in Next.js or Framer, with SEO and AI search basics." },
     { name: "Launch", price: "from €14,900, 4–6 weeks", detail: "Brand identity, the app's core flows (web or iOS), a landing page with the live product, a case study and launch posts. Two spots a month." },
     { name: "Design Partner", price: "€5,900 per month", detail: "Unlimited design requests, 2–3 updates a week, Next.js development, Slack or WhatsApp, pause or cancel anytime." },
   ],

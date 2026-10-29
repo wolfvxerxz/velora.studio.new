@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const u = (path: string, priority: number, changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] = "monthly") => ({ url: `${STUDIO.url}${path}`, lastModified: now, changeFrequency, priority })
   return [
     u("", 1, "weekly"),
-    u("/services", 0.9), u("/pricing", 0.9), u("/glossary", 0.6), u("/blog", 0.7, "weekly"), u("/15-min", 0.5),
+    u("/services", 0.9), u("/pricing", 0.9), u("/start", 0.8), u("/glossary", 0.6), u("/blog", 0.7, "weekly"), u("/15-min", 0.5),
     ...SERVICES.map((p) => u(`/services/${p.slug}`, 0.8)),
     ...INDUSTRIES.map((p) => u(`/industries/${p.slug}`, 0.8)),
     ...COMPARE.map((p) => u(`/compare/${p.slug}`, 0.7)),

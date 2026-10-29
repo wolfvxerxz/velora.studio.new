@@ -35,7 +35,7 @@ export function SeoPageView({ kind, slug }: { kind: SeoPage["kind"]; slug: strin
       <section className={block}>
         <h1 className="!text-[28px] !leading-[34px] !font-[500] !tracking-[-0.02em] text-[var(--t-ink)]">{p.h1}</h1>
         <p className={`mt-4 ${body}`}>{p.answer}</p>
-        <a href={STUDIO.book} target="_blank" rel="noopener noreferrer" className="tick tick-primary mt-8 inline-flex">Schedule Call</a>
+        <a href={STUDIO.book} target="_blank" rel="noopener noreferrer" className="tick tick-primary mt-8 inline-flex">Book a call</a>
       </section>
       {p.sections.map((s) => (
         <div key={s.title}>
