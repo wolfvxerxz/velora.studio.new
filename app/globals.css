@@ -1412,5 +1412,5 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 /* Two cases per row at every desktop width, one on phones */
 .vn-main .vn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 734px) { .vn-main .vn-grid { grid-template-columns: 1fr; } }
-/* The left side: 550px wide */
-@media (min-width: 1024px) { .vn-split { grid-template-columns: 550px minmax(0, 1fr); } }
+/* The left side: 600px wide */
+@media (min-width: 1024px) { .vn-split { grid-template-columns: 600px minmax(0, 1fr); } }
