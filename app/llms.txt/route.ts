@@ -1,6 +1,5 @@
 import { caseStudies } from "@/lib/case-studies"
 import { SERVICES, INDUSTRIES, COMPARE, GLOSSARY, STUDIO } from "@/lib/seo"
-import { blogPosts } from "@/data/blog-posts"
 
 export const dynamic = "force-static"
 
@@ -31,9 +30,6 @@ export function GET() {
     ...COMPARE.map((p) => `- [${p.h1}](${STUDIO.url}/compare/${p.slug}): ${p.answer}`),
     `- [Pricing](${STUDIO.url}/pricing)`,
     `- [Glossary](${STUDIO.url}/glossary): ${GLOSSARY.length} plain definitions of design and web terms.`,
-    "",
-    "## Blog",
-    ...blogPosts.map((b) => `- [${b.title}](${STUDIO.url}/blog/${b.slug})`),
     "",
     "## Contact",
     `- Website: ${STUDIO.url}`,

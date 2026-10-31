@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react"
 import type { CaseStudy } from "@/lib/case-studies"
 import Image from "next/image"
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
-import { Calendar03Icon, GridViewIcon, SparklesIcon, ChartUpIcon, SourceCodeIcon, SmartPhone01Icon, ArrowLeft02Icon, ArrowRight02Icon, File01Icon, Rocket01Icon, RepeatIcon, BubbleChatIcon } from "@hugeicons-pro/core-solid-rounded"
+import { Calendar03Icon, GridViewIcon, SparklesIcon, ChartUpIcon, SourceCodeIcon, SmartPhone01Icon, ArrowLeft02Icon, ArrowRight02Icon, File01Icon, Rocket01Icon, UserIcon, BubbleChatIcon } from "@hugeicons-pro/core-solid-rounded"
 
 const Icon = ({ i, size = 16 }: { i: IconSvgElement; size?: number }) => <HugeiconsIcon icon={i} size={size} aria-hidden />
 
@@ -16,7 +16,7 @@ const ext = { target: "_blank", rel: "noopener noreferrer" } as const
 const PLANS = [
   { icon: File01Icon, name: "Landing Page", price: "€1,200", line: "One page that sells the product, in 1–2 weeks." },
   { icon: Rocket01Icon, name: "Launch", price: "from €14,900", line: "Brand, product and site as one system, in 4–6 weeks." },
-  { icon: RepeatIcon, name: "Design Partner", price: "€5,900 / month", line: "A senior team every week, build included." },
+  { icon: UserIcon, name: "Design Partner", price: "€5,900 / month", line: "A senior team every week, build included." },
 ]
 
 const FILTERS: [string, string[]][] = [["All", []], ["AI", ["AI", "Agents"]], ["Fintech", ["Fintech", "Payments", "Trading", "Investing", "Crypto"]], ["Dev tools", ["Developer Tools", "Infrastructure", "DevOps", "Database", "Backend"]], ["Consumer", ["Consumer", "Mobile"]]]
@@ -86,7 +86,7 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
         <footer className="vn-foot">
           <span>velora.studio · 2026 · Referrals and YC, Antler and a16z speedrun companies get 10% off.</span>
           <nav>
-            <Link href="/services">Services</Link><Link href="/blog">Blog</Link>
+            <Link href="/services">Services</Link>
             <a href="https://x.com/veloraxstudio" {...ext}>X</a><a href="https://www.linkedin.com/company/velorastudio/" {...ext}>LinkedIn</a>
           </nav>
         </footer>

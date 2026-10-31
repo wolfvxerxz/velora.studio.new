@@ -829,7 +829,7 @@ p, li, dd { text-wrap: pretty; }
 .vb main { display: block; }
 .vb main h1 { font-size: clamp(40px, 5vw, 56px) !important; font-weight: 600; letter-spacing: -0.005em; color: var(--t-ink); }
 .vb main article { border-radius: 18px !important; box-shadow: none !important; background: var(--t-surface) !important; }
-.vb main a:hover { color: var(--blue) !important; }
+.vb main a:hover { color: #fff !important; }
 
 @media (max-width: 734px) {
   .vw-bar nav a:not(.va-pill) { display: none; }
@@ -1162,3 +1162,159 @@ html { scroll-behavior: smooth; } @media (prefers-reduced-motion: reduce) { html
 .vn-side-end { gap: 20px; }
 @media (max-width: 1000px) { .vn-side .vn-plan span { display: block; } .vn-side .vn-plan i { grid-row: 1 / span 2; } .vn-side .vn-quote blockquote { -webkit-line-clamp: unset; } }
 .vn-side .vn-quote blockquote { padding: 0; margin: 14px 16px; }
+
+/* ======= Dark, after x.ai: near-black page, #1A1A1A cards, white and graphite pills, faint 12% outlines ======= */
+.vn-split { --x-bg: #0A0A0A; --x-card: #1A1A1A; --x-fill: rgba(255,255,255,.07); --x-line: rgba(255,255,255,.12); --x-mu: #7D8187; --x-soft: #D5D9E2; background: var(--x-bg); color: #fff; color-scheme: dark; }
+html:has(.vn-split), body:has(.vn-split) { background: #0A0A0A; }
+.vn-split .vn-intro h1 { color: #fff; }
+.vn-split .vn-intro p { color: var(--x-mu); font-weight: 400; }
+.vn-split .vn-head h2 { color: #fff; }
+
+/* buttons: white primary, graphite secondary, 44px, fully round */
+.vn-split .va-pill { height: 44px; padding: 0 22px 0 18px; gap: 8px; background: #fff; color: #0A0A0A !important; font-size: 15px; font-weight: 500; box-shadow: none; }
+.vn-split .va-pill:hover { background: #E6E6E6; }
+.vn-split .va-pill.ghost { background: #2C2C2C; color: var(--x-soft) !important; box-shadow: none; }
+.vn-split .va-pill.ghost svg { color: var(--x-soft); }
+.vn-split .va-pill.ghost:hover { background: #363636; color: #fff !important; }
+
+.vn-split .vn-mark { background: var(--x-card); box-shadow: none; } .vn-split .vn-mark img { filter: brightness(0) invert(1); }
+
+/* filters and arrows: faint fill, 12% outline */
+.vn-split .va-seg button { height: 34px; background: rgba(38,38,38,.68); box-shadow: inset 0 0 0 1px var(--x-line); color: var(--x-soft); }
+.vn-split .va-seg button svg { color: var(--x-mu); }
+.vn-split .va-seg button:hover { background: #2C2C2C; }
+.vn-split .va-seg button.on { background: #fff; color: #0A0A0A; box-shadow: none; } .vn-split .va-seg button.on svg { color: #0A0A0A; }
+.vn-split .vn-arrows { background: rgba(38,38,38,.68); box-shadow: inset 0 0 0 1px var(--x-line); }
+.vn-split .vn-arrows button { background: transparent; color: var(--x-soft); }
+.vn-split .vn-arrows button + button { box-shadow: inset 1px 0 0 var(--x-line); }
+.vn-split .vn-arrows button:hover { background: #2C2C2C; color: #fff; }
+
+/* cards: #1A1A1A, round 16–24 */
+.vn-split .vn-quote { background: var(--x-card); box-shadow: none; border-radius: 16px; }
+.vn-split .vn-quote blockquote { color: var(--x-soft); }
+.vn-split .vn-quote figcaption { box-shadow: inset 0 1px 0 rgba(255,255,255,.06); color: var(--x-mu); }
+.vn-split .vn-quote figcaption b { color: #fff; }
+.vn-split .vn-quote figcaption a { color: #fff; text-decoration-color: rgba(255,255,255,.3); }
+.vn-split .vn-plan { background: var(--x-card); box-shadow: none; }
+.vn-split .vn-plan:hover { background: #222; }
+.vn-split .vn-plan b, .vn-split .vn-plan em { color: #fff; } .vn-split .vn-plan span { color: var(--x-mu); }
+.vn-split .vn-plan i { background: var(--x-fill); box-shadow: inset 0 0 0 1px var(--x-line); color: #fff; }
+.vn-split .vn-more { color: var(--x-soft) !important; text-decoration-color: rgba(255,255,255,.3); }
+
+/* work: each piece in a #1A1A1A frame with 24px corners */
+.vn-split .vn-media { padding: 6px; border-radius: 24px; background: var(--x-card); box-shadow: none; }
+.vn-split .vn-media img, .vn-split .vn-media video { border-radius: 18px; }
+.vn-split .vn-case b { color: #fff; } .vn-split .vn-case span { color: var(--x-mu); }
+.vn-split .vn-main > .vn-head { background: linear-gradient(#0A0A0A 80%, rgba(10,10,10,0)); }
+.vn-split .vn-foot { color: var(--x-mu); } .vn-split .vn-foot a:hover { color: #fff; }
+
+/* ======= The whole site in the homepage's dark: x.ai's near-black, #1A1A1A cards, white and graphite pills ======= */
+html, body { background: #0A0A0A; color-scheme: dark; }
+.va { --g: #1A1A1A; --ink: #FFFFFF; --mu: #7D8187; --blue: #FFFFFF; --ln: rgba(255,255,255,.12);
+  --t-ink: #FFFFFF; --t-muted: #8B8F96; --t-faint: #6B6F76; --t-line: rgba(255,255,255,.1); --t-line-strong: rgba(255,255,255,.2); --t-surface: #1A1A1A; --t-bg: #0A0A0A; --t-page: #0A0A0A; --t-cap: #1A1A1A; --t-mint: #FFFFFF; --t-mint-ink: #FFFFFF; --t-accent-rgb: 255 255 255;
+  --x-card: #1A1A1A; --x-fill: rgba(255,255,255,.07); --x-line: rgba(255,255,255,.12); --x-soft: #D5D9E2;
+  --stroke: inset 0 0 0 1px rgba(255,255,255,.12);
+  background: #0A0A0A; color: #fff; color-scheme: dark; }
+
+/* nav: a dark bar, grey links, a white pill */
+.va-nav { background: rgba(10,10,10,.78); backdrop-filter: saturate(160%) blur(20px); -webkit-backdrop-filter: saturate(160%) blur(20px); box-shadow: inset 0 -1px 0 rgba(255,255,255,.06); }
+.va-nav-in { height: 60px; max-width: 1200px; padding: 0 24px; font-size: 14px; }
+.va-nav nav { gap: 28px; color: #A0A4AB; } .va-nav nav a:hover { color: #fff; }
+.va-logo img { filter: brightness(0) invert(1); }
+.va-nav-cta { display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 999px; background: #fff !important; color: #0A0A0A !important; font-size: 14px; font-weight: 500; }
+.va-nav-cta:hover { background: #E6E6E6 !important; }
+
+/* buttons everywhere */
+.va .va-pill { height: 44px; padding: 0 22px; gap: 8px; background: #fff; color: #0A0A0A !important; font-size: 15px; font-weight: 500; box-shadow: none; }
+.va .va-pill:hover { background: #E6E6E6; }
+.va .va-pill.ghost { background: #2C2C2C; color: var(--x-soft) !important; box-shadow: none; }
+.va .va-pill.ghost:hover { background: #363636; color: #fff !important; }
+.va-close { background: #0A0A0A; }
+
+/* footer */
+.va-foot { background: #0A0A0A; color: #7D8187; box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+.va-foot b, .va-foot-cols b { color: #fff; } .va-foot a { color: #8B8F96; } .va-foot a:hover { color: #fff; }
+.va-foot-note a { color: #fff; }
+
+/* the old light surfaces become #1A1A1A cards */
+.va-white, .va-work, .va-tiles, .va-mac, .va-quote, .va-card img, .va-screen { background: #1A1A1A; }
+.va-seg { background: rgba(38,38,38,.68); box-shadow: inset 0 0 0 1px var(--x-line); }
+.va-seg button { color: var(--x-soft); } .va-seg button.on { background: #fff; color: #0A0A0A; box-shadow: none; }
+
+/* start a project: x.ai's faint fill with a 12% outline, the chosen answer white */
+.vs-options button { background: var(--x-fill); color: #fff; box-shadow: inset 0 0 0 1px var(--x-line); border-radius: 16px; }
+.vs-options button span { color: #8B8F96; }
+.vs-options button:hover { background: rgba(255,255,255,.1); }
+.vs-options button.on { background: #fff; color: #0A0A0A; box-shadow: none; } .vs-options button.on span { color: #55595F; }
+.vs-options button kbd { background: rgba(255,255,255,.1); color: #D5D9E2; } .vs-options button.on kbd { background: #0A0A0A; color: #fff; }
+.vs-summary { background: #1A1A1A; }
+.vs-email input[type=email] { background: var(--x-fill); color: #fff; box-shadow: inset 0 0 0 1px var(--x-line); }
+.vs-progress { background: rgba(255,255,255,.08); } .vs-progress span { background: #fff; }
+.vs-bar .va-pill:disabled { opacity: .35; }
+.vw-bar { top: 60px; background: rgba(10,10,10,.78); box-shadow: inset 0 -1px 0 rgba(255,255,255,.06); }
+.vw-bar-in { max-width: 1200px; padding: 0 24px; } .vw-bar-in > b, .vw-bar-in > a:first-child, .vw-bar-in > span:first-child { color: #fff; }
+.vw-bar nav a:not(.va-pill):hover { color: #fff !important; }
+/* the older "tick" buttons on service and industry pages, in the same pills */
+.va .tick { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 22px; border: 0; border-radius: 999px; font-size: 15px; font-weight: 500; box-shadow: none; }
+.va .tick-primary { background: #fff !important; color: #0A0A0A !important; } .va .tick-primary:hover { background: #E6E6E6 !important; }
+.va .tick:not(.tick-primary) { background: #2C2C2C !important; color: #D5D9E2 !important; } .va .tick:not(.tick-primary):hover { background: #363636 !important; color: #fff !important; }
+
+/* ======= Inner pages in the landing page's frame ======= */
+.vx-side .vx-name { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; color: #fff; }
+.vx-side .vn-intro p { margin-top: 6px; }
+.vx-pages { display: grid; gap: 4px; }
+.vx-pages a { display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px 0 6px; border-radius: 14px; font-size: 15px; font-weight: 500; color: #D5D9E2; transition: background-color .2s, color .2s; }
+.vx-pages a i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: var(--x-fill); box-shadow: inset 0 0 0 1px var(--x-line); color: #8B8F96; }
+.vx-pages a:hover { background: #141414; color: #fff; }
+.vx-pages a.on { background: #1A1A1A; color: #fff; } .vx-pages a.on i { background: #fff; color: #0A0A0A; box-shadow: none; }
+.vx-small { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: #6B6F76; } .vx-small a:hover { color: #fff; }
+
+/* the page on the right: the landing's sizes, one readable column */
+.vx-page .vn-main { padding: 32px 40px 80px 8px; }
+.vx-page .vn-main > * { width: auto !important; max-width: 760px; margin-left: 0 !important; margin-right: 0 !important; }
+.vx-page .vn-main.vw > *, .vx-page .vn-main .vw-wide, .vx-page .vn-main .vp-wide, .vx-page .vn-main .vp-work { max-width: none; }
+.vx-page .vw-bar, .vx-page .va-foot { display: none; }
+.vx-page h1 { font-size: 28px !important; line-height: 36px !important; font-weight: 500 !important; letter-spacing: -0.02em !important; color: #fff; text-align: left !important; }
+.vx-page .vn-main h2, .vx-page .vp-h2 { font-size: 20px !important; line-height: 28px !important; font-weight: 500 !important; letter-spacing: -0.01em !important; color: #fff; }
+.vx-page .vn-main h3 { font-size: 16px !important; font-weight: 500 !important; color: #fff; }
+.vx-page .vn-main p, .vx-page .vn-main li, .vx-page .vn-main dd { font-size: 16px; line-height: 26px; color: #8B8F96; }
+.vx-page .vn-main strong, .vx-page .vn-main b { color: #fff; font-weight: 500; }
+.vx-page .vp-crumbs, .vx-page nav[aria-label="Breadcrumb"] { margin-bottom: 20px; font-size: 13px; color: #6B6F76; }
+.vx-page .vp-block { padding-top: 0 !important; padding-bottom: 48px !important; }
+.vx-page .vp-cta { align-items: flex-start; text-align: left; padding: 28px; border-radius: 24px; background: #1A1A1A; }
+.vx-page .vp-cta h2 { font-size: 20px !important; } .vx-page .vp-cta p { margin: 8px 0 20px; font-size: 16px; }
+.vx-page .vp-faq > * { box-shadow: inset 0 -1px 0 rgba(255,255,255,.08); }
+.vx-page .vp-work-tile img, .vx-page .vw-shot img, .vx-page .vw-shot video { border-radius: 18px; }
+.vx-page .vp-work-tile > :first-child, .vx-page .vw-shot { padding: 6px; border-radius: 24px; background: #1A1A1A; overflow: hidden; }
+
+/* a case: its story and facts first, then the work */
+.vx-page .vw-hero { padding: 0 0 32px !important; text-align: left !important; }
+.vx-page .vw-hero > * { margin-left: 0 !important; margin-right: 0 !important; text-align: left !important; }
+.vx-page .vw-facts { justify-content: flex-start !important; gap: 32px !important; margin-top: 24px !important; }
+.vx-page .vw-facts dt { font-size: 13px; color: #6B6F76; } .vx-page .vw-facts dd { color: #fff; font-size: 15px; line-height: 22px; }
+.vx-page .vw-big, .vx-page .vw-quote blockquote { font-size: 20px !important; line-height: 28px !important; font-weight: 500 !important; color: #fff; }
+.vx-page .vw-chapter, .vx-page .vw-text { padding-top: 32px !important; padding-bottom: 0 !important; }
+
+/* start a project sits in the right column too */
+.vx-page .vs { max-width: 640px; margin: 0; }
+.vx-page .vs h1 { font-size: 28px !important; }
+
+@media (max-width: 1000px) {
+  .vx-page .vn-main { padding: 32px 20px 64px; }
+  .vx-side .vn-side-end { order: 3; padding: 48px 20px 40px; }
+}
+.vx-page .vw-hero { align-items: stretch !important; width: 100% !important; }
+.vx-page .vw-head { max-width: 640px; margin-top: 4px; font-size: 20px !important; line-height: 28px !important; font-weight: 500 !important; color: #D5D9E2; }
+.vx-page .vw-desc { max-width: 640px; margin-top: 12px; }
+.vx-page .vw-facts { display: flex !important; flex-wrap: wrap; }
+.vx-page .vw-hero .vw-wide { margin-top: 32px !important; }
+.vx-page .vw-quote { max-width: 760px; margin: 24px 0 0 !important; padding: 24px 28px !important; border-radius: 24px; background: #1A1A1A; text-align: left !important; }
+.vx-page .vw-quote figcaption { justify-content: flex-start !important; color: #8B8F96; }
+
+/* inner pages: no navbar, just the way back to the work and a call */
+.va-back .va-nav-in { height: 64px; }
+.va-home { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px 0 12px; border-radius: 999px; background: rgba(38,38,38,.68); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); color: #D5D9E2; font-size: 14px; font-weight: 500; transition: background-color .2s, color .2s; }
+.va-home:hover { background: #2C2C2C; color: #fff; }
+.va-home img { filter: brightness(0) invert(1); }
+.vw-bar { top: 64px; }
+.vn-split .va-seg { background: none; box-shadow: none; }
