@@ -5,22 +5,22 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import type { CaseStudy } from "@/lib/case-studies"
 import Image from "next/image"
-import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
-import { Calendar03Icon, GridViewIcon, SparklesIcon, ChartUpIcon, SourceCodeIcon, SmartPhone01Icon, ArrowLeft02Icon, ArrowRight02Icon, File01Icon, Rocket01Icon, UserIcon, BubbleChatIcon } from "@hugeicons-pro/core-solid-rounded"
+import { Calendar, Category, Sparkles, TrendUp, Code, Mobile, ArrowLeft, ArrowRight, DocumentText, Rocket, User, MessageText } from "reicon-react"
 
-const Icon = ({ i, size = 16 }: { i: IconSvgElement; size?: number }) => <HugeiconsIcon icon={i} size={size} aria-hidden />
+type IconType = typeof Calendar
+const Icon = ({ i: I, size = 16 }: { i: IconType; size?: number }) => <I size={size} weight="Filled" aria-hidden />
 
 const book = "https://cal.com/vuk-m/15min"
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const
 
 const PLANS = [
-  { icon: File01Icon, name: "Landing Page", price: "€1,200", line: "One page that sells the product, in 1–2 weeks." },
-  { icon: Rocket01Icon, name: "Launch", price: "from €14,900", line: "Brand, product and site as one system, in 4–6 weeks." },
-  { icon: UserIcon, name: "Design Partner", price: "€5,900 / month", line: "A senior team every week, build included." },
+  { icon: DocumentText, name: "Landing Page", price: "€1,200", line: "One page that sells the product, in 1–2 weeks." },
+  { icon: Rocket, name: "Launch", price: "from €14,900", line: "Brand, product and site as one system, in 4–6 weeks." },
+  { icon: User, name: "Design Partner", price: "€5,900 / month", line: "A senior team every week, build included." },
 ]
 
 const FILTERS: [string, string[]][] = [["All", []], ["AI", ["AI", "Agents"]], ["Fintech", ["Fintech", "Payments", "Trading", "Investing", "Crypto"]], ["Dev tools", ["Developer Tools", "Infrastructure", "DevOps", "Database", "Backend"]], ["Consumer", ["Consumer", "Mobile"]]]
-const FILTER_ICONS: Record<string, IconSvgElement> = { All: GridViewIcon, AI: SparklesIcon, Fintech: ChartUpIcon, "Dev tools": SourceCodeIcon, Consumer: SmartPhone01Icon }
+const FILTER_ICONS: Record<string, IconType> = { All: Category, AI: Sparkles, Fintech: TrendUp, "Dev tools": Code, Consumer: Mobile }
 const ORDER = ["moss", "atlas", "junction", "nightshift", "youspot"]
 // Each recent case has its own looping film, made from its brand
 const FILMS: Record<string, string> = { moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
@@ -42,8 +42,8 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
           <h1>Velora Studio helps AI and fintech founders launch and raise with a brand, product and website that look as good as the idea.</h1>
           <p>We design and build all three as one system, so nothing feels stitched together. You work directly with the designer doing the work, and most launches ship in 4–6 weeks.</p>
           <div className="vn-ctas">
-            <a href={book} {...ext} className="va-pill"><Icon i={Calendar03Icon} />Book a call</a>
-            <Link href="/start" className="va-pill ghost"><Icon i={BubbleChatIcon} />Start a project</Link>
+            <a href={book} {...ext} className="va-pill"><Icon i={Calendar} />Book a call</a>
+            <Link href="/start" className="va-pill ghost"><Icon i={MessageText} />Start a project</Link>
           </div>
         </section>
 
@@ -104,8 +104,8 @@ function Voices({ quotes }: { quotes: CaseStudy[] }) {
       <div className="vn-head">
         <h2>Founders.</h2>
         <div className="vn-arrows">
-          <button aria-label="Previous" onClick={() => setI((i - 1 + quotes.length) % quotes.length)}><Icon i={ArrowLeft02Icon} /></button>
-          <button aria-label="Next" onClick={() => setI((i + 1) % quotes.length)}><Icon i={ArrowRight02Icon} /></button>
+          <button aria-label="Previous" onClick={() => setI((i - 1 + quotes.length) % quotes.length)}><Icon i={ArrowLeft} /></button>
+          <button aria-label="Next" onClick={() => setI((i + 1) % quotes.length)}><Icon i={ArrowRight} /></button>
         </div>
       </div>
       <figure className="vn-quote" key={q.slug}>
