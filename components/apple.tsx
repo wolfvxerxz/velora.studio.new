@@ -1,4 +1,4 @@
-// The chrome every page shares: Apple's quiet global nav and its small grey footer.
+// The chrome every inner page shares: the way back to the work and a call.
 import Link from "next/link"
 import Image from "next/image"
 
@@ -17,28 +17,7 @@ export function AppleNav() {
   )
 }
 
-export function AppleFoot() {
-  return (
-    <footer className="va-foot">
-      <div className="va-foot-in">
-        <p className="va-foot-note">Every launch is planned back from your date on a 15-minute call. <a href={BOOK} {...ext}>Book one ›</a></p>
-        <div className="va-foot-cols">
-          {[
-            ["Studio", [["Work", "/#work"], ["Pricing", "/pricing"], ["Glossary", "/glossary"], ["Start a project", "/start"], ["Book a call", BOOK]]],
-            ["Services", [["Brand identity", "/services/brand-identity"], ["Product design", "/services/product-design"], ["Websites", "/services/website-design"], ["Design partner", "/services/design-subscription"], ["All services", "/services"]]],
-            ["For", [["AI startups", "/industries/ai-startups"], ["Fintech", "/industries/fintech"], ["Developer tools", "/industries/developer-tools"], ["Web3", "/industries/web3"], ["SaaS", "/industries/saas"]]],
-            ["Elsewhere", [["X", "https://x.com/veloraxstudio"], ["LinkedIn", "https://www.linkedin.com/company/velorastudio/"], ["Instagram", "https://www.instagram.com/studio.velora/"]]],
-          ].map(([h, ls]) => (
-            <div key={h as string}><b>{h as string}</b>{(ls as string[][]).map(([t, href]) => <a key={t} href={href}>{t}</a>)}</div>
-          ))}
-        </div>
-        <p className="va-copy">Copyright © 2026 Velora Studio. All rights reserved.</p>
-      </div>
-    </footer>
-  )
-}
-
-// A page in the same manner: the way back, the page, footer.
+// A page in the same manner: the way back, then the page. No footer, as on the landing page.
 export function ApplePage({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className="va"><AppleNav /><main className={`vp ${className}`}>{children}</main><AppleFoot /></div>
+  return <div className="va"><AppleNav /><main className={`vp ${className}`}>{children}</main></div>
 }
