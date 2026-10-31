@@ -10,7 +10,7 @@ export function AppleNav() {
   return (
     <header className="va-nav va-back">
       <div className="va-nav-in">
-        <Link href="/" className="va-home"><Image src="/logo/logo-v.svg" alt="" width={16} height={16} priority /><span>All work</span></Link>
+        <Link href="/" className="va-home"><Image src="/logo/logo-v.svg" alt="" width={16} height={16} priority /><span>Go back</span></Link>
         <a href={BOOK} {...ext} className="va-nav-cta">Book a call</a>
       </div>
     </header>
