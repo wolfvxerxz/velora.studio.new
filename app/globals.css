@@ -1036,3 +1036,129 @@ html { scroll-behavior: smooth; } @media (prefers-reduced-motion: reduce) { html
 .vw-facts dd { margin: 0; font-size: 19px; line-height: 1.45; font-weight: 500; color: var(--t-ink); }
 @media (max-width: 734px) { .vw-facts { gap: 24px 40px; justify-content: flex-start; } .vw-facts dd { font-size: 17px; } }
 .vn-quote figcaption img { width: 28px; height: 28px; object-fit: cover; }
+
+/* ======= Adria's buttons, strokes and icons ======= */
+.va { --stroke: 0 0 0 1px rgba(15,15,15,.08), 0 .5px 1.6px -2.25px rgba(15,15,15,.13), 0 4px 13.6px -4.5px rgba(15,15,15,.04); }
+.va-pill { gap: 8px; height: 36px; padding: 0 16px 0 14px; background: #0F0F0F; color: #fff !important; font-size: 14px; font-weight: 500; letter-spacing: -0.005em; box-shadow: 0 .5px 1.6px -2.25px rgba(15,15,15,.13), 0 4px 13.6px -4.5px rgba(15,15,15,.04); transition: background-color .2s, transform .15s; }
+.va-pill:hover { background: #2A2A2A; } .va-pill:active { transform: scale(.97); }
+.va-pill svg { flex: none; width: 15px; height: 15px; }
+.va-pill.ghost { background: #fff; color: #0F0F0F !important; box-shadow: var(--stroke); }
+.va-pill.ghost svg { color: #8A8A8A; }
+.va-pill.ghost:hover { background: #F7F7F7; color: #0F0F0F !important; }
+.va-nav-cta { background: #0F0F0F !important; font-weight: 500; }
+.va-tile.dark .va-pill, .va-close .va-pill { background: #fff; color: #0F0F0F !important; }
+.va-tile.dark .va-pill.ghost, .va-close .va-pill.ghost { background: rgba(255,255,255,.1); color: #fff !important; box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+
+/* filters as separate pills: the chosen one grey, the rest white with a stroke */
+.vn .va-seg { gap: 6px; padding: 0; background: none; }
+.vn .va-seg button { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 13px 0 11px; background: #fff; box-shadow: var(--stroke); font-size: 13px; font-weight: 500; color: #0F0F0F; }
+.vn .va-seg button svg { width: 14px; height: 14px; color: #8A8A8A; transition: color .2s; }
+.vn .va-seg button:hover { background: #F7F7F7; }
+.vn .va-seg button.on { background: #EDEDED; box-shadow: none; }
+.vn .va-seg button.on svg { color: #0F0F0F; }
+
+/* arrows joined in one stroked pill */
+.vn-arrows { gap: 0; border-radius: 999px; background: #fff; box-shadow: var(--stroke); overflow: hidden; }
+.vn-arrows button { width: 40px; height: 32px; border-radius: 0; background: #fff; font-size: 0; }
+.vn-arrows button svg { width: 14px; height: 14px; }
+.vn-arrows button + button { box-shadow: inset 1px 0 0 rgba(15,15,15,.08); }
+.vn-arrows button:hover { background: #F7F7F7; }
+
+/* testimonial: a white stroked card, the name row under a hairline */
+.vn-quote { padding: 0; border-radius: 14px; background: #fff; box-shadow: var(--stroke); overflow: hidden; }
+.vn-quote blockquote { padding: 22px 24px 24px; font-size: 17px; line-height: 1.55; color: #3D3D3D; }
+.vn-quote figcaption { margin: 0; padding: 12px 24px; box-shadow: inset 0 1px 0 rgba(15,15,15,.07); font-size: 14px; }
+.vn-quote figcaption a { color: #0F0F0F; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(15,15,15,.3); }
+.vn-quote figcaption img { width: 22px; height: 22px; }
+
+/* work: each image sits in a white stroked frame */
+.vn-media { padding: 4px; border-radius: 14px; background: #fff; box-shadow: var(--stroke); }
+.vn-media img, .vn-media video { border-radius: 10px; }
+.vn-case b { font-weight: 500; }
+
+/* plans: stroked white rows, a solid icon on each */
+.vn-plan { grid-template-columns: auto 1fr auto; gap: 2px 14px; padding: 16px 20px 16px 16px; border-radius: 14px; background: #fff; box-shadow: var(--stroke); }
+.vn-plan:hover { background: #FAFAFA; }
+.vn-plan i { grid-row: 1 / span 2; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: #F2F2F2; color: #0F0F0F; }
+.vn-plan i svg { width: 17px; height: 17px; }
+.vn-plan b { grid-column: 2; font-weight: 500; } .vn-plan span { grid-column: 2; }
+.vn-plan em { grid-column: 3; font-weight: 500; }
+.vn-more { color: #0F0F0F !important; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(15,15,15,.3); }
+.vn-head h2 { font-weight: 600; }
+@media (max-width: 734px) { .vn .va-seg { padding: 2px; margin: -2px; width: calc(100% + 4px) !important; } }
+
+/* ======= Adria's scale for the opening, and its dock for navigation ======= */
+.vn { padding-top: 96px; }
+.vn-mark { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-bottom: 24px; border-radius: 10px; background: #fff; box-shadow: var(--stroke); }
+.vn-mark img { filter: brightness(0); }
+.vn-intro h1 { max-width: 480px; font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; color: #0F0F0F; }
+.vn-intro p { max-width: 600px; margin-top: 8px; font-size: 16px; line-height: 26px; font-weight: 500; color: #666; }
+.vn-ctas { margin-top: 24px; gap: 8px; }
+.vn-sec { padding-top: 72px; }
+.vn-head h2 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; }
+.vn-case p { font-size: 16px; } .vn-case b { font-weight: 500; }
+
+.vn-dock { position: fixed; left: 50%; bottom: 16px; z-index: 60; display: flex; align-items: center; gap: 2px; height: 44px; padding: 4px; translate: -50% 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px rgba(15,15,15,.08), 0 .7px 1.3px -1.3px rgba(15,15,15,.12), 0 2.7px 4.9px -2.7px rgba(15,15,15,.11), 0 12px 24px -8px rgba(15,15,15,.08); animation: va-rise .8s cubic-bezier(.2,.7,.2,1) .3s both; }
+.vn-dock a { position: relative; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 999px; color: #8A8A8A; transition: background-color .2s, color .2s; }
+.vn-dock a svg { width: 18px; height: 18px; }
+.vn-dock a:hover, .vn-dock a.on { background: #F0F0F0; color: #0F0F0F; }
+.vn-dock .vn-dock-cta { margin-left: 4px; background: #0F0F0F; color: #fff; } .vn-dock .vn-dock-cta:hover { background: #2A2A2A; color: #fff; }
+.vn-dock .vn-dock-cta::before { content: ""; position: absolute; left: -5px; top: 9px; bottom: 9px; width: 1px; background: rgba(15,15,15,.1); }
+.vn-dock span { position: absolute; bottom: calc(100% + 10px); left: 50%; translate: -50% 4px; padding: 4px 8px; border-radius: 6px; background: #0F0F0F; color: #fff; font-size: 12px; font-weight: 500; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s, translate .15s; }
+.vn-dock a:hover span, .vn-dock a:focus-visible span { opacity: 1; translate: -50% 0; }
+.vn-foot { padding-bottom: 96px; }
+@media (max-width: 734px) { .vn { padding-top: 56px; } }
+@media (prefers-reduced-motion: reduce) { .vn-dock { animation: none; } }
+@media (hover: none) { .vn-dock span { display: none; } }
+/* icons at their own size, never rescaled by CSS, so they stay sharp */
+.vn-dock a svg { width: auto; height: auto; }
+.va svg { shape-rendering: geometricPrecision; }
+.vn-dock { animation: none; }
+.va-pill svg, .vn .va-seg button svg, .vn-arrows button svg, .vn-plan i svg { width: auto; height: auto; }
+
+/* ======= One screen: who we are, founders and pricing on the left; the work on the right ======= */
+.vn-split { display: grid; grid-template-columns: minmax(400px, 460px) 1fr; min-height: 100vh; }
+.vn-side { position: sticky; top: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; height: 100vh; padding: 32px 32px 28px 40px; overflow-y: auto; scrollbar-width: none; }
+.vn-side::-webkit-scrollbar { display: none; }
+.vn-side .vn-intro h1 { max-width: none; }
+.vn-side .vn-mark { margin-bottom: 20px; }
+.vn-side-end { display: grid; gap: 24px; }
+.vn-side .vn-head { margin-bottom: 12px; }
+.vn-side .vn-head h2 { font-size: 16px; line-height: 24px; }
+.vn-side .vn-quote blockquote { padding: 16px 18px; font-size: 14px; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.vn-side .vn-quote figcaption { padding: 10px 18px; font-size: 13px; }
+.vn-side .vn-arrows button { width: 34px; height: 28px; }
+.vn-side .vn-plans { gap: 6px; }
+.vn-side .vn-plan { padding: 10px 14px 10px 10px; gap: 0 12px; border-radius: 12px; }
+.vn-side .vn-plan i { width: 32px; height: 32px; border-radius: 8px; }
+.vn-side .vn-plan b { font-size: 14px; } .vn-side .vn-plan span { font-size: 13px; line-height: 1.4; } .vn-side .vn-plan em { font-size: 14px; }
+.vn-side .vn-more { font-size: 13px; }
+
+.vn-main { min-width: 0; padding: 32px 40px 0 8px; }
+.vn-main > .vn-head { position: sticky; top: 0; z-index: 5; margin: -32px 0 16px; padding: 32px 0 12px; background: linear-gradient(#fff 80%, rgba(255,255,255,0)); }
+.vn-main .vn-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px 16px; }
+.vn-main .vn-foot { width: auto; padding: 64px 0 32px; }
+
+@media (max-width: 1000px) {
+  .vn-split { display: flex; flex-direction: column; }
+  .vn-side { display: contents; }
+  .vn-side .vn-intro { order: 0; padding: 48px 20px 8px; }
+  .vn-main { order: 1; padding: 48px 20px 0; }
+  .vn-main > .vn-head { position: static; margin: 0 0 16px; padding: 0; background: none; }
+  .vn-side-end { order: 2; padding: 56px 20px 0; gap: 48px; }
+  .vn-main .vn-foot { order: 3; }
+}
+.vn-split .va-seg { display: flex; flex-wrap: nowrap; gap: 6px; padding: 2px; background: none; overflow-x: auto; scrollbar-width: none; }
+.vn-split .va-seg button { flex: none; display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 13px 0 11px; border-radius: 999px; background: #fff; box-shadow: var(--stroke); font-size: 13px; font-weight: 500; color: #0F0F0F; }
+.vn-split .va-seg button svg { color: #8A8A8A; } .vn-split .va-seg button:hover { background: #F7F7F7; }
+.vn-split .va-seg button.on { background: #EDEDED; box-shadow: none; } .vn-split .va-seg button.on svg { color: #0F0F0F; }
+.vn-side .vn-intro p { max-width: none; }
+.vn-side .vn-plan { grid-template-columns: auto 1fr auto; align-items: center; padding: 8px 14px 8px 8px; }
+.vn-side .vn-plan i { grid-row: 1; width: 30px; height: 30px; }
+.vn-side .vn-plan span { display: none; }
+.vn-side .vn-quote blockquote { -webkit-line-clamp: 3; padding: 14px 16px; }
+.vn-side .vn-quote figcaption { padding: 8px 16px; }
+.vn-side { gap: 24px; padding-top: 28px; padding-bottom: 24px; }
+.vn-side-end { gap: 20px; }
+@media (max-width: 1000px) { .vn-side .vn-plan span { display: block; } .vn-side .vn-plan i { grid-row: 1 / span 2; } .vn-side .vn-quote blockquote { -webkit-line-clamp: unset; } }
+.vn-side .vn-quote blockquote { padding: 0; margin: 14px 16px; }

@@ -4,18 +4,23 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import type { CaseStudy } from "@/lib/case-studies"
-import { AppleNav } from "@/components/apple"
+import Image from "next/image"
+import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
+import { Calendar03Icon, GridViewIcon, SparklesIcon, ChartUpIcon, SourceCodeIcon, SmartPhone01Icon, ArrowLeft02Icon, ArrowRight02Icon, File01Icon, Rocket01Icon, RepeatIcon, BubbleChatIcon } from "@hugeicons-pro/core-solid-rounded"
+
+const Icon = ({ i, size = 16 }: { i: IconSvgElement; size?: number }) => <HugeiconsIcon icon={i} size={size} aria-hidden />
 
 const book = "https://cal.com/vuk-m/15min"
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const
 
 const PLANS = [
-  { name: "Landing Page", price: "€1,200", line: "One page that sells the product, in 1–2 weeks." },
-  { name: "Launch", price: "from €14,900", line: "Brand, product and site as one system, in 4–6 weeks." },
-  { name: "Design Partner", price: "€5,900 / month", line: "A senior team every week, build included." },
+  { icon: File01Icon, name: "Landing Page", price: "€1,200", line: "One page that sells the product, in 1–2 weeks." },
+  { icon: Rocket01Icon, name: "Launch", price: "from €14,900", line: "Brand, product and site as one system, in 4–6 weeks." },
+  { icon: RepeatIcon, name: "Design Partner", price: "€5,900 / month", line: "A senior team every week, build included." },
 ]
 
 const FILTERS: [string, string[]][] = [["All", []], ["AI", ["AI", "Agents"]], ["Fintech", ["Fintech", "Payments", "Trading", "Investing", "Crypto"]], ["Dev tools", ["Developer Tools", "Infrastructure", "DevOps", "Database", "Backend"]], ["Consumer", ["Consumer", "Mobile"]]]
+const FILTER_ICONS: Record<string, IconSvgElement> = { All: GridViewIcon, AI: SparklesIcon, Fintech: ChartUpIcon, "Dev tools": SourceCodeIcon, Consumer: SmartPhone01Icon }
 const ORDER = ["moss", "atlas", "junction", "nightshift", "youspot"]
 // Each recent case has its own looping film, made from its brand
 const FILMS: Record<string, string> = { moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
@@ -29,62 +34,63 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
   const work = tags.length ? all.filter((c) => c.areas?.some((a) => tags.includes(a))) : all
 
   return (
-    <div className="va">
-      <AppleNav />
-      <main className="vn">
+    <div className="va vn-split">
+      {/* left: who we are, then what founders say and what it costs, all in one screen */}
+      <aside className="vn-side">
         <section className="vn-intro">
-          <h1>Look funded on day one.</h1>
-          <p>Brand, product and site for AI and fintech startups. One team, one system, live in 4–6 weeks.</p>
+          <Link href="/" className="vn-mark" aria-label="Velora Studio"><Image src="/logo/logo-v.svg" alt="" width={18} height={18} priority /></Link>
+          <h1>Velora Studio helps AI and fintech founders launch and raise with a brand, product and website that look as good as the idea.</h1>
+          <p>We design and build all three as one system, so nothing feels stitched together. You work directly with the designer doing the work, and most launches ship in 4–6 weeks.</p>
           <div className="vn-ctas">
-            <a href={book} {...ext} className="va-pill">Book a call</a>
-            <a href="#pricing" className="va-pill ghost">Pricing</a>
+            <a href={book} {...ext} className="va-pill"><Icon i={Calendar03Icon} />Book a call</a>
+            <Link href="/start" className="va-pill ghost"><Icon i={BubbleChatIcon} />Start a project</Link>
           </div>
         </section>
 
-        <Voices quotes={quotes} />
-
-        <section id="work" className="vn-sec">
-          <div className="vn-head">
-            <h2>Work.</h2>
-            <div className="va-seg" role="tablist" aria-label="Filter the work">
-              {FILTERS.map(([f]) => <button key={f} role="tab" aria-selected={filter === f} className={filter === f ? "on" : ""} onClick={() => setFilter(f)}>{f}</button>)}
+        <div className="vn-side-end">
+          <Voices quotes={quotes} />
+          <section id="pricing" aria-labelledby="pricing-h">
+            <div className="vn-head"><h2 id="pricing-h">Pricing.</h2><Link href="/pricing" className="vn-more">All details</Link></div>
+            <div className="vn-plans">
+              {PLANS.map((p) => (
+                <Link key={p.name} href="/start" className="vn-plan">
+                  <i aria-hidden><Icon i={p.icon} /></i><b>{p.name}</b><span>{p.line}</span><em>{p.price}</em>
+                </Link>
+              ))}
             </div>
-          </div>
-          <div className="vn-grid" key={filter}>
-            {work.map((c, i) => (
-              <Link key={c.slug} href={`/work/${c.slug}`} className="vn-case">
-                <div className="vn-media">
-                  {FILMS[c.slug]
-                    ? <Film dir={FILMS[c.slug]} label={`${c.title} case study`} />
-                    // eslint-disable-next-line @next/next/no-img-element
-                    : <img src={c.cover} alt={`${c.title} case study`} loading={i < 4 ? "eager" : "lazy"} decoding="async" />}
-                </div>
-                <p><b>{c.title}</b><span>{c.date}</span></p>
-              </Link>
-            ))}
-          </div>
-        </section>
+          </section>
+        </div>
+      </aside>
 
-        <section id="pricing" className="vn-sec">
-          <div className="vn-head"><h2>Pricing.</h2><Link href="/pricing" className="vn-more">All details ›</Link></div>
-          <div className="vn-plans">
-            {PLANS.map((p) => (
-              <Link key={p.name} href="/start" className="vn-plan">
-                <b>{p.name}</b><span>{p.line}</span><em>{p.price}</em>
-              </Link>
-            ))}
+      {/* right: the work, scrolling past the fixed left side */}
+      <main className="vn-main" id="work">
+        <div className="vn-head">
+          <h2>Work.</h2>
+          <div className="va-seg" role="tablist" aria-label="Filter the work">
+            {FILTERS.map(([f]) => <button key={f} role="tab" aria-selected={filter === f} className={filter === f ? "on" : ""} onClick={() => setFilter(f)}><Icon i={FILTER_ICONS[f]} />{f}</button>)}
           </div>
-          <p className="vn-fine">Referrals and YC, Antler and a16z speedrun companies get 10% off.</p>
-        </section>
+        </div>
+        <div className="vn-grid" key={filter}>
+          {work.map((c, i) => (
+            <Link key={c.slug} href={`/work/${c.slug}`} className="vn-case">
+              <div className="vn-media">
+                {FILMS[c.slug]
+                  ? <Film dir={FILMS[c.slug]} label={`${c.title} case study`} />
+                  // eslint-disable-next-line @next/next/no-img-element
+                  : <img src={c.cover} alt={`${c.title} case study`} loading={i < 4 ? "eager" : "lazy"} decoding="async" />}
+              </div>
+              <p><b>{c.title}</b><span>{c.date}</span></p>
+            </Link>
+          ))}
+        </div>
+        <footer className="vn-foot">
+          <span>velora.studio · 2026 · Referrals and YC, Antler and a16z speedrun companies get 10% off.</span>
+          <nav>
+            <Link href="/services">Services</Link><Link href="/blog">Blog</Link>
+            <a href="https://x.com/veloraxstudio" {...ext}>X</a><a href="https://www.linkedin.com/company/velorastudio/" {...ext}>LinkedIn</a>
+          </nav>
+        </footer>
       </main>
-
-      <footer className="vn-foot">
-        <span>velora.studio · 2026</span>
-        <nav>
-          <Link href="/services">Services</Link><Link href="/blog">Blog</Link>
-          <a href="https://x.com/veloraxstudio" {...ext}>X</a><a href="https://www.linkedin.com/company/velorastudio/" {...ext}>LinkedIn</a>
-        </nav>
-      </footer>
     </div>
   )
 }
@@ -94,12 +100,12 @@ function Voices({ quotes }: { quotes: CaseStudy[] }) {
   const [i, setI] = useState(0)
   const q = quotes[i]
   return (
-    <section id="voices" className="vn-sec">
+    <section id="voices">
       <div className="vn-head">
         <h2>Founders.</h2>
         <div className="vn-arrows">
-          <button aria-label="Previous" onClick={() => setI((i - 1 + quotes.length) % quotes.length)}>‹</button>
-          <button aria-label="Next" onClick={() => setI((i + 1) % quotes.length)}>›</button>
+          <button aria-label="Previous" onClick={() => setI((i - 1 + quotes.length) % quotes.length)}><Icon i={ArrowLeft02Icon} /></button>
+          <button aria-label="Next" onClick={() => setI((i + 1) % quotes.length)}><Icon i={ArrowRight02Icon} /></button>
         </div>
       </div>
       <figure className="vn-quote" key={q.slug}>
@@ -108,7 +114,7 @@ function Voices({ quotes }: { quotes: CaseStudy[] }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           {q.testimonial!.avatar && <img src={q.testimonial!.avatar} alt="" width={28} height={28} />}
           <span><b>{q.testimonial!.name}</b> {q.testimonial!.role}</span>
-          <Link href={`/work/${q.slug}`}>{q.title} ›</Link>
+          <Link href={`/work/${q.slug}`}>{q.title}</Link>
         </figcaption>
       </figure>
     </section>
@@ -133,3 +139,4 @@ function Film({ dir, label }: { dir: string; label: string }) {
   }, [])
   return <video ref={ref} src={`/case/${dir}/thumb.mp4`} poster={`/case/${dir}/thumb.webp`} loop muted playsInline preload="metadata" aria-label={label} />
 }
+
