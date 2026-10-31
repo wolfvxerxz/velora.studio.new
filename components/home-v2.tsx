@@ -127,7 +127,7 @@ function Film({ dir, label }: { dir: string; label: string }) {
   useEffect(() => {
     const v = ref.current!, tile = v.closest("a")!
     const play = () => { v.play().catch(() => {}) }
-    const stop = () => { v.pause(); v.currentTime = 0 }
+    const stop = () => { v.pause(); v.load() } // load() puts the poster back instead of a paused frame
     if (matchMedia("(hover: hover)").matches) {
       tile.addEventListener("mouseenter", play); tile.addEventListener("mouseleave", stop)
       tile.addEventListener("focus", play); tile.addEventListener("blur", stop)

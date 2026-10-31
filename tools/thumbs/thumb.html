@@ -154,39 +154,44 @@ const SCENES = {
     return g
   },
 
-  // YouSpot: a phone receiving the people who need you today, rings travelling out behind it.
+  // YouSpot: the brand texture turning tile by tile, and the real landing page rising and scrolling in a window.
   youspot(t) {
     let g = r(0, 0, W, H, "#F4F2EF")
-    const PX = 1290, PY = 600
-    for (let k = 0; k < 5; k++) {
-      const rad = 300 + ((t * 125 + k * 150) % 750), fade = 1 - (rad - 300) / 750
-      g += `<circle cx="${PX}" cy="${PY}" r="${rad}" fill="none" stroke="#FFD6DE" stroke-width="22" opacity="${fade}"/>`
+    const CELL = 120, COLS = 16, ROWS = 10, SPOT = [13, 2], gap = CELL * 0.06, s0 = CELL - gap * 2
+    let x = 3 * 9301 + 49297; const rnd = () => ((x = (x * 9301 + 49297) % 233280) / 233280)
+    for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+      const rr = rnd(), base = Math.floor(rnd() * 4) * 90
+      const d = Math.hypot(i - SPOT[0], j - SPOT[1]), v = back(cl((t - 0.05 - d * 0.05) / 0.45)) * (1 - OUT(t))
+      if (v <= 0.001) continue
+      const ox = i * CELL + gap, oy = j * CELL + gap, cx = ox + s0 / 2, cy = oy + s0 / 2
+      const k = `transform="translate(${cx} ${cy}) scale(${v}) translate(${-cx} ${-cy})"`
+      if (i === SPOT[0] && j === SPOT[1]) { g += `<circle cx="${cx}" cy="${cy}" r="${s0 / 2}" fill="#FF280F" ${k}/>`; continue }
+      if (rr < 0.14) continue
+      if (rr < 0.38) { g += `<rect x="${ox}" y="${oy}" width="${s0}" height="${s0}" rx="${s0 * 0.14}" fill="#21201C" ${k}/>`; continue }
+      // arcs turn a quarter in a wave that rolls out from the spot, twice per loop
+      const turn = 90 * (ease(cl((t - 1.4 - d * 0.04) / 0.5)) + ease(cl((t - 3.4 - d * 0.04) / 0.5)))
+      g += `<g ${k}><path d="M${ox} ${oy + s0}A${s0} ${s0} 0 0 1 ${ox + s0} ${oy}V${oy + s0}Z" fill="#21201C" transform="rotate(${base + turn} ${cx} ${cy})"/></g>`
     }
-    const pv = vis(t, 0.1, 0.6), py = 120 + (1 - pv) * 80
-    g += `<g opacity="${pv}">${r(PX - 230, py, 460, 960, "#1C1B1B", 'rx="72"')}${r(PX - 214, py + 16, 428, 928, "#FAFAF8", 'rx="58"')}${r(PX - 64, py + 34, 128, 34, "#1C1B1B", 'rx="17"')}`
-    g += `<text x="${PX - 180}" y="${py + 160}" font-family="Inter Tight" font-weight="600" font-size="52" letter-spacing="-1" fill="#1C1B1B">Today</text>`
-    g += `<text x="${PX - 180}" y="${py + 204}" font-family="Inter" font-size="24" fill="#6E6C68">3 people need you</text></g>`
-    const CARDS = [["M", "Maya", "Reply to her intro", "#FF4F6E"], ["L", "Leo", "His birthday is Friday", "#4DA3FF"], ["A", "Ana", "You promised the deck", "#F5B84B"], ["S", "Sam", "Two weeks, no call", "#3DD68C"]]
-    CARDS.forEach(([i0, n, l, c], i) => {
-      const v = vis(t, 0.8 + i * 0.45, 0.5), y = py + 250 + i * 170 + (1 - v) * -40
-      g += `<g opacity="${v}">${r(PX - 190, y, 380, 146, "#FFFFFF", 'rx="30"')}<circle cx="${PX - 128}" cy="${y + 73}" r="38" fill="${c}"/><text x="${PX - 128}" y="${y + 85}" text-anchor="middle" font-family="Inter" font-weight="500" font-size="32" fill="#FFFFFF">${i0}</text>`
-      g += `<text x="${PX - 72}" y="${y + 64}" font-family="Inter" font-weight="500" font-size="30" fill="#1C1B1B">${n}</text><text x="${PX - 72}" y="${y + 102}" font-family="Inter" font-size="23" fill="#6E6C68">${l}</text></g>`
-    })
-    const parts = [`<path d="M8 30A22 22 0 0 1 30 8V30Z" fill="#21201C"/>`, `<circle cx="45" cy="19" r="11" fill="#FF280F"/>`, `<rect x="8" y="34" width="22" height="22" rx="3" fill="#21201C"/>`, `<path d="M34 34H56A22 22 0 0 1 34 56Z" fill="#21201C"/>`]
-    const centers = [[22, 22], [45, 19], [19, 45], [42, 42]]
-    parts.forEach((p, i) => {
-      const v = back(cl((t - (0.2 + i * 0.12)) / 0.45)) * (1 - OUT(t)), [cx, cy] = centers[i]
-      g += `<g transform="translate(150 330) scale(3.2)"><g transform="translate(${cx} ${cy}) scale(${Math.max(0, v)}) translate(${-cx} ${-cy})">${p}</g></g>`
-    })
-    g += text(t, 0.7, 150, 680, "YouSpot", { font: "Inter Tight", size: 130, weight: 600, fill: "#1C1B1B", ls: -5 })
-    g += text(t, 0.9, 156, 760, "Know who needs you today.", { font: "Inter Tight", size: 44, fill: "#6E6C68" })
+    // the landing page, in a window that rises, scrolls from the hero to the bento, then leaves
+    const up = ease(cl((t - 0.9) / 0.8)), down = ease(cl((t - 5.0) / 0.7)), wy = 150 + (1 - up) * 1100 + down * 1150
+    const WX = 470, WW = 980, IMG = WW * 1350 / 1080, scroll = ease(cl((t - 2.1) / 2.3)) * IMG
+    g += `<g transform="translate(0 ${wy})"><rect x="${WX - 2}" y="-2" width="${WW + 4}" height="1300" rx="26" fill="#21201C" opacity=".08"/>`
+    g += `<clipPath id="win"><rect x="${WX}" y="0" width="${WW}" height="1290" rx="24"/></clipPath><g clip-path="url(#win)">${r(WX, 0, WW, 1290, "#FFFFFF")}`
+    g += `<image href="${ASSET("YouSpot/landing-hero.webp")}" x="${WX}" y="${56 - scroll}" width="${WW}" height="${IMG}"/>`
+    g += `<image href="${ASSET("YouSpot/landing-bento.webp")}" x="${WX}" y="${56 - scroll + IMG}" width="${WW}" height="${IMG}"/>`
+    g += `${r(WX, 0, WW, 56, "#FAFAF8")}<line x1="${WX}" x2="${WX + WW}" y1="56" y2="56" stroke="#E6E2DB"/>`
+    ;["#FF5F57", "#FEBC2E", "#28C840"].forEach((c, i) => { g += `<circle cx="${WX + 30 + i * 22}" cy="28" r="7" fill="${c}"/>` })
+    g += `${r(WX + WW / 2 - 120, 14, 240, 28, "#EFEDE8", 'rx="8"')}<text x="${WX + WW / 2}" y="34" text-anchor="middle" font-family="Inter" font-size="15" fill="#6E6C68">youspot.com</text></g></g>`
+    // the mark and name, on a paper pill
+    const pv = vis(t, 0.6, 0.5)
+    g += `<g opacity="${pv}" transform="translate(${70 - (1 - pv) * 20} 1036)">${r(0, 0, 330, 104, "#F4F2EF", 'rx="52"')}<g transform="translate(26 22) scale(0.92)"><path d="M8 30A22 22 0 0 1 30 8V30Z" fill="#21201C"/><circle cx="45" cy="19" r="11" fill="#FF280F"/><rect x="8" y="34" width="22" height="22" rx="3" fill="#21201C"/><path d="M34 34H56A22 22 0 0 1 34 56Z" fill="#21201C"/></g><text x="104" y="68" font-family="Inter Tight" font-weight="600" font-size="44" letter-spacing="-1.5" fill="#21201C">YouSpot</text></g>`
     return g
-  },
-}
+  },}
 
+const ASSET = (f) => `file:///Users/vuk/Desktop/Velora/velora.studio.new/public/case/${f}`
 const brand = new URLSearchParams(location.search).get("b") || "moss"
 window.seek = (t) => { document.getElementById("s").innerHTML = SCENES[brand](t) }
-window.ready = Promise.all(['150px "Jersey 10"', '28px Geist', '600 120px "DM Sans"', '30px "DM Sans"', '700 112px Satoshi', '500 30px Satoshi', '600 96px Sora', '27px "Inter Tight"', '600 110px "Inter Tight"', '27px Inter', '500 27px Inter'].map((f) => document.fonts.load(f))).then(() => document.fonts.ready)
+window.ready = Promise.all(['150px "Jersey 10"', '28px Geist', '600 120px "DM Sans"', '30px "DM Sans"', '700 112px Satoshi', '500 30px Satoshi', '600 96px Sora', '27px "Inter Tight"', '600 110px "Inter Tight"', '27px Inter', '500 27px Inter'].map((f) => document.fonts.load(f))).then(() => document.fonts.ready).then(() => Promise.all(["YouSpot/landing-hero.webp", "YouSpot/landing-bento.webp"].map((f) => new Promise((ok) => { const i = new Image(); i.onload = i.onerror = ok; i.src = ASSET(f) }))))
 seek(3)
 </script>
 </body></html>
