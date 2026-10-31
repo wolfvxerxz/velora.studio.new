@@ -1409,3 +1409,6 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 .vs-email input[type=email]:focus { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
 @media (max-width: 734px) { .vs-options button { grid-template-columns: 32px minmax(0, 1fr); } .vs-options span { grid-column: 2; text-align: left; } }
 .vs h1 span { display: block; }
+/* Two cases per row at every desktop width, one on phones */
+.vn-main .vn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 734px) { .vn-main .vn-grid { grid-template-columns: 1fr; } }
