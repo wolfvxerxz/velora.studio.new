@@ -3,16 +3,17 @@
 // with the answers attached. Nothing personal is asked here; cal.com takes the name and email.
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { Sparkles, TrendUp, Code, Mobile, MessageText, Palette, Layout, DocumentText, Global, Video, Leaf, Rocket, Buildings, Wallet, Timer, Calendar, Hourglass, Flag, Coin, Coins, MoneyBag, Diamonds, Repeat, ArrowLeft, ArrowRight } from "reicon-react"
 
 const CAL = "https://cal.com/vuk-m/15min"
 
-type Q = { id: string; title: string; sub: string; multi?: boolean; options: [string, string][] }
+type Q = { id: string; title: string; sub: string; multi?: boolean; options: [string, string, typeof Sparkles][] }
 const QUESTIONS: Q[] = [
-  { id: "what", title: "What are you building?", sub: "Pick the closest one.", options: [["AI product", "Agents, copilots, AI-native tools"], ["Fintech", "Payments, trading, investing, banking"], ["Developer tool", "Infra, APIs, databases, DevOps"], ["Consumer app", "Mobile and web apps for people"], ["Something else", "Tell us on the call"]] },
-  { id: "need", title: "What do you need?", sub: "Pick everything that applies.", multi: true, options: [["Brand identity", "Logo, colour, type, brand book"], ["Product design", "App flows, dashboards, iOS or web"], ["Landing page", "One page that sells the product"], ["Full website", "Pricing, changelog, blog, docs"], ["Launch visuals", "Motion, films and launch posts"]] },
-  { id: "stage", title: "Where is the company?", sub: "So we know what the work has to do.", options: [["Pre-seed", "Building toward the first raise"], ["Seed", "Raised, now shipping and hiring"], ["Series A or later", "Scaling a product people use"], ["Bootstrapped", "Funded by revenue"]] },
-  { id: "when", title: "When does it need to ship?", sub: "We plan every project back from this.", options: [["Within a month", "Tight, but we can plan for it"], ["In 1–2 months", "The usual launch window"], ["In 3 months or more", "Time to do it properly"], ["There's a fixed date", "A raise, demo day or launch"]] },
-  { id: "budget", title: "What budget are you working with?", sub: "A range is fine. It shapes the plan, not the quality.", options: [["Under €2k", "A focused first step"], ["€2k–€10k", "One or two pieces done well"], ["€10k–€25k", "Brand, product and site together"], ["€25k or more", "A full launch with room to spare"], ["Monthly", "An ongoing design partner"]] },
+  { id: "what", title: "What are you building?", sub: "Pick the closest one.", options: [["AI product", "Agents, copilots, AI-native tools", Sparkles], ["Fintech", "Payments, trading, investing, banking", TrendUp], ["Developer tool", "Infra, APIs, databases, DevOps", Code], ["Consumer app", "Mobile and web apps for people", Mobile], ["Something else", "Tell us on the call", MessageText]] },
+  { id: "need", title: "What do you need?", sub: "Pick everything that applies.", multi: true, options: [["Brand identity", "Logo, colour, type, brand book", Palette], ["Product design", "App flows, dashboards, iOS or web", Layout], ["Landing page", "One page that sells the product", DocumentText], ["Full website", "Pricing, changelog, blog, docs", Global], ["Launch visuals", "Motion, films and launch posts", Video]] },
+  { id: "stage", title: "Where is the company?", sub: "So we know what the work has to do.", options: [["Pre-seed", "Building toward the first raise", Leaf], ["Seed", "Raised, now shipping and hiring", Rocket], ["Series A or later", "Scaling a product people use", Buildings], ["Bootstrapped", "Funded by revenue", Wallet]] },
+  { id: "when", title: "When does it need to ship?", sub: "We plan every project back from this.", options: [["Within a month", "Tight, but we can plan for it", Timer], ["In 1–2 months", "The usual launch window", Calendar], ["In 3 months or more", "Time to do it properly", Hourglass], ["There's a fixed date", "A raise, demo day or launch", Flag]] },
+  { id: "budget", title: "What budget are you working with?", sub: "A range is fine. It shapes the plan, not the quality.", options: [["Under €2k", "A focused first step", Coin], ["€2k–€10k", "One or two pieces done well", Coins], ["€10k–€25k", "Brand, product and site together", MoneyBag], ["€25k or more", "A full launch with room to spare", Diamonds], ["Monthly", "An ongoing design partner", Repeat]] },
 ]
 
 const PLANS = {
@@ -84,14 +85,13 @@ export function StartFlow() {
       <div className="vs-stage" key={step}>
         {!done ? (
           <>
-            <h1>{q.title}</h1>
-            <p className="vs-sub">{q.sub}</p>
+            <h1>{q.title} <span>{q.sub}</span></h1>
             <div className="vs-options" role={q.multi ? "group" : "radiogroup"} aria-label={q.title}>
-              {q.options.map(([t, d], i) => {
+              {q.options.map(([t, d, I]) => {
                 const on = picked.includes(t)
                 return (
                   <button key={t} role={q.multi ? "checkbox" : "radio"} aria-checked={on} className={on ? "on" : ""} onClick={() => pick(t)}>
-                    <kbd>{i + 1}</kbd><b>{t}</b><span>{d}</span>
+                    <i aria-hidden><I size={16} weight="Filled" /></i><b>{t}</b><span>{d}</span>
                   </button>
                 )
               })}
@@ -126,8 +126,8 @@ export function StartFlow() {
       </div>
       {!done && (
         <div className="vs-bar">
-          <button className="vs-back" onClick={() => setStep((s) => Math.max(0, s - 1))} disabled={step === 0}>Back</button>
-          <button className="va-pill" onClick={() => setStep((s) => s + 1)} disabled={!picked.length}>{step === QUESTIONS.length - 1 ? "See my plan" : "Continue"}</button>
+          <button className="va-pill ghost" onClick={() => setStep((s) => Math.max(0, s - 1))} disabled={step === 0}><ArrowLeft size={16} weight="Filled" />Back</button>
+          <button className="va-pill" onClick={() => setStep((s) => s + 1)} disabled={!picked.length}>{step === QUESTIONS.length - 1 ? "See my plan" : "Continue"}<ArrowRight size={16} weight="Filled" /></button>
         </div>
       )}
     </div>
