@@ -79,7 +79,7 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
                   // eslint-disable-next-line @next/next/no-img-element
                   : <img src={c.cover} alt={`${c.title} case study`} loading={i < 4 ? "eager" : "lazy"} decoding="async" />}
               </div>
-              <p><b>{c.title}</b><span>{c.date}</span></p>
+              <p><b>{c.title}</b>{c.live ? <span className="vn-live">Live site</span> : <span>{c.date}</span>}</p>
             </Link>
           ))}
         </div>

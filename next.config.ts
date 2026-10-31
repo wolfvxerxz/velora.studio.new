@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  // Live previews of client sites are static exports in public/live; serve each folder's index.html
+  ...(isExport ? {} : {
+    async rewrites() {
+      return [
+        { source: "/live/:site", destination: "/live/:site/index.html" },
+        { source: "/live/:site/:page", destination: "/live/:site/:page/index.html" },
+      ]
+    },
+  }),
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

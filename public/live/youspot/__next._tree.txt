@@ -1,0 +1,2 @@
+:HL["/live/youspot/_next/static/chunks/18as-8d0i6zo_.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"TZXx79exef201oCSHSwhU"}

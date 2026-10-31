@@ -1318,3 +1318,62 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 .va-home img { filter: brightness(0) invert(1); }
 .vw-bar { top: 64px; }
 .vn-split .va-seg { background: none; box-shadow: none; }
+
+/* Live preview: the client's site running inside its case */
+.vl { display: flex; flex-direction: column; border-radius: 20px; background: #1A1A1A; overflow: hidden; text-align: left; }
+.vl-bar { display: flex; align-items: center; justify-content: space-between; height: 48px; padding: 0 8px 0 18px; color: #D5D9E2; font-size: 14px; font-weight: 500; }
+.vl-bar button { display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 999px; background: none; color: #8B8F96; cursor: pointer; transition: background-color .2s, color .2s; }
+.vl-bar button:hover { background: #2C2C2C; color: #fff; }
+.vl-view { position: relative; aspect-ratio: 1440 / 900; margin: 0 6px 6px; border-radius: 14px; overflow: hidden; background: #fff; }
+.vl-view iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; }
+.vl:fullscreen { border-radius: 0; }
+.vl:fullscreen .vl-view { flex: 1; aspect-ratio: auto; }
+@media (max-width: 734px) { .vl-view { aspect-ratio: auto; height: 72vh; } }
+
+/* Case page: what it is, the site running live, then each idea with its shots in ones and twos */
+.vc { min-height: 100vh; background: #0A0A0A; color: #fff; padding-bottom: 96px; }
+.vc-head, .vc-work { width: min(1040px, 100% - 32px); margin: 0 auto; }
+.vc-head { padding: 56px 0 48px; }
+.vc-mark { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 28px; border-radius: 14px; background: #1A1A1A; }
+.vc-mark img { width: 26px; height: 26px; object-fit: contain; }
+.vc-mark img.inv { filter: brightness(0) invert(1); }
+.vc-head h1 { max-width: 760px; margin: 0 0 20px; font-size: clamp(26px, 3.2vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; color: #7D8187; text-wrap: balance; }
+.vc-head h1 b { font-weight: 500; color: #fff; }
+.vc-head p { max-width: 620px; margin: 0; font-size: 16px; line-height: 1.6; color: #8B8F96; text-wrap: pretty; }
+.vc-head .vc-meta { margin-top: 20px; font-size: 14px; color: #D5D9E2; }
+.vc-work { display: flex; flex-direction: column; gap: 12px; }
+.vc-card { margin: 0; padding: 4px; border-radius: 20px; background: #1A1A1A; }
+.vc-card img, .vc-card video { display: block; width: 100%; height: auto; border-radius: 16px; }
+.vc-chapter { display: flex; flex-direction: column; gap: 12px; }
+.vc-note { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; padding: 72px 0 20px; }
+.vc-note h2 { margin: 0; font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -0.015em; color: #fff; text-wrap: balance; }
+.vc-note p { margin: 0; font-size: 16px; line-height: 1.6; color: #8B8F96; text-wrap: pretty; }
+.vc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.vc-end { display: flex; flex-direction: column; gap: 32px; padding: 96px 0 64px; }
+.vc-result { max-width: 760px; margin: 0; font-size: clamp(26px, 3.2vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; text-wrap: balance; }
+.vc-quote { max-width: 620px; margin: 0; }
+.vc-quote blockquote { margin: 0 0 16px; font-size: 16px; line-height: 1.6; color: #D5D9E2; text-wrap: pretty; }
+.vc-quote figcaption { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #8B8F96; }
+.vc-quote figcaption img { width: 28px; height: 28px; border-radius: 999px; }
+.vc-quote b { font-weight: 500; color: #fff; }
+.vc-next { display: block; padding: 4px 4px 0; border-radius: 20px; background: #1A1A1A; color: #fff; transition: background-color .2s; }
+.vc-next:hover { background: #222; }
+.vc-next img { display: block; width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: 16px; }
+.vc-next p { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding: 16px 14px 18px; font-size: 15px; }
+.vc-next b { font-weight: 500; } .vc-next span { color: #8B8F96; text-align: right; }
+.vc .vl { border-radius: 20px; }
+.vc .vl-view { margin: 0 4px 4px; border-radius: 16px; }
+@media (max-width: 734px) {
+  .vc-note { grid-template-columns: 1fr; gap: 10px; padding-top: 48px; }
+  .vc-two { grid-template-columns: 1fr; }
+  .vc-next span { display: none; }
+}
+/* The sites people can try: a live dot on the tile, and on the case a hint to scroll inside */
+.vn-split .vn-case p .vn-live, .vl-live { display: inline-flex; align-items: center; gap: 8px; color: #D5D9E2; }
+.vn-live::before, .vl-live::before { content: ""; width: 7px; height: 7px; border-radius: 999px; background: #3DD68C; box-shadow: 0 0 0 3px rgba(61,214,140,.18); animation: vl-pulse 2s ease-in-out infinite; }
+@keyframes vl-pulse { 50% { box-shadow: 0 0 0 5px rgba(61,214,140,0); } }
+.vl-bar button { width: auto; gap: 8px; padding: 0 14px 0 12px; font: inherit; font-size: 14px; font-weight: 500; color: #D5D9E2; }
+.vl-hint { position: absolute; left: 50%; bottom: 20px; z-index: 2; margin: 0; padding: 10px 16px; border-radius: 999px; background: rgba(10,10,10,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #fff; font-size: 14px; font-weight: 500; white-space: nowrap; pointer-events: none; transform: translateX(-50%); transition: opacity .4s, transform .4s; }
+.vl-hint.off { opacity: 0; transform: translate(-50%, 8px); }
+@media (prefers-reduced-motion: reduce) { .vn-live::before, .vl-live::before { animation: none; } }
+.vl-bar button { display: inline-flex; align-items: center; white-space: nowrap; }

@@ -1,0 +1,324 @@
+<!doctype html>
+<html><head><script>addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var u=new URL(a.href,location.href);if(u.origin===location.origin&&u.pathname.indexOf("/live/youspot/")!==0){e.preventDefault();e.stopPropagation();location.href="/live/youspot/"+u.hash}},true)</script><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<script src="assets.js"></script>
+<style>
+/* Case-study tiles in the Hex manner: one element per tile, isolated, on paper, ink or orange. */
+:root { --or:#FF280F; --or-d:#E0210A; --tint:#FFE1DC; --ink:#21201C; --paper:#EEEDEA; --card:#F8F8F6; --line:#E3E2DE; --g1:#63635E; --g2:#8D8D86; }
+* { box-sizing:border-box; margin:0; }
+body { font-family:Inter, system-ui, sans-serif; -webkit-font-smoothing:antialiased; color:var(--ink); background:#000; }
+.sc { position:relative; overflow:hidden; display:none; }
+.sc.on { display:block; }
+/* every tile is an X post: 4:5, 1080×1350 css px, exported at 2× */
+.sq, .wide { width:1080px; height:1350px; }
+.dots { background: radial-gradient(circle, #D3D2CD 1.1px, transparent 1.6px) 0 0 / 22px 22px, var(--paper); }
+.dots-ink { background: radial-gradient(circle, #34332E 1.1px, transparent 1.6px) 0 0 / 22px 22px, var(--ink); }
+.grid-ink { background: linear-gradient(#2B2A26 1px, transparent 1px) 0 0 / 64px 64px, linear-gradient(90deg, #2B2A26 1px, transparent 1px) 0 0 / 64px 64px, var(--ink); }
+.center { position:absolute; inset:0; display:grid; place-items:center; }
+.face { display:inline-block; border-radius:50%; overflow:hidden; background:#ECEBE8; flex:none; } .face img { width:100%; height:100%; display:block; }
+.chip { display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px; border-radius:99px; font-size:14px; font-weight:500; background:#F1F0EE; color:var(--g1); white-space:nowrap; }
+.chip i { width:7px; height:7px; border-radius:50%; background:currentColor; }
+.chip.or { background:var(--tint); color:var(--or-d); } .chip.gr { background:#E4F3E9; color:#20794A; } .chip.am { background:#FFF4C2; color:#7D6A12; }
+.mark { display:inline-block; }
+
+/* ---- s1 hero crop ---- */
+#hero .shot { position:absolute; left:70px; top:330px; width:940px; border-radius:16px; overflow:hidden; box-shadow:0 0 0 1px rgba(33,32,28,.1), 0 40px 80px -40px rgba(33,32,28,.35); }
+#hero .shot img { display:block; width:100%; }
+
+/* ---- s2 icon row ---- */
+#icons .row { display:grid; grid-template-columns:repeat(4,150px); gap:28px; }
+#icons .ic { width:150px; height:150px; border-radius:34px; display:grid; place-items:center; background:#fff; box-shadow:0 0 0 1.5px var(--or), 0 10px 20px -14px rgba(224, 33, 10,.5); color:var(--or); }
+#icons .ic:nth-child(even) { background:var(--tint); box-shadow:0 0 0 1.5px #FFB4AA; }
+#icons .ic:nth-child(4) { background:var(--or); color:#fff; box-shadow:0 14px 28px -12px rgba(224, 33, 10,.6); }
+#icons .ic svg { width:64px; height:64px; }
+
+/* ---- s3 radar ---- */
+#radar .feed { zoom:1.35; width:640px; border-radius:18px; background:#2A2925; box-shadow:0 0 0 1px #3A3934; padding:10px; }
+#radar .fh { display:flex; align-items:center; gap:8px; padding:10px 12px 14px; color:#8E8D86; font-size:15px; } #radar .fh i { width:10px; height:10px; border-radius:50%; background:#45443F; }
+#radar .fh span { margin:0 auto; transform:translateX(-30px); }
+#radar .r { display:flex; align-items:center; gap:14px; height:62px; padding:0 14px; border-radius:12px; color:#ECEBE6; font-size:17px; }
+#radar .r + .r { margin-top:4px; } #radar .r .t { color:#8E8D86; } #radar .r small { margin-left:auto; color:#77766F; font-size:14px; }
+#radar .r.hit { background:#33322D; box-shadow:inset 0 0 0 1.5px var(--or); }
+#radar .rings { position:absolute; width:520px; height:520px; left:50%; top:63%; transform:translate(-50%,-50%); pointer-events:none; }
+#radar .rings i { position:absolute; inset:0; border-radius:50%; border:1.5px solid var(--or); opacity:0; animation:ring 3s linear infinite; }
+#radar .rings i:nth-child(2) { animation-delay:1s; } #radar .rings i:nth-child(3) { animation-delay:2s; }
+@keyframes ring { 0% { transform:scale(.1); opacity:.9; } 100% { transform:scale(1); opacity:0; } }
+#radar .core { position:absolute; left:50%; top:63%; transform:translate(-50%,-50%); width:64px; height:64px; border-radius:18px; background:var(--or); display:grid; place-items:center; box-shadow:0 0 0 8px rgba(255, 40, 15,.18); }
+
+/* ---- s4 table ---- */
+#table { background: radial-gradient(60% 50% at 0% 0%, #FFCDC4 0%, transparent 70%), radial-gradient(50% 40% at 100% 0%, #FFE3DE 0%, transparent 70%), var(--card); }
+#table .tb { position:absolute; left:70px; top:250px; width:940px; border-radius:20px; background:#fff; box-shadow:0 0 0 1px var(--line), 0 30px 60px -30px rgba(33,32,28,.25); overflow:hidden; }
+#table .bar { display:flex; gap:12px; padding:20px; border-bottom:1px solid var(--line); }
+#table .search { flex:0 0 360px; height:46px; border-radius:12px; box-shadow:inset 0 0 0 1px var(--line); display:flex; align-items:center; padding:0 16px; color:var(--g2); font-size:17px; }
+#table .btn { height:46px; padding:0 16px; border-radius:12px; box-shadow:inset 0 0 0 1px var(--line); display:flex; align-items:center; gap:8px; font-size:17px; }
+#table .tr { display:grid; grid-template-columns:48px 270px 190px 1fr; align-items:center; height:76px; padding:0 20px; border-top:1px solid #F0EFEC; font-size:18px; }
+#table .th { height:58px; color:var(--g1); font-size:16px; border-top:0; }
+#table .tr.sel { background:#FBFAF8; } #table .cb { width:22px; height:22px; border-radius:6px; box-shadow:inset 0 0 0 1.5px #CFCEC9; }
+#table .tr.sel .cb { background:var(--or); box-shadow:none; }
+#table .nm { display:flex; align-items:center; gap:12px; font-weight:500; } #table .nm .face { width:34px; height:34px; }
+#table .chip { height:30px; font-size:15px; padding:0 12px; }
+
+/* ---- s5 mark ---- */
+#mark { background:var(--or); }
+
+/* ---- s6 / v4 network ---- */
+.net svg.lines { position:absolute; inset:0; }
+.net .hub { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:190px; height:190px; border-radius:28px; display:grid; place-items:center; background:#2E2D29; outline:1.5px dashed #6D6C66; outline-offset:12px; }
+.net .src { position:absolute; transform:translate(-50%,-50%); display:flex; align-items:center; gap:14px; height:76px; padding:0 26px 0 14px; border-radius:18px; background:#2A2925; box-shadow:0 0 0 1px #3D3C37; color:#ECEBE6; font-size:23px; font-weight:500; }
+.net .src b { display:grid; place-items:center; width:50px; height:50px; border-radius:13px; background:#fff; }
+.net .src b svg { width:26px; height:26px; }
+.net .pulse { fill:var(--or); }
+
+/* ---- v1 build checklist ---- */
+#build .wrap { zoom:1.5; width:600px; display:flex; flex-direction:column; gap:18px; }
+#build .bh { display:flex; align-items:center; gap:14px; } #build .bm { display:grid; place-items:center; width:48px; height:48px; border-radius:14px; background:#fff; box-shadow:0 0 0 1px var(--line); }
+#build .bh b { display:block; font-size:22px; font-weight:600; letter-spacing:-0.02em; } #build .bh span { font-size:15px; color:var(--g1); }
+#build .bl { border-radius:18px; background:#fff; box-shadow:0 0 0 1px var(--line), 0 20px 40px -26px rgba(33,32,28,.3); padding:6px 0; }
+#build .br { display:flex; align-items:center; gap:14px; height:60px; padding:0 20px; font-size:17px; } #build .br + .br { border-top:1px solid #F2F1EE; }
+#build .bi { position:relative; width:22px; height:22px; display:grid; place-items:center; flex:none; } #build .bi > * { position:absolute; }
+#build .spin { width:18px; height:18px; border-radius:50%; border:2px solid #F6D0CB; border-top-color:var(--or); }
+#build .bt { flex:1; } #build .bn { font-size:15px; color:var(--g2); font-variant-numeric:tabular-nums; }
+#build .bf { display:flex; align-items:center; gap:14px; height:66px; padding:0 12px 0 16px; border-radius:18px; background:var(--ink); color:#fff; font-size:17px; }
+#build .bf .faces { display:flex; } #build .bf .face { width:34px; height:34px; box-shadow:0 0 0 2px var(--ink); } #build .bf .face + .face { margin-left:-9px; }
+#build .bf b { font-weight:500; flex:1; } #build .bf .go { height:40px; padding:0 16px; border-radius:11px; background:var(--or); display:grid; place-items:center; font-size:15px; font-weight:500; }
+#build .prog { display:flex; align-items:center; gap:16px; height:64px; padding:0 20px; border-radius:16px; background:#fff; box-shadow:0 0 0 1.5px #FFB4AA; }
+#build .prog .tr { flex:1; height:12px; border-radius:99px; background:#F3E8E1; overflow:hidden; } #build .prog .tr i { display:block; height:100%; width:0; background:var(--or); border-radius:99px; animation:fillbar 7s cubic-bezier(.4,0,.2,1) infinite; }
+@keyframes fillbar { 0%,6% { width:0 } 20% { width:20% } 36% { width:40% } 52% { width:60% } 68% { width:80% } 84%,100% { width:100% } }
+#build .prog b { font-size:20px; font-weight:600; min-width:44px; text-align:right; font-variant-numeric:tabular-nums; }
+#build .it { position:relative; display:flex; align-items:center; gap:16px; height:72px; padding:0 22px; border-radius:16px; background:#fff; box-shadow:0 0 0 1px var(--line); font-size:20px; color:var(--g1); }
+#build .it .ck { width:28px; height:28px; border-radius:8px; box-shadow:inset 0 0 0 1.5px #D2D1CC; display:grid; place-items:center; flex:none; }
+#build .it .ck svg { opacity:0; }
+#build .it .sp { margin-left:auto; color:var(--or); opacity:0; }
+#build .it.d .ck { background:var(--or); box-shadow:none; }
+
+/* ---- v2 card fill ---- */
+#card .pc { zoom:1.5; width:560px; border-radius:22px; background:#fff; padding:26px; box-shadow:0 30px 60px -24px rgba(120,40,0,.5); display:flex; flex-direction:column; gap:16px; }
+#card .top { display:flex; align-items:center; gap:14px; } #card .top .face { width:52px; height:52px; }
+#card .nm b { display:block; font-size:22px; font-weight:600; } #card .nm span { font-size:16px; color:var(--g1); }
+#card .top .ok { margin-left:auto; width:34px; height:34px; border-radius:50%; background:var(--tint); color:var(--or); display:grid; place-items:center; }
+#card .ln { display:flex; align-items:center; gap:12px; font-size:17px; color:var(--g1); } #card .ln svg { width:20px; height:20px; color:var(--g2); }
+#card .sk { display:block; height:16px; border-radius:6px; background:#EFEEEB; }
+#card .layer { transition:none; }
+
+/* ---- v3 gauge ---- */
+#gauge .g { position:relative; width:640px; height:360px; }
+#gauge svg { position:absolute; inset:0; overflow:visible; }
+#gauge .num { position:absolute; left:0; right:0; top:170px; text-align:center; } #gauge .num b { font-size:76px; font-weight:600; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; } #gauge .num span { display:block; font-size:22px; color:var(--g1); margin-top:2px; }
+#gauge .pill { position:absolute; left:50%; top:400px; transform:translateX(-50%); display:inline-flex; align-items:center; gap:10px; height:52px; padding:0 22px; border-radius:14px; background:var(--or); color:#fff; font-size:19px; font-weight:500; box-shadow:0 10px 24px -10px rgba(224, 33, 10,.6); }
+
+/* ---- v5 button states ---- */
+#button .b { position:relative; display:inline-flex; align-items:center; gap:14px; height:96px; padding:0 40px; border-radius:26px; font-size:34px; font-weight:600; letter-spacing:-0.01em; color:#fff; background:linear-gradient(#FF5640, var(--or)); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 0 0 2px #D61E07, 0 18px 36px -14px rgba(224, 33, 10,.7); }
+#button .b svg { width:32px; height:32px; }
+#button .dotsrow { position:absolute; left:50%; top:62%; transform:translateX(-50%); display:flex; gap:22px; }
+#button .dotsrow i { width:22px; height:22px; border-radius:50%; }
+#button .cur { position:absolute; width:44px; height:58px; }
+</style></head><body>
+
+<!-- STILL · hero crop -->
+<div class="sc wide dots" id="hero"><div class="shot"><img src="/live/youspot/case/hero.png"></div></div>
+
+<!-- STILL · icon set -->
+<div class="sc wide dots" id="icons"><div class="center"><div class="row" id="iconrow"></div></div></div>
+
+<!-- STILL · radar over the inbox -->
+<div class="sc sq dots-ink" id="radar"><div class="center"><div class="feed">
+  <div class="fh"><i></i><i></i><i></i><span>Your inbox</span></div>
+  <div class="r"><span class="face" style="width:34px;height:34px"><img src="/live/youspot/memoji/c/memo_20.png"></span>Priya<span class="t">· commented on your post</span><small>8:02</small></div>
+  <div class="r hit"><span class="face" style="width:34px;height:34px"><img src="/live/youspot/memoji/c/memo_27.png"></span>Maya<span class="t">· asked about the proposal</span><small>8:04</small></div>
+  <div class="r"><span class="face" style="width:34px;height:34px"><img src="/live/youspot/memoji/c/memo_34.png"></span>Jonas<span class="t">· viewed your portfolio</span><small>8:06</small></div>
+  <div class="r"><span class="face" style="width:34px;height:34px"><img src="/live/youspot/memoji/c/memo_3.png"></span>Daniel<span class="t">· paid INV-0112</span><small>8:09</small></div>
+  <div class="r"><span class="face" style="width:34px;height:34px"><img src="/live/youspot/memoji/c/memo_1.png"></span>Tom<span class="t">· quiet for 21 days</span><small>—</small></div>
+</div></div><svg id="rings" style="position:absolute;inset:0;pointer-events:none" width="1080" height="1080"></svg></div>
+
+<!-- STILL · people table close-up -->
+<div class="sc sq" id="table"><div class="tb">
+  <div class="bar"><div class="search">Search your brain…</div><div class="btn">Filters <span class="chip" style="height:24px">1</span></div><div class="btn">Columns</div></div>
+  <div class="tr th"><span></span><span>Person</span><span>Company</span><span>Status</span></div>
+  <div class="tr"><span class="cb"></span><span class="nm"><span class="face"><img src="/live/youspot/memoji/c/memo_27.png"></span>Maya Okafor</span><span>Halden</span><span><span class="chip or"><i></i>Reply owed</span></span></div>
+  <div class="tr sel"><span class="cb"></span><span class="nm"><span class="face"><img src="/live/youspot/memoji/c/memo_20.png"></span>Priya Nair</span><span>Lumen Labs</span><span><span class="chip gr"><i></i>Engaged</span></span></div>
+  <div class="tr"><span class="cb"></span><span class="nm"><span class="face"><img src="/live/youspot/memoji/c/memo_1.png"></span>Tom Becker</span><span>Nordwind</span><span><span class="chip am"><i></i>Gone quiet</span></span></div>
+  <div class="tr"><span class="cb"></span><span class="nm"><span class="face"><img src="/live/youspot/memoji/c/memo_34.png"></span>Jonas Weber</span><span>Kite</span><span><span class="chip or"><i></i>Worth a note</span></span></div>
+  <div class="tr"><span class="cb"></span><span class="nm"><span class="face"><img src="/live/youspot/memoji/c/memo_3.png"></span>Daniel Reyes</span><span>Arcwell</span><span><span class="chip gr"><i></i>Paid</span></span></div>
+  <div class="tr"><span class="cb"></span><span class="nm"><span class="face"><img src="/live/youspot/memoji/c/memo_19.png"></span>Sara Lind</span><span>Sana Studio</span><span><span class="chip"><i></i>Sent a referral</span></span></div>
+  <div class="tr"><span class="cb"></span><span class="nm"><span class="face"><img src="/live/youspot/memoji/c/memo_12.png"></span>Lena Fischer</span><span>Wave</span><span><span class="chip"><i></i>New contact</span></span></div>
+</div></div>
+
+<!-- STILL · the mark -->
+<div class="sc wide" id="mark"><div class="center" id="markbig"></div></div>
+
+<!-- STILL + VIDEO · sources into one brain -->
+<div class="sc wide grid-ink net" id="network"></div>
+
+<!-- VIDEO · building your brain -->
+<div class="sc sq dots" id="build"><div class="center"><div class="wrap" id="buildwrap"></div></div></div>
+
+<!-- VIDEO · card fills in -->
+<div class="sc sq" id="card" style="background:var(--or)"><div class="center" id="cardslot"></div></div>
+
+<!-- VIDEO · credits gauge -->
+<div class="sc sq dots" id="gauge"><div class="center"><div class="g" id="gaugebox"></div></div></div>
+
+<!-- VIDEO · the send button -->
+<div class="sc sq dots" id="button"><div class="center" style="place-items:center"><div id="btnslot" style="transform:translateY(-60px)"></div></div><div class="dotsrow" id="btndots"></div><svg class="cur" id="cur" viewBox="0 0 22 30"><path d="M2 2v22l6-5.5 4 9 3.6-1.6-4-8.8H19z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+
+<script>
+const OR = "#FF280F", INK = "#21201C";
+const ic = (n, s = 24, c = "currentColor") => `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" style="color:${c}">${ICONS[n]}</svg>`;
+const brand = (k, s = 20) => `<svg viewBox="0 0 24 24" width="${s}" height="${s}"><path d="${BRANDS[k].p}" fill="${BRANDS[k].c}"/></svg>`;
+const mark = (s, ink = INK, dot = OR) => `<svg class="mark" width="${s}" height="${s}" viewBox="0 0 64 64"><path d="M8 30A22 22 0 0 1 30 8V30Z" fill="${ink}"/><circle cx="45" cy="19" r="11" fill="${dot}"/><rect x="8" y="34" width="22" height="22" rx="3" fill="${ink}"/><path d="M34 34H56A22 22 0 0 1 34 56Z" fill="${ink}"/></svg>`;
+const id = location.hash.slice(1) || "hero";
+document.getElementById(id).classList.add("on");
+
+// icons
+document.getElementById("iconrow").innerHTML = ["Inbox", "Message", "Cpu", "Bolt", "Category", "Bulb", "Plug", "Envelope"].map((n) => `<div class="ic">${ic(n, 52)}</div>`).join("");
+(() => { const svg = document.getElementById("rings"); if (!svg || id !== "radar") return; const t0 = performance.now();
+  const tick = () => { const f = document.querySelector("#radar .hit .face").getBoundingClientRect(), x = f.x + f.width / 2, y = f.y + f.height / 2, t = (performance.now() - t0) / 1000; let o = "";
+    for (let k = 0; k < 4; k++) { const u = ((t + k * 0.75) % 3) / 3; o += `<circle cx="${x}" cy="${y}" r="${24 + u * 300}" fill="none" stroke="#FF280F" stroke-width="1.6" opacity="${(1 - u) * 0.85}"/>`; }
+    for (let a = 0; a < 6; a++) { const ang = a * Math.PI / 3 + t * 0.4; o += `<circle cx="${x + Math.cos(ang) * 150}" cy="${y + Math.sin(ang) * 150}" r="3" fill="#FF280F" opacity=".7"/>`; }
+    svg.innerHTML = o + `<circle cx="${x}" cy="${y}" r="24" fill="none" stroke="#FF280F" stroke-width="2.5"/>`; requestAnimationFrame(tick); }; tick(); })();
+document.getElementById("markbig").innerHTML = mark(420, "#fff", INK);
+
+// network: sources around the brain; pulses travel inward
+(() => {
+  const el = document.getElementById("network"), W = 1080, H = 1350, cx = W / 2, cy = H / 2;
+  const nodes = [["gmail", "Gmail", 200, 250], ["calendar", "Calendar", 540, 200], ["linkedin", "LinkedIn", 880, 250], ["hubspot", "HubSpot", 200, 1100], ["claude", "Claude", 540, 1150], ["notion", "Notion", 880, 1100]];
+  let paths = "", pulses = "";
+  nodes.forEach(([k, n, x, y], i) => {
+    const my = (y + cy) / 2, d = `M${x} ${y} C ${x} ${my}, ${cx} ${my}, ${cx} ${cy}`;
+    paths += `<path id="p${i}" d="${d}" fill="none" stroke="#4A4943" stroke-width="2.5" stroke-dasharray="7 9"/>`;
+    pulses += `<circle r="9" class="pulse" id="c${i}"/>`;
+  });
+  el.innerHTML = `<svg class="lines" viewBox="0 0 ${W} ${H}">${paths}${pulses}</svg><div class="hub">${mark(108, "#fff", OR)}</div>` + nodes.map(([k, n, x, y]) => `<div class="src" style="left:${x}px;top:${y}px"><b>${brand(k)}</b>${n}</div>`).join("");
+  // pulses run on the page clock so recorded frames stay exact
+  const t0 = performance.now(), ps = nodes.map((_, i) => document.getElementById("p" + i)), cs = nodes.map((_, i) => document.getElementById("c" + i));
+  const ease = (x) => 1 - (1 + 9 * x) * Math.exp(-9 * x);
+  const tick = () => { const t = (performance.now() - t0) / 1000; ps.forEach((p, i) => { const u = (((t - i * 0.4) % 2.4) + 2.4) % 2.4 / 2.4, L = p.getTotalLength(), pt = p.getPointAtLength(ease(u) * L); cs[i].setAttribute("cx", pt.x); cs[i].setAttribute("cy", pt.y); cs[i].setAttribute("opacity", u < 0.08 ? u / 0.08 : u > 0.92 ? (1 - u) / 0.08 : 1); }); requestAnimationFrame(tick); }; tick();
+})();
+
+// ---- Apple-style motion: every value is a spring, nothing snaps ----
+// A value is written as a timeline of targets [[t, v], ...]; between targets it follows a spring step response,
+// critically damped by default (SwiftUI .smooth), or with a little bounce for presses (damping ~0.7).
+const spring = (response = 0.45, damping = 1) => {
+  const w = (2 * Math.PI) / response;
+  if (damping >= 1) return (tau) => (tau <= 0 ? 0 : 1 - (1 + w * tau) * Math.exp(-w * tau));
+  const wd = w * Math.sqrt(1 - damping * damping);
+  return (tau) => (tau <= 0 ? 0 : 1 - Math.exp(-damping * w * tau) * (Math.cos(wd * tau) + ((damping * w) / wd) * Math.sin(wd * tau)));
+};
+const SMOOTH = spring(0.45), SLOW = spring(0.9), SNAP = spring(0.3), BOUNCE = spring(0.35, 0.62);
+const track = (t, steps, s = SMOOTH) => { let v = steps[0][1]; for (let i = 1; i < steps.length; i++) v += (steps[i][1] - steps[i - 1][1]) * s(t - steps[i][0]); return v; };
+const mix = (a, b, k) => { const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)); const A = p(a), B = p(b); return `rgb(${A.map((x, i) => Math.round(x + (B[i] - x) * k)).join(",")})`; };
+const clock0 = performance.now(), now = () => (performance.now() - clock0) / 1000;
+const loop = (fn) => { const f = () => { fn(now()); requestAnimationFrame(f); }; f(); };
+
+// build: the real first minute. YouSpot reads what you have, counts it as it goes, then says who needs you
+(() => {
+  if (id !== "build") return;
+  const rows = [["Reading your inbox", 2431, "emails"], ["Finding the people you know", 248, "people"], ["Matching their companies", 61, "companies"], ["Checking what you promised", 4, "promises"], ["Drafting replies in your voice", 2, "drafts"]];
+  const w = document.getElementById("buildwrap"), L = 9, at = [0.5, 1.5, 2.4, 3.2, 3.9], done = (k) => at[k] + 0.85;
+  w.innerHTML = `<div class="bh"><span class="bm">${mark(26)}</span><div><b>Building your brain</b><span>About a minute. It keeps learning after.</span></div></div>
+    <div class="bl">${rows.map(([t, n, u]) => `<div class="br"><span class="bi"><i class="spin"></i><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="${OR}"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16"/></svg></span><span class="bt">${t}</span><span class="bn"></span></div>`).join("")}</div>
+    <div class="bf"><span class="faces">${["memo_27", "memo_20", "memo_1"].map((m) => `<span class="face"><img src="/live/youspot/memoji/c/${m}.png"></span>`).join("")}</span><b>3 people need you today</b><span class="go">Open Your day</span></div>`;
+  const br = [...w.querySelectorAll(".br")], foot = w.querySelector(".bf");
+  loop((T) => {
+    const t = T % L, out = [[0, 1], [8.2, 0]], fade = track(t, out);
+    w.style.opacity = Math.min(track(t, [[0, 0], [0.01, 1]]), fade); w.style.transform = `translateY(${(1 - fade) * 10}px)`;
+    br.forEach((el, k) => {
+      const live = track(t, [[0, 0], [at[k], 1]]), fin = Math.max(0, Math.min(1, track(t, [[0, 0], [done(k), 1]])));
+      el.style.opacity = 0.35 + 0.65 * live;
+      const sp = el.querySelector(".spin"), ok = el.querySelector("svg");
+      sp.style.opacity = live * (1 - fin); sp.style.transform = `rotate(${t * 360}deg)`;
+      const pop = Math.max(0, track(t, [[0, 0], [done(k), 1]], BOUNCE)); ok.style.opacity = fin; ok.style.transform = `scale(${0.6 + 0.4 * pop})`;
+      ok.querySelector("path").style.strokeDashoffset = 16 * (1 - Math.max(0, Math.min(1, track(t, [[0, 0], [done(k) + 0.08, 1]], SNAP))));
+      const c = Math.max(0, Math.min(1, track(t, [[0, 0], [at[k], 1]], spring(0.9))));
+      el.querySelector(".bn").textContent = live > 0.02 ? `${Math.round(rows[k][1] * c).toLocaleString("en-US")} ${rows[k][2]}` : "";
+      el.querySelector(".bt").style.color = mix("#63635E", "#21201C", fin);
+    });
+    const f = Math.max(0, Math.min(1, track(t, [[0, 0], [5.0, 1]])));
+    foot.style.opacity = f; foot.style.transform = `translateY(${(1 - f) * 14}px)`; foot.style.filter = `blur(${(1 - f) * 6}px)`;
+  });
+})();
+
+// card: one card stays put; for each person a skeleton dissolves into real content, field by field
+(() => {
+  if (id !== "card") return;
+  const P = [["memo_27", "Maya Okafor", "Head of Brand · Halden", "Reply owed", "or", "Asked about the Q1 proposal", "Budget meeting on Thursday"], ["memo_20", "Priya Nair", "VP Product · Lumen Labs", "Engaged", "gr", "Commented on your post", "Lumen is hiring a designer"]];
+  const slot = document.getElementById("cardslot"), L = 8;
+  const layer = (p, k) => `<div class="lay" data-k="${k}" style="grid-area:1/1;display:flex;flex-direction:column;gap:16px">
+    <div class="top"><span class="face" style="width:52px;height:52px"><img src="/live/youspot/memoji/c/${p[0]}.png"></span><div class="nm"><b>${p[1]}</b><span>${p[2]}</span></div><span class="ok">${ic("CheckCircle", 20, OR)}</span></div>
+    <div style="height:1px;background:#EFEEEB"></div>
+    <div class="ln f1">${ic("Envelope", 20)}<span>${p[5]}</span></div><div class="ln f2">${ic("Calendar", 20)}<span>${p[6]}</span></div>
+    <div class="ln f3"><span class="chip ${p[4]}" style="font-size:15px;height:30px"><i></i>${p[3]}</span></div></div>`;
+  const sk = `<div class="lay sk0" style="grid-area:1/1;display:flex;flex-direction:column;gap:16px">
+    <div class="top"><span style="width:52px;height:52px;border-radius:50%;background:#EFEEEB"></span><div style="display:flex;flex-direction:column;gap:9px"><span class="sk" style="width:170px"></span><span class="sk" style="width:230px"></span></div></div>
+    <div style="height:1px;background:#EFEEEB"></div><div class="ln"><span class="sk" style="width:20px"></span><span class="sk" style="width:260px"></span></div><div class="ln"><span class="sk" style="width:20px"></span><span class="sk" style="width:220px"></span></div><div class="ln"><span class="sk" style="width:110px;height:30px;border-radius:99px"></span></div></div>`;
+  slot.innerHTML = `<div class="pc" style="display:grid">${sk}${P.map(layer).join("")}</div>`;
+  const card = slot.firstChild, skel = card.querySelector(".sk0"), lays = [...card.querySelectorAll(".lay[data-k]")];
+  const field = (el, v) => { el.style.opacity = v; el.style.filter = `blur(${(1 - v) * 6}px)`; el.style.transform = `translateY(${(1 - v) * 6}px)`; };
+  loop((T) => {
+    const t = T % L, base = (k) => k * 4;
+    card.style.transform = `translateY(${(1 - track(t, [[0, 0], [0.05, 1], [7.55, 0]], SLOW)) * 40}px)`;
+    card.style.opacity = track(t, [[0, 0], [0.05, 1], [7.6, 0]]);
+    let skv = 1;
+    lays.forEach((el, k) => {
+      const b = base(k), off = b + 3.6;
+      const g = (a) => Math.max(0, Math.min(1, track(t, [[0, 0], [b + a, 1], [off, 0]])));
+      el.style.opacity = 1;
+      field(el.querySelector(".face"), g(0.5)); field(el.querySelector(".nm b"), g(0.75)); field(el.querySelector(".nm span"), g(0.9));
+      field(el.querySelector(".f1"), g(1.2)); field(el.querySelector(".f2"), g(1.45)); field(el.querySelector(".f3"), g(1.75));
+      const ok = el.querySelector(".ok"), o = Math.max(0, track(t, [[0, 0], [b + 2.2, 1], [off, 0]], BOUNCE)); ok.style.opacity = Math.min(1, o); ok.style.transform = `scale(${0.5 + 0.5 * o})`;
+      skv -= g(0.6);
+    });
+    skel.style.opacity = Math.max(0, Math.min(1, skv));
+  });
+})();
+
+// gauge: the value glides on a slow spring; segments light as the value passes them; Pro cross-fades in
+(() => {
+  if (id !== "gauge") return;
+  const box = document.getElementById("gaugebox"), L = 7, R = 300, cx = 320, cy = 340;
+  const arc = (a0, a1, r) => { const p = (a) => [cx + r * Math.cos(Math.PI * (1 - a)), cy - r * Math.sin(Math.PI * (1 - a))]; const [x0, y0] = p(a0), [x1, y1] = p(a1); return `M${x0} ${y0} A ${r} ${r} 0 0 1 ${x1} ${y1}`; };
+  let segs = ""; for (let i = 0; i < 10; i++) segs += `<path class="sg" d="${arc(i / 10 + 0.004, (i + 1) / 10 - 0.004, R - 22)}" stroke-width="36" fill="none"/>`;
+  box.innerHTML = `<svg viewBox="0 0 640 360">${segs}<path id="gl" stroke="${OR}" stroke-width="6" stroke-linecap="round" fill="none"/></svg>
+    <div class="num"><b id="gn"></b><span style="display:grid"><i id="gs1" style="grid-area:1/1;font-style:normal">of 50 free credits used</i><i id="gs2" style="grid-area:1/1;font-style:normal">credits a month on Pro</i></span></div>
+    <div class="pill" id="gp" style="display:grid;place-items:center;padding:0;width:260px"><i id="gp1" style="grid-area:1/1;font-style:normal">Upgrade to Pro</i><i id="gp2" style="grid-area:1/1;font-style:normal">Every agent is on</i></div>`;
+  const sg = [...box.querySelectorAll(".sg")], gl = document.getElementById("gl");
+  loop((T) => {
+    const t = T % L, pro = track(t, [[0, 0], [3.5, 1], [6.4, 0]]);
+    const v = Math.max(0, track(t, [[0, 0], [0.3, 0.64], [3.6, 1], [6.4, 0]], SLOW));
+    sg.forEach((p, i) => { const k = Math.max(0, Math.min(1, (v - i / 10) * 10)); p.setAttribute("stroke", mix("#E7E6E2", mix("#FFA095", "#FF280F", pro).replace(/rgb\((\d+),(\d+),(\d+)\)/, (_, a, b, c) => "#" + [a, b, c].map((x) => (+x).toString(16).padStart(2, "0")).join("")), k)); });
+    gl.setAttribute("d", arc(0.002, Math.max(0.003, Math.min(1, v)), R - 62));
+    const n = v <= 0.64 + 1e-6 && pro < 0.5 ? (v / 0.64) * 32 : 32 + ((v - 0.64) / 0.36) * 968;
+    document.getElementById("gn").textContent = Math.round(Math.max(0, n)).toLocaleString("en-US");
+    document.getElementById("gs1").style.opacity = 1 - pro; document.getElementById("gs2").style.opacity = pro;
+    const gp = document.getElementById("gp"); gp.style.background = mix("#21201C", "#FF280F", pro); gp.style.transform = `translateX(-50%) scale(${1 + Math.sin(Math.PI * Math.min(1, pro)) * 0.04})`;
+    document.getElementById("gp1").style.opacity = 1 - pro; document.getElementById("gp2").style.opacity = pro;
+  });
+})();
+
+// button: the pointer glides in on a spring, the press squashes with a small bounce, Send draft dissolves into Sent
+(() => {
+  if (id !== "button") return;
+  const slot = document.getElementById("btnslot"), cur = document.getElementById("cur"), dots = document.getElementById("btndots"), L = 6;
+  slot.innerHTML = `<div style="display:grid;place-items:center"><div class="b" id="b1" style="grid-area:1/1">${ic("Send", 32, "#fff")}Send draft</div>
+    <div class="b" id="b2" style="grid-area:1/1;background:linear-gradient(#2D2C27,#21201C);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 0 2px #000,0 18px 36px -14px rgba(0,0,0,.6)"><svg viewBox="0 0 24 24" width="32" height="32"><path id="bck" d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="${OR}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="22"/></svg>Sent to Maya</div></div>`;
+  dots.innerHTML = [OR, "#FFA095", INK, "#D2D1CC"].map((c) => `<i style="background:${c}"></i>`).join("") + `<b id="ring" style="position:absolute;width:34px;height:34px;border-radius:50%;top:-6px;box-shadow:0 0 0 2px ${INK}"></b>`;
+  dots.style.position = "absolute";
+  const b1 = document.getElementById("b1"), b2 = document.getElementById("b2"), ck = document.getElementById("bck"), ring = document.getElementById("ring");
+  const MOVE = spring(0.8);
+  loop((T) => {
+    const t = T % L;
+    const x = track(t, [[0, 920], [0.3, 590], [4.3, 920]], MOVE), y = track(t, [[0, 1180], [0.3, 655], [4.3, 1180]], MOVE);
+    const press = track(t, [[0, 0], [1.45, 1], [1.62, 0]], BOUNCE), sent = Math.max(0, Math.min(1, track(t, [[0, 0], [1.6, 1], [5.1, 0]])));
+    const hover = Math.max(0, Math.min(1, track(t, [[0, 0], [1.0, 1], [1.6, 0]])));
+    cur.style.left = x + "px"; cur.style.top = y + "px"; cur.style.transform = `scale(${1 - press * 0.12})`;
+    cur.style.opacity = track(t, [[0, 0], [0.2, 1], [5.0, 0]]);
+    const sc = 1 - press * 0.05 + Math.max(0, track(t, [[0, 0], [1.6, 1], [2.0, 0]], BOUNCE)) * 0.03;
+    b1.style.opacity = 1 - sent; b1.style.filter = `blur(${sent * 6}px) brightness(${1 + hover * 0.06})`; b1.style.transform = `scale(${sc})`;
+    b2.style.opacity = sent; b2.style.filter = `blur(${(1 - sent) * 6}px)`; b2.style.transform = `scale(${sc})`;
+    ck.style.strokeDashoffset = 22 * (1 - Math.max(0, Math.min(1, track(t, [[0, 0], [1.8, 1], [5.1, 0]], SNAP))));
+    const state = hover * 1 + sent * 2 * (1 - hover * 0) ; const s = Math.min(2, sent > 0.01 ? 1 + sent : hover);
+    ring.style.left = (-6 + s * 44) + "px"; void state;
+  });
+})();
+</script>
+</body></html>

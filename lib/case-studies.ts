@@ -31,6 +31,8 @@ export interface CaseStudy {
   /** Optional month-precise span for the Timeline view, format "YYYY-MM". */
   start?: string
   end?: string
+  /** The client's site, exported into public/live, shown running inside the case page. */
+  live?: string
 }
 
 export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
@@ -80,6 +82,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "youspot",
+    live: "/live/youspot/",
     services: ["Brand", "Product Design", "Web", "Motion"],
     areas: ["AI", "Productivity", "Consumer"],
     title: "YouSpot",
@@ -108,6 +111,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "nightshift",
+    live: "/live/nightshift/",
     services: ["Brand", "Product Design", "Web", "Motion"],
     areas: ["AI", "Agents", "B2B"],
     title: "Nightshift",
@@ -127,6 +131,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "junction",
+    live: "/live/junction/",
     services: ["Brand", "Product Design", "Web", "Motion"],
     areas: ["Fintech", "Investing", "Consumer"],
     title: "Junction",
@@ -154,6 +159,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "atlas",
+    live: "/live/atlas/",
     services: ["Brand", "Product Design", "Web", "Motion"],
     areas: ["Fintech", "Trading", "Crypto"],
     title: "Atlas",
