@@ -1420,3 +1420,29 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 @media (max-width: 734px) { .vn-main .vn-grid { grid-template-columns: 1fr; } }
 /* The left side: 550px wide */
 @media (min-width: 1024px) { .vn-split { grid-template-columns: 550px minmax(0, 1fr); } }
+
+/* Inner pages: a plain way back above the content, at the content's width */
+.va-back { width: min(1040px, 100% - 32px); margin: 0 auto; padding-top: 32px; }
+.va-home { height: auto; padding: 0; gap: 8px; border-radius: 0; background: none; box-shadow: none; color: #8B8F96; transition: color .2s; }
+.va-home:hover { background: none; color: #fff; }
+.va-home img { opacity: .7; transition: opacity .2s; } .va-home:hover img { opacity: 1; }
+.vc-head { padding-top: 40px; }
+
+/* Book a call, built like Apple's floating controls: a dot pops in, stretches into a white pill, then the words arrive */
+.va-float { position: fixed; left: 50%; bottom: 32px; z-index: 40; display: grid; place-items: center; height: 48px; padding: 0 24px; color: #0A0A0A !important; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; transform: translateX(-50%); pointer-events: none; }
+.va-float.shown { pointer-events: auto; }
+.va-float-dot, .va-float-bg { position: absolute; top: 0; left: 50%; height: 48px; border-radius: 999px; transform: translateX(-50%); }
+.va-float-dot { width: 48px; background: #fff; opacity: 0; }
+.shown .va-float-dot { animation: va-dot .75s cubic-bezier(.32,.72,0,1) both; }
+@keyframes va-dot { 0% { opacity: 1; transform: translateX(-50%) scale(.01); } 40% { opacity: 1; transform: translateX(-50%) scale(1); } 70%, 100% { opacity: 0; transform: translateX(-50%) scale(1); } }
+.va-float-bg { width: 48px; opacity: 0; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 12px 32px -8px rgba(0,0,0,.6); transition: width .3s cubic-bezier(.4,0,1,1) .05s, opacity .2s ease-in .2s, background-color .2s; }
+.shown .va-float-bg { width: 100%; opacity: 1; transition: opacity .01s linear .28s, width .55s cubic-bezier(.32,.72,0,1) .28s, background-color .2s; }
+.va-float:hover .va-float-bg { background: #EDEDED; }
+.va-float-label { position: relative; white-space: nowrap; opacity: 0; transform: scale(.6); filter: blur(4px); transition: opacity .12s ease-in, transform .15s ease-in, filter .12s ease-in; }
+.shown .va-float-label { opacity: 1; transform: none; filter: none; transition: opacity .3s ease-out .62s, transform .45s cubic-bezier(.32,.72,0,1) .58s, filter .3s ease-out .62s; }
+.va-float.shown:active .va-float-bg { transform: translateX(-50%) scale(.97); transition: transform .1s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .shown .va-float-dot { animation: none; }
+  .va-float-bg, .va-float-label, .shown .va-float-bg, .shown .va-float-label { width: 100%; transform: none; filter: none; transition: opacity .25s ease-out; }
+  .va-float-bg { width: 100%; }
+}

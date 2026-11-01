@@ -41,7 +41,8 @@ export function StartFlow() {
   const pick = (v: string) => {
     if (!q) return
     if (q.multi) setAnswers((a) => ({ ...a, [q.id]: picked.includes(v) ? picked.filter((x) => x !== v) : [...picked, v] }))
-    else { setAnswers((a) => ({ ...a, [q.id]: [v] })); setTimeout(() => setStep((s) => s + 1), 220) }
+    // Picking only selects; Continue moves on, so a quick second click never skips a question
+    else setAnswers((a) => ({ ...a, [q.id]: [v] }))
   }
 
   // number keys pick, Enter continues, Backspace goes back
@@ -50,7 +51,8 @@ export function StartFlow() {
       if (done || !q) return
       const n = Number(e.key)
       if (n >= 1 && n <= q.options.length) pick(q.options[n - 1][0])
-      if (e.key === "Enter" && picked.length) setStep((s) => s + 1)
+      // Enter on a focused option just picks it (the button's own click); elsewhere it continues
+      if (e.key === "Enter" && picked.length && !(e.target instanceof HTMLButtonElement)) setStep((s) => s + 1)
       if (e.key === "Backspace" && step > 0) setStep((s) => s - 1)
     }
     addEventListener("keydown", on)
