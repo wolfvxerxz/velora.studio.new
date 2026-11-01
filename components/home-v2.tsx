@@ -47,7 +47,7 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
           <h1>Velora Studio helps AI and fintech founders launch and raise with a brand, product and website that look as good as the idea.</h1>
           <p>We design and build all three as one system, so nothing feels stitched together. You work directly with the designer doing the work, and most launches ship in 4–6 weeks.</p>
           <div className="vn-ctas">
-            <a href={book} {...ext} className="va-pill">Book an intro call</a>
+            <a href={book} {...ext} className="va-pill"><Icon i={Calendar} />Book an intro call</a>
             <a href="https://t.me/vukkm" {...ext} className="va-pill ghost vn-chat"><Telegram />Chat</a>
           </div>
         </section>
