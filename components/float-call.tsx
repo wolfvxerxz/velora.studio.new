@@ -8,10 +8,12 @@ export function FloatCall({ href }: { href: string }) {
 
   useEffect(() => {
     // Appear once the page's intro has scrolled out of view; pages without one wait for a short scroll
-    const intro = document.querySelector(".vc-head")
+    // and step aside while the page's own call to action is on screen
+    const intro = document.querySelector(".vc-head"), own = document.querySelector("[data-own-cta]")
     const onScroll = () => {
       const past = intro ? intro.getBoundingClientRect().bottom < 0 : scrollY > 200
-      setShown(past)
+      const ownInView = own ? own.getBoundingClientRect().top < innerHeight - 40 : false
+      setShown(past && !ownInView)
     }
     onScroll()
     addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll)
@@ -22,7 +24,7 @@ export function FloatCall({ href }: { href: string }) {
     <a href={href} target="_blank" rel="noopener noreferrer" className={`va-float ${shown ? "shown" : ""}`} aria-hidden={!shown} tabIndex={shown ? 0 : -1}>
       <span className="va-float-dot" aria-hidden />
       <span className="va-float-bg" aria-hidden />
-      <span className="va-float-label">Book a call</span>
+      <span className="va-float-label">Book an intro call</span>
     </a>
   )
 }
