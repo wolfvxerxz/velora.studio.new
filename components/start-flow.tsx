@@ -79,7 +79,8 @@ export function StartFlow() {
 
   const plan = recommend(answers)
   const notes = QUESTIONS.map((x) => `${x.title} ${(answers[x.id] ?? []).join(", ")}`).join("\n") + `\nSuggested plan: ${plan.name}`
-  const cal = `${CAL}?notes=${encodeURIComponent(notes)}`
+  // The booking form's own visible field is "Brief Description"; prefilling it carries the answers into the booking
+  const cal = `${CAL}?Brief-Description=${encodeURIComponent(notes)}`
 
   return (
     <div className="vs">
