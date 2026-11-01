@@ -99,7 +99,7 @@ export default function Pricing() {
           <p>Tell us what you&apos;re building and when it needs to ship. We set the plan together on a short call.</p>
           <div className="vpr-ctas">
             <a href={STUDIO.book} {...ext} className="va-pill"><Calendar size={16} weight="Filled" />Book an intro call</a>
-            <a href="https://t.me/vukkm" {...ext} className="va-pill ghost vn-chat"><Telegram />Chat</a>
+            <a href="https://t.me/vukmz" {...ext} className="va-pill ghost vn-chat"><Telegram />Chat</a>
           </div>
         </section>
       </div>

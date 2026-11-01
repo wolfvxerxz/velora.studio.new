@@ -48,7 +48,7 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
           <p>We design and build all three as one system, so nothing feels stitched together. You work directly with the designer doing the work, and most launches ship in 4–6 weeks.</p>
           <div className="vn-ctas">
             <a href={book} {...ext} className="va-pill"><Icon i={Calendar} />Book an intro call</a>
-            <a href="https://t.me/vukkm" {...ext} className="va-pill ghost vn-chat"><Telegram />Chat</a>
+            <a href="https://t.me/vukmz" {...ext} className="va-pill ghost vn-chat"><Telegram />Chat</a>
           </div>
         </section>
 
@@ -67,7 +67,7 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
           <nav className="vn-socials" aria-label="Velora elsewhere">
             <a href="https://x.com/veloraxstudio" {...ext}><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>X</a>
             <a href="https://www.linkedin.com/company/velorastudio/" {...ext}><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" /></svg>LinkedIn</a>
-            <a href="https://t.me/vukkm" {...ext}><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden><path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" /></svg>Telegram</a>
+            <a href="https://t.me/vukmz" {...ext}><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden><path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" /></svg>Telegram</a>
           </nav>
         </div>
       </aside>

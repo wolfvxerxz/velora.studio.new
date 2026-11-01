@@ -46,7 +46,7 @@ export default function Page(): React.ReactElement {
             Please select the time that fits you or just text me in{" "}
             <a href="https://wa.me/message/CRWTXVTJ2LCJO1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">WhatsApp</a>{" "}
             /{" "}
-            <a href="https://t.me/vukkm" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">Telegram</a>
+            <a href="https://t.me/vukmz" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">Telegram</a>
           </p>
           <div className="flex items-center justify-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
