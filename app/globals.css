@@ -1371,3 +1371,7 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 }
 /* Chat on Telegram, beside the call */
 .vn-chat { display: inline-flex; align-items: center; gap: 8px; }
+/* Socials under pricing, in place of the old footer line */
+.vn-socials { display: flex; gap: 6px; margin-top: 16px; }
+.vn-socials a { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px 0 12px; border-radius: 999px; background: #1A1A1A; color: #D5D9E2; font-size: 14px; transition: background-color .2s, color .2s, transform .1s ease-out; }
+.vn-socials a:hover { background: #262626; color: #fff; } .vn-socials a:active { transform: scale(.97); }
