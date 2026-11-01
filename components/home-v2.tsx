@@ -117,7 +117,6 @@ function Voices({ quotes }: { quotes: CaseStudy[] }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           {q.testimonial!.avatar && <img src={q.testimonial!.avatar} alt="" width={28} height={28} />}
           <span><b>{q.testimonial!.name}</b> {q.testimonial!.role}</span>
-          <Link href={`/work/${q.slug}`}>{q.title}</Link>
         </figcaption>
       </figure>
     </section>
