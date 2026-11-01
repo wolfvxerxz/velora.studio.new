@@ -1328,6 +1328,12 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 .vl-view iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; }
 .vl:fullscreen { border-radius: 0; }
 .vl:fullscreen .vl-view { flex: 1; aspect-ratio: auto; }
+/* Full screen: the site at its real size in a centred window, capped so wide screens don't stretch it */
+.vl:fullscreen, .vl.filled { background: #0A0A0A; }
+.vl.filled { position: fixed; inset: 0; z-index: 100; border-radius: 0; }
+.vl.filled .vl-view { flex: 1; aspect-ratio: auto; height: auto; }
+.vl:fullscreen .vl-bar, .vl.filled .vl-bar { width: min(100% - 24px, 1680px); margin: 0 auto; padding: 0 4px; }
+.vl:fullscreen .vl-view, .vl.filled .vl-view { width: min(100% - 24px, 1680px); margin: 0 auto 12px; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
 @media (max-width: 734px) { .vl-view { aspect-ratio: auto; height: 72vh; } }
 
 /* Case page: what it is, the site running live, then each idea with its shots in ones and twos */

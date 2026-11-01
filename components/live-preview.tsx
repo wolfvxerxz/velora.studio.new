@@ -9,24 +9,42 @@ const DESKTOP = 1440
 export function LivePreview({ src, title, hint = "Scroll inside to explore the site" }: { src: string; title: string; hint?: string }) {
   const box = useRef<HTMLDivElement>(null)
   const [w, setW] = useState(0)
-  const [full, setFull] = useState(false)
+  const [native, setNative] = useState(false)
+  // Where the browser won't go full screen (iPhone Safari, embedded browsers) the preview fills the window instead
+  const [filled, setFilled] = useState(false)
+  const full = native || filled
   const [touched, setTouched] = useState(false)
 
   useEffect(() => {
     const el = box.current!
     const ro = new ResizeObserver(([e]) => setW(e.contentRect.width))
     ro.observe(el)
-    const onFs = () => setFull(document.fullscreenElement === el.parentElement)
+    const onFs = () => setNative(document.fullscreenElement === el.parentElement)
     document.addEventListener("fullscreenchange", onFs)
     return () => { ro.disconnect(); document.removeEventListener("fullscreenchange", onFs) }
   }, [])
 
-  const virtual = w < 520 ? w : DESKTOP
+  // In the case it's a scaled-down desktop; full screen shows it at true size, never blown up past 1:1
+  const virtual = w < 520 ? w : full ? Math.max(w, DESKTOP) : DESKTOP
   const scale = w ? w / virtual : 1
-  const toggle = () => (full ? document.exitFullscreen() : box.current!.parentElement!.requestFullscreen())
+  const toggle = () => {
+    if (native) return void document.exitFullscreen()
+    if (filled) return setFilled(false)
+    const frame = box.current!.parentElement!
+    if (!frame.requestFullscreen) return setFilled(true)
+    frame.requestFullscreen().catch(() => setFilled(true))
+    setTimeout(() => { if (!document.fullscreenElement) setFilled(true) }, 400)
+  }
+  useEffect(() => {
+    if (!filled) return
+    const k = (e: KeyboardEvent) => e.key === "Escape" && setFilled(false)
+    const lock = document.body.style.overflow; document.body.style.overflow = "hidden"
+    addEventListener("keydown", k)
+    return () => { removeEventListener("keydown", k); document.body.style.overflow = lock }
+  }, [filled])
 
   return (
-    <div className="vl">
+    <div className={`vl ${filled ? "filled" : ""}`}>
       <div className="vl-bar">
         <span className="vl-live">{title}, live</span>
         <button onClick={toggle}>
