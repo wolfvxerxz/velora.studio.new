@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Live previews of client sites are static exports in public/live; serve each folder's index.html
   ...(isExport ? {} : {
+    // Start a project moved to the cal.com booking page
+    async redirects() {
+      return [{ source: "/start", destination: "https://cal.com/vuk-m/15min", permanent: false }]
+    },
     async rewrites() {
       return [
         { source: "/live/:site", destination: "/live/:site/index.html" },

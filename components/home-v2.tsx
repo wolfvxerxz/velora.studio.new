@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import type { CaseStudy } from "@/lib/case-studies"
 import Image from "next/image"
-import { Calendar, Category, Sparkles, TrendUp, Code, Mobile, ArrowLeft, ArrowRight, DocumentText, Rocket, User, MessageText } from "reicon-react"
+import { Calendar, Category, Sparkles, TrendUp, Code, Mobile, ArrowLeft, ArrowRight, DocumentText, Rocket, User } from "reicon-react"
 
 type IconType = typeof Calendar
 const Icon = ({ i: I, size = 16 }: { i: IconType; size?: number }) => <I size={size} weight="Filled" aria-hidden />
@@ -44,7 +44,6 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
           <p>We design and build all three as one system, so nothing feels stitched together. You work directly with the designer doing the work, and most launches ship in 4–6 weeks.</p>
           <div className="vn-ctas">
             <a href={book} {...ext} className="va-pill"><Icon i={Calendar} />Book a call</a>
-            <Link href="/start" className="va-pill ghost"><Icon i={MessageText} />Start a project</Link>
           </div>
         </section>
 
@@ -54,7 +53,7 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
             <div className="vn-head"><h2 id="pricing-h">Pricing.</h2><Link href="/pricing" className="vn-more">All details</Link></div>
             <div className="vn-plans">
               {PLANS.map((p) => (
-                <Link key={p.name} href="/start" className="vn-plan">
+                <Link key={p.name} href="/pricing" className="vn-plan">
                   <i aria-hidden><Icon i={p.icon} /></i><b>{p.name}</b><span>{p.line}</span><em>{p.price}</em>
                 </Link>
               ))}
