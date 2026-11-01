@@ -33,6 +33,8 @@ export interface CaseStudy {
   end?: string
   /** The client's site, exported into public/live, shown running inside the case page. */
   live?: string
+  /** What the live preview invites you to do, when it isn't a page to scroll */
+  liveHint?: string
 }
 
 export const DEFAULT_LOCATION = "San Francisco, US (Remote)"
@@ -53,6 +55,27 @@ const caseVid = (client: string, file: string): CaseStudyWorkItem => ({
 })
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "kept",
+    live: "/live/kept/",
+    liveHint: "It's the real app: drag a session or open a client",
+    services: ["Brand", "Product Design", "iOS", "Web App"],
+    areas: ["Fintech", "Productivity"],
+    title: "Kept",
+    tagline: "Clients, sessions and payments for freelancers, kept in one calendar",
+    date: "2026",
+    start: "2026-11",
+    end: "2026-11",
+    cover: "/case/Kept/cover.webp",
+    logo: "/icons/client-logos/Kept.svg",
+    description:
+      "Brand, desktop app and iPhone app for Kept, a calendar for freelancers that counts sessions against each client's retainer, turns a full retainer into an invoice, and nudges clients before they're late to pay. Every session is a tinted block in its client's colour, and the mark is a check made of four of them.",
+    work: [
+      caseImg("Kept", "app-week.webp"),
+      caseImg("Kept", "phones-welcome.webp"),
+      caseImg("Kept", "brand-mark.webp"),
+    ],
+  },
   {
     slug: "moss",
     services: ["Brand", "Product Design", "Web", "Motion"],

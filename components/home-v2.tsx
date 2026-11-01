@@ -21,7 +21,7 @@ const PLANS = [
 
 const FILTERS: [string, string[]][] = [["All", []], ["AI", ["AI", "Agents"]], ["Fintech", ["Fintech", "Payments", "Trading", "Investing", "Crypto"]], ["Dev tools", ["Developer Tools", "Infrastructure", "DevOps", "Database", "Backend"]], ["Consumer", ["Consumer", "Mobile"]]]
 const FILTER_ICONS: Record<string, IconType> = { All: Category, AI: Sparkles, Fintech: TrendUp, "Dev tools": Code, Consumer: Mobile }
-const ORDER = ["moss", "atlas", "junction", "nightshift", "youspot"]
+const ORDER = ["kept", "moss", "atlas", "junction", "nightshift", "youspot"]
 // Each recent case has its own looping film, made from its brand
 const FILMS: Record<string, string> = { moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
 

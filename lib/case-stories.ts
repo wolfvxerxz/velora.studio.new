@@ -26,8 +26,45 @@ const J = (f: string) => img("Junction", f)
 const N = (f: string) => img("Nightshift", f)
 const M = (f: string) => img("Moss", f)
 const Y = (f: string) => img("YouSpot", f)
+const K_ = (f: string) => img("Kept", f)
 
 const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkItem }> = {
+  kept: {
+    headline: "A calendar that keeps the count, so freelancers get paid on time",
+    intro: [
+      "Kept is a calendar for freelancers who work on retainers. Every session counts toward the client's period, and when a period fills up Kept turns it into an invoice and reminds the client before it's late.",
+      "We designed the brand, a desktop app for the week at a desk, and an iPhone app for the week on the go, all from one language of white day cards and tinted sessions.",
+    ],
+    vision: "One block of time, one colour, one count.",
+    hero: K_("app-week.webp"),
+    chapters: [
+      {
+        label: "Brand",
+        title: "A check made of sessions",
+        body: ["Four circles run together into one tick: a session done, and paid. It sits in a soft green icon, lit at the edge."],
+        rows: [[K_("brand-cover.webp")], [K_("brand-mark.webp")], [K_("brand-lockup.webp"), K_("brand-icon.webp")]],
+      },
+      {
+        label: "System",
+        title: "Mostly grey and white, green when money moves",
+        body: ["A grey desk, white paper, black for the one thing to do. Each client gets one tone, used only on their sessions."],
+        rows: [[K_("brand-colour.webp")], [K_("brand-type.webp"), K_("brand-session.webp")], [K_("brand-voice.webp"), K_("brand-use.webp")]],
+      },
+      {
+        label: "Desktop",
+        title: "The week at a desk",
+        body: ["A time grid of day cards. Drag a session to move it, click a free slot to book one, and the panel beside it edits whatever you pick."],
+        rows: [[K_("app-edit.webp")], [K_("app-month.webp"), K_("app-clients.webp")], [K_("app-payments.webp"), K_("app-reports.webp")], [K_("app-billing.webp")]],
+      },
+      {
+        label: "iPhone",
+        title: "The same week in your pocket",
+        body: ["Today on top in a dashed outline, the rest of the week below, and the billing sheet one tap from every client."],
+        rows: [[K_("phones-welcome.webp")], [K_("phones-week.webp")], [K_("phones-money.webp")]],
+      },
+    ],
+    result: "Five clients, one calendar, nothing left to chase.",
+  },
   moss: {
     headline: "A Postgres platform on an old blue screen, brand to dashboard",
     intro: [

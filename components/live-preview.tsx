@@ -6,7 +6,7 @@ import { Maximize, Minimize } from "reicon-react"
 
 const DESKTOP = 1440
 
-export function LivePreview({ src, title }: { src: string; title: string }) {
+export function LivePreview({ src, title, hint = "Scroll inside to explore the site" }: { src: string; title: string; hint?: string }) {
   const box = useRef<HTMLDivElement>(null)
   const [w, setW] = useState(0)
   const [full, setFull] = useState(false)
@@ -35,7 +35,7 @@ export function LivePreview({ src, title }: { src: string; title: string }) {
         </button>
       </div>
       <div className="vl-view" ref={box} onPointerEnter={() => setTimeout(() => setTouched(true), 1600)} onPointerDown={() => setTouched(true)}>
-        <p className={`vl-hint ${touched ? "off" : ""}`} aria-hidden>Scroll inside to explore the site</p>
+        <p className={`vl-hint ${touched ? "off" : ""}`} aria-hidden>{hint}</p>
         {w > 0 && (
           <iframe
             src={src}

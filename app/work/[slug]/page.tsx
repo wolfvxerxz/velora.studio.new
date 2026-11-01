@@ -77,7 +77,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       </header>
 
       <main className="vc-work">
-        {study.live ? <LivePreview src={study.live} title={study.title} /> : <Shot item={story.hero} alt={`${study.title} case study`} />}
+        {study.live ? <LivePreview src={study.live} title={study.title} hint={study.liveHint} /> : <Shot item={story.hero} alt={`${study.title} case study`} />}
 
         {story.chapters.map((c) => (
           <section key={c.label} className="vc-chapter">
