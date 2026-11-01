@@ -1369,3 +1369,5 @@ html, body { background: #0A0A0A; color-scheme: dark; }
   .va-float-bg, .va-float-label, .shown .va-float-bg, .shown .va-float-label { width: 100%; transform: none; filter: none; transition: opacity .25s ease-out; }
   .va-float-bg { width: 100%; }
 }
+/* Chat on Telegram, beside the call */
+.vn-chat { display: inline-flex; align-items: center; gap: 8px; }

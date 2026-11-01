@@ -11,6 +11,10 @@ type IconType = typeof Calendar
 const Icon = ({ i: I, size = 16 }: { i: IconType; size?: number }) => <I size={size} weight="Filled" aria-hidden />
 
 const book = "https://cal.com/vuk-m/15min"
+// Telegram's own mark: the white plane on its blue disc
+const Telegram = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden><circle cx="12" cy="12" r="12" fill="#2AABEE" /><path fill="#fff" d="M5.4 11.8l10.9-4.2c.5-.2 1 .1.8.9l-1.9 8.8c-.1.6-.5.8-1 .5l-2.9-2.1-1.4 1.3c-.2.2-.3.3-.6.3l.2-2.9 5.3-4.8c.2-.2 0-.3-.3-.1l-6.6 4.1-2.8-.9c-.6-.2-.6-.6.1-.9Z" /></svg>
+)
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const
 
 const PLANS = [
@@ -43,7 +47,8 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
           <h1>Velora Studio helps AI and fintech founders launch and raise with a brand, product and website that look as good as the idea.</h1>
           <p>We design and build all three as one system, so nothing feels stitched together. You work directly with the designer doing the work, and most launches ship in 4–6 weeks.</p>
           <div className="vn-ctas">
-            <a href={book} {...ext} className="va-pill"><Icon i={Calendar} />Book a call</a>
+            <a href={book} {...ext} className="va-pill">Book an intro call</a>
+            <a href="https://t.me/vukkm" {...ext} className="va-pill ghost vn-chat"><Telegram />Chat</a>
           </div>
         </section>
 
