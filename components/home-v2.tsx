@@ -21,9 +21,10 @@ const PLANS = [
 
 const FILTERS: [string, string[]][] = [["All", []], ["AI", ["AI", "Agents"]], ["Fintech", ["Fintech", "Payments", "Trading", "Investing", "Crypto"]], ["Dev tools", ["Developer Tools", "Infrastructure", "DevOps", "Database", "Backend"]], ["Consumer", ["Consumer", "Mobile"]]]
 const FILTER_ICONS: Record<string, IconType> = { All: Category, AI: Sparkles, Fintech: TrendUp, "Dev tools": Code, Consumer: Mobile }
-const ORDER = ["kept", "moss", "atlas", "junction", "nightshift", "youspot"]
-// Each recent case has its own looping film, made from its brand
-const FILMS: Record<string, string> = { moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
+const ORDER = ["streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"]
+// Each recent case has its own looping film, made from its brand. Some loop the whole time they're on screen
+const ALWAYS = new Set(["streak"])
+const FILMS: Record<string, string> = { streak: "Streak", moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
 
 export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
   const withPages = caseStudies.filter((c) => c.cover.startsWith("/case/"))
@@ -75,7 +76,7 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
             <Link key={c.slug} href={`/work/${c.slug}`} className="vn-case">
               <div className="vn-media">
                 {FILMS[c.slug]
-                  ? <Film dir={FILMS[c.slug]} label={`${c.title} case study`} />
+                  ? <Film dir={FILMS[c.slug]} label={`${c.title} case study`} always={ALWAYS.has(c.slug)} />
                   // eslint-disable-next-line @next/next/no-img-element
                   : <img src={c.cover} alt={`${c.title} case study`} loading={i < 4 ? "eager" : "lazy"} decoding="async" />}
               </div>
@@ -121,22 +122,22 @@ function Voices({ quotes }: { quotes: CaseStudy[] }) {
   )
 }
 
-// A case film rests on its poster and plays while the tile is hovered. Without hover (phones), it plays while in view.
-function Film({ dir, label }: { dir: string; label: string }) {
+// A case film rests on its poster and plays while the tile is hovered. Without hover (phones), or when it always loops, it plays while in view.
+function Film({ dir, label, always = false }: { dir: string; label: string; always?: boolean }) {
   const ref = useRef<HTMLVideoElement>(null)
   useEffect(() => {
     const v = ref.current!, tile = v.closest("a")!
     const play = () => { v.play().catch(() => {}) }
     const stop = () => { v.pause(); v.load() } // load() puts the poster back instead of a paused frame
-    if (matchMedia("(hover: hover)").matches) {
+    if (!always && matchMedia("(hover: hover)").matches) {
       tile.addEventListener("mouseenter", play); tile.addEventListener("mouseleave", stop)
       tile.addEventListener("focus", play); tile.addEventListener("blur", stop)
       return () => { tile.removeEventListener("mouseenter", play); tile.removeEventListener("mouseleave", stop); tile.removeEventListener("focus", play); tile.removeEventListener("blur", stop) }
     }
-    const io = new IntersectionObserver(([e]) => (e.intersectionRatio > 0.6 ? play() : stop()), { threshold: [0, 0.6] })
+    const io = new IntersectionObserver(([e]) => (e.intersectionRatio > (always ? 0 : 0.6) ? play() : stop()), { threshold: [0, 0.6] })
     io.observe(v)
     return () => io.disconnect()
-  }, [])
+  }, [always])
   return <video ref={ref} src={`/case/${dir}/thumb.mp4`} poster={`/case/${dir}/thumb.webp`} loop muted playsInline preload="metadata" aria-label={label} />
 }
 

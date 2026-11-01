@@ -56,6 +56,27 @@ const caseVid = (client: string, file: string): CaseStudyWorkItem => ({
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "streak",
+    live: "/live/streak/",
+    liveHint: "It's the real app: open a token, trade it and climb its board",
+    services: ["Brand", "Product Design", "iOS", "Web App", "Landing"],
+    areas: ["Crypto", "Consumer", "Social"],
+    title: "Streak",
+    tagline: "A social wallet where every token is a community and every trade climbs its board",
+    date: "2026",
+    start: "2026-11",
+    end: "2026-11",
+    cover: "/case/Streak/cover.webp",
+    logo: "/icons/client-logos/Streak.svg",
+    description:
+      "Brand, web app, landing page and iPhone app for Streak, a crypto wallet where each token is a community with a face. Trading earns XP for that community and moves you up its board, every wallet is a Noun, and the mark is a comet: the way every token streaks across the screen.",
+    work: [
+      caseImg("Streak", "app-token.webp"),
+      caseImg("Streak", "phones-trade.webp"),
+      caseImg("Streak", "brand-mark.webp"),
+    ],
+  },
+  {
     slug: "kept",
     live: "/live/kept/",
     liveHint: "It's the real app: drag a session or open a client",
@@ -66,10 +87,10 @@ export const caseStudies: CaseStudy[] = [
     date: "2026",
     start: "2026-11",
     end: "2026-11",
-    cover: "/case/Kept/cover.webp",
+    cover: "/case/Kept/phones-welcome.webp",
     logo: "/icons/client-logos/Kept.svg",
     description:
-      "Brand, desktop app and iPhone app for Kept, a calendar for freelancers that counts sessions against each client's retainer, turns a full retainer into an invoice, and nudges clients before they're late to pay. Every session is a tinted block in its client's colour, and the mark is a check made of four of them.",
+      "Brand, desktop app and iPhone app for Kept, a calendar for freelancers that counts sessions against each client's retainer, turns a full retainer into an invoice, and nudges clients before they're late to pay. Every session is a tinted block in its client's colour, and the mark is a heavy K whose arm and base settle into one block, like a week that's done and paid.",
     work: [
       caseImg("Kept", "app-week.webp"),
       caseImg("Kept", "phones-welcome.webp"),

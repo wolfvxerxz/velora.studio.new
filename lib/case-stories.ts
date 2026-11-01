@@ -27,8 +27,51 @@ const N = (f: string) => img("Nightshift", f)
 const M = (f: string) => img("Moss", f)
 const Y = (f: string) => img("YouSpot", f)
 const K_ = (f: string) => img("Kept", f)
+const S_ = (f: string) => img("Streak", f)
 
 const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkItem }> = {
+  streak: {
+    headline: "A wallet where every trade climbs a board, brand to iPhone",
+    intro: [
+      "Streak is a social crypto wallet. Every token is a community with its own face and colours, every trade earns XP for that community, and every holder has a rank on its board.",
+      "We designed the brand, the web app, the landing page and the iPhone app, all from one black canvas, one blue, and the comets that streak across it.",
+    ],
+    vision: "Price tells you what a token is worth. The board tells you who's holding it with you.",
+    hero: S_("cover.webp"),
+    chapters: [
+      {
+        label: "Brand",
+        title: "A comet with three trails",
+        body: ["One round head and three trails behind it, the way every token streaks across the hero. It sits white on a blue tile, lit along the top edge."],
+        rows: [[S_("brand-cover.webp")], [S_("brand-mark.webp")], [S_("brand-lockup.webp"), S_("brand-icon.webp")]],
+      },
+      {
+        label: "System",
+        title: "Black, white, and blue when something moves",
+        body: ["Soft dark cards, white pills for the one thing to do, blue for what you earn. Each token brings its own two colours, used only on its page, its board and its comet."],
+        rows: [[S_("brand-colour.webp")], [S_("brand-tokens.webp"), S_("brand-people.webp")], [S_("brand-type.webp"), S_("brand-streak.webp")], [S_("brand-voice.webp"), S_("brand-use.webp")]],
+      },
+      {
+        label: "Web app",
+        title: "Trade, then see what it did",
+        body: ["Every view has its own address, anything that needs a wallet carries on after you connect, and a trade ends on the XP you earned and the rank it bought you."],
+        rows: [[S_("app-wallet.webp")], [S_("app-token.webp"), S_("app-trade-done.webp")], [S_("app-earn.webp"), S_("app-feed.webp")], [S_("app-discover.webp"), S_("app-tokens.webp")], [S_("app-community.webp"), S_("app-analyst.webp")]],
+      },
+      {
+        label: "Landing",
+        title: "The product, shown working",
+        body: ["A bento of live pieces instead of illustrations: the trade sheet, a token's page, its podium, its chat and the analyst, on a fine square grid that fades out around each one."],
+        rows: [[S_("land-bento.webp")], [S_("land-together.webp")], [S_("land-quotes.webp"), S_("land-foot.webp")]],
+      },
+      {
+        label: "iPhone",
+        title: "The same streak in your pocket",
+        body: ["Five tabs: wallet, tokens, feed, chat and Earn. Trades end on the same result sheet, and quests send you straight to where you can finish them."],
+        rows: [[S_("phones-start.webp")], [S_("phones-trade.webp")], [S_("phones-social.webp")]],
+      },
+    ],
+    result: "Eight communities, one wallet, and a reason to come back every morning.",
+  },
   kept: {
     headline: "A calendar that keeps the count, so freelancers get paid on time",
     intro: [
@@ -40,8 +83,8 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
     chapters: [
       {
         label: "Brand",
-        title: "A check made of sessions",
-        body: ["Four circles run together into one tick: a session done, and paid. It sits in a soft green icon, lit at the edge."],
+        title: "A heavy K that settles",
+        body: ["A solid stem, and the arm and base cut as one block that settles at the bottom, like a week that's done and paid. It sits in a soft green icon, lit at the edge."],
         rows: [[K_("brand-cover.webp")], [K_("brand-mark.webp")], [K_("brand-lockup.webp"), K_("brand-icon.webp")]],
       },
       {
