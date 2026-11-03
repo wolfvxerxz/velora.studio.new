@@ -54,8 +54,8 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
       {
         label: "Web app",
         title: "Trade, then see what it did",
-        body: ["Every view has its own address, anything that needs a wallet carries on after you connect, and a trade ends on the XP you earned and the rank it bought you."],
-        rows: [[S_("app-wallet.webp")], [S_("app-token.webp"), S_("app-trade-done.webp")], [S_("app-earn.webp"), S_("app-feed.webp")], [S_("app-discover.webp"), S_("app-tokens.webp")], [S_("app-community.webp"), S_("app-analyst.webp")]],
+        body: ["Built for a desktop: a sidebar with the same five places as the iPhone, Home, Tokens, Feed, Analyst and XP, and the communities you've joined under them. Each token is the hub for its price, its board and its chat, and a trade ends on the XP you earned and the rank it bought you."],
+        rows: [[S_("app-wallet.webp")], [S_("app-token.webp"), S_("app-trade-done.webp")], [S_("app-tokens.webp")], [S_("app-earn.webp"), S_("app-feed.webp")], [S_("app-community.webp"), S_("app-analyst.webp")]],
       },
       {
         label: "Landing",
@@ -66,7 +66,7 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
       {
         label: "iPhone",
         title: "The same streak in your pocket",
-        body: ["Five tabs: wallet, tokens, feed, chat and Earn. Trades end on the same result sheet, and quests send you straight to where you can finish them."],
+        body: ["The same five tabs: Home, Tokens, Feed, Analyst and XP. Trades end on the same result panel, and quests send you straight to where you can finish them."],
         rows: [[S_("phones-start.webp")], [S_("phones-trade.webp")], [S_("phones-social.webp")]],
       },
     ],
