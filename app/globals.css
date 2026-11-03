@@ -1297,6 +1297,9 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 .vc-mark { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 28px; border-radius: 14px; background: #1A1A1A; }
 .vc-mark img { width: 26px; height: 26px; object-fit: contain; }
 .vc-mark img.inv { filter: brightness(0) invert(1); }
+/* Case studies show the client's logo on its own, no tile */
+.vc-mark.bare { width: auto; height: auto; justify-content: start; border-radius: 0; background: none; }
+.vc-mark.bare img { width: 44px; height: 44px; }
 .vc-head h1 { max-width: 760px; margin: 0 0 20px; font-size: clamp(26px, 3.2vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; color: #7D8187; text-wrap: balance; }
 .vc-head h1 b { font-weight: 500; color: #fff; }
 .vc-head p { max-width: 620px; margin: 0; font-size: 16px; line-height: 1.6; color: #8B8F96; text-wrap: pretty; }

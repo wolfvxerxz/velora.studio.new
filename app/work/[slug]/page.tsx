@@ -67,7 +67,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <AppleNav />
 
       <header className="vc-head">
-        <span className="vc-mark">
+        <span className="vc-mark bare">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={study.logo} alt="" className={study.logoDark ? "inv" : ""} />
         </span>
