@@ -1,1 +1,0 @@
-(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,36706,e=>{e.q("/live/streak/_next/static/media/analyst-sky.1skpgx9hze874.webp")}]);
