@@ -119,8 +119,8 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
       },
       {
         label: "Launch",
-        title: "Book it, and it's kept",
-        body: ["Eleven seconds from a lake to the mark: the dock, a session booked with Velora Studio, an invoice that types itself, and the N key that does it all. Scored with its own music and sound."],
+        title: "Every session, counted",
+        body: ["Thirteen seconds, built only from Kept: seven holes punch, the clients gather into the week, a call with Velora Studio books itself, the eighth hole fills, €2,400 counts up and gets paid, and the holes fly together into the mark. Scored with its own music and sound."],
         rows: [[vid("Kept", "launch.mp4")]],
       },
       {
