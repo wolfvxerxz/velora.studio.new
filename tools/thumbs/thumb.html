@@ -2,9 +2,9 @@
 <html><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Geist:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Inter+Tight:wght@400;500;600&family=Sora:wght@600&family=Inter:wght@400;500&display=block">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=block">
-<style>html,body{margin:0;background:#000}svg{display:block}</style>
+<style>html,body{margin:0;background:#000}svg{display:block;position:relative}#stage{position:relative;width:1920px;height:1200px;overflow:hidden;isolation:isolate}#bg,#grain,#scrim{position:absolute;inset:0;width:100%;height:100%;display:none}#bg{z-index:-3}#grain{z-index:-2;mix-blend-mode:overlay}#scrim{z-index:-1;background:linear-gradient(180deg,rgba(6,7,12,.2) 0%,rgba(6,7,12,0) 40%,rgba(6,7,12,.7) 100%),linear-gradient(90deg,rgba(6,7,12,.35) 0%,rgba(6,7,12,0) 55%)}</style>
 </head><body>
-<svg id="s" width="1920" height="1200" viewBox="0 0 1920 1200" xmlns="http://www.w3.org/2000/svg"></svg>
+<div id="stage"><canvas id="bg"></canvas><div id="grain"></div><div id="scrim"></div><svg id="s" width="1920" height="1200" viewBox="0 0 1920 1200" xmlns="http://www.w3.org/2000/svg"></svg></div>
 <script>
 // One looping 6-second film per case study. Every frame is a pure function of t, so a renderer can step it.
 const W = 1920, H = 1200, CX = 960, CY = 600
@@ -132,12 +132,12 @@ const SCENES = {
 
   // Nightshift: an overnight clock on the left, the work it finished stacking up on the right.
   nightshift(t) {
-    let g = `<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E1440"/><stop offset=".6" stop-color="#1C2C78"/><stop offset="1" stop-color="#7A4AB0"/></linearGradient>${r(0, 0, W, H, "url(#sky)")}`
+    let g = "" // the hero sky is painted behind the svg (see nightSky)
     const p = ease(cl((t - 0.3) / 4.2)), mins = Math.round(p * 480), hh = (23 + Math.floor(mins / 60)) % 24, mm = mins % 60
     const clock = `${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`
     g += `<text x="140" y="560" font-family="Sora" font-weight="600" font-size="250" letter-spacing="-8" fill="#F3F0EA" opacity="${vis(t, 0.1, 0.5)}">${clock}</text>`
     g += text(t, 0.5, 150, 680, "Your team sleeps.", { font: "Inter Tight", size: 56, weight: 500, fill: "#F3F0EA" })
-    g += text(t, 0.8, 150, 750, "The work doesn&apos;t.", { font: "Inter Tight", size: 56, weight: 500, fill: "#A9A49B" })
+    g += text(t, 0.8, 150, 750, "The work doesn&apos;t.", { font: "Inter Tight", size: 56, weight: 500, fill: "rgba(237,232,223,0.72)" })
     // Nightshift's mark: a four-petal bloom around a moon-shaped hole, drawn the way the brand draws it (goo-merged petals, ring cut out)
     const petals = [45, 135, 225, 315].map((a) => { const rad = (a * Math.PI) / 180, x = Math.cos(rad) * 24, y = Math.sin(rad) * 24; return `<ellipse cx="${x}" cy="${y}" rx="14" ry="14" transform="rotate(${a} ${x} ${y})"/>` }).join("")
     const mark = `<defs><filter id="ns-goo" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.2"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 26 -11"/></filter><mask id="ns-hole"><rect x="-50" y="-50" width="100" height="100" fill="#fff"/><circle r="9" fill="#000"/></mask></defs><g transform="translate(38 57)"><g mask="url(#ns-hole)"><g filter="url(#ns-goo)" fill="#F3F0EA"><circle r="18"/>${petals}</g></g></g>`
@@ -189,7 +189,42 @@ const SCENES = {
 
 const ASSET = (f) => `file:///Users/vuk/Desktop/Velora/velora.studio.new/public/case/${f}`
 const brand = new URLSearchParams(location.search).get("b") || "moss"
-window.seek = (t) => { document.getElementById("s").innerHTML = SCENES[brand](t) }
+
+// Nightshift's hero sky, ported from nightshift-app/components/sky.tsx (paintSky, scene "night", seed 1): hundreds of soft
+// blobs blurred together like a wide-open lens, painted at 0.28 resolution and stretched. It drifts on a 6s loop.
+const NIGHT = { base: [[0, "#101B4A"], [0.42, "#1D3A7A"], [0.6, "#123A3A"], [1, "#0C201C"]], blur: 0.028, bands: [
+  { y0: -0.1, y1: 0.42, cols: ["#1C2C78", "#2E4AB0", "#3E66D0", "#152060", "#4C7BE0"], n: 34, r: [0.08, 0.2], a: [0.6, 0.95] },
+  { y0: 0.32, y1: 0.78, cols: ["#0F3E3B", "#17604F", "#24785E", "#0A2A2C", "#2F8A63", "#3A6E3F"], n: 110, r: [0.025, 0.08], a: [0.7, 1] },
+  { y0: 0.5, y1: 1.08, cols: ["#FF7A3D", "#FFA24C", "#FF8E5E", "#F2B84E", "#E85A33", "#FFC79A"], n: 80, r: [0.015, 0.055], a: [0.75, 1], squash: 0.8 },
+  { y0: 0.55, y1: 1.05, cols: ["#FFE7C4", "#FFF4E0"], n: 14, r: [0.008, 0.018], a: [0.7, 1] } ] }
+const nrng = (seed) => () => ((seed = (seed * 16807) % 2147483647) / 2147483647)
+const hexA = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})` }
+let nightReady = false
+function nightSky() {
+  const c = document.getElementById("bg"), gr = document.getElementById("grain"), sc = document.getElementById("scrim")
+  if (!nightReady) {
+    const w = Math.round(W * 0.28), h = Math.round(H * 0.28), m = Math.max(w, h), x = c.getContext("2d"), rnd = nrng(1 * 7919 + 5 * 104729)
+    c.width = w; c.height = h
+    const g = x.createLinearGradient(0, 0, 0, h); NIGHT.base.forEach(([o, col]) => g.addColorStop(o, col)); x.fillStyle = g; x.fillRect(0, 0, w, h)
+    x.filter = `blur(${Math.max(1, NIGHT.blur * m)}px)`
+    for (const b of NIGHT.bands) for (let i = 0; i < b.n; i++) {
+      const rad = b.r[0] + rnd() * (b.r[1] - b.r[0])
+      const bx = rnd() * 1.2 - 0.1, by = b.y0 + rnd() * (b.y1 - b.y0), rx = rad * (0.8 + rnd() * 0.6), ry = rad * (b.squash ?? 1) * (0.7 + rnd() * 0.6), rot = rnd() * Math.PI
+      const col = b.cols[Math.floor(rnd() * b.cols.length)], a = b.a[0] + rnd() * (b.a[1] - b.a[0]); rnd(); rnd()
+      x.fillStyle = hexA(col, a); x.beginPath(); x.ellipse(bx * w, by * h, rx * m, ry * m, rot, 0, Math.PI * 2); x.fill()
+    }
+    x.filter = "none"
+    const t = document.createElement("canvas"); t.width = t.height = 200; const tx = t.getContext("2d"), d = tx.createImageData(200, 200), gr2 = nrng(11)
+    for (let i = 0; i < d.data.length; i += 4) { const v = Math.floor(gr2() * 255); d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 34 }
+    tx.putImageData(d, 0, 0); gr.style.backgroundImage = `url(${t.toDataURL()})`
+    nightReady = true
+  }
+  ;[c, gr, sc].forEach((e) => (e.style.display = "block"))
+  return (t) => { const k = Math.sin((t / 6) * Math.PI * 2); c.style.transform = `translate(${-1.2 * k}%, ${0.8 * k}%) scale(${1.08 + 0.02 * k})` }
+}
+let drift = null
+window.seek = (t) => { if (brand === "nightshift") { drift = drift || nightSky(); drift(t) }
+  document.getElementById("s").innerHTML = SCENES[brand](t) }
 window.ready = Promise.all(['150px "Jersey 10"', '28px Geist', '600 120px "DM Sans"', '30px "DM Sans"', '700 112px Satoshi', '500 30px Satoshi', '600 96px Sora', '27px "Inter Tight"', '600 110px "Inter Tight"', '27px Inter', '500 27px Inter'].map((f) => document.fonts.load(f))).then(() => document.fonts.ready).then(() => Promise.all(["YouSpot/landing-hero.webp", "YouSpot/landing-bento.webp"].map((f) => new Promise((ok) => { const i = new Image(); i.onload = i.onerror = ok; i.src = ASSET(f) }))))
 seek(3)
 </script>

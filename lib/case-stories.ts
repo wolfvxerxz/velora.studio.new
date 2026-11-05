@@ -113,9 +113,15 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
       },
       {
         label: "Landing",
-        title: "Show the booking, not a phone",
-        body: ["The hero plays the real week: the camera eases in, a slot is selected, the session card fills itself in, the session stretches to two hours and moves to Friday. Below it, the steps sit on nature photography, and the one teal band says what Kept is for."],
-        rows: [[K_("land-hero.webp")], [K_("land-steps.webp"), K_("land-band.webp")], [K_("land-pricing.webp")]],
+        title: "Built from the app itself",
+        body: ["The hero plays the real week: a slot is selected, the session card fills itself in, the session stretches and moves to Friday. Below it, every section is built from the app itself: a pinned story where scrolling punches the card, the features as live moments, and a panel for each kind of work billed by the session."],
+        rows: [[K_("land-hero.webp")], [K_("land-steps.webp"), K_("land-band.webp")], [K_("land-features.webp")], [K_("land-for.webp"), K_("land-pricing.webp")]],
+      },
+      {
+        label: "Launch",
+        title: "Book it, and it's kept",
+        body: ["Eleven seconds from a lake to the mark: the dock, a session booked with Velora Studio, an invoice that types itself, and the N key that does it all. Scored with its own music and sound."],
+        rows: [[vid("Kept", "launch.mp4")]],
       },
       {
         label: "iPhone",
