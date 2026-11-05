@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
-<defs>
-<radialGradient id="bg" cx="62%" cy="66%" r="75%"><stop offset="0" stop-color="#13A05A"/><stop offset="1" stop-color="#2BB673"/></radialGradient>
-<filter id="rim" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3.2"/></filter>
-<clipPath id="c"><rect x="6" y="6" width="108" height="108" rx="30"/></clipPath>
-</defs>
-<g clip-path="url(#c)"><rect x="6" y="6" width="108" height="108" fill="url(#bg)"/><rect x="6" y="6" width="108" height="108" rx="30" fill="none" stroke="#7FE0AE" stroke-width="9" opacity=".75" filter="url(#rim)"/></g>
-<g transform="translate(29 29) scale(.62)"><g fill="#fff"><path d="M8 12H38V88H8Z"/><path d="M42 54L78 12H95V30L66 58C80 64 89 74 95 88H42Z"/></g></g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><rect width="1024" height="1024" rx="230" fill="#0E9384"/><g transform="translate(152 152) scale(.703)" fill="#fff"><path d="M188 512A162 324 0 1 0 512 512A162 324 0 1 0 188 512Z"/><path d="M512 512A229.10 150 -45.00 0 0 836 188Z"/><path d="M512 512A229.10 150 45.00 0 1 836 836Z"/></g></svg>

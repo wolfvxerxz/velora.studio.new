@@ -81,29 +81,41 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
   kept: {
     headline: "A calendar that keeps the count, so freelancers get paid on time",
     intro: [
-      "Kept is a calendar for freelancers who work on retainers. Every session counts toward the client's period, and when a period fills up Kept turns it into an invoice and reminds the client before it's late.",
-      "We designed the brand, a desktop app for the week at a desk, and an iPhone app for the week on the go, all from one language of white day cards and tinted sessions.",
+      "Kept is a calendar for freelancers who bill by the session. Every session punches a hole in the client's card, a full card becomes an invoice, and Kept reminds the client before it's late.",
+      "We designed the brand, the desktop app, the landing page and an iPhone app, in one calm language: warm paper, serif headlines, a teal accent, and the punch card at the centre of everything.",
     ],
-    vision: "One block of time, one colour, one count.",
-    hero: K_("app-week.webp"),
+    vision: "Every session counted. Every invoice paid.",
+    hero: K_("land-stage.webp"),
     chapters: [
       {
+        label: "Process",
+        title: "From a feeling to a K",
+        body: ["It started with a forest and a punch card. We pinned up twelve logos that already felt the way Kept should, tried five colours and nine sketches, and kept the K drawn only from ellipses."],
+        rows: [[K_("process-mood.webp")], [K_("process-wall.webp")], [K_("process-colour.webp")], [K_("process-sketches.webp")], [K_("process-build.webp")], [K_("process-road.webp")]],
+      },
+      {
         label: "Brand",
-        title: "A heavy K that settles",
-        body: ["A solid stem, and the arm and base cut as one block that settles at the bottom, like a week that's done and paid. It sits in a soft green icon, lit at the edge."],
-        rows: [[K_("brand-cover.webp")], [K_("brand-mark.webp")], [K_("brand-lockup.webp"), K_("brand-icon.webp")]],
+        title: "A K made of ellipses",
+        body: ["A tall ellipse for the stem and two half-ellipses for the arm and the leg, the same round shapes as the holes on a punch card. The wordmark sits beside it in a quiet serif."],
+        rows: [[K_("brand-lockup.webp")], [K_("brand-cover.webp"), K_("brand-mark.webp")], [K_("brand-icon.webp"), K_("brand-colour.webp")]],
       },
       {
         label: "System",
-        title: "Grey, white, and a tint for every client",
-        body: ["A grey desk, white paper, black for the one thing to do, and green when money moves. Each client gets one tone, and their whole card takes it."],
-        rows: [[K_("brand-colour.webp")], [K_("brand-type.webp"), K_("brand-session.webp")], [K_("brand-voice.webp"), K_("brand-use.webp")]],
+        title: "Punched card stock and a stamp",
+        body: ["Grounds carry a fine grid of perforation holes, tear lines replace drawn ones, and the one word that matters is stamped, the way an invoice gets stamped paid. Teal for the mark and anything you press; every client keeps its own tint."],
+        rows: [[K_("brand-type.webp"), K_("brand-session.webp")], [K_("brand-voice.webp"), K_("brand-use.webp")]],
       },
       {
         label: "Desktop",
         title: "The week at a desk",
-        body: ["Every client has a punch card. Each session punches a hole, the last hole is the invoice, and the week, the panel and the reports all count toward it. Drag a session to move it, click a free slot to book one."],
-        rows: [[K_("app-edit.webp")], [K_("app-month.webp"), K_("app-clients.webp")], [K_("app-payments.webp"), K_("app-reports.webp")], [K_("app-billing.webp")]],
+        body: ["Drag across a free slot and a small card asks what you're working on; Enter books it. Stretch a session by its edge, drag it to another day, right-click to rename, duplicate, move or delete. Every client has a punch card, and the last hole is the invoice."],
+        rows: [[K_("app-week.webp")], [K_("app-new.webp"), K_("app-menu.webp")], [K_("app-edit.webp")], [K_("app-month.webp"), K_("app-clients.webp")], [K_("app-billing.webp"), K_("app-payments.webp")], [K_("app-reports.webp")], [K_("app-settings.webp"), K_("app-dark.webp")]],
+      },
+      {
+        label: "Landing",
+        title: "Show the booking, not a phone",
+        body: ["The hero plays the real week: the camera eases in, a slot is selected, the session card fills itself in, the session stretches to two hours and moves to Friday. Below it, the steps sit on nature photography, and the one teal band says what Kept is for."],
+        rows: [[K_("land-hero.webp")], [K_("land-steps.webp"), K_("land-band.webp")], [K_("land-pricing.webp")]],
       },
       {
         label: "iPhone",
