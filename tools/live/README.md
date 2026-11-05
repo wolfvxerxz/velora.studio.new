@@ -3,5 +3,5 @@ Live previews: a client's landing page exported as static files into public/live
     zsh tools/live/export.sh ~/youspot-app youspot /tmp/live
     cp -R /tmp/live/youspot/out public/live/youspot
 
-export.sh copies the app, keeps only the landing route, builds it with basePath /live/<slug>, then rebase.py
+export.sh copies the app, keeps only the landing route (plus any routes passed as a fourth argument, e.g. `app` for a web app), builds it with basePath /live/<slug>, then rebase.py
 fixes paths Next leaves alone and keeps links inside the preview. Set `live: "/live/<slug>/"` on the case.

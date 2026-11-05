@@ -2,10 +2,12 @@
 # Public files (plain <img>, CSS url(), template strings) get the base prefix everywhere.
 # Routes that weren't exported point to the landing: in JS/RSC data Next's <Link> adds the base itself,
 # so they become "/"; in HTML they become the base.
-# usage: rebase.py <out dir> <base> <public dir> <removed,routes>
+# Routes that were kept besides the landing (a web app at /app, say) get the base prefix where plain links name them.
+# usage: rebase.py <out dir> <base> <public dir> <removed,routes> [kept,routes]
 import os, re, sys
 out, base, pub = sys.argv[1], sys.argv[2], sys.argv[3]
 dead = [d for d in sys.argv[4].split(",") if d]
+keep = [k for k in (sys.argv[5] if len(sys.argv) > 5 else "").split(",") if k]
 names = sorted([n for n in os.listdir(pub) if not n.startswith(".")], key=len, reverse=True)
 asset = re.compile(r'(?<=["\'(`])/(' + "|".join(map(re.escape, names)) + r')(?=[/"\'?#)\\`$])') if names else None
 q = r'(?<=["\'])'
@@ -21,6 +23,9 @@ for root, _, files in os.walk(out):
             t = based.sub(base + "/", t)
             t = bare.sub(base + "/" if f.endswith(".html") else "/", t)
         if asset: t = asset.sub(lambda m: base + "/" + m.group(1), t)
+        for k in keep:  # plain <a href="/k"> and string constants "/k" (Next's <Link> already adds the base, so only exact matches)
+            t = re.sub(r'(?<=href=")/' + re.escape(k) + r'/?(?=["#?])', base + "/" + k + "/", t)
+            if f.endswith(".js"): t = re.sub(r'(?<==")/' + re.escape(k) + r'(?=")', base + "/" + k + "/", t)
         if t != s: open(p, "w", encoding="utf-8").write(t)
 
 # Keep visitors inside the preview: any same-site link that leaves the base goes to the landing instead.
