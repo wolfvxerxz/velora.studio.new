@@ -88,12 +88,6 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
     hero: K_("land-stage.webp"),
     chapters: [
       {
-        label: "Process",
-        title: "From a feeling to a K",
-        body: ["It started with a forest and a punch card. We pinned up twelve logos that already felt the way Kept should, tried five colours and nine sketches, and kept the K drawn only from ellipses."],
-        rows: [[K_("process-mood.webp")], [K_("process-wall.webp")], [K_("process-colour.webp")], [K_("process-sketches.webp")], [K_("process-build.webp")], [K_("process-road.webp")]],
-      },
-      {
         label: "Brand",
         title: "A K made of ellipses",
         body: ["A tall ellipse for the stem and two half-ellipses for the arm and the leg, the same round shapes as the holes on a punch card. The wordmark sits beside it in a quiet serif."],
