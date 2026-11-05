@@ -49,7 +49,7 @@ export const SERVICES: SeoPage[] = [
       { title: "How it works", body: ["We start with the idea behind the company and draw it, not with a mood board. Every direction is shown on a real app screen and a landing hero so you judge it where it will live.", "Most identities take two to three weeks, including the brand book and launch posts."] },
       { title: "Why it matters", body: ["Investors and early users meet the brand before they meet you. A brand that holds together across the product, site and feed reads as a company that will still be here next year."] },
     ],
-    cases: ["moss", "nightshift", "junction", "armature"],
+    cases: ["moss", "nightshift", "junction", "atlas"],
     faq: [
       ["How long does a startup brand identity take?", "Usually two to three weeks from first call to brand book, including logo, colour, type, patterns and launch visuals."],
       ["Do you design the logo only?", "We can, but most founders get more from a full system: mark, colour, type and patterns that also work inside the product and site."],
@@ -68,7 +68,7 @@ export const SERVICES: SeoPage[] = [
       { title: "What you get", list: ["User flows for the jobs that matter most", "High-fidelity screens in light and dark", "A component library and tokens that match your codebase", "Interactive prototypes for investor and user demos", "Empty, loading and error states, not just the happy path"] },
       { title: "How it works", body: ["We map the one job your product must do well, design that flow end to end, then widen out. You see working screens every week, not a big reveal at the end."] },
     ],
-    cases: ["moss", "atlas", "insforge", "subpay"],
+    cases: ["moss", "atlas", "subpay", "junction"],
     faq: [
       ["Do you design dashboards?", "Yes. Most of our product work is dashboards and data-heavy tools: trading terminals, database consoles, billing and admin panels."],
       ["Can you work with our existing design system?", "Yes. We extend what you have, or replace it with one that maps to your components."],
@@ -123,7 +123,7 @@ export const SERVICES: SeoPage[] = [
       { title: "What's included", list: ["Unlimited requests, one active at a time", "2–3 updates a week", "Product, website and brand design", "Next.js development", "A shared Slack or WhatsApp channel", "Pause or cancel anytime"] },
       { title: "Who it's for", body: ["Teams that ship every week and need senior design without hiring. If you have one big project with a fixed scope, a Custom Quote usually fits better."] },
     ],
-    cases: ["nightshift", "atlas", "bentolabs", "insforge"],
+    cases: ["nightshift", "atlas", "moss", "junction"],
     faq: [
       ["How much does the design subscription cost?", "€5,900 per month, with unlimited requests and 2–3 updates a week. You can pause or cancel anytime."],
       ["How fast are updates?", "Two to three updates a week on your active request, in a shared channel."],
@@ -159,7 +159,7 @@ export const SERVICES: SeoPage[] = [
     sections: [
       { title: "What you get", list: ["Onboarding told as a story, not a form", "Core flows with real data and edge cases", "Accessibility settings that change the whole app", "Components ready for SwiftUI or React Native", "App Store visuals"] },
     ],
-    cases: ["junction", "atlas", "cactus", "wayfind"],
+    cases: ["junction", "atlas", "wayfind", "moss"],
     faq: [
       ["Do you design for iOS and Android?", "Yes. We usually start on iOS and adapt to Android once the flows are proven."],
       ["Is accessibility included?", "Always: text size, contrast, reduced motion and never using colour as the only signal."],
@@ -180,7 +180,7 @@ export const INDUSTRIES: SeoPage[] = [
       { title: "What AI products get wrong", body: ["A chat box is not a product. People need to see the work, the reasoning and the handoff points. We design briefs, review queues and approval steps that make AI output easy to check."] },
       { title: "What we design", list: ["Agent dashboards and morning briefs", "Approval and review flows", "Brand identities that don't look like every other AI logo", "Landing pages that show the product working"] },
     ],
-    cases: ["nightshift", "youspot", "insforge", "bentolabs", "armature"],
+    cases: ["nightshift", "youspot", "moss", "atlas", "junction"],
     faq: [
       ["Do you only design chat interfaces?", "No. Most AI products need dashboards, queues and approvals more than chat."],
       ["Can you help an AI startup stand out visually?", "Yes. Nightshift and YouSpot both avoided the usual gradient-and-sparkle look with brands built from one clear idea."],
@@ -214,7 +214,7 @@ export const INDUSTRIES: SeoPage[] = [
     sections: [
       { title: "What we design", list: ["Consoles and dashboards", "Landing pages with live product demos", "Pricing and changelog pages", "Brands with a point of view"] },
     ],
-    cases: ["moss", "insforge", "bentolabs", "armature"],
+    cases: ["moss", "atlas", "junction", "youspot"],
     faq: [
       ["Do you understand technical products?", "Yes. We design from the real workflow: branches, queries, deploys and logs, not abstract illustrations."],
     ],
@@ -242,7 +242,7 @@ export const INDUSTRIES: SeoPage[] = [
     description: "Design for B2B SaaS: landing pages that convert, onboarding that activates and dashboards teams open every day.",
     answer: "Velora designs B2B SaaS products end to end: the landing page and pricing, the onboarding that gets a team to value, and the dashboards they use every day.",
     sections: [{ title: "What we design", list: ["Landing and pricing pages", "Onboarding and activation flows", "Dashboards and settings", "Design systems"] }],
-    cases: ["moss", "nightshift", "subpay", "insforge"],
+    cases: ["moss", "nightshift", "subpay", "atlas"],
     faq: [["Can you redesign our existing SaaS?", "Yes. We usually start with the flow that loses the most users and work outward."]],
   },
   {
@@ -254,7 +254,7 @@ export const INDUSTRIES: SeoPage[] = [
     description: "Playful, accessible design for consumer apps: onboarding as a story, calm core screens and brands with a sense of humour.",
     answer: "Velora designs consumer apps with personality and accessibility together: playful brands, onboarding told as a story, and core screens calm enough for daily use.",
     sections: [{ title: "What we design", list: ["Onboarding and first-run", "Core daily screens", "Stickers, illustrations and motion", "App Store and launch visuals"] }],
-    cases: ["junction", "youspot", "cactus", "wayfind"],
+    cases: ["junction", "youspot", "wayfind", "moss"],
     faq: [["Can a consumer app be playful and still accessible?", "Yes. Junction pairs stickers and bright lines with text-size settings, arrows on every price move and reduced motion."]],
   },
 ]
@@ -303,7 +303,7 @@ export const COMPARE: SeoPage[] = [
       { title: "Fixed project", list: ["Clear scope and end date", "Best for brand identities and launches", "One price agreed upfront"] },
       { title: "Subscription", list: ["Ongoing requests, 2–3 updates a week", "Best for product teams shipping weekly", "€5,900 a month at Velora, pause or cancel anytime"] },
     ],
-    cases: ["moss", "insforge"],
+    cases: ["moss", "atlas"],
     faq: [["Can I start with a project and move to a subscription?", "Yes, and many teams do after launch."]],
   },
   {

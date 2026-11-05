@@ -34,7 +34,7 @@ const FILMS: Record<string, string> = { streak: "Streak", kept: "Kept", moss: "M
 export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
   const withPages = caseStudies.filter((c) => c.cover.startsWith("/case/"))
   const all = [...ORDER.map((s) => withPages.find((c) => c.slug === s)).filter(Boolean) as CaseStudy[], ...withPages.filter((c) => !ORDER.includes(c.slug))]
-  const quotes = ["extsy", "wayfind", "nordeus", "insforge", "subpay", "aether"].map((s) => caseStudies.find((c) => c.slug === s && c.testimonial)).filter(Boolean) as CaseStudy[]
+  const quotes = ["extsy", "wayfind", "nordeus", "subpay", "aether"].map((s) => caseStudies.find((c) => c.slug === s && c.testimonial)).filter(Boolean) as CaseStudy[]
   const [filter, setFilter] = useState("All")
   const tags = FILTERS.find(([f]) => f === filter)![1]
   const work = tags.length ? all.filter((c) => c.areas?.some((a) => tags.includes(a))) : all

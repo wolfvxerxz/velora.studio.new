@@ -31,8 +31,8 @@ function CapLine() {
 
 const WHY = [
   { title: "An idea that needs a product.", body: "Wayfind had a plain-language AI guide in mind. We shaped it into a clean, map-first product people get at a glance.", client: "Wayfind", slug: "wayfind" },
-  { title: "A brand that has to look funded.", body: "Investors meet the brand before they meet you. Armature got a sharp identity and a digital presence to match.", client: "Armature", slug: "armature" },
-  { title: "A product people don't get.", body: "Good infrastructure, confusing screens. InsForge got clarity built into every step, from onboarding to the core workflow.", client: "InsForge", slug: "insforge" },
+  { title: "A brand that has to look funded.", body: "Investors meet the brand before they meet you. Moss got a sharp identity and a digital presence to match.", client: "Moss", slug: "moss" },
+  { title: "A product people don't get.", body: "Trading is noisy and confusing. Atlas got clarity built into every step, from onboarding to the order ticket.", client: "Atlas", slug: "atlas" },
   { title: "A flow that loses money.", body: "Billing is where trust breaks. SubPay's subscription flow was redesigned for clarity at every step.", client: "SubPay", slug: "subpay" },
 ]
 
