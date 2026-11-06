@@ -22,7 +22,8 @@ const PLANS = [
 
 const FAQ: [string, string][] = [
   ["Which plan should I start with?", "If you need to look ready fast, start with a Landing Page. If you're launching or raising in the next couple of months, a Launch ships brand, product and site together. If design is a weekly need, the Design Partner plan keeps a senior team on hand."],
-  ["Do you offer discounts?", "Referrals get 10% off a month for both sides, and YC, Antler, a16z speedrun and similar accelerator companies get 10% off."],
+  ["Do you offer discounts?", "YC, Antler, a16z speedrun and similar accelerator companies get 10% off."],
+  ["How do referrals work?", "Send a founder our way on Telegram or by email. When their project starts, we pay you €250, and there is no limit on how many founders you refer."],
   ["Can I pause or cancel the Design Partner plan?", "Yes, anytime. Unused time carries over when you pause."],
   ["What does a custom project include?", "Any mix of brand identity, product design, website design and a Framer, Webflow or Next.js build, with unlimited revisions."],
   ["Do you work with startups outside Europe?", "Yes. We work remotely with teams in the US, UK, Europe and beyond."],
@@ -70,7 +71,7 @@ export default function Pricing() {
         </section>
 
         <section className="vpr-perks">
-          <div><i aria-hidden><Gift size={16} weight="Filled" /></i><p><b>Referrals</b> get 10% off a month, for both sides.</p></div>
+          <div><i aria-hidden><Gift size={16} weight="Filled" /></i><p><b>Earn €250</b> for every founder you refer, paid when their project starts.</p></div>
           <div><i aria-hidden><Star size={16} weight="Filled" /></i><p><b>YC, Antler and a16z speedrun</b> companies get 10% off.</p></div>
         </section>
 

@@ -1094,6 +1094,9 @@ html { scroll-behavior: smooth; } @media (prefers-reduced-motion: reduce) { html
 .vn-side .vn-quote figcaption { padding: 10px 18px; font-size: 13px; }
 .vn-side .vn-arrows button { width: 34px; height: 28px; }
 .vn-side .vn-plans { gap: 6px; }
+/* the referral sits under the plans, a step apart, with its call in the link colour */
+.vn-refer { margin-top: 12px; }
+.vn-refer em { color: #0F0F0F; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(15,15,15,.3); }
 .vn-side .vn-plan { padding: 10px 14px 10px 10px; gap: 0 12px; border-radius: 12px; }
 .vn-side .vn-plan i { width: 32px; height: 32px; border-radius: 8px; }
 .vn-side .vn-plan b { font-size: 14px; } .vn-side .vn-plan span { font-size: 13px; line-height: 1.4; } .vn-side .vn-plan em { font-size: 14px; }

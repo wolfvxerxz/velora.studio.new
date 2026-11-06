@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import type { CaseStudy } from "@/lib/case-studies"
 import Image from "next/image"
-import { Calendar, Category, Sparkles, TrendUp, Code, Mobile, ArrowLeft, ArrowRight, DocumentText, Rocket, User } from "reicon-react"
+import { Calendar, Category, Sparkles, TrendUp, Code, Mobile, ArrowLeft, ArrowRight, DocumentText, Rocket, User, Gift } from "reicon-react"
 
 type IconType = typeof Calendar
 const Icon = ({ i: I, size = 16 }: { i: IconType; size?: number }) => <I size={size} weight="Filled" aria-hidden />
@@ -64,6 +64,9 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
                 </Link>
               ))}
             </div>
+            <a href="https://t.me/vukmz" {...ext} className="vn-plan vn-refer">
+              <i aria-hidden><Icon i={Gift} /></i><b>Earn €250 per referral</b><span>Send a founder our way and save them the design stress.</span><em>Refer</em>
+            </a>
           </section>
           <nav className="vn-socials" aria-label="Velora elsewhere">
             <a href="https://x.com/veloraxstudio" {...ext}><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>X</a>

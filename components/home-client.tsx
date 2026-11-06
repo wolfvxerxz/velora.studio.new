@@ -269,7 +269,7 @@ export default function HomeClient({ caseStudies }: HomeClientProps) {
               </div>
             ))}
           </div>
-          <p className="mt-4 !text-[13px] !leading-[20px] text-[var(--t-faint)]">Referrals get 10% off a month for both sides. YC, Antler and a16z speedrun companies get 10% off. <a href="/pricing" className="underline underline-offset-4 hover:text-[var(--t-ink)]">Full pricing</a></p>
+          <p className="mt-4 !text-[13px] !leading-[20px] text-[var(--t-faint)]">Earn €250 for every founder you refer. YC, Antler and a16z speedrun companies get 10% off. <a href="/pricing" className="underline underline-offset-4 hover:text-[var(--t-ink)]">Full pricing</a></p>
         </Reveal>
 
         <CapLine />

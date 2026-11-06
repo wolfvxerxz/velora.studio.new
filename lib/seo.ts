@@ -30,7 +30,7 @@ export const STUDIO = {
     { name: "Launch", price: "from €14,900, 4–6 weeks", detail: "Brand identity, the app's core flows (web or iOS), a landing page with the live product, a case study and launch posts. Two spots a month." },
     { name: "Design Partner", price: "€5,900 per month", detail: "Unlimited design requests, 2–3 updates a week, Next.js development, Slack or WhatsApp, pause or cancel anytime." },
   ],
-  perks: "Referrals get 10% off a month for both sides. YC, Antler, a16z speedrun and similar accelerator companies get 10% off.",
+  perks: "Earn €250 for every founder you refer, paid when their project starts. YC, Antler, a16z speedrun and similar accelerator companies get 10% off.",
 }
 
 const book = "Book a 15-minute call and we set the plan around your launch date."
