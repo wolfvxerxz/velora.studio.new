@@ -80,7 +80,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "kept",
     live: "/live/kept/landing/",
     liveHint: "It's the real site: Log in, sign in, then drag a session or right-click one",
-    services: ["Brand", "Product Design", "Web", "iOS", "Web App"],
+    services: ["Product Design", "Web", "iOS", "Web App"],
     areas: ["Fintech", "Productivity"],
     title: "Kept",
     tagline: "Clients, sessions and payments for freelancers, kept in one calendar",
@@ -90,11 +90,11 @@ export const caseStudies: CaseStudy[] = [
     cover: "/case/Kept/land-hero.webp",
     logo: "/icons/client-logos/Kept.svg",
     description:
-      "Brand, desktop app, landing page and iPhone app for Kept, a calendar for freelancers that counts sessions on each client's punch card, turns a full card into an invoice, and nudges clients before they're late to pay. The mark is a K built from ellipses, the same round shapes as the card's holes, set in teal beside a quiet serif.",
+      "Desktop app, landing page and iPhone app for Kept, a calendar for freelancers that counts sessions on each client's punch card, turns a full card into an invoice, and nudges clients before they're late to pay.",
     work: [
       caseImg("Kept", "app-week.webp"),
       caseImg("Kept", "app-new.webp"),
-      caseImg("Kept", "brand-cover.webp"),
+      caseImg("Kept", "land-hero.webp"),
     ],
   },
   {

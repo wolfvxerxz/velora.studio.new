@@ -82,23 +82,11 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
     headline: "A calendar that keeps the count, so freelancers get paid on time",
     intro: [
       "Kept is a calendar for freelancers who bill by the session. Every session punches a hole in the client's card, a full card becomes an invoice, and Kept reminds the client before it's late.",
-      "We designed the brand, the desktop app, the landing page and an iPhone app, in one calm language: warm paper, serif headlines, a teal accent, and the punch card at the centre of everything.",
+      "We designed the desktop app, the landing page and an iPhone app, in one calm language: warm paper, serif headlines, a teal accent, and the punch card at the centre of everything.",
     ],
     vision: "Every session counted. Every invoice paid.",
     hero: K_("land-stage.webp"),
     chapters: [
-      {
-        label: "Brand",
-        title: "A K made of ellipses",
-        body: ["A tall ellipse for the stem and two half-ellipses for the arm and the leg, the same round shapes as the holes on a punch card. The wordmark sits beside it in a quiet serif."],
-        rows: [[K_("brand-lockup.webp")], [K_("brand-cover.webp"), K_("brand-mark.webp")], [K_("brand-icon.webp"), K_("brand-colour.webp")]],
-      },
-      {
-        label: "System",
-        title: "Punched card stock and a stamp",
-        body: ["Grounds carry a fine grid of perforation holes, tear lines replace drawn ones, and the one word that matters is stamped, the way an invoice gets stamped paid. Teal for the mark and anything you press; every client keeps its own tint."],
-        rows: [[K_("brand-type.webp"), K_("brand-session.webp")], [K_("brand-voice.webp"), K_("brand-use.webp")]],
-      },
       {
         label: "Desktop",
         title: "The week at a desk",
