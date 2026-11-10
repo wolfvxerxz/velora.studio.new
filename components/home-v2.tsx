@@ -28,8 +28,8 @@ const FILTER_ICONS: Record<string, IconType> = { All: Category, AI: Sparkles, Fi
 const ORDER = ["bloop", "glint", "streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"]
 // Each recent case shows its live site's hero, recorded as it runs, so the work is visible without opening the case.
 // They loop the whole time they're on screen.
-const ALWAYS = new Set(["bloop", "glint", "streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"])
-const FILMS: Record<string, string> = { bloop: "Bloop", glint: "Glint", streak: "Streak", kept: "Kept", moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
+const ALWAYS = new Set(["glint", "streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"])
+const FILMS: Record<string, string> = { glint: "Glint", streak: "Streak", kept: "Kept", moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
 
 export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
   const withPages = caseStudies.filter((c) => c.cover.startsWith("/case/"))
