@@ -56,6 +56,25 @@ const caseVid = (client: string, file: string): CaseStudyWorkItem => ({
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "bloop",
+    services: ["Brand", "Product Design", "iOS"],
+    areas: ["Crypto", "Consumer", "Social"],
+    title: "Bloop",
+    tagline: "A wallet where anyone can launch a coin in a minute, and see which friends hold it",
+    date: "2026",
+    start: "2026-11",
+    end: "2026-11",
+    cover: "/case/Bloop/cover.webp",
+    logo: "/icons/client-logos/Bloop.svg",
+    description:
+      "Brand and native iPhone app for Bloop, a crypto wallet that makes launching a coin as easy as naming it. Every coin is a robot mascot, every wallet has a face, and the list shows which friends already hold what you're looking at.",
+    work: [
+      caseImg("Bloop", "phones-launch.webp"),
+      caseImg("Bloop", "phones-wallets.webp"),
+      caseImg("Bloop", "brand-mark.webp"),
+    ],
+  },
+  {
     slug: "glint",
     live: "/live/glint/",
     liveHint: "It's the real site: click into the launcher, then press Enter, 1 to 5 or ⌘K",

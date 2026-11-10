@@ -2,4 +2,4 @@
 :HL["/live/glint/_next/static/media/12489100264acd6f-s.p.33gca1im1ku45.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"app","h":96,"c":"$Q2"}]]
-0:{"b":"vcaAwf9W8qM8a9hIR3q3Q","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"-mydDYrd1Z7l-ND9UMQey","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

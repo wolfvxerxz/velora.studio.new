@@ -29,8 +29,51 @@ const Y = (f: string) => img("YouSpot", f)
 const K_ = (f: string) => img("Kept", f)
 const S_ = (f: string) => img("Streak", f)
 const G = (f: string) => img("Glint", f)
+const BL = (f: string) => img("Bloop", f)
 
 const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkItem }> = {
+  bloop: {
+    headline: "A wallet where launching a coin is the fun part, brand to iPhone",
+    intro: [
+      "Bloop is a crypto wallet for iPhone. Name a coin, pick its mascot and a chain, and it's live in under a minute. Every list shows which of your friends already hold what you're looking at.",
+      "We designed the brand and built the native iPhone app: one black canvas, four sweet colours with one job each, and a cast of robots and faces that make it feel like a game.",
+    ],
+    vision: "Launching a coin should feel like a party, not a form.",
+    hero: BL("cover.webp"),
+    chapters: [
+      {
+        label: "Brand",
+        title: "Three bubbles, rising",
+        body: ["A big pink bubble, a blue one and a little yellow one, rising the way a bloop does. Round, simple and bright, so it reads on a black app and on a pink poster alike."],
+        rows: [[BL("brand-mark.webp")], [BL("brand-icon.webp"), BL("brand-colour.webp")]],
+      },
+      {
+        label: "System",
+        title: "Four colours, one job each",
+        body: ["Pink is the brand, yellow is for launching, blue is for every action, mint is money coming in. Coins are robots, wallets are people, and both sit in the same round frame so a list always looks alive."],
+        rows: [[BL("brand-mascots.webp"), BL("brand-people.webp")]],
+      },
+      {
+        label: "Launch",
+        title: "A coin in a minute",
+        body: ["Discover opens on two glossy tiles: launch your own coin, or claim the airdrops waiting for you. The launch form is four rows and a shuffle for the mascot, and the moment it's live gets its own celebration, ready to share."],
+        rows: [[BL("phones-launch.webp")], [vid("Bloop", "thumb.mp4")]],
+      },
+      {
+        label: "Wallets",
+        title: "Every wallet has a face",
+        body: ["Wallets live in one sheet. Pin the ones you use most and they move to the top as big faces; give any wallet a new name and face in a couple of taps."],
+        rows: [[BL("phones-wallets.webp")]],
+      },
+      {
+        label: "Money",
+        title: "Hold, buy and claim",
+        body: ["Home is your balance, four round actions and your coins. A coin opens on its chart, the friends who hold it and a one-tap buy, and airdrops always say why you got them."],
+        rows: [[BL("phones-money.webp")]],
+      },
+    ],
+    result: "Name it, launch it, watch your friends pile in.",
+  },
   glint: {
     headline: "A Mac launcher that tells you why a token moved, brand to landing",
     intro: [

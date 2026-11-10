@@ -40,7 +40,7 @@ export default function ServicesPage() {
       <CapLine />
       <section id="guides" className={`${block} scroll-mt-16`}><Subheading title="Guides" /><List items={COMPARE} base="compare" /></section>
       <CapLine />
-      <RelatedWork slugs={["moss", "youspot", "nightshift", "junction", "atlas", "streak", "glint"]} title="Recent work" />
+      <RelatedWork slugs={["moss", "youspot", "nightshift", "junction", "atlas", "streak", "glint", "bloop"]} title="Recent work" />
       <BookCta />
     </Shell>
   )
