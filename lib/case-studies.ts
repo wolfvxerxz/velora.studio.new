@@ -56,6 +56,27 @@ const caseVid = (client: string, file: string): CaseStudyWorkItem => ({
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "glint",
+    live: "/live/glint/",
+    liveHint: "It's the real site: click into the launcher, then press Enter, 1 to 5 or ⌘K",
+    services: ["Brand", "Product Design", "Desktop App", "Landing"],
+    areas: ["Crypto", "Trading"],
+    title: "Glint",
+    tagline: "A Mac launcher that shows what's moving in crypto, and why",
+    date: "2026",
+    start: "2026-11",
+    end: "2026-11",
+    cover: "/case/Glint/cover.webp",
+    logo: "/icons/client-logos/Glint.svg",
+    description:
+      "Brand, desktop app and landing page for Glint, a crypto launcher for the Mac. Press ⌥Space anywhere and every token that's moving comes with its cause, a whale, a listing, a post, an unlock, and Enter tells the whole story with each event pinned where the price reacted.",
+    work: [
+      caseImg("Glint", "app-now.webp"),
+      caseImg("Glint", "app-story.webp"),
+      caseImg("Glint", "brand-mark.webp"),
+    ],
+  },
+  {
     slug: "streak",
     live: "/live/streak/",
     liveHint: "It's the real app: open a token, trade it and climb its board",

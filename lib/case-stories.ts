@@ -28,8 +28,54 @@ const M = (f: string) => img("Moss", f)
 const Y = (f: string) => img("YouSpot", f)
 const K_ = (f: string) => img("Kept", f)
 const S_ = (f: string) => img("Streak", f)
+const G = (f: string) => img("Glint", f)
 
 const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkItem }> = {
+  glint: {
+    headline: "A Mac launcher that tells you why a token moved, brand to landing",
+    intro: [
+      "Glint is a crypto launcher for the Mac. Press ⌥Space anywhere and it shows what's moving, the reason behind each move, and who's talking about it, before the chart catches up.",
+      "We designed the brand, the desktop app and the landing page around one idea: every row leads with its cause, not its rank.",
+    ],
+    vision: "A price tells you something happened. Glint tells you what.",
+    hero: G("cover.webp"),
+    chapters: [
+      {
+        label: "Brand",
+        title: "A glint caught on a sphere",
+        body: ["A white sphere with a four-point glint cut from its upper right, the flash you see before anyone else does. It stays monochrome everywhere, so the logo never competes with the product's one blue."],
+        rows: [[G("brand-cover.webp")], [G("brand-mark.webp"), G("brand-icon.webp")]],
+      },
+      {
+        label: "System",
+        title: "Ink, paper, and one blue for focus",
+        body: ["Black and white for everything, Glint Blue for selection, cyan when money moves, green and red only for price. Seven one-word causes, Whale, Flow, Listing, Post, News, Unlock and Cooling, so a list reads at a glance."],
+        rows: [[G("brand-colour.webp")], [G("brand-tab.webp"), G("brand-posters.webp")], [G("brand-profile.webp")]],
+      },
+      {
+        label: "Desktop app",
+        title: "Every move, told in order",
+        body: [
+          "Moving now, Whales, New listings, On X and your Watchlist, one key each, and each list gets the column it needs: a price line, a buy and sell split, mindshare bars.",
+          "Enter opens the story: two plain sentences, the chart with each event pinned where the price reacted, a timeline, and the facts that matter. ⌘K holds every action, so the mouse never has to move.",
+        ],
+        rows: [[G("app-now.webp")], [G("app-whales.webp"), G("app-listings.webp")], [G("app-story.webp")], [G("app-onx.webp"), G("app-menu.webp")]],
+      },
+      {
+        label: "Landing",
+        title: "The product does the explaining",
+        body: ["The real launcher sits in the hero and types its own question. Below it, the lists, a story told in order, the seven causes, the eight keys and pricing, each one shown with Glint itself."],
+        rows: [[G("land-hero.webp")], [G("land-lists.webp")], [G("land-story.webp")], [G("land-signals.webp"), G("land-keys.webp")], [G("land-pricing.webp"), G("land-end.webp")]],
+      },
+      {
+        label: "Launch",
+        title: "Four posts for launch week",
+        body: ["The list, a story, the actions and the line, each made from the app itself at 16:9 for X."],
+        rows: [[G("x-list.webp"), G("x-story.webp")], [G("x-actions.webp"), G("x-line.webp")]],
+      },
+    ],
+    result: "One shortcut, and the reason behind every move.",
+  },
   streak: {
     headline: "A wallet where every trade climbs a board, brand to iPhone",
     intro: [
