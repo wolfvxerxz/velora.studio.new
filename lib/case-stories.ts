@@ -36,21 +36,21 @@ const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkIt
     headline: "A wallet where launching a coin is the fun part, brand to iPhone",
     intro: [
       "Bloop is a crypto wallet for iPhone. Name a coin, pick its mascot and a chain, and it's live in under a minute. Every list shows which of your friends already hold what you're looking at.",
-      "We designed the brand and built the native iPhone app: one black canvas, four sweet colours with one job each, and a cast of robots and faces that make it feel like a game.",
+      "We designed the brand and built the native iPhone app: one black canvas, four bright colours with one job each, and a cast of cartoon animals in crypto gear that make it feel like a game.",
     ],
     vision: "Launching a coin should feel like a party, not a form.",
     hero: BL("cover.webp"),
     chapters: [
       {
         label: "Brand",
-        title: "Three bubbles, rising",
-        body: ["A big pink bubble, a blue one and a little yellow one, rising the way a bloop does. Round, simple and bright, so it reads on a black app and on a pink poster alike."],
-        rows: [[BL("brand-mark.webp")], [BL("brand-icon.webp"), BL("brand-colour.webp")]],
+        title: "A b, split down the middle",
+        body: ["A lowercase b built from two plain shapes, a stem and a round bowl, cut on the diagonal: white above the cut and a lime to aqua to blue gradient below it, the way a coin flips from nothing to live. In ink on the gradient, it holds a poster on its own."],
+        rows: [[BL("brand-mark.webp")], [BL("brand-poster.webp")], [BL("brand-icon.webp"), BL("brand-colour.webp")]],
       },
       {
         label: "System",
         title: "Four colours, one job each",
-        body: ["Pink is the brand, yellow is for launching, blue is for every action, mint is money coming in. Coins are robots, wallets are people, and both sit in the same round frame so a list always looks alive."],
+        body: ["Lime is the brand and the launch button, aqua is money coming in, blue is every action, grape is people and gifts. Every coin is a cartoon animal in crypto gear, pixel shades, laser eyes, a gold chain, a crown, and every wallet is a hand-drawn person, so a list always looks alive."],
         rows: [[BL("brand-mascots.webp"), BL("brand-people.webp")]],
       },
       {
