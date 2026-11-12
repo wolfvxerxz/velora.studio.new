@@ -18,7 +18,24 @@ const nextConfig: NextConfig = {
   ...(isExport ? {} : {
     // Start a project moved to the cal.com booking page
     async redirects() {
-      return [{ source: "/start", destination: "https://cal.com/vuk-m/15min", permanent: false }]
+      return [
+        { source: "/start", destination: "https://cal.com/vuk-m/15min", permanent: false },
+        // one address for the whole site: www and the duplicate project's vercel.app go to velora.studio
+        ...["www.velora.studio", "velorastudionew.vercel.app"].map((host) => ({
+          source: "/:path*", has: [{ type: "host" as const, value: host }], destination: "https://velora.studio/:path*", permanent: true,
+        })),
+        // pages that were removed, so Google stops reporting them as 404
+        { source: "/blog", destination: "/", permanent: true },
+        { source: "/blog/:slug*", destination: "/", permanent: true },
+        { source: "/work", destination: "/", permanent: true },
+        { source: "/industries", destination: "/services", permanent: true },
+        { source: "/compare", destination: "/services", permanent: true },
+        { source: "/work/:slug(armature|bentolabs|cactus|insforge)", destination: "/", permanent: true },
+      ]
+    },
+    // client-site previews are copies of other sites; keep them out of the index
+    async headers() {
+      return [{ source: "/live/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] }]
     },
     async rewrites() {
       return [
