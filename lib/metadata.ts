@@ -36,7 +36,7 @@ export const defaultMetadata: Metadata = {
     siteName: 'Velora Studio',
     images: [
       {
-        url: `${baseUrl}/og.jpg`,
+        url: `${baseUrl}/og-banner.jpg`,
         width: 2400,
         height: 1260,
         alt: 'Velora Studio - Custom Design & Development',
@@ -46,7 +46,7 @@ export const defaultMetadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@veloraxstudio',
-    images: [`${baseUrl}/og.jpg`],
+    images: [`${baseUrl}/og-banner.jpg`],
   },
 }
 
