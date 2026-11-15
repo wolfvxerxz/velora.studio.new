@@ -1,0 +1,1505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pnyx: onchain governance nobody can buy</title>
+<meta name="description" content="Proposals, delegates, councils and treasuries for DAOs, on every chain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'-300%20-300%202472%202472'%3E%3Crect%20x%3D'-300'%20y%3D'-300'%20width%3D'2472'%20height%3D'2472'%20rx%3D'520'%20fill%3D'%23E35A2B'%2F%3E%3Cpath%20fill%3D'%23141210'%20fill-rule%3D'evenodd'%20d%3D'M187.4%20486.0L209.5%20486.6L231.5%20488.3L253.4%20491.1L275.1%20494.9L296.7%20499.8L317.9%20505.8L338.9%20512.8L359.5%20520.8L379.6%20529.8L399.3%20539.8L418.5%20550.7L437.2%20562.6L455.2%20575.4L472.5%20589.0L489.2%20603.5L504.7%20618.3L519.9%20634.3L534.3%20651.1L547.9%20668.5L560.5%20686.6L572.3%20705.2L583.2%20724.5L593.1%20744.2L602.0%20764.4L609.9%20785.0L616.8%20806.0L622.7%20827.3L627.5%20848.9L631.2%20870.7L633.9%20892.6L635.5%20914.6L636.0%20936.7L635.4%20958.8L633.8%20980.8L631.0%201002.7L627.2%201024.5L622.3%201046.0L616.4%201067.3L609.5%201088.3L601.5%201108.8L592.5%201129.0L582.5%201148.7L571.6%201167.9L559.8%201186.6L547.0%201204.6L533.4%201222.0L519.0%201238.7L504.2%201254.2L488.2%201269.4L471.5%201283.9L454.1%201297.4L436.0%201310.2L417.3%201322.0L398.1%201332.9L378.4%201342.8L358.2%201351.7L337.6%201359.7L316.6%201366.6L295.3%201372.5L273.8%201377.4L252.0%201381.1L230.1%201383.8L208.1%201385.5L186.0%201386.0L186.0%201686.0L486.0%201686.0L486.5%201663.9L488.2%201641.9L490.9%201620.0L494.6%201598.2L499.5%201576.7L505.4%201555.4L512.3%201534.4L520.3%201513.8L529.2%201493.6L539.1%201473.9L550.0%201454.7L561.8%201436.0L574.6%201417.9L588.1%201400.5L602.6%201383.8L617.8%201367.8L633.8%201352.6L650.5%201338.1L667.9%201324.6L686.0%201311.8L704.7%201300.0L723.9%201289.1L743.6%201279.2L763.8%201270.3L784.4%201262.3L805.4%201255.4L826.7%201249.5L848.2%201244.6L870.0%201240.9L891.9%201238.2L913.9%201236.5L936.0%201236.0L958.1%201236.5L980.1%201238.2L1002.0%201240.9L1023.8%201244.6L1045.3%201249.5L1066.6%201255.4L1087.6%201262.3L1108.2%201270.3L1128.4%201279.2L1148.1%201289.1L1167.3%201300.0L1186.0%201311.8L1204.1%201324.6L1221.5%201338.1L1238.2%201352.6L1254.2%201367.8L1269.4%201383.8L1283.9%201400.5L1297.4%201417.9L1310.2%201436.0L1322.0%201454.7L1332.9%201473.9L1342.8%201493.6L1351.7%201513.8L1359.7%201534.4L1366.6%201555.4L1372.5%201576.7L1377.4%201598.2L1381.1%201620.0L1383.8%201641.9L1385.5%201663.9L1386.0%201686.0L1686.0%201686.0L1686.0%201386.0L1663.9%201385.5L1641.9%201383.8L1620.0%201381.1L1598.2%201377.4L1576.7%201372.5L1555.4%201366.6L1534.4%201359.7L1513.8%201351.7L1493.6%201342.8L1473.9%201332.9L1454.7%201322.0L1436.0%201310.2L1417.9%201297.4L1400.5%201283.9L1383.8%201269.4L1367.8%201254.2L1352.6%201238.2L1338.1%201221.5L1324.6%201204.1L1311.8%201186.0L1300.0%201167.3L1289.1%201148.1L1279.2%201128.4L1270.3%201108.2L1262.3%201087.6L1255.4%201066.6L1249.5%201045.3L1244.6%201023.8L1240.9%201002.0L1238.2%20980.1L1236.5%20958.1L1236.0%20936.0L1236.5%20913.9L1238.2%20891.9L1240.9%20870.0L1244.6%20848.2L1249.5%20826.7L1255.4%20805.4L1262.3%20784.4L1270.3%20763.8L1279.2%20743.6L1289.1%20723.9L1300.0%20704.7L1311.8%20686.0L1324.6%20667.9L1338.1%20650.5L1352.6%20633.8L1367.8%20617.8L1383.8%20602.6L1400.5%20588.1L1417.9%20574.6L1436.0%20561.8L1454.7%20550.0L1473.9%20539.1L1493.6%20529.2L1513.8%20520.3L1534.4%20512.3L1555.4%20505.4L1576.7%20499.5L1598.2%20494.6L1620.0%20490.9L1641.9%20488.2L1663.9%20486.5L1686.0%20486.0L1686.0%20186.0L1386.0%20186.0L1385.6%20205.3L1384.3%20224.6L1382.3%20243.8L1379.4%20262.9L1375.7%20281.9L1371.1%20300.7L1365.8%20319.3L1359.7%20337.6L1352.8%20355.7L1345.1%20373.4L1336.7%20390.8L1327.9%20407.2L1318.0%20423.8L1307.5%20440.0L1296.2%20455.7L1284.3%20470.9L1271.7%20485.6L1258.6%20499.8L1244.8%20513.3L1230.5%20526.3L1215.6%20538.6L1200.2%20550.3L1184.3%20561.3L1167.9%20571.6L1151.2%20581.2L1134.0%20590.1L1116.5%20598.2L1098.6%20605.6L1080.4%20612.2L1062.0%20618.0L1043.3%20623.0L1024.5%20627.2L1000.0%20631.4L975.3%20634.3L950.5%20635.8L925.6%20635.9L900.8%20634.6L876.1%20632.0L851.6%20628.0L827.3%20622.7L803.4%20616.0L779.9%20608.0L756.8%20598.8L734.3%20588.3L712.4%20576.5L691.2%20563.6L670.7%20549.5L651.1%20534.3L632.3%20518.0L614.4%20500.8L597.5%20482.5L581.7%20463.4L566.9%20443.4L553.3%20422.7L540.8%20401.2L529.5%20379.0L519.5%20356.3L510.7%20333.0L503.0%20308.7L496.9%20284.6L492.2%20260.2L488.7%20235.6L486.7%20210.8L486.0%20186.0L186.0%20186.0L186.0%20486.0L187.4%20486.0ZM1138.5%20936.3L1137.5%20956.2L1134.5%20975.8L1129.7%20995.1L1123.0%201013.8L1114.4%201031.7L1104.2%201048.8L1092.3%201064.7L1079.0%201079.4L1064.2%201092.7L1048.2%201104.5L1031.2%201114.7L1013.2%201123.2L994.5%201129.9L975.2%201134.7L955.5%201137.6L935.7%201138.5L915.8%201137.5L896.2%201134.5L876.9%201129.7L858.2%201123.0L840.3%201114.4L823.2%201104.2L807.3%201092.3L792.6%201079.0L779.3%201064.2L767.5%201048.2L757.3%201031.2L748.8%201013.2L742.1%20994.5L737.3%20975.2L734.4%20955.5L733.5%20935.7L734.5%20915.8L737.5%20896.2L742.3%20876.9L749.0%20858.2L757.6%20840.3L767.8%20823.2L779.7%20807.3L793.0%20792.6L807.8%20779.3L823.8%20767.5L840.8%20757.3L858.8%20748.8L877.5%20742.1L896.8%20737.3L916.5%20734.4L936.3%20733.5L956.2%20734.5L975.8%20737.5L995.1%20742.3L1013.8%20749.0L1031.7%20757.6L1048.8%20767.8L1064.7%20779.7L1079.4%20793.0L1092.7%20807.8L1104.5%20823.8L1114.7%20840.8L1123.2%20858.8L1129.9%20877.5L1134.7%20896.8L1137.6%20916.5L1138.5%20936.3Z'%2F%3E%3C%2Fsvg%3E">
+<style>
+:root {
+  --ink: #0D0E0C; --ink-2: #141512; --ink-3: #1C1D19; --ink-4: #262722;
+  --paper: #F1EEE6; --paper-2: #E7E3D8; --page: #F6F5F1; --stone: #8E8A7E; --stone-2: #6B675D;
+  --up: #2BD47D; --down: #FF4D4F;
+  --ring-d: 0 0 0 1px rgb(241 238 230 / 0.08);
+  --ring-l: 0 0 0 1px rgb(13 14 12 / 0.08);
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: Geist, system-ui, sans-serif; background: var(--page); color: var(--ink); -webkit-font-smoothing: antialiased; font-feature-settings: "tnum" 1; }
+h1, h2, h3, p { text-wrap: pretty; }
+h1, h2 { text-wrap: balance; }
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
+.lockup { display: inline-flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 600; }
+.lockup svg { width: 26px; height: 26px; display: block; }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; font-size: 14px; font-weight: 500; transition: transform 160ms var(--ease), background-color 200ms ease; }
+.btn:active { transform: scale(0.97); }
+.btn.ink { background: var(--ink); color: var(--paper); }
+.up { color: var(--up); } .down { color: var(--down); }
+
+/* page head, like a case page: small lockup, then a two-tone title */
+.pagehead { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.title { margin: 40px 0 28px; font-size: clamp(26px, 3vw, 38px); line-height: 1.12; font-weight: 500; max-width: 26ch; }
+.title .g { color: #a29e93; }
+
+/* plates: the work, shown big */
+.plate { position: relative; border-radius: 12px; overflow: hidden; margin-top: 12px; }
+.plate.ink { background: var(--ink); color: var(--paper); }
+.plate.p2 { background: var(--paper-2); }
+.plate.white { background: #fff; box-shadow: var(--ring-l); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.two > .plate { margin-top: 0; }
+.hero-plate { aspect-ratio: 16 / 9; cursor: crosshair; }
+.hero-plate canvas, .fill { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.sq { aspect-ratio: 1; }
+.wide { aspect-ratio: 21 / 9; }
+
+/* write-up + meta */
+.info { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; padding: 56px 0 64px; }
+.info p { font-size: 17px; line-height: 1.55; max-width: 54ch; color: #2b2a26; }
+.info p + p { margin-top: 16px; }
+.meta { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 24px; align-content: start; font-size: 15px; line-height: 1.5; }
+.meta span { display: block; color: #9a968b; margin-bottom: 6px; }
+.meta b { font-weight: 500; display: block; }
+.meta i { font-style: normal; display: block; color: #5f5b52; }
+.sub { padding: 72px 0 28px; max-width: 520px; }
+.sub h2 { font-size: 22px; font-weight: 500; }
+.sub p { margin-top: 10px; font-size: 16px; line-height: 1.55; color: #5f5b52; }
+
+/* terminal plate */
+/* the terminal is wider than the page column, and lays itself out by its own width, not the window's.
+   Colours follow the reference terminal: neutral greys, indigo for the action, green and red for price. */
+.term { --ink: #111111; --ink-2: #191919; --ink-3: #222222; --ink-4: #2A2A2A; --paper: #EDEDED; --stone: #8F8F8F; --up: #30A46C; --down: #E5484D; --acc: #3E63DD; --acc-l: #5B7BEA; --ring-d: 0 0 0 1px rgb(255 255 255 / 0.07);
+  padding: 16px; container: term / inline-size; --tw: min(1560px, calc(100vw - 48px)); width: var(--tw); margin-left: calc(50% - var(--tw) / 2); }
+.plate.ink.term { background: #0A0A0A; }
+.term-top { display: flex; justify-content: flex-end; }
+.term .app { margin-top: 24px; }
+.seg { position: relative; display: inline-flex; padding: 4px; border-radius: 999px; background: var(--ink-3); }
+.seg button { position: relative; z-index: 1; height: 38px; padding: 0 22px; border-radius: 999px; font-size: 14px; font-weight: 500; color: #A0A0A0; transition: color 200ms ease; }
+.seg button[aria-selected="true"] { color: var(--ink); }
+.seg i { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; border-radius: 999px; background: var(--paper); transition: transform 360ms var(--ease), width 360ms var(--ease); }
+
+/* terminal */
+.app { margin-top: 48px; border-radius: 10px; background: var(--ink-2); box-shadow: var(--ring-d); overflow: hidden; }
+.app-bar { display: flex; align-items: center; gap: 20px; height: 60px; padding: 0 20px; background: var(--ink-2); box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.06); }
+.app-bar .lockup { font-size: 18px; } .app-bar .lockup svg { width: 22px; height: 22px; }
+.search { flex: 1; max-width: 420px; height: 38px; border-radius: 12px; background: var(--ink-3); display: flex; align-items: center; gap: 10px; padding: 0 14px; font-size: 14px; color: var(--stone); }
+.search kbd { margin-left: auto; font: inherit; font-size: 12px; padding: 2px 7px; border-radius: 6px; background: var(--ink-4); color: #A0A0A0; }
+.bar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 12px; background: var(--ink-3); }
+.av { width: 26px; height: 26px; border-radius: 50%; display: block; flex: none; }
+.views { position: relative; }
+.view { transition: opacity 260ms var(--ease), transform 260ms var(--ease), filter 260ms var(--ease); }
+.view[hidden] { display: none; }
+.view.out { opacity: 0; transform: translateY(6px); filter: blur(2px); }
+
+/* simple view */
+.simple { display: grid; grid-template-columns: 1fr 440px 1fr; gap: 24px; padding: 40px 24px 48px; min-height: 720px; }
+.s-side h4 { font-size: 14px; font-weight: 500; color: var(--stone); margin-bottom: 14px; }
+.s-list { display: flex; flex-direction: column; gap: 4px; }
+.s-row { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 14px; font-size: 15px; transition: background-color 160ms ease; }
+.s-row:hover, .s-row.on { background: var(--ink-3); }
+.s-row b { font-weight: 500; } .s-row span { color: var(--stone); font-size: 13px; display: block; }
+.s-row .r { margin-left: auto; text-align: right; }
+.up { color: var(--up); } .price.fu { color: var(--up); transition: none; } .price.fd { color: var(--down); transition: none; } .down { color: var(--down); }
+.card { border-radius: 28px; background: var(--ink-3); padding: 28px; display: flex; flex-direction: column; }
+.card-top { display: flex; align-items: center; gap: 12px; }
+.card-top .av { width: 44px; height: 44px; }
+.card-top b { font-size: 18px; font-weight: 500; display: block; } .card-top span { font-size: 14px; color: var(--stone); }
+.price { transition: color 700ms ease; margin-top: 28px; font-size: 56px; font-weight: 500; line-height: 1; }
+.chg { margin-top: 10px; font-size: 16px; font-weight: 500; }
+.spark { margin: 24px -8px 8px; height: 150px; }
+.spark canvas { width: 100%; height: 100%; display: block; }
+.ranges { display: flex; gap: 4px; }
+.ranges button { flex: 1; height: 32px; border-radius: 10px; font-size: 13px; color: var(--stone); }
+.ranges button.on { background: var(--ink-4); color: var(--paper); }
+.amount { margin-top: 24px; display: flex; align-items: center; height: 64px; border-radius: 18px; background: var(--ink-2); padding: 0 20px; font-size: 26px; font-weight: 500; }
+.amount span { margin-left: auto; font-size: 14px; color: var(--stone); font-weight: 400; }
+.quick { display: flex; gap: 6px; margin-top: 8px; }
+.quick button { flex: 1; height: 34px; border-radius: 10px; background: var(--ink-2); font-size: 14px; color: #C8C8C8; }
+.buy { margin-top: 16px; height: 60px; border-radius: 18px; background: var(--acc); color: #fff; font-size: 18px; font-weight: 500; transition: transform 160ms var(--ease), background-color 200ms ease; }
+.buy:hover { background: var(--acc-l); } .buy:active { transform: scale(0.98); }
+.allin { text-wrap: balance; margin-top: 14px; font-size: 14px; color: var(--stone); text-align: center; }
+.allin b { color: var(--paper); font-weight: 500; }
+.feed { display: flex; flex-direction: column; gap: 4px; }
+.post { display: flex; gap: 12px; padding: 12px; border-radius: 14px; font-size: 14px; line-height: 1.45; }
+.post:hover { background: var(--ink-3); }
+.post .who { font-weight: 500; } .post .t { color: var(--stone); margin-left: 6px; font-size: 13px; }
+.post p { color: #D4D4D4; margin-top: 2px; text-wrap: pretty; }
+.act { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 6px 10px; border-radius: 10px; background: var(--ink-3); font-size: 13px; }
+.act b { font-weight: 500; }
+.post.new { animation: drop 420ms var(--ease) both; }
+@keyframes drop { from { opacity: 0; transform: translateY(-8px); } }
+
+/* pro view */
+.pro { display: grid; grid-template-columns: 260px 1fr 320px; min-height: 720px; }
+.pro > * { min-width: 0; }
+.p-list { padding: 12px; box-shadow: inset -1px 0 0 rgb(255 255 255 / 0.06); }
+.p-tabs { display: flex; gap: 2px; padding: 4px; margin-bottom: 8px; }
+.p-tabs button { height: 30px; padding: 0 10px; border-radius: 8px; font-size: 13px; color: var(--stone); }
+.p-tabs button.on { background: var(--ink-3); color: var(--paper); }
+.p-row { display: grid; grid-template-columns: 26px 1fr auto; gap: 10px; align-items: center; padding: 8px; border-radius: 10px; font-size: 13px; }
+.p-row:hover, .p-row.on { background: var(--ink-3); }
+.p-row b { font-weight: 500; font-size: 14px; } .p-row span { color: var(--stone); display: block; font-size: 12px; }
+.p-row .r { text-align: right; }
+.p-main { display: flex; flex-direction: column; }
+.p-head { display: flex; align-items: center; gap: 24px; padding: 14px 20px; box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.06); flex-wrap: wrap; }
+.p-head .card-top .av { width: 34px; height: 34px; }
+.stat span { display: block; font-size: 12px; color: var(--stone); } .stat b { font-size: 15px; font-weight: 500; }
+.p-chart { position: relative; flex: 1; min-height: 360px; }
+.p-chart canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.p-bottom { display: grid; grid-template-columns: 1fr 1fr; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06); height: 250px; }
+.p-bottom > div { padding: 12px 16px; overflow: hidden; }
+.p-bottom > div + div { box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.06); }
+.p-bottom h5 { font-size: 13px; font-weight: 500; color: var(--stone); margin-bottom: 8px; }
+.tape { font-size: 13px; }
+.tape div { display: grid; grid-template-columns: 1fr 1fr 1fr 64px; padding: 4px 0; }
+.tape div > :last-child { text-align: right; color: var(--stone); }
+.tape .new { animation: flash 900ms ease both; }
+@keyframes flash { from { background: rgb(62 99 221 / 0.22); } to { background: transparent; } }
+.room .post { padding: 8px 0; } .room .post:hover { background: none; }
+.p-order { padding: 16px; box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.06); display: flex; flex-direction: column; gap: 12px; }
+.bs { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 14px; background: var(--ink-3); }
+.bs button { height: 38px; border-radius: 10px; font-size: 14px; font-weight: 500; color: var(--stone); }
+.bs button.on.b { background: var(--up); color: var(--ink); } .bs button.on.s { background: var(--down); color: var(--ink); }
+.ot { display: flex; gap: 14px; font-size: 13px; color: var(--stone); }
+.ot .on { color: var(--paper); }
+.field { border-radius: 14px; background: var(--ink-3); padding: 10px 14px; }
+.field span { display: block; font-size: 12px; color: var(--stone); }
+.field b { display: flex; justify-content: space-between; font-size: 18px; font-weight: 500; margin-top: 2px; }
+.field b small { font-size: 13px; font-weight: 400; color: var(--stone); align-self: center; }
+.pills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.pills button { height: 32px; border-radius: 9px; background: var(--ink-3); font-size: 13px; color: #C8C8C8; }
+.settings { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.settings div { border-radius: 12px; background: var(--ink-3); padding: 8px 10px; font-size: 12px; color: var(--stone); }
+.settings b { display: block; color: var(--paper); font-size: 14px; font-weight: 500; margin-top: 2px; }
+.toggle { display: flex; align-items: center; justify-content: space-between; font-size: 14px; padding: 2px 2px; }
+.sw-t { width: 40px; height: 24px; border-radius: 999px; background: var(--acc); position: relative; transition: background-color 200ms ease; }
+.sw-t::after { content: ""; position: absolute; top: 3px; left: 19px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform 220ms var(--ease), background-color 200ms ease; }
+.sw-t.off { background: var(--ink-4); } .sw-t.off::after { transform: translateX(-16px); background: #A0A0A0; }
+.quote { border-radius: 14px; background: var(--ink-3); padding: 12px 14px; font-size: 13px; color: var(--stone); }
+.quote .top { display: flex; justify-content: space-between; align-items: baseline; color: var(--paper); font-size: 14px; }
+.quote .top b { font-size: 18px; font-weight: 500; }
+.quote ul { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+.quote li { display: flex; justify-content: space-between; }
+.quote .ok { color: var(--up); }
+.p-order .buy { margin-top: 0; height: 52px; font-size: 16px; }
+.book { font-size: 12px; margin-top: 4px; }
+.book div { position: relative; display: flex; justify-content: space-between; padding: 3px 6px; }
+.book i { position: absolute; right: 0; top: 1px; bottom: 1px; border-radius: 4px; opacity: 0.16; }
+
+
+
+
+/* terminal shell: sidebar, bar, cards, status */
+.app { margin-top: 0; display: grid; grid-template-columns: 216px minmax(0, 1fr); grid-template-rows: 1fr auto; border-radius: 10px; background: var(--ink); box-shadow: var(--ring-d); overflow: hidden; color: var(--paper); font-size: 14px; }
+.sb { display: flex; flex-direction: column; gap: 10px; padding: 14px 12px; box-shadow: inset -1px 0 0 rgb(255 255 255 / 0.07); }
+.wallet { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 12px; text-align: left; transition: background-color 160ms ease; }
+.wallet:hover { background: var(--ink-3); }
+.wallet .av { width: 32px; height: 32px; } .wallet span { flex: 1; min-width: 0; } .wallet b { display: block; font-weight: 500; } .wallet small { color: var(--stone); font-size: 12px; } .wallet svg { color: var(--stone); }
+.sb-search { display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 10px; border-radius: 10px; background: var(--ink-3); color: var(--stone); }
+.sb-search kbd { font: inherit; font-size: 11px; padding: 1px 6px; border-radius: 5px; background: var(--ink-4); color: #A0A0A0; } .sb-search kbd:first-of-type { margin-left: auto; }
+.sb-nav { display: flex; flex-direction: column; gap: 2px; margin-top: 6px; flex: 1; }
+.sb-nav a { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 10px; border-radius: 9px; color: #B4B4B4; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
+.sb-nav a:hover { background: var(--ink-3); color: var(--paper); } .sb-nav a.on { background: var(--ink-3); color: var(--paper); }
+.sb-gap { height: 14px; }
+.sb-social { display: flex; gap: 4px; } .sb-social a { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; color: #A0A0A0; cursor: pointer; } .sb-social a:hover { background: var(--ink-3); color: var(--paper); }
+.main { min-width: 0; display: flex; flex-direction: column; }
+.bar { display: flex; align-items: center; gap: 10px; height: 56px; padding: 0 16px; box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.07); }
+.bar .av { width: 24px; height: 24px; } .bar b { font-weight: 500; font-size: 15px; }
+.fav { color: var(--stone); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; } .fav:hover { color: var(--paper); background: var(--ink-3); } .fav.on { color: var(--paper); } .fav.on path { fill: currentColor; }
+.tick { font-size: 12px; padding: 2px 7px; border-radius: 6px; background: var(--ink-3); color: #A0A0A0; }
+.bar-r { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px; border-radius: 10px; background: var(--ink-3); font-size: 13px; }
+.live { width: 7px; height: 7px; border-radius: 50%; background: var(--up); }
+.bar .seg button { height: 30px; padding: 0 16px; font-size: 13px; }
+.views { position: relative; flex: 1; }
+.view { transition: opacity 220ms var(--ease), transform 220ms var(--ease); }
+.view[hidden] { display: none; } .view.out { opacity: 0; transform: translateY(4px); }
+.simple { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; padding: 16px; align-items: start; }
+.c { border-radius: 14px; background: var(--ink-2); box-shadow: var(--ring-d); padding: 14px 16px; }
+.col { display: flex; flex-direction: column; gap: 14px; }
+.c-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; } .c-h b { font-weight: 500; } .c-h svg { color: var(--stone); }
+.tabs { display: flex; gap: 18px; margin: -14px -16px 14px; padding: 0 16px; box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.07); }
+.tabs button { position: relative; height: 44px; color: var(--stone); font-size: 14px; transition: color 160ms ease; }
+.tabs button.on { color: var(--paper); } .tabs button.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--paper); }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; padding-bottom: 16px; box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.07); }
+.stats span { display: block; color: var(--stone); font-size: 13px; } .stats b { font-weight: 500; font-size: 15px; } .stats em { font-style: normal; margin-left: 6px; font-size: 11px; padding: 1px 6px; border-radius: 5px; background: var(--ink-3); color: #A0A0A0; }
+.chart-h { display: flex; flex-wrap: wrap; gap: 10px 16px; justify-content: space-between; align-items: flex-start; margin-top: 16px; }
+.chart-h span { display: block; color: var(--stone); font-size: 13px; }
+.chart-h .price { display: block; margin-top: 0; font-size: 30px; font-weight: 500; line-height: 1.15; transition: color 700ms ease; }
+.chart-h em { font-style: normal; font-size: 13px; }
+.ranges { display: flex; padding: 3px; border-radius: 9px; background: var(--ink-3); }
+.ranges button { height: 26px; padding: 0 10px; border-radius: 7px; font-size: 12px; color: var(--stone); transition: background-color 160ms ease, color 160ms ease; }
+.ranges button.on { background: var(--ink-4); color: var(--paper); }
+.chart { position: relative; height: 230px; margin: 10px 0 4px; cursor: crosshair; touch-action: pan-y; }
+.chart canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tip { position: absolute; top: 0; left: 0; pointer-events: none; padding: 7px 10px; border-radius: 9px; background: var(--ink-4); box-shadow: var(--ring-d); font-size: 12px; white-space: nowrap; opacity: 0; transition: opacity 140ms ease; will-change: transform; }
+.tip span { display: block; color: #A0A0A0; } .tip b { font-weight: 500; }
+.chart.hov .tip { opacity: 1; }
+.about { margin-top: 12px; padding-top: 14px; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.07); color: #C8C8C8; line-height: 1.6; font-size: 14px; text-wrap: pretty; }
+.buyc { display: flex; flex-direction: column; }
+.buyc .amount { margin-top: 0; background: var(--ink-3); height: 58px; border-radius: 12px; font-size: 24px; }
+.buyc .quick button { background: var(--ink-3); transition: background-color 160ms ease; } .buyc .quick button:hover { background: var(--ink-4); }
+.buyc .buy { height: 52px; border-radius: 12px; font-size: 16px; margin-top: 12px; }
+.pills2 { display: flex; flex-wrap: wrap; gap: 6px; }
+.pills2 span, .pills2 a { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 8px; background: var(--ink-3); font-size: 12.5px; color: #D4D4D4; cursor: default; }
+.pills2 .ok { background: var(--up); color: #fff; font-weight: 500; }
+.pills2 .av { width: 16px; height: 16px; }
+.addr { display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 6px 0 10px; border-radius: 10px; background: var(--ink-3); font-size: 13px; } .addr .av { width: 18px; height: 18px; } .addr b { font-weight: 500; }
+.addr button { margin-left: auto; width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; color: #A0A0A0; transition: color 160ms ease, background-color 160ms ease; } .addr button:hover { background: var(--ink-4); color: var(--paper); } .addr button.done { color: var(--up); }
+.links { display: flex; gap: 6px; margin-top: 8px; } .links a { height: 32px; padding: 0 12px; border-radius: 9px; background: var(--ink-3); display: grid; place-items: center; font-size: 13px; cursor: pointer; } .links a:hover { background: var(--ink-4); }
+.holders { display: flex; flex-direction: column; gap: 6px; } .hrow { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; height: 30px; padding: 0 10px; border-radius: 8px; background: var(--ink-3); font-size: 13px; overflow: hidden; } .hrow i { position: absolute; left: 0; top: 0; bottom: 0; background: rgb(62 99 221 / 0.32); border-radius: 8px; } .hrow span, .hrow b { position: relative; } .hrow b { font-weight: 500; }
+.room-n { font-size: 12px; color: var(--stone); } .compose { display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 6px 0 10px; border-radius: 11px; background: var(--ink-3); color: var(--stone); margin-bottom: 6px; } .compose .av { width: 22px; height: 22px; } .btn-s { margin-left: auto; height: 32px; padding: 0 14px; border-radius: 8px; background: var(--paper); color: var(--ink); font-size: 13px; font-weight: 500; transition: transform 160ms var(--ease); } .btn-s:active { transform: scale(0.97); }
+.c .feed .post { padding: 8px 0; } .c .feed .post:hover { background: none; }
+.status { grid-column: 1 / -1; display: flex; gap: 28px; padding: 10px 16px; font-size: 12px; color: var(--stone); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.07); white-space: nowrap; overflow: hidden; }
+.status b { color: var(--paper); font-weight: 500; }
+.pro { grid-template-columns: minmax(0, 1fr) 320px !important; min-height: 0; }
+
+@container term (max-width: 1060px) { .app { grid-template-columns: 196px minmax(0, 1fr); } .simple { grid-template-columns: minmax(0, 1fr) 300px; } }
+@container term (max-width: 900px) { .app { grid-template-columns: 1fr; } .sb { display: none; } }
+
+/* ---------- Direction B: struck. Black glaze on fired clay, bone for paper, one-bit everywhere ---------- */
+:root { --ink: #141210; --paper: #F2ECE1; --paper-2: #E9E1D3; --page: #F6F2EA; --stone: #8E857A; --clay: #E35A2B; --clay-2: #CF4C1F; --ring-l: 0 0 0 1px rgb(20 18 16 / 0.08); }
+body { font-family: Satoshi, system-ui, sans-serif; }
+.title .g { color: #a39a8d; }
+.btn.clay { background: var(--clay); color: var(--ink); } .btn.clay:hover { background: var(--clay-2); }
+.plate.clay { background: var(--clay); color: var(--ink); }
+.plate.bone { background: var(--paper); }
+.hero-plate { aspect-ratio: 16 / 9; cursor: pointer; touch-action: pan-y; }
+.term { --acc: #E35A2B; --acc-l: #EE7447; }
+.hrow i { background: rgb(227 90 43 / 0.34) !important; }
+@keyframes flash { from { background: rgb(227 90 43 / 0.22); } to { background: transparent; } }
+
+/* the amphora: drag to turn */
+.amph { aspect-ratio: 16 / 9; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.amph.drag { cursor: grabbing; }
+.amp-info { position: absolute; left: 40px; top: 36px; display: flex; flex-direction: column; pointer-events: none; }
+.amp-info b { font-size: clamp(30px, 3.6vw, 52px); font-weight: 600; line-height: 1; letter-spacing: -0.01em; }
+.amp-info span { margin-top: 8px; font-size: 14px; color: #6f675c; }
+.amp-info strong { margin-top: 20px; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.amp-info .ch { margin-top: 4px; font-variant-numeric: tabular-nums; }
+.amp-info .up { color: #1F7A4D; } .amp-info .dn { color: #B5382F; }
+
+/* the water clock: hold to confirm */
+.klep { aspect-ratio: 21 / 9; }
+.hold-ui { position: absolute; left: 40px; bottom: 36px; width: min(340px, 38%); display: flex; flex-direction: column; gap: 16px; }
+.hold-ui p { font-size: 15px; line-height: 1.45; text-wrap: pretty; } .hold-ui p b { font-weight: 600; }
+.hold { position: relative; height: 52px; border-radius: 12px; background: var(--ink); color: var(--paper); font-size: 16px; font-weight: 500; overflow: hidden; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; transition: transform 160ms var(--ease); }
+.hold:active { transform: scale(0.98); }
+.hold:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.hold .lbl { position: absolute; inset: 0; display: grid; place-items: center; }
+.hold .fill { position: absolute; inset: 0; background: var(--paper); color: var(--ink); clip-path: inset(0 100% 0 0); }
+
+/* the allotment machine */
+.kler { aspect-ratio: 21 / 9; }
+
+/* principles in dither type */
+.dtype { aspect-ratio: 21 / 9; }
+.dtype canvas, .scale canvas, .amph canvas, .klep canvas, .kler canvas, .poster canvas, .media canvas, .banner canvas, .og canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.scale { aspect-ratio: 21 / 9; }
+
+/* posters */
+.poster-wrap { display: grid; place-items: center; padding: 56px; aspect-ratio: 1; }
+.poster { position: relative; width: 74%; aspect-ratio: 3 / 4; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 60px -30px rgb(20 18 16 / 0.45); }
+.poster .in { position: absolute; inset: 7%; display: flex; flex-direction: column; pointer-events: none; }
+.poster .in h3 { margin-top: auto; }
+.poster .in small { margin-top: 14px; }
+.poster .in svg { width: 13%; }
+.poster h3 { font-size: clamp(20px, 2.2vw, 32px); line-height: 1.06; font-weight: 600; max-width: 14ch; text-wrap: balance; }
+.poster small { display: flex; justify-content: space-between; font-size: clamp(9px, 0.8vw, 11px); }
+.poster.clayp { background: var(--clay); color: var(--ink); }
+.poster.inkp { background: var(--ink); color: var(--paper); }
+
+/* social */
+.social { padding: 56px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: start; }
+.xcard { border-radius: 18px; background: #fff; overflow: hidden; box-shadow: var(--ring-l); }
+.xcard .banner { height: 170px; background: var(--clay); position: relative; }
+.xcard .body { padding: 0 24px 24px; }
+.xcard .top { display: flex; align-items: flex-end; justify-content: space-between; margin-top: -48px; }
+.xcard .pfp { width: 96px; height: 96px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; box-shadow: 0 0 0 5px #fff; position: relative; }
+.xcard .pfp svg { width: 52px; }
+.xcard .follow { height: 36px; padding: 0 18px; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.xcard h3 { margin-top: 12px; font-size: 21px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.xcard .handle { color: #6f675c; font-size: 15px; }
+.xcard p { margin-top: 10px; font-size: 15px; line-height: 1.45; }
+.xcard .meta2 { margin-top: 10px; font-size: 14px; color: #6f675c; } .xcard .meta2 b { color: var(--ink); font-weight: 600; }
+.tweets { display: grid; gap: 14px; }
+.tw { border-radius: 18px; background: #fff; box-shadow: var(--ring-l); padding: 16px 18px; font-size: 15px; line-height: 1.45; }
+.tw .who { display: flex; align-items: center; gap: 10px; font-size: 14px; } .tw .who b { font-weight: 700; } .tw .who span { color: #6f675c; }
+.tw .pf { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; } .tw .pf svg { width: 18px; }
+.tw p { margin-top: 8px; }
+.tw .media { margin-top: 10px; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; position: relative; background: var(--ink); }
+
+/* icon + share card */
+.icon-plate { display: grid; place-items: center; }
+.ic { width: 34%; aspect-ratio: 1; border-radius: 23%; display: grid; place-items: center; background: var(--clay); }
+.ic svg { width: 58%; }
+.og-plate { display: grid; place-items: center; padding: 48px; }
+.og { position: relative; width: 100%; aspect-ratio: 1200 / 630; border-radius: 10px; background: var(--ink); color: var(--paper); overflow: hidden; box-shadow: 0 30px 60px -30px rgb(20 18 16 / 0.5); }
+.og .in { position: absolute; inset: 9% 7%; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; }
+.og .in .lockup { font-size: clamp(14px, 1.5vw, 22px); } .og .in .lockup svg { width: 1.2em; height: 1.2em; }
+.og h3 { font-size: clamp(20px, 2.5vw, 38px); line-height: 1.04; font-weight: 600; max-width: 10ch; }
+
+.foot { display: flex; justify-content: space-between; padding: 40px 0 56px; font-size: 14px; color: #8e857a; }
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 800ms var(--ease), transform 800ms var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; } * { transition-duration: 0ms !important; animation: none !important; } }
+
+@media (max-width: 760px) {
+  .wrap { padding: 0 12px; }
+  .title { margin: 24px 0 20px; }
+  .hero-plate { aspect-ratio: 4 / 5; }
+  .two, .info, .social, .meta { grid-template-columns: 1fr; }
+  .info { gap: 32px; padding: 40px 4px 48px; }
+  .meta { grid-template-columns: 1fr 1fr; }
+  .sub { padding: 56px 4px 20px; }
+  .term { padding: 8px; width: auto; margin-left: 0; } .seg button { flex: 1; }
+  .simple { grid-template-columns: 1fr; padding: 10px; } .bar { height: auto; flex-wrap: wrap; padding: 10px; } .bar-r { width: 100%; margin-left: 0; } .bar-r .seg { flex: 1; } .stats { grid-template-columns: 1fr; } .chart-h { flex-direction: column; gap: 10px; }
+  .pro { grid-template-columns: 1fr !important; } .p-order { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06); }
+  .p-chart { min-height: 280px; } .p-bottom { grid-template-columns: 1fr; height: auto; } .p-bottom > div + div { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06); }
+  .amph, .klep, .kler { aspect-ratio: 4 / 5; }
+  .amp-info { left: 20px; top: 20px; } .amp-info strong { margin-top: 14px; font-size: 18px; }
+  .hold-ui { left: 16px; right: 16px; bottom: 16px; width: auto; gap: 12px; }
+  .dtype, .scale { aspect-ratio: 4 / 3; }
+  .poster-wrap { padding: 32px; } .poster { width: 82%; } .poster h3 { font-size: 21px; }
+  .social { padding: 16px; } .og-plate { padding: 20px; }
+}
+
+.title { max-width: 52ch; text-wrap: balance; }
+.xcard .top { position: relative; z-index: 1; }
+
+/* ---------- tiles: every section is a 16:9 frame, two to a row, some full width. Each one exports as an X post ---------- */
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.tile { position: relative; aspect-ratio: 16 / 9 !important; margin: 0 !important; overflow: hidden; container-type: inline-size; }
+.tile.w { grid-column: span 2; }
+.hero-plate.tile { margin-top: 12px !important; }
+.tile > canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cap { position: absolute; left: 4.2cqw; top: 3.8cqw; right: 4.2cqw; display: flex; flex-direction: column; gap: 1.2cqw; pointer-events: none; }
+.cap.low { top: auto; bottom: 3.8cqw; }
+.cap h2 { font-size: 4.6cqw; line-height: 1.02; font-weight: 600; letter-spacing: -0.02em; max-width: 13ch; text-wrap: balance; }
+.hero-plate .cap h2 { font-size: 3.4cqw; max-width: 12ch; color: var(--ink); }
+.t-kler .cap h2 { color: var(--paper); max-width: 11ch; font-size: 5.4cqw; }
+.t-icon { display: grid; place-items: center; }
+.t-icon .ic { width: 30%; background: var(--clay); border-radius: 23%; }
+.t-icon .ic svg { width: 58%; }
+.t-app { padding: 2.2cqw; display: grid; }
+.t-app .fl { min-height: 0; height: 100%; }
+.amph.tile .amp-info { left: 4cqw; top: 3.6cqw; } .amph.tile .amp-info b { font-size: 5cqw; }
+.t-duo { display: flex; align-items: center; justify-content: center; gap: 4cqw; }
+.t-duo .poster { width: auto; height: 82%; aspect-ratio: 3 / 4; container-type: inline-size; }
+.t-duo .poster h3 { font-size: 9cqw; } .t-duo .poster small { font-size: 4cqw; } .t-duo .poster .in svg { width: 13%; }
+.klep.tile .hold-ui { left: 4cqw; bottom: 4cqw; width: 28%; }
+.social.tile { padding: 3.4cqw; align-content: center; }
+.og-plate.tile { padding: 7cqw; display: grid; place-items: center; }
+.t-end { display: flex; flex-direction: column; justify-content: space-between; padding: 5cqw; color: var(--paper); }
+.t-end .lockup { color: var(--paper); font-size: 3.6cqw; } .t-end .lockup svg { width: 1.2em; height: 1.2em; color: var(--clay); }
+.t-end h2 { font-size: 7cqw; line-height: 1; font-weight: 600; letter-spacing: -0.025em; max-width: 9ch; text-wrap: balance; }
+.t-end .ctas { margin-top: 3cqw; display: flex; gap: 1.6cqw; }
+.t-end .btn { height: 6.4cqw; padding: 0 3cqw; font-size: 2.6cqw; }
+.t-end .btn.line { box-shadow: inset 0 0 0 1px rgb(242 236 225 / 0.5); color: var(--paper); }
+/* export: one tile per frame, everything revealed, nothing animating in */
+html.x .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
+@media (max-width: 760px) {
+  .tiles { grid-template-columns: 1fr; gap: 8px; }
+  .tile.w { grid-column: auto; }
+  .tile.free { aspect-ratio: auto !important; }
+  .klep.tile .hold-ui { width: auto; right: 4cqw; } .klep.tile .hold-ui p { display: none; }
+  .t-app { padding: 8px; }
+}
+
+/* ---------- the deck: six 16:9 slides in the studio's case-study order ---------- */
+.deck { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.deck .tile { border-radius: 10px; }
+.deck .lockup { position: absolute; left: 4.4cqw; top: 4cqw; font-size: 3cqw; gap: 0.5em; } .deck .lockup svg { width: 1.15em; height: 1.15em; }
+.d-cover { cursor: pointer; }
+.d-cover #coin { position: absolute; left: 6%; top: 0; width: 46%; height: 100%; }
+.d-word { position: absolute; left: 52%; top: 50%; transform: translateY(-50%); font-size: 14cqw; font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
+.d-slide { color: var(--paper); } .d-slide .lockup { color: var(--paper); } .d-slide .lockup svg { color: var(--clay); }
+.d-slide #kler { position: absolute; left: 22%; top: 11%; width: 56%; height: 58%; }
+.d-slide h2 { position: absolute; left: 4.4cqw; bottom: 4cqw; font-size: 5.6cqw; line-height: 1; font-weight: 600; letter-spacing: -0.025em; max-width: 9ch; text-wrap: balance; }
+.d-slide small { position: absolute; right: 4.4cqw; bottom: 4.6cqw; font-size: 1.5cqw; color: #a39a8d; }
+.d-orbit .rings { position: absolute; inset: 0; width: 100%; height: 100%; } .d-orbit .rings ellipse { fill: none; stroke: #5b544b; stroke-width: 2; } .d-orbit .rings circle { fill: var(--clay); }
+.d-mark { position: absolute; left: 50%; top: 50%; width: 22%; aspect-ratio: 1; transform: translate(-50%, -50%); display: grid; place-items: center; background: var(--clay); border-radius: 22%; }
+.d-mark svg { width: 62%; color: var(--ink); }
+.d-duo { display: flex; align-items: center; justify-content: center; gap: 3cqw; }
+.d-duo .poster { width: auto; height: 84%; aspect-ratio: 3 / 4; container-type: inline-size; }
+.d-duo .poster h3 { font-size: 9cqw; } .d-duo .poster small { font-size: 3.6cqw; }
+.d-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4cqw; padding: 5cqw 7cqw; background: #E6E1D8 !important; }
+.d-card { position: relative; background: var(--ink); color: var(--paper); border-radius: 1.2cqw; padding: 2.2cqw; display: flex; flex-direction: column; container-type: inline-size; }
+.d-card .lockup { position: static; font-size: 7cqw; color: var(--paper); } .d-card .lockup svg { color: var(--clay); }
+.d-card canvas { width: 100%; flex: 1; min-height: 0; display: block; }
+.d-card b { font-size: 10cqw; font-weight: 600; letter-spacing: -0.01em; }
+.d-card p { margin-top: 2cqw; font-size: 5.6cqw; line-height: 1.35; color: #b3aa9c; text-wrap: pretty; }
+.d-end { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--paper); }
+.d-end .ring { position: absolute; inset: 0; width: 100%; height: 100%; } .d-end .ring ellipse { fill: none; stroke: #4a443d; stroke-width: 2; }
+.d-end .lockup { color: var(--paper); } .d-end .lockup svg { color: var(--clay); }
+.d-end h2 { position: relative; font-size: 5cqw; line-height: 1.04; font-weight: 600; letter-spacing: -0.02em; max-width: 13ch; text-wrap: balance; }
+.d-end h2 em { font-style: normal; color: var(--clay); }
+.d-end .ctas { position: relative; margin-top: 2.6cqw; display: flex; gap: 1.2cqw; }
+.d-end .btn { height: 4.6cqw; padding: 0 2.4cqw; font-size: 1.7cqw; }
+.d-end .btn.line { box-shadow: inset 0 0 0 1px #8e857a; color: var(--paper); }
+.deck + .info { padding-top: 56px; }
+@media (max-width: 760px) { .deck { grid-template-columns: 1fr; gap: 8px; } }
+.d-slide #kler { left: 24%; top: 9%; width: 52%; height: 50%; }
+.d-slide h2 { font-size: 4.8cqw; }
+.d-cards { grid-template-rows: 1fr; padding: 4cqw 6cqw; }
+.d-card { height: 100%; padding: 2.6cqw; }
+.d-card .lockup { font-size: 9cqw; }
+.d-card b { font-size: 14cqw; } .d-card p { font-size: 7.4cqw; margin-top: 3cqw; }
+.d-end .ring .rdot { fill: var(--clay); }
+.d-seats canvas#seats { position: absolute; inset: 0; width: 100%; height: 100%; }
+.d-seats .lockup { color: var(--paper); } .d-seats .lockup svg { color: var(--clay); }
+.d-seats small { position: absolute; right: 4.4cqw; top: 4.6cqw; font-size: 1.5cqw; color: #a39a8d; font-variant-numeric: tabular-nums; }
+.d-card canvas[data-bit] { width: 100%; flex: 1; min-height: 0; }
+
+.d-end canvas#meander { position: absolute; inset: 0; width: 100%; height: 100%; }
+.d-end .lockup { top: 11cqw; }
+/* headlines are never more than two lines */
+.d-slide h2 { max-width: 18ch; }
+.d-end h2 { max-width: 24ch; }
+.d-duo .poster h3 { max-width: none; font-size: 7.6cqw; }
+@media (max-width: 760px) { .title { font-size: 22px; } }
+
+/* paragraphs and secondary text in Satoshi Medium */
+body { font-weight: 500; }
+
+/* the floor: the product in black glaze. The question large, three Athenian ballots to choose from, a one-bit tally, the council as an assembly */
+.fl { height: 100%; display: flex; flex-direction: column; background: var(--ink); color: var(--paper); border-radius: 8px; overflow: hidden; container-type: inline-size; }
+.fl-top { display: flex; align-items: center; gap: 28px; padding: 18px 26px; box-shadow: inset 0 -1px 0 #2a2622; }
+.fl-top .lockup { color: var(--paper); font-size: 16px; } .fl-top .lockup svg { color: var(--clay); }
+.fl-props { display: flex; gap: 4px; }
+.fl-props button { height: 30px; padding: 0 12px; border-radius: 6px; font-size: 13px; font-weight: 500; color: #8e857a; font-variant-numeric: tabular-nums; transition: background-color 160ms ease, color 160ms ease; }
+.fl-props button:hover { color: var(--paper); } .fl-props button.on { background: #2a2622; color: var(--paper); }
+.fl-me { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #8e857a; font-variant-numeric: tabular-nums; }
+.fl-me i { width: 26px; height: 26px; border-radius: 50%; background: var(--clay); color: var(--ink); display: grid; place-items: center; font-style: normal; font-weight: 600; font-size: 12px; }
+.fl-me b { color: var(--paper); font-weight: 500; }
+.fl-main { flex: 1; display: grid; grid-template-columns: 1.5fr 1fr; min-height: 0; }
+.fl-q { padding: 30px 30px 26px; display: flex; flex-direction: column; }
+.fl-q h3 { font-size: clamp(24px, 3.4cqw, 40px); line-height: 1.04; font-weight: 600; max-width: 20ch; text-wrap: balance; }
+.fl-meta { margin-top: 10px; font-size: 13px; color: #8e857a; font-variant-numeric: tabular-nums; }
+.fl-ballot { margin-top: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.fl-ballot button { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 10px 12px 12px; border-radius: 8px; background: #1d1a17; text-align: left; transition: background-color 200ms ease, transform 160ms var(--ease); }
+.fl-ballot button:active { transform: scale(0.98); }
+.fl-ballot button.on { background: #2a2622; }
+.fl-ballot canvas { width: 100%; aspect-ratio: 2 / 1; display: block; }
+.fl-ballot b { margin-top: 8px; font-size: 16px; font-weight: 600; }
+.fl-ballot button.on b { color: var(--clay); }
+.fl-ballot span { font-size: 13px; color: #8e857a; font-variant-numeric: tabular-nums; }
+.fl-tally { margin-top: 16px; }
+.fl-tally canvas { width: 100%; height: 46px; display: block; }
+.fl-act { margin-top: auto; padding-top: 18px; display: flex; align-items: center; gap: 16px; }
+.fl-hold { width: 240px; height: 46px; flex: none; background: var(--clay); color: var(--ink); }
+.fl-hold .fill { background: var(--paper); color: var(--ink); }
+.fl-act p { font-size: 13px; color: #8e857a; max-width: 24ch; }
+.fl-room { position: relative; display: flex; flex-direction: column; box-shadow: inset 1px 0 0 #2a2622; }
+.fl-room canvas { flex: 1; width: 100%; min-height: 0; display: block; }
+.fl-room p { padding: 0 24px 22px; font-size: 13px; color: #8e857a; text-wrap: pretty; }
+.fl-hold .fill { clip-path: inset(0 100% 0 0); transition: clip-path 220ms var(--ease); }
+.fl-hold.holding .fill { clip-path: inset(0 0 0 0); transition: clip-path 1400ms linear; }
+@media (max-width: 760px) {
+  .fl-top { flex-wrap: wrap; gap: 10px 16px; padding: 14px 16px; } .fl-props { order: 3; width: 100%; overflow-x: auto; }
+  .fl-main { grid-template-columns: 1fr; } .fl-q { padding: 20px 16px; }
+  .fl-ballot { gap: 6px; } .fl-ballot button { padding: 8px; } .fl-ballot b { font-size: 14px; }
+  .fl-act { flex-direction: column; align-items: stretch; } .fl-hold { width: 100%; }
+  .fl-room { box-shadow: inset 0 1px 0 #2a2622; } .fl-room canvas { height: 220px; flex: none; }
+}
+
+.fl-key { margin-top: 10px; display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: #b3aa9c; font-variant-numeric: tabular-nums; }
+.fl-key span { display: inline-flex; align-items: center; gap: 7px; } .fl-key i { width: 8px; height: 8px; background: #4a443d; } .fl-key i.f { background: var(--clay); } .fl-key i.a { background: var(--paper); }
+.fl-key .q { margin-left: auto; color: #8e857a; }
+
+/* ================= Pnyx landing: black glaze, clay, bone; one-bit art throughout ================= */
+body.lp { background: var(--ink); color: var(--paper); font-family: Satoshi, system-ui, sans-serif; }
+.lp ::selection { background: var(--clay); color: var(--ink); }
+.lp-wrap { width: min(1200px, 100% - 64px); margin: 0 auto; }
+.lp h1, .lp h2, .lp h3 { font-weight: 500; letter-spacing: -0.02em; text-wrap: balance; }
+.lp h2 { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.08; }
+.lp p { text-wrap: pretty; }
+.lp .l-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.lbtn { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 8px; font-size: 14px; font-weight: 500; white-space: nowrap; transition: transform 160ms var(--ease), background-color 200ms ease; }
+.lbtn:active { transform: scale(0.97); }
+.lbtn svg { width: 14px; height: 14px; }
+.lbtn.bone { background: var(--paper); color: var(--ink); } .lbtn.bone:hover { background: #fff; }
+.lbtn.ink { background: var(--ink); color: var(--paper); }
+.lbtn.ghost { background: #2a2622; color: var(--paper); } .lbtn.ghost:hover { background: #36312c; }
+.lbtn.ghost.dark { background: #e2d9cb; color: var(--ink); } .lbtn.ghost.dark:hover { background: #d8cebe; }
+.lp .lockup { display: inline-flex; align-items: center; gap: 0.45em; font-size: 19px; font-weight: 600; color: var(--paper); }
+.lp .lockup svg { width: 1.15em; height: 1.15em; color: var(--clay); }
+
+/* nav */
+.lp-nav { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.lp-nav nav { display: flex; gap: 28px; font-size: 14px; color: #b3aa9c; } .lp-nav nav a:hover { color: var(--paper); }
+.lp-cta { display: flex; gap: 8px; }
+
+/* hero: the pattern behind, the headline split left and right, the ballot over the assembly */
+.lp-hero { position: relative; padding-top: 72px; margin-top: -72px; overflow: hidden; }
+#pattern { position: absolute; left: 0; right: 0; top: 88px; width: 100%; height: 560px; display: block; }
+.l-hero-top { position: relative; z-index: 2; display: grid; grid-template-columns: 1.3fr 1fr; align-items: end; gap: 40px; padding-top: 96px; }
+.l-hero-top h1 { font-size: clamp(48px, 6.4vw, 88px); line-height: 0.98; letter-spacing: -0.035em; max-width: 12ch; }
+.l-hero-side { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-bottom: 10px; }
+.l-hero-side p { font-size: 18px; line-height: 1.45; color: #cfc6b8; max-width: 30ch; }
+.l-hero-stage { position: relative; height: clamp(320px, 40vw, 520px); margin-top: 24px; }
+.l-hero-stage #seats { position: absolute; inset: 0; width: 100%; height: 100%; }
+.l-hero-stage #coin { position: absolute; left: 50%; top: 0; width: min(560px, 70%); height: 78%; transform: translateX(-50%); }
+
+/* logos */
+.l-logos { margin-top: 24px; padding: 32px 36px; border-radius: 16px; background: #1d1a17; }
+.l-logos p { font-size: 14px; color: #8e857a; }
+.l-logo-row { margin-top: 22px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 26px; color: #d9d0c2; letter-spacing: -0.01em; }
+
+/* product: an accordion on the left, its object on the right */
+.l-acc { margin-top: 140px; display: grid; grid-template-columns: 380px 1fr; gap: 64px; }
+.l-acc-l ul { list-style: none; margin-top: 150px; }
+.l-acc-l li { box-shadow: inset 0 1px 0 #2e2a26; }
+.l-acc-l li.on { box-shadow: inset 0 2px 0 var(--clay); }
+.l-acc-l li button { display: block; width: 100%; padding: 16px 0; text-align: left; font-size: 21px; color: #8e857a; transition: color 200ms ease; }
+.l-acc-l li.on button, .l-acc-l li button:hover { color: var(--paper); }
+.l-acc-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease); }
+.l-acc-body > * { overflow: hidden; min-height: 0; }
+.l-acc-l li.on .l-acc-body { grid-template-rows: 1fr; }
+.l-acc-body p { font-size: 15px; line-height: 1.5; color: #b3aa9c; max-width: 34ch; }
+.l-acc-body a { margin: 14px 0 20px; }
+.l-acc-r h2 { max-width: 20ch; }
+.l-acc-stage { position: relative; margin-top: 40px; aspect-ratio: 16 / 10; border-radius: 16px; background: #1d1a17; overflow: hidden; }
+.l-acc-vis { position: absolute; inset: 0; opacity: 0; transition: opacity 300ms ease; }
+.l-acc-vis.on { opacity: 1; }
+.l-acc-vis canvas { position: absolute; inset: 6%; width: 88%; height: 88%; display: block; }
+.l-acc-vis[data-v="kler"] canvas { inset: 0; width: 100%; height: 100%; }
+.l-acc-vis[data-v="stoa"] { background: var(--clay); }
+
+/* features: tab cards on the left, the panel and the app on the right */
+.l-feat { margin-top: 160px; }
+.l-feat-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; }
+.l-feat-head p { max-width: 40ch; font-size: 15px; line-height: 1.5; color: #b3aa9c; }
+.l-feat-body { margin-top: 40px; display: grid; grid-template-columns: 180px 1fr; gap: 40px; }
+.l-feat-tabs { display: flex; flex-direction: column; gap: 10px; }
+.l-ft { position: relative; aspect-ratio: 16 / 11; border-radius: 10px; background: #2a2622; text-align: left; padding: 12px; display: flex; align-items: flex-end; transition: background-color 200ms ease, transform 160ms var(--ease); }
+.l-ft span { font-size: 13px; font-weight: 500; color: #b3aa9c; }
+.l-ft.on { background: var(--clay); } .l-ft.on span { color: var(--ink); }
+.l-ft:active { transform: scale(0.98); }
+.l-feat-panel { border-radius: 16px; background: #1d1a17; padding: 32px; }
+.l-fp { display: none; } .l-fp.on { display: block; animation: px-in 300ms var(--ease); }
+.l-fp h3 { font-size: 26px; } .l-fp-sub { margin-top: 8px; color: #8e857a; font-size: 15px; }
+.l-fp-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; }
+.l-fp-grid b { font-size: 15px; font-weight: 600; } .l-fp-grid p { margin-top: 6px; font-size: 14px; line-height: 1.5; color: #b3aa9c; max-width: 36ch; }
+.l-feat-app { margin-top: 32px; }
+.l-feat-app .fl { min-height: 480px; }
+
+/* stats: three staggered cards, each with a field of one-bit dots */
+.l-stats { margin-top: 160px; padding: 96px 0 120px; background: #1d1a17; }
+.l-stats h2 { max-width: 16ch; }
+.l-stat-row { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+.l-stat { position: relative; height: 340px; border-radius: 14px; background: #2a2622; padding: 26px; overflow: hidden; }
+.l-stat:nth-child(2) { margin-top: 48px; } .l-stat:nth-child(3) { margin-top: 96px; }
+.l-stat canvas { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 62%; display: block; }
+.l-stat b { position: relative; display: block; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.l-stat p { position: relative; margin-top: 8px; font-size: 15px; line-height: 1.45; color: #b3aa9c; max-width: 24ch; }
+
+/* quotes, then the featured story band */
+.l-quotes { margin-top: 120px; display: grid; gap: 28px; }
+.l-quote { display: grid; grid-template-columns: 240px 1fr; gap: 12px; max-width: 760px; }
+.l-quote.l-q2 { margin-left: auto; }
+.l-q-who, .l-q-text { border-radius: 14px; padding: 24px; }
+.l-q-who { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+.l-q-logo { font-size: 30px; letter-spacing: -0.01em; } .l-q-who span:last-child { font-size: 14px; }
+.l-q-text { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; } .l-q-text p { font-size: 20px; line-height: 1.35; }
+.l-q-text .lbtn { align-self: flex-start; }
+.l-q1 .l-q-who, .l-q1 .l-q-text { background: var(--paper); color: var(--ink); } .l-q1 .l-q-who span:last-child { color: #6f675c; }
+.l-q2 .l-q-who, .l-q2 .l-q-text { background: var(--clay); color: var(--ink); } .l-q2 .l-q-text .lbtn.ghost { background: var(--ink); }
+.l-story { margin-top: 40px; background: var(--paper); color: var(--ink); }
+.l-story-in { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 48px; padding: 36px 0; }
+.l-story-in p { font-size: 22px; line-height: 1.3; max-width: 34ch; }
+.l-story-logo { font-size: 34px; }
+
+/* code */
+.l-code { margin-top: 160px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; align-items: stretch; }
+.l-code-l { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; } .l-code-l h2 { max-width: 12ch; }
+.l-code-r { position: relative; border-radius: 16px; background: var(--paper); padding: 48px 40px; overflow: hidden; }
+.l-code-r canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.l-term-win { position: relative; border-radius: 12px; background: #1d1a17; padding: 14px 22px 26px; box-shadow: 0 30px 60px -30px rgb(20 18 16 / 0.6); }
+.l-term-tabs { display: flex; gap: 22px; padding: 6px 0 14px; box-shadow: inset 0 -1px 0 #2e2a26; }
+.l-term-tabs button { font-size: 13px; color: #8e857a; padding-bottom: 8px; transition: color 160ms ease; } .l-term-tabs button.on { color: var(--paper); box-shadow: inset 0 -2px 0 var(--clay); }
+.l-term-win pre { display: none; margin-top: 18px; font: 500 14px/1.7 Satoshi, sans-serif; color: #d9d0c2; white-space: pre; overflow-x: auto; }
+.l-term-win pre.on { display: block; }
+.lp .l-k { color: var(--clay); } .lp .l-s { color: #E9C46A; } .lp .l-n { color: #8FB8DE; } .lp .l-c { color: #8e857a; }
+
+/* security */
+.l-sec { margin-top: 160px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: end; }
+.l-sec-l h2 { max-width: 12ch; } .l-sec-l p { margin: 18px 0 24px; color: #b3aa9c; font-size: 15px; line-height: 1.5; max-width: 32ch; }
+.l-sec-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.l-sc { position: relative; height: 300px; border-radius: 14px; background: #1d1a17; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+.l-sc:nth-child(2) { height: 340px; } .l-sc:nth-child(3) { height: 380px; }
+.l-sc canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.l-sc b, .l-sc p { position: relative; } .l-sc b { font-size: 20px; font-weight: 500; } .l-sc p { margin-top: 8px; font-size: 14px; line-height: 1.45; color: #b3aa9c; }
+
+/* get started */
+.l-start { margin-top: 160px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; padding: 40px; border-radius: 18px; background: var(--paper); color: var(--ink); }
+.l-start-art { position: relative; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; background: var(--paper-2); display: grid; place-items: center; }
+.l-start-art canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.l-start-term { position: relative; width: 74%; border-radius: 10px; background: var(--ink); color: var(--paper); padding: 16px 22px 22px; box-shadow: 0 30px 60px -30px rgb(20 18 16 / 0.7); }
+.l-start-term b { font-size: 14px; font-weight: 500; }
+.l-start-term pre { margin-top: 12px; font: 500 14px/1.75 Satoshi, sans-serif; color: #d9d0c2; white-space: pre; }
+.l-start-r h2 { font-size: clamp(34px, 3.8vw, 52px); max-width: 10ch; } .l-start-r p { margin: 14px 0 26px; font-size: 16px; line-height: 1.5; color: #4d473f; max-width: 30ch; }
+
+/* footer */
+.lp-foot { margin-top: 120px; padding-bottom: 48px; }
+.l-ft-top { display: grid; grid-template-columns: 1.4fr 1fr 0.8fr; gap: 40px; }
+.lockup.big { font-size: 52px; letter-spacing: -0.03em; }
+.l-ft-nav b, .l-ft-soc b { font-size: 13px; font-weight: 500; color: #8e857a; }
+.l-ft-nav div { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 15px; }
+.l-soc { margin-top: 16px; display: flex; gap: 14px; } .l-soc svg { width: 20px; height: 20px; color: #b3aa9c; } .l-soc a:hover svg { color: var(--paper); }
+.l-ft-soc span { display: block; margin-top: 16px; font-size: 14px; color: #8e857a; }
+.l-news { margin-top: 64px; } .l-news label { font-size: 15px; color: #b3aa9c; }
+.l-news div { margin-top: 12px; display: flex; gap: 8px; max-width: 420px; padding: 5px; border-radius: 10px; background: #1d1a17; }
+.l-news input { flex: 1; min-width: 0; background: none; border: 0; outline: none; color: var(--paper); font: 15px Satoshi, sans-serif; padding: 0 10px; }
+.l-ft-legal { margin-top: 56px; padding-top: 22px; box-shadow: inset 0 1px 0 #2e2a26; display: flex; gap: 28px; flex-wrap: wrap; font-size: 13px; color: #8e857a; }
+.l-ft-legal span { margin-right: auto; }
+
+.lp .rv { opacity: 0; transform: translateY(16px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+.lp .rv.in { opacity: 1; transform: none; }
+html.x .lp .rv { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .lp-wrap { width: calc(100% - 32px); }
+  .lp-nav nav { display: none; }
+  .l-hero-top { grid-template-columns: 1fr; padding-top: 40px; gap: 20px; }
+  .l-hero-stage { height: 380px; } .l-hero-stage #coin { width: 90%; }
+  .l-logos { padding: 22px; } .l-logo-row { justify-content: flex-start; font-size: 20px; gap: 14px 24px; }
+  .l-acc, .l-code, .l-sec, .l-start, .l-feat-body { grid-template-columns: 1fr; gap: 28px; }
+  .l-acc { margin-top: 96px; } .l-acc-l ul { margin-top: 0; } .l-acc-r { order: -1; }
+  .l-feat-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .l-feat-tabs { flex-direction: row; overflow-x: auto; } .l-ft { flex: none; width: 150px; }
+  .l-feat-panel { padding: 18px; } .l-fp-grid { grid-template-columns: 1fr; gap: 16px; }
+  
+  .l-stat-row { grid-template-columns: 1fr; } .l-stat:nth-child(n) { margin-top: 0; height: 260px; }
+  .l-quote { grid-template-columns: 1fr; } .l-q-who { gap: 16px; }
+  .l-story-in { grid-template-columns: 1fr; gap: 16px; }
+  .l-code-r { padding: 20px 14px; } .l-term-win { padding: 10px 14px 18px; } .l-term-tabs { gap: 14px; overflow-x: auto; }
+  .l-sc:nth-child(n) { height: 240px; } .l-sec-cards { grid-template-columns: 1fr; }
+  .l-start { padding: 16px; } .l-start-term { width: 90%; }
+  .l-ft-top { grid-template-columns: 1fr; } .lockup.big { font-size: 40px; }
+  .lp .l-feat, .lp .l-stats, .lp .l-code, .lp .l-sec, .lp .l-start { margin-top: 96px; }
+}
+
+.lp code, .lp pre { font-family: Satoshi, sans-serif; }
+.l-stats h2 { max-width: 22ch; }
+.l-code-l h2 { max-width: 20ch; }
+.l-feat-app .px-main h3 { max-width: 24ch; font-size: clamp(20px, 2vw, 30px); }
+@media (max-width: 1100px) { .l-feat-app .px-room { display: none; } .l-feat-app .px-app { grid-template-columns: 200px 1fr; } }
+@media (max-width: 900px) {
+  .lp-cta .lbtn.ghost { display: none; }
+  #pattern { top: 330px; height: 420px; }
+  .l-sc { justify-content: flex-end; } .l-sc canvas { height: 58%; }
+  .l-sc:nth-child(n) { height: 300px; }
+}
+.l-hero-top h1 { max-width: 14ch; }
+@media (max-width: 900px) { .l-hero-top h1 { font-size: clamp(36px, 10.5vw, 56px); } }
+.lp h1, .lp h2, .lp h3, .l-hero-top h1, .lp .lockup, .l-stat b { letter-spacing: normal; }
+.l-acc-r h2 { max-width: 26ch; }
+
+body.lp { font-weight: 500; }
+.lp input { font-weight: 500; }
+/* the icon field clears a round space for the assembly and thins out toward its edges */
+#pattern { height: 720px; -webkit-mask-image: radial-gradient(ellipse 46% 62% at 50% 92%, transparent 62%, #000 100%); mask-image: radial-gradient(ellipse 46% 62% at 50% 92%, transparent 62%, #000 100%); }
+.l-hero-stage { margin-top: 56px; }
+@media (max-width: 900px) { #pattern { -webkit-mask-image: radial-gradient(ellipse 70% 52% at 50% 80%, transparent 60%, #000 100%); mask-image: radial-gradient(ellipse 70% 52% at 50% 80%, transparent 60%, #000 100%); } }
+@media (max-width: 900px) { #pattern { top: 320px; height: 440px; -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 70%, transparent 68%, #000 100%); mask-image: radial-gradient(ellipse 85% 75% at 50% 70%, transparent 68%, #000 100%); } }
+
+.l-hero-stage #harcs { position: absolute; inset: 0; width: 100%; height: 100%; }
+#pattern { -webkit-mask-image: radial-gradient(ellipse 44% 66% at 50% 97%, transparent 80%, #000 100%); mask-image: radial-gradient(ellipse 44% 66% at 50% 97%, transparent 80%, #000 100%); }
+@media (max-width: 900px) { #pattern { top: 320px; height: 440px; -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 78%, transparent 70%, #000 100%); mask-image: radial-gradient(ellipse 90% 80% at 50% 78%, transparent 70%, #000 100%); } }
+@media (max-width: 900px) { .l-hero-stage { height: 220px; margin-top: 40px; } #pattern { top: 300px; height: 300px; -webkit-mask-image: radial-gradient(ellipse 60% 75% at 50% 100%, transparent 78%, #000 100%); mask-image: radial-gradient(ellipse 60% 75% at 50% 100%, transparent 78%, #000 100%); } }
+
+.l-hero-stage #hwave { position: absolute; inset: 0; width: 100%; height: 100%; }
+#pattern { -webkit-mask-image: linear-gradient(#000 0, #000 52%, transparent 78%); mask-image: linear-gradient(#000 0, #000 52%, transparent 78%); }
+@media (max-width: 900px) { .l-hero-stage { height: 300px; } #pattern { top: 300px; height: 200px; -webkit-mask-image: linear-gradient(#000, transparent); mask-image: linear-gradient(#000, transparent); } }
+#pattern { -webkit-mask-image: linear-gradient(#000 0, #000 34%, transparent 52%); mask-image: linear-gradient(#000 0, #000 34%, transparent 52%); }
+@media (max-width: 900px) { #pattern { display: none; } }
+
+/* hero centrepiece: a stack of proposals, the front one live */
+.l-hp { position: relative; width: min(860px, 100%); margin: 0 auto; padding-top: 40px; }
+.l-hp-back { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; align-items: center; height: 44px; padding: 0 22px; border-radius: 14px 14px 0 0; font-size: 14px; color: #8e857a; }
+.l-hp-back span { color: #5a524a; font-variant-numeric: tabular-nums; }
+.l-hp-back.b2 { top: 0; width: 86%; background: #1b1916; }
+.l-hp-back.b1 { top: 20px; width: 93%; background: #221f1c; }
+.l-hp-card { position: relative; border-radius: 16px; background: #2a2622; overflow: hidden; box-shadow: 0 40px 80px -40px rgb(0 0 0 / 0.8); }
+.l-hp-call { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 22px; background: #E35A2B; color: #2a1206; font-size: 14px; }
+.l-hp-call span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .l-hp-call b { font-weight: 700; } .l-hp-call i { font-style: normal; color: #4a1c08; }
+.l-hp-call em { display: inline-flex; align-items: center; gap: 7px; font-style: normal; font-weight: 700; flex: none; }
+.l-hp-call em u { width: 7px; height: 7px; border-radius: 50%; background: #2a1206; animation: l-pulse 1.6s ease-in-out infinite; }
+@keyframes l-pulse { 50% { transform: scale(0.55); } }
+.l-hp-body { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; padding: 26px 26px 28px; }
+.l-hp-meta { font-size: 13px; color: #8e857a; font-variant-numeric: tabular-nums; }
+.l-hp h3 { margin-top: 10px; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.12; font-weight: 500; max-width: 18ch; }
+.l-hp-tally { margin-top: 26px; }
+.l-hp-bar { position: relative; display: flex; gap: 3px; height: 10px; border-radius: 5px; background: #1d1a17; overflow: visible; }
+.l-hp-bar i { display: block; height: 100%; width: 0; border-radius: 5px; transition: width 900ms var(--ease); }
+.l-hp-bar .f { background: var(--clay); } .l-hp-bar .a { background: var(--paper); }
+.l-hp-bar s { position: absolute; left: 80%; top: -5px; bottom: -5px; width: 2px; background: #8e857a; }
+.l-hp-nums { margin-top: 12px; display: flex; gap: 18px; font-size: 13px; color: #8e857a; font-variant-numeric: tabular-nums; }
+.l-hp-nums b { color: var(--paper); font-weight: 700; }
+.l-hp-nums .q { margin-left: auto; transition: color 300ms ease; } .l-hp-nums .q.ok { color: var(--clay); }
+.l-hp-feed { list-style: none; display: flex; flex-direction: column; gap: 6px; min-height: 196px; }
+.l-hp-feed li { display: grid; grid-template-columns: 8px 1fr auto auto; align-items: center; gap: 10px; height: 34px; padding: 0 12px; border-radius: 8px; background: #1d1a17; font-size: 13px; color: #8e857a; font-variant-numeric: tabular-nums; animation: l-in 500ms var(--ease) both; }
+.l-hp-feed li:nth-child(n+4) { color: #5a524a; } .l-hp-feed li:nth-child(n+4) b { color: #8e857a; }
+@keyframes l-in { from { transform: translateY(-8px); opacity: 0; } }
+.l-hp-feed b { color: var(--paper); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.l-hp-feed em { font-style: normal; }
+.l-hp-feed .d { width: 8px; height: 8px; border-radius: 50%; } .l-hp-feed .d.f { background: var(--clay); } .l-hp-feed .d.a { background: var(--paper); }
+.l-hero-stage { height: auto; padding-bottom: 24px; }
+#pattern { -webkit-mask-image: linear-gradient(#000 0, #000 40%, transparent 70%); mask-image: linear-gradient(#000 0, #000 40%, transparent 70%); }
+@media (max-width: 900px) { .l-hero-stage { height: auto; } .l-hp-body { grid-template-columns: 1fr; gap: 20px; padding: 20px 16px; } .l-hp-call { padding: 12px 16px; font-size: 12px; } .l-hp-feed { min-height: 0; } .l-hp-feed li:nth-child(n+4) { display: none; } }
+.l-hp { padding-top: 60px; }
+.l-hp-back { align-items: flex-start; height: 60px; padding-top: 8px; font-size: 13px; }
+.l-hp-back.b2 { top: 0; } .l-hp-back.b1 { top: 28px; }
+
+/* features, rebuilt: thumbnail tabs with a small picture each; the panel holds the copy and one calm visual per tab */
+.l-ft { aspect-ratio: 16 / 12; flex-direction: column; align-items: flex-start; justify-content: space-between; padding: 14px; }
+.l-ft svg { width: 64px; height: 40px; color: #5a524a; transition: color 200ms ease; }
+.l-ft.on svg { color: var(--ink); }
+.l-feat-panel { padding: 36px; }
+.l-fp.on { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.l-fp-grid { grid-template-columns: 1fr 1fr; gap: 22px 28px; }
+.l-fv { border-radius: 12px; background: #2a2622; padding: 24px; min-height: 280px; display: flex; flex-direction: column; justify-content: center; }
+.l-fv-ballots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.l-fv-ballots div { border-radius: 8px; background: #1d1a17; padding: 10px 10px 12px; }
+.l-fv-ballots canvas { width: 100%; aspect-ratio: 3 / 2; display: block; }
+.l-fv-ballots b { display: block; margin-top: 6px; font-size: 14px; } .l-fv-ballots .on b { color: var(--clay); }
+.l-fv-ballots span { font-size: 12px; color: #8e857a; font-variant-numeric: tabular-nums; }
+.l-fv-tally { margin-top: 18px; display: flex; gap: 3px; height: 8px; border-radius: 4px; background: #1d1a17; overflow: hidden; }
+.l-fv-tally i { display: block; height: 100%; background: var(--clay); border-radius: 4px; } .l-fv-tally i.a { background: var(--paper); }
+.l-fv > p { margin-top: 10px; font-size: 13px; color: #8e857a; }
+.l-fv-deleg { gap: 14px; }
+.l-fv-me { display: flex; align-items: center; gap: 12px; } .l-fv-me i { width: 36px; height: 36px; border-radius: 50%; background: var(--clay); color: var(--ink); display: grid; place-items: center; font-style: normal; font-weight: 700; }
+.l-fv-me b { display: block; font-size: 15px; } .l-fv-me span { font-size: 13px; color: #8e857a; }
+.l-fv-arrow { color: #5a524a; padding-left: 12px; } .l-fv-arrow svg { width: 80px; height: 16px; display: block; }
+.l-fv-deleg ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.l-fv-deleg li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 12px 14px; border-radius: 8px; background: #1d1a17; cursor: pointer; transition: background-color 200ms ease; }
+.l-fv-deleg li b { font-size: 14px; font-weight: 500; } .l-fv-deleg li span { grid-row: 2; font-size: 12px; color: #8e857a; } .l-fv-deleg li em { grid-row: 1 / 3; grid-column: 2; align-self: center; font-style: normal; font-size: 13px; color: #b3aa9c; font-variant-numeric: tabular-nums; }
+.l-fv-deleg li.on { background: var(--clay); color: var(--ink); } .l-fv-deleg li.on span, .l-fv-deleg li.on em { color: #3a1606; }
+.l-fv-exec ol { list-style: none; }
+.l-fv-exec li { position: relative; display: grid; grid-template-columns: 22px 1fr; gap: 2px 14px; padding: 12px 0 18px; }
+.l-fv-exec li i { grid-row: 1 / 3; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #3a352f; }
+.l-fv-exec li:not(:last-child)::after { content: ""; position: absolute; left: 5px; top: 30px; bottom: -4px; width: 2px; background: #3a352f; }
+.l-fv-exec li.done i { background: var(--paper); } .l-fv-exec li.now i { background: var(--clay); }
+.l-fv-exec li b { font-size: 15px; font-weight: 500; } .l-fv-exec li span { font-size: 13px; color: #8e857a; }
+.l-fv-exec li u { grid-column: 2; margin-top: 10px; height: 6px; border-radius: 3px; background: #1d1a17; overflow: hidden; } .l-fv-exec li u s { display: block; height: 100%; background: var(--clay); }
+@media (max-width: 900px) { .l-fp.on { grid-template-columns: 1fr; gap: 24px; } .l-feat-panel { padding: 18px; } .l-ft { width: 150px; aspect-ratio: auto; height: 110px; } .l-fv { min-height: 0; padding: 16px; } }
+
+/* the logo row: each protocol's own mark beside its name, all in bone */
+.l-logo-row { font-size: 20px; color: #d9d0c2; }
+.l-lg { display: inline-flex; align-items: center; gap: 9px; }
+.l-lg svg { width: 26px; height: 26px; flex: none; }
+.l-lg b { font-weight: 700; letter-spacing: normal; }
+@media (max-width: 900px) { .l-logo-row { font-size: 17px; gap: 14px 22px; } .l-lg svg { width: 22px; height: 22px; } }
+
+/* hero, centred: headline, subheader, then a primary and a secondary button */
+.l-hero-top { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; padding-top: 88px; }
+.l-hero-top h1 { max-width: 14ch; }
+.l-hero-top > p { margin-top: 22px; max-width: 46ch; font-size: 18px; line-height: 1.5; color: #cfc6b8; text-wrap: balance; }
+.l-hero-ctas { margin-top: 30px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.l-hero-ctas .lbtn { height: 44px; padding: 0 18px; font-size: 15px; }
+#pattern { -webkit-mask-image: radial-gradient(ellipse 34% 40% at 50% 30%, transparent 55%, #000 100%), linear-gradient(#000 0, #000 45%, transparent 72%); -webkit-mask-composite: source-in; mask-image: radial-gradient(ellipse 34% 40% at 50% 30%, transparent 55%, #000 100%), linear-gradient(#000 0, #000 45%, transparent 72%); mask-composite: intersect; }
+@media (max-width: 900px) { .l-hero-top { padding-top: 40px; } .l-hero-top > p { font-size: 16px; } .l-hero-ctas { width: 100%; } .l-hero-ctas .lbtn { flex: 1; justify-content: center; } }
+</style>
+</head>
+<body class="lp">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="mark" viewBox="0 0 1872 1872"><path fill="currentColor" fill-rule="evenodd" d="M187.4 486.0L209.5 486.6L231.5 488.3L253.4 491.1L275.1 494.9L296.7 499.8L317.9 505.8L338.9 512.8L359.5 520.8L379.6 529.8L399.3 539.8L418.5 550.7L437.2 562.6L455.2 575.4L472.5 589.0L489.2 603.5L504.7 618.3L519.9 634.3L534.3 651.1L547.9 668.5L560.5 686.6L572.3 705.2L583.2 724.5L593.1 744.2L602.0 764.4L609.9 785.0L616.8 806.0L622.7 827.3L627.5 848.9L631.2 870.7L633.9 892.6L635.5 914.6L636.0 936.7L635.4 958.8L633.8 980.8L631.0 1002.7L627.2 1024.5L622.3 1046.0L616.4 1067.3L609.5 1088.3L601.5 1108.8L592.5 1129.0L582.5 1148.7L571.6 1167.9L559.8 1186.6L547.0 1204.6L533.4 1222.0L519.0 1238.7L504.2 1254.2L488.2 1269.4L471.5 1283.9L454.1 1297.4L436.0 1310.2L417.3 1322.0L398.1 1332.9L378.4 1342.8L358.2 1351.7L337.6 1359.7L316.6 1366.6L295.3 1372.5L273.8 1377.4L252.0 1381.1L230.1 1383.8L208.1 1385.5L186.0 1386.0L186.0 1686.0L486.0 1686.0L486.5 1663.9L488.2 1641.9L490.9 1620.0L494.6 1598.2L499.5 1576.7L505.4 1555.4L512.3 1534.4L520.3 1513.8L529.2 1493.6L539.1 1473.9L550.0 1454.7L561.8 1436.0L574.6 1417.9L588.1 1400.5L602.6 1383.8L617.8 1367.8L633.8 1352.6L650.5 1338.1L667.9 1324.6L686.0 1311.8L704.7 1300.0L723.9 1289.1L743.6 1279.2L763.8 1270.3L784.4 1262.3L805.4 1255.4L826.7 1249.5L848.2 1244.6L870.0 1240.9L891.9 1238.2L913.9 1236.5L936.0 1236.0L958.1 1236.5L980.1 1238.2L1002.0 1240.9L1023.8 1244.6L1045.3 1249.5L1066.6 1255.4L1087.6 1262.3L1108.2 1270.3L1128.4 1279.2L1148.1 1289.1L1167.3 1300.0L1186.0 1311.8L1204.1 1324.6L1221.5 1338.1L1238.2 1352.6L1254.2 1367.8L1269.4 1383.8L1283.9 1400.5L1297.4 1417.9L1310.2 1436.0L1322.0 1454.7L1332.9 1473.9L1342.8 1493.6L1351.7 1513.8L1359.7 1534.4L1366.6 1555.4L1372.5 1576.7L1377.4 1598.2L1381.1 1620.0L1383.8 1641.9L1385.5 1663.9L1386.0 1686.0L1686.0 1686.0L1686.0 1386.0L1663.9 1385.5L1641.9 1383.8L1620.0 1381.1L1598.2 1377.4L1576.7 1372.5L1555.4 1366.6L1534.4 1359.7L1513.8 1351.7L1493.6 1342.8L1473.9 1332.9L1454.7 1322.0L1436.0 1310.2L1417.9 1297.4L1400.5 1283.9L1383.8 1269.4L1367.8 1254.2L1352.6 1238.2L1338.1 1221.5L1324.6 1204.1L1311.8 1186.0L1300.0 1167.3L1289.1 1148.1L1279.2 1128.4L1270.3 1108.2L1262.3 1087.6L1255.4 1066.6L1249.5 1045.3L1244.6 1023.8L1240.9 1002.0L1238.2 980.1L1236.5 958.1L1236.0 936.0L1236.5 913.9L1238.2 891.9L1240.9 870.0L1244.6 848.2L1249.5 826.7L1255.4 805.4L1262.3 784.4L1270.3 763.8L1279.2 743.6L1289.1 723.9L1300.0 704.7L1311.8 686.0L1324.6 667.9L1338.1 650.5L1352.6 633.8L1367.8 617.8L1383.8 602.6L1400.5 588.1L1417.9 574.6L1436.0 561.8L1454.7 550.0L1473.9 539.1L1493.6 529.2L1513.8 520.3L1534.4 512.3L1555.4 505.4L1576.7 499.5L1598.2 494.6L1620.0 490.9L1641.9 488.2L1663.9 486.5L1686.0 486.0L1686.0 186.0L1386.0 186.0L1385.6 205.3L1384.3 224.6L1382.3 243.8L1379.4 262.9L1375.7 281.9L1371.1 300.7L1365.8 319.3L1359.7 337.6L1352.8 355.7L1345.1 373.4L1336.7 390.8L1327.9 407.2L1318.0 423.8L1307.5 440.0L1296.2 455.7L1284.3 470.9L1271.7 485.6L1258.6 499.8L1244.8 513.3L1230.5 526.3L1215.6 538.6L1200.2 550.3L1184.3 561.3L1167.9 571.6L1151.2 581.2L1134.0 590.1L1116.5 598.2L1098.6 605.6L1080.4 612.2L1062.0 618.0L1043.3 623.0L1024.5 627.2L1000.0 631.4L975.3 634.3L950.5 635.8L925.6 635.9L900.8 634.6L876.1 632.0L851.6 628.0L827.3 622.7L803.4 616.0L779.9 608.0L756.8 598.8L734.3 588.3L712.4 576.5L691.2 563.6L670.7 549.5L651.1 534.3L632.3 518.0L614.4 500.8L597.5 482.5L581.7 463.4L566.9 443.4L553.3 422.7L540.8 401.2L529.5 379.0L519.5 356.3L510.7 333.0L503.0 308.7L496.9 284.6L492.2 260.2L488.7 235.6L486.7 210.8L486.0 186.0L186.0 186.0L186.0 486.0L187.4 486.0ZM1138.5 936.3L1137.5 956.2L1134.5 975.8L1129.7 995.1L1123.0 1013.8L1114.4 1031.7L1104.2 1048.8L1092.3 1064.7L1079.0 1079.4L1064.2 1092.7L1048.2 1104.5L1031.2 1114.7L1013.2 1123.2L994.5 1129.9L975.2 1134.7L955.5 1137.6L935.7 1138.5L915.8 1137.5L896.2 1134.5L876.9 1129.7L858.2 1123.0L840.3 1114.4L823.2 1104.2L807.3 1092.3L792.6 1079.0L779.3 1064.2L767.5 1048.2L757.3 1031.2L748.8 1013.2L742.1 994.5L737.3 975.2L734.4 955.5L733.5 935.7L734.5 915.8L737.5 896.2L742.3 876.9L749.0 858.2L757.6 840.3L767.8 823.2L779.7 807.3L793.0 792.6L807.8 779.3L823.8 767.5L840.8 757.3L858.8 748.8L877.5 742.1L896.8 737.3L916.5 734.4L936.3 733.5L956.2 734.5L975.8 737.5L995.1 742.3L1013.8 749.0L1031.7 757.6L1048.8 767.8L1064.7 779.7L1079.4 793.0L1092.7 807.8L1104.5 823.8L1114.7 840.8L1123.2 858.8L1129.9 877.5L1134.7 896.8L1137.6 916.5L1138.5 936.3Z"/></symbol></defs></svg>
+<div class="lp-wrap">
+  <header class="lp-nav">
+    <a class="lockup" href="#"><svg viewBox="0 0 1872 1872"><use href="#mark"/></svg>Pnyx</a>
+    <nav><a href="#product">Product</a><a href="#features">Features</a><a href="#developers">Developers</a><a href="#security">Security</a><a href="#pricing">Pricing</a></nav>
+    <div class="lp-cta"><a class="lbtn ghost" href="#developers">Docs</a><a class="lbtn bone" href="#start">Launch a DAO <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div>
+  </header>
+</div>
+
+<section class="lp-hero">
+  <canvas id="pattern" aria-hidden="true"></canvas>
+  <div class="lp-wrap l-hero-top">
+    <h1>Governance nobody can buy</h1>
+    <p>Proposals, delegates and treasuries for any DAO, on every chain. Every vote is counted in public, and no wallet can buy the outcome.</p>
+    <div class="l-hero-ctas"><a class="lbtn bone" href="#start">Launch a DAO <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a><a class="lbtn ghost" href="#product">See how it works</a></div>
+  </div>
+  <div class="l-hero-stage" id="hero-plate">
+    <div class="l-hp" aria-label="A live proposal on Pnyx: votes arriving, the tally filling, quorum reached">
+      <div class="l-hp-back b2"><span>PIP-44</span>Deploy on Solana</div>
+      <div class="l-hp-back b1"><span>PIP-43</span>Turn on the fee switch</div>
+      <div class="l-hp-card">
+        <div class="l-hp-call"><span><b>await</b> dao.proposals.create({ title: <i>"Move 20% of the treasury into ETH"</i> })</span><em><u></u>Live</em></div>
+        <div class="l-hp-body">
+          <div class="l-hp-main">
+            <p class="l-hp-meta">PIP-42 · closes Sunday 20:00 UTC</p>
+            <h3>Move 20% of the treasury into ETH?</h3>
+            <div class="l-hp-tally"><div class="l-hp-bar"><i class="f"></i><i class="a"></i><s></s></div>
+              <div class="l-hp-nums"><span><b data-n="for">0</b> for</span><span><b data-n="against">0</b> against</span><span class="q" data-q>Quorum 0%</span></div></div>
+          </div>
+          <ol class="l-hp-feed" aria-live="off"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lp-wrap">
+  <section class="l-logos rv"><p>Protocols governing on Pnyx</p><div class="l-logo-row"><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.206 5.72c.024-.425.082-.705.198-.962.046-.101.09-.184.096-.184a.6.6 0 0 1-.044.166c-.085.249-.099.59-.04.985.073.502.115.575.648 1.117.25.255.54.575.646.713l.191.25-.191-.178c-.234-.22-.773-.646-.892-.707-.08-.041-.092-.04-.141.008-.045.045-.055.113-.061.432-.01.498-.078.818-.242 1.138-.09.172-.104.136-.023-.06.06-.145.066-.21.066-.691-.001-.969-.117-1.202-.793-1.6a7 7 0 0 0-.628-.325 2.4 2.4 0 0 1-.307-.149c.02-.019.68.173.945.275.395.151.46.171.508.153.032-.013.048-.106.064-.38"/><path fill="currentColor" d="M8.857 4.312c-.235-.037-.245-.04-.134-.058.211-.032.71.012 1.054.093.803.19 1.534.677 2.314 1.54l.207.23.297-.048c1.249-.2 2.519-.04 3.582.448.292.134.753.401.81.47.019.022.053.163.075.313.08.52.04.92-.12 1.217-.087.163-.092.214-.034.353.047.11.177.192.306.192.264 0 .549-.425.68-1.015l.053-.235.103.117c.569.64 1.015 1.514 1.092 2.136l.02.162-.096-.148a1.8 1.8 0 0 0-.54-.565c-.382-.251-.786-.337-1.854-.393-.964-.05-1.51-.132-2.051-.308-.921-.298-1.386-.696-2.48-2.124-.486-.634-.786-.985-1.085-1.267-.678-.642-1.346-.979-2.2-1.11m.456 3.07c-.476-.651-.77-1.65-.707-2.397l.02-.232.108.02c.204.037.555.167.719.266.45.272.646.63.844 1.551.058.27.135.575.17.678.056.166.27.555.443.807.125.181.042.268-.234.243-.422-.038-.994-.43-1.363-.936m7.316 4.85c-2.224-.89-3.008-1.664-3.008-2.968 0-.192.007-.35.015-.35s.094.064.191.142c.451.36.956.513 2.354.716.823.12 1.286.216 1.713.357 1.358.447 2.197 1.356 2.398 2.594.058.36.024 1.034-.07 1.389-.075.28-.302.787-.363.806-.016.006-.033-.058-.037-.145-.023-.465-.259-.917-.655-1.256-.451-.385-1.057-.692-2.538-1.285m-1.561.37a4 4 0 0 0-.108-.468l-.057-.168.106.117c.146.163.26.371.359.649.074.212.082.275.082.619 0 .338-.01.409-.079.6-.108.3-.243.513-.47.742-.405.411-.928.639-1.681.733-.131.017-.513.044-.849.062-.846.043-1.403.134-1.903.309a.4.4 0 0 1-.143.034c-.02-.02.32-.222.602-.357.397-.19.792-.294 1.676-.44.438-.073.889-.16 1.004-.196 1.082-.33 1.639-1.182 1.46-2.236"/><path fill="currentColor" d="M16.086 14.403c-.295-.632-.363-1.242-.201-1.811.017-.06.045-.11.061-.11a.6.6 0 0 1 .155.083c.137.091.41.245 1.137.639.908.492 1.426.874 1.778 1.31.308.38.499.815.59 1.345.053.3.022 1.022-.055 1.324-.244.953-.812 1.701-1.62 2.138a2 2 0 0 1-.237.116c-.012 0 .031-.109.096-.242.272-.566.303-1.117.097-1.73-.126-.375-.383-.832-.902-1.606-.603-.9-.75-1.14-.899-1.456m-8.353 3.408c.825-.693 1.852-1.185 2.787-1.336.403-.065 1.075-.04 1.448.055.598.153 1.134.494 1.412.9.272.398.389.744.51 1.514.048.304.1.609.116.678.091.399.269.718.49.878.349.255.95.27 1.542.04a.8.8 0 0 1 .194-.06c.022.022-.276.22-.487.325-.283.14-.508.195-.807.195-.542 0-.992-.274-1.368-.834-.074-.11-.24-.44-.37-.733-.396-.9-.591-1.173-1.052-1.473-.4-.261-.918-.308-1.306-.119-.511.25-.654.899-.288 1.31.145.164.416.305.638.332a.68.68 0 0 0 .771-.679c0-.27-.104-.425-.367-.543-.36-.161-.746.027-.744.363 0 .143.064.233.208.298.092.042.095.045.02.03-.33-.068-.408-.464-.143-.726.319-.315.977-.176 1.203.254.095.18.106.54.023.757-.185.487-.726.742-1.274.603-.373-.095-.524-.197-.974-.658-.782-.8-1.085-.956-2.212-1.13l-.216-.034z"/><path fill="currentColor" fill-rule="evenodd" d="M4.065 3.479c2.61 3.15 4.408 4.45 4.608 4.726.165.226.103.43-.18.59-.157.089-.48.179-.642.179-.183 0-.246-.07-.246-.07-.106-.1-.165-.083-.71-1.045a166 166 0 0 0-1.407-2.151c-.04-.038-.039-.037 1.33 2.399.22.508.044.694.044.766 0 .147-.04.225-.223.427-.304.338-.44.717-.538 1.501-.11.88-.42 1.501-1.277 2.565-.502.622-.584.736-.71.987-.16.316-.204.493-.222.892-.019.422.018.695.148 1.098.113.353.231.586.534 1.052.261.403.412.702.412.819 0 .093.018.093.423.002.968-.217 1.755-.6 2.197-1.069.274-.29.338-.45.34-.848.002-.26-.007-.315-.078-.465-.115-.243-.325-.446-.787-.76-.605-.411-.863-.743-.935-1.198-.058-.374.01-.638.345-1.336.346-.722.432-1.03.49-1.758.038-.47.09-.656.225-.805.142-.155.27-.208.62-.255.572-.078.936-.225 1.236-.5.26-.237.368-.467.385-.812l.012-.261-.145-.169C8.79 7.371 3.714 3 3.681 3c-.007 0 .166.216.384.479m1.216 12.244a.46.46 0 0 0-.143-.61c-.188-.124-.48-.066-.48.096 0 .05.028.085.09.117.104.053.111.113.03.236-.084.124-.077.233.018.307.154.12.371.054.485-.146M9.82 9.859c-.268.082-.53.365-.61.662-.05.18-.021.498.053.596.119.159.234.2.546.198.612-.004 1.143-.265 1.205-.59.05-.268-.183-.638-.504-.801-.166-.084-.52-.117-.69-.065m.715.556c.094-.133.053-.277-.107-.375-.306-.185-.768-.032-.768.255 0 .143.241.299.462.299.147 0 .348-.087.413-.18" clip-rule="evenodd"/></svg><b>Uniswap</b></span><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M9.61 16.5c1.012 0 1.831-.786 1.831-1.755 0-.97-.82-1.755-1.83-1.755-1.012 0-1.831.786-1.831 1.755 0 .97.82 1.755 1.83 1.755m4.786 0c1.01 0 1.83-.786 1.83-1.755 0-.97-.82-1.755-1.83-1.755s-1.831.786-1.831 1.755c0 .97.82 1.755 1.83 1.755"/><path fill="currentColor" d="M12 7.5c-4.971 0-9.001 3.937-9 8.792h2.3c0-3.638 2.976-6.588 6.7-6.588s6.7 2.95 6.7 6.588H21c0-4.855-4.03-8.792-9-8.792"/></svg><b>Aave</b></span><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M6.05 10.28c.18.385.615 1.135.615 1.135L11.715 3 6.79 6.47c-.295.2-.535.465-.7.775a3.63 3.63 0 0 0-.035 3.035zm-1.995 2.77a5.7 5.7 0 0 0 2.2 4.12L11.71 21s-3.405-4.95-6.28-9.885a5 5 0 0 1-.58-1.68 2.7 2.7 0 0 1 0-.805l-.22.425c-.29.6-.49 1.24-.585 1.9-.06.7-.05 1.4.015 2.1zm13.895.67a20 20 0 0 0-.615-1.135L12.29 21l4.925-3.465c.29-.2.53-.465.7-.78a3.63 3.63 0 0 0 .03-3.035zm1.995-2.77a5.7 5.7 0 0 0-2.2-4.12L12.29 3s3.405 4.95 6.28 9.885a5 5 0 0 1 .575 1.68c.04.265.04.54 0 .805l.22-.425c.295-.6.49-1.24.59-1.9.06-.7.05-1.4-.015-2.1z"/></svg><b>ENS</b></span><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="m11.997 14.129-5.106-3-.144.22a6.32 6.32 0 0 0 .846 7.816 6.2 6.2 0 0 0 8.808 0 6.296 6.296 0 0 0 .847-7.816l-.145-.22z"/><path fill="currentColor" d="m12.002 3 4.404 6.95-4.404 2.585z"/><path fill="currentColor" d="M12.002 3v9.535L7.6 9.945z"/></svg><b>Lido</b></span><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="m13.353 13.368-.885 2.39a.3.3 0 0 0 0 .205l1.523 4.112 1.76-1.001-2.113-5.706a.152.152 0 0 0-.285 0m1.774-4.019a.152.152 0 0 0-.285 0l-.885 2.39a.3.3 0 0 0 0 .205l2.494 6.732 1.761-1.001z"/><path fill="currentColor" d="M11.998 4.115a.3.3 0 0 1 .126.033l6.715 3.818a.25.25 0 0 1 .126.214v7.635c0 .089-.048.17-.126.214l-6.715 3.819a.25.25 0 0 1-.126.032.3.3 0 0 1-.125-.032l-6.715-3.815a.25.25 0 0 1-.126-.215V8.182c0-.089.048-.17.126-.215l6.715-3.818a.26.26 0 0 1 .125-.034m0-1.115c-.238 0-.478.06-.692.183L4.593 7A1.36 1.36 0 0 0 3.9 8.182v7.635c0 .487.264.938.693 1.181l6.714 3.819a1.41 1.41 0 0 0 1.386 0l6.714-3.818a1.36 1.36 0 0 0 .693-1.182V8.182A1.36 1.36 0 0 0 19.407 7l-6.716-3.817A1.4 1.4 0 0 0 11.998 3"/><path fill="currentColor" d="m7.559 18.685.617-1.666 1.244 1.018-1.163 1.046zm3.874-11.05H9.731a.3.3 0 0 0-.285.197l-3.649 9.852 1.761 1.001 4.018-10.849a.15.15 0 0 0-.143-.2"/><path fill="currentColor" d="M14.412 7.635h-1.703a.3.3 0 0 0-.284.197l-4.167 11.25 1.761 1 4.535-12.246a.15.15 0 0 0-.142-.2"/></svg><b>Arbitrum</b></span><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.966 15.8q.98.7 2.512.7 1.854 0 2.962-.838 1.107-.849 1.558-2.562.27-1.05.464-2.162a4 4 0 0 0 .064-.663q0-.874-.45-1.5a2.7 2.7 0 0 0-1.237-.95Q9.053 7.5 8.062 7.5q-3.645 0-4.521 3.438a40 40 0 0 0-.477 2.162 4.4 4.4 0 0 0-.064.675q0 1.313.966 2.025m4.65-2.775c-.247.957-.927 1.58-1.958 1.58-1.02 0-1.369-.69-1.185-1.58q.231-1.212.464-2.05c.266-1.034.89-1.58 1.957-1.58 1.016 0 1.349.68 1.172 1.58a30 30 0 0 1-.45 2.05m3.903 3.385q.075.09.212.09h1.704q.126 0 .238-.09a.37.37 0 0 0 .138-.231l.538-2.521h1.734c1.094 0 1.95-.53 2.577-1.002q.951-.707 1.265-2.186.075-.347.075-.669 0-1.117-.852-1.71-.84-.591-2.23-.591h-3.332a.38.38 0 0 0-.239.09.37.37 0 0 0-.137.231l-1.73 8.358a.3.3 0 0 0 .038.231m6.088-5.966c-.156.689-.756 1.32-1.461 1.32h-1.44l.496-2.37h1.503c.512 0 .94.102.94.665q0 .167-.038.385" clip-rule="evenodd"/></svg><b>Optimism</b></span><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M5.688 17.03a1.51 1.51 0 0 1-.721-1.287v-2.928a.62.62 0 0 1 .248-.5.625.625 0 0 1 .696-.043l6.866 3.851a1.26 1.26 0 0 1 .63 1.086v3.035a.77.77 0 0 1-.583.735.75.75 0 0 1-.57-.09zm9.833-5.56c.386.226.699.638.699 1.087v6.156c0 .182-.173.35-.331.439l-1.276.833c-.018.01-.06.018-.081.024V16.59c0-.442-.209-.852-.589-1.08L7.78 11.975v-3.86c0-.112.04-.22.096-.316a.626.626 0 0 1 .858-.226zm2.887-4.548a1.26 1.26 0 0 1 .625 1.09v8.992a.5.5 0 0 1-.264.442l-1.424.741v-6.26c0-.443-.176-.852-.553-1.08l-6.199-3.663V3.63c0-.113.05-.22.104-.317a.63.63 0 0 1 .86-.228z"/></svg><b>Compound</b></span><span class="l-lg"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M17.232 12.756a4.1 4.1 0 0 0-1.514-3.182l1.002-1.232a5.68 5.68 0 0 1 2.1 4.414 5.68 5.68 0 0 1-2.1 4.414l-1.003-1.232a4.1 4.1 0 0 0 1.515-3.182" clip-rule="evenodd"/><path fill="currentColor" fill-rule="evenodd" d="M9.285 3.53a.53.53 0 1 1 1.06 0v2.038a8 8 0 0 1 1.587-.382V3.53a.529.529 0 1 1 1.06 0v1.587a7.9 7.9 0 0 1 5.932 2.664l.028.032-4.203 3.721a2.385 2.385 0 0 1-.156 2.742l4.221 3.268V21H12.99A7.942 7.942 0 0 1 9.285 6.032zm4.165 11.534a2.382 2.382 0 1 1 .306-4.42l3.232-2.861A6.6 6.6 0 0 0 12.99 6.44c-.941 0-1.836.196-2.646.55v2.363a.529.529 0 1 1-1.059 0v-1.78a6.61 6.61 0 0 0-2.914 5.485 6.62 6.62 0 0 0 6.73 6.617h4.388v-1.483zm.335-2.27a1.059 1.059 0 1 1-2.117 0 1.059 1.059 0 0 1 2.117 0" clip-rule="evenodd"/></svg><b>Gitcoin</b></span></div></section>
+
+  <section class="l-acc rv" id="product">
+    <div class="l-acc-l"><ul><li class="on"><button type="button" data-v="tablet"><b>Propose</b></button><div class="l-acc-body"><div><p>Anyone holding the token can put a change to a vote, written once and cut in stone.</p><a class="lbtn ghost" href="#features">See how it works <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class=""><button type="button" data-v="coin"><b>Delegate</b></button><div class="l-acc-body"><div><p>Hand your voting power to someone you trust, and take it back in one click.</p><a class="lbtn ghost" href="#features">See how it works <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class=""><button type="button" data-v="kler"><b>Draw a council</b></button><div class="l-acc-body"><div><p>Seats picked by a verifiable lottery anyone can re-run. A seat can be won, never bought.</p><a class="lbtn ghost" href="#features">See how it works <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class=""><button type="button" data-v="balance"><b>Count</b></button><div class="l-acc-body"><div><p>Every vote lands for, against or abstain, onchain. The result is final when the beam sits level.</p><a class="lbtn ghost" href="#features">See how it works <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class=""><button type="button" data-v="stoa"><b>Execute</b></button><div class="l-acc-body"><div><p>Passed proposals run onchain after a timelock, with nobody in between.</p><a class="lbtn ghost" href="#features">See how it works <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li></ul></div>
+    <div class="l-acc-r"><h2>A protocol on Pnyx hears from every holder it has</h2><div class="l-acc-stage"><div class="l-acc-vis on" data-v="tablet"><canvas data-bit="tablet" aria-hidden="true"></canvas></div><div class="l-acc-vis" data-v="coin"><canvas data-coin="0" aria-hidden="true"></canvas></div><div class="l-acc-vis" data-v="kler"><canvas id="kler" aria-hidden="true"></canvas></div><div class="l-acc-vis" data-v="balance"><canvas data-bit="balance" aria-hidden="true"></canvas></div><div class="l-acc-vis" data-v="stoa"><canvas data-poster="stoa" aria-hidden="true"></canvas></div></div></div>
+  </section>
+
+  <section class="l-feat rv" id="features">
+    <div class="l-feat-head"><h2>Features</h2><p>Proposals, delegates, councils and treasuries for any DAO, on every chain, from one app or one API.</p></div>
+    <div class="l-feat-body">
+      <div class="l-feat-tabs"><button type="button" class="l-ft on" data-i="0"><svg viewBox="0 0 64 40" aria-hidden="true"><circle cx="20" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="3" fill="currentColor"/><path d="M20 4v6M20 30v6" stroke="currentColor" stroke-width="2"/><circle cx="46" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="46" cy="20" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M46 4v6M46 30v6" stroke="currentColor" stroke-width="2"/></svg><span>Proposals and voting</span></button><button type="button" class="l-ft" data-i="1"><svg viewBox="0 0 64 40" aria-hidden="true"><circle cx="12" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M22 20h18M34 14l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="52" cy="20" r="9" fill="currentColor"/></svg><span>Delegation and debate</span></button><button type="button" class="l-ft" data-i="2"><svg viewBox="0 0 64 40" aria-hidden="true"><path d="M6 20h52" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="20" r="4" fill="currentColor"/><circle cx="32" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 17v3h3" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="50" y="14" width="12" height="12" rx="2" fill="currentColor"/></svg><span>Counting and execution</span></button></div>
+      <div class="l-feat-panel"><div class="l-fp on" data-i="0"><div class="l-fp-copy"><h3>Proposals and voting</h3><p class="l-fp-sub">Every proposal, its window and its ballot in one place.</p><div class="l-fp-grid"><div><b>Proposals</b><p>Written once, with a fixed voting window. No snap votes at 3am.</p></div><div><b>Private ballots</b><p>Sealed until the count, then public and final.</p></div><div><b>Quorum</b><p>Set per proposal type, tracked live.</p></div><div><b>Any chain</b><p>Ethereum, Solana, Base and Arbitrum, one ballot box.</p></div></div></div><div class="l-fv l-fv-vote"><div class="l-fv-ballots"><div class="on"><canvas data-flb="for" aria-hidden="true"></canvas><b>For</b><span>3.1M</span></div><div><canvas data-flb="against" aria-hidden="true"></canvas><b>Against</b><span>1.9M</span></div><div><canvas data-flb="abstain" aria-hidden="true"></canvas><b>Abstain</b><span>0.1M</span></div></div><div class="l-fv-tally"><i style="width:61%"></i><i class="a" style="width:37%"></i></div><p>61% for · quorum reached</p></div></div><div class="l-fp" data-i="1"><div class="l-fp-copy"><h3>Delegation and debate</h3><p class="l-fp-sub">Hand your voting power to someone you trust, and take it back anytime.</p><div class="l-fp-grid"><div><b>Delegates</b><p>Anyone can stand. Their record and reasons are public.</p></div><div><b>One click</b><p>Delegate or take back your power without moving tokens.</p></div><div><b>Equal time</b><p>Every delegate gets the same three minutes on the call.</p></div><div><b>Councils</b><p>Drawn by lottery and rotated every season.</p></div></div></div><div class="l-fv l-fv-deleg"><div class="l-fv-me"><i>V</i><div><b>Vuk</b><span>12,400 PNX</span></div></div><div class="l-fv-arrow"><svg viewBox="0 0 80 16" aria-hidden="true"><path d="M0 8h74M66 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div><ul><li class="on"><b>lattice.eth</b><span>Voted in 48 of 50</span><em>2.4M PNX</em></li><li><b>kiln.eth</b><span>Voted in 41 of 50</span><em>1.1M PNX</em></li><li><b>0x19…e07</b><span>Voted in 50 of 50</span><em>860K PNX</em></li></ul></div></div><div class="l-fp" data-i="2"><div class="l-fp-copy"><h3>Counting and execution</h3><p class="l-fp-sub">The count is onchain, and the result runs itself.</p><div class="l-fp-grid"><div><b>Live count</b><p>Anyone can recount from the chain, at any time.</p></div><div><b>Timelocks</b><p>A window to exit before anything executes.</p></div><div><b>Treasury</b><p>Swaps, grants and payroll, executed as voted.</p></div><div><b>Guardians</b><p>A council can stop an attack, never a vote.</p></div></div></div><div class="l-fv l-fv-exec"><ol><li class="done"><i></i><b>Vote passed</b><span>61% for, Sunday 20:00</span></li><li class="now"><i></i><b>Timelock</b><span>31 of 48 hours</span><u><s style="width:64%"></s></u></li><li><i></i><b>Executes</b><span>Swap 20% of the treasury into ETH</span></li></ol></div></div></div>
+    </div>
+  </section>
+</div>
+
+<section class="l-stats rv">
+  <div class="lp-wrap">
+    <h2>Counting the votes protocols run on</h2>
+    <div class="l-stat-row">
+      <div class="l-stat"><canvas data-dots="0" aria-hidden="true"></canvas><b>4.1M votes</b><p>cast in the past 30 days, peaking at 40K an hour</p></div>
+      <div class="l-stat"><canvas data-dots="1" aria-hidden="true"></canvas><b>620 DAOs</b><p>governing on Pnyx</p></div>
+      <div class="l-stat"><canvas data-dots="2" aria-hidden="true"></canvas><b>$9.4B</b><p>in treasuries governed</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="lp-wrap">
+  <section class="l-quotes rv">
+    <div class="l-quote l-q1"><div class="l-q-who"><span class="l-q-logo" style="font-weight:700;letter-spacing:-0.03em">Lattice</span><span>Governance lead</span></div><div class="l-q-text"><p>We moved our whole treasury vote to Pnyx in a week. Turnout doubled, and nobody argued about the count.</p><a class="lbtn ghost dark" href="#">Read the story <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div>
+    <div class="l-quote l-q2"><div class="l-q-who"><span class="l-q-logo" style="font-weight:300;letter-spacing:0.08em;text-transform:uppercase;font-size:0.8em">Halcyon</span><span>Core contributor</span></div><div class="l-q-text"><p>The council lottery ended two years of the same five wallets deciding everything.</p><a class="lbtn ghost" href="#">Read the story <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div>
+  </section>
+</div>
+<section class="l-story rv"><div class="lp-wrap l-story-in"><a class="lbtn ghost dark" href="#">Read the story <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a><p>Meridian put its fee switch to a Pnyx vote and saw 3.4× the turnout of its last proposal.</p><span class="l-story-logo" style="font-weight:400;letter-spacing:0.02em">Meridian</span></div></section>
+
+<div class="lp-wrap">
+  <section class="l-code rv" id="developers">
+    <div class="l-code-l"><h2>Your first proposal is one call away</h2><div class="l-row"><a class="lbtn bone" href="#start">Start for free <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a><a class="lbtn ghost" href="#">Read the quickstart</a></div></div>
+    <div class="l-code-r"><canvas data-dots="3" aria-hidden="true"></canvas><div class="l-term-win"><div class="l-term-tabs"><button type="button" class="on" data-c="0">TypeScript</button><button type="button" class="" data-c="1">Python</button><button type="button" class="" data-c="2">CLI</button><button type="button" class="" data-c="3">Solidity</button></div><pre class="on" data-c="0"><code><span class="l-k">import</span> { Pnyx } <span class="l-k">from</span> <span class="l-s">"@pnyx/sdk"</span>
+
+<span class="l-k">const</span> pnyx = <span class="l-k">new</span> Pnyx({ chain: <span class="l-s">"ethereum"</span> })
+<span class="l-k">const</span> dao = <span class="l-k">await</span> pnyx.daos.create({ token: <span class="l-s">"0x7a…c41"</span>, quorum: <span class="l-n">0.04</span> })
+
+<span class="l-k">await</span> dao.proposals.create({
+  title: <span class="l-s">"Move 20% of the treasury into ETH"</span>,
+  window: <span class="l-s">"7d"</span>,
+})</code></pre><pre class="" data-c="1"><code><span class="l-k">from</span> pnyx <span class="l-k">import</span> Pnyx
+
+pnyx = Pnyx(chain=<span class="l-s">"ethereum"</span>)
+dao = pnyx.daos.create(token=<span class="l-s">"0x7a…c41"</span>, quorum=<span class="l-n">0.04</span>)
+
+dao.proposals.create(
+    title=<span class="l-s">"Move 20% of the treasury into ETH"</span>,
+    window=<span class="l-s">"7d"</span>,
+)</code></pre><pre class="" data-c="2"><code><span class="l-k">$</span> npm install -g pnyx
+<span class="l-k">$</span> pnyx login
+<span class="l-k">$</span> pnyx dao create --token 0x7a…c41 --quorum 4%
+<span class="l-k">$</span> pnyx propose <span class="l-s">"Move 20% of the treasury into ETH"</span> --window 7d</code></pre><pre class="" data-c="3"><code><span class="l-k">import</span> <span class="l-s">"@pnyx/contracts/Governed.sol"</span>;
+
+<span class="l-k">contract</span> Treasury <span class="l-k">is</span> Governed {
+    <span class="l-k">function</span> rebalance(<span class="l-k">uint</span> share) <span class="l-k">external</span> onlyPassed {
+        <span class="l-c">// runs only after a passed vote and its timelock</span>
+    }
+}</code></pre></div></div>
+  </section>
+
+  <section class="l-sec rv" id="security">
+    <div class="l-sec-l"><h2>Neutral needs guarantees</h2><p>Give your holders room to decide. Keep the protocol safe while they do.</p><div class="l-row"><a class="lbtn bone" href="#">Read the audits <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a><a class="lbtn ghost" href="#">Running a large DAO?</a></div></div>
+    <div class="l-sec-cards">
+      <div class="l-sc"><canvas data-art="rings" aria-hidden="true"></canvas><b>Audited</b><p>Contracts audited twice, with a standing bug bounty.</p></div>
+      <div class="l-sc"><canvas data-art="clock" aria-hidden="true"></canvas><b>Timelocks</b><p>Every passed vote waits before it runs, so anyone can exit first.</p></div>
+      <div class="l-sc"><canvas data-art="grid" aria-hidden="true"></canvas><b>Guardians</b><p>A council that can stop an attack, and can never cast a vote.</p></div>
+    </div>
+  </section>
+
+  <section class="l-start rv" id="start">
+    <div class="l-start-art"><canvas id="meander" aria-hidden="true"></canvas><div class="l-start-term"><b>Launch a DAO</b><pre><code><span class="l-k">$</span> npx pnyx init
+<span class="l-c">✓ token found on Ethereum</span>
+<span class="l-c">✓ quorum set to 4%</span>
+<span class="l-c">✓ council drawn: 9 seats</span>
+<span class="l-k">→</span> pnyx.gov/your-dao</code></pre></div></div>
+    <div class="l-start-r"><h2>Get started in minutes</h2><p>Point Pnyx at your token and your first vote can open today.</p><div class="l-row"><a class="lbtn ink" href="#">Launch a DAO <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a><a class="lbtn ghost dark" href="#">Sign in</a></div></div>
+  </section>
+
+  <footer class="lp-foot">
+    <div class="l-ft-top">
+      <span class="lockup big"><svg viewBox="0 0 1872 1872"><use href="#mark"/></svg>Pnyx</span>
+      <div class="l-ft-nav"><b>Navigation</b><div><a href="#product">Product</a><a href="#features">Features</a><a href="#developers">Developers</a><a href="#pricing">Pricing</a><a href="#security">Security</a><a href="#">About</a></div></div>
+      <div class="l-ft-soc"><b>Socials</b><div class="l-soc"><a href="#"><svg viewBox="0 0 24 24" aria-label="X"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="#"><svg viewBox="0 0 24 24" aria-label="Discord"><path fill="currentColor" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="#"><svg viewBox="0 0 24 24" aria-label="GitHub"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a></div><span>hello@pnyx.gov</span></div>
+    </div>
+    <form class="l-news" onsubmit="return false"><label for="em">Get the governance letter, once a month</label><div><input id="em" type="email" placeholder="Your email"><button class="lbtn bone" type="submit">Subscribe</button></div></form>
+    <div class="l-ft-legal"><span>© 2026 Pnyx</span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Audits</a><a href="#">Status</a></div>
+  </footer>
+</div>
+
+<script>
+const DPR = Math.min(2, window.devicePixelRatio || 1)
+const rand = (s) => () => ((s = (s * 16807) % 2147483647) / 2147483647)
+/* only touch the canvas buffer when its size really changed; reallocating it every tick is what made things stutter */
+function size(c) { const r = c.getBoundingClientRect(), w = Math.max(1, Math.round(r.width * DPR)), h = Math.max(1, Math.round(r.height * DPR)); if (c.width !== w) c.width = w; if (c.height !== h) c.height = h; return [w, h] }
+
+/* motion: every canvas is a scene that only runs while it's on screen.
+   Dots are drawn in batches (one path per brightness level), and physics runs on a fixed 60Hz step,
+   so it looks the same on a 60Hz laptop and a 120Hz phone. */
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches
+const scenes = []
+const scene = (c, init, frame) => { if (!c) return {}; const sc = { c, x: c.getContext("2d"), init, frame, vis: false, W: 1, H: 1 }; scenes.push(sc); return sc }
+const smooth = (k) => (k <= 0 ? 0 : k >= 1 ? 1 : k * k * (3 - 2 * k))
+const inout = (k) => (k <= 0 ? 0 : k >= 1 ? 1 : k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2)
+const LEVELS = 8
+const bins = () => Array.from({ length: LEVELS }, () => [])
+/* draw squares grouped by alpha level: one fill per level instead of one per dot */
+function flush(x, B, color, round) {
+  x.fillStyle = color
+  for (let l = 0; l < LEVELS; l++) {
+    const L = B[l]; if (!L.length) continue
+    x.globalAlpha = (l + 1) / LEVELS; x.beginPath()
+    if (round) for (let i = 0; i < L.length; i += 3) { x.moveTo(L[i] + L[i + 2], L[i + 1]); x.arc(L[i], L[i + 1], L[i + 2], 0, 6.2832) }
+    else for (let i = 0; i < L.length; i += 3) x.rect(L[i], L[i + 1], L[i + 2], L[i + 2])
+    x.fill(); L.length = 0
+  }
+  x.globalAlpha = 1
+}
+const lvl = (a) => Math.max(0, Math.min(LEVELS - 1, Math.round(a * LEVELS) - 1))
+
+/* ================= Pnyx: one-bit objects ================= */
+const BAYER = [0, 32, 8, 40, 2, 34, 10, 42, 48, 16, 56, 24, 50, 18, 58, 26, 12, 44, 4, 36, 14, 46, 6, 38, 60, 28, 52, 20, 62, 30, 54, 22, 3, 35, 11, 43, 1, 33, 9, 41, 51, 19, 59, 27, 49, 17, 57, 25, 15, 47, 7, 39, 13, 45, 5, 37, 63, 31, 55, 23, 61, 29, 53, 21].map((v) => (v + 0.5) / 64)
+const INK = [20, 18, 16], BONE = [242, 236, 225], CLAY = [227, 90, 43]
+const GREEK = "'Satoshi', 'Helvetica Neue', Arial, sans-serif"
+const MARK = { img: null }
+const markReady = new Promise((res) => { const im = new Image(); im.onload = () => { MARK.img = im; res() }; im.onerror = res; im.src = "/live/pnyx/mark.svg" })
+
+/* a coin face is a height map: white is raised. Blurred a little so every edge gets a bevel the light can catch */
+function boxBlur(src, N, r) {
+  const tmp = new Float32Array(N * N), out = new Float32Array(N * N), w = 2 * r + 1, at = (v) => Math.min(N - 1, Math.max(0, v))
+  for (let y = 0; y < N; y++) { let s = 0; for (let x = -r; x <= r; x++) s += src[y * N + at(x)]; for (let x = 0; x < N; x++) { tmp[y * N + x] = s / w; s += src[y * N + at(x + r + 1)] - src[y * N + at(x - r)] } }
+  for (let x = 0; x < N; x++) { let s = 0; for (let y = -r; y <= r; y++) s += tmp[at(y) * N + x]; for (let y = 0; y < N; y++) { out[y * N + x] = s / w; s += tmp[at(y + r + 1) * N + x] - tmp[at(y - r) * N + x] } }
+  return out
+}
+function face(draw) {
+  const N = 256, cv = document.createElement("canvas"); cv.width = cv.height = N
+  const g = cv.getContext("2d"); g.fillStyle = "#000"; g.fillRect(0, 0, N, N); g.fillStyle = g.strokeStyle = "#fff"; draw(g, N)
+  const d = g.getImageData(0, 0, N, N).data; let h = new Float32Array(N * N)
+  for (let i = 0; i < N * N; i++) h[i] = d[i * 4] / 255
+  h = boxBlur(boxBlur(h, N, 2), N, 1)
+  const gu = new Float32Array(N * N), gv = new Float32Array(N * N)
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) { const i = y * N + x; gu[i] = (h[y * N + Math.min(N - 1, x + 1)] - h[y * N + Math.max(0, x - 1)]) / 2; gv[i] = (h[Math.min(N - 1, y + 1) * N + x] - h[Math.max(0, y - 1) * N + x]) / 2 }
+  return { N, h, gu, gv }
+}
+const rim = (g, N, beads = 60) => { g.lineWidth = N * 0.05; g.beginPath(); g.arc(N / 2, N / 2, N * 0.47, 0, 6.2832); g.stroke(); for (let i = 0; i < beads; i++) { const a = (i / beads) * 6.2832; g.beginPath(); g.arc(N / 2 + Math.cos(a) * N * 0.405, N / 2 + Math.sin(a) * N * 0.405, N * 0.0115, 0, 6.2832); g.fill() } }
+const whiteMark = (N) => { const c = document.createElement("canvas"); c.width = c.height = N; const g = c.getContext("2d"); if (MARK.img) g.drawImage(MARK.img, 0, 0, N, N); g.globalCompositeOperation = "source-in"; g.fillStyle = "#fff"; g.fillRect(0, 0, N, N); return c }
+const fitText = (g, s, max, weight, size) => { g.font = `${weight} ${size}px ${GREEK}`; const w = g.measureText(s).width; if (w > max) g.font = `${weight} ${(size * max) / w}px ${GREEK}` }
+const FACES = {}
+const markFaces = () => FACES.m || (FACES.m = [
+  face((g, N) => { rim(g, N); g.drawImage(whiteMark(N), N * 0.2, N * 0.2, N * 0.6, N * 0.6) }),
+  face((g, N) => { rim(g, N); g.textAlign = "center"; g.textBaseline = "middle"; fitText(g, "ΠΝΥΞ", N * 0.6, 800, N * 0.2); g.fillText("ΠΝΥΞ", N / 2, N * 0.47); fitText(g, "ΨΗΦΟΣ ΔΗΜΟΣΙΑ", N * 0.5, 700, N * 0.06); g.fillText("ΨΗΦΟΣ ΔΗΜΟΣΙΑ", N / 2, N * 0.64); g.fillRect(N * 0.36, N * 0.325, N * 0.28, N * 0.012) })
+])
+/* the renderer: cast a ray through every cell at a disc that is yawed and pitched, shade what it hits
+   (faces from their height map, the rim with reeding), and leave the threshold to the Bayer matrix */
+const LIGHT = (() => { const v = [-0.48, 0.62, 0.62], l = Math.hypot(...v); return v.map((a) => a / l) })()
+function castCoin(buf, hit, cw, ch, o) {
+  const cyw = Math.cos(o.yaw), syw = Math.sin(o.yaw), cp = Math.cos(o.pitch), sp = Math.sin(o.pitch)
+  const R00 = cyw, R01 = syw * sp, R02 = syw * cp, R10 = 0, R11 = cp, R12 = -sp, R20 = -syw, R21 = cyw * sp, R22 = cyw * cp
+  const dlx = -R20, dly = -R21, dlz = -R22, Z0 = 4, h = o.thick || 0.075, S = o.relief, [F, B] = typeof o.faces === "function" ? o.faces() : o.faces, L = LIGHT, coinAlign = !!o.coinAlign
+  const x0 = Math.max(0, Math.floor(o.cx - o.r * 1.06)), x1 = Math.min(cw, Math.ceil(o.cx + o.r * 1.06)), y0 = Math.max(0, Math.floor(o.cy - o.r * 1.06)), y1 = Math.min(ch, Math.ceil(o.cy + o.r * 1.06))
+  for (let j = y0; j < y1; j++) {
+    const wy = -(j + 0.5 - o.cy) / o.r
+    for (let i = x0; i < x1; i++) {
+      const wx = (i + 0.5 - o.cx) / o.r, k = j * cw + i
+      if (wx * wx + wy * wy > 1.012) continue
+      const ox = R00 * wx + R10 * wy + R20 * Z0, oy = R01 * wx + R11 * wy + R21 * Z0, oz = R02 * wx + R12 * wy + R22 * Z0
+      let best = 1e9, kind = 0, px = 0, py = 0
+      if (Math.abs(dlz) > 1e-6) for (let s = 1; s >= -1; s -= 2) { const t = (s * h - oz) / dlz; if (t > 0 && t < best) { const x = ox + dlx * t, y = oy + dly * t; if (x * x + y * y <= 1) { best = t; kind = s; px = x; py = y } } }
+      const a = dlx * dlx + dly * dly
+      if (a > 1e-9) { const b = 2 * (ox * dlx + oy * dly), c = ox * ox + oy * oy - 1, disc = b * b - 4 * a * c; if (disc >= 0) { const t = (-b - Math.sqrt(disc)) / (2 * a); if (t > 0 && t < best && Math.abs(oz + dlz * t) <= h) { best = t; kind = 2; px = ox + dlx * t; py = oy + dly * t } } }
+      if (!kind) continue
+      let nx, ny, nz, alb = 0.8
+      if (kind === 2) { nx = px; ny = py; nz = 0 }
+      else {
+        const fc = kind === 1 ? F : B, N = fc.N
+        const u = kind === 1 || coinAlign ? (px + 1) * 0.5 : (1 - px) * 0.5, v = kind === -1 && coinAlign ? (1 + py) * 0.5 : (1 - py) * 0.5
+        const q = Math.min(N - 1, Math.max(0, (v * N) | 0)) * N + Math.min(N - 1, Math.max(0, (u * N) | 0)), gu = fc.gu[q] * S, gv = fc.gv[q] * S; alb = 0.5 + 0.62 * fc.h[q]
+        if (kind === 1) { nx = -gu; ny = gv; nz = 1 } else if (coinAlign) { nx = -gu; ny = -gv; nz = -1 } else { nx = gu; ny = gv; nz = -1 }
+      }
+      let wx2 = R00 * nx + R01 * ny + R02 * nz, wy2 = R10 * nx + R11 * ny + R12 * nz, wz2 = R20 * nx + R21 * ny + R22 * nz
+      const il = 1 / Math.hypot(wx2, wy2, wz2); wx2 *= il; wy2 *= il; wz2 *= il
+      const nl = wx2 * L[0] + wy2 * L[1] + wz2 * L[2]
+      let sh = (0.05 + 0.82 * Math.max(0, nl)) * alb
+      const rz = 2 * nl * wz2 - L[2]; if (rz > 0) sh += 0.55 * Math.pow(rz, 14)
+      if (kind === 2) sh *= Math.cos(Math.atan2(py, px) * 150) > 0 ? 1 : 0.4
+      buf[k] = Math.min(1, Math.max(0, (sh - 0.12) / 0.78)); hit[k] = 1
+    }
+  }
+}
+/* a canvas whose pixels are cells: a tiny buffer, threshold it, scale it up with no smoothing */
+function grid(sc, cellCss, smallCss) {
+  if (smallCss && sc.W / DPR < 520) cellCss = smallCss
+  const cell = Math.max(1, Math.round(cellCss * DPR)), cw = Math.ceil(sc.W / cell), ch = Math.ceil(sc.H / cell)
+  const lo = document.createElement("canvas"); lo.width = cw; lo.height = ch
+  const lx = lo.getContext("2d"), img = lx.createImageData(cw, ch)
+  Object.assign(sc, { cell, cw, ch, lo, lx, img, buf: new Float32Array(cw * ch), hit: new Uint8Array(cw * ch) })
+}
+function clearGrid(sc) { sc.buf.fill(0); sc.hit.fill(0) }
+/* mode "dark": ink where the coin is dark (black-figure on clay). "light": bone where it is lit (on black). Edges always drawn */
+function paint(sc, rgb, mode, extra) {
+  const { cw, ch, buf, hit, img } = sc, d = img.data
+  for (let j = 0; j < ch; j++) for (let i = 0; i < cw; i++) {
+    const k = j * cw + i, p = k * 4, th = BAYER[(j & 7) * 8 + (i & 7)]
+    let on = false
+    if (hit[k]) { const edge = !hit[k - 1] || !hit[k + 1] || !hit[k - cw] || !hit[k + cw]; on = edge || (mode === "dark" ? buf[k] < th : buf[k] > th) }
+    else if (extra) on = extra(i, j, th)
+    if (on) { d[p] = rgb[0]; d[p + 1] = rgb[1]; d[p + 2] = rgb[2]; d[p + 3] = 255 } else d[p + 3] = 0
+  }
+  sc.lx.putImageData(img, 0, 0)
+  sc.x.imageSmoothingEnabled = false; sc.x.clearRect(0, 0, sc.W, sc.H); sc.x.drawImage(sc.lo, 0, 0, sc.cw * sc.cell, sc.ch * sc.cell)
+}
+const easeOut = (k) => (k <= 0 ? 0 : k >= 1 ? 1 : 1 - Math.pow(1 - k, 3))
+
+/* a tossed coin: idles face-up with a slow sway, and every few seconds (or on click) flips end over end and lands heads or tails */
+function tossScene(c, host, { cellCss, rFrac, cyFrac, every, rgb, mode, faces, shadow }) {
+  const ptr = { x: 0, y: 0, tx: 0, ty: 0 }, st = { side: 0, t0: -1, from: 0, to: 0, next: 0, ask: false }
+  if (host) {
+    host.addEventListener("pointermove", (e) => { if (e.pointerType !== "mouse") return; const b = host.getBoundingClientRect(); ptr.tx = (e.clientX - b.left) / b.width - 0.5; ptr.ty = (e.clientY - b.top) / b.height - 0.5 })
+    host.addEventListener("pointerleave", () => { ptr.tx = ptr.ty = 0 })
+    host.addEventListener("pointerdown", () => { st.ask = true })
+  }
+  return scene(c, (sc) => { grid(sc, cellCss, cellCss * 0.75); sc.R = rand(9); sc.prev = 0 }, (sc, t) => {
+    const dt = sc.prev ? Math.min(64, t - sc.prev) : 16.67; sc.prev = t
+    ptr.x += (ptr.tx - ptr.x) * Math.min(1, dt / 220); ptr.y += (ptr.ty - ptr.y) * Math.min(1, dt / 220)
+    if (!st.next) st.next = t + every * 0.6
+    if ((t > st.next || st.ask) && st.t0 < 0) { st.ask = false; st.t0 = t; st.from = st.side * Math.PI; const land = sc.R() < 0.5 ? 0 : 1; st.to = st.from + Math.PI * 2 * 3 + (land !== st.side ? Math.PI : 0); st.side = land }
+    let pitch = st.side * Math.PI, lift = 0
+    if (st.t0 >= 0) { const e = (t - st.t0) / 1500; if (e >= 1) { st.t0 = -1; st.next = t + every } else { pitch = st.from + (st.to - st.from) * easeOut(e); lift = Math.sin(Math.PI * Math.min(1, e * 1.15)) } }
+    const yaw = 0.38 * Math.sin(t * 0.00052) + ptr.x * 0.9, sway = 0.16 * Math.sin(t * 0.00041) - ptr.y * 0.7
+    const r = Math.min(sc.cw, sc.ch) * rFrac * (1 + lift * 0.1), cx = sc.cw / 2, cy = sc.ch * cyFrac - lift * r * 0.36
+    clearGrid(sc)
+    castCoin(sc.buf, sc.hit, sc.cw, sc.ch, { cx, cy, r, yaw, pitch: pitch + sway, faces: faces(), relief: 9, coinAlign: true })
+    const sy = sc.ch * cyFrac + r * 1.16, srx = r * 0.92 * (1 - lift * 0.35), sry = r * 0.14 * (1 - lift * 0.35)
+    paint(sc, rgb, mode, shadow ? (i, j, th) => { const dx = (i + 0.5 - cx) / srx, dy = (j + 0.5 - sy) / sry, q = dx * dx + dy * dy; return q < 1 && (1 - q) * 0.62 * (1 - lift * 0.5) > th } : null)
+  })
+}
+
+/* ================= the objects of the agora: one renderer each ================= */
+const DUSK = [42, 39, 36], CLAY2 = [207, 76, 31], DUSK2 = [51, 48, 44], BONE2 = [233, 225, 211]
+const PAL = [null, INK, CLAY, BONE, DUSK, CLAY2]
+const fract = (v) => v - Math.floor(v)
+const thr = (i, j) => BAYER[(j & 7) * 8 + (i & 7)]
+const h2 = (x, y) => { let n = (Math.imul(x | 0, 374761393) + Math.imul(y | 0, 668265263)) | 0; n = Math.imul(n ^ (n >>> 13), 1274126177); return ((n ^ (n >>> 16)) >>> 0) / 4294967296 }
+const vnoise = (x, y) => { const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi, u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf); return (h2(xi, yi) * (1 - u) + h2(xi + 1, yi) * u) * (1 - v) + (h2(xi, yi + 1) * (1 - u) + h2(xi + 1, yi + 1) * u) * v }
+const norm3 = (x, y, z) => { const l = Math.hypot(x, y, z); return [x / l, y / l, z / l] }
+/* a buffer of colour indices becomes the low-res image, then the canvas, unsmoothed */
+function blitIdx(sc, col) {
+  const d = sc.img.data
+  for (let k = 0, p = 0; k < col.length; k++, p += 4) { const c = PAL[col[k]]; if (c) { d[p] = c[0]; d[p + 1] = c[1]; d[p + 2] = c[2]; d[p + 3] = 255 } else d[p + 3] = 0 }
+  sc.lx.putImageData(sc.img, 0, 0); const x = sc.x; x.imageSmoothingEnabled = false; x.clearRect(0, 0, sc.W, sc.H); x.drawImage(sc.lo, 0, 0, sc.cw * sc.cell, sc.ch * sc.cell)
+}
+/* a pot's profile: radius by height, both in pot heights, smoothed through the points */
+function profile(pts, n = 1024) {
+  const r = new Float32Array(n + 1), dr = new Float32Array(n + 1)
+  const m = pts.map((p, k) => { const a = pts[Math.max(0, k - 1)], b = pts[Math.min(pts.length - 1, k + 1)]; return (b[1] - a[1]) / (b[0] - a[0]) })
+  let s = 0
+  for (let i = 0; i <= n; i++) {
+    const y = i / n; while (s < pts.length - 2 && y > pts[s + 1][0]) s++
+    const [y0, r0] = pts[s], [y1, r1] = pts[s + 1], h = y1 - y0, u = Math.min(1, Math.max(0, (y - y0) / h)), u2 = u * u, u3 = u2 * u
+    r[i] = (2 * u3 - 3 * u2 + 1) * r0 + (u3 - 2 * u2 + u) * h * m[s] + (-2 * u3 + 3 * u2) * r1 + (u3 - u2) * h * m[s + 1]
+  }
+  for (let i = 0; i <= n; i++) { const a = Math.max(0, i - 1), b = Math.min(n, i + 1); dr[i] = (r[b] - r[a]) / ((b - a) / n) }
+  return { n, r, dr }
+}
+const bez = (a, b, c, d, t) => { const s = 1 - t; return s * s * s * a + 3 * s * s * t * b + 3 * s * t * t * c + t * t * t * d }
+
+/* ---------- the kleroterion: tickets go into the slab, balls go down the tube, a white ball chooses its row ---------- */
+const TRIBES = "ΑΒΓΔΕΖΗΘΙΚΛ"
+scene(document.getElementById("kler"), (sc) => {
+  grid(sc, 3, 2.5); const { cw, ch } = sc, narrow = sc.W / DPR < 620
+  const C = narrow ? 5 : 11, Rn = narrow ? 10 : 8, pad = narrow ? 5 : 7, padT = narrow ? 15 : 19, tubeW = narrow ? 8 : 10, gapT = narrow ? 6 : 9
+  const rowH = Math.floor((ch * (narrow ? 0.76 : 0.74) - pad - padT) / Rn), slotH = Math.max(4, Math.round(rowH * 0.46))
+  const colW = Math.floor((cw * (narrow ? 0.86 : 0.8) - pad * 2 - tubeW - gapT) / C), slotW = colW - Math.max(4, Math.round(colW * 0.26))
+  const slabW = pad + tubeW + gapT + (C - 1) * colW + slotW + pad, slabH = padT + (Rn - 1) * rowH + slotH + pad
+  const x0 = Math.round((cw - slabW) / 2), y0 = Math.round((ch - slabH) / 2 + ch * 0.04), gx = x0 + pad + tubeW + gapT, gy = y0 + padT
+  Object.assign(sc, { C, Rn, rowH, slotH, colW, slotW, slabW, slabH, x0, y0, gx, gy, tubeX: x0 + pad, tubeW, col: new Uint8Array(cw * ch) })
+  /* the stone, once: grain, a lit edge, carved holes with a lit lip, and the tribe letters cut above the columns */
+  const base = new Uint8Array(cw * ch), m = document.createElement("canvas"); m.width = cw; m.height = ch
+  const g = m.getContext("2d"); g.fillStyle = "#fff"; g.textAlign = "center"; g.textBaseline = "middle"; g.font = `800 ${Math.round(padT * 0.6)}px ${GREEK}`
+  for (let q = 0; q < C; q++) g.fillText(TRIBES[q], gx + q * colW + slotW / 2, y0 + padT * 0.5)
+  const md = g.getImageData(0, 0, cw, ch).data
+  for (let j = y0; j < y0 + slabH; j++) for (let i = x0; i < x0 + slabW; i++) {
+    const k = j * cw + i, edge = i === x0 || j === y0 || i === x0 + slabW - 1 || j === y0 + slabH - 1
+    const v = 0.03 + 0.3 * vnoise(i * 0.11, j * 0.11) + 0.12 * vnoise(i * 0.43 + 50, j * 0.43)
+    base[k] = edge || md[k * 4 + 3] > 90 || v > thr(i, j) ? 3 : 0
+  }
+  for (let r = 0; r < Rn; r++) for (let q = 0; q < C; q++) { const sx = gx + q * colW, sy = gy + r * rowH
+    for (let j = sy; j < sy + slotH; j++) for (let i = sx; i < sx + slotW; i++) base[j * cw + i] = 0
+    for (let i = sx; i < sx + slotW; i++) base[(sy + slotH) * cw + i] = 3 }
+  const tb = gy + (Rn - 1) * rowH + slotH + 1
+  for (let j = y0 - 12; j <= tb; j++) for (let i = sc.tubeX - 6; i < sc.tubeX + tubeW + 6; i++) {
+    if (i < 0 || j < 0 || i >= cw || j >= ch) continue
+    const k = j * cw + i, flare = Math.max(0, y0 - 4 - j), L = sc.tubeX - flare, Rr = sc.tubeX + tubeW - 1 + flare
+    if (i < L || i > Rr) continue
+    base[k] = i === L || i === Rr || j === tb ? 3 : 0
+  }
+  sc.base = base
+}, (sc, t) => {
+  const { cw, ch, col, base, C, Rn, rowH, slotH, colW, slotW, gx, gy, y0, tubeX, tubeW } = sc
+  const cyc = 12500, n = Math.floor(t / cyc), ph = t % cyc, R = rand(1 + ((n * 7919) % 100000))
+  const occ = [], dly = [], white = []
+  for (let k = 0; k < Rn * C; k++) { occ.push(R() > 0.13); dly.push(R() * 2300) }
+  for (let r = 0; r < Rn; r++) white.push(R() < 0.36)
+  if (white.filter(Boolean).length < 2) { white[1] = true; white[Rn - 3] = true }
+  col.set(base)
+  const clear = (ph - 10700) / 700, gone = (i, j) => clear > 0 && thr(i, j) < clear
+  for (let r = 0; r < Rn; r++) {
+    const vt = 5900 + r * 300, kv = (ph - vt) / 320, sy = gy + r * rowH
+    for (let q = 0; q < C; q++) {
+      const id = r * C + q; if (!occ[id]) continue
+      const ein = (ph - dly[id]) / 300; if (ein <= 0) continue
+      const sx = gx + q * colW, off = Math.round((1 - easeOut(ein)) * slotW) + (!white[r] && kv > 0 ? Math.round(Math.min(1, kv) ** 2 * slotW) : 0)
+      for (let j = sy + 1; j < sy + slotH - 1; j++) for (let i = sx + 1 + off; i < sx + slotW - 1 + off; i++) {
+        if (i >= sx + slotW - 1 || gone(i, j)) continue
+        const k = j * cw + i, name = j === sy + (slotH >> 1) && i > sx + 2 + off && i < sx + slotW - 3 + off && h2(i - off + id * 13, r) > 0.42
+        col[k] = name ? 1 : white[r] && kv > 0 && thr(i, j) < kv ? 2 : 3
+      }
+    }
+  }
+  /* the balls: dropped in one by one, they stack from the bottom, one beside each row */
+  const br = Math.min(tubeW / 2 - 1.4, rowH * 0.42), tcx = tubeX + tubeW / 2
+  for (let b = 0; b < Rn; b++) {
+    const r = Rn - 1 - b, s0 = 2700 + b * 260, e = (ph - s0) / 420; if (e <= 0) continue
+    const rest = gy + r * rowH + slotH / 2, from = y0 - 12, yy = e >= 1 ? rest : from + (rest - from) * e * e, chosen = white[r] && ph > 5900 + r * 300
+    for (let j = Math.floor(yy - br); j <= Math.ceil(yy + br); j++) for (let i = Math.floor(tcx - br); i <= Math.ceil(tcx + br); i++) {
+      if (i < 0 || j < 0 || i >= cw || j >= ch || gone(i, j)) continue
+      const d = Math.hypot(i + 0.5 - tcx, j + 0.5 - yy); if (d > br) continue
+      col[j * cw + i] = white[r] ? (chosen ? 2 : 3) : d > br - 1.1 ? 3 : 1
+    }
+  }
+  blitIdx(sc, col)
+})
+
+/* ---------- poster: the stoa. A colonnade raycast cell by cell from outside; the sun moves and the column shadows sweep the floor inside ---------- */
+document.querySelectorAll('[data-poster="stoa"]').forEach((c) => scene(c, (sc) => { grid(sc, 2, 1.75); sc.col = new Uint8Array(sc.cw * sc.ch) }, (sc, t) => {
+  const { cw, ch, col } = sc, S = norm3(0.8, 0.75, -0.4 + 0.3 * Math.sin(t * 0.00026))
+  const Ex = 2.4, Ey = 0.1, Ez = -1.2, F = norm3(-0.48, 0.1, 1), Rt = norm3(F[2], 0, -F[0]), U = [F[1] * Rt[2] - F[2] * Rt[1], F[2] * Rt[0] - F[0] * Rt[2], F[0] * Rt[1] - F[1] * Rt[0]]
+  const CR = 0.25, DZ = 1.15, NC = 48, CAP = 1.85, ROOF = 2.35, EN = 0.32, WALL = -2.8, STEP = 0.4, f = ch * 0.75, ocx = cw * 0.5, ocy = ch * 0.42
+  const colHit = (ox, oz, dx, dz, q) => { if (q < 0 || q >= NC) return -1; const pz = oz - q * DZ, a = dx * dx + dz * dz, b = 2 * (ox * dx + pz * dz), cc = ox * ox + pz * pz - CR * CR, disc = b * b - 4 * a * cc; if (disc < 0) return -1; const tt = (-b - Math.sqrt(disc)) / (2 * a); return tt > 1e-4 ? tt : -1 }
+  for (let j = 0; j < ch; j++) {
+    const fade = Math.max(smooth((ch * 0.17 - j) / (ch * 0.12)), smooth((j - ch * 0.5) / (ch * 0.1)))
+    for (let i = 0; i < cw; i++) {
+      const k = j * cw + i; if (fade >= 1) { col[k] = 0; continue }
+      const u = (i + 0.5 - ocx) / f, v = (ocy - j - 0.5) / f, [dx, dy, dz] = norm3(F[0] + Rt[0] * u + U[0] * v, F[1] + Rt[1] * u + U[1] * v, F[2] + Rt[2] * u + U[2] * v)
+      let tb = 1e9, kind = 0, cq = 0
+      if (dy < 0) { const t1 = (-1 - Ey) / dy; if (Ex + dx * t1 < STEP) { tb = t1; kind = 1 } else { const t2 = (-1.3 - Ey) / dy; if (Ex + dx * t2 >= STEP) { tb = t2; kind = 7 } else { tb = (STEP - Ex) / dx; kind = 8 } } }
+      if (dx < 0) { const tt = (WALL - Ex) / dx, yh = Ey + dy * tt; if (tt < tb && yh > -1 && yh < ROOF) { tb = tt; kind = 3 } }
+      if (dy > 0) { const tt = (ROOF - Ey) / dy, xh = Ex + dx * tt; if (tt < tb && xh > WALL && xh < EN) { tb = tt; kind = 2 } }
+      if (dy > 0) { const tt = (CAP - Ey) / dy, xh = Ex + dx * tt; if (tt < tb && xh > -EN && xh < EN) { tb = tt; kind = 4 } }
+      if (dx < 0) { const tt = (EN - Ex) / dx, yh = Ey + dy * tt; if (tt < tb && yh > CAP && yh < ROOF) { tb = tt; kind = 5 } }
+      if (dx < 0) { const zx = Ez + (dz * (0 - Ex)) / dx, q0 = Math.round(zx / DZ); for (let q = q0 - 2; q <= q0 + 2; q++) { const tt = colHit(Ex, Ez, dx, dz, q); if (tt > 0 && tt < tb) { const yh = Ey + dy * tt; if (yh > -1 && yh < CAP) { tb = tt; kind = 6; cq = q } } } }
+      let lum = 1
+      if (kind) {
+        const px = Ex + dx * tb, py = Ey + dy * tb, pz = Ez + dz * tb
+        let nx = 0, ny = 0, nz = 0, alb = 0.85
+        if (kind === 1 || kind === 7) { ny = 1; alb = Math.abs(fract(pz * 0.8) - 0.5) > 0.47 || Math.abs(fract(px * 0.8) - 0.5) > 0.47 ? 0.6 : 0.9 }
+        else if (kind === 2 || kind === 4) { ny = -1; alb = 0.5 } else if (kind === 3) { nx = 1; alb = 0.8 } else if (kind === 5 || kind === 8) { nx = 1; alb = kind === 5 ? (Math.abs(fract(pz * 1.6) - 0.5) > 0.42 && py > 2.08 ? 0.55 : 0.92) : 0.7 }
+        else { const ax = px / CR, az = (pz - cq * DZ) / CR, fl = 0.22 * Math.sin(Math.atan2(az, ax) * 16); [nx, ny, nz] = norm3(ax - az * fl, 0, az + ax * fl); alb = 0.95 }
+        const ns = nx * S[0] + ny * S[1] + nz * S[2]
+        let vis = ns > 0 ? 1 : 0
+        if (vis && px < EN && py < ROOF - 1e-3) { const tr = (ROOF - py) / S[1]; if (px + S[0] * tr < EN) vis = 0 }
+        if (vis && py < CAP) { const tr = (CAP - py) / S[1], xh = px + S[0] * tr; if (xh > -EN && xh < EN) vis = 0 }
+        if (vis && px < -CR) { const tc = -px / S[0], q0 = Math.round((pz + S[2] * tc) / DZ); for (let q = q0 - 1; q <= q0 + 1 && vis; q++) { const tt = colHit(px, pz, S[0], S[2], q); if (tt > 0 && py + S[1] * tt < CAP) vis = 0 } }
+        lum = Math.min(1, alb * (0.14 + 1.35 * Math.max(0, ns) * vis))
+        lum += (0.5 - lum) * Math.min(1, tb / 90)
+      }
+      lum += (1 - lum) * fade
+      col[k] = lum < thr(i, j) ? 1 : 0
+    }
+  }
+  blitIdx(sc, col)
+}))
+
+/* ---------- poster: ostraca. A glazed plate breaks into shards and comes back together; the mark only reads when it is whole ---------- */
+function ostracaMap() {
+  const N = 240, R = rand(5), seeds = []
+  for (let s = 0; s < 15; s++) { const a = R() * 6.2832, r = Math.sqrt(R()) * 0.9; seeds.push([Math.cos(a) * r, Math.sin(a) * r]) }
+  const id = new Int8Array(N * N).fill(-1), gl = new Uint8Array(N * N)
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    const px = ((x + 0.5) / N) * 2 - 1, py = ((y + 0.5) / N) * 2 - 1; if (px * px + py * py > 1) continue
+    const qx = px + 0.07 * (vnoise(px * 7 + 10, py * 7) - 0.5), qy = py + 0.07 * (vnoise(px * 7, py * 7 + 20) - 0.5)
+    let b = 0, bd = 1e9; for (let s = 0; s < seeds.length; s++) { const d = (qx - seeds[s][0]) ** 2 + (qy - seeds[s][1]) ** 2; if (d < bd) { bd = d; b = s } }
+    id[y * N + x] = b
+  }
+  const crack = new Uint8Array(N * N)
+  for (let y = 2; y < N - 2; y++) for (let x = 2; x < N - 2; x++) { const k = y * N + x, v = id[k]; if (v < 0) continue; if (id[k - 2] !== v && id[k - 2] >= 0 || id[k + 2] !== v && id[k + 2] >= 0 || id[k - 2 * N] !== v && id[k - 2 * N] >= 0 || id[k + 2 * N] !== v && id[k + 2 * N] >= 0) crack[k] = 1 }
+  const cv = document.createElement("canvas"); cv.width = cv.height = N; const g = cv.getContext("2d")
+  g.strokeStyle = g.fillStyle = "#fff"; g.lineWidth = N * 0.045; g.beginPath(); g.arc(N / 2, N / 2, N * 0.43, 0, 6.2832); g.stroke()
+  g.lineWidth = N * 0.012; g.beginPath(); g.arc(N / 2, N / 2, N * 0.365, 0, 6.2832); g.stroke()
+  if (MARK.img) g.drawImage(whiteMark(N), N * 0.2, N * 0.2, N * 0.6, N * 0.6)
+  const d = g.getImageData(0, 0, N, N).data; for (let i = 0; i < N * N; i++) gl[i] = d[i * 4] > 120 ? 1 : 0
+  const sh = seeds.map(() => ({ x: 0, y: 0, n: 0, rad: 0 }))
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) { const v = id[y * N + x]; if (v < 0) continue; const o = sh[v]; o.x += ((x + 0.5) / N) * 2 - 1; o.y += ((y + 0.5) / N) * 2 - 1; o.n++ }
+  sh.forEach((o) => { o.x /= o.n || 1; o.y /= o.n || 1 })
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) { const v = id[y * N + x]; if (v < 0) continue; const o = sh[v]; o.rad = Math.max(o.rad, Math.hypot(((x + 0.5) / N) * 2 - 1 - o.x, ((y + 0.5) / N) * 2 - 1 - o.y)) }
+  sh.forEach((o, s) => { const a = Math.atan2(o.y, o.x) + (R() - 0.5) * 0.8, dist = 0.55 + R() * 0.55; o.ox = Math.cos(a) * dist; o.oy = Math.sin(a) * dist * 0.85; o.a0 = (R() - 0.5) * 1.8; o.tx = (R() - 0.5) * 1.4; o.ty = (R() - 0.5) * 1.4; o.din = R() * 700; o.dout = R() * 500; o.ph = R() * 6.28 })
+  return { N, id, gl, crack, sh, mark: !!MARK.img }
+}
+document.querySelectorAll('[data-poster="ostraca"]').forEach((c) => scene(c, (sc) => { grid(sc, 2.5, 2); sc.col = new Uint8Array(sc.cw * sc.ch); sc.sid = new Int8Array(sc.cw * sc.ch) }, (sc, t) => {
+  if (!sc.D || (MARK.img && !sc.D.mark)) sc.D = ostracaMap()
+  const { cw, ch, col, sid } = sc, { N, id, gl, crack, sh } = sc.D, ph = t % 10000, pr = Math.min(cw * 0.36, ch * 0.27), CXp = cw * 0.5, CYp = ch * 0.38, L = norm3(-0.5, 0.6, 0.65)
+  col.fill(0); sid.fill(-1)
+  const T = sh.map((o, s) => {
+    const a = ph < 6000 ? easeOut((ph - o.din) / 1700) : 1 - inout((ph - 6000 - o.dout) / 1900), fl = 1 - a, drift = 0.05 * Math.sin(t * 0.0007 + o.ph)
+    const ang = fl * (o.a0 + 0.2 * Math.sin(t * 0.0005 + o.ph)), px = o.x + fl * (o.ox + drift), py = o.y + fl * (o.oy + drift * 0.6)
+    return { a, cs: Math.cos(ang), sn: Math.sin(ang), px, py, scx: CXp + px * pr, scy: CYp + py * pr, rr: (o.rad + 0.02) * pr, tx: o.tx * fl, ty: o.ty * fl }
+  })
+  for (let j = 0; j < ch; j++) for (let i = 0; i < cw; i++) {
+    for (let s = 0; s < sh.length; s++) {
+      const q = T[s], ex = i + 0.5 - q.scx, ey = j + 0.5 - q.scy; if (ex * ex + ey * ey > q.rr * q.rr) continue
+      const lx = ex / pr, ly = ey / pr, ux = q.cs * lx + q.sn * ly + sh[s].x, uy = -q.sn * lx + q.cs * ly + sh[s].y
+      const mx = ((ux + 1) / 2) * N | 0, my = ((uy + 1) / 2) * N | 0; if (mx < 0 || my < 0 || mx >= N || my >= N) continue
+      const m = my * N + mx; if (id[m] !== s) continue
+      const k = j * cw + i; sid[k] = s
+      if (q.a > 0.97 && crack[m]) { col[k] = 0; break }
+      const [nx, ny, nz] = norm3(q.tx + ux * 0.28, q.ty - uy * 0.28, 1), nl = nx * L[0] + ny * L[1] + nz * L[2], rz = Math.max(0, 2 * nl * nz - L[2])
+      col[k] = gl[m] ? 0 : 0.3 + 0.75 * Math.max(0, nl) > thr(i, j) ? 2 : 0
+      break
+    }
+  }
+  for (let j = 1; j < ch - 1; j++) for (let i = 1; i < cw - 1; i++) { const k = j * cw + i; if (sid[k] >= 0 && (sid[k - 1] < 0 || sid[k + 1] < 0 || sid[k - cw] < 0 || sid[k + cw] < 0)) col[k] = 2 }
+  blitIdx(sc, col)
+}))
+
+/* the three cards: a ballot each, bone on black glaze, tossed out of step */
+document.querySelectorAll("[data-coin]").forEach((c, i) => tossScene(c, c.parentElement, { cellCss: 2.5, rFrac: 0.4, cyFrac: 0.5, every: 5200, rgb: BONE, mode: "light", faces: markFaces, shadow: false }))
+
+
+/* deck: one-bit scenes drawn in grey on the low-res grid, then thresholded through the Bayer matrix.
+   Red carries bone, green carries clay, so a scene can use both glazes */
+function bitScene(c, cellCss, draw) {
+  scene(c, (sc) => { grid(sc, cellCss, cellCss * 0.8) }, (sc, t) => {
+    const { lx, cw, ch } = sc; lx.globalCompositeOperation = "source-over"; lx.fillStyle = "#000"; lx.fillRect(0, 0, cw, ch); lx.globalCompositeOperation = "lighter"
+    draw(lx, cw, ch, t, sc)
+    const src = lx.getImageData(0, 0, cw, ch), d = src.data, out = sc.img.data
+    for (let j = 0; j < ch; j++) for (let i = 0; i < cw; i++) { const k = (j * cw + i) * 4, th = BAYER[(j & 7) * 8 + (i & 7)], cl = d[k + 1] / 255, bn = d[k] / 255
+      const col = cl > th ? CLAY : bn > th ? BONE : null
+      if (col) { out[k] = col[0]; out[k + 1] = col[1]; out[k + 2] = col[2]; out[k + 3] = 255 } else out[k + 3] = 0 }
+    lx.globalCompositeOperation = "source-over"; lx.putImageData(sc.img, 0, 0)
+    const x = sc.x; x.imageSmoothingEnabled = false; x.clearRect(0, 0, sc.W, sc.H); x.drawImage(sc.lo, 0, 0, cw * sc.cell, ch * sc.cell)
+  })
+}
+const grey = (v) => `rgb(${Math.round(v * 255)},0,0)`, clayG = (v) => `rgb(0,${Math.round(v * 255)},0)`
+/* slide 3: the assembly. Seats in rings round the speaker's stone; votes arrive seat by seat, for in clay, against in bone */
+{ const c = document.getElementById("seats")
+  if (c) bitScene(c, 3, (g, cw, ch, t) => {
+    const cx = cw / 2, cy = ch * 0.84, P = 9000, ph = (t % P) / P, R = rand(7)
+    const rows = 7, r0 = ch * 0.2, dr = ch * 0.085
+    let n = 0
+    for (let r = 0; r < rows; r++) { const rad = r0 + r * dr, seats = Math.round(9 + r * 3.2)
+      for (let s = 0; s < seats; s++) { const a = Math.PI + (Math.PI * (s + 0.5)) / seats, x = cx + Math.cos(a) * rad * 1.55, y = cy + Math.sin(a) * rad, v = R(), when = R() * 0.62
+        const cast = ph > when && ph < 0.94, sz = Math.max(1.6, dr * 0.3)
+        g.fillStyle = cast ? (v < 0.61 ? clayG(1) : grey(1)) : grey(0.32); g.beginPath(); g.arc(x, y, sz, 0, 6.2832); g.fill(); n++ } }
+    /* the bema: a stepped stone, lit from the left */
+    const bw = cw * 0.12, bh = ch * 0.07; for (let k = 0; k < 3; k++) { const w = bw * (1 - k * 0.22), gr = g.createLinearGradient(cx - w / 2, 0, cx + w / 2, 0); gr.addColorStop(0, grey(0.95)); gr.addColorStop(1, grey(0.35)); g.fillStyle = gr; g.fillRect(cx - w / 2, cy - k * bh * 0.5, w, bh * 0.5) }
+    if (MARK.img) { const m = ch * 0.16; g.globalCompositeOperation = "source-over"; const tmp = whiteMark(256); g.save(); g.globalCompositeOperation = "lighter"; g.filter = "none"
+      const off = document.createElement("canvas"); off.width = off.height = 256; const ox = off.getContext("2d"); ox.drawImage(tmp, 0, 0); ox.globalCompositeOperation = "source-in"; ox.fillStyle = clayG(1); ox.fillRect(0, 0, 256, 256)
+      g.drawImage(off, cx - m / 2, cy - bh * 1.1 - m, m, m); g.restore() }
+  }) }
+/* card: propose. A stone tablet, lit from the upper left, with a proposal cut into it line by line */
+document.querySelectorAll('[data-bit="tablet"]').forEach((c) => bitScene(c, 2.5, (g, cw, ch, t) => {
+  const w = cw * 0.62, h = ch * 0.8, x0 = (cw - w) / 2, y0 = (ch - h) / 2, P = 7000, ph = (t % P) / P
+  const gr = g.createLinearGradient(x0, y0, x0 + w, y0 + h); gr.addColorStop(0, grey(0.92)); gr.addColorStop(1, grey(0.28)); g.fillStyle = gr; g.fillRect(x0, y0, w, h)
+  g.fillStyle = grey(0.6); g.fillRect(x0 - 2, y0 - 3, w + 4, 3)
+  const lines = 7, lh = h / (lines + 2), R = rand(3), shown = ph * lines * 1.25
+  g.globalCompositeOperation = "source-over"
+  for (let l = 0; l < lines; l++) { let x = x0 + w * 0.12; const y = y0 + lh * (l + 1.4), end = x0 + w * (l === lines - 1 ? 0.55 : 0.88)
+    const upto = x0 + w * 0.12 + (end - x0 - w * 0.12) * Math.max(0, Math.min(1, shown - l))
+    while (x < upto) { const wd = 2 + Math.floor(R() * 5); g.fillStyle = "#000"; g.fillRect(Math.round(x), Math.round(y), Math.min(wd, upto - x), Math.max(1.5, lh * 0.32)); x += wd + 2 } }
+}))
+/* card: execute. The balance tips, swings and settles level: the result, final */
+document.querySelectorAll('[data-bit="balance"]').forEach((c) => bitScene(c, 2.5, (g, cw, ch, t) => {
+  const P = 7000, ph = (t % P) / 1000, ang = 0.32 * Math.exp(-ph * 0.9) * Math.cos(ph * 3.2), cx = cw / 2, top = ch * 0.3, arm = cw * 0.34
+  const post = g.createLinearGradient(cx - 3, 0, cx + 3, 0); post.addColorStop(0, grey(1)); post.addColorStop(1, grey(0.45)); g.fillStyle = post; g.fillRect(cx - 2, top, 4, ch * 0.5); g.fillRect(cx - cw * 0.16, top + ch * 0.5, cw * 0.32, 3)
+  g.save(); g.translate(cx, top); g.rotate(ang); g.fillStyle = grey(0.95); g.fillRect(-arm, -1.5, arm * 2, 3); g.restore()
+  g.fillStyle = clayG(1); g.beginPath(); g.arc(cx, top, 3.2, 0, 6.2832); g.fill()
+  for (const s of [-1, 1]) { const ex = cx + Math.cos(ang) * arm * s, ey = top + Math.sin(ang) * arm * s, py = ey + ch * 0.26
+    g.fillStyle = grey(0.7); g.fillRect(ex - 0.5, ey, 1, py - ey)
+    const pan = g.createLinearGradient(ex - cw * 0.1, 0, ex + cw * 0.1, 0); pan.addColorStop(0, grey(1)); pan.addColorStop(1, grey(0.3)); g.fillStyle = pan
+    g.beginPath(); g.moveTo(ex - cw * 0.1, py); g.lineTo(ex + cw * 0.1, py); g.lineTo(ex + cw * 0.07, py + ch * 0.04); g.lineTo(ex - cw * 0.07, py + ch * 0.04); g.fill() }
+}))
+
+/* closing slide: a Greek key runs round the frame, the border of every Attic pot, never ending */
+{ const c = document.getElementById("meander")
+  if (c) bitScene(c, 2.5, (g, cw, ch, t) => {
+    const u = Math.max(3, Math.round(ch * 0.03)), band = u * 5, off = (t * 0.012) % (u * 6)
+    const key = (x0, y0, flip) => { const P = [[0, 4], [0, 0], [4, 0], [4, 3], [2, 3], [2, 2]], Y = (y) => (flip ? 4 - y : y)
+      g.beginPath(); P.forEach(([a, b], i) => g[i ? "lineTo" : "moveTo"](x0 + a * u, y0 + Y(b) * u)); g.lineTo(x0 + 2 * u, y0 + Y(2) * u); g.moveTo(x0, y0 + Y(4) * u); g.lineTo(x0 + 6 * u, y0 + Y(4) * u); g.stroke() }
+    g.strokeStyle = clayG(1); g.lineWidth = u * 0.9; g.lineCap = "square"
+    for (let x = -u * 6 + off; x < cw + u * 6; x += u * 6) { key(x, u * 1.5, false); key(cw - x - u * 6, ch - band - u * 0.5, true) }
+  }) }
+
+/* the floor: three Athenian ballots (solid hub for, hollow hub against, a blank shard to abstain), a one-bit tally, the council seated, hold to sign */
+{
+  const root = document.querySelector(".fl")
+  if (root) {
+    const opts = root.querySelectorAll(".fl-ballot button")
+    let pick = "for"
+    opts.forEach((b) => b.addEventListener("click", () => { opts.forEach((x) => { x.classList.toggle("on", x === b); x.setAttribute("aria-checked", x === b) }); pick = b.querySelector("canvas").dataset.fl }))
+    const props = root.querySelectorAll(".fl-props button")
+    props.forEach((b) => b.addEventListener("click", () => props.forEach((x) => x.classList.toggle("on", x === b))))
+    /* a ballot, edge-on in the light: bronze disc with its axle; selected ones are cast in clay */
+    root.querySelectorAll("[data-fl]").forEach((c) => { const kind = c.dataset.fl
+      bitScene(c, 2.5, (g, cw, ch, t) => {
+        const on = pick === kind, col = on ? clayG : grey, cx = cw / 2, cy = ch / 2, r = ch * 0.36, sway = Math.sin(t * 0.0012 + (kind === "for" ? 0 : kind === "against" ? 2 : 4)) * 0.12
+        if (kind === "abstain") { /* a blank shard: an irregular sherd lit from the left */
+          const gr = g.createLinearGradient(cx - r, 0, cx + r, 0); gr.addColorStop(0, col(0.95)); gr.addColorStop(1, col(0.3)); g.fillStyle = gr
+          g.beginPath(); g.moveTo(cx - r * 1.1, cy - r * 0.4); g.lineTo(cx - r * 0.2, cy - r * 0.9); g.lineTo(cx + r * 1.0, cy - r * 0.5); g.lineTo(cx + r * 0.8, cy + r * 0.7); g.lineTo(cx - r * 0.6, cy + r * 0.8); g.closePath(); g.fill(); return }
+        const rx = r * (0.95 + sway * 0.4), gr = g.createRadialGradient(cx - rx * 0.4, cy - r * 0.4, r * 0.1, cx, cy, r * 1.1); gr.addColorStop(0, col(1)); gr.addColorStop(1, col(0.28))
+        g.fillStyle = col(0.18); g.fillRect(cx - ch * 0.05, cy - r * 1.35, ch * 0.1, r * 2.7)                       /* the axle */
+        g.fillStyle = gr; g.beginPath(); g.ellipse(cx, cy, rx, r, 0, 0, 6.2832); g.fill()
+        g.globalCompositeOperation = "source-over"; g.fillStyle = kind === "for" ? col(0.75) : "#000"; g.beginPath(); g.ellipse(cx, cy, r * 0.2, r * 0.2, 0, 0, 6.2832); g.fill(); g.globalCompositeOperation = "lighter"
+      }) })
+    /* the tally: for in clay, against in bone, abstain in dusk, rising to its share; a mark at quorum */
+    bitScene(document.getElementById("fltally"), 2, (g, cw, ch, t) => {
+      const k = Math.min(1, ((t % 9000) / 1600)), sh = [0.61, 0.37, 0.02], y = ch * 0.2, h = ch * 0.6
+      let x0 = 0; sh.forEach((v, i) => { const w = cw * v * k; g.fillStyle = i === 0 ? clayG(1) : grey(i === 1 ? 0.92 : 0.3); g.fillRect(x0, y, Math.max(0, w - 2), h); x0 += w })
+      g.fillStyle = grey(1); g.fillRect(Math.round(cw * 0.5), 0, 1, ch)
+    })
+    /* the council: 48 seats in four rings, each leaning for, against or undecided; leanings shift as the debate goes */
+    const R = rand(31), lean = Array.from({ length: 48 }, () => R())
+    bitScene(document.getElementById("flseats"), 2.5, (g, cw, ch, t) => {
+      const R0 = Math.min(cw * 0.46, ch * 0.62), cx = cw / 2, cy = ch * 0.5 + R0 * 0.42, rows = [7, 10, 13, 18]; let n = 0
+      if (Math.floor(t / 900) !== lean.tick) { lean.tick = Math.floor(t / 900); lean[Math.floor(R() * 48)] = R() }
+      rows.forEach((seats, r) => { const rad = R0 * (0.34 + r * 0.22)
+        for (let s = 0; s < seats; s++, n++) { const a = Math.PI + (Math.PI * (s + 0.5)) / seats, v = lean[n]
+          g.fillStyle = v < 0.5 ? clayG(1) : v < 0.82 ? grey(1) : grey(0.3); g.beginPath(); g.arc(cx + Math.cos(a) * rad, cy + Math.sin(a) * rad, Math.max(1.6, R0 * 0.04), 0, 6.2832); g.fill() } })
+      const bw = R0 * 0.36; g.fillStyle = grey(0.85); g.fillRect(cx - bw / 2, cy + 3, bw, R0 * 0.08)
+    })
+    /* hold to sign */
+    const hold = root.querySelector(".fl-hold"), lbls = hold.querySelectorAll(".lbl"); let tm = 0
+    const set = (s) => lbls.forEach((l) => (l.textContent = s))
+    const press = () => { hold.classList.add("holding"); set("Keep holding"); tm = setTimeout(() => { set("Vote signed"); setTimeout(() => { hold.classList.remove("holding"); set("Hold to sign your vote") }, 1800) }, 1400) }
+    const release = () => { if (!tm) return; clearTimeout(tm); tm = 0; if (!hold.textContent.includes("signed")) { hold.classList.remove("holding"); set("Hold to sign your vote") } }
+    hold.addEventListener("pointerdown", (e) => { if (e.button) return; hold.setPointerCapture(e.pointerId); press() })
+    hold.addEventListener("pointerup", release); hold.addEventListener("pointercancel", release)
+    hold.addEventListener("keydown", (e) => { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); press() } }); hold.addEventListener("keyup", release)
+  }
+}
+
+/* ================= landing ================= */
+/* the pattern: a field of one-bit icons from the Agora (ballot, the mark, a column, an amphora, a balance), in dusk on black glaze.
+   Now and then one is cast and turns clay, like a vote arriving */
+const ICONS = [
+  ["....####....", "..##.##.##..", ".#...##...#.", ".#...##...#.", "#....##....#", "#...####...#", "#...#..#...#", "#....##....#", ".#...##...#.", ".#...##...#.", "..##.##.##..", "....####...."],
+  ["##........##", "###......###", ".###....###.", "..###..###..", "...######...", "....#..#....", "....#..#....", "...######...", "..###..###..", ".###....###.", "###......###", "##........##"],
+  ["############", ".##########.", "..#.#..#.#..", "..#.#..#.#..", "..#.#..#.#..", "..#.#..#.#..", "..#.#..#.#..", "..#.#..#.#..", "..#.#..#.#..", "..#.#..#.#..", ".##########.", "############"],
+  ["....####....", ".#..####..#.", "#.#..##..#.#", "#..######..#", ".##########.", "############", "############", ".##########.", "..########..", "...######...", "....####....", "...######..."],
+  [".....##.....", "############", ".#...##...#.", ".#...##...#.", "#.#..##..#.#", "#.#..##..#.#", "###..##..###", ".....##.....", ".....##.....", ".....##.....", "...######...", "..########.."],
+]
+scene(document.getElementById("pattern"), (sc) => {
+  const p = Math.max(1, Math.round(1.5 * DPR)), gap = 12 * p + 26 * p
+  sc.p = p; sc.gap = gap; sc.cols = Math.ceil(sc.W / gap) + 1; sc.rows = Math.ceil(sc.H / gap) + 1
+}, (sc, t) => {
+  const { x, W, H, p, gap, cols, rows } = sc
+  x.clearRect(0, 0, W, H)
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const id = (r * 7 + c * 3) % ICONS.length, ox = c * gap + (r % 2 ? gap / 2 : 0) - gap / 3, oy = r * gap + 20 * DPR
+    const seed = h2(c, r), lit = ((t * 0.00012 + seed * 7) % 1) < 0.03, fade = Math.max(0, 1 - oy / H)
+    if (fade <= 0.05) continue
+    x.fillStyle = lit ? "#3d2318" : fade > 0.6 ? "#1f1c19" : fade > 0.3 ? "#1b1916" : "#171513"
+    const ic = ICONS[id]
+    for (let j = 0; j < 12; j++) for (let i = 0; i < 12; i++) if (ic[j][i] === "#") x.fillRect(Math.round(ox + i * p), Math.round(oy + j * p), p, p)
+  }
+})
+/* hero: the ballot in clay over the assembly */
+
+/* product accordion: one open at a time; its object fades in on the right */
+{ const items = document.querySelectorAll(".l-acc-l li"), vis = document.querySelectorAll(".l-acc-vis")
+  items.forEach((li) => li.querySelector("button").addEventListener("click", () => {
+    items.forEach((x) => x.classList.toggle("on", x === li)); const v = li.querySelector("button").dataset.v
+    vis.forEach((x) => x.classList.toggle("on", x.dataset.v === v)); requestAnimationFrame(() => fitAll(true)) })) }
+/* features: the tab cards switch the panel copy and the live app's own tab */
+{ const tabs = document.querySelectorAll(".l-ft"), panes = document.querySelectorAll(".l-fp")
+  tabs.forEach((b) => b.addEventListener("click", () => { tabs.forEach((x) => x.classList.toggle("on", x === b)); panes.forEach((x) => x.classList.toggle("on", x.dataset.i === b.dataset.i))
+     })) }
+/* code tabs */
+{ const tb = document.querySelectorAll(".l-term-tabs button"), pr = document.querySelectorAll(".l-term-win pre")
+  tb.forEach((b) => b.addEventListener("click", () => { tb.forEach((x) => x.classList.toggle("on", x === b)); pr.forEach((x) => x.classList.toggle("on", x.dataset.l-c === b.dataset.c)) })) }
+
+/* stat cards and the code panel: fields of one-bit dots that rise like turnout; a few are cast in clay */
+document.querySelectorAll("[data-dots]").forEach((c) => { const n = +c.dataset.dots
+  bitScene(c, 3, (g, cw, ch, t) => {
+    const R = rand(11 + n * 7), cols = Math.ceil(cw / 5), rows = Math.ceil(ch / 5)
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const v = R(), y = j / rows, wave = 0.5 + 0.5 * Math.sin(i * 0.35 + t * 0.0012 + n), tall = n === 3 ? (Math.abs(i / cols - 0.5) * 2) : y
+      if (v < tall * (0.55 + 0.35 * wave)) { const cast = ((t * 0.0003 + v * 13) % 1) < 0.06
+        g.fillStyle = cast || n === 3 ? clayG(1) : grey(0.32 + 0.4 * wave * y); g.fillRect(i * 5 + 1, j * 5 + 1, 3, 3) } }
+  }) })
+
+/* security art: rings for audits, a clock for timelocks, a lattice for guardians */
+document.querySelectorAll("[data-art]").forEach((c) => { const k = c.dataset.art
+  bitScene(c, 2.5, (g, cw, ch, t) => {
+    const cx = cw * 0.62, cy = ch * 0.34
+    g.lineWidth = 1.2
+    if (k === "rings") for (let i = 1; i < 9; i++) { const r = i * cw * 0.06 + ((t * 0.01) % (cw * 0.06)); g.strokeStyle = grey(0.55 - i * 0.05); g.beginPath(); g.arc(cx, cy, r, 0, 6.2832); g.stroke() }
+    else if (k === "clock") { for (let i = 0; i < 60; i++) { const a = (i / 60) * 6.2832, r1 = cw * 0.34, r2 = r1 - (i % 5 ? 3 : 7); g.strokeStyle = grey(i % 5 ? 0.35 : 0.7); g.beginPath(); g.moveTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1); g.lineTo(cx + Math.cos(a) * r2, cy + Math.sin(a) * r2); g.stroke() }
+      const a = (t * 0.0004) % 6.2832; g.strokeStyle = clayG(1); g.lineWidth = 2; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a - 1.57) * cw * 0.26, cy + Math.sin(a - 1.57) * cw * 0.26); g.stroke()
+      g.fillStyle = clayG(1); g.beginPath(); g.moveTo(cx, cy); g.arc(cx, cy, cw * 0.12, -1.57, a - 1.57); g.fill() }
+    else { const s = cw / 9; for (let j = 0; j < 7; j++) for (let i = 0; i < 10; i++) { const on = h2(i, j + Math.floor(t / 1800)) > 0.86; g.strokeStyle = on ? clayG(1) : grey(0.3 + 0.25 * (1 - j / 7)); g.strokeRect(i * s - s / 2 + (j % 2) * s / 2, j * s * 0.8, s * 0.7, s * 0.7) } }
+  }) })
+
+/* hero: a live proposal. Votes arrive one at a time in the feed; the tally fills toward them and quorum is crossed; then it starts again */
+{ const card = document.querySelector(".l-hp-card")
+  if (card) {
+    const feed = card.querySelector(".l-hp-feed"), fBar = card.querySelector(".l-hp-bar .f"), aBar = card.querySelector(".l-hp-bar .a"), nF = card.querySelector('[data-n="for"]'), nA = card.querySelector('[data-n="against"]'), q = card.querySelector("[data-q]")
+    const who = ["vuk.eth", "0x7a…c41", "lattice.eth", "0x19…e07", "meridian-dao.eth", "0xb4…2f9", "kiln.eth", "0x5e…a13", "arbor.eth", "0x88…d70", "tessera.eth", "0x2c…91b"]
+    const R = rand(5), fmt = (v) => v >= 1e6 ? (v / 1e6).toFixed(2) + "M" : Math.round(v / 1e3) + "K", QUORUM = 3.5e6
+    let F = 0, A = 0, i = 0
+    const step = () => {
+      if (i >= who.length) { i = 0; F = A = 0; feed.innerHTML = "" }
+      const forVote = R() < 0.62, amt = Math.round((90 + R() * 640) * 1000)
+      if (forVote) F += amt; else A += amt
+      const li = document.createElement("li"); li.innerHTML = `<span class="d ${forVote ? "f" : "a"}"></span><b>${who[i]}</b><span>${forVote ? "For" : "Against"}</span><em>${fmt(amt)} PNX</em>`
+      feed.prepend(li); while (feed.children.length > 5) feed.lastChild.remove()
+      const tot = Math.max(F + A, 1), full = Math.min(1, (F + A) / (QUORUM * 1.25))
+      fBar.style.width = (F / tot) * full * 100 + "%"; aBar.style.width = (A / tot) * full * 100 + "%"
+      nF.textContent = fmt(F); nA.textContent = fmt(A); const qp = Math.round(((F + A) / QUORUM) * 100); q.textContent = qp >= 100 ? "Quorum reached" : "Quorum " + qp + "%"; q.classList.toggle("ok", qp >= 100)
+      i++
+    }
+    step(); if (!still) setInterval(step, 1500)
+  } }
+
+/* features, voting: the three Athenian ballots, small, with a slow sway; For is cast in clay */
+document.querySelectorAll("[data-flb]").forEach((c) => { const kind = c.dataset.flb
+  bitScene(c, 2.5, (g, cw, ch, t) => {
+    const col = kind === "for" ? clayG : grey, cx = cw / 2, cy = ch / 2, r = ch * 0.34, sway = Math.sin(t * 0.0009 + (kind === "for" ? 0 : kind === "against" ? 2 : 4)) * 0.1
+    if (kind === "abstain") { const gr = g.createLinearGradient(cx - r, 0, cx + r, 0); gr.addColorStop(0, col(0.85)); gr.addColorStop(1, col(0.25)); g.fillStyle = gr
+      g.beginPath(); g.moveTo(cx - r * 1.1, cy - r * 0.4); g.lineTo(cx - r * 0.2, cy - r * 0.9); g.lineTo(cx + r, cy - r * 0.5); g.lineTo(cx + r * 0.8, cy + r * 0.7); g.lineTo(cx - r * 0.6, cy + r * 0.8); g.closePath(); g.fill(); return }
+    const rx = r * (0.95 + sway * 0.4), gr = g.createRadialGradient(cx - rx * 0.4, cy - r * 0.4, r * 0.1, cx, cy, r * 1.1); gr.addColorStop(0, col(1)); gr.addColorStop(1, col(0.25))
+    g.fillStyle = col(0.18); g.fillRect(cx - ch * 0.04, cy - r * 1.35, ch * 0.08, r * 2.7)
+    g.fillStyle = gr; g.beginPath(); g.ellipse(cx, cy, rx, r, 0, 0, 6.2832); g.fill()
+    g.globalCompositeOperation = "source-over"; g.fillStyle = kind === "for" ? col(0.75) : "#000"; g.beginPath(); g.ellipse(cx, cy, r * 0.2, r * 0.2, 0, 0, 6.2832); g.fill(); g.globalCompositeOperation = "lighter"
+  }) })
+/* features, delegation: pick a delegate */
+document.querySelectorAll(".l-fv-deleg li").forEach((li, i, all) => li.addEventListener("click", () => all.forEach((x) => x.classList.toggle("on", x === li))))
+/* tabs: re-measure canvases in the newly shown pane */
+document.querySelectorAll(".l-ft").forEach((b) => b.addEventListener("click", () => requestAnimationFrame(() => fitAll(true))))
+
+let lastW = 0
+function fitAll(force) {
+  const w = innerWidth
+  if (!force && w === lastW) return // phones fire resize when the address bar moves; don't restart the scenes for that
+  lastW = w
+  for (const sc of scenes) { [sc.W, sc.H] = size(sc.c); sc.init(sc); sc.ready = true; if (still) sc.frame(sc, 12000) }
+}
+const vio = new IntersectionObserver((es) => es.forEach((e) => { const sc = scenes.find((s) => s.c === e.target); if (sc) { sc.vis = e.isIntersecting; sc.prev = 0 } }))
+scenes.forEach((sc) => vio.observe(sc.c))
+if (!still) requestAnimationFrame(function loop(t) { for (const sc of scenes) if (sc.vis && sc.ready) sc.frame(sc, t); requestAnimationFrame(loop) })
+
+
+
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { rootMargin: "0px 0px -8% 0px" })
+document.querySelectorAll(".rv").forEach((el) => io.observe(el))
+let rzT = 0
+Promise.all([document.fonts.ready, markReady]).then(() => fitAll(true)); addEventListener("resize", () => { clearTimeout(rzT); rzT = setTimeout(fitAll, 150) })
+</script>
+</body>
+</html>

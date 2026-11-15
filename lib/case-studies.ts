@@ -56,6 +56,27 @@ const caseVid = (client: string, file: string): CaseStudyWorkItem => ({
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "pnyx",
+    live: "/live/pnyx/",
+    liveHint: "It's the real site: watch the votes come in, then open the product list and the feature tabs",
+    services: ["Brand", "Product Design", "Web App", "Landing"],
+    areas: ["Crypto", "Governance"],
+    title: "Pnyx",
+    tagline: "Onchain governance nobody can buy, built from the objects Athens voted with",
+    date: "2026",
+    start: "2026-11",
+    end: "2026-11",
+    cover: "/case/Pnyx/cover.webp",
+    logo: "/icons/client-logos/Pnyx.svg",
+    description:
+      "Brand, governance app and landing page for Pnyx, onchain governance for DAOs: proposals, delegates, councils and treasuries on every chain. The identity rebuilds the objects Athens used to keep its votes fair, the bronze ballot, the water clock, the allotment machine, in one-bit dither on black glaze and fired clay.",
+    work: [
+      caseImg("Pnyx", "cover.webp"),
+      caseImg("Pnyx", "brand-slides.webp"),
+      caseVid("Pnyx", "land-hero.mp4"),
+    ],
+  },
+  {
     slug: "bloop",
     live: "/live/bloop/",
     services: ["Brand", "Product Design", "iOS", "Landing"],

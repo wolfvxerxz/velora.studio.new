@@ -30,8 +30,52 @@ const K_ = (f: string) => img("Kept", f)
 const S_ = (f: string) => img("Streak", f)
 const G = (f: string) => img("Glint", f)
 const BL = (f: string) => img("Bloop", f)
+const PX = (f: string) => img("Pnyx", f)
+const PV = (f: string) => vid("Pnyx", f)
 
 const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkItem }> = {
+  pnyx: {
+    headline: "Onchain governance built from the objects Athens voted with, brand to landing",
+    intro: [
+      "Pnyx is onchain governance for DAOs: proposals, delegates, councils and treasuries, on every chain. Whales can't buy the outcome, councils are drawn by a lottery anyone can re-run, and every count is public and final.",
+      "The name is the hill where Athenians met to vote. We rebuilt the things that kept those votes fair, the bronze ballot, the water clock, the allotment machine, the shards they wrote on, as the parts of the brand, the app and the landing page.",
+    ],
+    vision: "A vote is only fair if nobody can buy it, and everybody can count it.",
+    hero: PX("cover.webp"),
+    chapters: [
+      {
+        label: "Brand",
+        title: "A room facing its floor",
+        body: ["The mark is a square with four sides cut away round a centre: an assembly facing the floor between it. Black glaze, fired clay and bone, the two colours of Attic pottery and the paper they were counted on, with Satoshi for every word."],
+        rows: [[PX("brand-slides.webp")], [PX("slide-02.webp"), PX("slide-03.webp")]],
+      },
+      {
+        label: "Identity",
+        title: "Every object from the Agora, moving",
+        body: ["Each part of governance has its object, drawn in one-bit dither and always in motion. The amphora carries a proposal's turnout as its frieze, the balance only sits level when every vote is counted, the water clock is hold to sign, and the five principles build and break apart cell by cell."],
+        rows: [[PV("brand-motion.mp4")], [PV("obj-amphora.mp4"), PV("obj-balance.mp4")], [PV("obj-clock.mp4")], [PV("obj-questions.mp4"), PV("obj-stele.mp4")]],
+      },
+      {
+        label: "App",
+        title: "A ballot you hold to sign",
+        body: ["The question set large, three Athenian ballots to choose from, a solid hub for, a hollow one against and a blank shard to abstain, a one-bit tally with its quorum, and the council of 48 seated round the floor. You hold the button to sign, so nobody votes by accident."],
+        rows: [[PV("app-floor.mp4")]],
+      },
+      {
+        label: "Landing",
+        title: "A live proposal in the hero",
+        body: ["The hero is the product: a proposal created by one API call, votes arriving one by one, the tally filling until quorum is reached. Below it, each part of governance gets its own calm visual, and the code, the guarantees and the launch follow in the same black glaze."],
+        rows: [[PV("land-hero.mp4")], [PV("land-product.mp4")], [PV("land-features.mp4"), PV("land-stats.mp4")], [PV("land-code.mp4"), PV("land-security.mp4")], [PV("land-start.mp4")]],
+      },
+      {
+        label: "Launch",
+        title: "Slides and a profile for X",
+        body: ["Six slides in one case-study board, each a frame of its own, and an X profile with the Greek key running along its banner."],
+        rows: [[PX("slide-04.webp"), PX("slide-05.webp")], [PX("slide-06.webp")], [PV("x-profile.mp4")]],
+      },
+    ],
+    result: "Governance anyone can count, and nobody can buy.",
+  },
   bloop: {
     headline: "A wallet where launching a coin is the fun part, brand to iPhone",
     intro: [
