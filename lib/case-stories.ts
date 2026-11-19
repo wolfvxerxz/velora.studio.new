@@ -30,10 +30,54 @@ const K_ = (f: string) => img("Kept", f)
 const S_ = (f: string) => img("Streak", f)
 const G = (f: string) => img("Glint", f)
 const BL = (f: string) => img("Bloop", f)
+const TX = (f: string) => img("Tare", f)
+const TV = (f: string) => vid("Tare", f)
 const PX = (f: string) => img("Pnyx", f)
 const PV = (f: string) => vid("Pnyx", f)
 
 const STORIES: Record<string, Omit<CaseStory, "hero"> & { hero?: CaseStudyWorkItem }> = {
+  tare: {
+    headline: "Coding agents billed only when they ship, drawn on one engineer's grid",
+    intro: [
+      "Tare takes an issue from Linear or GitHub, runs six coding agents on it in parallel, checks every attempt against the team's tests, types, lint and scope, and opens one pull request with the best result. Retries and dead ends are never billed.",
+      "The name is the weight of an empty container, the part you shouldn't pay for. We built the brand, the console where teams start tasks, watch the attempts and merge, and the landing page that shows a run instead of describing one.",
+    ],
+    vision: "You should pay for the change, not the tokens.",
+    hero: TX("cover.webp"),
+    chapters: [
+      {
+        label: "Brand",
+        title: "A cursor cut from a square",
+        body: ["The mark is a square with two circles cut from its sides, an I-beam, the cursor every line of code starts from. Everything sits on one visible grid inside viewfinder brackets: mint on near-black for the product, pale stone for the moments that explain."],
+        rows: [[TX("brand-slides.webp")], [TX("slide-02.webp"), TX("slide-03.webp")]],
+      },
+      {
+        label: "Identity",
+        title: "Work drawn as bars",
+        body: ["Agents are drawn as stacked bars that rise as they work, checks as blocks that snap into place, and the merge as one line that carries on while the others stop. The mark is drafted on the grid, square first, then the two circles, then the cut."],
+        rows: [[TV("brand-motion.mp4")], [TX("slide-04.webp"), TX("slide-05.webp")]],
+      },
+      {
+        label: "Console",
+        title: "Six attempts, one pull request",
+        body: ["Sign up with GitHub, name the workspace, pick repositories and agents, and the first task is running before setup ends. Six lanes race on the issue, every check lands as it finishes, and the winner arrives as a pull request that explains why it won. The bill appears only when you merge."],
+        rows: [[TV("app-onboarding.mp4")], [TV("app-run.mp4")], [TV("app-review.mp4")]],
+      },
+      {
+        label: "Landing",
+        title: "The run is the hero",
+        body: ["The hero is a live run: six agents on one issue, the checks filling in, one merged and five not billed. Below it, the steps, a bento of what makes the work safe to merge, the review, a bill that compares per-token pricing with Tare's, the customers and the questions."],
+        rows: [[TV("land-hero.mp4")], [TV("land-scroll.mp4")], [TX("land-slides.webp")]],
+      },
+      {
+        label: "Launch",
+        title: "Slides for X",
+        body: ["A case-study board for the brand and another for the site, with the phones in Apple's own frames and the closing slide carrying the line the whole brand is built on."],
+        rows: [[TX("land-04.webp")], [TX("slide-06.webp"), TX("land-06.webp")]],
+      },
+    ],
+    result: "Teams review one pull request, and pay only for the one they merge.",
+  },
   pnyx: {
     headline: "Onchain governance built from the objects Athens voted with, brand to landing",
     intro: [

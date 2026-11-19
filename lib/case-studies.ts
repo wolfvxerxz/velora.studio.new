@@ -56,6 +56,27 @@ const caseVid = (client: string, file: string): CaseStudyWorkItem => ({
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "tare",
+    live: "/live/tare/",
+    liveHint: "It's the real site: watch six agents race in the hero, then press Start a task to sign up and run one",
+    services: ["Brand", "Product Design", "Web App", "Landing"],
+    areas: ["AI", "Agents", "Developer Tools"],
+    title: "Tare",
+    tagline: "Coding agents you only pay for when they ship",
+    date: "2026",
+    start: "2026-11",
+    end: "2026-11",
+    cover: "/case/Tare/cover.webp",
+    logo: "/icons/client-logos/Tare.svg",
+    description:
+      "Brand, console and landing page for Tare, a platform that runs six coding agents on every issue, checks each attempt against your tests and opens one pull request. Teams pay only for the change they merge. The identity draws the work on one engineer's grid, mint on near-black, around an I-beam: the cursor every line of code starts from.",
+    work: [
+      caseImg("Tare", "cover.webp"),
+      caseImg("Tare", "brand-slides.webp"),
+      caseVid("Tare", "land-hero.mp4"),
+    ],
+  },
+  {
     slug: "pnyx",
     live: "/live/pnyx/",
     liveHint: "It's the real site: watch the votes come in, then open the product list and the feature tabs",

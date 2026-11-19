@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tare</title>
+<meta name="description" content="Coding agents you only pay for when they ship.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'-300%20-300%202472%202472'%3E%3Crect%20x%3D'-300'%20y%3D'-300'%20width%3D'2472'%20height%3D'2472'%20rx%3D'520'%20fill%3D'%230F110F'%2F%3E%3Cpath%20fill%3D'%2345E39F'%20fill-rule%3D'evenodd'%20d%3D'M1686.0%201686.0L1686.0%201551.0L1652.1%201550.1L1618.2%201547.3L1584.6%201542.6L1551.3%201536.1L1518.3%201527.7L1485.9%201517.5L1454.1%201505.6L1423.1%201492.0L1392.8%201476.6L1363.4%201459.6L1335.0%201441.0L1307.6%201420.8L1281.4%201399.2L1256.5%201376.2L1232.9%201351.8L1210.6%201326.2L1194.3%201305.4L1178.9%201283.9L1164.4%201261.8L1150.9%201239.1L1138.4%201215.9L1126.9%201192.1L1116.4%201167.9L1107.0%201143.2L1098.6%201118.1L1091.3%201092.7L1085.1%201067.1L1080.1%201041.1L1076.1%201015.0L1073.3%20988.8L1071.6%20962.4L1071.0%20936.0L1071.6%20909.6L1073.3%20883.2L1076.1%20857.0L1080.1%20830.9L1085.1%20804.9L1091.3%20779.3L1098.6%20753.9L1107.0%20728.8L1116.4%20704.1L1126.9%20679.9L1138.4%20656.1L1150.9%20632.9L1164.4%20610.2L1178.9%20588.1L1194.3%20566.6L1210.6%20545.8L1232.9%20520.2L1256.5%20495.8L1281.4%20472.8L1307.6%20451.2L1335.0%20431.0L1363.4%20412.4L1392.8%20395.4L1423.1%20380.0L1454.1%20366.4L1485.9%20354.5L1518.3%20344.3L1551.3%20335.9L1584.6%20329.4L1618.2%20324.7L1652.1%20321.9L1686.0%20321.0L1686.0%20186.0L186.0%20186.0L186.0%20321.0L219.9%20321.9L253.8%20324.7L287.4%20329.4L320.7%20335.9L353.7%20344.3L386.1%20354.5L417.9%20366.4L448.9%20380.0L479.2%20395.4L508.6%20412.4L537.0%20431.0L564.4%20451.2L590.6%20472.8L615.5%20495.8L639.1%20520.2L661.4%20545.8L677.7%20566.6L693.1%20588.1L707.6%20610.2L721.1%20632.9L733.6%20656.1L745.1%20679.9L755.6%20704.1L765.0%20728.8L773.4%20753.9L780.7%20779.3L786.9%20804.9L791.9%20830.9L795.9%20857.0L798.7%20883.2L800.4%20909.6L801.0%20936.0L800.4%20962.4L798.7%20988.8L795.9%201015.0L791.9%201041.1L786.9%201067.1L780.7%201092.7L773.4%201118.1L765.0%201143.2L755.6%201167.9L745.1%201192.1L733.6%201215.9L721.1%201239.1L707.6%201261.8L693.1%201283.9L677.7%201305.4L661.4%201326.2L639.1%201351.8L615.5%201376.2L590.6%201399.2L564.4%201420.8L537.0%201441.0L508.6%201459.6L479.2%201476.6L448.9%201492.0L417.9%201505.6L386.1%201517.5L353.7%201527.7L320.7%201536.1L287.4%201542.6L253.8%201547.3L219.9%201550.1L186.0%201551.0L186.0%201686.0L1686.0%201686.0Z'%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap">
+<style>:root { --ink: #0F110F; --ink-2: #141714; --ink-3: #1A1E1A; --line: #1D211D; --line-2: #2A2F2A; --paper: #E9EAE5; --mute: #9AA097; --dim: #6F776D; --faint: #454B44; --mint: #45E39F; --mint-2: #63EBB1; --green: #1D5E43; --green-2: #2E8A63; --deep: #0E2219; --ease: cubic-bezier(0.23, 1, 0.32, 1); --grid: 32px; color-scheme: dark; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: var(--ink); color: var(--paper); font-family: "Inter Tight", system-ui, sans-serif; font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+::selection { background: var(--green); color: var(--mint); }
+h1, h2, h3 { font-weight: 500; text-wrap: balance; }
+p { text-wrap: pretty; }
+.g { color: var(--dim); }
+.t-in { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+/* reveal */
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+.x .rv { opacity: 1; transform: none; transition: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+
+/* corner brackets: the viewfinder that frames every product surface */
+.bk { --c: var(--green-2); --l: 14px; position: relative; }
+.bk::before { content: ""; position: absolute; inset: 0; pointer-events: none; background:
+  linear-gradient(var(--c), var(--c)) top left / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) top left / 1px var(--l) no-repeat,
+  linear-gradient(var(--c), var(--c)) top right / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) top right / 1px var(--l) no-repeat,
+  linear-gradient(var(--c), var(--c)) bottom left / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) bottom left / 1px var(--l) no-repeat,
+  linear-gradient(var(--c), var(--c)) bottom right / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) bottom right / 1px var(--l) no-repeat; }
+
+/* buttons */
+.t-btn { display: inline-flex; align-items: center; height: 42px; padding: 0 20px; background: var(--mint); color: #08130D; font-size: 15px; font-weight: 500; white-space: nowrap; transition: transform 160ms var(--ease), background-color 200ms ease, color 200ms ease; }
+.t-btn:hover { background: var(--mint-2); }
+.t-btn:active { transform: scale(0.97); }
+.t-btn.line { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1px var(--line-2); }
+.t-btn.line:hover { box-shadow: inset 0 0 0 1px var(--dim); background: transparent; }
+
+/* nav */
+.t-nav { position: sticky; top: 0; z-index: 20; background: var(--ink); }
+.t-nav .t-in { display: flex; align-items: center; height: 72px; gap: 40px; }
+.t-lock { display: inline-flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; }
+.t-lock svg { width: 20px; height: 20px; color: var(--mint); }
+.t-links { display: flex; gap: 28px; font-size: 15px; color: var(--mute); }
+.t-links a, .t-ghost { transition: color 200ms ease; }
+.t-links a:hover, .t-ghost:hover { color: var(--paper); }
+.t-acts { margin-left: auto; display: flex; align-items: center; gap: 22px; font-size: 15px; }
+.t-ghost { color: var(--mute); }
+.t-nav .t-btn { height: 38px; padding: 0 16px; font-size: 14px; }
+
+/* hero */
+.t-hero { padding: 88px 0 0; }
+.t-hero h1 { font-size: clamp(34px, 7.4vw, 104px); line-height: 1; }
+.t-hero h1 .g { display: block; }
+.t-hero-side { margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+.t-hero-side .t-ctas { margin-top: 0; flex: none; }
+.t-hero-side p { font-size: 18px; line-height: 1.55; color: var(--mute); max-width: 40ch; }
+.t-ctas { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+
+/* the run */
+.t-run { margin-top: 72px; padding: 28px 32px 26px; background-color: var(--ink);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--grid) var(--grid); background-position: -1px -1px; }
+.t-run::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 30%, var(--ink) 92%); }
+.t-run > * { position: relative; z-index: 1; }
+.t-run-head { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 22px; }
+.t-run-task { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.t-run-task b { font-size: 18px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-issue { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px; background: var(--ink-3); color: var(--mute); font-size: 13px; flex: none; }
+.t-issue svg { width: 13px; height: 13px; }
+.t-run-meta { display: flex; gap: 18px; font-size: 14px; color: var(--mute); flex: none; }
+.t-run-meta [data-run-state].done { color: var(--mint); }
+.t-clock { color: var(--paper); min-width: 5ch; text-align: right; }
+.t-run-cols, .t-row { display: grid; grid-template-columns: 150px 1fr 92px 84px 84px 150px; gap: 20px; align-items: center; }
+.t-run-cols { font-size: 13px; color: var(--dim); padding: 0 0 10px; }
+.t-rows { display: flex; flex-direction: column; gap: 4px; }
+.t-row { height: 50px; padding: 0 14px; margin: 0 -14px; background: var(--ink-2); font-size: 14px; transition: background-color 400ms ease, color 400ms ease; }
+.t-row .nm { color: var(--paper); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 400ms ease; }
+.t-row .tr { height: 6px; background: var(--line); overflow: hidden; }
+.t-row .tr i { display: block; height: 100%; background: var(--paper); transform-origin: left; transform: scaleX(0); transition: background-color 400ms ease; }
+.t-row .ck { display: flex; gap: 6px; }
+.t-row .ck i { width: 14px; height: 14px; background: var(--line); transition: background-color 240ms ease, box-shadow 240ms ease; }
+.t-row .ck i.ok { background: var(--mint); }
+.t-row .ck i.no { background: transparent; box-shadow: inset 0 0 0 1px var(--dim); }
+.t-row .df, .t-row .co { color: var(--mute); }
+.t-row .st { color: var(--mute); white-space: nowrap; }
+.t-row.fail .st { color: var(--dim); }
+.t-row.win { background: var(--deep); }
+.t-row.win .tr i { background: var(--mint); }
+.t-row.win .st, .t-row.win .co { color: var(--mint); }
+.t-row.lose .nm, .t-row.lose .df { color: var(--dim); }
+.t-row.lose .tr i { background: var(--faint); }
+.t-row.lose .ck i.ok { background: var(--green); }
+.t-row.lose .co { color: var(--dim); text-decoration: line-through; }
+.t-row .st b { font-weight: 500; }
+.t-run-foot { margin-top: 20px; font-size: 14px; color: var(--mute); min-height: 21px; transition: color 300ms ease; }
+.t-run-foot b { color: var(--paper); font-weight: 500; }
+
+/* stack */
+.t-stack { padding: 88px 0 0; }
+.t-stack .t-in { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.t-stack p { color: var(--mute); font-size: 15px; max-width: 22ch; }
+.t-logos { display: flex; gap: 44px; flex-wrap: wrap; align-items: center; color: var(--mute); }
+.t-logos li { display: inline-flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 500; }
+.t-logos svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* sections */
+.t-sec { padding: 160px 0 0; }
+.t-head { max-width: 640px; }
+.t-head h2, .t-tare h2, .t-end h2 { font-size: clamp(32px, 3.8vw, 52px); line-height: 1.06; }
+.t-head p { margin-top: 20px; font-size: 18px; color: var(--mute); max-width: 48ch; }
+
+/* tare statement */
+.t-tare .t-in { display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: center; }
+.t-scale { aspect-ratio: 1; display: grid; place-items: center; background-color: var(--ink);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--grid) var(--grid); background-position: center;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent); mask-image: radial-gradient(closest-side, #000 55%, transparent); }
+.t-scale svg { width: 42%; height: 42%; color: var(--mint); }
+.t-tare-copy p { margin-top: 24px; font-size: 18px; color: var(--mute); max-width: 52ch; }
+
+/* steps */
+.t-steps { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.t-fig { aspect-ratio: 8 / 5; background: var(--ink-2); display: grid; place-items: center; margin-bottom: 28px; }
+.t-steps h3 { font-size: 20px; }
+.t-steps p { margin-top: 8px; color: var(--mute); max-width: 34ch; }
+.t-draw { width: 82%; height: auto; overflow: visible; }
+.t-draw path { fill: none; stroke: var(--dim); stroke-width: 1.5; stroke-dasharray: 300; stroke-dashoffset: 300; transition: stroke-dashoffset 1400ms var(--ease); }
+.t-draw .dot, .t-draw .node { fill: var(--mint); }
+.t-draw .ends rect { fill: var(--line-2); transition: fill 400ms ease; }
+.in .t-draw path { stroke-dashoffset: 0; }
+.in .t-draw .ends rect { fill: var(--mint); }
+.t-draw path:nth-child(3) { transition-delay: 80ms; } .t-draw path:nth-child(4) { transition-delay: 160ms; } .t-draw path:nth-child(5) { transition-delay: 240ms; } .t-draw path:nth-child(6) { transition-delay: 320ms; } .t-draw path:nth-child(7) { transition-delay: 400ms; }
+.in .t-draw .ends rect { transition-delay: 1000ms; }
+.t-merge .win { stroke: var(--mint); stroke-width: 2; transition-delay: 500ms; }
+.t-merge .node { transform-origin: 286px 100px; transform: scale(0.6); opacity: 0; transition: transform 400ms var(--ease) 1500ms, opacity 400ms ease 1500ms; }
+.in .t-merge .node { transform: none; opacity: 1; }
+.t-checks { display: grid; grid-template-columns: repeat(4, 22px); grid-auto-rows: 22px; gap: 6px; }
+.t-checks i { background: var(--line-2); transition: background-color 300ms ease, box-shadow 300ms ease; }
+.t-checks i.ok { background: var(--mint); }
+.t-checks i.no { background: transparent; box-shadow: inset 0 0 0 1.5px var(--dim); }
+
+/* review */
+.t-split { display: grid; grid-template-columns: 1fr 1.05fr; gap: 72px; align-items: center; }
+.t-points { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; color: var(--mute); }
+.t-points b { color: var(--paper); font-weight: 500; }
+.t-pr { background: var(--ink-2); padding: 32px; }
+.t-pr-top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.t-merged { display: inline-flex; align-items: center; gap: 8px; color: var(--mint); }
+.t-merged svg { width: 16px; height: 16px; }
+.t-num { color: var(--dim); }
+.t-pr h3 { margin-top: 18px; font-size: 24px; line-height: 1.2; }
+.t-pr-by { margin-top: 8px; font-size: 14px; color: var(--mute); }
+.t-files { margin-top: 26px; display: flex; flex-direction: column; gap: 2px; }
+.t-files li { display: grid; grid-template-columns: 1fr auto 74px; gap: 16px; align-items: center; height: 42px; padding: 0 14px; background: var(--ink-3); font-size: 14px; }
+.t-files em { font-style: normal; color: var(--mute); }
+.t-files i { display: flex; gap: 3px; justify-content: flex-end; }
+.t-files i b { width: 11px; height: 11px; background: var(--line-2); }
+.t-files i b.a { background: var(--mint); } .t-files i b.d { background: var(--dim); }
+.t-pass { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-size: 14px; }
+.t-pass li { display: flex; align-items: center; gap: 10px; }
+.t-pass i { width: 12px; height: 12px; background: var(--mint); flex: none; }
+.t-pass span { color: var(--mute); margin-left: auto; text-align: right; }
+.t-risk { margin-top: 22px; font-size: 14px; color: var(--mute); display: flex; gap: 12px; }
+.t-risk b { color: var(--paper); font-weight: 500; }
+.t-pr-acts { margin-top: 28px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--mute); }
+
+/* pricing */
+.t-bill { margin-top: 64px; display: flex; flex-direction: column; gap: 22px; }
+.t-bill-row { display: grid; grid-template-columns: 180px 1fr 90px; gap: 24px; align-items: center; font-size: 15px; color: var(--mute); }
+.t-bill-row b { font-size: 28px; font-weight: 500; color: var(--paper); text-align: right; }
+.t-bill-row.tare b { color: var(--mint); }
+.t-bill-bar { display: flex; gap: 2px; height: 40px; }
+.t-bill-bar i { flex: 0 0 calc(var(--w) * 1%); background: var(--line-2); transform-origin: left; transform: scaleX(0); transition: transform 900ms var(--ease); }
+.t-bill-bar i:nth-child(odd) { background: #333933; }
+.tare .t-bill-bar i { background: var(--mint); }
+.t-bill.in .t-bill-bar i { transform: none; }
+.t-bill-bar i:nth-child(2) { transition-delay: 90ms; } .t-bill-bar i:nth-child(3) { transition-delay: 180ms; } .t-bill-bar i:nth-child(4) { transition-delay: 270ms; } .t-bill-bar i:nth-child(5) { transition-delay: 360ms; } .t-bill-bar i:nth-child(6) { transition-delay: 450ms; }
+.tare .t-bill-bar i { transition-delay: 700ms; }
+.t-terms { margin-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.t-terms b { display: block; font-size: 28px; font-weight: 500; }
+.t-terms span { display: block; margin-top: 8px; color: var(--mute); max-width: 30ch; text-wrap: pretty; }
+
+/* quote */
+.t-quote .t-feat { max-width: 1120px; }
+.t-quote .t-feat p { font-size: clamp(24px, 3.4vw, 48px); line-height: 1.22; font-weight: 500; text-wrap: balance; }
+.t-quote .t-feat footer { margin-top: 32px; display: flex; align-items: center; gap: 14px; }
+.t-quote .t-feat footer i { width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: var(--mint); display: grid; place-items: center; font-style: normal; font-weight: 600; font-size: 17px; }
+.t-quote .t-feat footer span { display: flex; flex-direction: column; font-size: 15px; color: var(--mute); line-height: 1.35; }
+.t-quote .t-feat footer b { color: var(--paper); font-weight: 500; }
+.t-stats { margin-top: 96px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.t-stats b { display: block; font-size: clamp(48px, 5.4vw, 80px); font-weight: 500; line-height: 1; color: var(--paper); }
+.t-stats span { display: block; margin-top: 14px; color: var(--mute); max-width: 26ch; }
+
+/* closing */
+.t-end { position: relative; margin-top: 160px; padding: 140px 0; text-align: center; overflow: hidden;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--grid) var(--grid); background-position: center; }
+.t-end::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 70% at 50% 50%, transparent 20%, var(--ink) 85%); pointer-events: none; }
+.t-ring { position: absolute; left: 50%; top: 50%; width: min(1320px, 120%); height: 76%; transform: translate(-50%, -50%); pointer-events: none; }
+.t-ring ellipse { fill: none; stroke: var(--green-2); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.t-end .t-in { position: relative; display: flex; flex-direction: column; align-items: center; }
+.t-end-mark { width: 44px; height: 44px; color: var(--mint); margin-bottom: 32px; }
+.t-end h2 { max-width: 16ch; }
+.t-end .m { color: var(--mint); }
+.t-end p { margin-top: 18px; color: var(--mute); font-size: 18px; }
+.t-end .t-ctas { justify-content: center; }
+
+/* footer */
+.t-foot { padding: 96px 0 40px; }
+.t-foot-top { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
+.t-foot-brand p { margin-top: 16px; color: var(--mute); max-width: 28ch; }
+.t-social { display: flex; gap: 10px; margin-top: 28px; }
+.t-social a { width: 40px; height: 40px; display: grid; place-items: center; background: var(--ink-3); color: var(--mute); transition: color 200ms ease, transform 160ms var(--ease); }
+.t-social a:hover { color: var(--paper); } .t-social a:active { transform: scale(0.95); }
+.t-social svg { width: 17px; height: 17px; fill: currentColor; }
+.t-foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.t-foot-cols div { display: flex; flex-direction: column; gap: 12px; font-size: 15px; color: var(--mute); }
+.t-foot-cols b { color: var(--paper); font-weight: 500; margin-bottom: 4px; }
+.t-foot-cols a:hover { color: var(--paper); }
+.t-word { margin-top: 96px; font-size: clamp(120px, 24vw, 340px); line-height: 0.8; font-weight: 600; color: var(--ink-3); user-select: none; }
+.t-foot-end { margin-top: 32px; display: flex; justify-content: space-between; gap: 20px; font-size: 14px; color: var(--dim); }
+
+/* tablet */
+@media (max-width: 1080px) {
+  .t-run-cols, .t-row { grid-template-columns: 130px 1fr 92px 72px 120px; }
+  .t-run-cols span:nth-child(5), .t-row .co { display: none; }
+  .t-links { display: none; }
+}
+@media (max-width: 900px) {
+  .t-tare .t-in, .t-split, .t-foot-top { grid-template-columns: 1fr; gap: 40px; }
+  .t-tare .t-scale { max-width: 320px; }
+  .t-steps, .t-terms, .t-stats { grid-template-columns: 1fr; gap: 48px; }
+  .t-stack .t-in { flex-direction: column; align-items: flex-start; }
+  .t-hero-side { flex-direction: column; align-items: flex-start; gap: 28px; }
+}
+/* phone */
+@media (max-width: 640px) {
+  .t-in { padding: 0 16px; }
+  .t-nav .t-in { height: 64px; }
+  .t-ghost { display: none; }
+  .t-hero { padding-top: 56px; }
+  .t-run { margin-top: 48px; padding: 20px 16px 18px; }
+  .t-run-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .t-run-task { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .t-run-task b { white-space: normal; font-size: 17px; }
+  .t-run-cols { display: none; }
+  .t-row { grid-template-columns: 1fr 96px; grid-template-rows: auto auto; height: auto; padding: 12px 12px; margin: 0; row-gap: 10px; column-gap: 12px; }
+  .t-row .nm { grid-column: 1; grid-row: 1; }
+  .t-row .st { grid-column: 2; grid-row: 1; text-align: right; }
+  .t-row .tr { grid-column: 1; grid-row: 2; }
+  .t-row .ck { grid-column: 2; grid-row: 2; justify-content: flex-end; gap: 4px; }
+  .t-row .ck i { width: 10px; height: 10px; }
+  .t-row .df { display: none; }
+  .t-row .st b { font-weight: 500; }
+  .t-sec { padding-top: 112px; }
+  .t-stack { padding-top: 64px; }
+  .t-logos { gap: 20px 28px; }
+  .t-pr { padding: 22px 16px; }
+  .t-files li { grid-template-columns: 1fr auto; }
+  .t-files i { display: none; }
+  .t-pass { grid-template-columns: 1fr; }
+  .t-bill-row { grid-template-columns: 1fr auto; row-gap: 10px; }
+  .t-bill-bar { grid-column: 1 / -1; grid-row: 2; height: 32px; }
+  .t-bill-row b { font-size: 22px; }
+  .t-end { margin-top: 112px; padding: 104px 0; }
+  .t-foot-cols { grid-template-columns: 1fr 1fr; }
+  .t-foot-end { flex-direction: column; }
+}
+/* headline halves sit on their own lines */
+.t-head h2 .g, .t-tare h2 .g, .t-end h2 .m { display: block; }
+.t-merge path:not(.win) { stroke: var(--faint); }
+.t-stats span, .t-terms span, .t-steps p, .t-stack p { text-wrap: balance; }
+
+/* ---------- bento ---------- */
+.t-bento { margin-top: 64px; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 300px; gap: 12px; }
+.t-cell { display: flex; flex-direction: column; background: var(--ink-2); padding: 24px; min-width: 0; }
+.t-cell.c-models { grid-column: span 2; grid-row: span 2; }
+.t-cell.wide { grid-column: span 2; }
+.t-vis { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+.t-cell-copy h3 { font-size: 17px; line-height: 1.3; }
+.t-cell-copy p { margin-top: 6px; font-size: 15px; color: var(--mute); text-wrap: pretty; max-width: 40ch; }
+.c-models .t-cell-copy h3 { font-size: 22px; }
+.c-models .t-cell-copy p { font-size: 16px; }
+.c-models .t-vis { background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--grid) var(--grid); margin: -24px -24px 24px; padding: 32px; -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
+.t-wins { display: flex; flex-direction: column; gap: 14px; }
+.t-wins li { display: grid; grid-template-columns: 112px 1fr 44px; gap: 16px; align-items: center; font-size: 14px; color: var(--mute); }
+.t-wins i { height: 10px; background: var(--line); position: relative; }
+.t-wins i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: calc(var(--w) / 41 * 100%); background: var(--faint); transform-origin: left; transform: scaleX(0); transition: transform 1000ms var(--ease) 200ms; }
+.t-wins .top i::after { background: var(--mint); }
+.t-wins .top span, .t-wins .top b { color: var(--paper); }
+.t-wins b { font-weight: 500; text-align: right; }
+.in .t-wins i::after, .x .t-wins i::after { transform: none; }
+.t-vis-cap { margin-top: 18px; font-size: 13px; color: var(--dim); }
+.t-boxes { display: grid; grid-template-columns: repeat(3, 44px); gap: 8px; }
+.t-boxes i { height: 44px; background: var(--ink-3); position: relative; }
+.t-boxes i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 8px; margin: -2px 0 0 -5px; background: var(--faint); }
+.t-boxes i::before { content: ""; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -8px 0 0 -5px; box-shadow: inset 0 0 0 1.5px var(--faint); border-radius: 3px 3px 0 0; }
+.t-boxes i.on { background: var(--deep); } .t-boxes i.on::after { background: var(--mint); } .t-boxes i.on::before { box-shadow: inset 0 0 0 1.5px var(--mint); }
+.t-tree { display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--mute); }
+.t-tree li { display: flex; align-items: center; gap: 10px; }
+.t-tree li.in { padding-left: 20px; }
+.t-tree li.ok::before { content: ""; width: 8px; height: 8px; background: var(--mint); }
+.t-tree li.no { color: var(--dim); text-decoration: line-through; text-decoration-color: var(--faint); }
+.t-tree li.in.no::before { content: ""; width: 8px; height: 8px; box-shadow: inset 0 0 0 1.5px var(--dim); }
+.t-cap b { display: block; font-size: 40px; font-weight: 500; line-height: 1; }
+.t-cap span { display: block; margin-top: 8px; font-size: 14px; color: var(--mute); }
+.t-cap div { margin-top: 18px; height: 8px; background: var(--line); }
+.t-cap div i { display: block; height: 100%; background: var(--mint); }
+.t-replay span { display: block; margin-top: 16px; font-size: 14px; color: var(--mute); }
+.t-rp-line { position: relative; display: flex; justify-content: space-between; align-items: center; height: 14px; }
+.t-rp-line u { position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: var(--line-2); z-index: 0; text-decoration: none; }
+.t-rp-line i { position: relative; z-index: 1; width: 10px; height: 10px; background: var(--faint); }
+.t-rp-line i.on { width: 14px; height: 14px; background: var(--mint); }
+.t-rp-line i:nth-child(-n+2) { background: var(--green-2); }
+.t-note { display: flex; gap: 14px; align-items: flex-start; padding: 18px; background: var(--ink-3); max-width: 440px; }
+.t-note svg { width: 22px; height: 22px; fill: var(--paper); flex: none; margin-top: 2px; }
+.t-note b { font-size: 15px; font-weight: 500; } .t-note b span { color: var(--mint); font-weight: 400; }
+.t-note p { margin-top: 4px; font-size: 14px; color: var(--mute); }
+.t-where { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.t-where span { height: 40px; padding: 0 16px; display: inline-flex; align-items: center; background: var(--ink-3); font-size: 15px; color: var(--mute); }
+.t-where span.on { background: var(--deep); color: var(--mint); }
+.t-where em { flex-basis: 100%; margin-top: 10px; font-style: normal; font-size: 14px; color: var(--dim); }
+
+/* ---------- testimonials ---------- */
+.t-voices { margin-top: 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.t-voice { display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: 26px; background: var(--ink-2); }
+.t-voice blockquote { font-size: 16px; line-height: 1.55; color: var(--paper); text-wrap: pretty; }
+.t-voice figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--mute); }
+.t-voice figcaption i { width: 36px; height: 36px; flex: none; display: grid; place-items: center; background: var(--deep); color: var(--mint); font-style: normal; font-weight: 600; font-size: 15px; }
+.t-voice figcaption span { display: flex; flex-direction: column; line-height: 1.35; }
+.t-voice figcaption b { color: var(--paper); font-weight: 500; }
+
+/* ---------- faq ---------- */
+.t-faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: start; }
+.t-qs { display: flex; flex-direction: column; gap: 4px; }
+.t-q { background: var(--ink-2); }
+.t-q summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 24px; cursor: pointer; font-size: 17px; font-weight: 500; }
+.t-q summary::-webkit-details-marker { display: none; }
+.t-q summary i { position: relative; width: 14px; height: 14px; flex: none; }
+.t-q summary i::before, .t-q summary i::after { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: var(--dim); transition: transform 240ms var(--ease), background-color 200ms ease; }
+.t-q summary i::after { transform: rotate(90deg); }
+.t-q[open] summary i::after { transform: rotate(0deg); }
+.t-q[open] summary i::before, .t-q[open] summary i::after { background: var(--mint); }
+.t-q p { padding: 0 24px 22px; color: var(--mute); max-width: 60ch; }
+
+@media (max-width: 1080px) {
+  .t-bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+  .t-cell { min-height: 280px; }
+  .t-cell.c-models, .t-cell.wide { grid-column: span 2; grid-row: auto; }
+  .t-voices { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) { .t-faq { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 640px) {
+  .t-bento { grid-template-columns: 1fr; margin-top: 48px; }
+  .t-cell.c-models, .t-cell.wide { grid-column: auto; }
+  .t-cell { padding: 20px; min-height: 260px; }
+  .c-models .t-vis { margin: -20px -20px 20px; padding: 24px 20px; }
+  .t-wins li { grid-template-columns: 92px 1fr 40px; gap: 12px; }
+  .t-voices { grid-template-columns: 1fr; margin-top: 56px; }
+  .t-q summary { padding: 18px 16px; font-size: 16px; }
+  .t-q p { padding: 0 16px 18px; }
+}
+@media (max-width: 640px) {
+  .t-voices { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-left: -16px; margin-right: -16px; padding: 0 16px; scroll-padding: 0 16px; scrollbar-width: none; }
+  .t-voices::-webkit-scrollbar { display: none; }
+  .t-voice { flex: 0 0 82%; scroll-snap-align: start; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="mark" viewBox="186 186 1500 1500"><path fill="currentColor" fill-rule="evenodd" d="M1686.0 1686.0L1686.0 1551.0L1652.1 1550.1L1618.2 1547.3L1584.6 1542.6L1551.3 1536.1L1518.3 1527.7L1485.9 1517.5L1454.1 1505.6L1423.1 1492.0L1392.8 1476.6L1363.4 1459.6L1335.0 1441.0L1307.6 1420.8L1281.4 1399.2L1256.5 1376.2L1232.9 1351.8L1210.6 1326.2L1194.3 1305.4L1178.9 1283.9L1164.4 1261.8L1150.9 1239.1L1138.4 1215.9L1126.9 1192.1L1116.4 1167.9L1107.0 1143.2L1098.6 1118.1L1091.3 1092.7L1085.1 1067.1L1080.1 1041.1L1076.1 1015.0L1073.3 988.8L1071.6 962.4L1071.0 936.0L1071.6 909.6L1073.3 883.2L1076.1 857.0L1080.1 830.9L1085.1 804.9L1091.3 779.3L1098.6 753.9L1107.0 728.8L1116.4 704.1L1126.9 679.9L1138.4 656.1L1150.9 632.9L1164.4 610.2L1178.9 588.1L1194.3 566.6L1210.6 545.8L1232.9 520.2L1256.5 495.8L1281.4 472.8L1307.6 451.2L1335.0 431.0L1363.4 412.4L1392.8 395.4L1423.1 380.0L1454.1 366.4L1485.9 354.5L1518.3 344.3L1551.3 335.9L1584.6 329.4L1618.2 324.7L1652.1 321.9L1686.0 321.0L1686.0 186.0L186.0 186.0L186.0 321.0L219.9 321.9L253.8 324.7L287.4 329.4L320.7 335.9L353.7 344.3L386.1 354.5L417.9 366.4L448.9 380.0L479.2 395.4L508.6 412.4L537.0 431.0L564.4 451.2L590.6 472.8L615.5 495.8L639.1 520.2L661.4 545.8L677.7 566.6L693.1 588.1L707.6 610.2L721.1 632.9L733.6 656.1L745.1 679.9L755.6 704.1L765.0 728.8L773.4 753.9L780.7 779.3L786.9 804.9L791.9 830.9L795.9 857.0L798.7 883.2L800.4 909.6L801.0 936.0L800.4 962.4L798.7 988.8L795.9 1015.0L791.9 1041.1L786.9 1067.1L780.7 1092.7L773.4 1118.1L765.0 1143.2L755.6 1167.9L745.1 1192.1L733.6 1215.9L721.1 1239.1L707.6 1261.8L693.1 1283.9L677.7 1305.4L661.4 1326.2L639.1 1351.8L615.5 1376.2L590.6 1399.2L564.4 1420.8L537.0 1441.0L508.6 1459.6L479.2 1476.6L448.9 1492.0L417.9 1505.6L386.1 1517.5L353.7 1527.7L320.7 1536.1L287.4 1542.6L253.8 1547.3L219.9 1550.1L186.0 1551.0L186.0 1686.0L1686.0 1686.0Z"/></symbol></defs></svg>
+
+<header class="t-nav">
+  <div class="t-in">
+    <a class="t-lock" href="#top" aria-label="Tare home"><svg viewBox="186 186 1500 1500"><use href="#mark"/></svg>Tare</a>
+    <nav class="t-links" aria-label="Main">
+      <a href="#how">How it works</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#customers">Customers</a><a href="#docs">Docs</a>
+    </nav>
+    <div class="t-acts"><a class="t-ghost" href="/live/tare/app/#/signin">Sign in</a><a class="t-btn" href="/live/tare/app/#/new">Start a task</a></div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="t-hero">
+    <div class="t-in">
+      <div class="t-hero-copy">
+        <h1 class="rv">Coding agents, <span class="g">paid when they ship.</span></h1>
+        <div class="t-hero-side rv">
+          <p>Tare runs six agents on every task, checks each attempt against your tests, and opens one pull request. Retries and dead ends are never billed.</p>
+          <div class="t-ctas"><a class="t-btn" href="/live/tare/app/#/new">Start a task</a><a class="t-btn line" href="#how">See how it works</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-in">
+      <div class="t-run bk rv" aria-label="A task run: six agents work on one issue, each attempt is checked, the best one is merged and only it is billed">
+        <div class="t-run-head">
+          <div class="t-run-task"><span class="t-issue"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2.886 4.18A11.982 11.982 0 0 1 11.99 0C18.624 0 24 5.376 24 12.009c0 3.64-1.62 6.903-4.18 9.105L2.887 4.18ZM1.817 5.626l16.556 16.556c-.524.33-1.075.62-1.65.866L.951 7.277c.247-.575.537-1.126.866-1.65ZM.322 9.163l14.515 14.515c-.71.172-1.443.282-2.195.322L0 11.358a12 12 0 0 1 .322-2.195Zm-.17 4.862 9.823 9.824a12.02 12.02 0 0 1-9.824-9.824Z"/></svg>LIN-482</span><b>Fix the flaky checkout retry test</b></div>
+          <div class="t-run-meta"><span data-run-state>Running</span><span class="t-clock" data-run-clock>00:00</span></div>
+        </div>
+        <div class="t-run-cols" aria-hidden="true"><span>Agent</span><span>Work</span><span>Checks</span><span>Diff</span><span>Cost</span><span>Status</span></div>
+        <ol class="t-rows" data-run></ol>
+        <p class="t-run-foot" data-run-foot>Six attempts in parallel. You only pay for the one you merge.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="t-stack">
+    <div class="t-in">
+      <p class="rv">Plugs into the tools your team already uses.</p>
+      <ul class="t-logos rv">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m23.6004 9.5927-.0337-.0862L20.3.9814a.851.851 0 0 0-.3362-.405.8748.8748 0 0 0-.9997.0539.8748.8748 0 0 0-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 0 0-.29-.4412.8748.8748 0 0 0-.9997-.0537.8585.8585 0 0 0-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 0 0 2.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 0 0 1.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7489.0125-.01a6.0682 6.0682 0 0 0 2.0094-7.003z"/></svg>GitLab</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.886 4.18A11.982 11.982 0 0 1 11.99 0C18.624 0 24 5.376 24 12.009c0 3.64-1.62 6.903-4.18 9.105L2.887 4.18ZM1.817 5.626l16.556 16.556c-.524.33-1.075.62-1.65.866L.951 7.277c.247-.575.537-1.126.866-1.65ZM.322 9.163l14.515 14.515c-.71.172-1.443.282-2.195.322L0 11.358a12 12 0 0 1 .322-2.195Zm-.17 4.862 9.823 9.824a12.02 12.02 0 0 1-9.824-9.824Z"/></svg>Linear</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.005-1.005zm5.723-5.756H5.736a5.215 5.215 0 0 0 5.215 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.758a1.001 1.001 0 0 0-1.001-1.001zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.057A5.215 5.215 0 0 0 24 12.483V1.005A1.001 1.001 0 0 0 23.013 0Z"/></svg>Jira</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>Slack</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>Vercel</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="t-sec t-tare">
+    <div class="t-in">
+      <div class="t-scale rv" aria-hidden="true"><svg viewBox="186 186 1500 1500"><use href="#mark"/></svg></div>
+      <div class="t-tare-copy">
+        <h2 class="rv">A tare is the empty box. <span class="g">You shouldn't pay for it.</span></h2>
+        <p class="rv">Most agent tools bill every token, including the retries, the loops and the attempts nobody merges. Tare takes that weight off the scale and bills the change that lands in your main branch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="t-sec" id="how">
+    <div class="t-in">
+      <div class="t-head rv"><h2>One task in, <span class="g">one pull request out.</span></h2><p>Assign an issue to Tare the way you would assign it to a teammate. The rest happens while you work on something else.</p></div>
+      <div class="t-steps">
+        <article class="rv">
+          <div class="t-fig bk"><svg viewBox="0 0 320 200" class="t-draw" aria-hidden="true">
+            <circle cx="40" cy="100" r="5" class="dot"/>
+            <path d="M45 100 C120 100 150 30 280 30" /><path d="M45 100 C120 100 150 58 280 58" /><path d="M45 100 C120 100 150 86 280 86" />
+            <path d="M45 100 C120 100 150 114 280 114" /><path d="M45 100 C120 100 150 142 280 142" /><path d="M45 100 C120 100 150 170 280 170" />
+            <g class="ends"><rect x="280" y="25" width="10" height="10"/><rect x="280" y="53" width="10" height="10"/><rect x="280" y="81" width="10" height="10"/><rect x="280" y="109" width="10" height="10"/><rect x="280" y="137" width="10" height="10"/><rect x="280" y="165" width="10" height="10"/></g>
+          </svg></div>
+          <h3>Run in parallel</h3>
+          <p>Six agents take the same issue, each on a different model or approach, in its own sandbox.</p>
+        </article>
+        <article class="rv">
+          <div class="t-fig bk"><div class="t-checks" aria-hidden="true" data-checks></div></div>
+          <h3>Check every attempt</h3>
+          <p>Your tests, types, lint and a scope check run on every result. Anything risky is flagged in one line.</p>
+        </article>
+        <article class="rv">
+          <div class="t-fig bk"><svg viewBox="0 0 320 200" class="t-draw t-merge" aria-hidden="true">
+            <path d="M30 30 C110 30 120 30 150 30" /><path d="M30 58 C110 58 120 58 150 58" /><path d="M30 142 C110 142 120 142 150 142" />
+            <path d="M30 170 C110 170 120 170 150 170" /><path d="M30 114 C110 114 120 114 150 114" />
+            <path class="win" d="M30 86 C120 86 150 100 200 100 L280 100" />
+            <circle cx="286" cy="100" r="6" class="node"/>
+          </svg></div>
+          <h3>Merge the best</h3>
+          <p>You review one pull request. The other attempts are thrown away, and so is their bill.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="t-sec" id="features">
+    <div class="t-in">
+      <div class="t-head rv"><h2>Built for real codebases, <span class="g">not demos.</span></h2><p>Everything around the agents that makes their work safe to merge.</p></div>
+      <div class="t-bento">
+        <article class="t-cell c-models rv">
+          <div class="t-vis">
+            <ul class="t-wins" data-wins>
+              <li class="top"><span>Claude Opus</span><i style="--w:41"></i><b>41%</b></li>
+              <li><span>GPT</span><i style="--w:22"></i><b>22%</b></li>
+              <li><span>Gemini</span><i style="--w:18"></i><b>18%</b></li>
+              <li><span>Mistral</span><i style="--w:11"></i><b>11%</b></li>
+              <li><span>Qwen Coder</span><i style="--w:8"></i><b>8%</b></li>
+            </ul>
+            <p class="t-vis-cap">Merged attempts on your repository, last 30 days</p>
+          </div>
+          <div class="t-cell-copy"><h3>Any model, judged on results</h3><p>Tare learns which model wins on your codebase and gives it more of the work.</p></div>
+        </article>
+        <article class="t-cell rv">
+          <div class="t-vis"><div class="t-boxes" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div></div>
+          <div class="t-cell-copy"><h3>A sandbox per attempt</h3><p>Its own container, with secrets scoped to the task.</p></div>
+        </article>
+        <article class="t-cell rv">
+          <div class="t-vis"><ul class="t-tree" aria-hidden="true"><li>checkout/</li><li class="in ok">retry.ts</li><li class="in ok">retry.test.ts</li><li class="no">payments/</li><li class="in no">charge.ts</li></ul></div>
+          <div class="t-cell-copy"><h3>Scope guard</h3><p>Edits outside the issue are blocked before review.</p></div>
+        </article>
+        <article class="t-cell rv">
+          <div class="t-vis"><div class="t-cap"><b>$42</b><span>of $200 this week</span><div><i style="width:21%"></i></div></div></div>
+          <div class="t-cell-copy"><h3>Spend caps</h3><p>A weekly cap per repository. Tare stops before it.</p></div>
+        </article>
+        <article class="t-cell rv">
+          <div class="t-vis"><div class="t-replay" aria-hidden="true"><div class="t-rp-line"><i></i><i></i><i class="on"></i><i></i><i></i><u></u></div><span>Step 3 of 5, running tests</span></div></div>
+          <div class="t-cell-copy"><h3>Replay any attempt</h3><p>Step through what an agent tried, even the ones you threw away.</p></div>
+        </article>
+        <article class="t-cell wide rv">
+          <div class="t-vis"><div class="t-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg><div><b>Tare <span>merged #1284</span></b><p>Fix the flaky checkout retry test. 4 of 4 checks passed, billed $1.84.</p></div></div></div>
+          <div class="t-cell-copy"><h3>Lands where your team talks</h3><p>Results post to Slack and Linear, with the pull request one click away.</p></div>
+        </article>
+        <article class="t-cell wide rv">
+          <div class="t-vis"><div class="t-where" aria-hidden="true"><span class="on">Tare cloud</span><span>Your cloud</span><em>AWS, GCP, Azure or bare metal</em></div></div>
+          <div class="t-cell-copy"><h3>Run it in your own cloud</h3><p>Self-hosted runners keep code on your machines, at the same price per change.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="t-sec" id="review">
+    <div class="t-in t-split">
+      <div class="t-head rv"><h2>Review a change, <span class="g">not a transcript.</span></h2>
+        <p>Every pull request arrives with the checks it passed, what it touched and why it beat the other five. No chat logs to scroll through.</p>
+        <ul class="t-points">
+          <li><b>Scoped.</b> Changes outside the issue are blocked before you see them.</li>
+          <li><b>Explained.</b> A short note on the approach and the attempts it beat.</li>
+          <li><b>Reversible.</b> Every merge can be reverted from the console in one click.</li>
+        </ul>
+      </div>
+      <div class="t-pr bk rv">
+        <div class="t-pr-top"><span class="t-merged"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 2.5v11M4 5.5c0 3 3 4 8 4.5M12 10v3.5"/><circle cx="4" cy="2.5" r="1.6" fill="currentColor"/><circle cx="12" cy="13.5" r="1.6" fill="currentColor"/></svg>Ready to merge</span><span class="t-num">#1284</span></div>
+        <h3>Fix the flaky checkout retry test</h3>
+        <p class="t-pr-by">Attempt 3 of 6, Claude Opus. Beat five attempts on diff size and test time.</p>
+        <ul class="t-files" data-files>
+          <li><span>checkout/retry.ts</span><em>+24 −11</em><i data-d="3,2"></i></li>
+          <li><span>checkout/retry.test.ts</span><em>+16 −2</em><i data-d="4,1"></i></li>
+          <li><span>lib/clock.ts</span><em>+2 −0</em><i data-d="1,0"></i></li>
+        </ul>
+        <ul class="t-pass">
+          <li><i></i>Tests<span>412 passed</span></li><li><i></i>Types<span>No errors</span></li><li><i></i>Lint<span>Clean</span></li><li><i></i>Scope<span>3 files, all in checkout</span></li>
+        </ul>
+        <p class="t-risk"><b>Risk</b>Low. Touches retry timing only, behind the existing flag.</p>
+        <div class="t-pr-acts"><a class="t-btn" href="#start">Approve and merge</a><span>Billed on merge, $1.84</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="t-sec" id="pricing">
+    <div class="t-in">
+      <div class="t-head rv"><h2>Pay for the change, <span class="g">not the tokens.</span></h2><p>The same task, run six ways. A per-token tool bills all six. Tare bills the one you merged.</p></div>
+      <div class="t-bill rv" data-bill>
+        <div class="t-bill-row"><span>Billed per token</span><div class="t-bill-bar"><i style="--w:16.5"></i><i style="--w:18.9"></i><i style="--w:14"></i><i style="--w:21.7"></i><i style="--w:12"></i><i style="--w:16.9"></i></div><b>$11.12</b></div>
+        <div class="t-bill-row tare"><span>Billed by Tare</span><div class="t-bill-bar"><i style="--w:16.5"></i></div><b>$1.84</b></div>
+      </div>
+      <ul class="t-terms">
+        <li class="rv"><b>$0</b><span>for attempts you don't merge, however long they ran.</span></li>
+        <li class="rv"><b>Any model</b><span>Claude, GPT, Gemini or your own. The price per change stays the same.</span></li>
+        <li class="rv"><b>One plan</b><span>Pay as you merge. No seats, no minimums, cancel any time.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="t-sec t-quote" id="customers">
+    <div class="t-in">
+      <blockquote class="rv t-feat"><p>We stopped watching agents type. Now we just merge.</p>
+        <footer><i aria-hidden="true">V</i><span><b>Vuk</b>Head of engineering, Halden</span></footer></blockquote>
+      <div class="t-voices"><figure class="t-voice rv"><blockquote>The billing changed how we use agents. Every flaky test goes to Tare now, because a dead end costs us nothing.</blockquote><figcaption><i aria-hidden="true">K</i><span><b>Kestrel</b>Staff engineer</span></figcaption></figure><figure class="t-voice rv"><blockquote>Six attempts sounds wasteful until you see the one that wins. It's usually smaller than what I would have written.</blockquote><figcaption><i aria-hidden="true">F</i><span><b>Fieldnote</b>Senior engineer</span></figcaption></figure><figure class="t-voice rv"><blockquote>The scope guard is the feature nobody asks for and everyone needs. Nothing leaks into the payments folder.</blockquote><figcaption><i aria-hidden="true">O</i><span><b>Orbitkit</b>Platform lead</span></figcaption></figure><figure class="t-voice rv"><blockquote>We moved our backlog of small bugs to Tare in a week. The queue has been empty since.</blockquote><figcaption><i aria-hidden="true">L</i><span><b>Lumen</b>CTO</span></figcaption></figure><figure class="t-voice rv"><blockquote>Reviews take minutes. The pull request says what it touched, what it beat and what it cost.</blockquote><figcaption><i aria-hidden="true">P</i><span><b>Parcel</b>Engineering manager</span></figcaption></figure><figure class="t-voice rv"><blockquote>It runs on our own runners. Code never leaves our cloud, and the price per change doesn't move.</blockquote><figcaption><i aria-hidden="true">A</i><span><b>Ardent</b>Head of security</span></figcaption></figure></div>
+      <ul class="t-stats">
+        <li class="rv"><b data-count="38">38</b><span>minutes from issue to pull request, on average</span></li>
+        <li class="rv"><b data-count="71" data-suf="%">71%</b><span>of runs end in a merge on the first review</span></li>
+        <li class="rv"><b data-count="0" data-pre="$">$0</b><span>spent on the attempts that failed</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="t-sec" id="faq">
+    <div class="t-in t-faq">
+      <div class="t-head rv"><h2>Questions, <span class="g">answered.</span></h2><p>Anything else, ask us in Discord or book a call with an engineer.</p></div>
+      <div class="t-qs rv"><details class="t-q" open><summary>What counts as a merged change?<i aria-hidden="true"></i></summary><p>A pull request from Tare that lands in your default branch. If it's closed, or reverted within seven days, it isn't billed.</p></details><details class="t-q"><summary>Which models can Tare use?<i aria-hidden="true"></i></summary><p>Claude, GPT, Gemini, Mistral and open models such as Qwen Coder, or your own endpoint. You can pin models per repository.</p></details><details class="t-q"><summary>Where does my code run?<i aria-hidden="true"></i></summary><p>In isolated sandboxes on Tare cloud, or on self-hosted runners in your own cloud. Every attempt gets its own container and scoped secrets.</p></details><details class="t-q"><summary>How does Tare pick the winning attempt?<i aria-hidden="true"></i></summary><p>Every attempt runs your tests, types, lint and a scope check. Among the ones that pass, Tare prefers the smallest diff and the fastest tests, and tells you why.</p></details><details class="t-q"><summary>Can we cap what we spend?<i aria-hidden="true"></i></summary><p>Yes. Set a weekly cap per repository, and Tare stops starting new tasks before you reach it.</p></details><details class="t-q"><summary>Does Tare train on our code?<i aria-hidden="true"></i></summary><p>No. Your code is used to run your tasks and nothing else, and sandboxes are destroyed when the run ends.</p></details></div>
+    </div>
+  </section>
+
+  <section class="t-end" id="start">
+    <svg class="t-ring" viewBox="0 0 1600 700" aria-hidden="true" preserveAspectRatio="none"><ellipse cx="800" cy="350" rx="760" ry="300"/></svg>
+    <div class="t-in">
+      <svg class="t-end-mark rv" viewBox="186 186 1500 1500" aria-hidden="true"><use href="#mark"/></svg>
+      <h2 class="rv">Ship the change, <span class="m">not the tokens.</span></h2>
+      <p class="rv">Connect a repository and assign your first issue in two minutes.</p>
+      <div class="t-ctas rv"><a class="t-btn" href="/live/tare/app/#/new">Start a task</a><a class="t-btn line" href="#demo">Book a demo</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="t-foot">
+  <div class="t-in">
+    <div class="t-foot-top">
+      <div class="t-foot-brand"><a class="t-lock" href="#top"><svg viewBox="186 186 1500 1500"><use href="#mark"/></svg>Tare</a><p>Coding agents you only pay for when they ship.</p>
+        <div class="t-social"><a href="#x" aria-label="Tare on X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a><a href="#github" aria-label="Tare on GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a href="#discord" aria-label="Tare on Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></a></div>
+      </div>
+      <nav class="t-foot-cols" aria-label="Footer">
+        <div><b>Product</b><a href="#how">How it works</a><a href="#review">Review</a><a href="#pricing">Pricing</a><a href="#changelog">Changelog</a></div>
+        <div><b>Developers</b><a href="#docs">Docs</a><a href="#api">API</a><a href="#status">Status</a><a href="#security">Security</a></div>
+        <div><b>Company</b><a href="#about">About</a><a href="#careers">Careers</a><a href="#contact">Contact</a><a href="#legal">Legal</a></div>
+      </nav>
+    </div>
+    <div class="t-word" aria-hidden="true">Tare</div>
+    <div class="t-foot-end"><span>© 2026 Tare</span><span>Made for teams who review, not babysit.</span></div>
+  </div>
+</footer>
+<script>const XMODE = /[?&]x\b/.test(location.search)
+if (XMODE) document.documentElement.classList.add("x")
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches
+
+/* reveal, staggered among siblings */
+const io = new IntersectionObserver((es) => es.forEach((e) => {
+  if (!e.isIntersecting) return
+  const sib = [...e.target.parentElement.children].filter((c) => c.classList.contains("rv"))
+  e.target.style.transitionDelay = Math.min(sib.indexOf(e.target), 4) * 70 + "ms"
+  e.target.classList.add("in"); io.unobserve(e.target)
+}), { rootMargin: "0px 0px -10% 0px" })
+document.querySelectorAll(".rv").forEach((el) => (XMODE ? el.classList.add("in") : io.observe(el)))
+
+/* ---------- the run: six agents, one issue, one merge ---------- */
+const AGENTS = [
+  { nm: "Claude Opus", dur: 5.2, at: 0.1, ck: [1, 1, 1, 1], df: "+42 −13", cost: 1.84 },
+  { nm: "GPT", dur: 6.1, at: 0.3, ck: [0, 1, 1, 1], df: "+67 −20", cost: 2.10 },
+  { nm: "Gemini", dur: 4.6, at: 0.2, ck: [1, 1, 0, 1], df: "+51 −9", cost: 1.56 },
+  { nm: "Claude Sonnet", dur: 6.8, at: 0.5, ck: [1, 1, 1, 0], df: "+118 −31", cost: 2.41 },
+  { nm: "Mistral", dur: 3.9, at: 0.4, ck: [0, 0, 1, 1], df: "+29 −4", cost: 1.33 },
+  { nm: "Qwen Coder", dur: 5.7, at: 0.6, ck: [1, 0, 1, 1], df: "+73 −18", cost: 1.88 },
+]
+const WIN = 0, CHECK = 0.42, DECIDE = 9.2, LOOP = 14
+const runEl = document.querySelector("[data-run]")
+if (runEl) {
+  const rows = AGENTS.map((a) => {
+    const li = document.createElement("li"); li.className = "t-row"
+    li.innerHTML = `<span class="nm">${a.nm}</span><span class="tr"><i></i></span><span class="ck">${"<i></i>".repeat(4)}</span><span class="df">–</span><span class="co">$0.00</span><span class="st">Queued</span>`
+    runEl.appendChild(li)
+    return { a, li, bar: li.querySelector(".tr i"), cks: [...li.querySelectorAll(".ck i")], df: li.querySelector(".df"), co: li.querySelector(".co"), st: li.querySelector(".st"), last: "" }
+  })
+  const clock = document.querySelector("[data-run-clock]"), state = document.querySelector("[data-run-state]"), foot = document.querySelector("[data-run-foot]")
+  const FOOT0 = foot.innerHTML
+  const ease = (x) => 1 - Math.pow(1 - x, 2.2)
+  const set = (r, key, fn) => { if (r.last !== key) { r.last = key; fn() } }
+  let footKey = ""
+  const draw = (t) => {
+    const decided = t >= DECIDE
+    clock.textContent = "00:" + String(Math.min(59, Math.floor(t * 4.2))).padStart(2, "0")
+    for (const r of rows) {
+      const { a } = r, p = Math.max(0, Math.min(1, (t - a.at) / a.dur))
+      r.bar.style.transform = `scaleX(${ease(p).toFixed(4)})`
+      const done = p >= 1, ct = done ? Math.min(4, Math.floor((t - a.at - a.dur) / CHECK) + 1) : 0
+      r.cks.forEach((c, i) => { c.className = i < ct ? (a.ck[i] ? "ok" : "no") : "" })
+      const pass = a.ck.every(Boolean)
+      if (!decided) r.co.textContent = "$" + (a.cost * ease(p)).toFixed(2)
+      let key, st
+      if (decided) { key = "d"; st = r === rows[WIN] ? "<b>Merged</b>" : "Not billed" }
+      else if (p <= 0) { key = "q"; st = "Queued" }
+      else if (!done) { key = "w"; st = "Writing" }
+      else if (ct < 4) { key = "c"; st = "Checking" }
+      else { key = pass ? "p" : "f"; st = pass ? "Passed" : "Failed" }
+      set(r, key, () => {
+        r.st.innerHTML = st
+        r.li.classList.toggle("fail", key === "f")
+        r.li.classList.toggle("win", decided && r === rows[WIN])
+        r.li.classList.toggle("lose", decided && r !== rows[WIN])
+        r.df.textContent = p >= 1 ? a.df : p > 0 ? "…" : "–"
+        if (decided) r.co.textContent = "$" + a.cost.toFixed(2)
+      })
+    }
+    const fk = decided ? "d" : "r"
+    if (fk !== footKey) {
+      footKey = fk
+      const lost = AGENTS.filter((_, i) => i !== WIN).reduce((s, a) => s + a.cost, 0)
+      foot.innerHTML = decided ? `<b>Billed $${AGENTS[WIN].cost.toFixed(2)}</b> for one merged change. Five attempts, $${lost.toFixed(2)} of tokens, not billed.` : FOOT0
+      state.textContent = decided ? "Merged #1284" : "Running"; state.classList.toggle("done", decided)
+    }
+  }
+  if (REDUCED || XMODE) draw(DECIDE + 1)
+  else {
+    let vis = false, t0 = 0, acc = 0
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis) t0 = performance.now() }).observe(runEl)
+    const tick = (now) => {
+      if (vis) { acc += Math.min(100, now - t0) / 1000; t0 = now; if (acc > LOOP) { acc = 0; rows.forEach((r) => (r.last = "")) } draw(acc) }
+      requestAnimationFrame(tick)
+    }
+    draw(0); requestAnimationFrame(tick)
+  }
+}
+
+/* ---------- check grid: six attempts by four checks ---------- */
+const ckEl = document.querySelector("[data-checks]")
+if (ckEl) {
+  const cells = AGENTS.flatMap((a) => a.ck)
+  ckEl.innerHTML = cells.map(() => "<i></i>").join("")
+  const fill = () => [...ckEl.children].forEach((c, i) => setTimeout(() => (c.className = cells[i] ? "ok" : "no"), XMODE || REDUCED ? 0 : 300 + i * 55))
+  if (XMODE || REDUCED) fill()
+  else new IntersectionObserver(([e], o) => { if (e.isIntersecting) { fill(); o.disconnect() } }, { rootMargin: "0px 0px -15% 0px" }).observe(ckEl)
+}
+
+/* ---------- diff blocks on the pull request ---------- */
+document.querySelectorAll("[data-d]").forEach((el) => {
+  const [a, d] = el.dataset.d.split(",").map(Number)
+  el.innerHTML = Array.from({ length: 5 }, (_, i) => `<b class="${i < a ? "a" : i < a + d ? "d" : ""}"></b>`).join("")
+})
+
+/* ---------- stats count up once ---------- */
+document.querySelectorAll("[data-count]").forEach((el) => {
+  const n = +el.dataset.count, pre = el.dataset.pre || "", suf = el.dataset.suf || ""
+  if (XMODE || REDUCED || n === 0) return
+  el.textContent = pre + "0" + suf
+  new IntersectionObserver(([e], o) => {
+    if (!e.isIntersecting) return; o.disconnect()
+    const s = performance.now(), step = (now) => { const k = Math.min(1, (now - s) / 1100); el.textContent = pre + Math.round(n * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(step) }
+    requestAnimationFrame(step)
+  }, { rootMargin: "0px 0px -15% 0px" }).observe(el)
+})
+</script>
+</body>
+</html>

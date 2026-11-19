@@ -1428,3 +1428,8 @@ html, body { background: #0A0A0A; color-scheme: dark; }
 
 @media (max-width: 900px) { .vpr-plans { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .vpr-perks, .vpr-work { grid-template-columns: 1fr; } .vpr-ctas { flex-direction: column; width: 100%; } .vpr-ctas .va-pill { justify-content: center; } }
+
+/* work tiles: the client's logo and name, nothing else */
+.vn-split .vn-case p { justify-content: flex-start; align-items: center; gap: 9px; }
+.vn-logo { width: 22px; height: 22px; object-fit: contain; flex: none; }
+.vn-logo.dark { filter: invert(1); }

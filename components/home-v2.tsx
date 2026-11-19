@@ -25,11 +25,11 @@ const PLANS = [
 
 const FILTERS: [string, string[]][] = [["All", []], ["AI", ["AI", "Agents"]], ["Fintech", ["Fintech", "Payments", "Trading", "Investing", "Crypto"]], ["Dev tools", ["Developer Tools", "Infrastructure", "DevOps", "Database", "Backend"]], ["Consumer", ["Consumer", "Mobile"]]]
 const FILTER_ICONS: Record<string, IconType> = { All: Category, AI: Sparkles, Fintech: TrendUp, "Dev tools": Code, Consumer: Mobile }
-const ORDER = ["pnyx", "bloop", "glint", "streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"]
+const ORDER = ["tare", "pnyx", "bloop", "glint", "streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"]
 // Each recent case shows its live site's hero, recorded as it runs, so the work is visible without opening the case.
 // They loop the whole time they're on screen.
-const ALWAYS = new Set(["pnyx", "glint", "streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"])
-const FILMS: Record<string, string> = { pnyx: "Pnyx", glint: "Glint", streak: "Streak", kept: "Kept", moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
+const ALWAYS = new Set(["tare", "pnyx", "glint", "streak", "kept", "moss", "atlas", "junction", "nightshift", "youspot"])
+const FILMS: Record<string, string> = { tare: "Tare", pnyx: "Pnyx", glint: "Glint", streak: "Streak", kept: "Kept", moss: "Moss", atlas: "Atlas", junction: "Junction", nightshift: "Nightshift", youspot: "YouSpot" }
 
 export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
   const withPages = caseStudies.filter((c) => c.cover.startsWith("/case/"))
@@ -93,7 +93,8 @@ export default function HomeV2({ caseStudies }: { caseStudies: CaseStudy[] }) {
                   // eslint-disable-next-line @next/next/no-img-element
                   : <img src={c.cover} alt={`${c.title} case study`} loading={i < 4 ? "eager" : "lazy"} decoding="async" />}
               </div>
-              <p><b>{c.title}</b>{c.live ? <span className="vn-live">Live site</span> : <span>{c.date}</span>}</p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <p><img className={`vn-logo${c.logoDark ? " dark" : ""}`} src={c.logo} alt="" aria-hidden width={22} height={22} /><b>{c.title}</b></p>
             </Link>
           ))}
         </div>
