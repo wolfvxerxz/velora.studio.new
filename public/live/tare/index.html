@@ -54,52 +54,6 @@ p { text-wrap: pretty; }
 .t-nav .t-btn { height: 38px; padding: 0 16px; font-size: 14px; }
 
 /* hero */
-.t-hero { padding: 88px 0 0; }
-.t-hero h1 { font-size: clamp(34px, 7.4vw, 104px); line-height: 1; }
-.t-hero h1 .g { display: block; }
-.t-hero-side { margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
-.t-hero-side .t-ctas { margin-top: 0; flex: none; }
-.t-hero-side p { font-size: 18px; line-height: 1.55; color: var(--mute); max-width: 40ch; }
-.t-ctas { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
-
-/* the run */
-.t-run { margin-top: 72px; padding: 28px 32px 26px; background-color: var(--ink);
-  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--grid) var(--grid); background-position: -1px -1px; }
-.t-run::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 30%, var(--ink) 92%); }
-.t-run > * { position: relative; z-index: 1; }
-.t-run-head { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 22px; }
-.t-run-task { display: flex; align-items: center; gap: 14px; min-width: 0; }
-.t-run-task b { font-size: 18px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.t-issue { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px; background: var(--ink-3); color: var(--mute); font-size: 13px; flex: none; }
-.t-issue svg { width: 13px; height: 13px; }
-.t-run-meta { display: flex; gap: 18px; font-size: 14px; color: var(--mute); flex: none; }
-.t-run-meta [data-run-state].done { color: var(--mint); }
-.t-clock { color: var(--paper); min-width: 5ch; text-align: right; }
-.t-run-cols, .t-row { display: grid; grid-template-columns: 150px 1fr 92px 84px 84px 150px; gap: 20px; align-items: center; }
-.t-run-cols { font-size: 13px; color: var(--dim); padding: 0 0 10px; }
-.t-rows { display: flex; flex-direction: column; gap: 4px; }
-.t-row { height: 50px; padding: 0 14px; margin: 0 -14px; background: var(--ink-2); font-size: 14px; transition: background-color 400ms ease, color 400ms ease; }
-.t-row .nm { color: var(--paper); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 400ms ease; }
-.t-row .tr { height: 6px; background: var(--line); overflow: hidden; }
-.t-row .tr i { display: block; height: 100%; background: var(--paper); transform-origin: left; transform: scaleX(0); transition: background-color 400ms ease; }
-.t-row .ck { display: flex; gap: 6px; }
-.t-row .ck i { width: 14px; height: 14px; background: var(--line); transition: background-color 240ms ease, box-shadow 240ms ease; }
-.t-row .ck i.ok { background: var(--mint); }
-.t-row .ck i.no { background: transparent; box-shadow: inset 0 0 0 1px var(--dim); }
-.t-row .df, .t-row .co { color: var(--mute); }
-.t-row .st { color: var(--mute); white-space: nowrap; }
-.t-row.fail .st { color: var(--dim); }
-.t-row.win { background: var(--deep); }
-.t-row.win .tr i { background: var(--mint); }
-.t-row.win .st, .t-row.win .co { color: var(--mint); }
-.t-row.lose .nm, .t-row.lose .df { color: var(--dim); }
-.t-row.lose .tr i { background: var(--faint); }
-.t-row.lose .ck i.ok { background: var(--green); }
-.t-row.lose .co { color: var(--dim); text-decoration: line-through; }
-.t-row .st b { font-weight: 500; }
-.t-run-foot { margin-top: 20px; font-size: 14px; color: var(--mute); min-height: 21px; transition: color 300ms ease; }
-.t-run-foot b { color: var(--paper); font-weight: 500; }
-
 /* stack */
 .t-stack { padding: 88px 0 0; }
 .t-stack .t-in { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
@@ -234,7 +188,7 @@ p { text-wrap: pretty; }
   .t-tare .t-scale { max-width: 320px; }
   .t-steps, .t-terms, .t-stats { grid-template-columns: 1fr; gap: 48px; }
   .t-stack .t-in { flex-direction: column; align-items: flex-start; }
-  .t-hero-side { flex-direction: column; align-items: flex-start; gap: 28px; }
+
 }
 /* phone */
 @media (max-width: 640px) {
@@ -368,6 +322,77 @@ p { text-wrap: pretty; }
   .t-voices::-webkit-scrollbar { display: none; }
   .t-voice { flex: 0 0 82%; scroll-snap-align: start; }
 }
+
+
+/* ---------- hero, after restless.ai: headline on rails, the work streaming on six lanes ---------- */
+.t-hero { position: relative; padding: 64px 0 0; overflow: hidden; }
+.t-hero-top { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; align-items: end; }
+.t-h1 { font-size: clamp(28px, 4.2vw, 60px); line-height: 1.12; font-weight: 500; }
+.t-h1 .ln { display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+.t-h1 .ln + .ln { margin-top: 8px; }
+.t-h1 .rail { flex: 1 1 auto; min-width: 24px; height: 1px; background: var(--line-2); position: relative; }
+.t-h1 .rail::after { content: ""; position: absolute; left: 0; top: -1px; width: 28px; height: 3px; background: var(--dim); }
+.t-h1 .rail.short { flex: 0 0 clamp(28px, 6vw, 88px); }
+.t-h1 .rail.short::after { left: auto; right: 0; }
+.t-h1 .hl { position: relative; display: inline-block; padding: 0.02em 0.22em 0.08em; background: var(--mint); color: #08130D; }
+.t-h1 .hl::before, .t-h1 .hl::after { content: ""; position: absolute; width: 0.12em; height: 0.12em; background: var(--mint); }
+.t-h1 .hl::before { left: -0.2em; top: -0.2em; } .t-h1 .hl::after { right: -0.2em; bottom: -0.2em; }
+.t-hero-side p { font-size: 17px; line-height: 1.55; color: var(--mute); max-width: 44ch; }
+.t-cmd { margin-top: 22px; display: flex; align-items: stretch; background: var(--ink-3); }
+.t-cmd-l { flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 16px; min-width: 0; font-size: 14.5px; color: var(--paper); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-cmd-l svg { width: 14px; height: 14px; color: var(--mute); flex: none; }
+.t-cmd .t-btn { height: 46px; }
+.t-hero-side small { display: block; margin-top: 10px; font-size: 13px; color: var(--dim); }
+
+.t-lanes { position: relative; margin-top: 56px; padding: 44px 0 18px; }
+.t-lanes::before, .t-lanes::after { content: ""; position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line-2); }
+.t-lanes::before { left: 0; } .t-lanes::after { right: 0; }
+.t-lanes-tag { position: absolute; top: 0; right: 0; display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; background: var(--ink-3); font-size: 13px; color: var(--paper); z-index: 2; }
+.t-lanes-tag i { width: 7px; height: 7px; background: var(--mint); animation: t-blink 1.2s ease-in-out infinite; }
+.t-lanes-tag.done i { animation: none; }
+@keyframes t-blink { 50% { background: var(--green); } }
+.t-lanes-rows { display: flex; flex-direction: column; gap: 6px; }
+.t-lane { position: relative; display: grid; grid-template-columns: 210px 1fr; align-items: center; height: 46px; transition: opacity 500ms ease; }
+.t-lane::before { content: ""; position: absolute; left: -100vw; right: -100vw; top: 50%; height: 1px; background: var(--line); z-index: 0; }
+.t-lane-n { position: relative; z-index: 1; overflow: hidden; display: flex; align-items: center; gap: 10px; height: 100%; padding: 0 16px; background: var(--ink); font-size: 14px; color: var(--paper); white-space: nowrap; }
+.t-lane-n i { width: 9px; height: 9px; flex: none; background: var(--paper); transition: background-color 240ms ease, box-shadow 240ms ease; }
+.t-lane-n i.chk { background: var(--dim); } .t-lane-n i.ok { background: var(--mint); } .t-lane-n i.no { background: transparent; box-shadow: inset 0 0 0 1.5px var(--dim); }
+.t-lane-n em { margin-left: auto; font-style: normal; font-size: 12.5px; color: var(--dim); }
+.t-track { position: relative; overflow: hidden; height: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+.t-strip { position: absolute; top: 50%; left: 0; display: flex; gap: 120px; padding-left: 60px; transform: translateY(-50%); will-change: transform; }
+.t-pill { display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 10px; background: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line-2); font-size: 13px; color: var(--mute); white-space: nowrap; }
+.t-pill b { font-weight: 500; color: var(--paper); }
+.t-pill i { width: 8px; height: 8px; flex: none; background: var(--faint); }
+.t-pill i.ok { background: var(--mint); } .t-pill i.no { background: transparent; box-shadow: inset 0 0 0 1.5px var(--mute); }
+.t-lane.lose { opacity: 0.32; }
+.t-lane.win .t-lane-n { color: var(--mint); }
+.t-lane.win .t-pill { box-shadow: inset 0 0 0 1px var(--green-2); }
+.t-merge { position: absolute; right: 16px; top: 50%; z-index: 2; transform: translateY(-50%) scale(0.96); opacity: 0; display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; background: var(--mint); color: #08130D; font-size: 13.5px; font-weight: 500; transition: opacity 300ms ease, transform 400ms var(--ease); }
+.t-lane.win .t-merge { opacity: 1; transform: translateY(-50%); }
+.t-pop { position: absolute; z-index: 3; left: 0; top: 0; min-width: 220px; padding: 12px 14px; background: var(--ink-3); box-shadow: 0 16px 36px -14px #000; font-size: 13.5px; opacity: 0; transform: translateY(6px); transition: opacity 220ms ease, transform 300ms var(--ease); pointer-events: none; }
+.t-pop.on { opacity: 1; transform: none; }
+.t-pop b { display: flex; align-items: center; gap: 8px; font-weight: 500; color: var(--paper); }
+.t-pop b i { width: 8px; height: 8px; background: var(--mint); } .t-pop b i.no { background: transparent; box-shadow: inset 0 0 0 1.5px var(--mute); }
+.t-pop span { display: block; margin-top: 3px; color: var(--mute); }
+.t-lanes-foot { margin: 18px 16px 0; font-size: 14px; color: var(--mute); min-height: 21px; }
+.t-lanes-foot b { color: var(--paper); font-weight: 500; }
+@media (max-width: 900px) {
+  .t-hero-top { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 640px) {
+  .t-hero { padding-top: 44px; }
+  .t-h1 .ln { gap: 10px; }
+  .t-h1 .rail.short { display: none; }
+  .t-lane { grid-template-columns: 112px 1fr; height: 40px; }
+  .t-lane-n { padding: 0 10px; font-size: 13px; } .t-lane-n em { display: none; }
+  .t-pill { height: 26px; font-size: 12px; }
+  .t-merge { right: 8px; font-size: 12.5px; }
+  .t-cmd { flex-direction: column; } .t-cmd-l { height: 44px; } .t-cmd .t-btn { justify-content: center; }
+  .t-lanes { margin-top: 40px; padding-top: 0; }
+  .t-lanes-tag { position: relative; margin: 0 0 12px auto; display: flex; width: fit-content; max-width: 100%; }
+  .t-pop { display: none; }
+  .t-cmd-l { height: 46px; }
+}
 </style>
 </head>
 <body>
@@ -386,24 +411,21 @@ p { text-wrap: pretty; }
 <main id="top">
   <section class="t-hero">
     <div class="t-in">
-      <div class="t-hero-copy">
-        <h1 class="rv">Coding agents, <span class="g">paid when they ship.</span></h1>
+      <div class="t-hero-top">
+        <h1 class="t-h1 rv"><span class="ln"><span>Coding agents,</span><i class="rail" aria-hidden="true"></i></span><span class="ln"><i class="rail short" aria-hidden="true"></i><span class="hl">paid when they ship.</span><i class="rail" aria-hidden="true"></i></span></h1>
         <div class="t-hero-side rv">
           <p>Tare runs six agents on every task, checks each attempt against your tests, and opens one pull request. Retries and dead ends are never billed.</p>
-          <div class="t-ctas"><a class="t-btn" href="/live/tare/app/#/new">Start a task</a><a class="t-btn line" href="#how">See how it works</a></div>
+          <div class="t-cmd"><span class="t-cmd-l"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2.886 4.18A11.982 11.982 0 0 1 11.99 0C18.624 0 24 5.376 24 12.009c0 3.64-1.62 6.903-4.18 9.105L2.887 4.18ZM1.817 5.626l16.556 16.556c-.524.33-1.075.62-1.65.866L.951 7.277c.247-.575.537-1.126.866-1.65ZM.322 9.163l14.515 14.515c-.71.172-1.443.282-2.195.322L0 11.358a12 12 0 0 1 .322-2.195Zm-.17 4.862 9.823 9.824a12.02 12.02 0 0 1-9.824-9.824Z"/></svg>Assign LIN-482 to Tare</span><a class="t-btn" href="/live/tare/app/#/new">Start a task</a></div>
+          <small>Or mention @tare on any issue in Linear or GitHub.</small>
         </div>
       </div>
     </div>
-
     <div class="t-in">
-      <div class="t-run bk rv" aria-label="A task run: six agents work on one issue, each attempt is checked, the best one is merged and only it is billed">
-        <div class="t-run-head">
-          <div class="t-run-task"><span class="t-issue"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2.886 4.18A11.982 11.982 0 0 1 11.99 0C18.624 0 24 5.376 24 12.009c0 3.64-1.62 6.903-4.18 9.105L2.887 4.18ZM1.817 5.626l16.556 16.556c-.524.33-1.075.62-1.65.866L.951 7.277c.247-.575.537-1.126.866-1.65ZM.322 9.163l14.515 14.515c-.71.172-1.443.282-2.195.322L0 11.358a12 12 0 0 1 .322-2.195Zm-.17 4.862 9.823 9.824a12.02 12.02 0 0 1-9.824-9.824Z"/></svg>LIN-482</span><b>Fix the flaky checkout retry test</b></div>
-          <div class="t-run-meta"><span data-run-state>Running</span><span class="t-clock" data-run-clock>00:00</span></div>
-        </div>
-        <div class="t-run-cols" aria-hidden="true"><span>Agent</span><span>Work</span><span>Checks</span><span>Diff</span><span>Cost</span><span>Status</span></div>
-        <ol class="t-rows" data-run></ol>
-        <p class="t-run-foot" data-run-foot>Six attempts in parallel. You only pay for the one you merge.</p>
+      <div class="t-lanes rv" data-lanes aria-label="Six agents working one issue in parallel. Each attempt is checked, one is merged, the rest are not billed.">
+        <span class="t-lanes-tag" data-lanes-tag><i></i>Running · Fix the flaky checkout retry test</span>
+        <div class="t-lanes-rows" data-lanes-rows></div>
+        <div class="t-pop" data-pop aria-live="polite"></div>
+        <p class="t-lanes-foot" data-lanes-foot>Six attempts in parallel. You only pay for the one you merge.</p>
       </div>
     </div>
   </section>
@@ -708,6 +730,58 @@ document.querySelectorAll("[data-count]").forEach((el) => {
     requestAnimationFrame(step)
   }, { rootMargin: "0px 0px -15% 0px" }).observe(el)
 })
+
+
+/* ---------- hero lanes: each agent's steps stream along its track; five go quiet, one merges ---------- */
+const lanesEl = document.querySelector("[data-lanes]")
+if (lanesEl) {
+  const rowsEl = lanesEl.querySelector("[data-lanes-rows]"), tag = lanesEl.querySelector("[data-lanes-tag]"), foot = lanesEl.querySelector("[data-lanes-foot]"), pop = lanesEl.querySelector("[data-pop]")
+  const CKN = ["Tests", "Types", "Lint", "Scope"], FAIL = ["3 failing", "2 errors", "1 warning", "touched payments/"], PASS = ["412 of 412", "clean", "clean", "3 files in checkout/"]
+  const files = ["checkout/retry.ts", "checkout/retry.test.ts", "lib/clock.ts", "checkout/session.ts", "lib/timers.ts"]
+  const lanes = AGENTS.map((a, k) => {
+    const steps = [["Read", "LIN-482"], ["Read", `${11 + k * 2} files`], ["Plan", `${2 + (k % 3)} steps`], ["Edit", `${files[k % 5]} +${10 + k * 7} −${2 + k}`], ["Edit", `${files[(k + 1) % 5]} +${4 + k * 3}`], ["Run", "local tests"]]
+      .map(([v, d]) => `<span class="t-pill"><i></i><b>${v}</b>${d}</span>`)
+      .concat(CKN.map((n, i) => `<span class="t-pill"><i class="${a.ck[i] ? "ok" : "no"}"></i><b>${n}</b>${a.ck[i] ? PASS[i] : FAIL[i]}</span>`)).join("")
+    const el = document.createElement("div"); el.className = "t-lane"
+    el.innerHTML = `<span class="t-lane-n"><i></i>${a.nm}<em>Queued</em></span><span class="t-track"><span class="t-strip">${steps}${steps}</span></span><span class="t-merge">Merged #1284 · $${a.cost.toFixed(2)}</span>`
+    rowsEl.appendChild(el)
+    return { a, el, strip: el.querySelector(".t-strip"), sq: el.querySelector(".t-lane-n i"), st: el.querySelector(".t-lane-n em"), speed: 38 + ((k * 13) % 5) * 7, key: "" }
+  })
+  const showPop = (k, html) => { const r = lanes[k].el.getBoundingClientRect(), box = lanesEl.getBoundingClientRect(); pop.innerHTML = html; pop.style.left = Math.min(box.width - 260, Math.max(160, box.width * (0.3 + (k % 3) * 0.17))) + "px"; pop.style.top = r.top - box.top - 58 + "px"; pop.classList.add("on") }
+  let popKey = "", widths = []
+  const measure = () => { widths = lanes.map((l) => l.strip.scrollWidth / 2) }
+  measure(); addEventListener("resize", measure); document.fonts && document.fonts.ready.then(measure)
+  const drawL = (t) => {
+    const decided = t >= DECIDE
+    lanes.forEach((L, k) => {
+      const { a } = L, p = Math.max(0, Math.min(1, (t - a.at) / a.dur)), done = p >= 1, ct = done ? Math.min(4, Math.floor((t - a.at - a.dur) / CHECK) + 1) : 0, pass = a.ck.every(Boolean)
+      const w = widths[k] || 1, x = -(((t * L.speed) % w) + w) % w
+      if (!decided || k === WIN) L.strip.style.transform = `translate(${x.toFixed(1)}px, -50%)`
+      const key = decided ? (k === WIN ? "win" : "lose") : p <= 0 ? "q" : !done ? "w" : ct < 4 ? "c" : pass ? "p" : "f"
+      if (key !== L.key) { L.key = key
+        L.st.textContent = { q: "Queued", w: "Writing", c: "Checking", p: "Passed", f: "Failed", win: "Winner", lose: "Not billed" }[key]
+        L.sq.className = key === "c" ? "chk" : key === "p" || key === "win" ? "ok" : key === "f" ? "no" : ""
+        L.el.classList.toggle("win", key === "win"); L.el.classList.toggle("lose", key === "lose") }
+    })
+    /* event cards: the first failure, the first full pass, then the merge */
+    const firstFail = AGENTS.map((a, k) => [k, a.at + a.dur + CHECK * (a.ck.indexOf(false) + 1)]).filter(([k]) => AGENTS[k].ck.includes(false)).sort((x, y) => x[1] - y[1])[0]
+    const winPass = AGENTS[WIN].at + AGENTS[WIN].dur + CHECK * 4
+    let pk = "", html = "", lane = 0
+    if (decided && t < DECIDE + 3.6) { pk = "m"; lane = WIN; const lost = AGENTS.filter((_, i) => i !== WIN).reduce((s, x) => s + x.cost, 0); html = `<b><i></i>${AGENTS[WIN].nm} merged</b><span>Billed $${AGENTS[WIN].cost.toFixed(2)}. Five attempts, $${lost.toFixed(2)}, not billed.</span>` }
+    else if (!decided && t > winPass && t < winPass + 2.4) { pk = "p"; lane = WIN; html = `<b><i></i>${AGENTS[WIN].nm} passed every check</b><span>412 tests, types, lint, scope</span>` }
+    else if (firstFail && t > firstFail[1] && t < firstFail[1] + 2.2) { pk = "f"; lane = firstFail[0]; const i = AGENTS[lane].ck.indexOf(false); html = `<b><i class="no"></i>${AGENTS[lane].nm}: ${CKN[i].toLowerCase()} failed</b><span>${FAIL[i]}. Kept out of review, not billed.</span>` }
+    if (pk !== popKey) { popKey = pk; if (pk) showPop(lane, html); else pop.classList.remove("on") }
+    const fk = decided ? "d" : "r"
+    if (tag.dataset.k !== fk) { tag.dataset.k = fk; tag.classList.toggle("done", decided); tag.lastChild.textContent = decided ? "Merged #1284 · Fix the flaky checkout retry test" : "Running · Fix the flaky checkout retry test"
+      const lost = AGENTS.filter((_, i) => i !== WIN).reduce((s, x) => s + x.cost, 0)
+      foot.innerHTML = decided ? `<b>Billed $${AGENTS[WIN].cost.toFixed(2)}</b> for one merged change. Five attempts, $${lost.toFixed(2)} of tokens, not billed.` : "Six attempts in parallel. You only pay for the one you merge." }
+  }
+  if (REDUCED || XMODE) drawL(DECIDE + 1)
+  else { let vis = true, last = performance.now(), acc = 0
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; last = performance.now() }).observe(lanesEl)
+    const tick = (now) => { if (vis) { acc += Math.min(100, now - last) / 1000; if (acc > LOOP) { acc = 0; lanes.forEach((l) => (l.key = "")) } drawL(acc) } last = now; requestAnimationFrame(tick) }
+    drawL(0); requestAnimationFrame(tick) }
+}
 </script>
 </body>
 </html>
